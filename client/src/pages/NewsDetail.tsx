@@ -1,0 +1,187 @@
+import { useRoute } from 'wouter';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Calendar, Tag, Share2, ExternalLink } from 'lucide-react';
+import Header from '@/components/Header';
+import { Streamdown, defaultRehypePlugins } from 'streamdown';
+import { getArticleById, CATEGORY_CONFIG } from '@/data/news';
+
+// Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
+// 相対パス画像（/images/...）を解決できずブロックしてしまう。
+// 自サイトのオリジンを渡して、相対パスの記事画像を表示できるようにする。
+const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plugin]) => {
+  if (key === 'harden' && Array.isArray(plugin)) {
+    return [
+      plugin[0],
+      {
+        allowedImagePrefixes: ['*'],
+        allowedLinkPrefixes: ['*'],
+        allowDataImages: true,
+        defaultOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+      },
+    ];
+  }
+  return plugin;
+}) as never;
+
+export default function NewsDetail() {
+  const [match, params] = useRoute('/news/:id');
+
+  if (!match) {
+    return null;
+  }
+
+  // 記事データは client/src/data/news.ts で一元管理しています
+  const article = getArticleById(params.id);
+
+  if (!article) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <div className="container py-20 text-center">
+          <p className="text-gray-400 font-mono mb-4">記事が見つかりません</p>
+          <a href="/" className="text-cyan-400 hover:text-cyan-300 font-mono">
+            ホームに戻る
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  const categoryLabel = CATEGORY_CONFIG[article.category].label;
+
+  const relatedArticles = article.relatedArticles
+    .map((id) => getArticleById(id))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
+  const categoryColors: Record<string, string> = {
+    official: 'border-cyan-500/50 bg-cyan-500/10 text-cyan-300',
+    leak: 'border-pink-500/50 bg-pink-500/10 text-pink-300',
+    analysis: 'border-lime-500/50 bg-lime-500/10 text-lime-300'
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground pt-16">
+      <Header />
+
+      {/* Back Button */}
+      <div className="sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b border-cyan-500/30">
+        <div className="container py-4">
+          <a href="/" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-mono">
+            <ArrowLeft size={16} />
+            ホームに戻る
+          </a>
+        </div>
+      </div>
+
+      {/* Article Content */}
+      <article className="article-container">
+        <div>
+          {/* Header */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="text-2xl">{article.icon}</span>
+              <span className={`px-3 py-1 rounded text-xs font-mono border ${categoryColors[article.category]}`}>
+                {categoryLabel}
+              </span>
+            </div>
+
+            <h1 className="article-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-400 to-lime-400 font-mono">
+              {article.title}
+            </h1>
+
+            <div className="article-meta text-gray-400 font-mono text-sm">
+              <div className="flex items-center gap-2">
+                <Calendar size={14} />
+                {article.date}
+              </div>
+              <div className="flex items-center gap-2">
+                <Tag size={14} />
+                {article.source}
+              </div>
+            </div>
+          </div>
+
+          {/* 動画プレーヤー（記事に youtubeId がある場合のみ。記事内で再生可能） */}
+          {article.youtubeId && (
+            <div className="article-video mb-10">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${article.youtubeId}`}
+                title={article.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          )}
+
+          {/* Full Content (Markdown対応)。
+              parseIncompleteMarkdown はストリーミング表示用の「未完成Markdown除去」機能で、
+              静的記事では画像などを誤って消すため false にする。 */}
+          <div className="article-body mb-8">
+            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
+              {article.fullContent}
+            </Streamdown>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-cyan-500/30 my-10"></div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3 mb-12">
+            <Button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                alert('リンクをコピーしました');
+              }}
+              className="bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm h-10 rounded transition-all duration-300"
+            >
+              <Share2 size={14} className="mr-2" />
+              シェア
+            </Button>
+            {article.sourceUrl !== '#' && (
+              <a
+                href={article.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-all duration-300"
+              >
+                <ExternalLink size={14} />
+                出典を見る
+              </a>
+            )}
+          </div>
+
+          {/* Related Articles */}
+          <div className="bg-gradient-to-br from-cyan-500/5 to-pink-500/5 border border-cyan-500/30 rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-6 text-cyan-300 font-mono">関連記事</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {relatedArticles.map((related) => (
+                <a
+                  key={related.id}
+                  href={`/news/${related.id}`}
+                  className="group border border-cyan-500/30 rounded-lg p-4 bg-background/50 hover:border-cyan-500/60 hover:bg-cyan-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-2 mb-2">
+                    <span className="text-lg">{related.icon}</span>
+                    <span className={`px-2 py-0.5 rounded text-xs font-mono border ${categoryColors[related.category]}`}>
+                      {CATEGORY_CONFIG[related.category].label}
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-sm mb-2 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                    {related.title}
+                  </h3>
+                  <p className="text-xs text-gray-400">{related.date}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* Footer */}
+      <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
+        <p>&copy; 2026 Leonida Gate. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}

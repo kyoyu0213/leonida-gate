@@ -1,0 +1,566 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Google Fonts: Space Mono (見出し), Roboto (本文), Roboto Mono (コード) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Animation Easings */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-glitch: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Cyberpunk Neon Colors */
+  --primary: #ff006e;           /* Neon Pink */
+  --primary-foreground: #0a0e27; /* Deep Purple-Navy */
+  --secondary: #00f5ff;          /* Cyan */
+  --secondary-foreground: #0a0e27;
+  --accent: #39ff14;             /* Lime Green */
+  --accent-foreground: #0a0e27;
+  --destructive: #ff006e;
+  --destructive-foreground: #e0e6ff;
+  
+  /* Cyberpunk Palette */
+  --sidebar-primary: #ff006e;
+  --sidebar-primary-foreground: #0a0e27;
+  --chart-1: #ff006e;
+  --chart-2: #00f5ff;
+  --chart-3: #39ff14;
+  --chart-4: #ff006e;
+  --chart-5: #00f5ff;
+  
+  --radius: 0.5rem;
+  --background: #0a0e27;        /* Deep Purple-Navy */
+  --foreground: #e0e6ff;        /* Lavender White */
+  --card: #1a1f3a;              /* Slightly lighter than background */
+  --card-foreground: #e0e6ff;
+  --popover: #1a1f3a;
+  --popover-foreground: #e0e6ff;
+  --muted: #4a5568;             /* Dark Gray */
+  --muted-foreground: #9ca3af;  /* Medium Gray */
+  --border: #2d3748;            /* Border Gray */
+  --input: #1a1f3a;
+  --ring: #ff006e;              /* Neon Pink for focus */
+  
+  --sidebar: #0a0e27;
+  --sidebar-foreground: #e0e6ff;
+  --sidebar-accent: #ff006e;
+  --sidebar-accent-foreground: #0a0e27;
+  --sidebar-border: #2d3748;
+  --sidebar-ring: #ff006e;
+}
+
+.dark {
+  --primary: #ff006e;
+  --primary-foreground: #0a0e27;
+  --sidebar-primary: #ff006e;
+  --sidebar-primary-foreground: #0a0e27;
+  --background: #0a0e27;
+  --foreground: #e0e6ff;
+  --card: #1a1f3a;
+  --card-foreground: #e0e6ff;
+  --popover: #1a1f3a;
+  --popover-foreground: #e0e6ff;
+  --secondary: #00f5ff;
+  --secondary-foreground: #0a0e27;
+  --muted: #4a5568;
+  --muted-foreground: #9ca3af;
+  --accent: #39ff14;
+  --accent-foreground: #0a0e27;
+  --destructive: #ff006e;
+  --destructive-foreground: #e0e6ff;
+  --border: #2d3748;
+  --input: #1a1f3a;
+  --ring: #ff006e;
+  --chart-1: #ff006e;
+  --chart-2: #00f5ff;
+  --chart-3: #39ff14;
+  --chart-4: #ff006e;
+  --chart-5: #00f5ff;
+  --sidebar: #0a0e27;
+  --sidebar-foreground: #e0e6ff;
+  --sidebar-accent: #ff006e;
+  --sidebar-accent-foreground: #0a0e27;
+  --sidebar-border: #2d3748;
+  --sidebar-ring: #ff006e;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image: 
+      linear-gradient(0deg, transparent 24%, rgba(255, 0, 110, 0.05) 25%, rgba(255, 0, 110, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 110, 0.05) 75%, rgba(255, 0, 110, 0.05) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(0, 245, 255, 0.05) 25%, rgba(0, 245, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 245, 255, 0.05) 75%, rgba(0, 245, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  code, pre {
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Cyberpunk Neon Effects */
+  .neon-border {
+    border: 2px solid #ff006e;
+    box-shadow: 0 0 10px rgba(255, 0, 110, 0.5), inset 0 0 10px rgba(255, 0, 110, 0.1);
+  }
+  
+  .neon-border-cyan {
+    border: 2px solid #00f5ff;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5), inset 0 0 10px rgba(0, 245, 255, 0.1);
+  }
+  
+  .neon-border-green {
+    border: 2px solid #39ff14;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5), inset 0 0 10px rgba(57, 255, 20, 0.1);
+  }
+  
+  .neon-glow {
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes neon-pulse {
+    0%, 100% {
+      opacity: 1;
+      filter: drop-shadow(0 0 8px rgba(255, 0, 110, 0.8));
+    }
+    50% {
+      opacity: 0.8;
+      filter: drop-shadow(0 0 16px rgba(255, 0, 110, 0.5));
+    }
+  }
+  
+  .glitch {
+    animation: glitch 0.15s ease-in-out;
+  }
+  
+  @keyframes glitch {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(2px);
+    }
+    50% {
+      transform: translateX(-2px);
+    }
+    75% {
+      transform: translateX(2px);
+    }
+  }
+  
+  .slide-in-left {
+    animation: slide-in-left 0.4s var(--ease-out);
+  }
+  
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .slide-in-right {
+    animation: slide-in-right 0.4s var(--ease-out);
+  }
+  
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .slide-in-up {
+    animation: slide-in-up 0.4s var(--ease-out);
+  }
+  
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+/* ============================================================================
+   記事ページ専用レイアウト（NewsDetail / .article-page だけに適用）
+   ── レイヤー外で定義し、Streamdown が各要素に付ける Tailwind ユーティリティ
+      クラスを確実に上書きする。セレクタは .article-page 配下に限定しているので
+      他ページには影響しない。
+   ========================================================================== */
+
+/* 1. 記事コンテナ：中央寄せ・最大幅・十分な左右余白 */
+.article-container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+/* 動画埋め込み（YouTube）：16:9レスポンシブ＋ネオン枠 */
+.article-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  box-shadow: 0 0 28px rgba(0, 245, 255, 0.15);
+  background: #000;
+}
+
+.article-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* 2. タイトル：大きく・不自然な改行を防ぐ・行間広め（グラデーション文字は維持） */
+.article-title {
+  font-size: clamp(30px, 5vw, 52px);
+  line-height: 1.28;
+  letter-spacing: 0.01em;
+  /* 日本語の見出しを自然な文節（ぶんせつ）の区切りで改行する。
+     未対応ブラウザでは通常の改行にフォールバックする。 */
+  word-break: auto-phrase;
+  /* 各行の長さをできるだけ均等にして、ガタつきを抑える */
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  margin-bottom: 20px;
+}
+
+/* タイトル下のメタ情報（日付・出典）を横並びで整える */
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+/* 3. 本文：読みやすいフォントサイズ・行間・柔らかい白 */
+.article-body {
+  font-size: 17px;
+  line-height: 2;
+  color: #e6ecff;
+}
+
+.article-body p {
+  margin: 0 0 1.6em;
+}
+
+/* 記事冒頭のリード文をカード化（最初の段落） */
+.article-body p:first-of-type {
+  margin: 8px 0 40px;
+  padding: 22px 26px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  font-size: 18px;
+  line-height: 1.95;
+  color: #eef2ff;
+}
+
+/* 本文先頭にある重複タイトル（Markdownの # 見出し）は非表示にして、
+   上部のグラデーションタイトルに一本化する */
+.article-body [data-streamdown="heading-1"] {
+  display: none;
+}
+
+/* 4. 見出し */
+.article-body [data-streamdown="heading-2"] {
+  margin-top: 56px;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 4px solid #00f5ff;
+  font-size: 28px;
+  line-height: 1.5;
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
+}
+
+.article-body [data-streamdown="heading-3"] {
+  margin-top: 40px;
+  margin-bottom: 14px;
+  font-size: 21px;
+  line-height: 1.5;
+  color: #7dffb0;
+}
+
+/* 5. 箇条書き：背景付きのネオン枠ボックスにして本文から浮かせる */
+.article-body [data-streamdown="unordered-list"],
+.article-body [data-streamdown="ordered-list"] {
+  margin: 28px 0;
+  padding: 22px 28px 22px 44px;
+  border: 1px solid rgba(0, 245, 255, 0.22);
+  background: rgba(0, 245, 255, 0.05);
+  border-radius: 14px;
+}
+
+.article-body [data-streamdown="list-item"] {
+  margin-bottom: 12px;
+  line-height: 1.85;
+}
+
+.article-body [data-streamdown="list-item"]:last-child {
+  margin-bottom: 0;
+}
+
+.article-body [data-streamdown="list-item"]::marker {
+  color: #00f5ff;
+}
+
+/* 強調・リンク */
+.article-body [data-streamdown="strong"],
+.article-body strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.article-body [data-streamdown="link"],
+.article-body a {
+  color: #00f5ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-body [data-streamdown="link"]:hover,
+.article-body a:hover {
+  color: #7df9ff;
+}
+
+/* 画像：レスポンシブ＋角丸＋ネオン枠、中央寄せ
+   ── Streamdownは画像を inline-block の image-wrapper(div) で出力するため、
+      ラッパーを block・全幅にしないと width:100% の画像が潰れて消える。 */
+.article-body [data-streamdown="image-wrapper"] {
+  display: block;
+  width: 100%;
+  margin: 36px auto 10px;
+  text-align: center;
+}
+
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  box-shadow: 0 0 24px rgba(0, 245, 255, 0.12);
+}
+
+/* Streamdown標準の画像ホバー時オーバーレイ／ダウンロードボタンは記事では非表示に */
+.article-body [data-streamdown="image-wrapper"] > div,
+.article-body [data-streamdown="image-wrapper"] > button {
+  display: none;
+}
+
+/* 画像の直後の段落は「キャプション」として小さく・控えめに・中央寄せ */
+.article-body [data-streamdown="image-wrapper"] + p {
+  margin: 0 auto 32px;
+  max-width: 90%;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #9aa7c7;
+  text-align: center;
+}
+
+/* 6. 区切り線：薄すぎず主張しすぎない、上下に余白 */
+.article-body [data-streamdown="horizontal-rule"] {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.35), transparent);
+  margin: 48px 0;
+}
+
+/* 引用（blockquote）：シアンの左ボーダー＋淡い背景で記事テーマに馴染ませる */
+.article-body [data-streamdown="blockquote"] {
+  margin: 32px 0;
+  padding: 16px 20px;
+  border-left: 4px solid rgba(0, 245, 255, 0.5);
+  border-radius: 0 10px 10px 0;
+  background: rgba(0, 245, 255, 0.05);
+  color: #c8d2ee;
+  font-style: normal;
+}
+
+.article-body [data-streamdown="blockquote"] p {
+  margin: 0;
+}
+
+/* 7. 注意書き・補足：イタリック(*…*)だけの段落を「注意ボックス」にする */
+.article-body p:has(> em:only-child) {
+  margin-top: 48px;
+  padding: 20px 24px;
+  border-radius: 12px;
+  background: rgba(255, 0, 110, 0.08);
+  border: 1px solid rgba(255, 0, 110, 0.25);
+  font-size: 14px;
+  line-height: 1.85;
+  color: #cbd5e1;
+}
+
+.article-body p:has(> em:only-child) em {
+  font-style: normal;
+  color: #cbd5e1;
+}
+
+/* 8. スマホ対応 */
+@media (max-width: 640px) {
+  .article-container {
+    padding: 36px 18px 72px;
+  }
+
+  .article-title {
+    font-size: 30px;
+    line-height: 1.25;
+  }
+
+  .article-body {
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .article-body p:first-of-type {
+    font-size: 16px;
+    padding: 18px 18px;
+  }
+
+  .article-body [data-streamdown="heading-2"] {
+    font-size: 23px;
+    margin-top: 44px;
+  }
+
+  .article-body [data-streamdown="heading-3"] {
+    font-size: 19px;
+    margin-top: 32px;
+  }
+
+  .article-body [data-streamdown="unordered-list"],
+  .article-body [data-streamdown="ordered-list"] {
+    padding: 16px 18px 16px 36px;
+  }
+}
