@@ -235,7 +235,7 @@ export default function Home() {
 
       {/* ===================== FOOTER ===================== */}
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 flex flex-col gap-3">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 flex flex-col items-center gap-3 text-center">
           <div className="flex items-center gap-2.5">
             <span
               className="w-2.5 h-2.5 rounded-full"
