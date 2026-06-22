@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, CATEGORY_CONFIG, CATEGORIES, type NewsCategory } from '@/data/news';
+import { newsArticles, newsByDate, CATEGORY_CONFIG, CATEGORIES, type NewsCategory } from '@/data/news';
 import { listApprovedServers } from '@/lib/servers';
 import { listRecentThreads, type BoardThread } from '@/lib/board';
 import { getBoard } from '@/lib/boards';
@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   const filteredNews = (
-    selectedCat === 'all' ? newsArticles : newsArticles.filter((n) => n.category === selectedCat)
+    selectedCat === 'all' ? newsByDate : newsByDate.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
   return (
@@ -68,7 +68,7 @@ export default function Home() {
               バイスシティ総合情報 ＆ コミュニティ
             </p>
             <div className="flex gap-2.5 justify-center flex-wrap mt-6">
-              {newsArticles.slice(0, 3).map((m) => {
+              {newsByDate.slice(0, 3).map((m) => {
                 const color = CATEGORY_CONFIG[m.category].vice;
                 return (
                   <a

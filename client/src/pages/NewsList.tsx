@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
+import { newsArticles, newsByDate, CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
 
 /**
  * ニュース一覧ページ（/news）。全記事をカテゴリ絞り込み付きで表示する。
@@ -10,7 +10,7 @@ export default function NewsList() {
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
 
   const filtered =
-    selectedCat === 'all' ? newsArticles : newsArticles.filter((n) => n.category === selectedCat);
+    selectedCat === 'all' ? newsByDate : newsByDate.filter((n) => n.category === selectedCat);
 
   return (
     <div className="vice-page vice-noise">
