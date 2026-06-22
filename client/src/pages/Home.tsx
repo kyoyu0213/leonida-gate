@@ -235,15 +235,15 @@ export default function Home() {
 
       {/* ===================== FOOTER ===================== */}
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 flex flex-col items-center gap-3 text-center">
-          <div className="flex items-center gap-2.5">
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 flex flex-col gap-3">
+          <div className="flex items-center gap-2.5 self-start">
             <span
               className="w-2.5 h-2.5 rounded-full"
               style={{ background: 'radial-gradient(circle,#fff,#ff2d95 80%)', boxShadow: '0 0 10px #ff2d95' }}
             />
             <span className="vice-display vice-grad text-lg">VICE&nbsp;HUB</span>
           </div>
-          <p className="text-[11.5px] text-white/40 m-0 leading-relaxed max-w-[640px]">
+          <p className="text-[11.5px] text-white/40 m-0 leading-relaxed max-w-[640px] mx-auto text-center">
             本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two
             とは一切関係ありません。{' '}
             <a href="/terms" className="underline hover:text-white/70">利用規約・プライバシー</a>
