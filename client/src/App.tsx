@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -13,35 +12,10 @@ import BoardThreadList from "./pages/BoardThreadList";
 import BoardThread from "./pages/BoardThread";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
-import TerminalLoader from "./components/TerminalLoader";
-
-
-// ローディング画面は「サイトを最初に開いたとき」だけ表示する。
-// ページ遷移（フルリロード）のたびに出ないよう、sessionStorage で
-// 1セッション1回に制限する（タブを閉じるまで再表示しない）。
-const LOADED_KEY = "lg_loaded";
 
 function Router() {
-  const [isLoading, setIsLoading] = useState(
-    () => typeof sessionStorage !== "undefined" && !sessionStorage.getItem(LOADED_KEY)
-  );
-
-  useEffect(() => {
-    if (!isLoading) return;
-
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      sessionStorage.setItem(LOADED_KEY, "1");
-    }, 3000);
-
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
-      <TerminalLoader isLoading={isLoading} />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/servers" component={ServerBoard} />
