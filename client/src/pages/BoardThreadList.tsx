@@ -7,6 +7,7 @@ import {
   listThreads,
   createThread,
   formatPostDate,
+  boardErrorMessage,
   DEFAULT_NAME,
   MAX_TITLE,
   MAX_BODY,
@@ -104,7 +105,7 @@ export default function BoardThreadList() {
     setSubmitting(false);
     if (error) {
       console.error(error);
-      toast.error('スレッドの作成に失敗しました');
+      toast.error(boardErrorMessage(error.message));
       return;
     }
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));

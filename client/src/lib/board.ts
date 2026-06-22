@@ -75,6 +75,15 @@ export async function createPost(threadId: string, name: string, body: string) {
   });
 }
 
+/** RPC のエラーメッセージを利用者向けの日本語に変換する */
+export function boardErrorMessage(message?: string): string {
+  const m = message ?? '';
+  if (m.includes('banned word')) return '禁止ワードが含まれているため投稿できません';
+  if (m.includes('rate limited')) return '連投はできません。少し時間をおいてから投稿してください';
+  if (m.includes('thread full')) return 'このスレッドは1000レスに達したため書き込めません';
+  return '投稿に失敗しました。時間をおいて再度お試しください';
+}
+
 /** 投稿日時を 5ch 風に整形（例: 2026-06-22 12:34） */
 export function formatPostDate(iso: string): string {
   const d = new Date(iso);

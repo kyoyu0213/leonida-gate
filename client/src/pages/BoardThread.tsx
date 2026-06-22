@@ -8,6 +8,7 @@ import {
   listPosts,
   createPost,
   formatPostDate,
+  boardErrorMessage,
   DEFAULT_NAME,
   MAX_BODY,
   POST_COOLDOWN_MS,
@@ -80,7 +81,7 @@ export default function BoardThread() {
     setSubmitting(false);
     if (error) {
       console.error(error);
-      toast.error('投稿に失敗しました');
+      toast.error(boardErrorMessage(error.message));
       return;
     }
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
