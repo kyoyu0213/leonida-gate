@@ -1,13 +1,15 @@
 // 掲示板の一覧設定。ここに足すだけで掲示板を増やせる。
 // slug は URL（/board/:slug）とDBの board 列に使う。
 
-export type Accent = 'lime' | 'cyan';
+export type Accent = 'lime' | 'cyan' | 'purple';
 
 export interface BoardConfig {
   slug: string;
   title: string;
   description: string;
   accent: Accent;
+  /** 申請制：ユーザーは自由にスレを立てられず、申請フォームから申請→管理者がスレ立て */
+  submitOnly?: boolean;
 }
 
 export const BOARDS: BoardConfig[] = [
@@ -23,12 +25,30 @@ export const BOARDS: BoardConfig[] = [
     description: '匿名でGTA/FiveM RPについて自由に語り合う場所',
     accent: 'lime',
   },
+  {
+    slug: 'gtarp-servers',
+    title: 'GTARP鯖別掲示板',
+    description:
+      '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
+    accent: 'purple',
+    submitOnly: true,
+  },
 ];
 
 export const getBoard = (slug?: string): BoardConfig | undefined =>
   BOARDS.find((b) => b.slug === slug);
 
-// 配色（Tailwindの動的生成を避けるため、完成形のクラス文字列で持つ）
+// 申請制の掲示板で「管理者としてスレを立てる」ための合言葉。
+//  URL に ?admin=この合言葉 を付けて開くと、申請制ジャンルでもスレ作成ボタンが出る。
+//  例: /board/gtarp-servers?admin=vh-admin-2026
+//  ※ クライアント側の簡易ガードです（合言葉はビルドに含まれます）。本格的な権限管理は別途。
+export const ADMIN_KEY = 'vh-admin-2026';
+
+/** 掲示板アクセント色（VICEデザイン用） */
+export const boardColor = (accent?: Accent): string =>
+  accent === 'cyan' ? '#22d3ee' : accent === 'purple' ? '#a78bfa' : '#3de0a0';
+
+// 配色（旧サイバーパンクデザイン用に残置）
 interface AccentStyle {
   text: string;
   badge: string;
@@ -60,5 +80,15 @@ export const ACCENTS: Record<Accent, AccentStyle> = {
     borderHover: 'hover:border-cyan-500/70 hover:bg-cyan-500/5',
     bgSoft: 'bg-cyan-500/5',
     inputBorder: 'border-cyan-500/40',
+  },
+  purple: {
+    text: 'text-purple-400',
+    badge: 'border-purple-500/50 bg-purple-500/10 text-purple-400',
+    gradient: 'from-purple-400 via-pink-500 to-cyan-400',
+    button: 'bg-purple-600 hover:bg-purple-500 text-white',
+    border: 'border-purple-500/30',
+    borderHover: 'hover:border-purple-500/70 hover:bg-purple-500/5',
+    bgSoft: 'bg-purple-500/5',
+    inputBorder: 'border-purple-500/40',
   },
 };

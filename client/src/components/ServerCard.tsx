@@ -10,7 +10,7 @@ interface ServerCardProps {
 }
 
 /**
- * FiveMサーバーのカード。サーバー一覧ページ(/servers)とトップページで共用。
+ * FiveMサーバーのカード。サーバー一覧ページ(/servers)で使用。
  */
 export default function ServerCard({ server, onTagClick }: ServerCardProps) {
   const copy = (text: string) => {

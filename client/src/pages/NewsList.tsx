@@ -1,75 +1,71 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, CATEGORIES } from '@/data/news';
+import { newsArticles, CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
 
 /**
  * ニュース一覧ページ（/news）。全記事をカテゴリ絞り込み付きで表示する。
- * トップページは最新数件のみ表示し、ここで全件を見せる。
  */
 export default function NewsList() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
 
-  const filteredNews =
-    selectedCategory === 'all'
-      ? newsArticles
-      : newsArticles.filter((item) => item.category === selectedCategory);
+  const filtered =
+    selectedCat === 'all' ? newsArticles : newsArticles.filter((n) => n.category === selectedCat);
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-16">
+    <div className="vice-page vice-noise">
       <Header />
 
-      <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 to-transparent z-0" />
+      <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
+        {/* Hero */}
+        <div className="mb-8">
+          <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">News</span>
+          <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">GTA6最新情報</h1>
+          <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
+            GTA6の公式情報・考察・リークを日本語でお届け。全{newsArticles.length}件の記事を掲載中。
+          </p>
+        </div>
 
-        <div className="container relative z-10">
-          {/* Title */}
-          <div className="neon-border-cyan rounded-lg p-8 bg-background/80 backdrop-blur-sm mb-10 text-center">
-            <p className="text-xs font-mono text-secondary mb-2">MISSION_LOG_TERMINAL_v2.1 | ALL RECORDS</p>
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-secondary mb-2">
-              ◆ GTA6最新情報（全記事）◆
-            </h1>
-            <p className="text-sm text-muted-foreground font-mono">
-              &gt; 全{newsArticles.length}件の記録を表示中
-            </p>
-          </div>
-
-          {/* Category Filter Buttons */}
-          <div className="mb-10 flex flex-wrap gap-3 justify-center">
-            {CATEGORIES.map((cat) => (
+        {/* filter chips */}
+        <div className="flex gap-2 overflow-x-auto pb-1.5 mb-7">
+          {CATEGORIES.map((c) => {
+            const active = selectedCat === c.id;
+            const color = c.id === 'all' ? '#ff2d95' : CATEGORY_CONFIG[c.id as NewsCategory].vice;
+            return (
               <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
-                  selectedCategory === cat.id
-                    ? 'neon-border bg-primary/20 text-primary shadow-lg shadow-primary/50'
-                    : 'neon-border-cyan text-secondary hover:bg-secondary/10 hover:shadow-lg hover:shadow-secondary/30'
-                }`}
+                key={c.id}
+                onClick={() => setSelectedCat(c.id as NewsCategory | 'all')}
+                className="flex-none flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                style={{
+                  border: `1px solid ${active ? color : 'rgba(255,255,255,.14)'}`,
+                  background: active ? `${color}22` : 'rgba(255,255,255,.03)',
+                  color: active ? '#fff' : 'rgba(244,238,248,.7)',
+                }}
               >
-                <span className="mr-2">{cat.icon}</span>
-                {cat.label}
+                <span className="w-[7px] h-[7px] rounded-full" style={{ background: color }} />
+                {c.label}
               </button>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          {/* Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {filteredNews.map((item, idx) => (
+        {/* grid */}
+        {filtered.length > 0 ? (
+          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(248px,1fr))' }}>
+            {filtered.map((item, idx) => (
               <NewsCard key={item.id} article={item} index={idx} />
             ))}
           </div>
+        ) : (
+          <p className="text-white/50 py-16 text-center">このカテゴリの記事はまだありません</p>
+        )}
+      </main>
 
-          {/* Back to home */}
-          <div className="mt-12 text-center">
-            <a
-              href="/"
-              className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors font-mono text-sm"
-            >
-              &larr; ホームに戻る
-            </a>
-          </div>
+      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

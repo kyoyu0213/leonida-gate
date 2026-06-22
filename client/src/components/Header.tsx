@@ -1,115 +1,135 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
+import { Search, Plus, Menu, X } from 'lucide-react';
+import { toast } from 'sonner';
+
+const NAV = [
+  { label: 'ホーム', href: '/', match: (l: string) => l === '/' },
+  { label: 'GTA6最新情報', href: '/news', match: (l: string) => l.startsWith('/news') },
+  { label: 'FiveMサーバー募集', href: '/servers', match: (l: string) => l.startsWith('/servers') },
+  { label: '掲示板', href: '/board', match: (l: string) => l.startsWith('/board') || l.startsWith('/thread') },
+  { label: 'お問い合わせ', href: '/contact', match: (l: string) => l.startsWith('/contact') },
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location, navigate] = useLocation();
+  const [query, setQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const onSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // 簡易検索：いまは記事一覧へ遷移（将来きちんと検索実装可）
+    navigate('/news');
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container flex items-center justify-between h-16">
+    <header
+      className="fixed top-0 left-0 right-0 z-[60] border-b border-white/[0.08]"
+      style={{
+        background: 'rgba(11,7,20,.72)',
+        backdropFilter: 'blur(20px) saturate(1.3)',
+        WebkitBackdropFilter: 'blur(20px) saturate(1.3)',
+      }}
+    >
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3 cursor-pointer">
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663601090021/ibPF46b5bbEBqwBYMcNbNa/leonida-gate-logo-HfUvSPMMEVGJ79Jek8adsA.webp"
-            alt="Leonida Gate"
-            className="w-8 h-8"
+        <a href="/" className="flex items-center gap-2.5 flex-none cursor-pointer">
+          <span
+            className="w-[13px] h-[13px] rounded-full flex-none"
+            style={{
+              background: 'radial-gradient(circle,#fff 0%,#ff8a3d 40%,#ff2d95 80%)',
+              boxShadow: '0 0 12px #ff2d95, 0 0 26px rgba(255,45,149,.6)',
+            }}
           />
-          <span className="flex flex-col leading-tight">
-            <span className="text-[10px] font-mono text-secondary tracking-wider">GTA6コミュニティハブ</span>
-            <span className="text-lg font-bold text-primary font-display">LEONIDA GATE</span>
-          </span>
+          <span className="vice-display vice-grad text-2xl tracking-[0.5px]">VICE&nbsp;HUB</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <button 
-            onClick={() => scrollToSection('about')}
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            自己紹介
-          </button>
-          <button
-            onClick={() => scrollToSection('gta6-info')}
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            GTA6情報
-          </button>
-          <a
-            href="/servers"
-            className="text-foreground hover:text-accent transition-colors"
-          >
-            サーバー
-          </a>
-          <a
-            href="/board"
-            className="text-foreground hover:text-accent transition-colors"
-          >
-            掲示板
-          </a>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            連絡
-          </button>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-2 lg:gap-3 flex-none">
+          {NAV.map((item) => {
+            const active = item.match(location);
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="relative px-1 py-1.5 text-[14px] font-bold whitespace-nowrap tracking-wide transition-colors"
+                style={{ color: active ? '#fff' : '#bdb2d0' }}
+              >
+                {item.label}
+                {active && (
+                  <span
+                    className="absolute left-1 right-1 -bottom-[21px] h-0.5 rounded-full"
+                    style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95)' }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        {/* spacer */}
+        <div className="flex-1 min-w-[8px]" />
+
+        {/* Search */}
+        <form
+          onSubmit={onSearch}
+          className="hidden sm:flex items-center gap-2 rounded-full px-3.5 py-2 min-w-0"
+          style={{
+            background: 'rgba(255,255,255,.05)',
+            border: '1px solid rgba(255,255,255,.1)',
+            width: 'clamp(120px,18vw,230px)',
+          }}
         >
-          {isMenuOpen ? (
-            <X className="w-6 h-6 text-primary" />
-          ) : (
-            <Menu className="w-6 h-6 text-primary" />
-          )}
+          <Search size={15} className="flex-none opacity-60" />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="検索…"
+            className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
+          />
+        </form>
+
+        {/* Login */}
+        <button
+          onClick={() => toast('ログイン機能は準備中です')}
+          className="hidden sm:block flex-none text-[13px] font-bold px-4 py-2.5 rounded-full whitespace-nowrap text-[#f4eef8] hover:text-[#22d3ee] transition-colors"
+          style={{ border: '1px solid rgba(255,255,255,.18)' }}
+        >
+          ログイン
+        </button>
+
+        {/* New post */}
+        <a
+          href="/board"
+          className="flex-none text-[13px] font-extrabold px-[18px] py-2.5 rounded-full whitespace-nowrap text-white inline-flex items-center gap-1 hover:-translate-y-px transition-transform"
+          style={{
+            background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
+            boxShadow: '0 4px 18px rgba(255,45,149,.4)',
+          }}
+        >
+          <Plus size={15} strokeWidth={3} /> 新規投稿
+        </a>
+
+        {/* Mobile menu toggle */}
+        <button className="md:hidden text-white flex-none" onClick={() => setMenuOpen((v) => !v)}>
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav className="md:hidden bg-card border-b border-border">
-          <div className="container py-4 flex flex-col gap-4">
-            <button 
-              onClick={() => scrollToSection('about')}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              自己紹介
-            </button>
-            <button
-              onClick={() => scrollToSection('gta6-info')}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              GTA6情報
-            </button>
-            <a
-              href="/servers"
-              className="text-foreground hover:text-accent transition-colors text-left"
-            >
-              サーバー
-            </a>
-            <a
-              href="/board"
-              className="text-foreground hover:text-accent transition-colors text-left"
-            >
-              掲示板
-            </a>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-foreground hover:text-primary transition-colors text-left"
-            >
-              連絡
-            </button>
+      {/* Mobile nav */}
+      {menuOpen && (
+        <nav className="md:hidden border-t border-white/10" style={{ background: 'rgba(11,7,20,.96)' }}>
+          <div className="max-w-[1320px] mx-auto px-4 py-4 flex flex-col gap-4">
+            {NAV.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-[15px] font-bold text-[#cfc6e0] hover:text-white transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         </nav>
       )}

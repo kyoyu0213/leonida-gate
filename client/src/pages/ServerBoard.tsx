@@ -1,21 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Plus, X, Send, Server as ServerIcon, Loader2 } from 'lucide-react';
+import { Plus, X, Send, Server as ServerIcon, Loader2, Search } from 'lucide-react';
 import Header from '@/components/Header';
 import ServerCard from '@/components/ServerCard';
 import { toast } from 'sonner';
 import { supabase, type FivemServer } from '@/lib/supabase';
 import { listApprovedServers } from '@/lib/servers';
 
-// 投稿フォームのタイプ選択肢
 const SERVER_TYPES = [
-  { id: 'all', label: 'すべて', icon: '◆' },
-  { id: 'RP', label: 'RP', icon: '🎭' },
-  { id: 'Racing', label: 'レース', icon: '🏎️' },
-  { id: 'Survival', label: 'サバイバル', icon: '🏕️' },
-  { id: 'Other', label: 'その他', icon: '🎮' },
+  { id: 'all', label: 'すべて' },
+  { id: 'RP', label: 'RP' },
+  { id: 'Racing', label: 'レース' },
+  { id: 'Survival', label: 'サバイバル' },
+  { id: 'Other', label: 'その他' },
 ];
 
 const emptyForm = {
@@ -28,6 +24,9 @@ const emptyForm = {
   tags: '',
 };
 
+const inputClass =
+  'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-[#ff2d95]/60 transition-colors';
+
 export default function ServerBoard() {
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,11 +38,9 @@ export default function ServerBoard() {
   const [form, setForm] = useState(emptyForm);
   const [submitting, setSubmitting] = useState(false);
 
-  // 承認済みサーバーを取得
   const loadServers = async () => {
     setLoading(true);
     const { data, error } = await listApprovedServers();
-
     if (error) {
       console.error('サーバー一覧の取得に失敗:', error);
       toast.error('サーバー一覧の取得に失敗しました');
@@ -91,7 +88,6 @@ export default function ServerBoard() {
       toast.error('接続情報かDiscordリンクのどちらかは入力してください');
       return;
     }
-
     setSubmitting(true);
     const tags = form.tags
       .split(/[,、\s]+/)
@@ -107,7 +103,6 @@ export default function ServerBoard() {
       discord_url: form.discord_url.trim() || null,
       language: form.language.trim() || null,
       tags,
-      // approved は DB 側のデフォルト false（承認制）。ここでは送らない。
     });
     setSubmitting(false);
 
@@ -116,296 +111,202 @@ export default function ServerBoard() {
       toast.error('投稿に失敗しました。時間をおいて再度お試しください');
       return;
     }
-
     toast.success('申請を受け付けました！運営の承認後に掲載されます');
     setForm(emptyForm);
     setShowForm(false);
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-16">
+    <div className="vice-page vice-noise">
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-16 px-4 border-b border-cyan-500/30">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 to-transparent" />
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-4 px-4 py-2 border border-cyan-500/50 rounded-lg bg-cyan-500/10 backdrop-blur-sm">
-            <span className="text-cyan-400 font-mono text-sm">FIVEM_SERVER_BOARD v2.0</span>
-          </div>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-400 to-lime-400 font-mono">
-            FiveM サーバー掲示板
-          </h1>
-
-          <p className="text-cyan-300 text-lg mb-8 font-mono">
-            &gt; あなたのサーバーを掲載・発見する
-          </p>
-
-          <Button
-            onClick={() => setShowForm((v) => !v)}
-            className="bg-pink-600 hover:bg-pink-500 text-white font-mono shadow-lg shadow-pink-500/30"
-          >
-            {showForm ? (
-              <>
-                <X size={16} className="mr-2" /> 閉じる
-              </>
-            ) : (
-              <>
-                <Plus size={16} className="mr-2" /> サーバーを掲載する
-              </>
-            )}
-          </Button>
-        </div>
-      </section>
-
-      {/* Submission Form */}
-      {showForm && (
-        <section className="py-10 px-4 border-b border-pink-500/30 bg-pink-500/5">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-2 text-pink-400 font-mono">サーバーを掲載する</h2>
-            <p className="text-sm text-gray-400 mb-6 font-mono">
-              &gt; 投稿は運営の承認後に掲載されます（スパム防止のため）
+      <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
+        {/* Hero */}
+        <div className="flex items-end justify-between gap-5 flex-wrap mb-2">
+          <div>
+            <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">
+              FiveM Server Recruit
+            </span>
+            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">FiveMサーバー掲示板</h1>
+            <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
+              日本のFiveM RPサーバーを探せる掲示板。あなたのサーバーを掲載して、バイスシティで一緒に遊ぶ仲間を見つけよう。掲載は運営の承認制です。
             </p>
+          </div>
+          <button
+            onClick={() => setShowForm((v) => !v)}
+            className="flex-none text-sm font-extrabold px-[22px] py-3 rounded-full text-white inline-flex items-center gap-1.5 hover:-translate-y-px transition-transform"
+            style={{
+              background: showForm ? 'rgba(255,255,255,.1)' : 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
+              boxShadow: showForm ? 'none' : '0 4px 20px rgba(255,45,149,.4)',
+            }}
+          >
+            {showForm ? (<><X size={16} /> 閉じる</>) : (<><Plus size={16} strokeWidth={3} /> 掲載する</>)}
+          </button>
+        </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Submission form */}
+        {showForm && (
+          <div className="mt-6 rounded-2xl border border-[#ff2d95]/25 bg-[#ff2d95]/[0.05] p-6">
+            <h2 className="text-xl font-black text-white mb-1">サーバーを掲載する</h2>
+            <p className="text-[13px] text-white/55 mb-5">投稿は運営の承認後に掲載されます（スパム防止のため）。</p>
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-mono text-cyan-400 mb-2">サーバー名 *</label>
-                <Input
-                  name="name"
-                  value={form.name}
-                  onChange={handleFormChange}
-                  placeholder="例: LEONIDA RP"
-                  className="bg-background/60 border-cyan-500/40 text-foreground"
-                  maxLength={60}
-                />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">サーバー名 *</label>
+                <input name="name" value={form.name} onChange={handleFormChange} placeholder="例: LEONIDA RP" maxLength={60} className={inputClass} />
               </div>
-
               <div>
-                <label className="block text-sm font-mono text-cyan-400 mb-2">説明 *</label>
-                <Textarea
-                  name="description"
-                  value={form.description}
-                  onChange={handleFormChange}
-                  placeholder="サーバーの特徴やコンセプトを書いてください"
-                  rows={4}
-                  className="bg-background/60 border-cyan-500/40 text-foreground"
-                  maxLength={500}
-                />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">説明 *</label>
+                <textarea name="description" value={form.description} onChange={handleFormChange} placeholder="サーバーの特徴やコンセプト" rows={4} maxLength={500} className={inputClass} />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-mono text-cyan-400 mb-2">タイプ</label>
-                  <select
-                    name="type"
-                    value={form.type}
-                    onChange={handleFormChange}
-                    className="w-full h-10 rounded-md bg-background/60 border border-cyan-500/40 text-foreground px-3 font-mono text-sm"
-                  >
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">タイプ</label>
+                  <select name="type" value={form.type} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
                     {SERVER_TYPES.filter((t) => t.id !== 'all').map((t) => (
-                      <option key={t.id} value={t.id} className="bg-background">
-                        {t.icon} {t.label}
-                      </option>
+                      <option key={t.id} value={t.id} className="bg-[#15091c]">{t.label}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-mono text-cyan-400 mb-2">言語</label>
-                  <Input
-                    name="language"
-                    value={form.language}
-                    onChange={handleFormChange}
-                    placeholder="日本語 / 英語 など"
-                    className="bg-background/60 border-cyan-500/40 text-foreground"
-                    maxLength={30}
-                  />
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">言語</label>
+                  <input name="language" value={form.language} onChange={handleFormChange} placeholder="日本語 / 英語 など" maxLength={30} className={inputClass} />
                 </div>
               </div>
-
               <div>
-                <label className="block text-sm font-mono text-cyan-400 mb-2">
-                  接続情報（cfx.re コード または IP:ポート）
-                </label>
-                <Input
-                  name="connect_info"
-                  value={form.connect_info}
-                  onChange={handleFormChange}
-                  placeholder="例: cfx.re/join/abc123 もしくは 123.45.67.89:30120"
-                  className="bg-background/60 border-cyan-500/40 text-foreground font-mono"
-                  maxLength={120}
-                />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">接続情報（cfx.re コード または IP:ポート）</label>
+                <input name="connect_info" value={form.connect_info} onChange={handleFormChange} placeholder="例: cfx.re/join/abc123 もしくは 123.45.67.89:30120" maxLength={120} className={inputClass} />
               </div>
-
               <div>
-                <label className="block text-sm font-mono text-cyan-400 mb-2">Discord 招待URL</label>
-                <Input
-                  name="discord_url"
-                  value={form.discord_url}
-                  onChange={handleFormChange}
-                  placeholder="https://discord.gg/xxxxxxx"
-                  className="bg-background/60 border-cyan-500/40 text-foreground font-mono"
-                  maxLength={120}
-                />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">Discord 招待URL</label>
+                <input name="discord_url" value={form.discord_url} onChange={handleFormChange} placeholder="https://discord.gg/xxxxxxx" maxLength={120} className={inputClass} />
               </div>
-
               <div>
-                <label className="block text-sm font-mono text-cyan-400 mb-2">
-                  タグ（カンマ区切り・最大8個）
-                </label>
-                <Input
-                  name="tags"
-                  value={form.tags}
-                  onChange={handleFormChange}
-                  placeholder="例: 初心者向け, ホワイトリスト, 経済システム"
-                  className="bg-background/60 border-cyan-500/40 text-foreground"
-                  maxLength={120}
-                />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">タグ（カンマ区切り・最大8個）</label>
+                <input name="tags" value={form.tags} onChange={handleFormChange} placeholder="例: 初心者向け, ホワイトリスト, 経済システム" maxLength={120} className={inputClass} />
               </div>
-
-              <p className="text-xs text-gray-500 font-mono">
-                * は必須。接続情報かDiscordリンクのどちらかは必ず入力してください。
-              </p>
-
-              <Button
+              <p className="text-xs text-white/40">* は必須。接続情報かDiscordリンクのどちらかは必ず入力してください。</p>
+              <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-pink-600 hover:bg-pink-500 text-white font-mono disabled:opacity-60"
+                className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60"
+                style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
               >
-                {submitting ? (
-                  <>
-                    <Loader2 size={16} className="mr-2 animate-spin" /> 送信中...
-                  </>
-                ) : (
-                  <>
-                    <Send size={16} className="mr-2" /> 掲載を申請する
-                  </>
-                )}
-              </Button>
+                {submitting ? (<><Loader2 size={16} className="animate-spin" /> 送信中...</>) : (<><Send size={16} /> 掲載を申請する</>)}
+              </button>
             </form>
           </div>
-        </section>
-      )}
+        )}
 
-      {/* Search & Filter Section */}
-      <section className="py-10 px-4 border-b border-cyan-500/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <Input
-              type="text"
-              placeholder="サーバー名・説明で検索..."
+        {/* Search + filters */}
+        <div className="mt-8 flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 rounded-full px-4 py-2.5 flex-1 min-w-[220px]" style={{ background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.1)' }}>
+            <Search size={15} className="opacity-60 flex-none" />
+            <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-background/50 border border-cyan-500/50 rounded-lg px-4 py-3 text-foreground placeholder-gray-500 focus:ring-2 focus:ring-cyan-500 font-mono"
+              placeholder="サーバー名・説明で検索…"
+              className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
             />
           </div>
-
-          {/* Filter Buttons - Type */}
-          <div className="mb-6">
-            <p className="text-cyan-400 font-mono text-sm mb-3">◆ プレイスタイル:</p>
-            <div className="flex flex-wrap gap-3">
-              {SERVER_TYPES.map((type) => (
-                <button
-                  key={type.id}
-                  onClick={() => setSelectedType(type.id)}
-                  className={`px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 border ${
-                    selectedType === type.id
-                      ? 'border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-lg shadow-cyan-500/50'
-                      : 'border-cyan-500/30 bg-background/50 text-cyan-400 hover:border-cyan-500/60 hover:bg-cyan-500/10'
-                  }`}
-                >
-                  {type.icon} {type.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Filter Buttons - Tags */}
-          {allTags.length > 0 && (
-            <div className="mb-6">
-              <p className="text-pink-400 font-mono text-sm mb-3">◆ タグ:</p>
-              <div className="flex flex-wrap gap-2">
-                {allTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1 rounded-lg font-mono text-xs transition-all duration-300 border ${
-                      selectedTags.includes(tag)
-                        ? 'border-pink-500 bg-pink-500/20 text-pink-300 shadow-lg shadow-pink-500/50'
-                        : 'border-pink-500/30 bg-background/50 text-pink-400 hover:border-pink-500/60 hover:bg-pink-500/10'
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="mt-6 text-cyan-400 font-mono text-sm">
-            &gt; {loading ? '読み込み中...' : `${filteredServers.length} サーバーが見つかりました`}
-          </div>
         </div>
-      </section>
 
-      {/* Server Cards Grid */}
-      <section className="py-12 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="mt-4 flex gap-2 overflow-x-auto pb-1.5">
+          {SERVER_TYPES.map((t) => {
+            const active = selectedType === t.id;
+            return (
+              <button
+                key={t.id}
+                onClick={() => setSelectedType(t.id)}
+                className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                style={{
+                  border: `1px solid ${active ? '#ff2d95' : 'rgba(255,255,255,.14)'}`,
+                  background: active ? 'rgba(255,45,149,.13)' : 'rgba(255,255,255,.03)',
+                  color: active ? '#fff' : 'rgba(244,238,248,.7)',
+                }}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {allTags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {allTags.map((tag) => {
+              const active = selectedTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className="text-[12px] font-bold px-3 py-1.5 rounded-full transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#a78bfa' : 'rgba(255,255,255,.12)'}`,
+                    background: active ? 'rgba(167,139,250,.15)' : 'rgba(255,255,255,.03)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.6)',
+                  }}
+                >
+                  #{tag}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="mt-5 text-white/50 text-sm font-mono">
+          {loading ? '読み込み中…' : `${filteredServers.length} 件のサーバー`}
+        </div>
+
+        {/* Grid */}
+        <div className="mt-5">
           {loading ? (
-            <div className="text-center py-16 text-cyan-400 font-mono">
+            <div className="text-center py-16 text-white/50">
               <Loader2 size={28} className="mx-auto mb-4 animate-spin" />
-              &gt; サーバー情報を取得中...
+              サーバー情報を取得中…
             </div>
           ) : filteredServers.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(308px,1fr))' }}>
               {filteredServers.map((server) => (
                 <ServerCard key={server.id} server={server} onTagClick={toggleTag} />
               ))}
             </div>
           ) : (
             <div className="text-center py-16">
-              <ServerIcon size={40} className="mx-auto mb-4 text-cyan-500/50" />
+              <ServerIcon size={40} className="mx-auto mb-4 text-white/30" />
               {servers.length === 0 ? (
                 <>
-                  <p className="text-gray-400 font-mono mb-4">
-                    &gt; まだ掲載されたサーバーがありません
-                  </p>
-                  <Button
+                  <p className="text-white/50 mb-4">まだ掲載されたサーバーがありません</p>
+                  <button
                     onClick={() => setShowForm(true)}
-                    className="bg-pink-600 hover:bg-pink-500 text-white font-mono"
+                    className="text-white font-extrabold px-6 py-3 rounded-full inline-flex items-center gap-1.5"
+                    style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
                   >
-                    <Plus size={16} className="mr-2" /> 最初のサーバーを掲載する
-                  </Button>
+                    <Plus size={16} strokeWidth={3} /> 最初のサーバーを掲載する
+                  </button>
                 </>
               ) : (
                 <>
-                  <p className="text-gray-400 font-mono mb-4">
-                    &gt; 検索条件に一致するサーバーが見つかりません
-                  </p>
-                  <Button
+                  <p className="text-white/50 mb-4">検索条件に一致するサーバーが見つかりません</p>
+                  <button
                     onClick={() => {
                       setSearchQuery('');
                       setSelectedType('all');
                       setSelectedTags([]);
                     }}
-                    className="bg-cyan-600 hover:bg-cyan-500 text-white font-mono"
+                    className="text-white font-bold px-6 py-3 rounded-full bg-white/10 border border-white/15 hover:bg-white/15 transition-colors"
                   >
                     フィルターをリセット
-                  </Button>
+                  </button>
                 </>
               )}
             </div>
           )}
         </div>
-      </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
-        <p>&copy; 2026 Leonida Gate. All rights reserved.</p>
+      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
+        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
+        </div>
       </footer>
     </div>
   );

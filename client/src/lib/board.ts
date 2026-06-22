@@ -36,6 +36,15 @@ export async function listThreads(board: string) {
     .limit(100);
 }
 
+// 全掲示板を横断して最近動いたスレッドを取得（トップのサイドレール用）
+export async function listRecentThreads(limit = 5) {
+  return supabase
+    .from('board_threads')
+    .select('*')
+    .order('last_posted_at', { ascending: false })
+    .limit(limit);
+}
+
 export async function getThread(id: string) {
   return supabase.from('board_threads').select('*').eq('id', id).single();
 }

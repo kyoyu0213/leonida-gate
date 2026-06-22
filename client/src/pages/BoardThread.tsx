@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRoute } from 'wouter';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { ArrowLeft, Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, ArrowLeft } from 'lucide-react';
 import Header from '@/components/Header';
 import { toast } from 'sonner';
 import {
@@ -17,9 +14,19 @@ import {
   type BoardThread as ThreadType,
   type BoardPost,
 } from '@/lib/board';
-import { getBoard, ACCENTS } from '@/lib/boards';
+import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 
 const COOLDOWN_KEY = 'board_last_post';
+
+const AVATARS = [
+  'linear-gradient(135deg,#ff2d95,#ff6a3d)',
+  'linear-gradient(135deg,#22d3ee,#a78bfa)',
+  'linear-gradient(135deg,#a78bfa,#ff2d95)',
+  'linear-gradient(135deg,#ff8a3d,#c44be0)',
+  'linear-gradient(135deg,#3de0a0,#22d3ee)',
+];
+const avatarFor = (s: string) =>
+  AVATARS[s.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % AVATARS.length];
 
 export default function BoardThread() {
   const [match, params] = useRoute('/thread/:id');
@@ -47,11 +54,7 @@ export default function BoardThread() {
       setThread(t as ThreadType);
       setNotFound(false);
     }
-    if (pe) {
-      console.error(pe);
-    } else {
-      setPosts((p as BoardPost[]) ?? []);
-    }
+    if (!pe) setPosts((p as BoardPost[]) ?? []);
     setLoading(false);
   };
 
@@ -72,17 +75,14 @@ export default function BoardThread() {
       toast.error('投稿の間隔が短すぎます。少し待ってください');
       return;
     }
-
     setSubmitting(true);
     const { error } = await createPost(threadId, name.trim(), body.trim());
     setSubmitting(false);
-
     if (error) {
       console.error(error);
       toast.error('投稿に失敗しました');
       return;
     }
-
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
     toast.success('書き込みました');
@@ -92,119 +92,114 @@ export default function BoardThread() {
   if (!match) return null;
 
   const board = getBoard(thread?.board);
-  const a = ACCENTS[board?.accent ?? 'lime'];
   const backHref = board ? `/board/${board.slug}` : '/board';
+  const boardColor = boardColorFor(board?.accent);
+  const full = (thread?.post_count ?? 0) >= 1000;
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-16">
+    <div className="vice-page vice-noise">
       <Header />
 
-      {/* Back bar */}
-      <div className={`sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b ${a.border}`}>
-        <div className="container py-3">
-          <a
-            href={backHref}
-            className={`inline-flex items-center gap-2 ${a.text} hover:opacity-80 transition-opacity font-mono text-sm`}
-          >
-            <ArrowLeft size={16} />
-            スレ一覧に戻る
-          </a>
-        </div>
-      </div>
+      <main className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-32 relative z-10">
+        {loading ? (
+          <div className="text-center py-16 text-white/50">
+            <Loader2 size={28} className="mx-auto mb-4 animate-spin" /> 取得中…
+          </div>
+        ) : notFound ? (
+          <div className="text-center py-16">
+            <p className="text-white/60 mb-4">スレッドが見つかりません</p>
+            <a href="/board" className="text-[#a78bfa] hover:text-white font-bold">掲示板一覧に戻る</a>
+          </div>
+        ) : (
+          <>
+            <a href={backHref} className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-[13px] font-bold mb-5 transition-colors">
+              <ArrowLeft size={15} /> 一覧へ戻る
+            </a>
 
-      <section className="py-8 px-4">
-        <div className="max-w-3xl mx-auto">
-          {loading ? (
-            <div className={`text-center py-16 ${a.text} font-mono`}>
-              <Loader2 size={28} className="mx-auto mb-4 animate-spin" />
-              &gt; 取得中...
-            </div>
-          ) : notFound ? (
-            <div className="text-center py-16">
-              <p className="text-gray-400 font-mono mb-4">&gt; スレッドが見つかりません</p>
-              <a href="/board" className="text-lime-400 hover:text-lime-300 font-mono">
-                スレ一覧に戻る
-              </a>
-            </div>
-          ) : (
-            <>
-              {/* Thread title */}
-              <h1 className="text-2xl md:text-3xl font-bold mb-2 text-cyan-300 break-words font-mono">
-                {thread?.title}
-              </h1>
-              <p className="text-xs font-mono text-muted-foreground mb-6">
-                {thread?.post_count} レス
-              </p>
-
-              {/* Posts */}
-              <div className="space-y-4 mb-10">
-                {posts.map((post) => (
-                  <div
-                    key={post.id}
-                    id={`post-${post.post_number}`}
-                    className="border-b border-border/40 pb-4"
-                  >
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono mb-2">
-                      <span className={`${a.text} font-bold`}>{post.post_number}</span>
-                      <span className="text-pink-400">
-                        名前：<span className="text-green-400">{post.name}</span>
-                      </span>
-                      <span className="text-muted-foreground">{formatPostDate(post.created_at)}</span>
-                    </div>
-                    <p className="text-foreground text-sm leading-relaxed whitespace-pre-wrap break-words pl-1">
-                      {post.body}
-                    </p>
-                  </div>
-                ))}
+            {/* thread header */}
+            <div className="border-b border-white/10 pb-5 mb-1">
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                {board && (
+                  <span className="text-[11px] font-extrabold rounded-md px-2.5 py-1" style={{ color: boardColor, border: `1px solid ${boardColor}` }}>
+                    {board.title.replace('掲示板', '')}
+                  </span>
+                )}
               </div>
+              <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">{thread?.title}</h1>
+              <p className="text-[13px] text-white/50 mt-3 m-0">
+                {thread?.post_count}件の返信・最終更新 {thread ? formatPostDate(thread.last_posted_at) : ''}
+              </p>
+            </div>
 
-              {/* Reply form */}
-              {(thread?.post_count ?? 0) >= 1000 ? (
-                <div className="border border-pink-500/40 rounded-lg p-4 bg-pink-500/5 text-center text-pink-300 font-mono text-sm">
-                  このスレッドは1000レスに到達したため、書き込めません。新しいスレを立ててください。
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className={`border ${a.border} rounded-lg p-5 ${a.bgSoft} space-y-4`}
-                >
-                  <p className={`${a.text} font-mono text-sm`}>◆ この話題に書き込む</p>
-                  <Input
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={`名前（空欄で「${DEFAULT_NAME}」）`}
-                    maxLength={30}
-                    className={`bg-background/60 ${a.inputBorder} text-foreground`}
-                  />
-                  <Textarea
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                    placeholder="本文を入力..."
-                    rows={4}
-                    maxLength={MAX_BODY}
-                    className={`bg-background/60 ${a.inputBorder} text-foreground`}
-                  />
-                  <Button
-                    type="submit"
-                    disabled={submitting}
-                    className={`w-full ${a.button} font-mono font-bold disabled:opacity-60`}
+            {/* posts */}
+            <div className="flex flex-col">
+              {posts.map((post) => (
+                <div key={post.id} id={`post-${post.post_number}`} className="flex gap-3.5 py-[18px] border-b border-white/[0.06]">
+                  <span
+                    className="w-10 h-10 rounded-full flex-none flex items-center justify-center font-black text-base text-white"
+                    style={{ background: avatarFor(`${post.name}-${post.post_number}`) }}
                   >
-                    {submitting ? (
-                      <>
-                        <Loader2 size={16} className="mr-2 animate-spin" /> 書き込み中...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} className="mr-2" /> 書き込む
-                      </>
-                    )}
-                  </Button>
-                </form>
-              )}
-            </>
-          )}
+                    {post.name.trim().charAt(0) || '名'}
+                  </span>
+                  <div className="flex flex-col gap-1.5 min-w-0 flex-1">
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <span className="text-sm font-extrabold text-[#f4eef8]">{post.name}</span>
+                      <span className="vice-num text-[11px] text-[#ff2d95]">#{post.post_number}</span>
+                      <span className="text-[11.5px] text-white/40">{formatPostDate(post.created_at)}</span>
+                    </div>
+                    <p className="text-sm leading-[1.75] text-white/90 m-0 whitespace-pre-wrap break-words">{post.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </main>
+
+      {/* sticky reply box */}
+      {!loading && !notFound && (
+        <div
+          className="fixed bottom-0 left-0 right-0 z-50"
+          style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)' }}
+        >
+          <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3">
+            {full ? (
+              <div className="rounded-2xl border border-[#ff2d95]/40 bg-[#ff2d95]/[0.08] px-4 py-3 text-center text-[#ff8fc0] text-[13px] font-bold">
+                このスレッドは1000レスに到達したため書き込めません。新しいスレを立ててください。
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="flex gap-2.5 items-end rounded-2xl border border-white/15 bg-white/[0.06] p-2.5 backdrop-blur-md"
+              >
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={DEFAULT_NAME}
+                  maxLength={30}
+                  className="flex-none w-[90px] sm:w-[120px] bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
+                />
+                <textarea
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                  placeholder="返信を入力…"
+                  rows={1}
+                  maxLength={MAX_BODY}
+                  className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"
+                />
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-none text-white text-sm font-extrabold px-4 py-2.5 rounded-xl disabled:opacity-60"
+                  style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
+                >
+                  {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }

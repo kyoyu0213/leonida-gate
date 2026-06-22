@@ -54,9 +54,10 @@ export default function NewsDetail() {
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
   const categoryColors: Record<string, string> = {
-    official: 'border-cyan-500/50 bg-cyan-500/10 text-cyan-300',
-    leak: 'border-pink-500/50 bg-pink-500/10 text-pink-300',
-    analysis: 'border-lime-500/50 bg-lime-500/10 text-lime-300'
+    release: 'border-orange-500/50 bg-orange-500/10 text-orange-300',
+    update: 'border-cyan-500/50 bg-cyan-500/10 text-cyan-300',
+    speculation: 'border-pink-500/50 bg-pink-500/10 text-pink-300',
+    event: 'border-purple-500/50 bg-purple-500/10 text-purple-300'
   };
 
   return (
@@ -100,6 +101,18 @@ export default function NewsDetail() {
               </div>
             </div>
           </div>
+
+          {/* アイキャッチ画像（記事に image がある場合のみ。記事冒頭に表示） */}
+          {article.image && (
+            <div className="mb-10 rounded-2xl overflow-hidden border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+              <img
+                src={article.image}
+                alt={article.title}
+                loading="lazy"
+                className="w-full h-auto block"
+              />
+            </div>
+          )}
 
           {/* 動画プレーヤー（記事に youtubeId がある場合のみ。記事内で再生可能） */}
           {article.youtubeId && (
