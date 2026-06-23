@@ -16,9 +16,13 @@ import {
   rejectImage,
   listContacts,
   deleteContact,
+  listApplications,
+  approveApplication,
+  deleteApplication,
   type ReportRow,
   type PendingImage,
   type ContactRow,
+  type ApplicationRow,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
@@ -348,6 +352,23 @@ function ContactsPanel() {
             <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
               {c.message}
             </p>
+            {c.images && c.images.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {c.images.map((path) => {
+                  const url = imagePublicUrl(path);
+                  return (
+                    <a key={path} href={url} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={url}
+                        alt="添付画像"
+                        className="h-28 w-28 object-cover rounded-xl border border-white/10"
+                        loading="lazy"
+                      />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
             <div className="flex justify-end mt-2">
               <button
                 disabled={busy}
@@ -364,11 +385,138 @@ function ContactsPanel() {
   );
 }
 
+function ApplicationsPanel() {
+  const [rows, setRows] = useState<ApplicationRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listApplications();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const approve = async (a: ApplicationRow) => {
+    if (!confirm(`「${a.server_name}」のスレッドを作成して承認します。よろしいですか？`)) return;
+    setBusyId(a.id);
+    const { data: threadId, error } = await approveApplication(a.id);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('承認してスレッドを作成しました');
+    if (threadId) window.open(`/thread/${threadId}`, '_blank');
+    load();
+  };
+
+  const reject = async (a: ApplicationRow) => {
+    if (!confirm(`「${a.server_name}」の申請を削除します。よろしいですか？`)) return;
+    setBusyId(a.id);
+    const { error } = await deleteApplication(a.id);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('申請を削除しました');
+    load();
+  };
+
+  const isUrl = (s: string) => /^https?:\/\//i.test(s);
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">掲載申請はありません</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {rows.map((a) => {
+        const busy = busyId === a.id;
+        return (
+          <div
+            key={a.id}
+            className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4"
+            style={{ borderColor: a.approved ? undefined : 'rgba(255,45,149,.35)' }}
+          >
+            <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+              <span
+                className="font-extrabold rounded px-2 py-0.5"
+                style={{
+                  color: a.approved ? '#3de0a0' : '#ff8fc0',
+                  border: `1px solid ${a.approved ? '#3de0a0' : '#ff2d95'}55`,
+                }}
+              >
+                {a.approved ? '対応済み' : '未対応'}
+              </span>
+              <span className="font-bold text-white text-[14px]">{a.server_name}</span>
+              {a.applicant && <span className="text-white/45">申請者: {a.applicant}</span>}
+              <span className="ml-auto text-white/40">{formatPostDate(a.created_at)}</span>
+            </div>
+            <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
+              {a.description}
+            </p>
+            {a.contact && (
+              <p className="text-[12px] text-white/60 mt-2 m-0 break-all">
+                連絡先：{' '}
+                {isUrl(a.contact) ? (
+                  <a href={a.contact} target="_blank" rel="noopener noreferrer" className="text-[#22d3ee] hover:underline">
+                    {a.contact}
+                  </a>
+                ) : (
+                  a.contact
+                )}
+              </p>
+            )}
+            <div className="flex flex-wrap gap-2 mt-3">
+              {!a.approved && (
+                <button
+                  disabled={busy}
+                  onClick={() => approve(a)}
+                  className="inline-flex items-center gap-1 text-[12px] font-bold text-[#3de0a0] border border-[#3de0a0]/30 rounded-lg px-3 py-1.5 hover:bg-[#3de0a0]/10 disabled:opacity-50"
+                >
+                  {busy ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} />} 承認（スレッド作成）
+                </button>
+              )}
+              <button
+                disabled={busy}
+                onClick={() => reject(a)}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+              >
+                <Trash2 size={13} /> {a.approved ? '削除' : '却下'}
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
-  const [tab, setTab] = useState<'reports' | 'images' | 'contacts'>('reports');
+  const [tab, setTab] = useState<'reports' | 'images' | 'contacts' | 'applications'>('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
-  const tabLabel = { reports: '通報', images: '画像承認', contacts: 'お問い合わせ' } as const;
+  const tabLabel = {
+    reports: '通報',
+    images: '画像承認',
+    contacts: 'お問い合わせ',
+    applications: '掲載申請',
+  } as const;
 
   return (
     <div className="vice-page vice-noise">
@@ -392,7 +540,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'images', 'contacts'] as const).map((t) => (
+              {(['reports', 'images', 'contacts', 'applications'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -407,7 +555,15 @@ export default function AdminReports() {
                 </button>
               ))}
             </div>
-            {tab === 'reports' ? <ReportsPanel /> : tab === 'images' ? <ImagesPanel /> : <ContactsPanel />}
+            {tab === 'reports' ? (
+              <ReportsPanel />
+            ) : tab === 'images' ? (
+              <ImagesPanel />
+            ) : tab === 'contacts' ? (
+              <ContactsPanel />
+            ) : (
+              <ApplicationsPanel />
+            )}
           </>
         ) : (
           <LoginGate />

@@ -171,6 +171,7 @@ export interface ContactRow {
   name: string;
   email: string | null;
   message: string;
+  images: string[] | null;
   created_at: string;
 }
 
@@ -185,6 +186,43 @@ export async function listContacts(): Promise<{ data: ContactRow[]; error?: stri
 
 export async function deleteContact(id: string) {
   const { error } = await supabase.rpc('admin_delete_contact', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+// ---- GTARP鯖別 掲載申請 ----------------------------------------------------
+
+export interface ApplicationRow {
+  id: string;
+  server_name: string;
+  description: string;
+  contact: string | null;
+  applicant: string | null;
+  approved: boolean;
+  created_at: string;
+}
+
+export async function listApplications(): Promise<{ data: ApplicationRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_applications', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as ApplicationRow[]) ?? [] };
+}
+
+/** 申請を承認 → gtarp-servers にスレッド作成。新スレIDを返す。 */
+export async function approveApplication(id: string) {
+  const { data, error } = await supabase.rpc('admin_approve_application', {
+    p_token: adminToken,
+    p_id: id,
+  });
+  if (error) handleAuthError(error.message);
+  return { data: data as string | null, error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function deleteApplication(id: string) {
+  const { error } = await supabase.rpc('admin_delete_application', { p_token: adminToken, p_id: id });
   if (error) handleAuthError(error.message);
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }

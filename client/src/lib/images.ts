@@ -92,6 +92,32 @@ async function reencode(file: File): Promise<{ blob: Blob; mime: string } | { er
 }
 
 /**
+ * 再エンコード（EXIF除去・圧縮）して Storage に保存し、保存パスの配列を返す汎用関数。
+ * 掲示板以外（お問い合わせ等）の添付に使う。RPC 登録はしない。
+ */
+export async function uploadRawImages(
+  prefix: string,
+  files: File[],
+): Promise<{ paths: string[]; error?: string }> {
+  const paths: string[] = [];
+  for (const file of files) {
+    if (!ALLOWED.includes(file.type)) return { paths, error: 'jpg / png / webp のみ添付できます' };
+    if (file.size > MAX_INPUT_BYTES) return { paths, error: 'ファイルサイズが大きすぎます（12MBまで）' };
+    const enc = await reencode(file);
+    if ('error' in enc) return { paths, error: enc.error };
+    const ext = enc.mime === 'image/png' ? 'png' : enc.mime === 'image/webp' ? 'webp' : 'jpg';
+    const path = `${prefix}/${nanoid(24)}.${ext}`;
+    const up = await supabase.storage.from(BUCKET).upload(path, enc.blob, {
+      contentType: enc.mime,
+      upsert: false,
+    });
+    if (up.error) return { paths, error: '画像のアップロードに失敗しました' };
+    paths.push(path);
+  }
+  return { paths };
+}
+
+/**
  * 画像をアップロードして「承認待ち」で登録する。
  * 各画像：型チェック → 再エンコード（EXIF除去・圧縮）→ Storage 保存 → RPC 登録。
  */

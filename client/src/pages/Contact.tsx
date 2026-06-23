@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Send, Loader2 } from 'lucide-react';
+import { Send, Loader2, ImagePlus, X } from 'lucide-react';
 import Header from '@/components/Header';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
+import { uploadRawImages } from '@/lib/images';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,10 +27,22 @@ export default function Contact() {
       return;
     }
     setSending(true);
+    // 添付画像があれば先にアップロード（EXIF除去・圧縮）
+    let imagePaths: string[] = [];
+    if (files.length > 0) {
+      const { paths, error: upErr } = await uploadRawImages('contact', files);
+      if (upErr) {
+        setSending(false);
+        toast.error(upErr);
+        return;
+      }
+      imagePaths = paths;
+    }
     const { error } = await supabase.from('contacts').insert({
       name: formData.name.trim(),
       email: formData.email.trim() || null,
       message: formData.message.trim(),
+      images: imagePaths,
     });
     setSending(false);
     if (error) {
@@ -37,6 +51,7 @@ export default function Contact() {
     }
     toast.success('メッセージを送信しました！');
     setFormData({ name: '', email: '', message: '' });
+    setFiles([]);
   };
 
   const inputClass =
@@ -72,6 +87,47 @@ export default function Contact() {
               <label className="block text-sm font-bold text-[#22d3ee] mb-2">お問い合わせ内容</label>
               <textarea name="message" placeholder="情報提供・削除依頼・その他のご連絡内容をご記入ください" rows={7} value={formData.message} onChange={handleInputChange} className={inputClass} />
             </div>
+
+            {/* 画像添付（任意・jpg/png/webp・最大3枚） */}
+            <div>
+              <label className="block text-sm font-bold text-[#22d3ee] mb-2">
+                画像の添付（任意・jpg/png/webp・最大3枚）
+              </label>
+              {files.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {files.map((f, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-center gap-1.5 text-[11px] text-white/70 bg-white/[0.06] border border-white/10 rounded-lg px-2 py-1"
+                    >
+                      {f.name.length > 20 ? f.name.slice(0, 18) + '…' : f.name}
+                      <button
+                        type="button"
+                        onClick={() => setFiles((prev) => prev.filter((_, idx) => idx !== i))}
+                        className="text-white/40 hover:text-[#ff8fc0]"
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+              <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#22d3ee] border border-white/15 rounded-lg px-3 py-2 transition-colors">
+                <ImagePlus size={16} /> 画像を選ぶ
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  multiple
+                  className="hidden"
+                  onChange={(e) => {
+                    const picked = Array.from(e.target.files ?? []);
+                    setFiles((prev) => [...prev, ...picked].slice(0, 3));
+                    e.target.value = '';
+                  }}
+                />
+              </label>
+            </div>
+
             <button
               type="submit"
               disabled={sending}
