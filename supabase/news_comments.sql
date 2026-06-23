@@ -89,3 +89,15 @@ end; $$;
 
 grant execute on function public.admin_set_news_comment_hidden(text, uuid, boolean) to anon;
 grant execute on function public.admin_delete_news_comment(text, uuid) to anon;
+
+-- 管理者：記事コメント一覧（IP含む。管理画面で確認）
+create or replace function public.admin_list_news_comments(p_token text)
+returns table (id uuid, article_id text, name text, body text, ip text, hidden boolean, created_at timestamptz)
+language plpgsql security definer set search_path = public as $$
+begin
+  perform _admin_check(p_token);
+  return query
+  select c.id, c.article_id, c.name, c.body, c.ip, c.hidden, c.created_at
+  from news_comments c order by c.created_at desc limit 200;
+end; $$;
+grant execute on function public.admin_list_news_comments(text) to anon;

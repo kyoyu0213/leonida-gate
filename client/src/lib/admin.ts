@@ -311,6 +311,43 @@ export async function deleteContact(id: string) {
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }
 
+// ---- 記事コメント ---------------------------------------------------------
+
+export interface NewsCommentRow {
+  id: string;
+  article_id: string;
+  name: string;
+  body: string;
+  ip: string | null;
+  hidden: boolean;
+  created_at: string;
+}
+
+export async function listNewsComments(): Promise<{ data: NewsCommentRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_news_comments', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as NewsCommentRow[]) ?? [] };
+}
+
+export async function setNewsCommentHidden(id: string, hidden: boolean) {
+  const { error } = await supabase.rpc('admin_set_news_comment_hidden', {
+    p_token: adminToken,
+    p_comment_id: id,
+    p_hidden: hidden,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function deleteNewsComment(id: string) {
+  const { error } = await supabase.rpc('admin_delete_news_comment', { p_token: adminToken, p_comment_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 // ---- GTARP鯖別 掲載申請 ----------------------------------------------------
 
 export interface ApplicationRow {

@@ -26,6 +26,9 @@ import {
   listBlocks,
   addBlock,
   removeBlock,
+  listNewsComments,
+  setNewsCommentHidden,
+  deleteNewsComment,
   type ReportRow,
   type PendingImage,
   type ContactRow,
@@ -33,10 +36,12 @@ import {
   type PostMeta,
   type AdminPostRow,
   type BlockRow,
+  type NewsCommentRow,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
 import { getBoard } from '@/lib/boards';
+import { getArticleById } from '@/data/news';
 
 const reasonLabel = (value: string) =>
   REPORT_REASONS.find((r) => r.value === value)?.label ?? value;
@@ -1062,10 +1067,102 @@ function SearchPanel() {
   );
 }
 
+function NewsCommentsPanel() {
+  const [rows, setRows] = useState<NewsCommentRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listNewsComments();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const act = async (id: string, fn: () => Promise<{ error?: string }>, okMsg: string) => {
+    setBusyId(id);
+    const { error } = await fn();
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(okMsg);
+    load();
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">記事コメントはありません</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {rows.map((c) => {
+        const article = getArticleById(c.article_id);
+        const busy = busyId === c.id;
+        return (
+          <div key={c.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+            <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+              <span className="font-bold text-white">{c.name}</span>
+              {c.ip && <span className="text-white/35">{c.ip}</span>}
+              {c.hidden && <span className="text-white/40">（非表示中）</span>}
+              <span className="ml-auto text-white/40">{formatPostDate(c.created_at)}</span>
+            </div>
+            <div className="text-[12px] text-white/50 mb-1.5">
+              記事：{' '}
+              <a href={`/news/${c.article_id}`} className="text-[#22d3ee] hover:underline">
+                {article ? article.title : `ID ${c.article_id}`}
+              </a>
+            </div>
+            <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
+              {c.body}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <a
+                href={`/news/${c.article_id}`}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
+              >
+                <ExternalLink size={13} /> 記事へ
+              </a>
+              <button
+                disabled={busy}
+                onClick={() => act(c.id, () => setNewsCommentHidden(c.id, !c.hidden), c.hidden ? '再表示しました' : '非表示にしました')}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ffcf8a] border border-[#ffcf8a]/30 rounded-lg px-3 py-1.5 hover:bg-[#ffcf8a]/10 disabled:opacity-50"
+              >
+                {c.hidden ? <Eye size={13} /> : <EyeOff size={13} />} {c.hidden ? '再表示' : '非表示'}
+              </button>
+              <button
+                disabled={busy}
+                onClick={() => { if (confirm('このコメントを削除します。よろしいですか？')) act(c.id, () => deleteNewsComment(c.id), '削除しました'); }}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+              >
+                <Trash2 size={13} /> 削除
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'reports' | 'posts' | 'search' | 'images' | 'contacts' | 'applications' | 'blocks'
+    'reports' | 'posts' | 'search' | 'images' | 'contacts' | 'applications' | 'news' | 'blocks'
   >('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
@@ -1075,6 +1172,7 @@ export default function AdminReports() {
     images: '画像承認',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
+    news: '記事コメント',
     blocks: 'ブロック',
   } as const;
 
@@ -1100,7 +1198,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'posts', 'search', 'images', 'contacts', 'applications', 'blocks'] as const).map((t) => (
+              {(['reports', 'posts', 'search', 'images', 'contacts', 'applications', 'news', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1127,6 +1225,8 @@ export default function AdminReports() {
               <ContactsPanel />
             ) : tab === 'applications' ? (
               <ApplicationsPanel />
+            ) : tab === 'news' ? (
+              <NewsCommentsPanel />
             ) : (
               <BlocksPanel />
             )}
