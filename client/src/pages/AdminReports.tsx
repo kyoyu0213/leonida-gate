@@ -29,6 +29,8 @@ import {
   listNewsComments,
   setNewsCommentHidden,
   deleteNewsComment,
+  listSearches,
+  topSearches,
   type ReportRow,
   type PendingImage,
   type ContactRow,
@@ -37,6 +39,8 @@ import {
   type AdminPostRow,
   type BlockRow,
   type NewsCommentRow,
+  type SearchLogRow,
+  type TopSearchRow,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
@@ -1201,16 +1205,85 @@ function NewsCommentsPanel() {
   );
 }
 
+function SearchLogsPanel() {
+  const [top, setTop] = useState<TopSearchRow[]>([]);
+  const [recent, setRecent] = useState<SearchLogRow[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      const [t, r] = await Promise.all([topSearches(30), listSearches()]);
+      if (t.error) toast.error(t.error);
+      setTop(t.data);
+      setRecent(r.data);
+      setLoading(false);
+    })();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      <section>
+        <h3 className="text-[15px] font-black mb-3 flex items-center gap-2">
+          <Search size={16} className="text-[#a78bfa]" /> 人気キーワード（直近30日）
+        </h3>
+        {top.length === 0 ? (
+          <div className="text-white/45 text-[13px] py-4">まだ検索データがありません</div>
+        ) : (
+          <div className="flex flex-col gap-1.5">
+            {top.map((t, i) => (
+              <div key={t.query} className="flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
+                <span className="vice-num text-[15px] w-5 text-center flex-none" style={{ color: 'rgba(255,45,149,.7)' }}>{i + 1}</span>
+                <span className="font-bold text-white truncate flex-1 min-w-0">{t.query}</span>
+                {t.zero_hits > 0 && (
+                  <span className="text-[11px] text-[#ffcf8a] flex-none">0件 {t.zero_hits}回</span>
+                )}
+                <span className="vice-num text-[14px] text-white/70 flex-none">{t.cnt}回</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section>
+        <h3 className="text-[15px] font-black mb-3 text-white/80">最近の検索</h3>
+        {recent.length === 0 ? (
+          <div className="text-white/45 text-[13px] py-4">まだ検索データがありません</div>
+        ) : (
+          <div className="flex flex-col gap-1">
+            {recent.map((s) => (
+              <div key={s.id} className="flex items-center gap-2 text-[12px] px-2 py-1.5 border-b border-white/[0.06]">
+                <span className="text-white/85 truncate flex-1 min-w-0">{s.query}</span>
+                <span className="text-white/40 flex-none">{s.scope === 'board' ? '掲示板' : '全体'}</span>
+                <span className="text-white/40 flex-none">{s.results_count}件</span>
+                <span className="text-white/35 flex-none">{formatPostDate(s.created_at)}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'reports' | 'posts' | 'search' | 'images' | 'contacts' | 'applications' | 'news' | 'blocks'
+    'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'news' | 'blocks'
   >('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
     reports: '通報',
     posts: '投稿ログ',
     search: 'IP検索',
+    searchlog: '検索ログ',
     images: '画像承認',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
@@ -1240,7 +1313,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'posts', 'search', 'images', 'contacts', 'applications', 'news', 'blocks'] as const).map((t) => (
+              {(['reports', 'posts', 'search', 'searchlog', 'images', 'contacts', 'applications', 'news', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1261,6 +1334,8 @@ export default function AdminReports() {
               <PostsPanel />
             ) : tab === 'search' ? (
               <SearchPanel />
+            ) : tab === 'searchlog' ? (
+              <SearchLogsPanel />
             ) : tab === 'images' ? (
               <ImagesPanel />
             ) : tab === 'contacts' ? (

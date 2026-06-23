@@ -96,23 +96,24 @@ begin
   return query
   select
     r.post_id,
-    max(r.thread_id)                      as thread_id,
-    max(t.board)                          as board,
-    max(p.post_number)                    as post_number,
-    max(p.body)                           as body,
-    bool_or(p.hidden)                     as hidden,
-    count(*)                              as report_count,
-    array_agg(distinct r.reason)          as reasons,
-    max(r.created_at)                     as last_reported_at,
+    max(r.thread_id),
+    max(t.board),
+    max(p.post_number),
+    coalesce(max(p.body), '(削除済みの投稿)'),
+    coalesce(bool_or(p.hidden), false),
+    count(*),
+    array_agg(distinct r.reason),
+    max(r.created_at),
     -- open が1件でも残っていれば open 扱い
-    case when bool_or(r.status = 'open') then 'open' else 'resolved' end as status
+    (case when bool_or(r.status = 'open') then 'open' else 'resolved' end)
+  -- 投稿が削除済みでも通報を表示できるよう LEFT JOIN。order by は列番号で（あいまいさ回避）
   from board_reports r
-  join board_posts p on p.id = r.post_id
+  left join board_posts p on p.id = r.post_id
   left join board_threads t on t.id = r.thread_id
   where r.status = 'open'
      or r.created_at > now() - interval '24 hours'
   group by r.post_id
-  order by status desc, last_reported_at desc;
+  order by 10 desc, 9 desc;
 end; $$;
 
 -- 管理者：投稿の非表示／再表示

@@ -351,6 +351,41 @@ export async function deleteNewsComment(id: string) {
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }
 
+// ---- 検索ログ -------------------------------------------------------------
+
+export interface SearchLogRow {
+  id: string;
+  query: string;
+  scope: string;
+  results_count: number;
+  created_at: string;
+}
+
+export interface TopSearchRow {
+  query: string;
+  cnt: number;
+  zero_hits: number;
+  last_at: string;
+}
+
+export async function listSearches(): Promise<{ data: SearchLogRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_searches', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as SearchLogRow[]) ?? [] };
+}
+
+export async function topSearches(days = 30): Promise<{ data: TopSearchRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_top_searches', { p_token: adminToken, p_days: days });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as TopSearchRow[]) ?? [] };
+}
+
 // ---- GTARP鯖別 掲載申請 ----------------------------------------------------
 
 export interface ApplicationRow {

@@ -1,10 +1,11 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useSearch } from 'wouter';
 import { Search as SearchIcon, Loader2, Newspaper, MessageSquare } from 'lucide-react';
 import Header from '@/components/Header';
 import { newsArticles, CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
 import { searchPosts, searchThreads, formatPostDate } from '@/lib/board';
 import { getBoard, boardColor } from '@/lib/boards';
+import { logSearch } from '@/lib/searchLog';
 
 interface BoardHit {
   key: string;
@@ -57,6 +58,7 @@ export default function SearchPage() {
   const [loading, setLoading] = useState(false);
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [board, setBoard] = useState<BoardHit[]>([]);
+  const loggedRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!q) {
@@ -121,6 +123,12 @@ export default function SearchPage() {
         setNews(newsHits);
         setBoard(hits);
         setLoading(false);
+        // 検索キーワードを記録（同じ語の重複ログは避ける）
+        const key = `${boardOnly ? 'board' : 'all'}:${q.toLowerCase()}`;
+        if (loggedRef.current !== key) {
+          loggedRef.current = key;
+          logSearch(q, boardOnly ? 'board' : 'all', newsHits.length + hits.length);
+        }
       }
     };
 
