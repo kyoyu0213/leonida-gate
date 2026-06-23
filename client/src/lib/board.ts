@@ -79,12 +79,28 @@ export async function reportPost(postId: string, reason: string, detail: string)
   });
 }
 
+// 匿名ID（このブラウザを示す永続ID）。荒らし対策の突合用に投稿へ付与する。
+const ANON_ID_KEY = 'vh_anon_id';
+export function getAnonId(): string {
+  try {
+    let id = localStorage.getItem(ANON_ID_KEY);
+    if (!id) {
+      id = crypto.randomUUID();
+      localStorage.setItem(ANON_ID_KEY, id);
+    }
+    return id;
+  } catch {
+    return '';
+  }
+}
+
 export async function createThread(board: string, title: string, name: string, body: string) {
   return supabase.rpc('create_thread', {
     p_board: board,
     p_title: title,
     p_name: name,
     p_body: body,
+    p_anon_id: getAnonId(),
   });
 }
 
@@ -93,6 +109,7 @@ export async function createPost(threadId: string, name: string, body: string) {
     p_thread_id: threadId,
     p_name: name,
     p_body: body,
+    p_anon_id: getAnonId(),
   });
 }
 

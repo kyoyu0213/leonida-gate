@@ -84,14 +84,54 @@ export async function listReports(): Promise<{ data: ReportRow[]; error?: string
   return { data: (data as ReportRow[]) ?? [] };
 }
 
-export async function setPostHidden(postId: string, hidden: boolean) {
+export async function setPostHidden(postId: string, hidden: boolean, reason?: string) {
   const { error } = await supabase.rpc('admin_set_post_hidden', {
     p_token: adminToken,
     p_post_id: postId,
     p_hidden: hidden,
+    p_reason: reason ?? null,
   });
   if (error) handleAuthError(error.message);
   return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function setPostNote(postId: string, note: string) {
+  const { error } = await supabase.rpc('admin_set_post_note', {
+    p_token: adminToken,
+    p_post_id: postId,
+    p_note: note,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export interface PostMeta {
+  ip: string | null;
+  ip_hash: string | null;
+  ip_subnet: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  created_at: string;
+  hidden: boolean;
+  delete_reason: string | null;
+  admin_note: string | null;
+  report_count: number;
+  same_ip_count: number;
+  same_anon_count: number;
+  recent_24h_same_ip: number;
+}
+
+export async function getPostMeta(postId: string): Promise<{ data?: PostMeta; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_post_meta', {
+    p_token: adminToken,
+    p_post_id: postId,
+  });
+  if (error) {
+    handleAuthError(error.message);
+    return { error: adminErrorMessage(error.message) };
+  }
+  const row = (data as PostMeta[] | null)?.[0];
+  return { data: row };
 }
 
 export async function deletePost(postId: string) {

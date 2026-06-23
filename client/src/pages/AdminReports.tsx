@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail } from 'lucide-react';
+import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import {
@@ -19,10 +19,13 @@ import {
   listApplications,
   approveApplication,
   deleteApplication,
+  getPostMeta,
+  setPostNote,
   type ReportRow,
   type PendingImage,
   type ContactRow,
   type ApplicationRow,
+  type PostMeta,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
@@ -78,8 +81,99 @@ function LoginGate() {
   );
 }
 
+// 投稿のモデレーション詳細（IP/UA/Cookie・集計・管理者メモ）
+function PostMetaDetail({ postId }: { postId: string }) {
+  const [meta, setMeta] = useState<PostMeta | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [note, setNote] = useState('');
+  const [savingNote, setSavingNote] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await getPostMeta(postId);
+      if (cancelled) return;
+      if (error) toast.error(error);
+      setMeta(data ?? null);
+      setNote(data?.admin_note ?? '');
+      setLoading(false);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [postId]);
+
+  const saveNote = async () => {
+    setSavingNote(true);
+    const { error } = await setPostNote(postId, note);
+    setSavingNote(false);
+    toast[error ? 'error' : 'success'](error ?? '管理者メモを保存しました');
+  };
+
+  if (loading) {
+    return (
+      <div className="mt-3 text-[12px] text-white/50">
+        <Loader2 size={14} className="inline animate-spin" /> 詳細を取得中…
+      </div>
+    );
+  }
+  if (!meta) return null;
+
+  const Row = ({ k, v }: { k: string; v: React.ReactNode }) => (
+    <div className="flex gap-2">
+      <span className="text-white/40 w-28 flex-none">{k}</span>
+      <span className="text-white/80 break-all min-w-0">{v ?? '—'}</span>
+    </div>
+  );
+
+  return (
+    <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+      <Row k="IPアドレス" v={meta.ip} />
+      <Row k="IPサブネット" v={meta.ip_subnet} />
+      <Row k="IPハッシュ" v={meta.ip_hash ? meta.ip_hash.slice(0, 16) + '…' : null} />
+      <Row k="匿名Cookie ID" v={meta.anon_id} />
+      <Row k="User-Agent" v={meta.ua} />
+      <Row k="投稿日時" v={formatPostDate(meta.created_at)} />
+      <div className="flex gap-2 flex-wrap mt-1 text-[11px]">
+        <span className="rounded bg-[#ff2d95]/10 border border-[#ff2d95]/25 text-[#ff8fc0] px-2 py-0.5">
+          通報 {meta.report_count} 件
+        </span>
+        <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
+          同一IP投稿 {meta.same_ip_count} 件
+        </span>
+        <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
+          直近24h同一IP {meta.recent_24h_same_ip} 件
+        </span>
+        <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
+          同一Cookie投稿 {meta.same_anon_count} 件
+        </span>
+      </div>
+      {meta.delete_reason && <Row k="削除理由" v={meta.delete_reason} />}
+      <div className="mt-2">
+        <span className="text-white/40">管理者メモ</span>
+        <div className="flex gap-2 mt-1">
+          <input
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="このユーザー/投稿についてのメモ"
+            className="flex-1 min-w-0 bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-1.5 text-white/85 text-[12px] outline-none focus:border-[#a78bfa]/60"
+          />
+          <button
+            onClick={saveNote}
+            disabled={savingNote}
+            className="flex-none text-[12px] font-bold text-[#a78bfa] border border-[#a78bfa]/40 rounded-lg px-3 hover:bg-[#a78bfa]/10 disabled:opacity-50"
+          >
+            {savingNote ? <Loader2 size={13} className="animate-spin" /> : '保存'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ReportsPanel() {
   const [rows, setRows] = useState<ReportRow[]>([]);
+  const [expanded, setExpanded] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
 
@@ -173,12 +267,23 @@ function ReportsPanel() {
               </a>
               <button
                 disabled={busy}
-                onClick={() =>
-                  act(r.post_id, () => setPostHidden(r.post_id, !r.hidden), r.hidden ? '再表示しました' : '非表示にしました')
-                }
+                onClick={() => {
+                  if (r.hidden) {
+                    act(r.post_id, () => setPostHidden(r.post_id, false), '再表示しました');
+                  } else {
+                    const reason = prompt('非表示の理由（任意・記録されます）') ?? '';
+                    act(r.post_id, () => setPostHidden(r.post_id, true, reason), '非表示にしました');
+                  }
+                }}
                 className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ffcf8a] border border-[#ffcf8a]/30 rounded-lg px-3 py-1.5 hover:bg-[#ffcf8a]/10 disabled:opacity-50"
               >
                 {r.hidden ? <Eye size={13} /> : <EyeOff size={13} />} {r.hidden ? '再表示' : '非表示'}
+              </button>
+              <button
+                onClick={() => setExpanded((cur) => (cur === r.post_id ? null : r.post_id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === r.post_id ? '詳細を閉じる' : '詳細'}
               </button>
               <button
                 disabled={busy}
@@ -202,6 +307,8 @@ function ReportsPanel() {
               )}
               {busy && <Loader2 size={15} className="animate-spin text-white/50 self-center" />}
             </div>
+
+            {expanded === r.post_id && <PostMetaDetail postId={r.post_id} />}
           </div>
         );
       })}

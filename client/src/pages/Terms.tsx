@@ -53,7 +53,9 @@ export default function Terms() {
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li className={li}>投稿日時</li>
-              <li className={li}>投稿者のIPアドレス</li>
+              <li className={li}>投稿者のIPアドレス（およびその匿名化ハッシュ・サブネット）</li>
+              <li className={li}>ブラウザ情報（User-Agent）</li>
+              <li className={li}>端末を識別する匿名ID（ブラウザに保存される識別子）</li>
               <li className={li}>投稿内容、入力された名前</li>
             </ul>
             <p className={`${p} mt-3`}>
