@@ -22,4 +22,27 @@ create policy "anyone can submit contact"
   to anon
   with check (true);
 
--- select ポリシーは作らない（= 一般ユーザー/APIからは閲覧不可。管理画面でのみ確認）
+-- select ポリシーは作らない（= 一般ユーザー/APIからは閲覧不可）。
+-- 閲覧はアプリ内管理画面（/admin/reports）の管理者トークン経由 RPC か、Supabase 管理画面で。
+
+-- 管理者：お問い合わせ一覧（admin_auth.sql の _admin_check でトークン認可）
+create or replace function public.admin_list_contacts(p_token text)
+returns table (id uuid, name text, email text, message text, created_at timestamptz)
+language plpgsql security definer set search_path = public as $$
+begin
+  perform _admin_check(p_token);
+  return query
+  select c.id, c.name, c.email, c.message, c.created_at
+  from contacts c order by c.created_at desc limit 200;
+end; $$;
+
+-- 管理者：お問い合わせを削除（対応済みの整理用）
+create or replace function public.admin_delete_contact(p_token text, p_id uuid)
+returns void language plpgsql security definer set search_path = public as $$
+begin
+  perform _admin_check(p_token);
+  delete from contacts where id = p_id;
+end; $$;
+
+grant execute on function public.admin_list_contacts(text) to anon;
+grant execute on function public.admin_delete_contact(text, uuid) to anon;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X } from 'lucide-react';
+import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import {
@@ -14,8 +14,11 @@ import {
   listPendingImages,
   approveImage,
   rejectImage,
+  listContacts,
+  deleteContact,
   type ReportRow,
   type PendingImage,
+  type ContactRow,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
@@ -282,10 +285,86 @@ function ImagesPanel() {
   );
 }
 
+function ContactsPanel() {
+  const [rows, setRows] = useState<ContactRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listContacts();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const remove = async (id: string) => {
+    if (!confirm('このお問い合わせを削除します。よろしいですか？')) return;
+    setBusyId(id);
+    const { error } = await deleteContact(id);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('削除しました');
+    load();
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">お問い合わせはありません</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {rows.map((c) => {
+        const busy = busyId === c.id;
+        return (
+          <div key={c.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+            <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+              <Mail size={13} className="text-[#22d3ee]" />
+              <span className="font-bold text-white">{c.name || '（名前なし）'}</span>
+              <a href={`mailto:${c.email}`} className="text-[#22d3ee] hover:underline">
+                {c.email}
+              </a>
+              <span className="ml-auto text-white/40">{formatPostDate(c.created_at)}</span>
+            </div>
+            <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
+              {c.message}
+            </p>
+            <div className="flex justify-end mt-2">
+              <button
+                disabled={busy}
+                onClick={() => remove(c.id)}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+              >
+                {busy ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />} 削除
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
-  const [tab, setTab] = useState<'reports' | 'images'>('reports');
+  const [tab, setTab] = useState<'reports' | 'images' | 'contacts'>('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
+  const tabLabel = { reports: '通報', images: '画像承認', contacts: 'お問い合わせ' } as const;
 
   return (
     <div className="vice-page vice-noise">
@@ -308,8 +387,8 @@ export default function AdminReports() {
 
         {authed ? (
           <>
-            <div className="flex gap-2 mb-5">
-              {(['reports', 'images'] as const).map((t) => (
+            <div className="flex gap-2 mb-5 flex-wrap">
+              {(['reports', 'images', 'contacts'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -320,11 +399,11 @@ export default function AdminReports() {
                     color: tab === t ? '#fff' : 'rgba(244,238,248,.65)',
                   }}
                 >
-                  {t === 'reports' ? '通報' : '画像承認'}
+                  {tabLabel[t]}
                 </button>
               ))}
             </div>
-            {tab === 'reports' ? <ReportsPanel /> : <ImagesPanel />}
+            {tab === 'reports' ? <ReportsPanel /> : tab === 'images' ? <ImagesPanel /> : <ContactsPanel />}
           </>
         ) : (
           <LoginGate />

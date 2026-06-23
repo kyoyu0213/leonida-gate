@@ -164,6 +164,31 @@ export async function rejectImage(imageId: string) {
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }
 
+// ---- お問い合わせ ---------------------------------------------------------
+
+export interface ContactRow {
+  id: string;
+  name: string;
+  email: string;
+  message: string;
+  created_at: string;
+}
+
+export async function listContacts(): Promise<{ data: ContactRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_contacts', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as ContactRow[]) ?? [] };
+}
+
+export async function deleteContact(id: string) {
+  const { error } = await supabase.rpc('admin_delete_contact', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 export async function setBoardImageSetting(
   board: string,
   enabled: boolean,
