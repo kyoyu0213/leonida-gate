@@ -81,6 +81,8 @@ grant execute on function public.report_post(uuid, text, text) to anon;
 -- 通報一覧（関数名 admin_reports）。
 -- ※ 戻り値は json。RETURNS TABLE に配列(text[])があると一部環境の PostgREST が
 --    関数を取り込めず404になるため、配列は json の中に隠して回避している。
+-- ※ table→json へ戻り値を変えるため、既存があれば DROP してから作り直す。
+drop function if exists public.admin_reports(text);
 create or replace function public.admin_reports(p_token text)
 returns json language plpgsql security definer set search_path = public as $$
 declare result json;
