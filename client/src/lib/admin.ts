@@ -169,7 +169,7 @@ export async function rejectImage(imageId: string) {
 export interface ContactRow {
   id: string;
   name: string;
-  email: string;
+  email: string | null;
   message: string;
   created_at: string;
 }

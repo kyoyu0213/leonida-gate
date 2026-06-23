@@ -8,10 +8,13 @@
 create table if not exists public.contacts (
   id uuid primary key default gen_random_uuid(),
   name text not null,
-  email text not null,
+  email text,                 -- 任意（返信が必要な方のみ）
   message text not null,
   created_at timestamptz not null default now()
 );
+
+-- 既存テーブルがある場合：email を任意（NULL可）にする
+alter table public.contacts alter column email drop not null;
 
 alter table public.contacts enable row level security;
 

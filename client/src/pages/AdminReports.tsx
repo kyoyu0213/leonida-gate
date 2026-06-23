@@ -336,9 +336,13 @@ function ContactsPanel() {
             <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
               <Mail size={13} className="text-[#22d3ee]" />
               <span className="font-bold text-white">{c.name || '（名前なし）'}</span>
-              <a href={`mailto:${c.email}`} className="text-[#22d3ee] hover:underline">
-                {c.email}
-              </a>
+              {c.email ? (
+                <a href={`mailto:${c.email}`} className="text-[#22d3ee] hover:underline">
+                  {c.email}
+                </a>
+              ) : (
+                <span className="text-white/35">（メール未記入）</span>
+              )}
               <span className="ml-auto text-white/40">{formatPostDate(c.created_at)}</span>
             </div>
             <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">

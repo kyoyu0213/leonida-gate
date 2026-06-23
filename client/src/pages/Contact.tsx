@@ -15,18 +15,19 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error('すべてのフィールドを入力してください');
+    if (!formData.name || !formData.message) {
+      toast.error('お名前とお問い合わせ内容を入力してください');
       return;
     }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) {
+    // メールは任意。入力された場合のみ形式チェック。
+    if (formData.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) {
       toast.error('メールアドレスの形式が正しくありません');
       return;
     }
     setSending(true);
     const { error } = await supabase.from('contacts').insert({
       name: formData.name.trim(),
-      email: formData.email.trim(),
+      email: formData.email.trim() || null,
       message: formData.message.trim(),
     });
     setSending(false);
@@ -64,8 +65,8 @@ export default function Contact() {
               <input name="name" type="text" placeholder="お名前（ハンドルネーム可）" value={formData.name} onChange={handleInputChange} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#22d3ee] mb-2">メールアドレス</label>
-              <input name="email" type="email" placeholder="your@email.com" value={formData.email} onChange={handleInputChange} className={inputClass} />
+              <label className="block text-sm font-bold text-[#22d3ee] mb-2">メールアドレス（返信が必要な方のみ）</label>
+              <input name="email" type="email" placeholder="your@email.com（任意）" value={formData.email} onChange={handleInputChange} className={inputClass} />
             </div>
             <div>
               <label className="block text-sm font-bold text-[#22d3ee] mb-2">お問い合わせ内容</label>
