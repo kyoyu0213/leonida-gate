@@ -78,7 +78,8 @@ grant execute on function public.report_post(uuid, text, text) to anon;
 -- ----------------------------------------------------------------------------
 -- 管理者：通報一覧（post 単位に集約）。open＋直近24h以内の resolved を返す。
 -- ----------------------------------------------------------------------------
-create or replace function public.admin_list_reports(p_token text)
+-- 通報一覧（関数名は admin_reports。旧 admin_list_reports は PostgREST キャッシュ不具合のため改名）
+create or replace function public.admin_reports(p_token text)
 returns table (
   post_id uuid,
   thread_id uuid,
@@ -140,7 +141,7 @@ begin
   update board_reports set status = 'resolved' where post_id = p_post_id and status = 'open';
 end; $$;
 
-grant execute on function public.admin_list_reports(text) to anon;
+grant execute on function public.admin_reports(text) to anon;
 grant execute on function public.admin_set_post_hidden(text, uuid, boolean) to anon;
 grant execute on function public.admin_delete_post(text, uuid) to anon;
 grant execute on function public.admin_resolve_reports(text, uuid) to anon;

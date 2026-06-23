@@ -76,7 +76,7 @@ export interface ReportRow {
 }
 
 export async function listReports(): Promise<{ data: ReportRow[]; error?: string }> {
-  const { data, error } = await supabase.rpc('admin_list_reports', { p_token: adminToken });
+  const { data, error } = await supabase.rpc('admin_reports', { p_token: adminToken });
   if (error) {
     handleAuthError(error.message);
     return { data: [], error: adminErrorMessage(error.message) };
