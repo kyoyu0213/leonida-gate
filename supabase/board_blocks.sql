@@ -168,3 +168,27 @@ begin
   limit greatest(1, least(coalesce(p_limit, 50), 200));
 end; $$;
 grant execute on function public.admin_list_posts(text, int) to anon;
+
+-- 管理：IP（部分一致）／匿名Cookie ID（完全一致）で投稿を検索
+create or replace function public.admin_search_posts(p_token text, p_ip text default null, p_anon text default null)
+returns table (
+  id uuid, board text, thread_id uuid, post_number int, name text, body text,
+  hidden boolean, ip text, ua text, anon_id text, created_at timestamptz, report_count bigint
+) language plpgsql security definer set search_path = public as $$
+begin
+  perform _admin_check(p_token);
+  if coalesce(btrim(p_ip), '') = '' and coalesce(btrim(p_anon), '') = '' then
+    return;  -- 条件なしは空
+  end if;
+  return query
+  select p.id, t.board, p.thread_id, p.post_number, p.name, p.body, p.hidden,
+         p.ip, p.ua, p.anon_id, p.created_at,
+         (select count(*) from board_reports r where r.post_id = p.id)
+  from board_posts p
+  join board_threads t on t.id = p.thread_id
+  where (nullif(btrim(p_ip), '') is null or p.ip ilike '%' || btrim(p_ip) || '%')
+    and (nullif(btrim(p_anon), '') is null or p.anon_id = btrim(p_anon))
+  order by p.created_at desc
+  limit 200;
+end; $$;
+grant execute on function public.admin_search_posts(text, text, text) to anon;

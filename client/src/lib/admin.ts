@@ -160,6 +160,23 @@ export async function listAdminPosts(): Promise<{ data: AdminPostRow[]; error?: 
   return { data: (data as AdminPostRow[]) ?? [] };
 }
 
+/** IP（部分一致）／匿名Cookie ID（完全一致）で投稿を検索。 */
+export async function searchAdminPosts(opts: {
+  ip?: string;
+  anon?: string;
+}): Promise<{ data: AdminPostRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_search_posts', {
+    p_token: adminToken,
+    p_ip: opts.ip ?? null,
+    p_anon: opts.anon ?? null,
+  });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as AdminPostRow[]) ?? [] };
+}
+
 // ---- 自動ブロック（IP / サブネット / Cookie） -----------------------------
 
 export interface BlockRow {

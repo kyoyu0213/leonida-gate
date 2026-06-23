@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban } from 'lucide-react';
+import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban, Search } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import {
@@ -22,6 +22,7 @@ import {
   getPostMeta,
   setPostNote,
   listAdminPosts,
+  searchAdminPosts,
   listBlocks,
   addBlock,
   removeBlock,
@@ -93,6 +94,10 @@ function PostMetaDetail({ postId }: { postId: string }) {
   const [loading, setLoading] = useState(true);
   const [note, setNote] = useState('');
   const [savingNote, setSavingNote] = useState(false);
+  // 同一IP/同一Cookieのドリルダウン
+  const [drill, setDrill] = useState<'ip' | 'anon' | null>(null);
+  const [drillRows, setDrillRows] = useState<AdminPostRow[]>([]);
+  const [drillLoading, setDrillLoading] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -114,6 +119,21 @@ function PostMetaDetail({ postId }: { postId: string }) {
     const { error } = await setPostNote(postId, note);
     setSavingNote(false);
     toast[error ? 'error' : 'success'](error ?? '管理者メモを保存しました');
+  };
+
+  const openDrill = async (kind: 'ip' | 'anon') => {
+    if (drill === kind) {
+      setDrill(null);
+      return;
+    }
+    setDrill(kind);
+    setDrillLoading(true);
+    const { data, error } = await searchAdminPosts(
+      kind === 'ip' ? { ip: meta?.ip ?? '' } : { anon: meta?.anon_id ?? '' },
+    );
+    if (error) toast.error(error);
+    setDrillRows(data);
+    setDrillLoading(false);
   };
 
   if (loading) {
@@ -144,16 +164,53 @@ function PostMetaDetail({ postId }: { postId: string }) {
         <span className="rounded bg-[#ff2d95]/10 border border-[#ff2d95]/25 text-[#ff8fc0] px-2 py-0.5">
           通報 {meta.report_count} 件
         </span>
-        <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
-          同一IP投稿 {meta.same_ip_count} 件
-        </span>
+        <button
+          onClick={() => openDrill('ip')}
+          disabled={!meta.ip}
+          className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5 hover:bg-white/15 hover:text-white disabled:opacity-50"
+        >
+          同一IP投稿 {meta.same_ip_count} 件 ▾
+        </button>
         <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
           直近24h同一IP {meta.recent_24h_same_ip} 件
         </span>
-        <span className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5">
-          同一Cookie投稿 {meta.same_anon_count} 件
-        </span>
+        <button
+          onClick={() => openDrill('anon')}
+          disabled={!meta.anon_id}
+          className="rounded bg-white/[0.06] border border-white/10 text-white/70 px-2 py-0.5 hover:bg-white/15 hover:text-white disabled:opacity-50"
+        >
+          同一Cookie投稿 {meta.same_anon_count} 件 ▾
+        </button>
       </div>
+
+      {drill && (
+        <div className="mt-1 rounded-lg border border-white/10 bg-black/30 p-2 flex flex-col gap-1">
+          <div className="text-white/40 text-[11px] mb-0.5">
+            {drill === 'ip' ? `IP ${meta.ip} の投稿` : 'この匿名Cookie IDの投稿'}
+          </div>
+          {drillLoading ? (
+            <div className="text-white/50 text-[11px] py-1">
+              <Loader2 size={12} className="inline animate-spin" /> 取得中…
+            </div>
+          ) : drillRows.length === 0 ? (
+            <div className="text-white/40 text-[11px] py-1">該当なし</div>
+          ) : (
+            drillRows.map((d) => (
+              <a
+                key={d.id}
+                href={`/thread/${d.thread_id}#post-${d.post_number}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-2 items-baseline rounded px-1.5 py-1 hover:bg-white/[0.06]"
+              >
+                <span className="text-white/35 flex-none">{formatPostDate(d.created_at)}</span>
+                <span className="text-white/80 truncate">{d.body}</span>
+                {d.hidden && <span className="text-white/30 flex-none">[非表示]</span>}
+              </a>
+            ))
+          )}
+        </div>
+      )}
       {meta.delete_reason && <Row k="削除理由" v={meta.delete_reason} />}
       <div className="mt-2">
         <span className="text-white/40">管理者メモ</span>
@@ -877,15 +934,144 @@ function BlocksPanel() {
   );
 }
 
+function SearchPanel() {
+  const [ip, setIp] = useState('');
+  const [anon, setAnon] = useState('');
+  const [rows, setRows] = useState<AdminPostRow[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const fetchRows = async () => {
+    setLoading(true);
+    const { data, error } = await searchAdminPosts({ ip: ip.trim() || undefined, anon: anon.trim() || undefined });
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  const run = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!ip.trim() && !anon.trim()) {
+      toast.error('IPアドレスまたはCookie IDを入力してください');
+      return;
+    }
+    setSearched(true);
+    fetchRows();
+  };
+
+  const act = async (id: string, fn: () => Promise<{ error?: string }>, okMsg: string) => {
+    setBusyId(id);
+    const { error } = await fn();
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(okMsg);
+    fetchRows();
+  };
+
+  const sel = 'bg-white/[0.05] border border-white/12 rounded-lg px-3 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
+
+  return (
+    <div className="flex flex-col gap-4">
+      <form onSubmit={run} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-wrap gap-2 items-end">
+        <div className="flex flex-col gap-1 flex-1 min-w-[180px]">
+          <span className="text-[11px] text-white/45">IPアドレス（部分一致可）</span>
+          <input value={ip} onChange={(e) => setIp(e.target.value)} placeholder="例: 119.150.18.145" className={sel + ' w-full'} />
+        </div>
+        <div className="flex flex-col gap-1 flex-1 min-w-[180px]">
+          <span className="text-[11px] text-white/45">匿名Cookie ID（完全一致）</span>
+          <input value={anon} onChange={(e) => setAnon(e.target.value)} placeholder="任意" className={sel + ' w-full'} />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="inline-flex items-center gap-1.5 text-white font-extrabold text-[13px] px-5 py-2 rounded-lg disabled:opacity-60"
+          style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
+        >
+          {loading ? <Loader2 size={14} className="animate-spin" /> : <Search size={14} />} 検索
+        </button>
+      </form>
+
+      {loading ? (
+        <div className="text-center py-12 text-white/50"><Loader2 size={24} className="mx-auto mb-2 animate-spin" /> 検索中…</div>
+      ) : !searched ? (
+        <div className="text-center py-12 text-white/45">IPアドレス等を入力して検索してください。</div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-12 text-white/50">該当する投稿はありません</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          <div className="text-[12px] text-white/50">{rows.length} 件</div>
+          {rows.map((p) => {
+            const board = getBoard(p.board);
+            const busy = busyId === p.id;
+            return (
+              <div key={p.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+                <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
+                  <span className="text-white/55">{board?.title.replace('掲示板', '') ?? p.board}</span>
+                  <span className="text-white/30">#{p.post_number}</span>
+                  <span className="font-bold text-white">{p.name}</span>
+                  {p.report_count > 0 && <span className="vice-num text-[#ff2d95]">通報 {p.report_count}</span>}
+                  {p.hidden && <span className="text-white/40">（非表示中）</span>}
+                  <span className="ml-auto text-white/40">{formatPostDate(p.created_at)}</span>
+                </div>
+                <p className="text-sm text-white/80 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0 max-h-32 overflow-auto">
+                  {p.body}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  <a href={`/thread/${p.thread_id}#post-${p.post_number}`} className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5">
+                    <ExternalLink size={13} /> 投稿へ
+                  </a>
+                  <button
+                    disabled={busy}
+                    onClick={() => {
+                      if (p.hidden) act(p.id, () => setPostHidden(p.id, false), '再表示しました');
+                      else {
+                        const reason = prompt('非表示の理由（任意・記録されます）') ?? '';
+                        act(p.id, () => setPostHidden(p.id, true, reason), '非表示にしました');
+                      }
+                    }}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ffcf8a] border border-[#ffcf8a]/30 rounded-lg px-3 py-1.5 hover:bg-[#ffcf8a]/10 disabled:opacity-50"
+                  >
+                    {p.hidden ? <Eye size={13} /> : <EyeOff size={13} />} {p.hidden ? '再表示' : '非表示'}
+                  </button>
+                  <button
+                    disabled={busy}
+                    onClick={() => { if (confirm('この投稿を完全に削除します。よろしいですか？')) act(p.id, () => deletePost(p.id), '削除しました'); }}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+                  >
+                    <Trash2 size={13} /> 削除
+                  </button>
+                  <button
+                    onClick={() => setExpanded((cur) => (cur === p.id ? null : p.id))}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+                  >
+                    <Info size={13} /> {expanded === p.id ? '詳細を閉じる' : '詳細'}
+                  </button>
+                </div>
+                {expanded === p.id && <PostMetaDetail postId={p.id} />}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'reports' | 'posts' | 'images' | 'contacts' | 'applications' | 'blocks'
+    'reports' | 'posts' | 'search' | 'images' | 'contacts' | 'applications' | 'blocks'
   >('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
     reports: '通報',
     posts: '投稿ログ',
+    search: 'IP検索',
     images: '画像承認',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
@@ -914,7 +1100,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'posts', 'images', 'contacts', 'applications', 'blocks'] as const).map((t) => (
+              {(['reports', 'posts', 'search', 'images', 'contacts', 'applications', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -933,6 +1119,8 @@ export default function AdminReports() {
               <ReportsPanel />
             ) : tab === 'posts' ? (
               <PostsPanel />
+            ) : tab === 'search' ? (
+              <SearchPanel />
             ) : tab === 'images' ? (
               <ImagesPanel />
             ) : tab === 'contacts' ? (
