@@ -1071,6 +1071,7 @@ function NewsCommentsPanel() {
   const [rows, setRows] = useState<NewsCommentRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -1151,7 +1152,48 @@ function NewsCommentsPanel() {
               >
                 <Trash2 size={13} /> 削除
               </button>
+              <button
+                onClick={() => setExpanded((cur) => (cur === c.id ? null : c.id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === c.id ? '詳細を閉じる' : '詳細'}
+              </button>
             </div>
+
+            {expanded === c.id && (
+              <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPアドレス</span><span className="text-white/80 break-all">{c.ip ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPサブネット</span><span className="text-white/80 break-all">{c.ip_subnet ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">匿名Cookie ID</span><span className="text-white/80 break-all">{c.anon_id ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">User-Agent</span><span className="text-white/80 break-all">{c.ua ?? '—'}</span></div>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {c.ip && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm(`IP ${c.ip} をブロックします。よろしいですか？`)) return;
+                        const { error } = await addBlock('ip', c.ip!, '記事コメントから');
+                        toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このIPをブロック
+                    </button>
+                  )}
+                  {c.anon_id && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+                        const { error } = await addBlock('anon', c.anon_id!, '記事コメントから');
+                        toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このCookieをブロック
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         );
       })}

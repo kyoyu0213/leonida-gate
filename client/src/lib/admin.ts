@@ -319,6 +319,9 @@ export interface NewsCommentRow {
   name: string;
   body: string;
   ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
   hidden: boolean;
   created_at: string;
 }
