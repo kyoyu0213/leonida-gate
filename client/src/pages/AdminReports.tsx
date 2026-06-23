@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info } from 'lucide-react';
+import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import {
@@ -21,11 +21,17 @@ import {
   deleteApplication,
   getPostMeta,
   setPostNote,
+  listAdminPosts,
+  listBlocks,
+  addBlock,
+  removeBlock,
   type ReportRow,
   type PendingImage,
   type ContactRow,
   type ApplicationRow,
   type PostMeta,
+  type AdminPostRow,
+  type BlockRow,
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
@@ -166,6 +172,34 @@ function PostMetaDetail({ postId }: { postId: string }) {
             {savingNote ? <Loader2 size={13} className="animate-spin" /> : '保存'}
           </button>
         </div>
+      </div>
+
+      {/* ブロック操作 */}
+      <div className="flex flex-wrap gap-2 mt-2">
+        {meta.ip && (
+          <button
+            onClick={async () => {
+              if (!confirm(`IP ${meta.ip} をブロックします。よろしいですか？`)) return;
+              const { error } = await addBlock('ip', meta.ip!, '管理画面から');
+              toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+            }}
+            className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+          >
+            <Ban size={12} /> このIPをブロック
+          </button>
+        )}
+        {meta.anon_id && (
+          <button
+            onClick={async () => {
+              if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+              const { error } = await addBlock('anon', meta.anon_id!, '管理画面から');
+              toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+            }}
+            className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+          >
+            <Ban size={12} /> このCookieをブロック
+          </button>
+        )}
       </div>
     </div>
   );
@@ -614,15 +648,248 @@ function ApplicationsPanel() {
   );
 }
 
+function PostsPanel() {
+  const [rows, setRows] = useState<AdminPostRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listAdminPosts();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const act = async (id: string, fn: () => Promise<{ error?: string }>, okMsg: string) => {
+    setBusyId(id);
+    const { error } = await fn();
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(okMsg);
+    load();
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">投稿がありません</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {rows.map((p) => {
+        const board = getBoard(p.board);
+        const busy = busyId === p.id;
+        return (
+          <div key={p.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+            <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
+              <span className="text-white/55">{board?.title.replace('掲示板', '') ?? p.board}</span>
+              <span className="text-white/30">#{p.post_number}</span>
+              <span className="font-bold text-white">{p.name}</span>
+              {p.report_count > 0 && <span className="vice-num text-[#ff2d95]">通報 {p.report_count}</span>}
+              {p.hidden && <span className="text-white/40">（非表示中）</span>}
+              <span className="ml-auto text-white/40">{formatPostDate(p.created_at)}</span>
+            </div>
+            <p className="text-sm text-white/80 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0 max-h-32 overflow-auto">
+              {p.body}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-3">
+              <a
+                href={`/thread/${p.thread_id}#post-${p.post_number}`}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
+              >
+                <ExternalLink size={13} /> 投稿へ
+              </a>
+              <button
+                disabled={busy}
+                onClick={() => {
+                  if (p.hidden) {
+                    act(p.id, () => setPostHidden(p.id, false), '再表示しました');
+                  } else {
+                    const reason = prompt('非表示の理由（任意・記録されます）') ?? '';
+                    act(p.id, () => setPostHidden(p.id, true, reason), '非表示にしました');
+                  }
+                }}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ffcf8a] border border-[#ffcf8a]/30 rounded-lg px-3 py-1.5 hover:bg-[#ffcf8a]/10 disabled:opacity-50"
+              >
+                {p.hidden ? <Eye size={13} /> : <EyeOff size={13} />} {p.hidden ? '再表示' : '非表示'}
+              </button>
+              <button
+                disabled={busy}
+                onClick={() => {
+                  if (confirm('この投稿を完全に削除します。よろしいですか？'))
+                    act(p.id, () => deletePost(p.id), '削除しました');
+                }}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+              >
+                <Trash2 size={13} /> 削除
+              </button>
+              <button
+                onClick={() => setExpanded((cur) => (cur === p.id ? null : p.id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === p.id ? '詳細を閉じる' : '詳細'}
+              </button>
+            </div>
+            {expanded === p.id && <PostMetaDetail postId={p.id} />}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function BlocksPanel() {
+  const [rows, setRows] = useState<BlockRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [form, setForm] = useState<{ kind: BlockRow['kind']; value: string; reason: string; days: string }>({
+    kind: 'ip',
+    value: '',
+    reason: '',
+    days: '',
+  });
+  const [busy, setBusy] = useState(false);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listBlocks();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.value.trim()) {
+      toast.error('値を入力してください');
+      return;
+    }
+    setBusy(true);
+    const { error } = await addBlock(
+      form.kind,
+      form.value.trim(),
+      form.reason.trim() || undefined,
+      form.days ? Number(form.days) : undefined,
+    );
+    setBusy(false);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('ブロックを追加しました');
+    setForm({ kind: 'ip', value: '', reason: '', days: '' });
+    load();
+  };
+
+  const kindLabel = { ip: 'IP', ip_subnet: 'IPサブネット', anon: 'Cookie ID' } as const;
+  const sel = 'bg-white/[0.05] border border-white/12 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
+
+  return (
+    <div className="flex flex-col gap-4">
+      <form onSubmit={submit} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 flex flex-wrap gap-2 items-end">
+        <div className="flex flex-col gap-1">
+          <span className="text-[11px] text-white/45">種別</span>
+          <select
+            value={form.kind}
+            onChange={(e) => setForm({ ...form, kind: e.target.value as BlockRow['kind'] })}
+            className={sel}
+          >
+            <option value="ip">IP</option>
+            <option value="ip_subnet">IPサブネット(/24)</option>
+            <option value="anon">Cookie ID</option>
+          </select>
+        </div>
+        <div className="flex flex-col gap-1 flex-1 min-w-[180px]">
+          <span className="text-[11px] text-white/45">値</span>
+          <input value={form.value} onChange={(e) => setForm({ ...form, value: e.target.value })} placeholder="例: 1.2.3.4 / 1.2.3.0/24 / uuid" className={sel + ' w-full'} />
+        </div>
+        <div className="flex flex-col gap-1 w-[120px]">
+          <span className="text-[11px] text-white/45">理由(任意)</span>
+          <input value={form.reason} onChange={(e) => setForm({ ...form, reason: e.target.value })} className={sel + ' w-full'} />
+        </div>
+        <div className="flex flex-col gap-1 w-[90px]">
+          <span className="text-[11px] text-white/45">日数(空=無期限)</span>
+          <input value={form.days} onChange={(e) => setForm({ ...form, days: e.target.value.replace(/[^0-9]/g, '') })} className={sel + ' w-full'} />
+        </div>
+        <button
+          type="submit"
+          disabled={busy}
+          className="text-white font-extrabold text-[13px] px-4 py-2 rounded-lg disabled:opacity-60"
+          style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
+        >
+          {busy ? <Loader2 size={14} className="animate-spin" /> : '追加'}
+        </button>
+      </form>
+
+      {loading ? (
+        <div className="text-center py-12 text-white/50"><Loader2 size={24} className="mx-auto mb-2 animate-spin" /> 取得中…</div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-12 text-white/50">ブロックはありません</div>
+      ) : (
+        <div className="flex flex-col gap-2">
+          {rows.map((b) => (
+            <div key={b.id} className="flex items-center gap-2 flex-wrap rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2.5 text-[12px]">
+              <span className="font-extrabold text-[#ff8fc0]">{kindLabel[b.kind]}</span>
+              <span className="text-white/85 break-all">{b.value}</span>
+              {b.reason && <span className="text-white/45">（{b.reason}）</span>}
+              <span className="text-white/40">
+                {b.expires_at ? `〜${formatPostDate(b.expires_at)}` : '無期限'}
+              </span>
+              <button
+                onClick={async () => {
+                  if (!confirm('このブロックを解除しますか？')) return;
+                  const { error } = await removeBlock(b.id);
+                  if (error) toast.error(error);
+                  else {
+                    toast.success('解除しました');
+                    load();
+                  }
+                }}
+                className="ml-auto inline-flex items-center gap-1 text-[11px] font-bold text-white/60 hover:text-white border border-white/15 rounded-lg px-2.5 py-1"
+              >
+                <X size={12} /> 解除
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
-  const [tab, setTab] = useState<'reports' | 'images' | 'contacts' | 'applications'>('reports');
+  const [tab, setTab] = useState<
+    'reports' | 'posts' | 'images' | 'contacts' | 'applications' | 'blocks'
+  >('reports');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
     reports: '通報',
+    posts: '投稿ログ',
     images: '画像承認',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
+    blocks: 'ブロック',
   } as const;
 
   return (
@@ -632,7 +899,7 @@ export default function AdminReports() {
         <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
           <div>
             <span className="text-xs font-extrabold tracking-[0.2em] text-[#a78bfa] uppercase">Moderation</span>
-            <h1 className="font-black text-3xl md:text-[40px] leading-tight mt-2">通報の管理</h1>
+            <h1 className="font-black text-3xl md:text-[40px] leading-tight mt-2">管理画面</h1>
           </div>
           {authed && (
             <button
@@ -647,7 +914,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'images', 'contacts', 'applications'] as const).map((t) => (
+              {(['reports', 'posts', 'images', 'contacts', 'applications', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -664,12 +931,16 @@ export default function AdminReports() {
             </div>
             {tab === 'reports' ? (
               <ReportsPanel />
+            ) : tab === 'posts' ? (
+              <PostsPanel />
             ) : tab === 'images' ? (
               <ImagesPanel />
             ) : tab === 'contacts' ? (
               <ContactsPanel />
-            ) : (
+            ) : tab === 'applications' ? (
               <ApplicationsPanel />
+            ) : (
+              <BlocksPanel />
             )}
           </>
         ) : (

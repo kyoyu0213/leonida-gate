@@ -134,6 +134,70 @@ export async function getPostMeta(postId: string): Promise<{ data?: PostMeta; er
   return { data: row };
 }
 
+// ---- 投稿ログ（全投稿を横断） --------------------------------------------
+
+export interface AdminPostRow {
+  id: string;
+  board: string;
+  thread_id: string;
+  post_number: number;
+  name: string;
+  body: string;
+  hidden: boolean;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  created_at: string;
+  report_count: number;
+}
+
+export async function listAdminPosts(): Promise<{ data: AdminPostRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_posts', { p_token: adminToken, p_limit: 100 });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as AdminPostRow[]) ?? [] };
+}
+
+// ---- 自動ブロック（IP / サブネット / Cookie） -----------------------------
+
+export interface BlockRow {
+  id: string;
+  kind: 'ip' | 'ip_subnet' | 'anon';
+  value: string;
+  reason: string | null;
+  created_at: string;
+  expires_at: string | null;
+}
+
+export async function listBlocks(): Promise<{ data: BlockRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_blocks', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as BlockRow[]) ?? [] };
+}
+
+export async function addBlock(kind: BlockRow['kind'], value: string, reason?: string, days?: number) {
+  const { error } = await supabase.rpc('admin_add_block', {
+    p_token: adminToken,
+    p_kind: kind,
+    p_value: value,
+    p_reason: reason ?? null,
+    p_days: days ?? null,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function removeBlock(id: string) {
+  const { error } = await supabase.rpc('admin_remove_block', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 export async function deletePost(postId: string) {
   const { error } = await supabase.rpc('admin_delete_post', {
     p_token: adminToken,

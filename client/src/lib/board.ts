@@ -149,6 +149,7 @@ export async function searchThreads(q: string) {
 export function boardErrorMessage(message?: string): string {
   const m = message ?? '';
   if (m.includes('banned word')) return '禁止ワードが含まれているため投稿できません';
+  if (m.includes('blocked')) return '現在この掲示板に投稿できません（管理者による制限）';
   if (m.includes('duplicate report')) return 'この投稿はすでに通報済みです';
   if (m.includes('rate limited')) return '連投はできません。少し時間をおいてから投稿してください';
   if (m.includes('thread full')) return 'このスレッドは1000レスに達したため書き込めません';
