@@ -48,11 +48,11 @@ export default function Contact() {
       <main className="max-w-[760px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <span className="text-xs font-extrabold tracking-[0.3em] text-[#22d3ee] uppercase">Contact</span>
         <h1 className="vice-display vice-grad text-4xl md:text-5xl mt-2 mb-4">お問い合わせ</h1>
-        <p className="text-white/70 leading-relaxed mb-4">
+        <p className="text-white/60 leading-relaxed mb-4">
           情報提供・削除依頼などのお問い合わせはこちらから。GTA6・FiveM RPに関する情報提供、記事や掲示板・サーバー掲載内容の削除・修正のご依頼、その他のご連絡は、以下のフォームよりお送りください。内容を確認のうえ、必要に応じて対応いたします。
         </p>
         <div className="mb-8 rounded-xl border border-[#ff2d95]/25 bg-[#ff2d95]/[0.07] px-4 py-3">
-          <p className="text-[13px] text-white/70 leading-relaxed">
+          <p className="text-[13px] text-white/60 leading-relaxed">
             ※ いただいたお問い合わせの内容によっては、すべてのご要望にお応えできない場合や、個別にご返信できない場合がございます。あらかじめご了承ください。
           </p>
         </div>
@@ -74,7 +74,8 @@ export default function Contact() {
             <button
               type="submit"
               disabled={sending}
-              className="w-full flex items-center justify-center gap-2 bg-white text-[#15091c] font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
+              className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
+              style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
             >
               {sending ? (
                 <>
@@ -98,7 +99,7 @@ export default function Contact() {
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
         </div>
       </footer>
     </div>

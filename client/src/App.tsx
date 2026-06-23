@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
@@ -11,6 +12,8 @@ import NewsList from "./pages/NewsList";
 import NewsDetail from "./pages/NewsDetail";
 import BoardThreadList from "./pages/BoardThreadList";
 import BoardThread from "./pages/BoardThread";
+import AdminReports from "./pages/AdminReports";
+import SearchPage from "./pages/Search";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
 
@@ -25,6 +28,8 @@ function Router() {
         <Route path="/board" component={BoardThreadList} />
         <Route path="/board/:slug" component={BoardThreadList} />
         <Route path="/thread/:id" component={BoardThread} />
+        <Route path="/admin/reports" component={AdminReports} />
+        <Route path="/search" component={SearchPage} />
         <Route path="/terms" component={Terms} />
         <Route path="/contact" component={Contact} />
         <Route path="/404" component={NotFound} />
@@ -52,6 +57,7 @@ function App() {
           <div className="dark">
             <Router />
           </div>
+          <GoogleAnalytics />
           <Analytics />
         </TooltipProvider>
       </ThemeProvider>

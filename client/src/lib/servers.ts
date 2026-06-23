@@ -11,3 +11,24 @@ export async function listApprovedServers(limit?: number) {
   if (limit) query = query.limit(limit);
   return query;
 }
+
+// サーバーを掲載（NGワード・IP連投制限つきの RPC 経由・即時掲載）。
+export async function createFivemServer(s: {
+  name: string;
+  description: string;
+  type: string;
+  connect_info: string | null;
+  discord_url: string | null;
+  language: string | null;
+  tags: string[];
+}) {
+  return supabase.rpc('create_fivem_server', {
+    p_name: s.name,
+    p_description: s.description,
+    p_type: s.type,
+    p_connect_info: s.connect_info,
+    p_discord_url: s.discord_url,
+    p_language: s.language,
+    p_tags: s.tags,
+  });
+}

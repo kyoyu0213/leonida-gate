@@ -42,8 +42,8 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
   return (
     <a
       href={`/news/${article.id}`}
-      className="group flex flex-col rounded-2xl overflow-hidden border border-white/10 hover:-translate-y-[3px] transition-all"
-      style={{ background: 'rgba(255,255,255,.035)' }}
+      className="group flex flex-col rounded-2xl overflow-hidden border border-black/10 hover:-translate-y-[3px] transition-all shadow-sm hover:shadow-md"
+      style={{ background: '#ffffff' }}
     >
       <div
         className="relative overflow-hidden"
@@ -88,10 +88,10 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
         {!article.image && <span className="absolute top-3 right-3 text-2xl">{article.icon}</span>}
       </div>
       <div className="p-[14px] pt-3.5 flex flex-col gap-2.5 flex-1">
-        <h3 className="text-[15px] font-bold leading-[1.45] m-0 text-[#f4eef8] line-clamp-3">
+        <h3 className="text-[15px] font-bold leading-[1.45] m-0 line-clamp-3 text-[#15091c]">
           {article.title}
         </h3>
-        <div className="flex items-center gap-3 mt-auto text-white/50 text-[11.5px] font-semibold">
+        <div className="flex items-center gap-3 mt-auto text-black/45 text-[11.5px] font-semibold">
           <span className="vice-num">{article.date}</span>
         </div>
       </div>

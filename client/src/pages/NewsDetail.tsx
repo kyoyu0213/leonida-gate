@@ -2,6 +2,7 @@ import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, Tag, Share2, ExternalLink } from 'lucide-react';
 import Header from '@/components/Header';
+import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { getArticleById, CATEGORY_CONFIG } from '@/data/news';
 
@@ -154,7 +155,7 @@ export default function NewsDetail() {
             <button
               onClick={() => {
                 const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                  `${article.title} | VICE HUB`
+                  `${article.title} | GTA6 FEED`
                 )}&url=${encodeURIComponent(window.location.href)}`;
                 window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
               }}
@@ -194,7 +195,7 @@ export default function NewsDetail() {
                       {CATEGORY_CONFIG[related.category].label}
                     </span>
                   </div>
-                  <h3 className="font-bold text-sm mb-2 group-hover:text-cyan-300 transition-colors line-clamp-2">
+                  <h3 className="font-bold text-sm mb-2 text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
                     {related.title}
                   </h3>
                   <p className="text-xs text-gray-400">{related.date}</p>
@@ -202,12 +203,15 @@ export default function NewsDetail() {
               ))}
             </div>
           </div>
+
+          {/* コメント */}
+          <NewsComments articleId={String(article.id)} />
         </div>
       </article>
 
       {/* Footer */}
       <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
-        <p>&copy; 2026 Leonida Gate. All rights reserved.</p>
+        <p>&copy; 2026 GTA6 FEED. All rights reserved.</p>
       </footer>
     </div>
   );

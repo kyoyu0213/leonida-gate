@@ -33,7 +33,7 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
       </h3>
 
       {/* Description */}
-      <p className="text-gray-300 text-sm mb-4 whitespace-pre-wrap flex-grow">{server.description}</p>
+      <p className="text-gray-400 text-sm mb-4 whitespace-pre-wrap flex-grow">{server.description}</p>
 
       {/* Server Info */}
       <div className="space-y-2 mb-4 text-sm">

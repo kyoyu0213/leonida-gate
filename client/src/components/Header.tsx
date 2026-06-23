@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
-import { Search, Plus, Menu, X } from 'lucide-react';
-import { toast } from 'sonner';
+import { Search, Menu, X } from 'lucide-react';
 
 const NAV = [
   { label: 'ホーム', href: '/', match: (l: string) => l === '/' },
@@ -18,8 +17,10 @@ export default function Header() {
 
   const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // 簡易検索：いまは記事一覧へ遷移（将来きちんと検索実装可）
-    navigate('/news');
+    const q = query.trim();
+    if (!q) return;
+    // ニュース記事＋掲示板（レス本文）を横断検索する検索結果ページへ
+    navigate(`/search?q=${encodeURIComponent(q)}`);
   };
 
   return (
@@ -41,7 +42,7 @@ export default function Header() {
               boxShadow: '0 0 12px #ff2d95, 0 0 26px rgba(255,45,149,.6)',
             }}
           />
-          <span className="vice-display vice-grad text-2xl tracking-[0.5px]">VICE&nbsp;HUB</span>
+          <span className="vice-display vice-grad text-2xl tracking-[0.5px]">GTA6&nbsp;FEED</span>
         </a>
 
         {/* Desktop nav */}
@@ -70,45 +71,24 @@ export default function Header() {
         {/* spacer */}
         <div className="flex-1 min-w-[8px]" />
 
-        {/* Search */}
+        {/* Search（ログイン・新規投稿ボタンを廃止し、その位置に配置） */}
         <form
           onSubmit={onSearch}
-          className="hidden sm:flex items-center gap-2 rounded-full px-3.5 py-2 min-w-0"
+          className="hidden sm:flex items-center gap-2 rounded-full px-3.5 py-2 min-w-0 flex-none"
           style={{
             background: 'rgba(255,255,255,.05)',
             border: '1px solid rgba(255,255,255,.1)',
-            width: 'clamp(120px,18vw,230px)',
+            width: 'clamp(180px,24vw,320px)',
           }}
         >
           <Search size={15} className="flex-none opacity-60" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="検索…"
+            placeholder="記事・掲示板を検索…"
             className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
           />
         </form>
-
-        {/* Login */}
-        <button
-          onClick={() => toast('ログイン機能は準備中です')}
-          className="hidden sm:block flex-none text-[13px] font-bold px-4 py-2.5 rounded-full whitespace-nowrap text-[#f4eef8] hover:text-[#22d3ee] transition-colors"
-          style={{ border: '1px solid rgba(255,255,255,.18)' }}
-        >
-          ログイン
-        </button>
-
-        {/* New post */}
-        <a
-          href="/board"
-          className="flex-none text-[13px] font-extrabold px-[18px] py-2.5 rounded-full whitespace-nowrap text-white inline-flex items-center gap-1 hover:-translate-y-px transition-transform"
-          style={{
-            background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
-            boxShadow: '0 4px 18px rgba(255,45,149,.4)',
-          }}
-        >
-          <Plus size={15} strokeWidth={3} /> 新規投稿
-        </a>
 
         {/* Mobile menu toggle */}
         <button className="md:hidden text-white flex-none" onClick={() => setMenuOpen((v) => !v)}>
@@ -120,6 +100,23 @@ export default function Header() {
       {menuOpen && (
         <nav className="md:hidden border-t border-white/10" style={{ background: 'rgba(11,7,20,.96)' }}>
           <div className="max-w-[1320px] mx-auto px-4 py-4 flex flex-col gap-4">
+            {/* モバイル用の検索 */}
+            <form
+              onSubmit={(e) => {
+                onSearch(e);
+                setMenuOpen(false);
+              }}
+              className="flex items-center gap-2 rounded-full px-3.5 py-2"
+              style={{ background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.1)' }}
+            >
+              <Search size={15} className="flex-none opacity-60" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="記事・掲示板を検索…"
+                className="bg-transparent border-none outline-none text-[#f4eef8] text-[14px] w-full min-w-0 placeholder:text-white/40"
+              />
+            </form>
             {NAV.map((item) => (
               <a
                 key={item.href}

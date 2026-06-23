@@ -14,10 +14,12 @@ export interface BoardConfig {
 
 export const BOARDS: BoardConfig[] = [
   {
-    slug: 'gta6',
-    title: 'GTA6情報交換掲示板',
-    description: 'GTA6の最新情報・リーク・考察・雑談を交換する場所',
-    accent: 'cyan',
+    slug: 'gtarp-servers',
+    title: 'GTARP鯖別掲示板',
+    description:
+      '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
+    accent: 'purple',
+    submitOnly: true,
   },
   {
     slug: 'gtarp',
@@ -26,23 +28,18 @@ export const BOARDS: BoardConfig[] = [
     accent: 'lime',
   },
   {
-    slug: 'gtarp-servers',
-    title: 'GTARP鯖別掲示板',
-    description:
-      '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
-    accent: 'purple',
-    submitOnly: true,
+    slug: 'gta6',
+    title: 'GTA6情報交換掲示板',
+    description: 'GTA6の最新情報・リーク・考察・雑談を交換する場所',
+    accent: 'cyan',
   },
 ];
 
 export const getBoard = (slug?: string): BoardConfig | undefined =>
   BOARDS.find((b) => b.slug === slug);
 
-// 申請制の掲示板で「管理者としてスレを立てる」ための合言葉。
-//  URL に ?admin=この合言葉 を付けて開くと、申請制ジャンルでもスレ作成ボタンが出る。
-//  例: /board/gtarp-servers?admin=vh-admin-2026
-//  ※ クライアント側の簡易ガードです（合言葉はビルドに含まれます）。本格的な権限管理は別途。
-export const ADMIN_KEY = 'vh-admin-2026';
+// 管理者判定・申請制スレの作成はサーバー側で認可する（client/src/lib/admin.ts）。
+// 合言葉はクライアント／バンドルに一切置かない。
 
 /** 掲示板アクセント色（VICEデザイン用） */
 export const boardColor = (accent?: Accent): string =>

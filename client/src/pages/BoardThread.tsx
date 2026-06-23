@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRoute } from 'wouter';
-import { Send, Loader2, ArrowLeft } from 'lucide-react';
+import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply } from 'lucide-react';
 import Header from '@/components/Header';
+import ReportDialog from '@/components/ReportDialog';
 import { toast } from 'sonner';
 import {
   getThread,
   listPosts,
   createPost,
+  getPostId,
   formatPostDate,
   boardErrorMessage,
   DEFAULT_NAME,
@@ -16,8 +18,19 @@ import {
   type BoardPost,
 } from '@/lib/board';
 import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
+import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
 
 const COOLDOWN_KEY = 'board_last_post';
+const REPORTED_KEY = 'board_reported_posts';
+
+// このブラウザで通報済みの post id 集合（UIでボタンを抑制するだけ。本当の重複防止はサーバー側）
+const loadReported = (): Set<string> => {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(REPORTED_KEY) || '[]'));
+  } catch {
+    return new Set();
+  }
+};
 
 const AVATARS = [
   'linear-gradient(135deg,#ff2d95,#ff6a3d)',
@@ -41,6 +54,67 @@ export default function BoardThread() {
   const [name, setName] = useState('');
   const [body, setBody] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [reported, setReported] = useState<Set<string>>(loadReported);
+
+  // 画像投稿（②）。board の images_enabled が true のときだけ入口を出す（デフォルト false）。
+  const [imagesEnabled, setImagesEnabled] = useState(false);
+  const [requireApproval, setRequireApproval] = useState(true);
+  const [files, setFiles] = useState<File[]>([]);
+  // レスに紐付かない画像（旧データ）はスレ先頭に、post_id 付きは各レス直下に表示
+  const [threadImages, setThreadImages] = useState<string[]>([]);
+  const [postImages, setPostImages] = useState<Record<string, string[]>>({});
+
+  const markReported = (postId: string) => {
+    setReported((prev) => {
+      const next = new Set(prev).add(postId);
+      localStorage.setItem(REPORTED_KEY, JSON.stringify(Array.from(next)));
+      return next;
+    });
+  };
+
+  // 返信（アンカー）。入力欄に >>レス番号 を差し込んでフォーカスする。
+  const replyRef = useRef<HTMLTextAreaElement>(null);
+  const [highlight, setHighlight] = useState<number | null>(null);
+
+  const replyTo = (n: number) => {
+    setBody((prev) => `${prev}${prev && !prev.endsWith('\n') ? '\n' : ''}>>${n}\n`);
+    replyRef.current?.focus();
+  };
+
+  // 本文中の >>N をクリックでそのレスへジャンプ＆一瞬ハイライト
+  const jumpToPost = (n: number) => {
+    const el = document.getElementById(`post-${n}`);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setHighlight(n);
+    window.setTimeout(() => setHighlight((cur) => (cur === n ? null : cur)), 1600);
+  };
+
+  // 本文をレンダリング：>>N をアンカーリンクに変換する
+  const renderBody = (text: string): ReactNode[] => {
+    const parts: ReactNode[] = [];
+    const re = />>(\d+)/g;
+    let last = 0;
+    let m: RegExpExecArray | null;
+    let k = 0;
+    while ((m = re.exec(text)) !== null) {
+      if (m.index > last) parts.push(text.slice(last, m.index));
+      const n = Number(m[1]);
+      parts.push(
+        <button
+          key={k++}
+          type="button"
+          onClick={() => jumpToPost(n)}
+          className="text-[#22d3ee] hover:text-[#7df9ff] font-bold underline underline-offset-2"
+        >
+          {`>>${n}`}
+        </button>,
+      );
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) parts.push(text.slice(last));
+    return parts;
+  };
 
   const load = async () => {
     if (!threadId) return;
@@ -52,8 +126,24 @@ export default function BoardThread() {
     if (te || !t) {
       setNotFound(true);
     } else {
-      setThread(t as ThreadType);
+      const thread = t as ThreadType;
+      setThread(thread);
       setNotFound(false);
+      // 画像設定と承認済み画像（無効カテゴリでは入口も表示も出ない）
+      const setting = await getBoardImageSetting(thread.board);
+      setImagesEnabled(!!setting?.images_enabled);
+      setRequireApproval(setting?.require_approval ?? true);
+      if (setting?.images_enabled) {
+        const imgs = await listApprovedImages(thread.id);
+        const byPost: Record<string, string[]> = {};
+        const noPost: string[] = [];
+        imgs.forEach((im) => {
+          if (im.post_id) (byPost[im.post_id] ??= []).push(im.url);
+          else noPost.push(im.url);
+        });
+        setPostImages(byPost);
+        setThreadImages(noPost);
+      }
     }
     if (!pe) setPosts((p as BoardPost[]) ?? []);
     setLoading(false);
@@ -77,16 +167,29 @@ export default function BoardThread() {
       return;
     }
     setSubmitting(true);
-    const { error } = await createPost(threadId, name.trim(), body.trim());
-    setSubmitting(false);
+    const { data: postNum, error } = await createPost(threadId, name.trim(), body.trim());
     if (error) {
+      setSubmitting(false);
       console.error(error);
       toast.error(boardErrorMessage(error.message));
       return;
     }
+    // 画像が選択されていれば、今投稿したレスに紐付けてアップロード
+    let imageNote = '';
+    if (imagesEnabled && files.length > 0) {
+      const postId = (await getPostId(threadId, postNum as number)) ?? undefined;
+      const { error: upErr } = await uploadImages(thread!.board, files, { threadId, postId });
+      if (upErr) {
+        toast.error(upErr);
+      } else {
+        imageNote = requireApproval ? '（画像は承認後に表示されます）' : '（画像を添付しました）';
+      }
+      setFiles([]);
+    }
+    setSubmitting(false);
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
-    toast.success('書き込みました');
+    toast.success('書き込みました' + imageNote);
     load();
   };
 
@@ -132,10 +235,31 @@ export default function BoardThread() {
               </p>
             </div>
 
+            {/* thread images (承認済みのみ・画像有効カテゴリのみ) */}
+            {imagesEnabled && threadImages.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {threadImages.map((url) => (
+                  <a key={url} href={url} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={url}
+                      alt="投稿画像"
+                      className="h-28 w-28 object-cover rounded-xl border border-white/10"
+                      loading="lazy"
+                    />
+                  </a>
+                ))}
+              </div>
+            )}
+
             {/* posts */}
             <div className="flex flex-col">
               {posts.map((post) => (
-                <div key={post.id} id={`post-${post.post_number}`} className="flex gap-3.5 py-[18px] border-b border-white/[0.06]">
+                <div
+                  key={post.id}
+                  id={`post-${post.post_number}`}
+                  className="flex gap-3.5 py-[18px] border-b border-white/[0.06] rounded-lg transition-colors"
+                  style={highlight === post.post_number ? { background: 'rgba(34,211,238,.12)' } : undefined}
+                >
                   <span
                     className="w-10 h-10 rounded-full flex-none flex items-center justify-center font-black text-base text-white"
                     style={{ background: avatarFor(`${post.name}-${post.post_number}`) }}
@@ -147,8 +271,47 @@ export default function BoardThread() {
                       <span className="text-sm font-extrabold text-[#f4eef8]">{post.name}</span>
                       <span className="vice-num text-[11px] text-[#ff2d95]">#{post.post_number}</span>
                       <span className="text-[11.5px] text-white/40">{formatPostDate(post.created_at)}</span>
+                      {!post.hidden && (
+                        <span className="ml-auto flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={() => replyTo(post.post_number)}
+                            className="inline-flex items-center gap-1 text-[11px] font-bold text-white/30 hover:text-[#22d3ee] transition-colors"
+                            title="このレスに返信"
+                          >
+                            <Reply size={12} /> 返信
+                          </button>
+                          <ReportDialog
+                            postId={post.id}
+                            reported={reported.has(post.id)}
+                            onReported={markReported}
+                          />
+                        </span>
+                      )}
                     </div>
-                    <p className="text-sm leading-[1.75] text-white/90 m-0 whitespace-pre-wrap break-words">{post.body}</p>
+                    {post.hidden ? (
+                      <p className="text-sm leading-[1.75] text-white/40 italic m-0">
+                        ※ この投稿は管理者により非表示にされました
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-sm leading-[1.75] text-white/80 m-0 whitespace-pre-wrap break-words">{renderBody(post.body)}</p>
+                        {postImages[post.id]?.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mt-2">
+                            {postImages[post.id].map((url) => (
+                              <a key={url} href={url} target="_blank" rel="noopener noreferrer">
+                                <img
+                                  src={url}
+                                  alt="投稿画像"
+                                  className="h-32 w-32 object-cover rounded-xl border border-white/10"
+                                  loading="lazy"
+                                />
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
@@ -171,8 +334,45 @@ export default function BoardThread() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex gap-2.5 items-end rounded-2xl border border-white/15 bg-white/[0.06] p-2.5 backdrop-blur-md"
+                className="rounded-2xl border border-white/15 bg-white/[0.06] p-2.5 backdrop-blur-md"
               >
+                {/* 選択中の画像プレビュー（画像有効カテゴリのみ） */}
+                {imagesEnabled && files.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-2 px-1">
+                    {files.map((f, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 text-[11px] text-white/70 bg-white/[0.05] border border-white/10 rounded-lg px-2 py-1"
+                      >
+                        {f.name.length > 18 ? f.name.slice(0, 16) + '…' : f.name}
+                        <button
+                          type="button"
+                          onClick={() => setFiles((prev) => prev.filter((_, idx) => idx !== i))}
+                          className="text-white/40 hover:text-[#ff8fc0]"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <div className="flex gap-2.5 items-end">
+                {imagesEnabled && (
+                  <label className="flex-none cursor-pointer text-white/55 hover:text-[#a78bfa] transition-colors self-center" title="画像を追加（jpg/png/webp・最大3枚）">
+                    <ImagePlus size={20} />
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      multiple
+                      className="hidden"
+                      onChange={(e) => {
+                        const picked = Array.from(e.target.files ?? []);
+                        setFiles((prev) => [...prev, ...picked].slice(0, 3));
+                        e.target.value = '';
+                      }}
+                    />
+                  </label>
+                )}
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -181,6 +381,7 @@ export default function BoardThread() {
                   className="flex-none w-[90px] sm:w-[120px] bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
                 />
                 <textarea
+                  ref={replyRef}
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                   placeholder="返信を入力…"
@@ -196,6 +397,7 @@ export default function BoardThread() {
                 >
                   {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                 </button>
+                </div>
               </form>
             )}
           </div>

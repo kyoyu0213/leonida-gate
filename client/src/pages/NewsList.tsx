@@ -38,8 +38,8 @@ export default function NewsList() {
                 className="flex-none flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
                 style={{
                   border: `1px solid ${active ? color : 'rgba(255,255,255,.14)'}`,
-                  background: active ? `${color}22` : 'rgba(255,255,255,.03)',
-                  color: active ? '#fff' : 'rgba(244,238,248,.7)',
+                  background: active ? `${color}22` : 'rgba(255,255,255,.05)',
+                  color: active ? color : 'rgba(255,255,255,.7)',
                 }}
               >
                 <span className="w-[7px] h-[7px] rounded-full" style={{ background: color }} />
@@ -63,7 +63,7 @@ export default function NewsList() {
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
         </div>
       </footer>
     </div>

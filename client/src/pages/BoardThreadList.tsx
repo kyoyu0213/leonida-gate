@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useRoute } from 'wouter';
-import { Plus, X, Send, Loader2 } from 'lucide-react';
+import { Plus, X, Send, Loader2, Search, ImagePlus } from 'lucide-react';
 import Header from '@/components/Header';
 import { toast } from 'sonner';
+import { getBoardImageSetting, uploadImages } from '@/lib/images';
 import {
   listThreads,
   createThread,
+  getPostId,
   formatPostDate,
   boardErrorMessage,
   DEFAULT_NAME,
@@ -14,7 +16,8 @@ import {
   POST_COOLDOWN_MS,
   type BoardThread,
 } from '@/lib/board';
-import { getBoard, BOARDS, boardColor, ADMIN_KEY } from '@/lib/boards';
+import { getBoard, BOARDS, boardColor } from '@/lib/boards';
+import { isLoggedIn, subscribeAdmin, adminCreateThread } from '@/lib/admin';
 import { submitServerApplication } from '@/lib/applications';
 
 const COOLDOWN_KEY = 'board_last_post';
@@ -33,6 +36,19 @@ const avatarFor = (s: string) =>
 const inputClass =
   'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-[#a78bfa]/60 transition-colors';
 
+// 並び替えの種類
+type SortKey = 'new' | 'count' | 'buzz';
+const SORTS: { key: SortKey; label: string }[] = [
+  { key: 'new', label: '新着' },
+  { key: 'count', label: 'レス数' },
+  { key: 'buzz', label: '賑わい' },
+];
+// 賑わい（勢い）：レス数 ÷ 経過時間（時間）。短期間に伸びているスレほど高い。
+const buzzScore = (t: BoardThread) => {
+  const hours = Math.max((Date.now() - new Date(t.created_at).getTime()) / 3_600_000, 1);
+  return t.post_count / hours;
+};
+
 export default function BoardThreadList() {
   const [, navigate] = useLocation();
   const [, params] = useRoute('/board/:slug');
@@ -50,6 +66,36 @@ export default function BoardThreadList() {
 
   // 申請制（GTARP鯖別）用フォーム
   const [app, setApp] = useState({ server_name: '', description: '', contact: '', applicant: '' });
+
+  // 一覧の並び替え（新着＝最終更新順／レス数／賑わい＝勢い）
+  const [sort, setSort] = useState<SortKey>('new');
+
+  // 掲示板内検索（スレタイ＋レス本文）。送信で掲示板スコープの検索結果ページへ。
+  const [boardQuery, setBoardQuery] = useState('');
+  const onBoardSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = boardQuery.trim();
+    if (!q) return;
+    navigate(`/search?q=${encodeURIComponent(q)}&scope=board`);
+  };
+
+  // 管理者ログイン状態（メモリ保持のトークン有無）。/admin/reports でログインすると有効になる。
+  const [admin, setAdmin] = useState(isLoggedIn());
+  useEffect(() => subscribeAdmin(() => setAdmin(isLoggedIn())), []);
+
+  // 画像投稿（②）。board の images_enabled が true のときだけスレ作成フォームに入口を出す。
+  const [imagesEnabled, setImagesEnabled] = useState(false);
+  const [requireApproval, setRequireApproval] = useState(true);
+  const [files, setFiles] = useState<File[]>([]);
+  useEffect(() => {
+    if (!board) return;
+    getBoardImageSetting(board.slug).then((s) => {
+      setImagesEnabled(!!s?.images_enabled);
+      setRequireApproval(s?.require_approval ?? true);
+    });
+    setFiles([]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug]);
 
   const load = async () => {
     if (!board) return;
@@ -82,12 +128,18 @@ export default function BoardThreadList() {
     );
   }
 
-  // 管理者モード：?admin=合言葉 で開くと、申請制ジャンルでもスレ作成が可能に
-  const isAdmin =
-    typeof window !== 'undefined' &&
-    new URLSearchParams(window.location.search).get('admin') === ADMIN_KEY;
+  // 管理者モード：/admin/reports でログイン済み（メモリのトークン有）なら、
+  // 申請制ジャンルでも認可付きでスレ作成が可能に。
+  const isAdmin = admin;
   // 申請制として扱うか（申請制ジャンル かつ 管理者でない）
   const restricted = !!board.submitOnly && !isAdmin;
+
+  // 並び替え後のスレッド一覧
+  const sortedThreads = [...threads].sort((a, b) => {
+    if (sort === 'count') return b.post_count - a.post_count;
+    if (sort === 'buzz') return buzzScore(b) - buzzScore(a);
+    return new Date(b.last_posted_at).getTime() - new Date(a.last_posted_at).getTime();
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,16 +153,35 @@ export default function BoardThreadList() {
       return;
     }
     setSubmitting(true);
-    const { data, error } = await createThread(board.slug, title.trim(), name.trim(), body.trim());
-    setSubmitting(false);
+    // 申請制ジャンルへのスレ作成は管理者のみ＝認可付き RPC を使う。
+    // 通常ジャンルは従来どおり anon の create_thread。
+    const { data, error } =
+      board.submitOnly && isAdmin
+        ? await adminCreateThread(board.slug, title.trim(), name.trim(), body.trim())
+        : await createThread(board.slug, title.trim(), name.trim(), body.trim());
     if (error) {
+      setSubmitting(false);
       console.error(error);
       toast.error(boardErrorMessage(error.message));
       return;
     }
+    const newThreadId = data as string;
+    // 画像が選択されていれば、1レス目（OP）に紐付けてアップロード
+    let imageNote = '';
+    if (imagesEnabled && files.length > 0) {
+      const opId = (await getPostId(newThreadId, 1)) ?? undefined;
+      const { error: upErr } = await uploadImages(board.slug, files, { threadId: newThreadId, postId: opId });
+      if (upErr) {
+        toast.error(upErr);
+      } else {
+        imageNote = requireApproval ? '（画像は承認後に表示されます）' : '（画像を添付しました）';
+      }
+      setFiles([]);
+    }
+    setSubmitting(false);
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
-    toast.success('スレッドを立てました');
-    navigate(`/thread/${data as string}`);
+    toast.success('スレッドを立てました' + imageNote);
+    navigate(`/thread/${newThreadId}`);
   };
 
   const handleApply = async (e: React.FormEvent) => {
@@ -150,16 +221,37 @@ export default function BoardThreadList() {
       <main className="max-w-[1080px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
         {/* header */}
         <div className="flex items-end justify-between gap-5 flex-wrap mb-5">
-          <div>
-            <span className="text-xs font-extrabold tracking-[0.2em] text-[#a78bfa] uppercase">Community Board</span>
-            <h1 className="font-black text-3xl md:text-[44px] leading-tight mt-2">掲示板</h1>
+          <div className="flex items-end gap-4 flex-wrap">
+            <div>
+              <span className="text-xs font-extrabold tracking-[0.2em] text-[#a78bfa] uppercase">Community Board</span>
+              <h1 className="font-black text-3xl md:text-[44px] leading-tight mt-2">掲示板</h1>
+            </div>
+            {/* 掲示板内検索 */}
+            <form
+              onSubmit={onBoardSearch}
+              className="flex items-center gap-2 rounded-full px-3.5 py-2 mb-1"
+              style={{
+                background: 'rgba(255,255,255,.05)',
+                border: '1px solid rgba(255,255,255,.12)',
+                width: 'clamp(180px,26vw,280px)',
+              }}
+            >
+              <Search size={15} className="flex-none opacity-50" />
+              <input
+                value={boardQuery}
+                onChange={(e) => setBoardQuery(e.target.value)}
+                placeholder="掲示板内を検索…"
+                className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/35"
+              />
+            </form>
           </div>
           <button
             onClick={() => setShowForm((v) => !v)}
-            className="flex-none text-sm font-extrabold px-5 py-3 rounded-full text-white inline-flex items-center gap-1.5 hover:-translate-y-px transition-transform"
+            className="flex-none text-sm font-extrabold px-5 py-3 rounded-full inline-flex items-center gap-1.5 hover:-translate-y-px transition-transform"
             style={{
               background: showForm ? 'rgba(255,255,255,.1)' : 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
               boxShadow: showForm ? 'none' : '0 4px 18px rgba(255,45,149,.4)',
+              color: showForm ? '#fff' : '#fff',
             }}
           >
             {showForm ? (
@@ -190,7 +282,7 @@ export default function BoardThreadList() {
                 className="flex-none flex items-center gap-2 px-5 py-2.5 rounded-[13px] text-sm font-extrabold whitespace-nowrap transition-colors"
                 style={{
                   border: `1px solid ${active ? c : 'rgba(255,255,255,.1)'}`,
-                  background: active ? `${c}1f` : 'rgba(255,255,255,.03)',
+                  background: active ? `${c}1f` : 'rgba(255,255,255,.05)',
                   color: active ? '#fff' : 'rgba(244,238,248,.65)',
                 }}
               >
@@ -204,8 +296,8 @@ export default function BoardThreadList() {
         {/* form: 申請制（鯖別・非管理者）は申請フォーム、それ以外は通常のスレ作成フォーム */}
         {showForm && restricted && (
           <form onSubmit={handleApply} className="rounded-2xl border border-[#a78bfa]/25 bg-[#a78bfa]/[0.06] p-6 mb-7 space-y-4">
-            <p className="text-[13px] text-white/70 leading-relaxed">
-              このジャンルは<strong className="text-[#a78bfa]">申請制</strong>です。掲載したいGTARPサーバーの情報を送信してください。管理者が内容を確認のうえ、専用スレッドを作成します（過疎・架空サーバーの乱立を防ぐため厳選しています）。
+            <p className="text-[13px] text-white/60 leading-relaxed">
+              このジャンルは<strong className="text-[#a78bfa]">申請制</strong>です。掲載したいGTARPサーバーの情報を送信してください。管理者が内容を確認のうえ、専用スレッドを作成します（架空サーバー等の乱立を防ぐため厳選しています）。
             </p>
             <div>
               <label className="block text-sm font-bold text-[#a78bfa] mb-2">サーバー名 *</label>
@@ -248,6 +340,49 @@ export default function BoardThreadList() {
               <label className="block text-sm font-bold text-[#a78bfa] mb-2">本文（1レス目）*</label>
               <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="本文を入力…" rows={5} maxLength={MAX_BODY} className={inputClass} />
             </div>
+
+            {/* 画像添付（画像有効カテゴリのみ） */}
+            {imagesEnabled && (
+              <div>
+                <label className="block text-sm font-bold text-[#a78bfa] mb-2">
+                  画像（任意・jpg/png/webp・最大3枚{requireApproval ? '・承認後に表示' : ''}）
+                </label>
+                {files.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {files.map((f, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 text-[11px] text-white/70 bg-white/[0.06] border border-white/10 rounded-lg px-2 py-1"
+                      >
+                        {f.name.length > 20 ? f.name.slice(0, 18) + '…' : f.name}
+                        <button
+                          type="button"
+                          onClick={() => setFiles((prev) => prev.filter((_, idx) => idx !== i))}
+                          className="text-white/40 hover:text-[#ff8fc0]"
+                        >
+                          <X size={12} />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#a78bfa] border border-white/15 rounded-lg px-3 py-2 transition-colors">
+                  <ImagePlus size={16} /> 画像を選ぶ
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => {
+                      const picked = Array.from(e.target.files ?? []);
+                      setFiles((prev) => [...prev, ...picked].slice(0, 3));
+                      e.target.value = '';
+                    }}
+                  />
+                </label>
+              </div>
+            )}
+
             <button
               type="submit"
               disabled={submitting}
@@ -262,9 +397,33 @@ export default function BoardThreadList() {
         {/* 申請制の案内（フォーム未展開時・非管理者） */}
         {restricted && !showForm && (
           <div className="rounded-xl border border-[#a78bfa]/25 bg-[#a78bfa]/[0.06] px-4 py-3 mb-6">
-            <p className="text-[13px] text-white/70 leading-relaxed">
+            <p className="text-[13px] text-white/60 leading-relaxed">
               ※ このジャンルは申請制です。スレッドは管理者が作成します。掲載を希望する場合は「掲載を申請する」からお送りください。
             </p>
+          </div>
+        )}
+
+        {/* 並び替え */}
+        {!loading && threads.length > 0 && (
+          <div className="flex items-center justify-end gap-2 mb-4 flex-wrap">
+            <span className="text-[12px] font-bold text-white/45">並び替え</span>
+            {SORTS.map((s) => {
+              const active = sort === s.key;
+              return (
+                <button
+                  key={s.key}
+                  onClick={() => setSort(s.key)}
+                  className="text-[12.5px] font-extrabold px-3.5 py-1.5 rounded-full transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#a78bfa' : 'rgba(255,255,255,.12)'}`,
+                    background: active ? 'rgba(167,139,250,.12)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
+                  }}
+                >
+                  {s.label}
+                </button>
+              );
+            })}
           </div>
         )}
 
@@ -275,14 +434,14 @@ export default function BoardThreadList() {
           </div>
         ) : threads.length > 0 ? (
           <div className="flex flex-col gap-2.5">
-            {threads.map((t) => (
+            {sortedThreads.map((t) => (
               <a
                 key={t.id}
                 href={`/thread/${t.id}`}
-                className="flex items-center gap-3.5 w-full rounded-2xl border border-white/[0.08] bg-white/[0.035] p-[15px] hover:bg-white/[0.06] transition-colors"
+                className="flex items-center gap-3.5 w-full rounded-2xl border border-black/10 bg-white p-[15px] shadow-sm hover:shadow-md transition-shadow"
                 style={{ ['--h' as string]: '' }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(167,139,250,.45)')}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(167,139,250,.55)')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(0,0,0,.1)')}
               >
                 <span
                   className="w-[42px] h-[42px] rounded-xl flex-none flex items-center justify-center vice-display text-lg text-white"
@@ -291,8 +450,8 @@ export default function BoardThreadList() {
                   {t.title.trim().charAt(0) || '?'}
                 </span>
                 <span className="flex flex-col gap-1.5 min-w-0 flex-1">
-                  <span className="text-[15px] font-bold text-[#f4eef8] truncate">{t.title}</span>
-                  <span className="text-[12px] text-white/50 flex items-center gap-2 flex-wrap">
+                  <span className="text-[15px] font-bold text-[#15091c] truncate">{t.title}</span>
+                  <span className="text-[12px] text-black/50 flex items-center gap-2 flex-wrap">
                     <span className="font-bold" style={{ color: boardColor(board.accent) }}>
                       {board.title.replace('掲示板', '')}
                     </span>
@@ -301,8 +460,8 @@ export default function BoardThreadList() {
                   </span>
                 </span>
                 <span className="flex flex-col items-center gap-0.5 flex-none">
-                  <span className="vice-num text-[19px] text-[#f4eef8] leading-none">{t.post_count}</span>
-                  <span className="text-[10px] text-white/45">レス</span>
+                  <span className="vice-num text-[19px] text-[#15091c] leading-none">{t.post_count}</span>
+                  <span className="text-[10px] text-black/45">レス</span>
                 </span>
               </a>
             ))}

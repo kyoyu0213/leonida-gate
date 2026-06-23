@@ -18,7 +18,7 @@ export default function Terms() {
           <section>
             <h2 className={h2}>1. はじめに</h2>
             <p className={p}>
-              VICE HUB（以下「当サイト」）は、Grand Theft Auto VI（GTA6）および FiveM / GTA RP
+              GTA6 FEED（以下「当サイト」）は、Grand Theft Auto VI（GTA6）および FiveM / GTA RP
               に関する情報発信と、プレイヤー同士の交流を目的とした非公式のファンコミュニティサイトです。
               Rockstar Games、Take-Two Interactive をはじめとする各権利者とは一切関係がありません。
               当サイトをご利用いただいた時点で、本規約に同意したものとみなします。
@@ -26,9 +26,9 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className={h2}>2. 投稿について（掲示板・サーバー掲示板）</h2>
+            <h2 className={h2}>2. 投稿について（掲示板・サーバー募集板）</h2>
             <p className={`${p} mb-3`}>
-              当サイトの掲示板およびサーバー掲示板は、どなたでも投稿できます。投稿にあたっては、次の行為を禁止します。
+              当サイトの掲示板およびサーバー募集板は、どなたでも投稿できます。投稿にあたっては、次の行為を禁止します。
             </p>
             <ul className="list-disc pl-6 space-y-1.5">
               <li className={li}>法令または公序良俗に反する行為</li>
@@ -41,7 +41,7 @@ export default function Terms() {
               <li className={li}>サーバーへの攻撃・不正アクセスを助長する行為</li>
             </ul>
             <p className={`${p} mt-3`}>
-              サーバー掲示板への掲載は運営の承認制です。交流掲示板は即時投稿ですが、運営は予告なく投稿を削除・非表示にし、
+              サーバー募集板への掲載は運営の承認制です。交流掲示板は即時投稿ですが、運営は予告なく投稿を削除・非表示にし、
               または特定の利用者の投稿を制限することができます。禁止ワードの自動フィルタや連投制限を設けています。
             </p>
           </section>
@@ -69,7 +69,7 @@ export default function Terms() {
             <h2 className={h2}>4. 免責事項</h2>
             <ul className="list-disc pl-6 space-y-1.5">
               <li className={li}>
-                掲示板・サーバー掲示板の投稿内容は各投稿者の責任に基づくものであり、当サイトはその正確性・安全性・適法性を保証しません。
+                掲示板・サーバー募集板の投稿内容は各投稿者の責任に基づくものであり、当サイトはその正確性・安全性・適法性を保証しません。
               </li>
               <li className={li}>
                 掲載されたサーバーへの参加や、利用者間で生じたトラブルについて、当サイトは一切の責任を負いません。自己責任でご利用ください。
@@ -115,7 +115,7 @@ export default function Terms() {
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
         </div>
       </footer>
     </div>

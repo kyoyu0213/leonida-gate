@@ -3,8 +3,9 @@ import { Plus, X, Send, Server as ServerIcon, Loader2, Search } from 'lucide-rea
 import Header from '@/components/Header';
 import ServerCard from '@/components/ServerCard';
 import { toast } from 'sonner';
-import { supabase, type FivemServer } from '@/lib/supabase';
-import { listApprovedServers } from '@/lib/servers';
+import { type FivemServer } from '@/lib/supabase';
+import { listApprovedServers, createFivemServer } from '@/lib/servers';
+import { boardErrorMessage } from '@/lib/board';
 
 const SERVER_TYPES = [
   { id: 'all', label: 'すべて' },
@@ -95,7 +96,7 @@ export default function ServerBoard() {
       .filter(Boolean)
       .slice(0, 8);
 
-    const { error } = await supabase.from('fivem_servers').insert({
+    const { error } = await createFivemServer({
       name: form.name.trim(),
       description: form.description.trim(),
       type: form.type,
@@ -108,12 +109,13 @@ export default function ServerBoard() {
 
     if (error) {
       console.error('投稿に失敗:', error);
-      toast.error('投稿に失敗しました。時間をおいて再度お試しください');
+      toast.error(boardErrorMessage(error.message));
       return;
     }
-    toast.success('申請を受け付けました！運営の承認後に掲載されます');
+    toast.success('サーバーを掲載しました！');
     setForm(emptyForm);
     setShowForm(false);
+    loadServers();
   };
 
   return (
@@ -127,17 +129,18 @@ export default function ServerBoard() {
             <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">
               FiveM Server Recruit
             </span>
-            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">FiveMサーバー掲示板</h1>
+            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">FiveMサーバー募集板</h1>
             <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
-              日本のFiveM RPサーバーを探せる掲示板。あなたのサーバーを掲載して、バイスシティで一緒に遊ぶ仲間を見つけよう。掲載は運営の承認制です。
+              日本のFiveM RPサーバーを探せる掲示板。あなたのサーバーを掲載して、バイスシティで一緒に遊ぶ仲間を見つけよう。どなたでも掲載できます。
             </p>
           </div>
           <button
             onClick={() => setShowForm((v) => !v)}
-            className="flex-none text-sm font-extrabold px-[22px] py-3 rounded-full text-white inline-flex items-center gap-1.5 hover:-translate-y-px transition-transform"
+            className="flex-none text-sm font-extrabold px-[22px] py-3 rounded-full inline-flex items-center gap-1.5 hover:-translate-y-px transition-transform"
             style={{
               background: showForm ? 'rgba(255,255,255,.1)' : 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
               boxShadow: showForm ? 'none' : '0 4px 20px rgba(255,45,149,.4)',
+              color: showForm ? '#fff' : '#fff',
             }}
           >
             {showForm ? (<><X size={16} /> 閉じる</>) : (<><Plus size={16} strokeWidth={3} /> 掲載する</>)}
@@ -148,7 +151,7 @@ export default function ServerBoard() {
         {showForm && (
           <div className="mt-6 rounded-2xl border border-[#ff2d95]/25 bg-[#ff2d95]/[0.05] p-6">
             <h2 className="text-xl font-black text-white mb-1">サーバーを掲載する</h2>
-            <p className="text-[13px] text-white/55 mb-5">投稿は運営の承認後に掲載されます（スパム防止のため）。</p>
+            <p className="text-[13px] text-white/60 mb-5">投稿するとすぐに掲載されます。不適切な掲載は運営が削除する場合があります。</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-bold text-[#22d3ee] mb-2">サーバー名 *</label>
@@ -220,8 +223,8 @@ export default function ServerBoard() {
                 className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
                 style={{
                   border: `1px solid ${active ? '#ff2d95' : 'rgba(255,255,255,.14)'}`,
-                  background: active ? 'rgba(255,45,149,.13)' : 'rgba(255,255,255,.03)',
-                  color: active ? '#fff' : 'rgba(244,238,248,.7)',
+                  background: active ? 'rgba(255,45,149,.13)' : 'rgba(255,255,255,.05)',
+                  color: active ? '#fff' : 'rgba(244,238,248,.65)',
                 }}
               >
                 {t.label}
@@ -241,8 +244,8 @@ export default function ServerBoard() {
                   className="text-[12px] font-bold px-3 py-1.5 rounded-full transition-colors"
                   style={{
                     border: `1px solid ${active ? '#a78bfa' : 'rgba(255,255,255,.12)'}`,
-                    background: active ? 'rgba(167,139,250,.15)' : 'rgba(255,255,255,.03)',
-                    color: active ? '#fff' : 'rgba(244,238,248,.6)',
+                    background: active ? 'rgba(167,139,250,.15)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
                   }}
                 >
                   #{tag}
@@ -292,7 +295,7 @@ export default function ServerBoard() {
                       setSelectedType('all');
                       setSelectedTags([]);
                     }}
-                    className="text-white font-bold px-6 py-3 rounded-full bg-white/10 border border-white/15 hover:bg-white/15 transition-colors"
+                    className="text-[#f4eef8] font-bold px-6 py-3 rounded-full bg-white/[0.05] border border-white/15 hover:bg-white/10 transition-colors"
                   >
                     フィルターをリセット
                   </button>
@@ -305,7 +308,7 @@ export default function ServerBoard() {
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 VICE HUB
+          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
         </div>
       </footer>
     </div>

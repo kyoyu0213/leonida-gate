@@ -19,7 +19,18 @@ export interface BoardPost {
   name: string;
   body: string;
   created_at: string;
+  hidden: boolean;
 }
+
+/** 通報理由の選択肢（report_post の許可集合と一致させること） */
+export const REPORT_REASONS: { value: string; label: string }[] = [
+  { value: 'harassment', label: '誹謗中傷・ハラスメント' },
+  { value: 'personal_info', label: '個人情報・晒し' },
+  { value: 'spam', label: 'スパム・宣伝' },
+  { value: 'obscene', label: 'わいせつ・グロテスク' },
+  { value: 'impersonation', label: '虚偽情報・なりすまし' },
+  { value: 'other', label: 'その他' },
+];
 
 export const DEFAULT_NAME = '名無しさん';
 export const MAX_TITLE = 60;
@@ -51,11 +62,21 @@ export async function getThread(id: string) {
 
 export async function listPosts(threadId: string) {
   // ip 列は意図的に取得しない（匿名ユーザーには公開しない。管理はSupabase管理画面で）
+  // hidden は取得する（非表示投稿は本文を伏せて「あぼーん」表示し、採番は維持する）
   return supabase
     .from('board_posts')
-    .select('id, thread_id, post_number, name, body, created_at')
+    .select('id, thread_id, post_number, name, body, created_at, hidden')
     .eq('thread_id', threadId)
     .order('post_number', { ascending: true });
+}
+
+/** 投稿を通報する（ログイン不要）。reason は REPORT_REASONS の value。 */
+export async function reportPost(postId: string, reason: string, detail: string) {
+  return supabase.rpc('report_post', {
+    p_post_id: postId,
+    p_reason: reason,
+    p_detail: detail || null,
+  });
 }
 
 export async function createThread(board: string, title: string, name: string, body: string) {
@@ -75,10 +96,43 @@ export async function createPost(threadId: string, name: string, body: string) {
   });
 }
 
+/** スレッド内のレス番号から、そのレスの id を取得（画像をレスに紐付けるため）。 */
+export async function getPostId(threadId: string, postNumber: number): Promise<string | null> {
+  const { data } = await supabase
+    .from('board_posts')
+    .select('id')
+    .eq('thread_id', threadId)
+    .eq('post_number', postNumber)
+    .maybeSingle();
+  return (data as { id: string } | null)?.id ?? null;
+}
+
+/** レス本文を全文検索（非表示は除外）。スレタイ・板も一緒に取得。 */
+export async function searchPosts(q: string) {
+  return supabase
+    .from('board_posts')
+    .select('thread_id, post_number, body, created_at, hidden, board_threads!inner(title, board)')
+    .ilike('body', `%${q}%`)
+    .eq('hidden', false)
+    .order('created_at', { ascending: false })
+    .limit(50);
+}
+
+/** スレッドのタイトルを検索。 */
+export async function searchThreads(q: string) {
+  return supabase
+    .from('board_threads')
+    .select('id, title, board, last_posted_at, post_count')
+    .ilike('title', `%${q}%`)
+    .order('last_posted_at', { ascending: false })
+    .limit(50);
+}
+
 /** RPC のエラーメッセージを利用者向けの日本語に変換する */
 export function boardErrorMessage(message?: string): string {
   const m = message ?? '';
   if (m.includes('banned word')) return '禁止ワードが含まれているため投稿できません';
+  if (m.includes('duplicate report')) return 'この投稿はすでに通報済みです';
   if (m.includes('rate limited')) return '連投はできません。少し時間をおいてから投稿してください';
   if (m.includes('thread full')) return 'このスレッドは1000レスに達したため書き込めません';
   return '投稿に失敗しました。時間をおいて再度お試しください';

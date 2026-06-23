@@ -1,7 +1,8 @@
 -- ============================================================================
---  FiveM サーバー掲示板 用テーブル（Supabase）
+--  FiveM サーバー募集板 用テーブル（Supabase）
 --  Supabase ダッシュボード → SQL Editor に貼り付けて Run すれば作成されます。
---  承認制：投稿は approved=false で入り、運営が approved=true にしたものだけ表示。
+--  ★ 承認制は廃止：誰でも投稿でき、投稿は即時掲載される。
+--    （不適切な掲載は運営がダッシュボードから削除する運用）
 -- ============================================================================
 
 create table if not exists public.fivem_servers (
@@ -13,7 +14,7 @@ create table if not exists public.fivem_servers (
   discord_url text,
   language text default '日本語',
   tags text[] not null default '{}',
-  approved boolean not null default false,    -- 承認フラグ（管理者が true にする）
+  approved boolean not null default true,     -- 即時掲載（承認制を廃止）
   created_at timestamptz not null default now()
 );
 
@@ -24,13 +25,21 @@ create index if not exists fivem_servers_approved_created_idx
 -- Row Level Security（行レベルセキュリティ）を有効化
 alter table public.fivem_servers enable row level security;
 
--- 誰でも投稿できる。ただし approved=false でしか登録できない（＝自分で承認は不可）
-create policy "anon can submit unapproved"
+-- ▼ 既存環境を「承認制」から「即時掲載」へ移行するとき（このファイルを作成済みの場合）
+--   下のブロックも一緒に Run してください（新規作成時は上の create だけでOK）。
+alter table public.fivem_servers alter column approved set default true;
+update public.fivem_servers set approved = true where approved = false;  -- 保留中も公開する場合
+
+-- 誰でも投稿でき、即時掲載される
+drop policy if exists "anon can submit unapproved" on public.fivem_servers;
+drop policy if exists "anyone can submit" on public.fivem_servers;
+create policy "anyone can submit"
   on public.fivem_servers for insert
   to anon
-  with check (approved = false);
+  with check (true);
 
--- 承認済みのサーバーだけ、誰でも閲覧できる
+-- 掲載中（approved=true）のサーバーは誰でも閲覧できる
+drop policy if exists "anyone can read approved" on public.fivem_servers;
 create policy "anyone can read approved"
   on public.fivem_servers for select
   to anon
