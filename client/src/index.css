@@ -504,6 +504,33 @@
   color: #7df9ff;
 }
 
+/* テーブル（比較表など） */
+.article-body table {
+  width: 100%;
+  margin: 28px 0;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 245, 255, 0.22);
+}
+.article-body th,
+.article-body td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 14px;
+  text-align: left;
+  line-height: 1.7;
+  vertical-align: top;
+}
+.article-body th {
+  background: rgba(0, 245, 255, 0.08);
+  color: #fff;
+  font-weight: 700;
+}
+.article-body tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.025);
+}
+
 /* 画像：レスポンシブ＋角丸＋ネオン枠、中央寄せ
    ── Streamdownは画像を inline-block の image-wrapper(div) で出力するため、
       ラッパーを block・全幅にしないと width:100% の画像が潰れて消える。 */

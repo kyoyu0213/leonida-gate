@@ -16,6 +16,10 @@ import AdminReports from "./pages/AdminReports";
 import SearchPage from "./pages/Search";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
+import FivemGtarp from "./pages/FivemGtarp";
+import FivemArticle from "./pages/FivemArticle";
+import GtarpArticle from "./pages/GtarpArticle";
+import FivemVsGtarpArticle from "./pages/FivemVsGtarpArticle";
 
 function Router() {
   return (
@@ -28,6 +32,10 @@ function Router() {
         <Route path="/board" component={BoardThreadList} />
         <Route path="/board/:slug" component={BoardThreadList} />
         <Route path="/thread/:id" component={BoardThread} />
+        <Route path="/fivem-gtarp" component={FivemGtarp} />
+        <Route path="/fivem-gtarp/what-is-fivem" component={FivemArticle} />
+        <Route path="/fivem-gtarp/what-is-gtarp" component={GtarpArticle} />
+        <Route path="/fivem-gtarp/fivem-vs-gtarp" component={FivemVsGtarpArticle} />
         <Route path="/admin/reports" component={AdminReports} />
         <Route path="/search" component={SearchPage} />
         <Route path="/terms" component={Terms} />

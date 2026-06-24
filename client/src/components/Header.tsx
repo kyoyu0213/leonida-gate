@@ -7,6 +7,7 @@ const NAV = [
   { label: 'GTA6最新情報', href: '/news', match: (l: string) => l.startsWith('/news') },
   { label: 'FiveMサーバー募集', href: '/servers', match: (l: string) => l.startsWith('/servers') },
   { label: '掲示板', href: '/board', match: (l: string) => l.startsWith('/board') || l.startsWith('/thread') },
+  { label: 'FiveM/GTARP', href: '/fivem-gtarp', match: (l: string) => l.startsWith('/fivem-gtarp') },
   { label: 'お問い合わせ', href: '/contact', match: (l: string) => l.startsWith('/contact') },
 ];
 
