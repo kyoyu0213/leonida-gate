@@ -87,7 +87,7 @@ export default function BoardThread() {
     if (!el) return;
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setHighlight(n);
-    window.setTimeout(() => setHighlight((cur) => (cur === n ? null : cur)), 1600);
+    window.setTimeout(() => setHighlight((cur) => (cur === n ? null : cur)), 3000);
   };
 
   // 本文をレンダリング：>>N をアンカーリンクに変換する
@@ -153,6 +153,18 @@ export default function BoardThread() {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [threadId]);
+
+  // URLの #post-N（管理画面の「投稿へ」等）で開いたら、その投稿へスクロール＆ハイライト
+  const hashJumpedRef = useRef(false);
+  useEffect(() => {
+    if (hashJumpedRef.current || posts.length === 0) return;
+    const m = window.location.hash.match(/^#post-(\d+)$/);
+    if (m) {
+      hashJumpedRef.current = true;
+      window.setTimeout(() => jumpToPost(Number(m[1])), 150);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [posts]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -257,8 +269,12 @@ export default function BoardThread() {
                 <div
                   key={post.id}
                   id={`post-${post.post_number}`}
-                  className="flex gap-3.5 py-[18px] border-b border-white/[0.06] rounded-lg transition-colors"
-                  style={highlight === post.post_number ? { background: 'rgba(34,211,238,.12)' } : undefined}
+                  className="flex gap-3.5 py-[18px] px-3 -mx-3 border-b border-white/[0.06] rounded-lg transition-colors"
+                  style={
+                    highlight === post.post_number
+                      ? { background: 'rgba(34,211,238,.16)', boxShadow: '0 0 0 2px rgba(34,211,238,.55)' }
+                      : undefined
+                  }
                 >
                   <span
                     className="w-10 h-10 rounded-full flex-none flex items-center justify-center font-black text-base text-white"
