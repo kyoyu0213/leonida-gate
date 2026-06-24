@@ -5,7 +5,7 @@ export default function TerminalLoader({ isLoading }: { isLoading: boolean }) {
   const [cursorVisible, setCursorVisible] = useState(true);
 
   const terminalLines = [
-    '> LEONIDA GATE SYSTEM INITIALIZING...',
+    '> GTA6 FEED SYSTEM INITIALIZING...',
     '> Loading cyberpunk environment...',
     '> Connecting to network...',
     '> Decoding GTA6 data streams...',
