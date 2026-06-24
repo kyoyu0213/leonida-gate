@@ -108,6 +108,10 @@ Rockstar Gamesは2026年6月24日、『グランド・セフト・オートVI(GT
 - PlayStation: [PS Store「グランド・セフト・オートVI」](https://www.playstation.com/ja-jp/games/grand-theft-auto-vi/)
 - Xbox: [Microsoft Store「Grand Theft Auto VI」](https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9nl3wwnzlzzn)
 
+あわせて注目したいのが、ストアの製品情報の記載だ。両ストアとも、GTA6を「オフラインプレイ対応」「プレイヤー数1人(シングルプレイヤー)」としている。この表記をそのまま読むなら、少なくとも発売直後の段階ではオンラインマルチプレイは含まれず、まずはシングルプレイヤー体験として届けられる可能性が高い。Rockstarが今回の案内でシングルプレイヤーを前面に出していることとも符合する。
+
+ただし、これはあくまでストア表記とRockstarのアナウンスからのGTA6 FEEDの推測である。オンラインモードの有無や実装時期について、Rockstarからの正式な発表はまだない。GTA Onlineに相当する仕組みが後から追加される可能性も含め、続報を待つ必要がある。
+
 ![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-01.png)
 
 ![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-02.png)
