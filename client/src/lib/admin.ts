@@ -76,12 +76,38 @@ export interface ReportRow {
 }
 
 export async function listReports(): Promise<{ data: ReportRow[]; error?: string }> {
-  const { data, error } = await supabase.rpc('admin_reports', { p_token: adminToken });
-  if (error) {
-    handleAuthError(error.message);
-    return { data: [], error: adminErrorMessage(error.message) };
+  // まず専用RPC（reasons等の詳細つき）を試す。
+  const primary = await supabase.rpc('admin_reports', { p_token: adminToken });
+  if (!primary.error) {
+    return { data: (primary.data as ReportRow[]) ?? [] };
   }
-  return { data: (data as ReportRow[]) ?? [] };
+  handleAuthError(primary.error.message);
+  // セッション切れ等はそのままエラー表示。
+  if ((primary.error.message ?? '').includes('forbidden')) {
+    return { data: [], error: adminErrorMessage(primary.error.message) };
+  }
+  // フォールバック：動作確認済みの admin_list_posts（report_count を持つ）から
+  // 通報数>0 の投稿を抽出して通報一覧を再構成する（reasons は取得できない）。
+  const fb = await supabase.rpc('admin_list_posts', { p_token: adminToken, p_limit: 200 });
+  if (fb.error) {
+    handleAuthError(fb.error.message);
+    return { data: [], error: adminErrorMessage(fb.error.message) };
+  }
+  const rows: ReportRow[] = ((fb.data as AdminPostRow[]) ?? [])
+    .filter((p) => p.report_count > 0)
+    .map((p) => ({
+      post_id: p.id,
+      thread_id: p.thread_id,
+      board: p.board,
+      post_number: p.post_number,
+      body: p.body,
+      hidden: p.hidden,
+      report_count: p.report_count,
+      reasons: [],
+      last_reported_at: p.created_at,
+      status: 'open',
+    }));
+  return { data: rows };
 }
 
 export async function setPostHidden(postId: string, hidden: boolean, reason?: string) {
