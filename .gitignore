@@ -114,3 +114,6 @@ client/public/__manus__/version.json
 
 # デザインのモック参照（公開サイトには含めない / ローカル参照用）
 client/public/sample/
+
+# 未使用の貼り付けスクリーンショット（記事では使用しない）
+client/public/images/news/edition/スクリーンショット *.png
