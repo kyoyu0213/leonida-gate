@@ -71,7 +71,7 @@ export const newsArticles: NewsArticle[] = [
   {
     id: 19,
     title:
-      "GTA6のエディションと予約特典まとめ——6月25日予約開始、Standard 79.99ドル／Ultimate 99.99ドルで公式確定",
+      "GTA6のエディションと予約特典まとめ——6月25日0時予約開始、Standard 79.99ドル／Ultimate 99.99ドルで公式確定",
     description:
       "Rockstarが6/24に公式発表。GTA6はStandard 79.99ドル／Ultimate 99.99ドル、予約開始は6/25。全員特典「Vintage Vice City Pack」やUltimate限定コンテンツ、注意点まで整理する。",
     icon: "💰",
@@ -81,7 +81,7 @@ export const newsArticles: NewsArticle[] = [
     source: "GTA6 FEED 編集部",
     sourceUrl: "https://www.rockstargames.com/VI",
     relatedArticles: [17, 18, 1],
-    fullContent: `# GTA6のエディションと予約特典まとめ——6月25日予約開始、Standard 79.99ドル／Ultimate 99.99ドルで公式確定
+    fullContent: `# GTA6のエディションと予約特典まとめ——6月25日0時予約開始、Standard 79.99ドル／Ultimate 99.99ドルで公式確定
 
 Rockstar Gamesは2026年6月24日、『グランド・セフト・オートVI(GTA6)』のエディション構成・価格・予約特典を公式サイトとNewswireで正式に発表した。6月25日の予約開始を翌日に控え、これまでリークと噂が飛び交っていた価格やエディション内容が、ようやく確定情報として出そろった。GTA6 FEEDが、公式発表をもとに要点を整理した。
 
@@ -96,6 +96,16 @@ Rockstar Gamesは2026年6月24日、『グランド・セフト・オートVI(GT
 - **発売日**: 2026年11月19日。対応機種はPS5とXbox Series X|S。Rockstarはシングルプレイヤー体験として案内している。
 - **予約開始**: 2026年6月25日、現地時間の深夜0時から。PlayStation Store、Microsoft Store、Rockstar Games Storeなどのデジタルストアと一部小売で受付。
 - **プレロード**: 11月12日から。発売の1週間前にあたり、デジタル版・物理版いずれも同日からダウンロードを開始できる。
+
+---
+
+## PlayStation Store(SONY)で予約開始を確認
+
+予約解禁にあたる2026年6月25日0時、PlayStation Store(SONYストア)でGTA6の予約ページが公開され、実際に予約できる状態になっていることをGTA6 FEEDが確認した。Standard Edition・Ultimate Editionの両方が掲載され、予約特典の表記も確認できる。
+
+![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-01.png)
+
+![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-02.png)
 
 ---
 
