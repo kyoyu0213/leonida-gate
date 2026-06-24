@@ -1,6 +1,6 @@
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calendar, Tag, Share2, ExternalLink } from 'lucide-react';
+import { Calendar, Tag, Share2, ExternalLink } from 'lucide-react';
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
@@ -64,16 +64,6 @@ export default function NewsDetail() {
   return (
     <div className="min-h-screen bg-background text-foreground pt-16">
       <Header />
-
-      {/* Back Button */}
-      <div className="sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b border-cyan-500/30">
-        <div className="container py-4">
-          <a href="/" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-mono">
-            <ArrowLeft size={16} />
-            ホームに戻る
-          </a>
-        </div>
-      </div>
 
       {/* Article Content */}
       <article className="article-container">
