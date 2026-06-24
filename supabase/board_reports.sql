@@ -91,7 +91,7 @@ begin
   select coalesce(json_agg(row_to_json(x)), '[]'::json) into result
   from (
     select r.post_id,
-           max(r.thread_id)                       as thread_id,
+           max(r.thread_id::text)::uuid           as thread_id,  -- uuidにmax()は無いのでtext経由
            max(t.board)                           as board,
            max(p.post_number)                     as post_number,
            coalesce(max(p.body), '(削除済みの投稿)') as body,
