@@ -103,6 +103,11 @@ Rockstar Gamesは2026年6月24日、『グランド・セフト・オートVI(GT
 
 予約解禁にあたる2026年6月25日0時、PlayStation Store(SONYストア)でGTA6の予約ページが公開され、実際に予約できる状態になっていることをGTA6 FEEDが確認した。Standard Edition・Ultimate Editionの両方が掲載され、予約特典の表記も確認できる。
 
+予約は各ストアの公式ページから行える。
+
+- PlayStation: [PS Store「グランド・セフト・オートVI」](https://www.playstation.com/ja-jp/games/grand-theft-auto-vi/)
+- Xbox: [Microsoft Store「Grand Theft Auto VI」](https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9nl3wwnzlzzn)
+
 ![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-01.png)
 
 ![PlayStation Store(SONY)のGTA6予約ページ](/images/news/edition/sonystore-yoyaku-02.png)
