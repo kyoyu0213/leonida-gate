@@ -4,11 +4,14 @@ import Header from '@/components/Header';
 import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
 import { uploadRawImages } from '@/lib/images';
+import { getAnonId } from '@/lib/board';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);
+  // ハニーポット（人間には見えない・ボット対策）
+  const [hp, setHp] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -17,6 +20,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!formData.name || !formData.message) {
       toast.error('お名前とお問い合わせ内容を入力してください');
       return;
@@ -38,15 +42,21 @@ export default function Contact() {
       }
       imagePaths = paths;
     }
-    const { error } = await supabase.from('contacts').insert({
-      name: formData.name.trim(),
-      email: formData.email.trim() || null,
-      message: formData.message.trim(),
-      images: imagePaths,
+    // 直接 insert ではなく RPC 経由（連投制限・ブロック・メタ保存はサーバー側）
+    const { error } = await supabase.rpc('create_contact', {
+      p_name: formData.name.trim(),
+      p_email: formData.email.trim() || null,
+      p_message: formData.message.trim(),
+      p_images: imagePaths,
+      p_anon_id: getAnonId(),
+      p_hp: hp,
     });
     setSending(false);
     if (error) {
-      toast.error('送信に失敗しました。時間をおいて再度お試しください');
+      const m = error.message ?? '';
+      if (m.includes('rate limited')) toast.error('送信の間隔が短すぎます。少し時間をおいてからお試しください');
+      else if (m.includes('blocked')) toast.error('現在送信できません');
+      else toast.error('送信に失敗しました。時間をおいて再度お試しください');
       return;
     }
     toast.success('メッセージを送信しました！');
@@ -75,6 +85,17 @@ export default function Contact() {
 
         <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
           <form onSubmit={handleSubmit} className="space-y-4">
+            {/* ハニーポット（人間には見えない・ボット対策） */}
+            <input
+              type="text"
+              name="hp_url"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+            />
             <div>
               <label className="block text-sm font-bold text-[#22d3ee] mb-2">お名前</label>
               <input name="name" type="text" placeholder="お名前（ハンドルネーム可）" value={formData.name} onChange={handleInputChange} className={inputClass} />

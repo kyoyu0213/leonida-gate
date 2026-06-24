@@ -27,9 +27,10 @@ export function isLoggedIn(): boolean {
 /** 合言葉でログイン。成功すればトークンをメモリに保持する。 */
 export async function login(secret: string): Promise<{ ok: boolean; error?: string }> {
   const { data, error } = await supabase.rpc('admin_login', { p_secret: secret });
-  if (error || !data) {
-    return { ok: false, error: adminErrorMessage(error?.message) };
-  }
+  // admin_login は失敗時に例外ではなく NULL を返す（失敗ログを残すため）。
+  // error は通信/タイムアウト等、data が空は合言葉不一致。
+  if (error) return { ok: false, error: adminErrorMessage(error.message) };
+  if (!data) return { ok: false, error: '合言葉が違います' };
   adminToken = data as string;
   notify();
   return { ok: true };
@@ -46,6 +47,8 @@ export async function logout(): Promise<void> {
 /** RPC のエラーメッセージを管理者向けの日本語に変換する */
 export function adminErrorMessage(message?: string): string {
   const m = message ?? '';
+  if (m.includes('locked'))
+    return 'ログイン試行が多すぎるため一時的にロックされています。しばらく待ってから再度お試しください';
   if (m.includes('too many attempts'))
     return '試行回数が多すぎます。しばらく待ってから再度お試しください';
   if (m.includes('forbidden')) return '合言葉が違うか、セッションの有効期限が切れています';
@@ -319,6 +322,10 @@ export interface ContactRow {
   email: string | null;
   message: string;
   images: string[] | null;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
   created_at: string;
 }
 
@@ -421,6 +428,10 @@ export interface ApplicationRow {
   contact: string | null;
   applicant: string | null;
   approved: boolean;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
   created_at: string;
 }
 
@@ -445,6 +456,38 @@ export async function approveApplication(id: string) {
 
 export async function deleteApplication(id: string) {
   const { error } = await supabase.rpc('admin_delete_application', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+// ---- FiveMサーバー募集板（fivem_servers）の管理 ----
+export interface FivemServerRow {
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  connect_info: string | null;
+  discord_url: string | null;
+  language: string | null;
+  tags: string[] | null;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
+  created_at: string;
+}
+
+export async function listFivemServers(): Promise<{ data: FivemServerRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_fivem_servers', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as FivemServerRow[]) ?? [] };
+}
+
+export async function deleteFivemServer(id: string) {
+  const { error } = await supabase.rpc('admin_delete_fivem_server', { p_token: adminToken, p_id: id });
   if (error) handleAuthError(error.message);
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }

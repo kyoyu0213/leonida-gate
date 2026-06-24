@@ -63,6 +63,8 @@ export default function BoardThreadList() {
   const [name, setName] = useState('');
   const [body, setBody] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  // ハニーポット（ボット対策）
+  const [hp, setHp] = useState('');
 
   // 申請制（GTARP鯖別）用フォーム
   const [app, setApp] = useState({ server_name: '', description: '', contact: '', applicant: '' });
@@ -143,6 +145,7 @@ export default function BoardThreadList() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!title.trim() || !body.trim()) {
       toast.error('スレタイと本文を入力してください');
       return;
@@ -186,13 +189,9 @@ export default function BoardThreadList() {
 
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!app.server_name.trim() || !app.description.trim()) {
       toast.error('サーバー名と説明は必須です');
-      return;
-    }
-    const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
-    if (Date.now() - last < POST_COOLDOWN_MS) {
-      toast.error('申請の間隔が短すぎます。少し待ってください');
       return;
     }
     setSubmitting(true);
@@ -201,14 +200,18 @@ export default function BoardThreadList() {
       description: app.description.trim(),
       contact: app.contact.trim(),
       applicant: app.applicant.trim(),
+      hp,
     });
     setSubmitting(false);
     if (error) {
       console.error(error);
-      toast.error('申請に失敗しました。時間をおいて再度お試しください');
+      const m = error.message ?? '';
+      if (m.includes('rate limited')) toast.error('申請の間隔が短すぎます。少し時間をおいてからお試しください');
+      else if (m.includes('banned word')) toast.error('禁止ワードが含まれているため申請できません');
+      else if (m.includes('blocked')) toast.error('現在申請できません');
+      else toast.error('申請に失敗しました。時間をおいて再度お試しください');
       return;
     }
-    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     toast.success('申請を受け付けました！管理者の確認後にスレッドが作成されます');
     setApp({ server_name: '', description: '', contact: '', applicant: '' });
     setShowForm(false);
@@ -296,6 +299,17 @@ export default function BoardThreadList() {
         {/* form: 申請制（鯖別・非管理者）は申請フォーム、それ以外は通常のスレ作成フォーム */}
         {showForm && restricted && (
           <form onSubmit={handleApply} className="rounded-2xl border border-[#a78bfa]/25 bg-[#a78bfa]/[0.06] p-6 mb-7 space-y-4">
+            {/* ハニーポット（人間には見えない・ボット対策） */}
+            <input
+              type="text"
+              name="hp_url"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+            />
             <p className="text-[13px] text-white/60 leading-relaxed">
               このジャンルは<strong className="text-[#a78bfa]">申請制</strong>です。掲載したいGTARPサーバーの情報を送信してください。管理者が内容を確認のうえ、専用スレッドを作成します（架空サーバー等の乱立を防ぐため厳選しています）。
             </p>
@@ -328,6 +342,17 @@ export default function BoardThreadList() {
 
         {showForm && !restricted && (
           <form onSubmit={handleSubmit} className="rounded-2xl border border-[#a78bfa]/25 bg-[#a78bfa]/[0.06] p-6 mb-7 space-y-4">
+            {/* ハニーポット（人間には見えない・ボット対策） */}
+            <input
+              type="text"
+              name="hp_url"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={hp}
+              onChange={(e) => setHp(e.target.value)}
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+            />
             <div>
               <label className="block text-sm font-bold text-[#a78bfa] mb-2">スレタイ *</label>
               <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="例: 初心者向けのおすすめRPサーバー教えて" maxLength={MAX_TITLE} className={inputClass} />
@@ -382,6 +407,16 @@ export default function BoardThreadList() {
                 </label>
               </div>
             )}
+
+            {/* 注意書き */}
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3 text-[12px] text-white/55 leading-relaxed">
+              <p className="m-0 font-bold text-white/70 mb-1">投稿前にご確認ください</p>
+              <ul className="list-disc pl-5 space-y-0.5 m-0">
+                <li>誹謗中傷・個人情報の晒し・スパム・わいせつ等の投稿は禁止です。</li>
+                <li>違反・不適切な投稿は、予告なく削除・非表示にすることがあります。</li>
+                {imagesEnabled && <li>画像は管理者の承認後に表示されます（即時には公開されません）。</li>}
+              </ul>
+            </div>
 
             <button
               type="submit"

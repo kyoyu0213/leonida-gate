@@ -19,6 +19,8 @@ import {
   listApplications,
   approveApplication,
   deleteApplication,
+  listFivemServers,
+  deleteFivemServer,
   getPostMeta,
   setPostNote,
   listAdminPosts,
@@ -35,6 +37,7 @@ import {
   type PendingImage,
   type ContactRow,
   type ApplicationRow,
+  type FivemServerRow,
   type PostMeta,
   type AdminPostRow,
   type BlockRow,
@@ -361,6 +364,8 @@ function ReportsPanel() {
             <div className="flex flex-wrap gap-2 mt-3">
               <a
                 href={jump}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5 transition-colors"
               >
                 <ExternalLink size={13} /> 投稿へ
@@ -500,6 +505,7 @@ function ContactsPanel() {
   const [rows, setRows] = useState<ContactRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -576,7 +582,13 @@ function ContactsPanel() {
                 })}
               </div>
             )}
-            <div className="flex justify-end mt-2">
+            <div className="flex justify-end gap-2 mt-2">
+              <button
+                onClick={() => setExpanded((cur) => (cur === c.id ? null : c.id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === c.id ? '詳細を閉じる' : '詳細'}
+              </button>
               <button
                 disabled={busy}
                 onClick={() => remove(c.id)}
@@ -585,6 +597,41 @@ function ContactsPanel() {
                 {busy ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />} 削除
               </button>
             </div>
+
+            {expanded === c.id && (
+              <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPアドレス</span><span className="text-white/80 break-all">{c.ip ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPサブネット</span><span className="text-white/80 break-all">{c.ip_subnet ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">匿名Cookie ID</span><span className="text-white/80 break-all">{c.anon_id ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">User-Agent</span><span className="text-white/80 break-all">{c.ua ?? '—'}</span></div>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {c.ip && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm(`IP ${c.ip} をブロックします。よろしいですか？`)) return;
+                        const { error } = await addBlock('ip', c.ip!, 'お問い合わせから');
+                        toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このIPをブロック
+                    </button>
+                  )}
+                  {c.anon_id && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+                        const { error } = await addBlock('anon', c.anon_id!, 'お問い合わせから');
+                        toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このCookieをブロック
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         );
       })}
@@ -596,6 +643,7 @@ function ApplicationsPanel() {
   const [rows, setRows] = useState<ApplicationRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -706,7 +754,187 @@ function ApplicationsPanel() {
               >
                 <Trash2 size={13} /> {a.approved ? '削除' : '却下'}
               </button>
+              <button
+                onClick={() => setExpanded((cur) => (cur === a.id ? null : a.id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === a.id ? '詳細を閉じる' : '詳細'}
+              </button>
             </div>
+
+            {expanded === a.id && (
+              <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPアドレス</span><span className="text-white/80 break-all">{a.ip ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPサブネット</span><span className="text-white/80 break-all">{a.ip_subnet ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">匿名Cookie ID</span><span className="text-white/80 break-all">{a.anon_id ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">User-Agent</span><span className="text-white/80 break-all">{a.ua ?? '—'}</span></div>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {a.ip && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm(`IP ${a.ip} をブロックします。よろしいですか？`)) return;
+                        const { error } = await addBlock('ip', a.ip!, '掲載申請から');
+                        toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このIPをブロック
+                    </button>
+                  )}
+                  {a.anon_id && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+                        const { error } = await addBlock('anon', a.anon_id!, '掲載申請から');
+                        toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このCookieをブロック
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ServersPanel() {
+  const [rows, setRows] = useState<FivemServerRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listFivemServers();
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const remove = async (s: FivemServerRow) => {
+    if (!confirm(`「${s.name}」を募集板から削除します。よろしいですか？`)) return;
+    setBusyId(s.id);
+    const { error } = await deleteFivemServer(s.id);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('削除しました');
+    load();
+  };
+
+  const isUrl = (s: string) => /^https?:\/\//i.test(s);
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">掲載中のサーバーはありません</div>;
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      {rows.map((s) => {
+        const busy = busyId === s.id;
+        return (
+          <div key={s.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+            <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+              <span className="font-extrabold rounded px-2 py-0.5 text-[#22d3ee] border border-[#22d3ee]/40">{s.type || 'RP'}</span>
+              <span className="font-bold text-white text-[14px]">{s.name}</span>
+              {s.language && <span className="text-white/45">{s.language}</span>}
+              <span className="ml-auto text-white/40">{formatPostDate(s.created_at)}</span>
+            </div>
+            <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
+              {s.description}
+            </p>
+            {(s.connect_info || s.discord_url) && (
+              <div className="text-[12px] text-white/60 mt-2 flex flex-col gap-1">
+                {s.connect_info && <span className="break-all">接続: {s.connect_info}</span>}
+                {s.discord_url && (
+                  <span className="break-all">
+                    Discord:{' '}
+                    {isUrl(s.discord_url) ? (
+                      <a href={s.discord_url} target="_blank" rel="noopener noreferrer" className="text-[#22d3ee] hover:underline">{s.discord_url}</a>
+                    ) : (
+                      s.discord_url
+                    )}
+                  </span>
+                )}
+              </div>
+            )}
+            {s.tags && s.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {s.tags.map((t) => (
+                  <span key={t} className="text-[11px] text-white/55 bg-white/[0.05] border border-white/10 rounded px-2 py-0.5">#{t}</span>
+                ))}
+              </div>
+            )}
+            <div className="flex justify-end gap-2 mt-3">
+              <button
+                onClick={() => setExpanded((cur) => (cur === s.id ? null : s.id))}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                <Info size={13} /> {expanded === s.id ? '詳細を閉じる' : '詳細'}
+              </button>
+              <button
+                disabled={busy}
+                onClick={() => remove(s)}
+                className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+              >
+                {busy ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />} 削除
+              </button>
+            </div>
+
+            {expanded === s.id && (
+              <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPアドレス</span><span className="text-white/80 break-all">{s.ip ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPサブネット</span><span className="text-white/80 break-all">{s.ip_subnet ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">匿名Cookie ID</span><span className="text-white/80 break-all">{s.anon_id ?? '—'}</span></div>
+                <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">User-Agent</span><span className="text-white/80 break-all">{s.ua ?? '—'}</span></div>
+                <div className="flex flex-wrap gap-2 mt-1">
+                  {s.ip && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm(`IP ${s.ip} をブロックします。よろしいですか？`)) return;
+                        const { error } = await addBlock('ip', s.ip!, 'サーバー募集から');
+                        toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このIPをブロック
+                    </button>
+                  )}
+                  {s.anon_id && (
+                    <button
+                      onClick={async () => {
+                        if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+                        const { error } = await addBlock('anon', s.anon_id!, 'サーバー募集から');
+                        toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+                      }}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                    >
+                      <Ban size={12} /> このCookieをブロック
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         );
       })}
@@ -777,6 +1005,8 @@ function PostsPanel() {
             <div className="flex flex-wrap gap-2 mt-3">
               <a
                 href={`/thread/${p.thread_id}#post-${p.post_number}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
               >
                 <ExternalLink size={13} /> 投稿へ
@@ -1031,7 +1261,7 @@ function SearchPanel() {
                   {p.body}
                 </p>
                 <div className="flex flex-wrap gap-2 mt-3">
-                  <a href={`/thread/${p.thread_id}#post-${p.post_number}`} className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5">
+                  <a href={`/thread/${p.thread_id}#post-${p.post_number}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5">
                     <ExternalLink size={13} /> 投稿へ
                   </a>
                   <button
@@ -1138,6 +1368,8 @@ function NewsCommentsPanel() {
             <div className="flex flex-wrap gap-2 mt-3">
               <a
                 href={`/news/${c.article_id}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
               >
                 <ExternalLink size={13} /> 記事へ
@@ -1276,8 +1508,8 @@ function SearchLogsPanel() {
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'news' | 'blocks'
-  >('reports');
+    'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
+  >('news');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
     reports: '通報',
@@ -1287,6 +1519,7 @@ export default function AdminReports() {
     images: '画像承認',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
+    servers: 'サーバー募集',
     news: '記事コメント',
     blocks: 'ブロック',
   } as const;
@@ -1313,7 +1546,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['reports', 'posts', 'search', 'searchlog', 'images', 'contacts', 'applications', 'news', 'blocks'] as const).map((t) => (
+              {(['news', 'servers', 'posts', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1342,6 +1575,8 @@ export default function AdminReports() {
               <ContactsPanel />
             ) : tab === 'applications' ? (
               <ApplicationsPanel />
+            ) : tab === 'servers' ? (
+              <ServersPanel />
             ) : tab === 'news' ? (
               <NewsCommentsPanel />
             ) : (

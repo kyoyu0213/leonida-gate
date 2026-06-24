@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { getAnonId } from './board';
 
 // 承認済みのFiveMサーバーを新しい順に取得。limit を渡すと件数を絞る（Topのプレビュー用）。
 export async function listApprovedServers(limit?: number) {
@@ -21,6 +22,7 @@ export async function createFivemServer(s: {
   discord_url: string | null;
   language: string | null;
   tags: string[];
+  hp: string; // ハニーポット（人間は空）
 }) {
   return supabase.rpc('create_fivem_server', {
     p_name: s.name,
@@ -30,5 +32,7 @@ export async function createFivemServer(s: {
     p_discord_url: s.discord_url,
     p_language: s.language,
     p_tags: s.tags,
+    p_anon_id: getAnonId(),
+    p_hp: s.hp,
   });
 }

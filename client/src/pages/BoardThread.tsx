@@ -55,6 +55,8 @@ export default function BoardThread() {
   const [body, setBody] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [reported, setReported] = useState<Set<string>>(loadReported);
+  // ハニーポット（ボット対策・人間には見えない。埋まっていたら送信しない）
+  const [hp, setHp] = useState('');
 
   // 画像投稿（②）。board の images_enabled が true のときだけ入口を出す（デフォルト false）。
   const [imagesEnabled, setImagesEnabled] = useState(false);
@@ -168,6 +170,7 @@ export default function BoardThread() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (hp) return; // ハニーポットが埋まっている＝ボット。静かに無視。
     if (!threadId) return;
     if (!body.trim()) {
       toast.error('本文を入力してください');
@@ -348,10 +351,26 @@ export default function BoardThread() {
                 このスレッドは1000レスに到達したため書き込めません。新しいスレを立ててください。
               </div>
             ) : (
+              <>
+                <p className="text-[11px] text-white/40 text-center mb-1.5 px-2 leading-relaxed">
+                  誹謗中傷・個人情報の晒し・スパム等は禁止。違反投稿は予告なく削除・非表示にされます
+                  {imagesEnabled ? '（画像は承認後に表示）' : ''}。
+                </p>
               <form
                 onSubmit={handleSubmit}
                 className="rounded-2xl border border-white/15 bg-white/[0.06] p-2.5 backdrop-blur-md"
               >
+                {/* ハニーポット（人間には見えない。ボットが埋めると送信を弾く） */}
+                <input
+                  type="text"
+                  name="hp_url"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                  style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+                />
                 {/* 選択中の画像プレビュー（画像有効カテゴリのみ） */}
                 {imagesEnabled && files.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-2 px-1">
@@ -415,6 +434,7 @@ export default function BoardThread() {
                 </button>
                 </div>
               </form>
+              </>
             )}
           </div>
         </div>

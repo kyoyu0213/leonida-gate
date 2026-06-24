@@ -78,24 +78,9 @@ function vitePluginManusDebugCollector(): Plugin {
   return {
     name: "manus-debug-collector",
 
-    transformIndexHtml(html) {
-      if (process.env.NODE_ENV === "production") {
-        return html;
-      }
-      return {
-        html,
-        tags: [
-          {
-            tag: "script",
-            attrs: {
-              src: "/__manus__/debug-collector.js",
-              defer: true,
-            },
-            injectTo: "head",
-          },
-        ],
-      };
-    },
+    // NOTE: 以前は dev 時に /__manus__/debug-collector.js を <script> 注入していたが、
+    // 当該ファイルは削除済み（本番で静的配信されるのを避けるため）。注入も廃止。
+    // 以下の /__manus__/logs エンドポイントは dev 専用で、本番ビルドには含まれない。
 
     configureServer(server: ViteDevServer) {
       // POST /__manus__/logs: Browser sends logs (written directly to files)

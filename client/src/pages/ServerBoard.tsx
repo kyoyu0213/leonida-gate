@@ -38,6 +38,8 @@ export default function ServerBoard() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [submitting, setSubmitting] = useState(false);
+  // ハニーポット（人間には見えない・ボット対策）
+  const [hp, setHp] = useState('');
 
   const loadServers = async () => {
     setLoading(true);
@@ -81,6 +83,7 @@ export default function ServerBoard() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!form.name.trim() || !form.description.trim()) {
       toast.error('サーバー名と説明は必須です');
       return;
@@ -104,6 +107,7 @@ export default function ServerBoard() {
       discord_url: form.discord_url.trim() || null,
       language: form.language.trim() || null,
       tags,
+      hp,
     });
     setSubmitting(false);
 
@@ -153,6 +157,17 @@ export default function ServerBoard() {
             <h2 className="text-xl font-black text-white mb-1">サーバーを掲載する</h2>
             <p className="text-[13px] text-white/60 mb-5">投稿するとすぐに掲載されます。不適切な掲載は運営が削除する場合があります。</p>
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* ハニーポット（人間には見えない・ボット対策） */}
+              <input
+                type="text"
+                name="hp_url"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              />
               <div>
                 <label className="block text-sm font-bold text-[#22d3ee] mb-2">サーバー名 *</label>
                 <input name="name" value={form.name} onChange={handleFormChange} placeholder="例: LEONIDA RP" maxLength={60} className={inputClass} />
