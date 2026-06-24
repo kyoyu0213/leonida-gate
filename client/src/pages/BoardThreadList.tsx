@@ -14,6 +14,8 @@ import {
   MAX_TITLE,
   MAX_BODY,
   POST_COOLDOWN_MS,
+  BOARD_ICONS,
+  boardIconUrl,
   type BoardThread,
 } from '@/lib/board';
 import { getBoard, BOARDS, boardColor } from '@/lib/boards';
@@ -65,6 +67,8 @@ export default function BoardThreadList() {
   const [submitting, setSubmitting] = useState(false);
   // ハニーポット（ボット対策）
   const [hp, setHp] = useState('');
+  // スレッドのアイコン（プリセット。null＝文字アイコン）
+  const [icon, setIcon] = useState<string | null>(null);
 
   // 申請制（GTARP鯖別）用フォーム
   const [app, setApp] = useState({ server_name: '', description: '', contact: '', applicant: '' });
@@ -161,7 +165,7 @@ export default function BoardThreadList() {
     const { data, error } =
       board.submitOnly && isAdmin
         ? await adminCreateThread(board.slug, title.trim(), name.trim(), body.trim())
-        : await createThread(board.slug, title.trim(), name.trim(), body.trim());
+        : await createThread(board.slug, title.trim(), name.trim(), body.trim(), icon);
     if (error) {
       setSubmitting(false);
       console.error(error);
@@ -182,6 +186,7 @@ export default function BoardThreadList() {
       setFiles([]);
     }
     setSubmitting(false);
+    setIcon(null);
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     toast.success('スレッドを立てました' + imageNote);
     navigate(`/thread/${newThreadId}`);
@@ -408,6 +413,34 @@ export default function BoardThreadList() {
               </div>
             )}
 
+            {/* スレッドアイコン（プリセットから選択・任意） */}
+            <div>
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">スレッドのアイコン（任意）</label>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIcon(null)}
+                  title="文字アイコン（デフォルト）"
+                  className="w-12 h-12 rounded-xl flex-none flex items-center justify-center text-[11px] font-bold text-white/70 bg-white/[0.05]"
+                  style={{ border: `2px solid ${icon === null ? '#a78bfa' : 'rgba(255,255,255,.12)'}` }}
+                >
+                  なし
+                </button>
+                {BOARD_ICONS.map((ic) => (
+                  <button
+                    type="button"
+                    key={ic}
+                    onClick={() => setIcon(ic)}
+                    title={ic.replace(/_square\.jpg$/, '').replace(/_/g, ' ')}
+                    className="w-12 h-12 rounded-xl flex-none overflow-hidden p-0"
+                    style={{ border: `2px solid ${icon === ic ? '#a78bfa' : 'rgba(255,255,255,.12)'}` }}
+                  >
+                    <img src={boardIconUrl(ic)} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* 注意書き */}
             <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3 text-[12px] text-white/55 leading-relaxed">
               <p className="m-0 font-bold text-white/70 mb-1">投稿前にご確認ください</p>
@@ -478,12 +511,21 @@ export default function BoardThreadList() {
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(167,139,250,.55)')}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(0,0,0,.1)')}
               >
-                <span
-                  className="w-[42px] h-[42px] rounded-xl flex-none flex items-center justify-center vice-display text-lg text-white"
-                  style={{ background: avatarFor(t.title) }}
-                >
-                  {t.title.trim().charAt(0) || '?'}
-                </span>
+                {t.icon ? (
+                  <img
+                    src={boardIconUrl(t.icon)}
+                    alt=""
+                    className="w-[42px] h-[42px] rounded-xl flex-none object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span
+                    className="w-[42px] h-[42px] rounded-xl flex-none flex items-center justify-center vice-display text-lg text-white"
+                    style={{ background: avatarFor(t.title) }}
+                  >
+                    {t.title.trim().charAt(0) || '?'}
+                  </span>
+                )}
                 <span className="flex flex-col gap-1.5 min-w-0 flex-1">
                   <span className="text-[15px] font-bold text-[#15091c] truncate">{t.title}</span>
                   <span className="text-[12px] text-black/50 flex items-center gap-2 flex-wrap">

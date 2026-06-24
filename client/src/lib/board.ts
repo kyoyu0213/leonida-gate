@@ -10,6 +10,26 @@ export interface BoardThread {
   created_at: string;
   last_posted_at: string;
   post_count: number;
+  icon: string | null;
+}
+
+// スレッド作成時に選べるプリセットアイコン（client/public/images/icon/ に実体を配置）。
+// 値は createThread の許可リスト（board_thread_icon.sql）と一致させること。
+export const BOARD_ICONS = [
+  'Jason_and_Lucia_01_square.jpg',
+  'Jason_and_Lucia_02_square.jpg',
+  'Jason_and_Lucia_Motel_square.jpg',
+  'Boobie_Ike_square.jpg',
+  'Brian_Heder_square.jpg',
+  'Cal_Hampton_square.jpg',
+  'DreQuan_Priest_square.jpg',
+  'Raul_Bautista_square.jpg',
+  'Real_Dimez_square.jpg',
+];
+
+/** プリセットアイコンのファイル名から公開URLを作る。 */
+export function boardIconUrl(icon: string): string {
+  return `/images/icon/${icon}`;
 }
 
 export interface BoardPost {
@@ -94,13 +114,16 @@ export function getAnonId(): string {
   }
 }
 
-export async function createThread(board: string, title: string, name: string, body: string) {
+export async function createThread(
+  board: string, title: string, name: string, body: string, icon?: string | null,
+) {
   return supabase.rpc('create_thread', {
     p_board: board,
     p_title: title,
     p_name: name,
     p_body: body,
     p_anon_id: getAnonId(),
+    p_icon: icon ?? null,
   });
 }
 
