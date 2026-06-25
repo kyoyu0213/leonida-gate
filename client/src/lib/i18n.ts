@@ -166,6 +166,12 @@ const JA: Dict = {
   'fg.card.diff.desc': 'FiveMは遊ぶための土台、GTARPはその中で行われる遊び方。その違いを整理します。',
   'fg.card.board.title': 'GTARP掲示板',
   'fg.card.board.desc': '鯖選び、募集、雑談、RP文化について語れるGTARP専用掲示板。',
+  // 記事の「3行まとめ」UI（ニュース記事・解説記事 共通）
+  'sum.button': 'AIによる3行まとめ',
+  'sum.open': '3行まとめを開く',
+  'sum.close': '3行まとめを閉じる',
+  'sum.note': '※ 記事の要点を3行でまとめたものです。詳しくは本文をご確認ください。',
+  'article.editorial': 'GTA6 FEED 編集部',
   'footer.disclaimer':
     '本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
   'footer.terms': '利用規約・プライバシー',
@@ -377,6 +383,12 @@ const EN: Dict = {
   'fg.card.diff.desc': 'FiveM is the platform you play on; GTARP is a way of playing on it. We break down the difference.',
   'fg.card.board.title': 'GTARP Board',
   'fg.card.board.desc': 'A GTARP-only board for choosing servers, recruiting, chatting, and discussing RP culture.',
+  // 3-line summary UI (shared by news & explainer articles)
+  'sum.button': 'AI 3-line summary',
+  'sum.open': 'Open summary',
+  'sum.close': 'Close summary',
+  'sum.note': '* A quick 3-line summary of this article. See the full text for details.',
+  'article.editorial': 'GTA6 FEED Editorial',
   'footer.disclaimer':
     'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
   'footer.terms': 'Terms & Privacy',

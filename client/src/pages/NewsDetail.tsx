@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { getArticleById, CATEGORY_CONFIG, formatArticleDate } from '@/data/news';
-import { useLang } from '@/lib/i18n';
+import { useLang, useT } from '@/lib/i18n';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）を解決できずブロックしてしまう。
@@ -30,6 +30,7 @@ export default function NewsDetail() {
   const [match, params] = useRoute('/news/:id');
   const [summaryOpen, setSummaryOpen] = useState(false);
   const lang = useLang();
+  const t = useT();
 
   if (!match) {
     return null;
@@ -112,7 +113,7 @@ export default function NewsDetail() {
                 }
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
               >
-                <Sparkles size={16} /> AIによる3行まとめ
+                <Sparkles size={16} /> {t('sum.button')}
                 <ChevronDown size={16} />
               </button>
             </div>
@@ -160,7 +161,7 @@ export default function NewsDetail() {
                 aria-expanded={summaryOpen}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
               >
-                {summaryOpen ? '3行まとめを閉じる' : '3行まとめを開く'}
+                {summaryOpen ? t('sum.close') : t('sum.open')}
                 {summaryOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
               {summaryOpen && (
@@ -173,7 +174,7 @@ export default function NewsDetail() {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-[11px] text-white/35 mt-3 mb-0">※ 記事の要点を3行でまとめたものです。詳しくは本文をご確認ください。</p>
+                  <p className="text-[11px] text-white/35 mt-3 mb-0">{t('sum.note')}</p>
                 </div>
               )}
             </div>
