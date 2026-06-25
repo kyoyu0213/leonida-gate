@@ -66,27 +66,13 @@ export default function Home() {
               maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
             }}
           />
-          {/* スマホ：縦型カバーアートを全体表示（引き）で上寄せ。下は背景が見える */}
-          <img
-            src="/images/hero-mobile.webp"
-            alt="Grand Theft Auto VI"
-            className="sm:hidden absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
-            style={{ objectPosition: 'center top' }}
-          />
+          {/* スマホのカバーアートはコンテンツ側でインライン配置（黒い隙間を防ぐ） */}
           {/* PC：下からの黒グラデで可読性確保 */}
           <div
             className="hidden sm:block absolute inset-0 pointer-events-none"
             style={{
               background:
                 'linear-gradient(180deg,rgba(8,6,15,.1) 0%,rgba(8,6,15,0) 34%,rgba(8,6,15,.5) 70%,rgba(8,6,15,.95) 100%)',
-            }}
-          />
-          {/* スマホ：上下を暗くして中央エンブレムは見せる */}
-          <div
-            className="sm:hidden absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(180deg,rgba(8,6,15,.85) 0%,rgba(8,6,15,.66) 12%,rgba(8,6,15,.12) 30%,rgba(8,6,15,.05) 46%,rgba(8,6,15,.5) 66%,rgba(8,6,15,.9) 83%,rgba(8,6,15,.98) 100%)',
             }}
           />
 
@@ -209,108 +195,130 @@ export default function Home() {
           </div>
 
           {/* スマホ：ロゴを上に・文言は縦積み・ボタン2つ（サーバー探すは無し） */}
-          <div className="sm:hidden relative flex flex-col" style={{ minHeight: 600, padding: '18px 20px 22px' }}>
-            <img
-              src="/images/gta6feed-logo.webp"
-              alt="GTA6 FEED"
-              className="block select-none self-start"
-              style={{
-                width: 'clamp(240px,68vw,340px)',
-                height: 'auto',
-                filter:
-                  'drop-shadow(0 2px 14px rgba(0,0,0,.95)) drop-shadow(0 0 22px rgba(255,45,149,.32))',
-              }}
-            />
-            {/* 中央のエンブレムを見せるためのスペーサー（文言・ボタンを下部へ） */}
-            <div style={{ flex: 1, minHeight: 40 }} />
-            {/* 発売カウントダウン（スマホ：下部・文言の上） */}
-            <div
-              className="self-start flex items-center gap-2"
-              style={{
-                marginBottom: 12,
-                width: 'fit-content',
-                background: 'rgba(8,6,15,.5)',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                border: '1px solid rgba(255,138,61,.45)',
-                borderRadius: 999,
-                padding: '8px 14px',
-              }}
-            >
-              <span
-                className="w-2 h-2 rounded-full flex-none"
-                style={{ background: '#ff8a3d', boxShadow: '0 0 9px #ff8a3d' }}
+          <div className="sm:hidden relative">
+            {/* アート（全体表示）にロゴ・カウントダウンを重ねる */}
+            <div className="relative">
+              <img
+                src="/images/hero-mobile.webp"
+                alt="Grand Theft Auto VI"
+                className="block w-full h-auto select-none"
               />
-              <span className="text-[12.5px] font-extrabold whitespace-nowrap" style={{ color: '#ffd0a8' }}>
-                {lang === 'ja' ? '発売まで ' : 'Release in '}
-                <span className="vice-num" style={{ fontSize: 15, color: '#fff' }}>{releaseDays}</span>
-                {lang === 'ja' ? ' 日' : ' days'}
-              </span>
-            </div>
-            <div>
-              {t('hero.tagline')
-                .split('｜')
-                .map((line, i) => (
-                  <p
-                    key={i}
-                    className="font-black"
-                    style={{
-                      fontSize: 16,
-                      lineHeight: 1.75,
-                      margin: 0,
-                      color: 'rgba(244,238,248,.94)',
-                      letterSpacing: '.03em',
-                    }}
-                  >
-                    {line}
-                  </p>
-                ))}
-            </div>
-            <div className="flex flex-col items-start gap-2.5" style={{ marginTop: 18 }}>
-              <a
-                href="/news"
-                className="font-extrabold text-white"
+              {/* 上：ロゴを立たせる暗転 */}
+              <div
+                className="absolute inset-x-0 top-0 pointer-events-none"
+                style={{ height: '36%', background: 'linear-gradient(180deg,rgba(8,6,15,.9) 0%,rgba(8,6,15,.45) 52%,rgba(8,6,15,0) 100%)' }}
+              />
+              {/* 下：本文エリアへ馴染ませる暗転 */}
+              <div
+                className="absolute inset-x-0 bottom-0 pointer-events-none"
+                style={{ height: '34%', background: 'linear-gradient(0deg,#08060f 0%,rgba(8,6,15,.55) 48%,rgba(8,6,15,0) 100%)' }}
+              />
+              {/* ロゴ（左上） */}
+              <img
+                src="/images/gta6feed-logo.webp"
+                alt="GTA6 FEED"
+                className="absolute select-none"
                 style={{
-                  fontSize: 14.5,
-                  padding: '13px 26px',
+                  top: 16,
+                  left: 20,
+                  width: 'clamp(230px,64vw,320px)',
+                  height: 'auto',
+                  filter:
+                    'drop-shadow(0 2px 14px rgba(0,0,0,.95)) drop-shadow(0 0 22px rgba(255,45,149,.32))',
+                }}
+              />
+              {/* カウントダウン（左下） */}
+              <div
+                className="absolute flex items-center gap-2"
+                style={{
+                  left: 20,
+                  bottom: 14,
+                  background: 'rgba(8,6,15,.55)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,138,61,.45)',
                   borderRadius: 999,
-                  background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
-                  boxShadow: '0 6px 24px rgba(255,45,149,.45)',
+                  padding: '8px 14px',
                 }}
               >
-                {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
-              </a>
-              <div className="flex gap-2.5">
+                <span
+                  className="w-2 h-2 rounded-full flex-none"
+                  style={{ background: '#ff8a3d', boxShadow: '0 0 9px #ff8a3d' }}
+                />
+                <span className="text-[12.5px] font-extrabold whitespace-nowrap" style={{ color: '#ffd0a8' }}>
+                  {lang === 'ja' ? '発売まで ' : 'Release in '}
+                  <span className="vice-num" style={{ fontSize: 15, color: '#fff' }}>{releaseDays}</span>
+                  {lang === 'ja' ? ' 日' : ' days'}
+                </span>
+              </div>
+            </div>
+            {/* 文言＋ボタン（アートの下・ダーク背景） */}
+            <div style={{ padding: '14px 20px 22px' }}>
+              <div>
+                {t('hero.tagline')
+                  .split('｜')
+                  .map((line, i) => (
+                    <p
+                      key={i}
+                      className="font-black"
+                      style={{
+                        fontSize: 16,
+                        lineHeight: 1.75,
+                        margin: 0,
+                        color: 'rgba(244,238,248,.94)',
+                        letterSpacing: '.03em',
+                      }}
+                    >
+                      {line}
+                    </p>
+                  ))}
+              </div>
+              <div className="flex flex-col items-start gap-2.5" style={{ marginTop: 16 }}>
                 <a
-                  href="/board"
+                  href="/news"
                   className="font-extrabold text-white"
                   style={{
                     fontSize: 14.5,
-                    padding: '13px 20px',
+                    padding: '13px 26px',
                     borderRadius: 999,
-                    background: 'rgba(255,255,255,.1)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255,255,255,.25)',
+                    background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
+                    boxShadow: '0 6px 24px rgba(255,45,149,.45)',
                   }}
                 >
-                  {lang === 'ja' ? '掲示板を見る' : 'Board'}
+                  {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
                 </a>
-                <a
-                  href="/servers"
-                  className="font-extrabold text-white"
-                  style={{
-                    fontSize: 14.5,
-                    padding: '13px 20px',
-                    borderRadius: 999,
-                    background: 'rgba(255,255,255,.1)',
-                    backdropFilter: 'blur(8px)',
-                    WebkitBackdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(255,255,255,.25)',
-                  }}
-                >
-                  {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
-                </a>
+                <div className="flex gap-2.5">
+                  <a
+                    href="/board"
+                    className="font-extrabold text-white"
+                    style={{
+                      fontSize: 14.5,
+                      padding: '13px 20px',
+                      borderRadius: 999,
+                      background: 'rgba(255,255,255,.1)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(255,255,255,.25)',
+                    }}
+                  >
+                    {lang === 'ja' ? '掲示板を見る' : 'Board'}
+                  </a>
+                  <a
+                    href="/servers"
+                    className="font-extrabold text-white"
+                    style={{
+                      fontSize: 14.5,
+                      padding: '13px 20px',
+                      borderRadius: 999,
+                      background: 'rgba(255,255,255,.1)',
+                      backdropFilter: 'blur(8px)',
+                      WebkitBackdropFilter: 'blur(8px)',
+                      border: '1px solid rgba(255,255,255,.25)',
+                    }}
+                  >
+                    {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
