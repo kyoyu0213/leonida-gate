@@ -77,6 +77,8 @@ const JA: Dict = {
   'home.recruitDesc': 'いま掲載中のRP・フリー鯖をチェック。仲間を探そう。',
   'home.noRecruit': 'まだ募集がありません',
   'home.viewRecruit': '募集一覧を見る →',
+  'newsList.title': 'GTA6最新情報',
+  'newsList.empty': 'このカテゴリの記事はまだありません',
   'footer.disclaimer':
     '本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
   'footer.terms': '利用規約・プライバシー',
@@ -109,6 +111,8 @@ const EN: Dict = {
   'home.recruitDesc': 'Check the RP / free-roam servers listed now and find your crew.',
   'home.noRecruit': 'No servers listed yet',
   'home.viewRecruit': 'View all servers →',
+  'newsList.title': 'GTA6 News',
+  'newsList.empty': 'No articles in this category yet.',
   'footer.disclaimer':
     'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
   'footer.terms': 'Terms & Privacy',

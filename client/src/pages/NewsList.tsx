@@ -2,11 +2,14 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
 import { newsArticles, newsByDate, CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
+import { useT, useLang } from '@/lib/i18n';
 
 /**
  * ニュース一覧ページ（/news）。全記事をカテゴリ絞り込み付きで表示する。
  */
 export default function NewsList() {
+  const t = useT();
+  const lang = useLang();
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
 
   const filtered =
@@ -20,9 +23,11 @@ export default function NewsList() {
         {/* Hero */}
         <div className="mb-8">
           <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">News</span>
-          <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">GTA6最新情報</h1>
+          <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">{t('newsList.title')}</h1>
           <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
-            GTA6の公式情報・考察・リークを日本語でお届け。全{newsArticles.length}件の記事を掲載中。
+            {lang === 'ja'
+              ? `GTA6の公式情報・考察・リークを日本語でお届け。全${newsArticles.length}件の記事を掲載中。`
+              : `Official news, analysis, and leaks on GTA6. ${newsArticles.length} articles published.`}
           </p>
         </div>
 
@@ -43,7 +48,7 @@ export default function NewsList() {
                 }}
               >
                 <span className="w-[7px] h-[7px] rounded-full" style={{ background: color }} />
-                {c.label}
+                {t(`cat.${c.id}`)}
               </button>
             );
           })}
@@ -57,13 +62,13 @@ export default function NewsList() {
             ))}
           </div>
         ) : (
-          <p className="text-white/50 py-16 text-center">このカテゴリの記事はまだありません</p>
+          <p className="text-white/50 py-16 text-center">{t('newsList.empty')}</p>
         )}
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
+          {t('footer.disclaimer')} © 2026 GTA6 FEED
         </div>
       </footer>
     </div>
