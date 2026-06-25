@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Calendar, Tag, Share2, ExternalLink } from 'lucide-react';
+import { Calendar, Tag, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
@@ -26,6 +27,7 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
 
 export default function NewsDetail() {
   const [match, params] = useRoute('/news/:id');
+  const [summaryOpen, setSummaryOpen] = useState(false);
 
   if (!match) {
     return null;
@@ -92,6 +94,34 @@ export default function NewsDetail() {
               </div>
             </div>
           </div>
+
+          {/* AIによる3行まとめ（あらかじめ用意した要約をクリックで開閉） */}
+          {article.aiSummary && article.aiSummary.length > 0 && (
+            <div className="mb-8">
+              <button
+                onClick={() => setSummaryOpen((o) => !o)}
+                aria-expanded={summaryOpen}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold text-white transition-transform hover:-translate-y-px"
+                style={{ background: 'linear-gradient(95deg,#7c3aed,#22d3ee)', boxShadow: '0 4px 18px rgba(34,211,238,.3)' }}
+              >
+                <Sparkles size={16} /> AIによる3行まとめ
+                {summaryOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
+              {summaryOpen && (
+                <div className="mt-3 rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/[0.06] p-5">
+                  <ul className="m-0 list-none p-0 space-y-2.5">
+                    {article.aiSummary.map((line, i) => (
+                      <li key={i} className="flex gap-2.5 text-[14px] text-white/85 leading-relaxed">
+                        <span className="text-[#22d3ee] font-bold flex-none">{i + 1}.</span>
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-[11px] text-white/35 mt-3 mb-0">※ 記事の要点を3行でまとめたものです。詳しくは本文をご確認ください。</p>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* アイキャッチ画像（記事に image がある場合のみ。記事冒頭に表示） */}
           {article.image && (
