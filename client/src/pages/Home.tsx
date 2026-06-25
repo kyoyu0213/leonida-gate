@@ -37,49 +37,161 @@ export default function Home() {
     selectedCat === 'all' ? newsByDate : newsByDate.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
+  // 発売まで（2026-11-19）の残り日数
+  const releaseDays = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00').getTime() - Date.now()) / 86400000));
+
   return (
     <div className="vice-page vice-noise">
       <Header />
 
       <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[88px] pb-16 relative z-10">
-        {/* ===================== HERO C : GTA VI ワードマーク ===================== */}
+        {/* ===================== HERO : シネマティック全面（Frame A） ===================== */}
         <section
-          className="relative rounded-3xl overflow-hidden border border-white/10 text-center"
+          className="relative rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-end"
           style={{
-            background: 'radial-gradient(120% 120% at 50% 0%,#2a0e35 0%,#18091f 55%,#08060f 100%)',
-            padding: 'clamp(14px,2vw,24px) clamp(18px,3vw,32px)',
+            minHeight: 'clamp(440px,52vw,560px)',
+            background: 'radial-gradient(130% 140% at 16% 64%,#220c30 0%,#100819 56%,#08060f 100%)',
           }}
         >
-          {/* glow */}
-          <div
-            className="absolute"
+          {/* 右側に大きくカバーアート（左へフェード） */}
+          <img
+            src="/images/news/Official_Cover_Art_landscape.webp"
+            alt="Grand Theft Auto VI"
+            className="absolute right-0 top-0 h-full select-none pointer-events-none"
             style={{
-              left: '50%',
-              top: '-24px',
-              transform: 'translateX(-50%)',
-              width: 'clamp(120px,22vw,220px)',
-              height: 'clamp(120px,22vw,220px)',
-              borderRadius: '50%',
-              background:
-                'radial-gradient(circle,rgba(255,138,61,.45) 0%,rgba(255,45,149,.18) 45%,rgba(255,45,149,0) 70%)',
+              width: '72%',
+              objectFit: 'cover',
+              objectPosition: '88% center',
+              WebkitMaskImage:
+                'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
+              maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
             }}
           />
-          <div className="relative">
-            <span className="text-[10px] font-extrabold tracking-[0.3em] text-[#22d3ee] uppercase">
-              Grand Theft Auto VI
+          {/* 下からの黒グラデで可読性確保 */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(180deg,rgba(8,6,15,.1) 0%,rgba(8,6,15,0) 34%,rgba(8,6,15,.5) 70%,rgba(8,6,15,.95) 100%)',
+            }}
+          />
+
+          {/* 発売カウントダウンのバッジ（右上） */}
+          <div
+            className="absolute flex items-center gap-2 pointer-events-none"
+            style={{
+              top: 'clamp(16px,2.4vw,24px)',
+              right: 'clamp(16px,2.4vw,24px)',
+              background: 'rgba(8,6,15,.5)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              border: '1px solid rgba(255,138,61,.45)',
+              borderRadius: 999,
+              padding: '9px 16px',
+            }}
+          >
+            <span
+              className="w-2 h-2 rounded-full flex-none"
+              style={{ background: '#ff8a3d', boxShadow: '0 0 9px #ff8a3d' }}
+            />
+            <span className="text-[12.5px] font-extrabold whitespace-nowrap" style={{ color: '#ffd0a8' }}>
+              {lang === 'ja' ? '発売まで ' : 'Release in '}
+              <span className="vice-num" style={{ fontSize: 15, color: '#fff' }}>{releaseDays}</span>
+              {lang === 'ja' ? ' 日' : ' days'}
             </span>
-            <h1
-              className="vice-display vice-glow text-white"
-              style={{ fontSize: 'clamp(34px,6vw,68px)', lineHeight: 0.92, margin: '2px 0 0', letterSpacing: '1px' }}
+          </div>
+
+          {/* テキスト＋ロゴ＋CTA */}
+          <div
+            className="relative"
+            style={{ padding: '0 clamp(22px,4vw,46px) clamp(26px,4vw,42px)' }}
+          >
+            <span
+              className="block font-bold uppercase"
+              style={{
+                fontFamily: "'Chakra Petch', sans-serif",
+                fontSize: 'clamp(10px,1.4vw,12.5px)',
+                letterSpacing: '.32em',
+                color: '#22d3ee',
+                marginBottom: 'clamp(10px,1.6vw,14px)',
+              }}
             >
-              GTA VI
-            </h1>
+              Grand Theft Auto VI&nbsp;&nbsp;&nbsp;Community
+            </span>
+
+            <img
+              src="/images/gta6feed-logo.webp"
+              alt="GTA6 FEED"
+              className="block select-none"
+              style={{
+                width: 'clamp(300px,46vw,560px)',
+                height: 'auto',
+                maxWidth: '80%',
+                objectFit: 'contain',
+                filter:
+                  'drop-shadow(0 4px 22px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(255,45,149,.28))',
+                marginLeft: '-2px',
+              }}
+            />
+
             <p
-              className="font-black text-white/80"
-              style={{ fontSize: 'clamp(12px,1.5vw,15px)', margin: '6px 0 0', letterSpacing: '.06em' }}
+              className="font-black"
+              style={{
+                fontSize: 'clamp(15px,2.2vw,21px)',
+                margin: 'clamp(12px,1.8vw,16px) 0 0',
+                color: 'rgba(244,238,248,.92)',
+                letterSpacing: '.04em',
+                textWrap: 'pretty',
+              }}
             >
               {t('hero.tagline')}
             </p>
+
+            <div className="flex gap-2.5 flex-wrap" style={{ marginTop: 'clamp(18px,2.6vw,24px)' }}>
+              <a
+                href="/news"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 'clamp(13px,1.6vw,14.5px)',
+                  padding: '13px 24px',
+                  borderRadius: 999,
+                  background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
+                  boxShadow: '0 6px 24px rgba(255,45,149,.45)',
+                }}
+              >
+                {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
+              </a>
+              <a
+                href="/board"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 'clamp(13px,1.6vw,14.5px)',
+                  padding: '13px 24px',
+                  borderRadius: 999,
+                  background: 'rgba(255,255,255,.1)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,.25)',
+                }}
+              >
+                {lang === 'ja' ? '掲示板を見る' : 'Board'}
+              </a>
+              <a
+                href="/servers"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 'clamp(13px,1.6vw,14.5px)',
+                  padding: '13px 24px',
+                  borderRadius: 999,
+                  background: 'rgba(255,255,255,.1)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,.25)',
+                }}
+              >
+                {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
+              </a>
+            </div>
           </div>
         </section>
 
