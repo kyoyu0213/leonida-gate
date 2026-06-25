@@ -209,6 +209,7 @@ const JA: Dict = {
   'cat.event': 'イベント',
   // 掲示板名（slug 別）
   'board.gtarp-servers': 'GTARP鯖別',
+  'board.streamer-servers': 'スト鯖',
   'board.gtarp': 'GTARPプレイヤー交流',
   'board.gta6': 'GTA6情報交換',
   // 掲示板（/board・/thread・通報）
@@ -450,6 +451,7 @@ const EN: Dict = {
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',
   'board.gtarp-servers': 'GTARP Servers',
+  'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'GTARP Community',
   'board.gta6': 'GTA6 Info',
   // Board (/board, /thread, report)

@@ -1,7 +1,7 @@
 // 掲示板の一覧設定。ここに足すだけで掲示板を増やせる。
 // slug は URL（/board/:slug）とDBの board 列に使う。
 
-export type Accent = 'lime' | 'cyan' | 'purple';
+export type Accent = 'lime' | 'cyan' | 'purple' | 'pink';
 
 export interface BoardConfig {
   slug: string;
@@ -19,6 +19,14 @@ export const BOARDS: BoardConfig[] = [
     description:
       '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
     accent: 'purple',
+    submitOnly: true,
+  },
+  {
+    slug: 'streamer-servers',
+    title: 'スト鯖掲示板',
+    description:
+      '人気ストリーマー／VTuberが参加するGTA RPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します。',
+    accent: 'pink',
     submitOnly: true,
   },
   {
@@ -43,7 +51,13 @@ export const getBoard = (slug?: string): BoardConfig | undefined =>
 
 /** 掲示板アクセント色（VICEデザイン用） */
 export const boardColor = (accent?: Accent): string =>
-  accent === 'cyan' ? '#22d3ee' : accent === 'purple' ? '#a78bfa' : '#3de0a0';
+  accent === 'cyan'
+    ? '#22d3ee'
+    : accent === 'purple'
+      ? '#a78bfa'
+      : accent === 'pink'
+        ? '#ff2d95'
+        : '#3de0a0';
 
 // 配色（旧サイバーパンクデザイン用に残置）
 interface AccentStyle {
@@ -87,5 +101,15 @@ export const ACCENTS: Record<Accent, AccentStyle> = {
     borderHover: 'hover:border-purple-500/70 hover:bg-purple-500/5',
     bgSoft: 'bg-purple-500/5',
     inputBorder: 'border-purple-500/40',
+  },
+  pink: {
+    text: 'text-pink-400',
+    badge: 'border-pink-500/50 bg-pink-500/10 text-pink-400',
+    gradient: 'from-pink-500 via-purple-400 to-cyan-400',
+    button: 'bg-pink-600 hover:bg-pink-500 text-white',
+    border: 'border-pink-500/30',
+    borderHover: 'hover:border-pink-500/70 hover:bg-pink-500/5',
+    bgSoft: 'bg-pink-500/5',
+    inputBorder: 'border-pink-500/40',
   },
 };
