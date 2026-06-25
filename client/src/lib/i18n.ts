@@ -210,7 +210,7 @@ const JA: Dict = {
   // 掲示板名（slug 別）
   'board.gtarp-servers': 'FiveMサーバー',
   'board.streamer-servers': '配信者サーバー',
-  'board.gtarp': 'GTARPプレイヤー交流',
+  'board.gtarp': 'ロールプレイ情報交換',
   'board.gta6': 'GTA6情報交換',
   // 掲示板（/board・/thread・通報）
   'brd.eyebrow': 'Community Board',
@@ -452,7 +452,7 @@ const EN: Dict = {
   'cat.event': 'Events',
   'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
-  'board.gtarp': 'GTARP Community',
+  'board.gtarp': 'Roleplay Info',
   'board.gta6': 'GTA6 Info',
   // Board (/board, /thread, report)
   'brd.eyebrow': 'Community Board',

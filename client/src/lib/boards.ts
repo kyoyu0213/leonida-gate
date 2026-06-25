@@ -1,7 +1,7 @@
 // 掲示板の一覧設定。ここに足すだけで掲示板を増やせる。
 // slug は URL（/board/:slug）とDBの board 列に使う。
 
-export type Accent = 'lime' | 'cyan' | 'purple' | 'pink';
+export type Accent = 'lime' | 'cyan' | 'purple' | 'pink' | 'orange';
 
 export interface BoardConfig {
   slug: string;
@@ -18,7 +18,7 @@ export const BOARDS: BoardConfig[] = [
     title: 'FiveMサーバー掲示板',
     description:
       '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
-    accent: 'purple',
+    accent: 'orange',
     submitOnly: true,
   },
   {
@@ -31,7 +31,7 @@ export const BOARDS: BoardConfig[] = [
   },
   {
     slug: 'gtarp',
-    title: 'GTARPプレイヤー交流掲示板',
+    title: 'ロールプレイ情報交換掲示板',
     description: '匿名でGTA/FiveM RPについて自由に語り合う場所',
     accent: 'lime',
   },
@@ -39,7 +39,7 @@ export const BOARDS: BoardConfig[] = [
     slug: 'gta6',
     title: 'GTA6情報交換掲示板',
     description: 'GTA6の最新情報・リーク・考察・雑談を交換する場所',
-    accent: 'cyan',
+    accent: 'purple',
   },
 ];
 
@@ -57,7 +57,9 @@ export const boardColor = (accent?: Accent): string =>
       ? '#a78bfa'
       : accent === 'pink'
         ? '#ff2d95'
-        : '#3de0a0';
+        : accent === 'orange'
+          ? '#ff8a3d'
+          : '#3de0a0';
 
 // 配色（旧サイバーパンクデザイン用に残置）
 interface AccentStyle {
@@ -111,5 +113,15 @@ export const ACCENTS: Record<Accent, AccentStyle> = {
     borderHover: 'hover:border-pink-500/70 hover:bg-pink-500/5',
     bgSoft: 'bg-pink-500/5',
     inputBorder: 'border-pink-500/40',
+  },
+  orange: {
+    text: 'text-orange-400',
+    badge: 'border-orange-500/50 bg-orange-500/10 text-orange-400',
+    gradient: 'from-orange-400 via-pink-500 to-purple-400',
+    button: 'bg-orange-600 hover:bg-orange-500 text-white',
+    border: 'border-orange-500/30',
+    borderHover: 'hover:border-orange-500/70 hover:bg-orange-500/5',
+    bgSoft: 'bg-orange-500/5',
+    inputBorder: 'border-orange-500/40',
   },
 };
