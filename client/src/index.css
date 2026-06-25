@@ -343,6 +343,15 @@
   font-family: 'Anton', sans-serif;
   letter-spacing: 0.5px;
 }
+/* ヒーロー背景アートの表示位置。PCは右寄り、スマホは中央寄りでGTA6エンブレムを見せる。 */
+.home-hero-cover {
+  object-position: 88% center;
+}
+@media (max-width: 639px) {
+  .home-hero-cover {
+    object-position: 40% center;
+  }
+}
 /* サンセットのグラデーション文字（オレンジ→ピンク→パープル） */
 .vice-grad {
   background: linear-gradient(95deg, #ff8a3d, #ff2d95 55%, #a78bfa);

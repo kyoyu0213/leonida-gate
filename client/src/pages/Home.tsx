@@ -57,11 +57,10 @@ export default function Home() {
           <img
             src="/images/news/Official_Cover_Art_landscape.webp"
             alt="Grand Theft Auto VI"
-            className="absolute right-0 top-0 h-full select-none pointer-events-none"
+            className="home-hero-cover absolute right-0 top-0 h-full select-none pointer-events-none"
             style={{
               width: '72%',
               objectFit: 'cover',
-              objectPosition: '88% center',
               WebkitMaskImage:
                 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
               maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
