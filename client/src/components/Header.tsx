@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { Search, Menu, X } from 'lucide-react';
+import LangToggle from '@/components/LangToggle';
+import { useT } from '@/lib/i18n';
 
 const NAV = [
-  { label: 'ホーム', href: '/', match: (l: string) => l === '/' },
-  { label: 'GTA6最新情報', href: '/news', match: (l: string) => l.startsWith('/news') },
-  { label: 'FiveMサーバー募集', href: '/servers', match: (l: string) => l.startsWith('/servers') },
-  { label: '掲示板', href: '/board', match: (l: string) => l.startsWith('/board') || l.startsWith('/thread') },
-  { label: 'FiveM/GTARP', href: '/fivem-gtarp', match: (l: string) => l.startsWith('/fivem-gtarp') },
-  { label: 'お問い合わせ', href: '/contact', match: (l: string) => l.startsWith('/contact') },
+  { key: 'nav.home', href: '/', match: (l: string) => l === '/' },
+  { key: 'nav.news', href: '/news', match: (l: string) => l.startsWith('/news') },
+  { key: 'nav.servers', href: '/servers', match: (l: string) => l.startsWith('/servers') },
+  { key: 'nav.board', href: '/board', match: (l: string) => l.startsWith('/board') || l.startsWith('/thread') },
+  { key: 'nav.fivemgtarp', href: '/fivem-gtarp', match: (l: string) => l.startsWith('/fivem-gtarp') },
+  { key: 'nav.contact', href: '/contact', match: (l: string) => l.startsWith('/contact') },
 ];
 
 export default function Header() {
   const [location, navigate] = useLocation();
   const [query, setQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const t = useT();
 
   const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,7 +60,7 @@ export default function Header() {
                 className="relative px-1 py-1.5 text-[14px] font-bold whitespace-nowrap tracking-wide transition-colors"
                 style={{ color: active ? '#fff' : '#bdb2d0' }}
               >
-                {item.label}
+                {t(item.key)}
                 {active && (
                   <span
                     className="absolute left-1 right-1 -bottom-[21px] h-0.5 rounded-full"
@@ -71,6 +74,11 @@ export default function Header() {
 
         {/* spacer */}
         <div className="flex-1 min-w-[8px]" />
+
+        {/* 言語切替（右上） */}
+        <div className="hidden sm:block flex-none">
+          <LangToggle />
+        </div>
 
         {/* Search（ログイン・新規投稿ボタンを廃止し、その位置に配置） */}
         <form
@@ -86,7 +94,7 @@ export default function Header() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="記事・掲示板を検索…"
+            placeholder={t('header.search')}
             className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
           />
         </form>
@@ -114,10 +122,13 @@ export default function Header() {
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="記事・掲示板を検索…"
+                placeholder={t('header.search')}
                 className="bg-transparent border-none outline-none text-[#f4eef8] text-[14px] w-full min-w-0 placeholder:text-white/40"
               />
             </form>
+            <div className="self-start">
+              <LangToggle />
+            </div>
             {NAV.map((item) => (
               <a
                 key={item.href}
@@ -125,7 +136,7 @@ export default function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="text-[15px] font-bold text-[#cfc6e0] hover:text-white transition-colors"
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
           </div>

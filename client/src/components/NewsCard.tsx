@@ -1,4 +1,5 @@
 import { CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
+import { useT } from '@/lib/i18n';
 
 // ニュースカードのサムネ用サンセットグラデ（カードごとに巡回）
 const THUMB_GRADIENTS = [
@@ -37,6 +38,7 @@ interface NewsCardProps {
  * VICE HUB スタイルのニュースカード。トップページと記事一覧(/news)で共用。
  */
 export default function NewsCard({ article, index = 0 }: NewsCardProps) {
+  const t = useT();
   const color = CATEGORY_CONFIG[article.category].vice;
 
   return (
@@ -83,7 +85,7 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
           className={`absolute top-3 ${article.image ? 'right-3' : 'left-3'} text-[10.5px] font-black rounded-md`}
           style={{ background: color, color: '#0a0612', padding: '4px 10px' }}
         >
-          {CATEGORY_CONFIG[article.category].label}
+          {t(`cat.${article.category}`)}
         </span>
         {!article.image && <span className="absolute top-3 right-3 text-2xl">{article.icon}</span>}
       </div>

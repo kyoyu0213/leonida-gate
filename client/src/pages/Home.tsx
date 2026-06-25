@@ -6,6 +6,7 @@ import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
 import { type FivemServer } from '@/lib/supabase';
+import { useT, useLang } from '@/lib/i18n';
 
 // Topページに表示するニュースサムネの件数
 const TOP_NEWS_COUNT = 6;
@@ -13,6 +14,8 @@ const TOP_NEWS_COUNT = 6;
 const TREND_PER_BOARD = 3;
 
 export default function Home() {
+  const t = useT();
+  const lang = useLang();
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [trends, setTrends] = useState<{ board: BoardConfig; threads: BoardThread[] }[]>([]);
@@ -75,7 +78,7 @@ export default function Home() {
               className="font-black text-white/80"
               style={{ fontSize: 'clamp(12px,1.5vw,15px)', margin: '6px 0 0', letterSpacing: '.06em' }}
             >
-              バイスシティ総合情報 ＆ コミュニティ
+              {t('hero.tagline')}
             </p>
           </div>
         </section>
@@ -94,7 +97,7 @@ export default function Home() {
                   boxShadow: '0 0 12px rgba(255,45,149,.6)',
                 }}
               />
-              最新情報
+              {t('home.latest')}
             </h2>
 
             {/* filter chips */}
@@ -114,7 +117,7 @@ export default function Home() {
                     }}
                   >
                     <span className="w-[7px] h-[7px] rounded-full" style={{ background: color }} />
-                    {c.label}
+                    {t(`cat.${c.id}`)}
                   </button>
                 );
               })}
@@ -132,7 +135,9 @@ export default function Home() {
                 href="/news"
                 className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-sm font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
-                すべての記事を見る（全{newsArticles.length}件）→
+                {lang === 'ja'
+                  ? `すべての記事を見る（全${newsArticles.length}件）→`
+                  : `View all articles (${newsArticles.length}) →`}
               </a>
             </div>
           </div>
@@ -142,7 +147,7 @@ export default function Home() {
             {/* trending threads（掲示板ごと） */}
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <h3 className="text-[15px] font-black m-0 mb-1 flex items-center gap-2">
-                <span className="text-[#22d3ee]">▲</span>トレンドのスレッド
+                <span className="text-[#22d3ee]">▲</span>{t('home.trending')}
               </h3>
 
               {trends.map(({ board, threads }) => {
@@ -159,7 +164,7 @@ export default function Home() {
                         style={{ background: c, boxShadow: `0 0 8px ${c}` }}
                       />
                       <span className="text-[13.5px] font-extrabold tracking-wide" style={{ color: c }}>
-                        {board.title.replace('掲示板', '')}
+                        {t(`board.${board.slug}`)}
                       </span>
                     </div>
 
@@ -181,13 +186,15 @@ export default function Home() {
                               <span className="text-[14px] font-bold text-white leading-[1.5] line-clamp-2">
                                 {t.title}
                               </span>
-                              <span className="text-[11px] text-white/35 mt-0.5">{t.post_count}レス</span>
+                              <span className="text-[11px] text-white/35 mt-0.5">
+                                {lang === 'ja' ? `${t.post_count}レス` : `${t.post_count} replies`}
+                              </span>
                             </span>
                           </a>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-white/35 text-xs px-3 py-2">まだスレッドがありません</p>
+                      <p className="text-white/35 text-xs px-3 py-2">{t('home.noThreads')}</p>
                     )}
                   </div>
                 );
@@ -199,7 +206,7 @@ export default function Home() {
                   href="/board"
                   className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-[12.5px] font-bold text-[#22d3ee] border border-[#22d3ee]/40 hover:bg-[#22d3ee]/10 hover:border-[#22d3ee]/70 transition-colors"
                 >
-                  掲示板を見る →
+                  {t('home.viewBoard')}
                 </a>
               </div>
             </div>
@@ -212,9 +219,9 @@ export default function Home() {
                 border: '1px solid rgba(255,45,149,.25)',
               }}
             >
-              <h3 className="text-sm font-black m-0 mb-1.5">🎮 FiveMサーバー募集</h3>
+              <h3 className="text-sm font-black m-0 mb-1.5">{t('home.recruitTitle')}</h3>
               <p className="text-[12.5px] text-white/60 m-0 mb-3.5 leading-relaxed">
-                いま掲載中のRP・フリー鯖をチェック。仲間を探そう。
+                {t('home.recruitDesc')}
               </p>
               {servers.length > 0 ? (
                 servers.map((s) => (
@@ -233,14 +240,14 @@ export default function Home() {
                 ))
               ) : (
                 <p className="text-white/40 text-xs py-2.5 border-t border-white/10">
-                  まだ募集がありません
+                  {t('home.noRecruit')}
                 </p>
               )}
               <a
                 href="/servers"
                 className="block text-center w-full mt-3 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-[13px] font-extrabold py-2.5 rounded-[11px] hover:bg-white/10 transition-colors"
               >
-                募集一覧を見る →
+                {t('home.viewRecruit')}
               </a>
             </div>
           </aside>
@@ -270,9 +277,8 @@ export default function Home() {
             </a>
           </div>
           <p className="text-[11.5px] text-white/40 m-0 leading-relaxed max-w-[640px] mx-auto text-center">
-            本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two
-            とは一切関係ありません。{' '}
-            <a href="/terms" className="underline hover:text-white/70">利用規約・プライバシー</a>
+            {t('footer.disclaimer')}{' '}
+            <a href="/terms" className="underline hover:text-white/70">{t('footer.terms')}</a>
             　© 2026 GTA6 FEED
           </p>
         </div>
