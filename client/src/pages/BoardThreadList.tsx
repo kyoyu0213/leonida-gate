@@ -288,7 +288,7 @@ export default function BoardThreadList() {
         )}
 
         {/* board tabs */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-5">
+        <div className="flex flex-col sm:flex-row gap-2 sm:overflow-x-auto pb-2 mb-5">
           {BOARDS.map((b) => {
             const active = b.slug === board.slug;
             const c = boardColor(b.accent);
@@ -296,7 +296,7 @@ export default function BoardThreadList() {
               <a
                 key={b.slug}
                 href={`/board/${b.slug}`}
-                className="flex-none flex items-center gap-2 px-5 py-2.5 rounded-[13px] text-sm font-extrabold whitespace-nowrap transition-colors"
+                className="w-full sm:w-auto sm:flex-none flex items-center gap-2 px-5 py-2.5 rounded-[13px] text-sm font-extrabold whitespace-nowrap transition-colors"
                 style={{
                   border: `1px solid ${active ? c : 'rgba(255,255,255,.1)'}`,
                   background: active ? `${c}1f` : 'rgba(255,255,255,.05)',
