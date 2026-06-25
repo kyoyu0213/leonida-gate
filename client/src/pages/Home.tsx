@@ -100,8 +100,8 @@ export default function Home() {
               {t('home.latest')}
             </h2>
 
-            {/* filter chips */}
-            <div className="flex gap-2 overflow-x-auto pb-1.5 mb-5">
+            {/* filter chips（スマホでは非表示：縦に長くなるのを防ぐ） */}
+            <div className="hidden sm:flex gap-2 sm:overflow-x-auto pb-1.5 mb-5">
               {CATEGORIES.map((c) => {
                 const active = selectedCat === c.id;
                 const color = c.id === 'all' ? '#ff2d95' : CATEGORY_CONFIG[c.id as NewsCategory].vice;
@@ -123,10 +123,12 @@ export default function Home() {
               })}
             </div>
 
-            {/* news grid */}
+            {/* news grid（スマホでは最新1件のみ表示。sm以上は全件） */}
             <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(248px,1fr))' }}>
               {filteredNews.map((item, idx) => (
-                <NewsCard key={item.id} article={item} index={idx} />
+                <div key={item.id} className={idx === 0 ? '' : 'hidden sm:block'}>
+                  <NewsCard article={item} index={idx} />
+                </div>
               ))}
             </div>
 
