@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Plus, X, Send, Server as ServerIcon, Loader2, Search } from 'lucide-react';
+import { Plus, X, Send, Server as ServerIcon, Loader2, Search, ImagePlus } from 'lucide-react';
 import Header from '@/components/Header';
 import ServerCard from '@/components/ServerCard';
 import { toast } from 'sonner';
 import { type FivemServer } from '@/lib/supabase';
 import { listApprovedServers, createFivemServer } from '@/lib/servers';
+import { uploadRawImages } from '@/lib/images';
 import { boardErrorMessage } from '@/lib/board';
 
 const SERVER_TYPES = [
@@ -38,6 +39,8 @@ export default function ServerBoard() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [submitting, setSubmitting] = useState(false);
+  // サーバーのアイコン画像（任意・承認不要で即時表示）
+  const [iconFile, setIconFile] = useState<File | null>(null);
   // ハニーポット（人間には見えない・ボット対策）
   const [hp, setHp] = useState('');
 
@@ -99,6 +102,18 @@ export default function ServerBoard() {
       .filter(Boolean)
       .slice(0, 8);
 
+    // アイコン画像が選ばれていれば、先にアップロード（EXIF除去・圧縮）。即時表示（承認不要）。
+    let iconPath: string | null = null;
+    if (iconFile) {
+      const { paths, error: upErr } = await uploadRawImages('fivem-server', [iconFile]);
+      if (upErr) {
+        setSubmitting(false);
+        toast.error(upErr);
+        return;
+      }
+      iconPath = paths[0] ?? null;
+    }
+
     const { error } = await createFivemServer({
       name: form.name.trim(),
       description: form.description.trim(),
@@ -107,6 +122,7 @@ export default function ServerBoard() {
       discord_url: form.discord_url.trim() || null,
       language: form.language.trim() || null,
       tags,
+      icon: iconPath,
       hp,
     });
     setSubmitting(false);
@@ -118,6 +134,7 @@ export default function ServerBoard() {
     }
     toast.success('サーバーを掲載しました！');
     setForm(emptyForm);
+    setIconFile(null);
     setShowForm(false);
     loadServers();
   };
@@ -201,6 +218,40 @@ export default function ServerBoard() {
               <div>
                 <label className="block text-sm font-bold text-[#22d3ee] mb-2">タグ（カンマ区切り・最大8個）</label>
                 <input name="tags" value={form.tags} onChange={handleFormChange} placeholder="例: 初心者向け, ホワイトリスト, 経済システム" maxLength={120} className={inputClass} />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">アイコン画像（任意・jpg/png/webp）</label>
+                {iconFile ? (
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={URL.createObjectURL(iconFile)}
+                      alt="アイコンプレビュー"
+                      className="w-16 h-16 rounded-xl object-cover border border-white/15"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setIconFile(null)}
+                      className="inline-flex items-center gap-1.5 text-[13px] font-bold text-white/70 hover:text-[#ff8fc0] border border-white/15 rounded-lg px-3 py-2"
+                    >
+                      <X size={14} /> 取り消す
+                    </button>
+                  </div>
+                ) : (
+                  <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#22d3ee] border border-white/15 rounded-lg px-3 py-2 transition-colors">
+                    <ImagePlus size={16} /> アイコンを選ぶ
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp"
+                      className="hidden"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0] ?? null;
+                        setIconFile(f);
+                        e.target.value = '';
+                      }}
+                    />
+                  </label>
+                )}
+                <p className="text-[11px] text-white/40 mt-1.5">サーバーのアイコンとしてカードに表示されます（即時掲載）。</p>
               </div>
               <p className="text-xs text-white/40">* は必須。接続情報かDiscordリンクのどちらかは必ず入力してください。</p>
               <button

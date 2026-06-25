@@ -22,6 +22,7 @@ export async function createFivemServer(s: {
   discord_url: string | null;
   language: string | null;
   tags: string[];
+  icon: string | null; // アイコン画像の Storage パス（任意）
   hp: string; // ハニーポット（人間は空）
 }) {
   return supabase.rpc('create_fivem_server', {
@@ -34,5 +35,6 @@ export async function createFivemServer(s: {
     p_tags: s.tags,
     p_anon_id: getAnonId(),
     p_hp: s.hp,
+    p_icon: s.icon,
   });
 }

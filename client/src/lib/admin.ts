@@ -470,6 +470,7 @@ export interface FivemServerRow {
   discord_url: string | null;
   language: string | null;
   tags: string[] | null;
+  icon: string | null;
   ip: string | null;
   ua: string | null;
   anon_id: string | null;

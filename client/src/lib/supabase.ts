@@ -29,4 +29,5 @@ export interface FivemServer {
   tags: string[];
   approved: boolean;
   created_at: string;
+  icon: string | null;
 }

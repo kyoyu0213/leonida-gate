@@ -855,6 +855,9 @@ function ServersPanel() {
         return (
           <div key={s.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+              {s.icon && (
+                <img src={imagePublicUrl(s.icon)} alt="" className="w-7 h-7 rounded object-cover border border-white/15 flex-none" loading="lazy" />
+              )}
               <span className="font-extrabold rounded px-2 py-0.5 text-[#22d3ee] border border-[#22d3ee]/40">{s.type || 'RP'}</span>
               <span className="font-bold text-white text-[14px]">{s.name}</span>
               {s.language && <span className="text-white/45">{s.language}</span>}

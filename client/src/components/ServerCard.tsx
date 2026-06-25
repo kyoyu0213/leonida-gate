@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Copy, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import type { FivemServer } from '@/lib/supabase';
+import { imagePublicUrl } from '@/lib/images';
 
 interface ServerCardProps {
   server: FivemServer;
@@ -20,17 +21,25 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
 
   return (
     <div className="group relative border border-pink-500/40 rounded-lg p-6 bg-gradient-to-br from-pink-500/5 to-cyan-500/5 hover:border-pink-500/80 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/30 flex flex-col">
-      {/* Server Type Badge */}
-      <div className="mb-4">
-        <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded text-cyan-300 text-xs font-mono">
-          {server.type}
-        </span>
+      {/* Icon + Type Badge + Name */}
+      <div className="flex items-start gap-3 mb-3">
+        {server.icon && (
+          <img
+            src={imagePublicUrl(server.icon)}
+            alt=""
+            loading="lazy"
+            className="w-14 h-14 rounded-lg object-cover border border-pink-500/30 flex-none"
+          />
+        )}
+        <div className="min-w-0">
+          <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded text-cyan-300 text-xs font-mono mb-2">
+            {server.type}
+          </span>
+          <h3 className="text-xl font-bold text-pink-400 font-mono group-hover:text-pink-300 transition-colors break-words m-0">
+            {server.name}
+          </h3>
+        </div>
       </div>
-
-      {/* Server Name */}
-      <h3 className="text-xl font-bold mb-2 text-pink-400 font-mono group-hover:text-pink-300 transition-colors break-words">
-        {server.name}
-      </h3>
 
       {/* Description */}
       <p className="text-gray-400 text-sm mb-4 whitespace-pre-wrap flex-grow">{server.description}</p>
