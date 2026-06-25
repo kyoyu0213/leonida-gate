@@ -2688,6 +2688,109 @@ GTA6のキャラクターが、見た目の作り込みもカスタマイズの�
       "出回る要件はコンソール性能や過去作から逆算した予測にすぎず、情報源で数字がばらつく。",
       "PC版の登場は早くて2027年後半とされ、今このゲームのためにPCを新調するのは時期尚早である。",
     ],
+    titleEn:
+      "Are the GTA6 PC System Requirement Leaks Real? The Truth About the Circulating Estimated Specs and What to Watch For",
+    descriptionEn:
+      "RTX 4070 or higher, 32GB of RAM — are the circulating estimated specs genuine leaks? Starting from the premise that no PC version has been announced, we sort out the facts and the caveats.",
+    aiSummaryEn: [
+      "As of June 2026, the PC version of GTA6 has not been officially announced, and no official system requirement spec sheet exists.",
+      "The circulating requirements are merely predictions reverse-engineered from console performance and past titles, and the numbers vary by source.",
+      "The PC version is said to arrive in late 2027 at the earliest, so it is premature to upgrade your PC for this game right now.",
+    ],
+    fullContentEn: `# Are the GTA6 PC System Requirement Leaks Real? The Truth About the Circulating Estimated Specs and What to Watch For
+
+Information claiming that the GTA6 PC version system requirements have been leaked spreads regularly. Many people have probably seen a table lined with specific figures such as RTX 4070 or higher, equivalent to a Core i7-12700, and 32GB of RAM.
+
+However, when GTA6 FEED checked information from various sources, these are not, strictly speaking, leaks. As of June 2026, the PC version of GTA6 has not even been officially announced, and naturally no official system requirement spec sheet exists either. The true nature of the circulating numbers is predictions by the community and hardware analysts, reverse-engineered from the console hardware configuration and past Rockstar titles. This article clearly separates the confirmed facts from the parts that are merely speculation.
+
+This article is based on information as of June 22, 2026.
+
+---
+
+## The Major Premise: The PC Version of GTA6 Has Not Yet Been Announced (Confirmed Fact)
+
+Let us start with the most important fact.
+
+- Rockstar Games has officially announced GTA6 only for the PlayStation 5 and Xbox Series X|S. The release date is November 19, 2026.
+- The existence of a PC version, the timing of a PC version, and the system requirements of a PC version — none of these have been officially announced.
+- With the past title (GTA V), the PC version appeared about 18 months after the console release. Based on this precedent, there is a prediction that the GTA6 PC version will likewise come 12 to 18 months after the console release, that is, around late 2027 to 2028. However, this too is merely speculation based on precedent, and Rockstar has guaranteed nothing.
+
+In other words, as long as the PC version itself is unannounced, a genuine system requirement leak for the PC version cannot exist in principle. The notion of Rockstar leaking the official operating requirements for something whose release and timing are not even decided simply does not hold together.
+
+---
+
+## What the Estimated Specs Called Leaks Actually Contain
+
+The estimated values actually circulating are roughly as follows. These are merely one example of the observed numbers and are not official.
+
+**Recommended specs (one example of an estimate):**
+
+- GPU: NVIDIA RTX 4070 or higher
+- CPU: Equivalent to Intel Core i7-12700 or higher
+- RAM: 32GB
+- Storage: 150GB or more of SSD
+
+**Minimum specs (one example of an estimate):**
+
+- GPU: Equivalent to NVIDIA RTX 3070
+- CPU: Equivalent to Intel Core i7-10700
+- RAM: 16GB
+- Storage: 150GB or more of SSD
+
+What should be noted here is that these numbers vary considerably depending on the source. For example, some prediction sites estimate the minimum GPU as equivalent to an older GTX 1660 or RTX 2060, while others put the minimum CPU at the Core i5 generation. RAM also ranges from 12GB to 16GB. The very fact that different sources put out different numbers while labeling them minimum and recommended shows that these are not a finalized spec sheet but each source's own prediction. About all they have in common is the broad estimate that an SSD of around 150GB will be required, and that too is calculated from the storage size of past titles.
+
+---
+
+## Why the Estimates Resemble Each Other to Some Degree
+
+Although the numbers have a range, there is a reason why each prediction agrees in the direction that a high-performance PC will be required. The points GTA6 FEED has sorted out are as follows.
+
+First, the performance of the consoles that serve as the development baseline is known. The PS5 and Xbox Series X are built on AMD's Zen 2 generation CPU and RDNA 2 generation GPU. Because the PC version is expected to be optimized with this performance as the baseline, analysts predict the requirements by reverse-engineering from PC parts of equivalent or higher performance. This is why each prediction tends to converge on a similar landing point.
+
+Second, the characteristics of the new-generation engine said to power GTA6 (the latest version of RAGE) are expected to put a load on specific components. The load factors inferred from the trailers and past titles are as follows.
+
+- High-density crowd and vehicle simulation: large numbers of NPCs and vehicles, each with individual behavior, exist on screen at the same time. This mainly hits the CPU as load.
+- Real-time global illumination: the representation of light reflecting off wet road surfaces and car bodies consumes a great deal of GPU.
+- Complex water and physics simulation: the ocean representation of the bay area is thought to be heavy to process.
+- Asset streaming: because the world is loaded sequentially as you move, a fast SSD becomes effectively mandatory. An HDD is predicted to be unable to keep up with the loading.
+
+Third, there is precedent. The PC version of Red Dead Redemption 2 is known for placing a heavy load even on the high-end PCs of its time. Rockstar tends to push the limits of performance, and many expect the same to be true of GTA6.
+
+These are all reasonable speculation, but the fact that they are speculation does not change.
+
+---
+
+## Be Especially Careful With Leaked Images
+
+Regarding system requirements, images such as a photographed leaked specifications screen sometimes circulate as well. Such images call for particular caution.
+
+To begin with, as long as Rockstar has not announced a PC version, there is no premise for PC requirements to be properly leaked from the inside. In addition, it has been pointed out that this kind of image is often posted from anonymous accounts with only a handful of followers, and fabricating the image itself is not technically difficult. On overseas forums as well, there are voices saying that the reliability of the source is low and the authenticity is unknown.
+
+Articles and pages with headlines like GTA6 system requirements leak proliferate in great numbers, aiming to ride a wave of high attention. The more an item lists specific model numbers in a definitive manner, the safer it is — unless the source is official — to keep your distance and read it as speculation rather than taking it at face value.
+
+---
+
+## Should You Replace Your PC for This Game Right Now
+
+The practical conclusion is clear. At this point, it is premature to build or replace a PC for the sake of GTA6.
+
+There are two reasons. One is that no official system requirements exist yet, so there is no settled standard on which to base your choice. The other is that the PC version is said to arrive in late 2027 at the earliest. By that time, the price situation for GPUs and RAM will have changed, and newer-generation parts will likely have joined the options. Even if you assemble expensive parts now, they could end up overpriced and outdated by the time of release.
+
+A PC that can comfortably run recent AAA titles at medium settings (an 8-core class CPU, a GPU with 8GB or more of VRAM, 16GB or more of RAM, and an SSD) will still serve as a certain rough guide by the time the PC version arrives. That said, the prudent course is to make your final decision after Rockstar releases an official spec sheet.
+
+---
+
+## Summary: Separating the Confirmed From the Unconfirmed
+
+What is confirmed at this point is the single fact that GTA6 will be released for the PS5 and Xbox Series X|S on November 19, 2026. The existence, release timing, and system requirements of a PC version have none of them been officially announced.
+
+The PC requirements that the public calls leaks are in reality predictions assembled from console performance, the characteristics of the engine, and the tendencies of past titles, and the numbers differ depending on the source. They are reasonable estimates, but they are not confirmed information.
+
+GTA6 is an unreleased title, and the PC version in particular is at a stage before any announcement. We should continue to be wary of information that declares the system requirements to be confirmed. As soon as an official spec sheet is released, we will update the contents of this article.
+
+---
+
+> Note: This article is based on information as of June 22, 2026. Confirmed matters follow Rockstar Games' official announcements. The PC version of GTA6 is officially unannounced as of the time of writing, and all system requirements in the text are unconfirmed estimates by third parties. The content will be updated after an official announcement.`,
     fullContent: `# GTA6のPC版システム要件「リーク」は本物か？出回る推定スペックの実態と注意点
 
 「GTA6のPC版システム要件がリークされた」という情報が定期的に拡散している。RTX 4070以上、Core i7-12700相当、RAM 32GB——といった具体的な数字が並ぶ表を見たことがある人も多いだろう。
