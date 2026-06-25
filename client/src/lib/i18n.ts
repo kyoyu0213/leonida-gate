@@ -208,8 +208,8 @@ const JA: Dict = {
   'cat.speculation': '考察・リーク',
   'cat.event': 'イベント',
   // 掲示板名（slug 別）
-  'board.gtarp-servers': 'GTARP鯖別',
-  'board.streamer-servers': 'ストリーマー鯖',
+  'board.gtarp-servers': 'FiveMサーバー',
+  'board.streamer-servers': '配信者サーバー',
   'board.gtarp': 'GTARPプレイヤー交流',
   'board.gta6': 'GTA6情報交換',
   // 掲示板（/board・/thread・通報）
@@ -450,7 +450,7 @@ const EN: Dict = {
   'cat.update': 'Updates',
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',
-  'board.gtarp-servers': 'GTARP Servers',
+  'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'GTARP Community',
   'board.gta6': 'GTA6 Info',

@@ -15,7 +15,7 @@ export interface BoardConfig {
 export const BOARDS: BoardConfig[] = [
   {
     slug: 'gtarp-servers',
-    title: 'GTARP鯖別掲示板',
+    title: 'FiveMサーバー掲示板',
     description:
       '各GTARPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します（過疎・架空鯖の乱立防止のため）。',
     accent: 'purple',
@@ -23,7 +23,7 @@ export const BOARDS: BoardConfig[] = [
   },
   {
     slug: 'streamer-servers',
-    title: 'ストリーマー鯖掲示板',
+    title: '配信者サーバー掲示板',
     description:
       '人気ストリーマー／VTuberが参加するGTA RPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します。',
     accent: 'pink',
