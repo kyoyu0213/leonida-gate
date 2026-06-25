@@ -21,6 +21,7 @@ import FivemArticle from "./pages/FivemArticle";
 import GtarpArticle from "./pages/GtarpArticle";
 import FivemVsGtarpArticle from "./pages/FivemVsGtarpArticle";
 import FivemServerGuide from "./pages/FivemServerGuide";
+import FivemInstallGuide from "./pages/FivemInstallGuide";
 
 function Router() {
   return (
@@ -38,6 +39,7 @@ function Router() {
         <Route path="/fivem-gtarp/what-is-gtarp" component={GtarpArticle} />
         <Route path="/fivem-gtarp/fivem-vs-gtarp" component={FivemVsGtarpArticle} />
         <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
+        <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
         <Route path="/admin/reports" component={AdminReports} />
         <Route path="/search" component={SearchPage} />
         <Route path="/terms" component={Terms} />
