@@ -51,13 +51,21 @@ export interface NewsArticle {
   aiSummaryEn?: string[];
 }
 
-/** 記事の公開日時を「2026年6月25日 14:30」形式に整形する（publishedAt が無ければ年月日のみ）。 */
-export function formatArticleDate(article: NewsArticle): string {
+const EN_MONTHS = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+/** 記事の公開日時を整形する（publishedAt が無ければ年月日のみ）。
+ *  ja → 「2026年6月25日 14:30」 / en → 「Jun 25, 2026 14:30」 */
+export function formatArticleDate(article: NewsArticle, lang: 'ja' | 'en' = 'ja'): string {
   const src = article.publishedAt || article.date;
   const m = src.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
   if (!m) return src;
   const [, y, mo, d, hh, mi] = m;
-  const base = `${y}年${Number(mo)}月${Number(d)}日`;
+  const base =
+    lang === 'en'
+      ? `${EN_MONTHS[Number(mo) - 1]} ${Number(d)}, ${y}`
+      : `${y}年${Number(mo)}月${Number(d)}日`;
   return hh != null && mi != null ? `${base} ${hh}:${mi}` : base;
 }
 

@@ -94,11 +94,11 @@ export default function NewsDetail() {
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
                 <Calendar size={14} />
-                {formatArticleDate(article)}
+                {formatArticleDate(article, lang)}
               </div>
               <div className="flex items-center gap-2">
                 <Tag size={14} />
-                {article.source}
+                {isEn && article.source === 'GTA6 FEED 編集部' ? t('article.editorial') : article.source}
               </div>
             </div>
           </div>
@@ -188,12 +188,12 @@ export default function NewsDetail() {
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                alert('リンクをコピーしました');
+                alert(t('nd.copied'));
               }}
               className="bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm h-10 rounded transition-all duration-300"
             >
               <Share2 size={14} className="mr-2" />
-              シェア
+              {t('nd.share')}
             </Button>
             <button
               onClick={() => {
@@ -207,7 +207,7 @@ export default function NewsDetail() {
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
-              Xでシェア
+              {t('nd.shareX')}
             </button>
             {article.sourceUrl !== '#' && (
               <a
@@ -217,14 +217,14 @@ export default function NewsDetail() {
                 className="inline-flex items-center gap-2 px-4 py-2 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-all duration-300"
               >
                 <ExternalLink size={14} />
-                出典を見る
+                {t('nd.source')}
               </a>
             )}
           </div>
 
           {/* Related Articles */}
           <div className="bg-gradient-to-br from-cyan-500/5 to-pink-500/5 border border-cyan-500/30 rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 text-cyan-300 font-mono">関連記事</h2>
+            <h2 className="text-2xl font-bold mb-6 text-cyan-300 font-mono">{t('nd.related')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {relatedArticles.map((related) => (
                 <a

@@ -5,12 +5,12 @@ import {
   listNewsComments,
   createNewsComment,
   newsCommentErrorMessage,
-  NEWS_COMMENT_DEFAULT_NAME,
   NEWS_COMMENT_MAX_BODY,
   NEWS_COMMENT_COOLDOWN_MS,
   type NewsComment,
 } from '@/lib/newsComments';
 import { formatPostDate } from '@/lib/board';
+import { useT } from '@/lib/i18n';
 
 const COOLDOWN_KEY = 'news_comment_last';
 
@@ -19,6 +19,7 @@ interface Props {
 }
 
 export default function NewsComments({ articleId }: Props) {
+  const t = useT();
   const [comments, setComments] = useState<NewsComment[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState('');
@@ -40,12 +41,12 @@ export default function NewsComments({ articleId }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!body.trim()) {
-      toast.error('コメントを入力してください');
+      toast.error(t('cmt.toast.required'));
       return;
     }
     const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
     if (Date.now() - last < NEWS_COMMENT_COOLDOWN_MS) {
-      toast.error('投稿の間隔が短すぎます。少し待ってください');
+      toast.error(t('cmt.toast.tooFast'));
       return;
     }
     setSubmitting(true);
@@ -57,7 +58,7 @@ export default function NewsComments({ articleId }: Props) {
     }
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
-    toast.success('コメントを投稿しました');
+    toast.success(t('cmt.toast.posted'));
     load();
   };
 
@@ -67,7 +68,7 @@ export default function NewsComments({ articleId }: Props) {
   return (
     <section className="mt-12">
       <h2 className="flex items-center gap-2 text-2xl font-bold mb-6 text-[#22d3ee] font-mono">
-        <MessageSquare size={22} /> コメント
+        <MessageSquare size={22} /> {t('cmt.title')}
         <span className="text-base text-white/40">（{comments.length}）</span>
       </h2>
 
@@ -79,14 +80,14 @@ export default function NewsComments({ articleId }: Props) {
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder={`名前（空欄で「${NEWS_COMMENT_DEFAULT_NAME}」）`}
+          placeholder={t('cmt.namePh')}
           maxLength={30}
           className={inputClass}
         />
         <textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder="この記事へのコメントを書く…"
+          placeholder={t('cmt.bodyPh')}
           rows={3}
           maxLength={NEWS_COMMENT_MAX_BODY}
           className={`${inputClass} resize-none`}
@@ -98,7 +99,7 @@ export default function NewsComments({ articleId }: Props) {
             className="inline-flex items-center justify-center gap-2 text-white font-extrabold px-6 py-2.5 rounded-full disabled:opacity-60"
             style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
           >
-            {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />} 投稿する
+            {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />} {t('cmt.submit')}
           </button>
         </div>
       </form>
@@ -106,11 +107,11 @@ export default function NewsComments({ articleId }: Props) {
       {/* コメント一覧 */}
       {loading ? (
         <div className="text-center py-10 text-white/50">
-          <Loader2 size={24} className="mx-auto mb-2 animate-spin" /> 取得中…
+          <Loader2 size={24} className="mx-auto mb-2 animate-spin" /> {t('cmt.loading')}
         </div>
       ) : comments.length === 0 ? (
         <div className="text-center py-10 text-white/45 font-mono text-sm">
-          まだコメントはありません。最初のコメントを書いてみよう。
+          {t('cmt.empty')}
         </div>
       ) : (
         <div className="flex flex-col gap-3">
