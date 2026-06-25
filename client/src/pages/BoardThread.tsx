@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRoute } from 'wouter';
-import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply } from 'lucide-react';
+import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply, ThumbsUp, ThumbsDown } from 'lucide-react';
 import Header from '@/components/Header';
 import ReportDialog from '@/components/ReportDialog';
 import { toast } from 'sonner';
@@ -11,11 +11,15 @@ import {
   getPostId,
   formatPostDate,
   boardErrorMessage,
+  votePost,
+  loadMyVotes,
+  saveMyVote,
   DEFAULT_NAME,
   MAX_BODY,
   POST_COOLDOWN_MS,
   type BoardThread as ThreadType,
   type BoardPost,
+  type VoteKind,
 } from '@/lib/board';
 import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
@@ -55,6 +59,9 @@ export default function BoardThread() {
   const [body, setBody] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [reported, setReported] = useState<Set<string>>(loadReported);
+  // グッド/バッドの集計（postId→{good,bad}）と、このブラウザの投票（postId→kind）
+  const [counts, setCounts] = useState<Record<string, { good: number; bad: number }>>({});
+  const [myVotes, setMyVotes] = useState<Record<string, VoteKind>>(loadMyVotes);
   // ハニーポット（ボット対策・人間には見えない。埋まっていたら送信しない）
   const [hp, setHp] = useState('');
 
@@ -147,8 +154,33 @@ export default function BoardThread() {
         setThreadImages(noPost);
       }
     }
-    if (!pe) setPosts((p as BoardPost[]) ?? []);
+    if (!pe) {
+      const arr = (p as BoardPost[]) ?? [];
+      setPosts(arr);
+      // グッド/バッドの初期集計
+      setCounts(
+        Object.fromEntries(arr.map((post) => [post.id, { good: post.good ?? 0, bad: post.bad ?? 0 }])),
+      );
+    }
     setLoading(false);
+  };
+
+  // グッド/バッド投票（楽観更新→RPCの結果で確定）
+  const vote = async (postId: string, kind: VoteKind) => {
+    const { data, error } = await votePost(postId, kind);
+    if (error) {
+      toast.error('投票に失敗しました。時間をおいて再度お試しください');
+      return;
+    }
+    const r = data as { good: number; bad: number; my: VoteKind | null };
+    setCounts((c) => ({ ...c, [postId]: { good: r.good, bad: r.bad } }));
+    setMyVotes((m) => {
+      const next = { ...m };
+      if (r.my) next[postId] = r.my;
+      else delete next[postId];
+      return next;
+    });
+    saveMyVote(postId, r.my);
   };
 
   useEffect(() => {
@@ -329,6 +361,35 @@ export default function BoardThread() {
                             ))}
                           </div>
                         )}
+                        {/* グッド / バッド */}
+                        <div className="flex items-center gap-2 mt-1.5">
+                          {(['good', 'bad'] as const).map((kind) => {
+                            const active = myVotes[post.id] === kind;
+                            const count =
+                              kind === 'good'
+                                ? counts[post.id]?.good ?? post.good ?? 0
+                                : counts[post.id]?.bad ?? post.bad ?? 0;
+                            const accent = kind === 'good' ? '#3de0a0' : '#ff8fc0';
+                            return (
+                              <button
+                                key={kind}
+                                type="button"
+                                onClick={() => vote(post.id, kind)}
+                                className="inline-flex items-center gap-1.5 text-[12px] font-bold rounded-full px-3 py-1 transition-colors"
+                                style={{
+                                  border: `1px solid ${active ? accent : 'rgba(255,255,255,.14)'}`,
+                                  background: active ? `${accent}1f` : 'transparent',
+                                  color: active ? accent : 'rgba(244,238,248,.55)',
+                                }}
+                                aria-pressed={active}
+                                title={kind === 'good' ? 'グッド' : 'バッド'}
+                              >
+                                {kind === 'good' ? <ThumbsUp size={13} /> : <ThumbsDown size={13} />}
+                                {count}
+                              </button>
+                            );
+                          })}
+                        </div>
                       </>
                     )}
                   </div>

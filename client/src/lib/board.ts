@@ -40,7 +40,11 @@ export interface BoardPost {
   body: string;
   created_at: string;
   hidden: boolean;
+  good: number;
+  bad: number;
 }
+
+export type VoteKind = 'good' | 'bad';
 
 /** 通報理由の選択肢（report_post の許可集合と一致させること） */
 export const REPORT_REASONS: { value: string; label: string }[] = [
@@ -85,9 +89,38 @@ export async function listPosts(threadId: string) {
   // hidden は取得する（非表示投稿は本文を伏せて「あぼーん」表示し、採番は維持する）
   return supabase
     .from('board_posts')
-    .select('id, thread_id, post_number, name, body, created_at, hidden')
+    .select('id, thread_id, post_number, name, body, created_at, hidden, good, bad')
     .eq('thread_id', threadId)
     .order('post_number', { ascending: true });
+}
+
+// このブラウザの投票記録（postId → 'good'|'bad'）。UI のハイライト用。
+const VOTES_KEY = 'board_votes';
+export function loadMyVotes(): Record<string, VoteKind> {
+  try {
+    return JSON.parse(localStorage.getItem(VOTES_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+export function saveMyVote(postId: string, kind: VoteKind | null): void {
+  try {
+    const m = loadMyVotes();
+    if (kind) m[postId] = kind;
+    else delete m[postId];
+    localStorage.setItem(VOTES_KEY, JSON.stringify(m));
+  } catch {
+    /* ignore */
+  }
+}
+
+/** レスにグッド/バッド投票（1人1票・同じボタンで取消・反対側で切替）。新しい集計を返す。 */
+export async function votePost(postId: string, kind: VoteKind) {
+  return supabase.rpc('vote_post', {
+    p_post_id: postId,
+    p_kind: kind,
+    p_anon_id: getAnonId(),
+  });
 }
 
 /** 投稿を通報する（ログイン不要）。reason は REPORT_REASONS の value。 */
