@@ -53,11 +53,11 @@ export default function Home() {
             background: 'radial-gradient(130% 140% at 16% 64%,#220c30 0%,#100819 56%,#08060f 100%)',
           }}
         >
-          {/* 右側に大きくカバーアート（左へフェード） */}
+          {/* PC：右側に大きくカバーアート（左へフェード） */}
           <img
             src="/images/news/Official_Cover_Art_landscape.webp"
             alt="Grand Theft Auto VI"
-            className="home-hero-cover absolute right-0 top-0 h-full select-none pointer-events-none"
+            className="home-hero-cover hidden sm:block absolute right-0 top-0 h-full select-none pointer-events-none"
             style={{
               width: '72%',
               objectFit: 'cover',
@@ -66,12 +66,27 @@ export default function Home() {
               maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
             }}
           />
-          {/* 下からの黒グラデで可読性確保 */}
+          {/* スマホ：縦型カバーアートを全面背景に */}
+          <img
+            src="/images/hero-mobile.webp"
+            alt="Grand Theft Auto VI"
+            className="sm:hidden absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+            style={{ objectPosition: 'center top' }}
+          />
+          {/* PC：下からの黒グラデで可読性確保 */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="hidden sm:block absolute inset-0 pointer-events-none"
             style={{
               background:
                 'linear-gradient(180deg,rgba(8,6,15,.1) 0%,rgba(8,6,15,0) 34%,rgba(8,6,15,.5) 70%,rgba(8,6,15,.95) 100%)',
+            }}
+          />
+          {/* スマホ：上下を暗くして中央エンブレムは見せる */}
+          <div
+            className="sm:hidden absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(180deg,rgba(8,6,15,.6) 0%,rgba(8,6,15,.12) 20%,rgba(8,6,15,.05) 42%,rgba(8,6,15,.5) 64%,rgba(8,6,15,.9) 82%,rgba(8,6,15,.98) 100%)',
             }}
           />
 
@@ -194,19 +209,21 @@ export default function Home() {
           </div>
 
           {/* スマホ：ロゴを上に・文言は縦積み・ボタン2つ（サーバー探すは無し） */}
-          <div className="sm:hidden relative" style={{ padding: '74px 20px 26px' }}>
+          <div className="sm:hidden relative flex flex-col" style={{ minHeight: 600, padding: '18px 20px 22px' }}>
             <img
               src="/images/gta6feed-logo.webp"
               alt="GTA6 FEED"
-              className="block select-none"
+              className="block select-none self-start"
               style={{
-                width: 'clamp(260px,82vw,400px)',
+                width: 'clamp(150px,46vw,200px)',
                 height: 'auto',
                 filter:
-                  'drop-shadow(0 4px 22px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(255,45,149,.28))',
+                  'drop-shadow(0 2px 14px rgba(0,0,0,.9)) drop-shadow(0 0 20px rgba(255,45,149,.3))',
               }}
             />
-            <div style={{ marginTop: 16 }}>
+            {/* 中央のエンブレムを見せるためのスペーサー（文言・ボタンを下部へ） */}
+            <div style={{ flex: 1, minHeight: 70 }} />
+            <div>
               {t('hero.tagline')
                 .split('｜')
                 .map((line, i) => (
