@@ -80,9 +80,32 @@ export default function ArticleLayout({
             </div>
           </div>
 
-          {/* AIによる3行まとめ（あらかじめ用意した要約をクリックで開閉） */}
+          {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
           {aiSummary && aiSummary.length > 0 && (
             <div className="mb-8">
+              <button
+                onClick={() =>
+                  document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold text-white transition-transform hover:-translate-y-px"
+                style={{ background: 'linear-gradient(95deg,#7c3aed,#22d3ee)', boxShadow: '0 4px 18px rgba(34,211,238,.3)' }}
+              >
+                <Sparkles size={16} /> AIによる3行まとめ
+                <ChevronDown size={16} />
+              </button>
+            </div>
+          )}
+
+          {/* Body */}
+          <div className="article-body mb-8">
+            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
+              {body}
+            </Streamdown>
+          </div>
+
+          {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール） */}
+          {aiSummary && aiSummary.length > 0 && (
+            <div id="ai-summary" className="mb-10 scroll-mt-24">
               <button
                 onClick={() => setSummaryOpen((o) => !o)}
                 aria-expanded={summaryOpen}
@@ -107,13 +130,6 @@ export default function ArticleLayout({
               )}
             </div>
           )}
-
-          {/* Body */}
-          <div className="article-body mb-8">
-            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
-              {body}
-            </Streamdown>
-          </div>
 
           <div className="border-t border-cyan-500/30 my-10" />
 
