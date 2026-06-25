@@ -66,11 +66,11 @@ export default function Home() {
               maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
             }}
           />
-          {/* スマホ：縦型カバーアートを全面背景に */}
+          {/* スマホ：縦型カバーアートを全体表示（引き）で上寄せ。下は背景が見える */}
           <img
             src="/images/hero-mobile.webp"
             alt="Grand Theft Auto VI"
-            className="sm:hidden absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+            className="sm:hidden absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
             style={{ objectPosition: 'center top' }}
           />
           {/* PC：下からの黒グラデで可読性確保 */}
@@ -221,11 +221,13 @@ export default function Home() {
                   'drop-shadow(0 2px 14px rgba(0,0,0,.95)) drop-shadow(0 0 22px rgba(255,45,149,.32))',
               }}
             />
-            {/* 発売カウントダウン（スマホ：ロゴの下） */}
+            {/* 中央のエンブレムを見せるためのスペーサー（文言・ボタンを下部へ） */}
+            <div style={{ flex: 1, minHeight: 40 }} />
+            {/* 発売カウントダウン（スマホ：下部・文言の上） */}
             <div
               className="self-start flex items-center gap-2"
               style={{
-                marginTop: 12,
+                marginBottom: 12,
                 width: 'fit-content',
                 background: 'rgba(8,6,15,.5)',
                 backdropFilter: 'blur(8px)',
@@ -245,8 +247,6 @@ export default function Home() {
                 {lang === 'ja' ? ' 日' : ' days'}
               </span>
             </div>
-            {/* 中央のエンブレムを見せるためのスペーサー（文言・ボタンを下部へ） */}
-            <div style={{ flex: 1, minHeight: 56 }} />
             <div>
               {t('hero.tagline')
                 .split('｜')
