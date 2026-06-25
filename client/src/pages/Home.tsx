@@ -47,7 +47,7 @@ export default function Home() {
       <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[88px] pb-16 relative z-10">
         {/* ===================== HERO : シネマティック全面（Frame A） ===================== */}
         <section
-          className="relative rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-end"
+          className="relative rounded-3xl overflow-hidden border border-white/10"
           style={{
             minHeight: 'clamp(440px,52vw,560px)',
             background: 'radial-gradient(130% 140% at 16% 64%,#220c30 0%,#100819 56%,#08060f 100%)',
@@ -101,9 +101,9 @@ export default function Home() {
             </span>
           </div>
 
-          {/* テキスト＋ロゴ＋CTA */}
+          {/* PC：テキスト＋ロゴ＋CTA（下寄せ／スマホは非表示） */}
           <div
-            className="relative"
+            className="hidden sm:flex flex-col justify-end absolute inset-0"
             style={{ padding: '0 clamp(22px,4vw,46px) clamp(26px,4vw,42px)' }}
           >
             <span
@@ -190,6 +190,70 @@ export default function Home() {
                 }}
               >
                 {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
+              </a>
+            </div>
+          </div>
+
+          {/* スマホ：ロゴを上に・文言は縦積み・ボタン2つ（サーバー探すは無し） */}
+          <div className="sm:hidden relative" style={{ padding: '74px 20px 26px' }}>
+            <img
+              src="/images/gta6feed-logo.webp"
+              alt="GTA6 FEED"
+              className="block select-none"
+              style={{
+                width: 'clamp(220px,66vw,340px)',
+                height: 'auto',
+                filter:
+                  'drop-shadow(0 4px 22px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(255,45,149,.28))',
+              }}
+            />
+            <div style={{ marginTop: 16 }}>
+              {t('hero.tagline')
+                .split('｜')
+                .map((line, i) => (
+                  <p
+                    key={i}
+                    className="font-black"
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 1.75,
+                      margin: 0,
+                      color: 'rgba(244,238,248,.94)',
+                      letterSpacing: '.03em',
+                    }}
+                  >
+                    {line}
+                  </p>
+                ))}
+            </div>
+            <div className="flex flex-col items-start gap-2.5" style={{ marginTop: 18 }}>
+              <a
+                href="/news"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 14.5,
+                  padding: '13px 26px',
+                  borderRadius: 999,
+                  background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)',
+                  boxShadow: '0 6px 24px rgba(255,45,149,.45)',
+                }}
+              >
+                {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
+              </a>
+              <a
+                href="/board"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 14.5,
+                  padding: '13px 26px',
+                  borderRadius: 999,
+                  background: 'rgba(255,255,255,.1)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,.25)',
+                }}
+              >
+                {lang === 'ja' ? '掲示板を見る' : 'Board'}
               </a>
             </div>
           </div>
