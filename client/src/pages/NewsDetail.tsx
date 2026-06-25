@@ -7,6 +7,7 @@ import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { getArticleById, formatArticleDate } from '@/data/news';
 import { useLang, useT } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）を解決できずブロックしてしまう。
@@ -31,13 +32,27 @@ export default function NewsDetail() {
   const [summaryOpen, setSummaryOpen] = useState(false);
   const lang = useLang();
   const t = useT();
+  const isEn = lang === 'en';
+
+  // 記事データは client/src/data/news.ts で一元管理しています
+  const article = match ? getArticleById(params.id) : undefined;
+
+  // 記事ごとに <title> / description / OGP を設定（フックは早期returnの前で呼ぶ）。
+  const seoTitle = article
+    ? `${isEn && article.titleEn ? article.titleEn : article.title} | GTA6 FEED`
+    : 'GTA6 FEED';
+  const seoDesc = article
+    ? (isEn && article.descriptionEn ? article.descriptionEn : article.description)?.slice(0, 120)
+    : undefined;
+  useSeo(seoTitle, seoDesc, {
+    image: article?.image,
+    type: 'article',
+    url: article ? `/news/${article.id}` : undefined,
+  });
 
   if (!match) {
     return null;
   }
-
-  // 記事データは client/src/data/news.ts で一元管理しています
-  const article = getArticleById(params.id);
 
   if (!article) {
     return (
@@ -55,7 +70,6 @@ export default function NewsDetail() {
 
   const categoryLabel = t(`cat.${article.category}`);
   // EN表示時は英語フィールドを使い、無ければ日本語にフォールバック。
-  const isEn = lang === 'en';
   const title = isEn && article.titleEn ? article.titleEn : article.title;
   const body = isEn && article.fullContentEn ? article.fullContentEn : article.fullContent;
   const summary = isEn && article.aiSummaryEn ? article.aiSummaryEn : article.aiSummary;
