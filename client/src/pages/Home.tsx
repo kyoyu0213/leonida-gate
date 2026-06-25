@@ -257,6 +257,7 @@ export default function Home() {
               <div>
                 {t('hero.tagline')
                   .split('｜')
+                  .slice(0, -1)
                   .map((line, i) => (
                     <p
                       key={i}
