@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-[60] border-b border-white/[0.08]"
+      className="absolute md:fixed top-0 left-0 right-0 z-[60] border-b border-white/[0.08]"
       style={{
         background: 'rgba(11,7,20,.72)',
         backdropFilter: 'blur(20px) saturate(1.3)',
@@ -75,8 +75,8 @@ export default function Header() {
         {/* spacer */}
         <div className="flex-1 min-w-[8px]" />
 
-        {/* 言語切替（右上） */}
-        <div className="hidden sm:block flex-none">
+        {/* 言語切替（PCの右上） */}
+        <div className="hidden md:block flex-none">
           <LangToggle />
         </div>
 
@@ -98,6 +98,11 @@ export default function Header() {
             className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
           />
         </form>
+
+        {/* 言語切替（スマホはハンバーガーの左に常時表示） */}
+        <div className="md:hidden flex-none">
+          <LangToggle />
+        </div>
 
         {/* Mobile menu toggle */}
         <button className="md:hidden text-white flex-none" onClick={() => setMenuOpen((v) => !v)}>
@@ -126,9 +131,6 @@ export default function Header() {
                 className="bg-transparent border-none outline-none text-[#f4eef8] text-[14px] w-full min-w-0 placeholder:text-white/40"
               />
             </form>
-            <div className="self-start">
-              <LangToggle />
-            </div>
             {NAV.map((item) => (
               <a
                 key={item.href}

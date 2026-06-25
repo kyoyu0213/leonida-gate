@@ -1,8 +1,8 @@
 import { setLang, useLang, type Lang } from '@/lib/i18n';
 
 const OPTS: { id: Lang; label: string }[] = [
-  { id: 'ja', label: '日本語' },
-  { id: 'en', label: 'EN' },
+  { id: 'ja', label: 'JPN' },
+  { id: 'en', label: 'ENG' },
 ];
 
 /** 言語切替（日本語 / EN）。ヘッダー右上に置く。 */
