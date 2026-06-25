@@ -1017,6 +1017,74 @@ RP的な遊びへの需要が確かに存在し、Rockstarがそれを取り込�
       "初の公式カバーアートと物語のあらすじも公開された。",
       "価格・エディション・予約特典・PC版時期は当時未発表（6/25に判明）。確定した価格情報は最新記事を参照。",
     ],
+    titleEn:
+      "[Official Announcement] GTA6 Pre-Orders Start on June 25, with Rockstar Also Unveiling the Cover Art and Story Synopsis",
+    descriptionEn:
+      "Rockstar announced on June 18 that GTA6 pre-orders will begin on June 25. The first official cover art and story synopsis were also revealed. The release date remains November 19, unchanged. We organize the confirmed information and what has yet to be announced.",
+    aiSummaryEn: [
+      "Rockstar announced on June 18 that GTA6 pre-orders begin on June 25, with release on November 19 (PS5/Xbox) unchanged.",
+      "The first official cover art and the story synopsis were also revealed.",
+      "Pricing, editions, pre-order bonuses, and the PC release timing were unannounced at the time (revealed on June 25). For confirmed pricing information, see the latest article.",
+    ],
+    fullContentEn: `# [Official Announcement] GTA6 Pre-Orders Start on June 25, with Rockstar Also Unveiling the Cover Art and Story Synopsis
+
+On June 18, 2026, Rockstar Games officially announced that pre-orders for Grand Theft Auto VI (GTA6) would begin on June 25. Alongside this, the first official cover art and the story synopsis were revealed. The release date remains November 19, 2026, unchanged. This article organizes what this official announcement made clear and what has yet to be announced. This article is based on information as of June 23, 2026.
+
+*[Update] Pricing and editions were officially announced on June 24, 2026. For the confirmed pricing ($79.99 for Standard / $99.99 for Ultimate), pre-order bonuses, and details on each edition, please see "[GTA6 Editions and Pre-Order Bonuses Explained](/news/19)".*
+
+---
+
+## What Was Officially Announced
+
+The items Rockstar officially made clear in this announcement are as follows.
+
+- The pre-order start date is June 25, 2026. Orders will be accepted at digital stores and some retailers.
+- Even now, before pre-orders begin, adding GTA6 to your wishlist on the PlayStation Store or Microsoft Store will let you receive a notification when pre-orders start.
+- The first official cover art was released as a 30-second video across social media. It is also offered as downloadable artwork.
+- The supported platforms are PlayStation 5 and Xbox Series X|S. The official GTA6 page also clearly states "Pre-order on June 25".
+- The release date was reaffirmed as November 19, 2026, with no delay announced.
+
+The cover art centers on the protagonists Jason Duval and Lucia Caminos, with Florida-evoking motifs such as flamingos and alligators, sports cars, helicopters, motorcycles, and boats arranged in the series' signature pop-art style based on purple and orange.
+
+The official synopsis released alongside it presents a storyline in which Jason and Lucia, who have been dealt a tough hand, get caught up in a criminal conspiracy spreading across the entire state of Leonida after one "easy job" goes wrong, and come to rely on each other to survive. The official pre-order page also featured a new screenshot overlooking the streets of Vice City.
+
+---
+
+## What Has Not Yet Been Announced
+
+What is especially important for an official-announcement category is what this announcement "did not touch on". The following are all unannounced at this point and are not confirmed information.
+
+- Pricing: The price for each edition, including the standard edition, has not been announced. Pricing is expected to become clear on June 25, when pre-orders begin.
+- Edition lineup: The existence and contents of higher-tier editions beyond the standard edition, or any collector's edition, have not been indicated.
+- Pre-order bonuses: Whether there are early pre-order bonuses or bundles has not been made clear.
+- PC version: This round of pre-orders is for consoles, and the PC release timing has not been announced. Take-Two has long maintained a console-first approach, with the PC version coming later at an undetermined time.
+- Specific retailers: Only "some retailers" is stated, and which stores will handle pre-orders has not been specified.
+
+These details are seen as highly likely to become clear in line with the June 25 pre-order launch.
+
+---
+
+## Supplement: Observations from Various Media and Analysts
+
+From here on, this is not the official announcement but observations and predictions by various media and analysts. We want to handle it separately from official information.
+
+Regarding pricing, analysts have pointed out the possibility that the standard edition could reach $100 given the scale of development, but this is merely a prediction, and Rockstar has stated nothing.
+
+As for the third trailer, because Take-Two CEO Strauss Zelnick had stated to the effect that it would be released "after pre-orders begin", there is a view that it will be released in line with the June 25 pre-order launch. However, there has been no confirmed notice from Rockstar, and it remains unconfirmed at this point.
+
+Regarding the certainty of the release date, in light of how Rockstar announced its two past delays roughly half a year before the then-target dates, and given that no delay has been announced even now with less than half a year remaining until November 19, many take this pre-order launch as a sign that the release date will not move. This too is not an official statement but an industry interpretation.
+
+---
+
+## Summary
+
+What Rockstar officially confirmed this time comes down to three points: that GTA6 pre-orders begin on June 25 for PS5 and Xbox Series X|S, that the first cover art and the story synopsis were revealed, and that the release date remains November 19, 2026.
+
+On the other hand, information that many players want to know, such as pricing, editions, pre-order bonuses, and the PC release timing, was not included in this announcement and is expected to become clear at the June 25 pre-order launch. We should continue to be cautious of information that treats pricing or editions as "already confirmed". We will update this article as soon as the official moves on June 25 become clear.
+
+---
+
+*Note: This article is based on Rockstar Games' official announcement (Newswire and official page) as of June 23, 2026. Pricing, editions, the third trailer, and the PC release timing were unannounced at the time of writing, and the observational portions in the body include unconfirmed predictions by various media and analysts. We will update the content as soon as official follow-up news is released.*`,
     fullContent: `# 【公式発表】GTA6の予約購入は6月25日開始 Rockstarがカバーアートとあらすじも公開
 
 Rockstar Gamesは2026年6月18日、グランド・セフト・オートVI（GTA6）の予約購入を6月25日に開始すると正式に発表した。あわせて初の公式カバーアートと物語のあらすじが公開されている。発売日は2026年11月19日で変更はない。本記事は、この公式発表で何が明らかになり、何がまだ発表されていないのかを整理する。本記事は2026年6月23日時点の情報にもとづく。
@@ -1095,6 +1163,108 @@ Rockstar Gamesは2026年6月18日、グランド・セフト・オートVI（GTA
       "達成条件で3ティアに分かれ、現金は合計で最大GTA$150万、無料車両や衣装も入手できる。",
       "7月配信予定の新ハイスト「The Kortz Center Heist」への準備イベントで、配信日は公式未確定。",
     ],
+    titleEn:
+      "GTA Online Latest Update Explained: Fine Art Collector Begins, Up to GTA$1,500,000 and the New Heist The Kortz Center Heist",
+    descriptionEn:
+      "The limited-time reward program Fine Art Collector started on June 18. Just by playing, you can earn up to GTA$1,500,000 plus a free vehicle. It is a lead-up event for July's new heist, The Kortz Center Heist.",
+    aiSummaryEn: [
+      "The limited-time reward program Fine Art Collector is running from June 18 to July 13.",
+      "It is split into three tiers by achievement requirements, with cash totaling up to GTA$1,500,000, plus free vehicles and outfits.",
+      "It is a lead-up event for the new heist The Kortz Center Heist, scheduled for July, with the release date not officially confirmed.",
+    ],
+    fullContentEn: `# GTA Online Latest Update Explained: Fine Art Collector Program Begins, Up to GTA$1,500,000 and the New Heist The Kortz Center Heist
+
+In GTA Online, the limited-time reward program Fine Art Collector has begun. It is a lead-up event for the new heist The Kortz Center Heist scheduled for July, and simply by meeting conditions such as logging in or completing existing heists, you can earn rewards including up to GTA$1,500,000 in cash and free vehicles. The event runs from June 18 to July 13, 2026. This article organizes the key points of the program.
+
+---
+
+## The Key Points First
+
+- Event name: Fine Art Collector program
+- Period: June 18 to July 13, 2026
+- Purpose: Preparation for the new heist The Kortz Center Heist, scheduled for July
+- Rewards: Split into three tiers, with cash totaling up to GTA$1,500,000 plus free vehicles, outfits, and more
+- For the most part, you can receive some of the rewards just by playing GTA Online
+
+---
+
+## The Three Tiers and Rewards
+
+This program is divided into three stages based on achievement requirements. The lower tiers have easier conditions, while the higher ones require more preparation.
+
+### Tier 1: Enthusiast
+
+- Condition: Play GTA Online during the period from June 18 to July 13
+- Reward: GTA$500,000 plus the free vehicle Benefactor Turreted Limo (a turreted limousine/sedan)
+- This limo is armored, seats up to five, and mounts a minigun on the roof. It can be requested for free through Pegasus from the Interaction Menu
+- Delivery: Within 72 hours of meeting the condition
+
+This is the most accessible tier, effectively achievable just by logging in and playing.
+
+### Tier 2: Patron
+
+- Condition: Complete any heist in GTA Online during the period from June 18 to July 13
+- Reward: NOOSE outfit plus GTA$1,000,000
+- Delivery: Within 72 hours of meeting the condition
+
+Combining Tier 1 and Tier 2 yields GTA$1,500,000 in cash alone. This is the breakdown of the up to GTA$1,500,000 figure.
+
+### Tier 3: Elitist
+
+- Condition: Own a mansion, and on top of that, play during the period from June 18 to July 13
+- Reward (granted together when the new heist launches): the following four items
+- A GTA$1,000,000 discount on the cost of the Art Studio expansion required to start the new heist
+- The free helicopter Annihilator Stealth (from Warstock)
+- One Sculpture to decorate the mansion
+- The right to unlock a special Painting
+
+- Delivery: Unlike the other two tiers, the rewards are granted in July at the time The Kortz Center Heist launches
+
+This tier is positioned for players who want to host the new heist, and it requires owning a mansion.
+
+---
+
+## What Is the New Heist The Kortz Center Heist?
+
+The main event that this program is preparing for is the new heist The Kortz Center Heist, scheduled for July.
+
+The setting is the Kortz Center, an art facility in Pacific Bluffs, Los Santos. It is described as a multi-stage robbery mission targeting a cultural facility frequented by many collectors and celebrities. To plan and start this heist as a leader, you must own a mansion and build the Art Studio expansion. The Elitist tier discount goes toward this expansion cost.
+
+Regarding the release timing, Rockstar has only announced July. Various outlets predict that Tuesday, July 14, immediately after the program's end date of July 13, is the strongest candidate, but this is purely speculation, and the official date will have to wait for an official announcement. Note that several outlets see this robbery as the first new heist in about two years, and likely the last major update to current GTA Online before the November 2026 release of GTA6. This too is observation rather than an official statement.
+
+---
+
+## Concurrent This Week's Bonuses
+
+In parallel with the Fine Art Collector program, the usual weekly bonuses are also running. The main ones are as follows.
+
+- The Diamond Casino Heist finale pays double (through June 24). Furthermore, taking the Daily Vault in the finale grants GTA$100,000 plus 10,000 RP
+- Owners of the PS4/Xbox One version of GTA5 can upgrade to the PS5/Xbox Series X|S version at no additional cost. Save data for both Story Mode and GTA Online can be carried over
+- Buying a Shark Card (Great White/Whale/Megalodon) grants a 40% GTA$ bonus. Linking your Rockstar account and GTA Online character is required, and it runs through July 22
+- Linking your Rockstar account with Discord, joining the official server, and playing by July 1 grants the outfit Burgundy Rockstar Varsity Crewneck
+
+If you are considering buying a mansion ahead of the new heist, discounts on luxury real estate are available for GTA+ members, and the Shark Card bonus above is also a way to prepare funds.
+
+---
+
+## Tips and Notes for Claiming Rewards
+
+- Enthusiast and Patron rewards are granted within 72 hours of meeting the conditions. There is no need to panic if they do not appear right away
+- Only the Elitist rewards arrive not immediately but all together when the new heist launches in July
+- For all tiers, the eligible period runs through July 13. Once the deadline passes you can no longer meet the conditions, so if you want to at least claim the cash and free vehicle, it is a good idea to play once within the period
+- The double-payout Casino Heist runs only through June 24, a short window, so these few days are the prime opportunity if you want to earn efficiently
+
+---
+
+## Summary
+
+The Fine Art Collector program is a lead-up event for July's new heist The Kortz Center Heist, and its content is reward-focused, letting you earn cash and free vehicles just by playing. Achieving Enthusiast and Patron yields GTA$1,500,000 in cash, and mansion owners can additionally receive benefits such as the Art Studio expansion discount.
+
+The period runs through July 13. Since the exact release date of the main new heist has only been announced as July, we will organize it again once confirmed information is available.
+
+---
+
+*Note: This article is based on Rockstar Games' official announcement (Newswire) as of June 2026. Points such as the specific release date of the new heist and whether it will be the last major update include observations from various outlets and have not been officially confirmed.*`,
     fullContent: `# GTAオンライン最新アップデート解説 「Fine Art Collector」プログラム開始、最大GTA$150万と新ハイスト「The Kortz Center Heist」
 
 GTAオンラインで、期間限定の報酬プログラム「Fine Art Collector（ファインアート・コレクター）」が始まった。7月に予定される新ハイスト「The Kortz Center Heist（コルツ・センター強盗）」に向けた準備イベントで、ログインや既存ハイストのクリアといった条件を満たすだけで、最大でGTA$1,500,000の現金や無料車両などの報酬が手に入る。開催期間は2026年6月18日から7月13日まで。本記事はこのプログラムの要点を整理する。
