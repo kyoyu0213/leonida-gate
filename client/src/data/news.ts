@@ -1583,6 +1583,109 @@ Rockstarは技術的なキーワードを自ら語らず、言葉より実物で
       "過去作の例から開始は発売と同時でなく、11月下旬から12月中旬が有力との推測がある。",
       "旧作の資産は引き継がれない新世界の見込みで、新基盤Project ROMEは噂段階にとどまる。",
     ],
+    titleEn:
+      "When Does GTA6 Online Begin? Sorting Out the Post-Launch Rollout Theory and the Project ROME Rumors",
+    descriptionEn:
+      "When will the successor to the 13-year-long GTA Online arrive? We sort out the post-launch rollout theory and the rumors of a new platform, Project ROME.",
+    aiSummaryEn: [
+      "GTA6's online mode has not been officially announced, but the industry sees it as almost certain to be prepared.",
+      "Based on the precedent of past titles, there is speculation that it will not launch at the same time as the game, with late November to mid-December seen as most likely.",
+      "It is expected to be a new world that does not carry over assets from older titles, while the new platform Project ROME remains at the rumor stage.",
+    ],
+    fullContentEn: `# When Does GTA6 Online Begin? Sorting Out the Post-Launch Rollout Theory and the Project ROME Rumors
+
+Grand Theft Auto VI (GTA6), whose release on November 19, 2026, is now confirmed. While attention is focused on the main story, what many players care about is the question of when the online mode will become playable. As the successor to the massive live service that was GTA Online, which ran for 13 years, expectations are high. To get straight to the point, the online mode is seen as almost certain to be prepared, but it is likely to start not at the same time as the game's release, but several weeks to about a month later. We sort out what is known at this point, from past patterns and the latest leaks to the rumors of a new platform called Project ROME.
+
+---
+
+## The Premise to Keep in Mind First: The Online Mode Has Not Yet Been Officially Announced
+
+It may come as a surprise, but neither Rockstar nor Take-Two Interactive has officially announced GTA6's online mode. As things stand, not even the fact that it is in development has been officially acknowledged.
+
+Even so, the reason the industry view is nearly unanimous that online is coming is that the very business model of the GTA series is built on the premise of online play. Take-Two's earnings outlook also strongly factors in the growth of a live service centered on GTA6. In other words, the point of debate is not whether it exists, but when and in what form it will arrive.
+
+---
+
+## The Past Pattern: The Main Game First, Online Later
+
+The most useful reference for predicting the timing is the track record of Rockstar's past titles.
+
+- GTA5: The main game was released on September 17, 2013, and GTA Online began about two weeks later (October 1).
+- Red Dead Redemption 2: The main game came on October 26, 2018, and Red Dead Online started as a beta 32 days later (November 27).
+
+Both share the point of a staged rollout of main game release, then online a few weeks later. Moreover, as can be seen from the fact that Red Dead Online was treated as a beta for a long time, starting early does not necessarily mean a complete experience is offered from day one.
+
+Given this precedent, there is a strong chance that GTA6 will likewise follow the flow of online starting some time after release.
+
+---
+
+## So, When Will It Begin
+
+Putting together multiple overseas outlets and leaks, the current assessment is as follows.
+
+- An online launch at the same time as the release date (November 19) is hardly expected at all.
+- The online launch is most likely within one month of the main game's release. Specifically, many take the view that it will be somewhere in late November to mid-December 2026.
+- However, no official date has been confirmed at all. This is purely speculation from past patterns and leaks.
+
+Considering the prime selling season of the Christmas shopping period, the strategy of launching online before year-end to maintain momentum makes sense. That said, this remains an area where nothing can be stated definitively until an official announcement is made.
+
+---
+
+## The 13-Year-Long GTA Online Will Soon Reach a Turning Point
+
+Rockstar has teased a major update to the current GTA Online in the summer of 2026. Many outlets and fans see this as likely to be the last update before GTA6's release, but Rockstar itself has not stated that this is the final one, nor that it will continue support after release.
+
+The December 2025 A Safehouse in the Hills update (which drew attention for the purchase of a Los Santos mansion and the return of GTA5 protagonist Michael) was seen as the last, but following the delay of the main game's release, one more major update is coming in the summer. There is a strong chance it will be the de facto final chapter of a live service that has lasted more than 13 years.
+
+One thing to be careful about, however, is that this does not mean a complete shutdown of the servers. Take-Two has shown a stance of continuing support for older titles as long as the community is active, and for the time being there is a possibility that the old GTA Online and the new GTA6 online will coexist in parallel.
+
+---
+
+## GTA6 Online Is Expected to Be a Separate Thing, Not a Continuation
+
+This is an important point for GTA Online enthusiasts.
+
+The current assessment predicts that GTA6's online will not be an extension of the old GTA Online, but a new world that starts from scratch. Assets built up over many years, such as characters, owned properties, funds, and vehicles, are not expected to carry over to GTA6 online as they are. The longer you have played, the more you may want to brace yourself mentally.
+
+In return, GTA6 online differs from older titles in its very design philosophy. Multiple leaks report that rather than being bolted on after the main game's release as with GTA5, it is built in from the start as a foundation integrated with the main game. This is expected to allow the worlds of the main game and online to be integrated more seamlessly.
+
+---
+
+## The Biggest Point of Interest: Project ROME and the Future of RP and UGC
+
+In discussing GTA6 online, the rumored project called Project ROME is drawing the most attention right now.
+
+The origin traces back to August 2023, when Rockstar acquired Cfx.re, the developer of FiveM and RedM (GTA's unofficial multiplayer and roleplay platforms). Since this acquisition, talk has been whispered in the industry that a project with the codename ROME is underway within the company. ROME is said to stand for Rockstar Online Modding Engine, and is rumored to be a first-party (official Rockstar) mod and multiplayer platform arriving alongside GTA6.
+
+Organizing the rumored contents, the general direction is roughly as follows.
+
+- Official modding tools and visual scripting supporting JavaScript, TypeScript, Lua, and the like
+- Persistent servers (user-hosted and Rockstar-hosted) that run roleplay, minigames, competitive modes, and so on
+- Monetization for creators, and a pipeline connecting Rockstar and community content
+
+If this is true, it would be a major turning point at which Rockstar officially incorporates GTA's RP (roleplay) culture, which has developed in the unofficial sphere until now. GTA5's RP was realized through years of updates and the accumulation of community ingenuity, but for GTA6 one can also see it as starting out already equipped with 13 years' worth of evolution as official features from the outset.
+
+However, there is a shadow to this trend as well. After the acquisition, almost all of the original members of Cfx.re, which developed FiveM and RedM, are reported to have left, and a former lead developer has issued a critical statement to the effect that the promises made at the time of the acquisition were not kept. Furthermore, alt:V, which was an independent multiplayer platform, is closing in July 2026 at Take-Two's request, and the move by Rockstar to consolidate around an official platform is also coming to the surface. Take-Two positions UGC (user-generated content) as a promising opportunity, and is reported to intend to grow GTA6 into a large-scale creator platform like Fortnite or Roblox.
+
+It should also be emphasized that there has been no official announcement from Rockstar about Project ROME either, and that it is speculation assembled from job listings, leaks, and circumstantial evidence.
+
+---
+
+## Summary: There Is a Chance It Starts Early, but as a Separate World
+
+Sorting out the situation surrounding GTA6's online, it comes down to this.
+
+- The main game releases on November 19, 2026 (PS5 and Xbox Series X|S).
+- The online mode has not been officially announced, but is seen as almost certain to be prepared.
+- The start will not be at the same time as the release, but several weeks to about a month later (late November to mid-December) is most likely.
+- A major summer 2026 update to the current GTA Online has already been officially announced. There is a strong view that this will be the de facto turning point, but whether it is the last one and whether support will continue after release remain unannounced by Rockstar. There is a strong chance it will not lead to an immediate server shutdown.
+- GTA6 online is expected to be a new world that does not carry over assets from older titles, with Project ROME, centered on RP and UGC, being the biggest point of interest.
+
+If you approach this the same way as with GTA5 and assume online is a long way off, you may be able to dive into the new world sooner than you think. However, there is a strong chance that it will not be a continuation of the GTA Online you have grown familiar with, but a separate thing rebuilt from its design philosophy. While receiving unconfirmed information as unconfirmed, we want to wait for the official announcement.
+
+---
+
+*Note: Among the contents of this article, the timing of the online mode's launch, Project ROME, and matters related to RP and UGC include speculation based on unconfirmed leaks and circumstantial evidence. They are not official announcements by Rockstar Games or Take-Two Interactive. Confirmed facts such as the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) and the acquisition of Cfx.re are based on official information.*`,
     fullContent: `# GTA6のオンラインはいつ始まる？ 発売後ロールアウト説と「Project ROME」の噂を整理
 
 2026年11月19日の発売が確定した『Grand Theft Auto VI（GTA6）』。本編のストーリーに注目が集まる一方で、多くのプレイヤーが気にしているのが「オンラインはいつ遊べるようになるのか」という点だ。13年続いた『GTA Online』という巨大なライブサービスの後継だけに、期待は大きい。結論から言えば、オンラインモードはほぼ確実に用意されると見られているが、発売と同時ではなく、数週間〜1か月ほど遅れて始まる可能性が高い。過去のパターン、最新のリーク、そして「Project ROME」と呼ばれる新プラットフォームの噂まで、現時点でわかっていることを整理する。
