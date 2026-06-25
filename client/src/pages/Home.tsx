@@ -86,13 +86,13 @@ export default function Home() {
             className="sm:hidden absolute inset-0 pointer-events-none"
             style={{
               background:
-                'linear-gradient(180deg,rgba(8,6,15,.6) 0%,rgba(8,6,15,.12) 20%,rgba(8,6,15,.05) 42%,rgba(8,6,15,.5) 64%,rgba(8,6,15,.9) 82%,rgba(8,6,15,.98) 100%)',
+                'linear-gradient(180deg,rgba(8,6,15,.85) 0%,rgba(8,6,15,.66) 12%,rgba(8,6,15,.12) 30%,rgba(8,6,15,.05) 46%,rgba(8,6,15,.5) 66%,rgba(8,6,15,.9) 83%,rgba(8,6,15,.98) 100%)',
             }}
           />
 
-          {/* 発売カウントダウンのバッジ（右上） */}
+          {/* 発売カウントダウンのバッジ（PCは右上・スマホはロゴ下に別途配置） */}
           <div
-            className="absolute flex items-center gap-2 pointer-events-none"
+            className="hidden sm:flex absolute items-center gap-2 pointer-events-none"
             style={{
               top: 'clamp(16px,2.4vw,24px)',
               right: 'clamp(16px,2.4vw,24px)',
@@ -215,14 +215,38 @@ export default function Home() {
               alt="GTA6 FEED"
               className="block select-none self-start"
               style={{
-                width: 'clamp(150px,46vw,200px)',
+                width: 'clamp(240px,68vw,340px)',
                 height: 'auto',
                 filter:
-                  'drop-shadow(0 2px 14px rgba(0,0,0,.9)) drop-shadow(0 0 20px rgba(255,45,149,.3))',
+                  'drop-shadow(0 2px 14px rgba(0,0,0,.95)) drop-shadow(0 0 22px rgba(255,45,149,.32))',
               }}
             />
+            {/* 発売カウントダウン（スマホ：ロゴの下） */}
+            <div
+              className="self-start flex items-center gap-2"
+              style={{
+                marginTop: 12,
+                width: 'fit-content',
+                background: 'rgba(8,6,15,.5)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                border: '1px solid rgba(255,138,61,.45)',
+                borderRadius: 999,
+                padding: '8px 14px',
+              }}
+            >
+              <span
+                className="w-2 h-2 rounded-full flex-none"
+                style={{ background: '#ff8a3d', boxShadow: '0 0 9px #ff8a3d' }}
+              />
+              <span className="text-[12.5px] font-extrabold whitespace-nowrap" style={{ color: '#ffd0a8' }}>
+                {lang === 'ja' ? '発売まで ' : 'Release in '}
+                <span className="vice-num" style={{ fontSize: 15, color: '#fff' }}>{releaseDays}</span>
+                {lang === 'ja' ? ' 日' : ' days'}
+              </span>
+            </div>
             {/* 中央のエンブレムを見せるためのスペーサー（文言・ボタンを下部へ） */}
-            <div style={{ flex: 1, minHeight: 70 }} />
+            <div style={{ flex: 1, minHeight: 56 }} />
             <div>
               {t('hero.tagline')
                 .split('｜')
