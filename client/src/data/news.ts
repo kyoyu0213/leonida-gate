@@ -2792,6 +2792,100 @@ GTA6は未発売のタイトルであり、しかもPC版に至っては発表�
       "確定はデュアル主人公制までで、自由度や戦闘の深化などは推測の段階にとどまる。",
       "Rockstarは実機ゲームプレイトレーラーを未公開で、流出由来の機能は最終版で変わりうる。",
     ],
+    titleEn:
+      "How Will GTA6's Gameplay Features Evolve — An Analysis Based on the Trailers and Past Titles",
+    descriptionEn:
+      "The smartness of NPCs, mission freedom, new means of travel, and the depth of combat. We examine the direction of this evolution across three layers: the trailers, leaked footage, and past titles.",
+    aiSummaryEn: [
+      "GTA6's gameplay evolution is an analysis drawn from three layers of clues: the trailers, the 2022 leaked footage, and past titles.",
+      "What is confirmed extends only as far as the dual-protagonist system, while greater freedom and deeper combat remain at the speculation stage.",
+      "Rockstar has not released a live gameplay trailer, and leak-derived features could change in the final version.",
+    ],
+    fullContentEn: `# How Will GTA6's Gameplay Features Evolve — An Analysis Based on the Trailers and Past Titles
+
+Just how far GTA6's gameplay will evolve is a point that has drawn interest even before release. The smartness of NPCs, mission freedom, new means of travel, the depth of combat — all of these are elements expected of a sequel, but simply saying it will vaguely get better reveals nothing about the substance.
+
+So GTA6 FEED has organized the direction of the gameplay features using three clues: the elements actually shown in the released trailers, the footage of the early development build that leaked in 2022, and the tendencies of past titles (especially Red Dead Redemption 2). We note up front that this article is strictly an analysis based on the material available at this point and is not confirmed information. This article is based on information as of June 22, 2026.
+
+---
+
+## Premise: Distinguishing the Reliability of the Clues
+
+What matters when reading gameplay predictions is that the level of certainty differs completely depending on the source. We want to distinguish the following three layers.
+
+- The official trailers (two): the most reliable material, but their content centers on in-engine cutscenes and is not live gameplay footage with a HUD. In other words, while you can read the level of detail in the world, the feel of the controls and the specifics of the systems are not confirmed. Rockstar has not yet released an official gameplay trailer.
+- The footage of the early development build that leaked in 2022: it is real, but it is strictly an early-stage build. Some elements were actually removed in the final version (such as the prone action discussed later), and the specifications shown here will not necessarily carry over as-is into the retail version.
+- Community analysis and inferences from past titles: these are examinations and fan observations based on a single scene from a trailer, and their certainty is the lowest.
+
+Below, we organize each feature while indicating which layer of evidence it is based on.
+
+---
+
+## NPCs and the Detail of the World (Evolution of Behavior)
+
+The element with the most evidence is the detail of the NPCs and the environment.
+
+In the official trailers, NPCs were not mere background but showed behaviors such as applying sunscreen, arguing, dancing, and filming one another with smartphones. The depiction of wildlife is also rich, and you can confirm sharks, alligators, flamingos, pelicans, dogs, and others behaving in response to the environment. Furthermore, fan analysis has pointed out that traffic-related behavior may be more complex than in the previous title, such as NPC drivers using the oncoming lane to overtake (this is based on trailer analysis, so its certainty is lower).
+
+What to be careful about here is that this evolution of AI does not refer to the generative AI or machine-learning AI that have been talked about in recent years. It is reasonable to take it as meaning that the systems controlling NPC behavior, traffic, and crowd movement, along with the detail of the animation, are deepening. It can be thought of as a direction that builds a denser city on top of the meticulous world depiction shown in RDR2.
+
+---
+
+## Mission Design and Freedom of Play
+
+As for mission freedom, little was shown directly in the trailers, so inference from the structure is the main approach.
+
+What is relatively certain is the design built around two protagonists (Jason Duval and Lucia Caminos). The dual protagonists are officially confirmed and are portrayed as a Bonnie-and-Clyde-style criminal duo. Leaked footage and analysis point to the existence of a selection scheme — solo Jason, solo Lucia, and simultaneous control of both — and there is a possibility that seamless switching during missions will be more integrated than GTA V's approach of going back and forth between separate stories.
+
+On the other hand, a high degree of freedom such as being able to clear a single mission in multiple ways is speculation that expects an expansion of the approach shown in RDR2, and is not confirmed at this point. It is reasonable as a direction, but we want to avoid confusing it with confirmed information.
+
+---
+
+## Means of Travel and Movement Around the Map
+
+As for new means of travel, the setting itself serves as a clue.
+
+GTA6 is set in the state of Leonida, modeled on Florida, which includes the islands of the bay area (the Leonida Keys) and a wetland reminiscent of the Everglades (the Grass Rivers). Airboats and boats running through the wetlands have been confirmed in the trailers, and water travel is expected to take up a far greater share than in past titles. In addition, fans have pointed out the existence of a railway system similar to Miami's Metrorail (observation-based).
+
+The view that water-based means of travel will be expanded in addition to the conventional cars, motorcycles, and helicopters is consistent with the setting. Given a vast map as the premise, it can be said that a diversification of the means of travel between regions is a natural direction.
+
+---
+
+## Interaction and Stealth
+
+As for interaction with the environment and NPCs, the 2022 leaked footage is the main basis. The elements that can be read from it include the following, but all are derived from the early build and their implementation in the final version is not guaranteed.
+
+- The action of restraining NPCs with zip ties
+- The action of using a hostage as a shield
+- The action of carrying a corpse and looting its possessions
+- Stealth via crouching (however, the prone action that was in the leaked footage is said to have been removed in the final build)
+- Switching grips so a weapon can be held in either the left or right hand
+
+These elements indicate a direction that broadens the range of what a player can do with respect to the world. But to repeat, footage of the early build is a work in progress, and there is always a possibility it will be changed or removed in the retail version.
+
+---
+
+## Combat System
+
+Combat too centers on inference from the leaked footage and the tendencies of past titles.
+
+Leaked footage and various analyses point to elements such as reactions when hit that change according to the type of weapon, more elaborate close-quarters combat, and deeper weapon customization than GTA V. It is also reported that there is situational behavior, such as surrounding NPCs reacting when you walk with a weapon drawn, and weapons being automatically holstered in crowds. There is also a view that the cap on the wanted level will be raised.
+
+If these are true, then beyond simple shootouts, the range of situational maneuvering will broaden. The prediction that tactical depth will increase is itself reasonable, but it is not a confirmed specification at this point.
+
+---
+
+## Summary: The Scope of This Analysis and Points to Note
+
+What is confirmed at this point is that GTA6 will be released on November 19, 2026 for PS5 and Xbox Series X|S, and that it adopts a dual-protagonist system with Jason and Lucia.
+
+The evolution of the gameplay features raised in this article is merely an analysis from three layers of clues: the detail of the world shown in the trailers, the 2022 leaked footage of the early development build, and the tendencies of past titles. Although the trailers strongly indicate a direction, Rockstar has not yet released a live gameplay trailer, and the feel of the controls and the specifics of the systems are still officially withheld. Leak-derived features must be read on the premise that they could change in the final version.
+
+These details are likely to come to light in the third trailer (its release on or after June 25 is considered likely, but it is not officially confirmed) and in the gameplay trailer expected to be released going forward. We will update the content of this article as soon as new official information appears.
+
+---
+
+> Note: This article is an analysis based on information as of June 22, 2026. Confirmed matters conform to the official announcements of Rockstar Games. The descriptions of gameplay features in the body include unverified speculation based on the official trailers, the 2022 leaked footage, and the tendencies of past titles, and do not guarantee implementation in the retail version. We will update the content as soon as official gameplay information is released.`,
     fullContent: `# GTA6のゲームプレイ機能はどう進化するか——トレーラーと過去作からの考察
 
 GTA6のゲームプレイがどこまで進化するのか、という点は発売前から関心を集めている。NPCの賢さ、ミッションの自由度、新しい移動手段、戦闘の深さ——いずれも続編に期待される要素だが、漠然と「良くなる」と語るだけでは中身が見えない。

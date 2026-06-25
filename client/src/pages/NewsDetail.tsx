@@ -5,7 +5,7 @@ import { Calendar, Tag, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp }
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { getArticleById, CATEGORY_CONFIG, formatArticleDate } from '@/data/news';
+import { getArticleById, formatArticleDate } from '@/data/news';
 import { useLang, useT } from '@/lib/i18n';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
@@ -53,7 +53,7 @@ export default function NewsDetail() {
     );
   }
 
-  const categoryLabel = CATEGORY_CONFIG[article.category].label;
+  const categoryLabel = t(`cat.${article.category}`);
   // EN表示時は英語フィールドを使い、無ければ日本語にフォールバック。
   const isEn = lang === 'en';
   const title = isEn && article.titleEn ? article.titleEn : article.title;
@@ -235,11 +235,11 @@ export default function NewsDetail() {
                   <div className="flex items-start gap-2 mb-2">
                     <span className="text-lg">{related.icon}</span>
                     <span className={`px-2 py-0.5 rounded text-xs font-mono border ${categoryColors[related.category]}`}>
-                      {CATEGORY_CONFIG[related.category].label}
+                      {t(`cat.${related.category}`)}
                     </span>
                   </div>
                   <h3 className="font-bold text-sm mb-2 text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
-                    {related.title}
+                    {isEn && related.titleEn ? related.titleEn : related.title}
                   </h3>
                   <p className="text-xs text-gray-400">{related.date}</p>
                 </a>
