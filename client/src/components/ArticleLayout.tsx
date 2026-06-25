@@ -87,8 +87,7 @@ export default function ArticleLayout({
                 onClick={() =>
                   document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold text-white transition-transform hover:-translate-y-px"
-                style={{ background: 'linear-gradient(95deg,#7c3aed,#22d3ee)', boxShadow: '0 4px 18px rgba(34,211,238,.3)' }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
               >
                 <Sparkles size={16} /> AIによる3行まとめ
                 <ChevronDown size={16} />
