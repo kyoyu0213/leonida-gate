@@ -74,7 +74,7 @@ const JA: Dict = {
   'tab.servers': '募集板',
   'tab.fivemgtarp': 'FiveM',
   'header.search': '記事・掲示板を検索…',
-  'hero.tagline': 'バイスシティ総合情報 ＆ コミュニティ',
+  'hero.tagline': 'GTA6総合情報 ＆ コミュニティ',
   'home.latest': '最新情報',
   'home.trending': 'トレンドのスレッド',
   'home.noThreads': 'まだスレッドがありません',
