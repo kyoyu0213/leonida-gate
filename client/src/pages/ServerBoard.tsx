@@ -209,7 +209,7 @@ export default function ServerBoard() {
                 className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60"
                 style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
               >
-                {submitting ? (<><Loader2 size={16} className="animate-spin" /> 送信中...</>) : (<><Send size={16} /> 掲載を申請する</>)}
+                {submitting ? (<><Loader2 size={16} className="animate-spin" /> 送信中...</>) : (<><Send size={16} /> 掲載する</>)}
               </button>
             </form>
           </div>
