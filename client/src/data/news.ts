@@ -77,7 +77,7 @@ export const newsArticles: NewsArticle[] = [
       "6月25日0時に予約開始＆価格公開。SNSの反応や各社の売上予測、6/15のゲームプレイ流出疑惑まで、確定情報とリーク・憶測を信頼度ごとに整理する。",
     icon: "🛒",
     image: "/images/news/sinjitutokonton.png",
-    category: "release",
+    category: "speculation",
     date: "2026-06-25",
     source: "GTA6 FEED 編集部",
     sourceUrl: "https://www.rockstargames.com/VI",
