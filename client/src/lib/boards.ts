@@ -23,7 +23,7 @@ export const BOARDS: BoardConfig[] = [
   },
   {
     slug: 'streamer-servers',
-    title: 'スト鯖掲示板',
+    title: 'ストリーマー鯖掲示板',
     description:
       '人気ストリーマー／VTuberが参加するGTA RPサーバー専用のスレッド。掲載は申請制で、管理者が内容を確認のうえスレッドを作成します。',
     accent: 'pink',
