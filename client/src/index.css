@@ -343,23 +343,6 @@
   font-family: 'Anton', sans-serif;
   letter-spacing: 0.5px;
 }
-/* ホームのヒーロー：カバーアートの配置。
-   PC=右パネル（左へ横フェード）／スマホ=全面背景を薄く敷き下へフェード（文字優先）。 */
-.home-hero-art {
-  width: 72%;
-  object-position: 88% center;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 30%, #000 64%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 30%, #000 64%);
-}
-@media (max-width: 639px) {
-  .home-hero-art {
-    width: 100%;
-    object-position: 62% center;
-    opacity: 0.4;
-    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.78) 40%, rgba(0, 0, 0, 0.22) 78%, transparent 100%);
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.78) 40%, rgba(0, 0, 0, 0.22) 78%, transparent 100%);
-  }
-}
 /* サンセットのグラデーション文字（オレンジ→ピンク→パープル） */
 .vice-grad {
   background: linear-gradient(95deg, #ff8a3d, #ff2d95 55%, #a78bfa);

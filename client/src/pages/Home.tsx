@@ -57,7 +57,15 @@ export default function Home() {
           <img
             src="/images/news/Official_Cover_Art_landscape.webp"
             alt="Grand Theft Auto VI"
-            className="home-hero-art absolute right-0 top-0 h-full object-cover select-none pointer-events-none"
+            className="absolute right-0 top-0 h-full select-none pointer-events-none"
+            style={{
+              width: '72%',
+              objectFit: 'cover',
+              objectPosition: '88% center',
+              WebkitMaskImage:
+                'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
+              maskImage: 'linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 64%)',
+            }}
           />
           {/* 下からの黒グラデで可読性確保 */}
           <div
@@ -116,9 +124,9 @@ export default function Home() {
               alt="GTA6 FEED"
               className="block select-none"
               style={{
-                width: 'clamp(230px,46vw,560px)',
+                width: 'clamp(300px,46vw,560px)',
                 height: 'auto',
-                maxWidth: '82%',
+                maxWidth: '80%',
                 objectFit: 'contain',
                 filter:
                   'drop-shadow(0 4px 22px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(255,45,149,.28))',
