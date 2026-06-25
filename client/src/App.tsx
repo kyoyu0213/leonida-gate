@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import MobileTabBar from "./components/MobileTabBar";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ServerBoard from "./pages/ServerBoard";
@@ -68,6 +69,7 @@ function App() {
           <Toaster />
           <div className="dark">
             <Router />
+            <MobileTabBar />
           </div>
           <GoogleAnalytics />
           <Analytics />

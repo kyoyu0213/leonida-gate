@@ -8,6 +8,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* スマホの下部固定クイックバー（MobileTabBar）の高さ分、コンテンツ末尾に余白を確保 */
+@media (max-width: 639px) {
+  body {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom));
+  }
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
