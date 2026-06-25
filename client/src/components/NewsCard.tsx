@@ -1,5 +1,5 @@
 import { CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
-import { useT } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
 
 // ニュースカードのサムネ用サンセットグラデ（カードごとに巡回）
 const THUMB_GRADIENTS = [
@@ -39,7 +39,9 @@ interface NewsCardProps {
  */
 export default function NewsCard({ article, index = 0 }: NewsCardProps) {
   const t = useT();
+  const lang = useLang();
   const color = CATEGORY_CONFIG[article.category].vice;
+  const title = lang === 'en' && article.titleEn ? article.titleEn : article.title;
 
   return (
     <a
@@ -91,7 +93,7 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
       </div>
       <div className="p-[14px] pt-3.5 flex flex-col gap-2.5 flex-1">
         <h3 className="text-[15px] font-bold leading-[1.45] m-0 line-clamp-3 text-[#15091c]">
-          {article.title}
+          {title}
         </h3>
         <div className="flex items-center gap-3 mt-auto text-black/45 text-[11.5px] font-semibold">
           <span className="vice-num">{article.date}</span>

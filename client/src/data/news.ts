@@ -44,6 +44,11 @@ export interface NewsArticle {
   // 任意：公開日時（時刻まで）。'YYYY-MM-DD HH:MM' か 'YYYY-MM-DDTHH:MM'。
   //   あれば日付表示が「2026年6月25日 14:30」のように時刻つきになる（無ければ date を年月日表示）。
   publishedAt?: string;
+  // 任意：英語版（EN表示時に使う。空の項目は日本語にフォールバック）。
+  titleEn?: string;
+  descriptionEn?: string;
+  fullContentEn?: string;
+  aiSummaryEn?: string[];
 }
 
 /** 記事の公開日時を「2026年6月25日 14:30」形式に整形する（publishedAt が無ければ年月日のみ）。 */
@@ -100,6 +105,105 @@ export const newsArticles: NewsArticle[] = [
       "公式前の価格リークは正確・不正確が混在、6/15のゲームプレイ流出疑惑はほぼ偽物との見方が有力。",
       "予約1時間で10億ドル等の売上規模は各社の予測値。第3弾トレーラーやオンラインの時期は未確定。",
     ],
+    titleEn: "GTA6 Pre-Orders Are Live: Separating Confirmed Facts From the Swirl of Leaks and Speculation",
+    descriptionEn:
+      "Pre-orders opened and prices went live at midnight on June 25. We sort the confirmed facts from leaks and speculation by reliability, covering social reactions, analyst sales forecasts, and the June 15 gameplay leak controversy.",
+    aiSummaryEn: [
+      "Pre-orders opened at midnight on June 25. The Japanese version is 9,800 yen for Standard and 12,280 yen for Ultimate; overseas it is 79.99 / 99.99 dollars, with a November 19 release.",
+      "Pre-launch price leaks were a mix of accurate and inaccurate figures, and the June 15 gameplay leak is widely viewed as almost certainly fake.",
+      "Sales figures like 1 billion dollars in the first hour of pre-orders are analyst forecasts. The third trailer and the timing of online are still unconfirmed.",
+    ],
+    fullContentEn: `# GTA6 Pre-Orders Are Live: Separating Confirmed Facts From the Swirl of Leaks and Speculation
+
+At midnight on June 25, 2026 (local time), pre-orders for Grand Theft Auto VI (GTA6) opened worldwide. Regional prices were revealed at the same time, and social media is overflowing with pre-order reports and debate. Yet in the middle of such a frenzy, it is easy for officially confirmed information to get mixed up with unverified leaks and wishful speculation. GTA6 FEED has sorted the activity around the pre-order launch by level of reliability.
+
+This article is based on information as of June 25, 2026.
+
+---
+
+## Confirmed Facts: Pre-Orders Open and Pricing
+
+Pre-orders began at midnight on June 25 (local time) on the PlayStation Store, the Microsoft Store, and elsewhere. The Japanese version is priced at 9,800 yen for the standard edition and 12,280 yen for the Ultimate Edition (both tax included), while overseas pricing is 79.99 dollars / 99.99 dollars. Release is set for November 19, 2026, for PS5 and Xbox Series X|S, with no PC version announced yet.
+
+Details such as the breakdown of editions, pre-order bonuses, and physical edition specifications are [covered separately on GTA6 FEED](/news/19), so this article focuses on the reaction to the pre-order launch itself and on verifying the leaks and speculation circulating around it.
+
+---
+
+## Reactions: How Social Media and the Market Received It
+
+Right after pre-orders opened, related posts surged on X (formerly Twitter), Reddit, YouTube, Instagram, and elsewhere, and reports of completed pre-orders poured in one after another. In the Japanese-speaking community as well, pre-order reports and videos explaining the contents of the Ultimate Edition are spreading. Plenty of people say they pre-ordered first even though they do not own a PS5 yet, or that they bought the Ultimate Edition without hesitation.
+
+The fans' reactions are tinged with the elation of a long wait finally ending. Comments like the following are lining up.
+
+- I went ahead and pre-ordered. Take my money.
+- Ten years of waiting was worth it.
+- That settles what I am doing this summer.
+- This is my first time pre-ordering digitally, but for GTA6 I will make an exception.
+
+On the other hand, there is also a fair amount of level-headed criticism and dissatisfaction.
+
+- It is steep to charge 80 to 100 dollars when there is not even gameplay footage out yet.
+- It is a shame the package does not include a disc.
+- The contents of the Ultimate Edition lean toward cosmetics, which feels underwhelming.
+
+Even so, the overall mood is one of grumbling and then pre-ordering anyway, and the enthusiasm itself has not faded.
+
+Attention is high on the market side too. However, note that all of the sales figures cited below are forecasts and estimates by analysts and industry insiders, not confirmed numbers.
+
+- Take-Two has indicated net bookings of 8.0 to 8.2 billion dollars for fiscal year 2027 in its official guidance, positioning GTA6 as the main driver (this is the company's official outlook).
+- Insider Tom Henderson has said that the first hour of pre-orders alone could reach a scale of about 1 billion dollars (the equivalent of 12 to 14 million units, not 120,000 to 140,000 units).
+- Research firm DFC Intelligence forecasts 40 million units and 3.2 billion dollars in total revenue in the first year, with over 1 billion dollars from pre-orders alone.
+- Investment bank Piper Sandler projects 45 to 46 million units on launch day, while Konvoy projects 85 million units within 60 days of release.
+
+For reference, the previous game GTA5 has sold over 200 million units worldwide (per Rockstar's official figure; recent reports put it at roughly 230 million units), and cumulative GTA series sales are said to exceed 470 million units (Take-Two). The view that GTA6 will break these records is strong, but it remains a forecast.
+
+---
+
+## Leaks and Rumors Around the Pre-Order Launch (Mind the Reliability)
+
+Before and after pre-orders opened, several pieces of unverified information spread. They need to be handled separately from the facts.
+
+### Price Leaks
+
+Before the official announcement, prices for various countries leaked from European and other retail listings, becoming a major topic. Some figures ended up close to the official prices (79.99 dollars for the standard edition / 99.99 dollars for the Ultimate Edition), while off-the-mark numbers such as 90 dollars for the standard edition and 199 euros for a collector's edition were also mixed in. In the end, prices were confirmed by the official announcement, and the leaked figures were a blend of accurate and inaccurate ones.
+
+### The Gameplay Leak Controversy
+
+On June 15, 2026, a small YouTube channel with around 50 subscribers streamed something titled GTA6 Walkthrough Gameplay, and Take-Two immediately issued a copyright takedown. The speed of the removal fueled speculation that it might be genuine footage, but the stream had only a few views and almost no one was able to confirm its contents. GTA6 mapping enthusiasts pointed out that it was likely a reuse of the large 2022 leak footage (which automatically triggers copyright detection when posted), and noted that the account in question had previously posted fake leaks. Several outlets have also rated it as almost certainly fake, and the mere fact that something was taken down is not proof that the footage is real.
+
+As a general caution, many of the GTA6 leaks circulating in 2025 and 2026 are AI-generated footage, GTA5 mod footage, reused 2022 leak clips, or fabricated images. It is best not to take at face value any information whose source cannot be traced.
+
+---
+
+## Analysis (Speculation)
+
+From here on are interpretations by fans and observers based on the confirmed information, and they do not go beyond speculation.
+
+- Based on the contents of the Ultimate Edition, some analyses suggest that many of the vehicles and weapons may only be usable in the late stages of the game, and that dedicated missions and elements such as raiding gang hideouts and recovering classic cars may be prepared. These are guesses in line with the official descriptions, but the actual conditions of use need to be confirmed after release.
+- Regarding online features, Rockstar is putting the single-player experience front and center this time, and the timing and form of GTA6's online mode have not been announced. Be careful not to confuse the GTA+ pre-order bonus, which is strictly for the current (GTA5-generation) GTA Online.
+- A third trailer has not been officially announced. Take-Two CEO Zelnick has said marketing will ramp up in the summer, and information is expected to keep being unveiled up to launch, but the specific timing has not been confirmed.
+
+---
+
+## Summary: Sorting by Reliability
+
+Confirmed facts:
+
+- Pre-orders opened at midnight on June 25 (local time). The Japanese version is 9,800 yen for the standard edition / 12,280 yen for Ultimate (tax included), and overseas it is 79.99 dollars / 99.99 dollars.
+- Release on November 19 (PS5 / Xbox Series X|S), with no PC version announced.
+- Take-Two's official guidance is FY2027 net bookings of 8.0 to 8.2 billion dollars.
+
+Unverified and rumored (mind the reliability):
+
+- Pre-launch price leaks (a mix of accurate and off-the-mark figures).
+- The June 15 gameplay leak controversy (widely viewed as almost certainly fake).
+
+Speculation and forecasts:
+
+- Sales forecasts by various analysts (1 billion dollars in the first hour of pre-orders, 40 million units and 3.2 billion dollars in the first year, and so on).
+- Fan analysis of the Ultimate Edition contents, the timing and form of online, and the release timing of the third trailer.
+
+As a note of caution, GTA6 is unreleased as of the writing of this article. Be wary of videos and articles that pretend to have played the game and make definitive claims about its contents, of leaks of unknown origin, and of scams on unofficial sites that offer pre-order proxy services or demand advance payments. Place pre-orders through official digital stores or authorized retailers, and check the latest information on the official Rockstar Games site (rockstargames.com/VI) and on each store's listings.`,
     fullContent: `# GTA6が予約開始——確定した事実と、飛び交うリーク・憶測を切り分ける
 
 2026年6月25日午前0時(現地時間)、『グランド・セフト・オートVI(GTA6)』の予約受付が世界で始まった。同時に各地域の価格が公開され、SNSは予約報告と議論であふれている。ただし、こうした祭りのなかでは、公式に確定した情報と、未確認のリークや願望まじりの憶測が混ざりやすい。GTA6 FEEDが、予約開始前後の動きを信頼度ごとに整理した。
@@ -210,6 +314,177 @@ export const newsArticles: NewsArticle[] = [
       "全予約者にVintage Vice City Pack、デジタル予約はGTA+1か月無料（物理版は対象外）。Ultimate特典は章進行で順次解放。",
       "日本円の正式価格やコレクターズ版は未発表。ストア表記はオフライン対応・1人用で、発売直後はシングルプレイヤー中心とみられる。",
     ],
+    titleEn:
+      "GTA6 Editions and Pre-Order Bonuses Explained: Pre-Orders Open at Midnight on June 25, Officially Confirmed at $79.99 for Standard and $99.99 for Ultimate",
+    descriptionEn:
+      "Rockstar made the official announcement on June 24. GTA6 is priced at $79.99 for Standard and $99.99 for Ultimate, with pre-orders opening June 25. We break down the Vintage Vice City Pack available to everyone, the Ultimate-exclusive content, and the key points to watch out for.",
+    aiSummaryEn: [
+      "Pre-orders open at midnight on June 25, with release on November 19 (PS5/Xbox). Pricing is officially confirmed at $79.99 for Standard and $99.99 for Ultimate.",
+      "Every pre-order gets the Vintage Vice City Pack, and digital pre-orders include one free month of GTA+ (physical editions are excluded). Ultimate bonuses unlock progressively as the story advances.",
+      "The official yen price and any collector's edition remain unannounced. Store listings note offline support and single-player, suggesting the launch will be focused on single-player.",
+    ],
+    fullContentEn: `# GTA6 Editions and Pre-Order Bonuses Explained: Pre-Orders Open at Midnight on June 25, Officially Confirmed at $79.99 for Standard and $99.99 for Ultimate
+
+On June 24, 2026, Rockstar Games officially announced the edition lineup, pricing, and pre-order bonuses for Grand Theft Auto VI (GTA6) on its official website and via Newswire. With pre-orders set to open the next day on June 25, the pricing and edition details that had until now been swirling around in leaks and rumors finally arrived as confirmed information. GTA6 FEED has organized the key points based on the official announcement.
+
+This article is based on information as of June 24, 2026. All pricing and bonuses are confirmed information based on Rockstar's official announcement, but some unannounced items such as the yen price are distinguished in the notes at the end.
+
+![Announcement from the official Rockstar Games X account (@RockstarGames)](/images/news/edition/kousikix.png)
+
+---
+
+## Basic Information
+
+- **Release date**: November 19, 2026. Supported platforms are PS5 and Xbox Series X|S. Rockstar is presenting it as a single-player experience.
+- **Pre-order start**: June 25, 2026, from midnight local time. Accepted through digital stores such as the PlayStation Store, Microsoft Store, and Rockstar Games Store, as well as some retailers.
+- **Preload**: From November 12. This is one week before release, and downloads can begin on the same day for both digital and physical editions.
+
+---
+
+## Pre-Orders Confirmed Live on the PlayStation Store (SONY)
+
+At midnight on June 25, 2026, when pre-orders went live, the GTA6 pre-order page appeared on the PlayStation Store (SONY store), and GTA6 FEED confirmed that it was actually possible to place an order. Both the Standard Edition and Ultimate Edition are listed, and the pre-order bonus descriptions can also be seen.
+
+Pre-orders can be placed from each store's official page.
+
+- PlayStation: [PS Store Grand Theft Auto VI](https://www.playstation.com/ja-jp/games/grand-theft-auto-vi/)
+- Xbox: [Microsoft Store Grand Theft Auto VI](https://www.xbox.com/en-US/games/store/grand-theft-auto-vi/9nl3wwnzlzzn)
+
+Another detail worth noting is the product information listed in the stores. Both stores describe GTA6 as supporting offline play and having a player count of one (single-player). Reading that listing at face value, at least in the immediate post-launch phase online multiplayer would not be included, and it is highly likely the game will first be delivered as a single-player experience. This also aligns with Rockstar putting single-player front and center in this announcement.
+
+That said, this is only GTA6 FEED's speculation based on the store listings and Rockstar's announcement. There has been no official statement from Rockstar regarding whether an online mode exists or when it might be implemented. We will need to wait for further news, including the possibility that a system equivalent to GTA Online could be added later.
+
+![GTA6 pre-order page on the PlayStation Store (SONY)](/images/news/edition/sonystore-yoyaku-01.png)
+
+![GTA6 pre-order page on the PlayStation Store (SONY)](/images/news/edition/sonystore-yoyaku-02.png)
+
+---
+
+## Pricing and Editions
+
+There are two editions, with the higher-tier Ultimate Edition being the top of the line. No additional editions such as a collector's edition have been announced.
+
+- **Standard Edition**: $79.99
+- **Ultimate Edition**: $99.99
+
+As supplementary information on pricing, the following points have been officially confirmed.
+
+- The physical edition does not include a disc; instead, a download code is enclosed inside the box. No disc version will be offered. The physical edition is also available from November 12 and supports preload.
+- Standard Edition owners can also purchase an upgrade to the Ultimate Edition later, and it can be added at any time, including after release. Even if you do not choose the higher tier right now, you can unlock the content afterward.
+
+![Ultimate Edition details](/images/news/edition/ultimateeditionsyousai.png)
+
+---
+
+## The Vintage Vice City Pack Available to Everyone as a Pre-Order Bonus
+
+Regardless of edition, everyone who pre-orders or purchases by November 20, 2026 will receive the Vintage Vice City Pack, which evokes 1980s Vice City (for physical editions, while stocks last). The main contents are as follows.
+
+- **Vehicle and garage**: The classic Vapid Stanier sedan (1955 model) and the Shore Court private garage near Ocean Beach
+- **Appearance**: Period-style costumes and hairstyles for Jason and Lucia
+- **Weapon patterns**: A tropical palm-tree pattern symbolizing Tommy Vercetti (applicable to many guns)
+
+![Jason and Lucia](/images/news/edition/Jason＆rusia.png)
+
+In addition, if you pre-order the digital edition on the PlayStation Store or Microsoft Store, you also get one free month of GTA+. This is a benefit usable in the current GTA Online (GTA5 generation), and it includes a GTA$500,000 deposit and access to the game library. Note that the physical edition (code enclosed) is excluded from this free GTA+ benefit.
+
+---
+
+## Ultimate Edition Additional Content
+
+The Ultimate Edition bonuses are not all granted at once; instead, they are scattered throughout Jason and Lucia's overall story and unlock progressively as the chapters advance. We have organized the officially released content by category.
+
+### Vehicles and Watercraft
+
+- **Grotti Cheetah (1995 model)** ... a classic Grotti sports car
+- **Vapid Dominator Buggy (1967 model) and the Paradise Garage** ... the Watson Bay garage comes with a weapon locker and stolen-goods storage space
+- **Shitzu Squalo** ... a watercraft moored at Washington Beach
+- **Jason's safehouse vehicles** ... the military-style Dinka Enduro motorcycle and the Crest Kayak
+
+![Grotti Cheetah (1995 model)](/images/news/edition/gurottexiti-ta-.png)
+
+![Vapid Dominator Buggy (1967 model)](/images/news/edition/vapiddodomine-ta5.png)
+
+![Shitzu Squalo](/images/news/edition/sittusukuaro.png)
+
+![Jason's safehouse vehicles](/images/news/edition/jeisonnokakureganonorimono.png)
+
+### Weapons
+
+- **Hawk & Little Morgan Revolver** ... a Vice City-style His & Hers pair
+- **Dedicated custom pistols** ... variations with special engravings on Jason's Girardi ES9 and Lucia's Klauke K17
+
+![Hawk & Little Morgan Revolver](/images/news/edition/ho-kuandoritorumo-ganriboruba.png)
+
+![Variations of the dedicated custom pistols](/images/news/edition/senyoubarie-syon.png)
+
+### Appearance and Apparel
+
+- **Vice City-style costumes and tattoos**
+- **Good Time Goods** ... apparel themed around the popular TV show character Macca the Gator
+
+![Vice City-style appearance](/images/news/edition/baisusitexisutairu.png)
+
+### Tuning and Shops
+
+- **Gunard Retro Build** ... a dedicated tuning kit
+- **Ride Out Custom (Vice City)** ... interior, rim, and large-diameter wheel customization
+- **One-Eyed Willie (Lake Leonida)** ... hand-painted customization for off-road vehicles
+
+![Gunard Retro Build](/images/news/edition/hana-doretorobirudo.png)
+
+![Ride Out Custom](/images/news/edition/raidoautokasutamu.png)
+
+### Stores and Facilities
+
+- **Sara's Unisex Salon** ... a salon for hair, makeup, and nails
+- **Stock 305** ... a streetwear clothing store
+- **Electric Fang Tattoo** ... a tattoo shop with a lineup of more than 50 special tattoos
+
+![Sara's Unisex Salon](/images/news/edition/sarazuyunisekkususaron.png)
+
+![Stock 305](/images/news/edition/sutokku305.png)
+
+![Electric Fang Tattoo](/images/news/edition/erekutorikkufangutatoxu.png)
+
+### Hideouts and Special Jobs
+
+- **PTT Youngin$ contraband warehouse** ... raid the gang hideout on the South Side to obtain special items and contraband
+- **Classic car collection** ... a special job from the mechanic Wyman. Restore abandoned classic cars and unfinished vehicles, including four Ultimate-exclusive cars
+
+---
+
+## What Has Not Been Announced and Points to Watch
+
+This announcement went into detail, including pricing, but some items remain unconfirmed and there are points where you should be wary of misinformation.
+
+- The yen price was not specified in this official announcement. What is confirmed is the US dollar pricing of $79.99 / $99.99, and the rough yen figures from a simple currency conversion (roughly 12,000 to 16,000 yen) are merely a reference value. You will need to check each store's listing for the official domestic price.
+- Just before pre-orders opened, pricing information such as $90 for the standard edition, $100, and 199 euros for a collector's edition circulated, originating from European retail listings, but these were retail placeholders or rumors. With this official Rockstar announcement, $79.99 for the standard edition and $99.99 for the higher tier have been confirmed as the official prices. It is best not to take old leaked prices at face value.
+- Be careful of scams on unofficial sites that ask for pre-order proxy services or deposits (advance payments). It is considered safe to pre-order through official digital stores or authorized retailers.
+- Rockstar's announcement this time puts the single-player experience front and center, with no mention of a GTA6 online mode. Be careful not to confuse the aforementioned GTA+ benefit, which is strictly for the current (GTA5-generation) GTA Online.
+
+---
+
+## Summary: Sorting by Reliability
+
+**Confirmed facts (Rockstar official announcement):**
+
+- Release date November 19, 2026 (PS5/Xbox Series X|S), pre-orders open midnight June 25 (local time), preload November 12.
+- Standard $79.99 / Ultimate $99.99. The physical edition includes a code with no disc. Ultimate can be purchased as an upgrade later.
+- Everyone who pre-orders or purchases by November 20 gets the Vintage Vice City Pack. Digital pre-orders also get one free month of GTA+ (physical editions excluded).
+- Ultimate Edition additional content (vehicles, weapons, appearance, stores, special jobs, and more) unlocks as the chapters progress.
+
+**Unconfirmed and unannounced:**
+
+- The official yen price.
+- Additional editions such as a collector's edition (none announced at this point; Ultimate is the top tier).
+
+**Points to watch:**
+
+- The high-price information that circulated just beforehand was retail placeholders and rumors; the official price is correct.
+- Be wary of scams on unofficial sites asking for pre-order proxies or advance payments, and pre-order through official stores or authorized retailers.
+
+Right after pre-orders open, stock status and domestic price updates are expected to continue. For the latest and most accurate information, it is best to check the official Rockstar Games website (rockstargames.com/VI) and each store's listing directly.`,
     fullContent: `# GTA6のエディションと予約特典まとめ——6月25日0時予約開始、Standard 79.99ドル／Ultimate 99.99ドルで公式確定
 
 Rockstar Gamesは2026年6月24日、『グランド・セフト・オートVI(GTA6)』のエディション構成・価格・予約特典を公式サイトとNewswireで正式に発表した。6月25日の予約開始を翌日に控え、これまでリークと噂が飛び交っていた価格やエディション内容が、ようやく確定情報として出そろった。GTA6 FEEDが、公式発表をもとに要点を整理した。
@@ -391,6 +666,177 @@ Ultimate Editionの特典は、一度にまとめて付与されるのではな�
       "確定：NoPixelがRockstarと公式提携、FiveMはRockstar傘下で過去最大規模、競合のalt:V／RAGE:MPは終了へ（FiveMへ一本化）。",
       "GTA6はコンソール先行・PC版は後発のため、従来型のFiveM RPは当面遊べず、GTA6本体での公式RP対応も未確約。",
     ],
+    titleEn:
+      "What Happens to Roleplay in GTA6 — The Current State and Future of an RP Culture Moving Toward Officialization and Consolidation",
+    descriptionEn:
+      "What happens to RP in GTA6? From NoPixel's official partnership and the consolidation around FiveM to the Project ROME rumors, we sort the confirmed facts, leaks, and speculation by reliability.",
+    aiSummaryEn: [
+      "Roleplay culture looks set to continue into the GTA6 era, but whether its foundation stays on the current FiveM or shifts to a new official platform (the rumored ROME) is undecided.",
+      "Confirmed: NoPixel has officially partnered with Rockstar, FiveM is at its largest scale ever under Rockstar, and rivals alt:V and RAGE:MP are shutting down (consolidating onto FiveM).",
+      "Because GTA6 launches on consoles first with the PC version coming later, traditional FiveM RP will not be playable for the time being, and official RP support within GTA6 itself is not guaranteed.",
+    ],
+    fullContentEn: `# What Happens to Roleplay in GTA6 — The Current State and Future of an RP Culture Moving Toward Officialization and Consolidation
+
+Living out everyday life in the world of GTA5 as a police officer, a medical worker, or just an ordinary citizen who is no one in particular — so-called roleplay (RP) has, over time, become firmly established as another way to play GTA. And with GTA6 set to arrive on November 19, 2026, expectations are rising that this kind of RP play will expand even further.
+
+That said, the material behind these expectations is a mix of confirmed facts that Rockstar Games has officially acknowledged, unverified information that remains at the leak or rumor stage, and speculation tinged with wishful thinking. GTA6 FEED has sorted out the current state of RP culture and the seismic shifts heading into the GTA6 era, separating them by level of reliability.
+
+This article is based on information as of June 24, 2026.
+
+---
+
+## What Is GTA RP in the First Place
+
+GTA RP is a way of playing built on top of GTA5's multiplayer by third-party platforms and servers run by enthusiasts. Players act out a single character, fully embodying their respective roles — police officer, paramedic, mechanic, business owner, criminal, and so on — and continue living life in the city. In contrast to GTA's inherently chaotic play, it is characterized by obeying traffic rules, holding down a job, and forming a society with other players.
+
+Its iconic example is NoPixel, known as the largest RP server in the English-speaking world. Many prominent streamers take part, and the drama and incidents they generate have been widely watched through streaming. GTA RP is also a field that grew while being strongly tied to streaming culture.
+
+The appeal of RP lies in a different direction from GTA's original play of churning through prepared missions one after another. Under rules closer to a strict economy and a life simulation where actions have consequences, players settle into the city as the role they have chosen. They can spend their days immersed in flashy incidents, or they can choose a quiet, ordinary life — that breadth of range, and the tangible sense of being able to choose your own story, is said to be why GTA RP has earned its own distinct popularity.
+
+---
+
+## The Confirmed Facts: The RP Ecosystem Is Simultaneously Becoming Official, Consolidated, and Monetized
+
+Ahead of GTA6's release, the environment surrounding RP has shifted dramatically over the past year or two. The following are all confirmed facts based on official announcements or statements by the parties involved.
+
+### NoPixel Has Officially Partnered With Rockstar
+
+On September 23, 2025, NoPixel announced its next-generation version, NoPixel V, and revealed that it is being developed through direct collaboration with Rockstar Games. While NoPixel V is built on FiveM, it will be possible to launch it directly as a title from platforms such as the Rockstar Games Launcher, without separately installing the external FiveM client app as before. This is the first official partnership of its kind, in which an RP server is incorporated as an official title into Rockstar's own launcher. Rockstar, too, expressed its support for the NoPixel team through its official account.
+
+What stands out is that this initiative was described as the next evolution of the GTA V roleplay experience. Rockstar, which once tried to remove FiveM as something illegal, has reversed its stance to become a side that officially backs RP. For streamers and server operators long placed in the legal gray zone of mods, gaining an official backing that lets them work without fearing sudden takedowns carries significant meaning.
+
+For a while after the announcement there was no notable follow-up, but on June 22, 2026, leaker Tez2 (@TexFunz2) confirmed that NoPixel V had been added as a single title in the backend of the Rockstar Games Launcher. Logo and background art assets were also found, taken as a sign that a release is near. However, neither Rockstar nor NoPixel has issued any official follow-up, and the release date, price, and access method (whether free, subscription, or invite-only) all remain undetermined.
+
+### FiveM Is Under Rockstar and Has Reached Its Largest Scale Ever
+
+The foundation on which NoPixel and many other RP servers have run is FiveM. cfx.re, the developer of FiveM, was acquired by Rockstar (parent company Take-Two) in August 2023, and FiveM is now officially owned by Rockstar.
+
+That same FiveM was registered on Steam in December 2025, and on March 15, 2026, it set a new all-time record of 202,756 concurrent players. This figure is for Steam users only, so the actual scale is thought to be even larger. Several years after the acquisition, FiveM has an unprecedented presence as the center of GTA V multiplayer modding.
+
+### Rival Platforms Are Shutting Down One After Another
+
+Meanwhile, options other than FiveM are rapidly disappearing. Historically, GTA V multiplayer modding had three main foundations — FiveM, alt:V, and RAGE:MP — but the latter two have both decided to shut down after receiving cease-and-desist requests from Take-Two.
+
+- alt:V received a cease-and-desist in 2026 and, after a phased shutdown, is expected to fully close on July 6.
+- RAGE:MP also received a cease-and-desist and announced that it would close its public server list on June 1 and end all functionality on August 31.
+
+As grounds for this, the operators of both platforms have issued statements to the effect that Rockstar and Take-Two have made it clear that FiveM is the only platform permitted for GTA V multiplayer modding. As a result, the view is being voiced in various places that from September 2026 onward, GTA V multiplayer modding will be FiveM-only. It is a trend in which the broad base that has supported RP converges onto a single, officially managed foundation.
+
+### The Official Store Cfx Marketplace, Which Consolidates Mod Transactions, Has Begun Operating
+
+On January 12, 2026, Rockstar launched the official mod store [Cfx Marketplace](https://marketplace.cfx.re/) for FiveM and RedM. However, this is not a story of mod sales on FiveM being officialized for the first time. On FiveM, the payment partner Tebex had long been treated as the de facto official monetization channel, and under Rockstar's Creator Platform terms, server charges have been premised on going through Tebex. Transactions of paid scripts and MLOs (custom interiors) were also widely conducted through Tebex and various community channels. Earning revenue from mods was, in itself, already within an officially sanctioned framework.
+
+What is new this time is that such dispersed transactions have been consolidated into a single primary store operated by Cfx itself. Cfx Marketplace is positioned as an official UGC marketplace under the Rockstar brand, equipped with review, escrow payment, and creator verification (the payments themselves continue to be handled by Tebex). High-priced items also line its shelves, such as a theme park mod at 129.99 dollars and creator packs up to 389.99 dollars. In terms of roles, against Tebex, which handles charges from servers to players, Cfx Marketplace serves the distinct role of asset sales from creators to server operators. It is a move in which Rockstar consolidates and strengthens the monetization of RP-oriented creative work more directly under its own management, and it is two sides of the same coin as the criticism of excessive monetization discussed later.
+
+### Integration With the Streaming Platform Twitch Is Also Advancing
+
+RP and streaming culture are inseparable, and there is movement on the streaming side as well. Mike Minton, Twitch's Chief Monetization Officer, acknowledged in a 2025 interview that Twitch is working directly with Rockstar and Take-Two ahead of GTA6's release. Minton positioned GTA5 as having been revived by RP and showed a stance of staying involved with GTA6 over the long term. In fact, Rockstar has repeatedly carried out measures to back RP, such as offering prize money to RP streamers and distributing in-game rewards through Twitch Drops. However, even Minton has avoided stating clearly whether an official Twitch-linked RP server will be prepared.
+
+In addition, Rockstar has posted job openings related to its Creator Platform, and the names of foundations such as FiveM and RedM are explicitly written in those job duties. This can be called confirmed material showing that work is underway to build a structure for seriously cultivating RP and UGC (user-generated content) as products.
+
+---
+
+## Unverified Leaks and Rumors: Project ROME
+
+From here on is not confirmed fact but information at the leak or rumor stage.
+
+Toward GTA6, the rumor that Rockstar is preparing an official modding and multiplayer foundation called Project ROME (Rockstar Online Modding Engine) has repeatedly surfaced since around February 2025. According to leaks, this is an official toolset that succeeds FiveM, allowing players to create their own game modes, servers, and custom experiences within GTA6, and is said to aim to transform GTA from a game into a platform. Creative and monetization systems like those of Fortnite and Roblox are often cited as comparisons.
+
+However, Project ROME has not been officially confirmed by Rockstar in any way. There is no press release, no Newswire post, and no trailer; the basis remains an accumulation of circumstantial evidence such as datamining finds, testimony from former insiders, and job listings. Even if it exists, the crucial points — whether it will support consoles, whether it will extend to single-player, and whether you can earn revenue from your creations — are all unknown. It is an indispensable topic when discussing GTA6 RP, but at this point it is reasonable to treat it as a rumor.
+
+To begin with, Rockstar has revealed almost nothing about GTA6's online mode itself. The features, name, and start timing of GTA6 Online are all unannounced, and there is no guarantee that official RP features or first-party RP servers will be prepared. Because the phrase the future of GTA RP used in the NoPixel partnership announcement was not limited to GTA V, some expect it to be groundwork for official RP support in GTA6 Online, but this too does not go beyond speculation based on interpreting the wording. What is confirmed extends only as far as the fact that the official side is backing GTA5-era RP, and it has not been decided that this will be carried over to GTA6 as is.
+
+---
+
+## A Critical Perspective: The Argument That Officialization Comes at a Cost
+
+While there are voices welcoming officialization, strong criticism has also emerged from those directly involved.
+
+Disquse, who identifies as a former lead developer of FiveM, published a lengthy statement in early 2026 that was reported by multiple gaming outlets. The core of the argument is that the continued support and improved relationship with the modding community that Rockstar promised at the time of acquisition were not delivered, and that the promises were lies. According to the statement, by mid-2024 the original cfx.re team had been pushed out, after which FiveM came to suffer from bugs, cheating, and abuse, and monetization was prioritized over fundamental fixes.
+
+Regarding the closures of alt:V and RAGE:MP as well, concerns are voiced about the independent foundations that supported creative freedom disappearing and a state without competition emerging. The point is that if no competitors exist, there is little external pressure compelling FiveM to respond quickly to pricing or community requests. These are, to be sure, the assessments of involved parties and commentators rather than Rockstar's official position, but they are worth keeping in mind as a perspective that officialization does not necessarily equal pure progress.
+
+---
+
+## The Biggest Obstacle: GTA6 Launches on Consoles First, and Traditional RP Was a PC Thing
+
+When considering whether such RP can be enjoyed in GTA6, there is a decisive premise that is easily overlooked: the form of release.
+
+GTA6 launches first on November 19, 2026, for PS5 and Xbox Series X|S, while the PC version is only described as coming later, with no timing announced. On the other hand, GTA RP so far has effectively been a PC-only activity. RP servers including NoPixel run on FiveM, and FiveM is premised on owning GTA5 on PC. Consoles have no client-modding mechanism like FiveM.
+
+Layering these two together reveals an important conclusion. Even when GTA6 releases, traditional FiveM-style RP will not be viable until the PC version is out. And while the PC version is, judging from the precedent of past titles, expected around 2027 to 2028, Rockstar has guaranteed nothing. In other words, if players who start GTA6 on consoles are to enjoy RP-style play from right after release, there is effectively only one path — the case where Rockstar incorporates official RP features into GTA6 Online itself.
+
+This is where the aforementioned Project ROME rumors, the NoPixel partnership, and the chain of groundwork such as Cfx Marketplace take on meaning. There is a view in the community and parts of the media that connects these to read it as official RP being loaded onto GTA6 Online from the start, or early on. Given Rockstar's moves so far, it is a coherent line of speculation. But, as repeated, Rockstar itself has not guaranteed any RP support for GTA6 Online. The console-first release format remains the most realistic constraint that greatly influences when and by what means RP will become playable.
+
+---
+
+## Will GTA6 Itself Support Immersive Life Play
+
+Beyond just the RP foundation, how far GTA6 itself supports an immersive life is also a point directly tied to whether RP-style play is possible. Here too, it is necessary to separate the facts visible in trailers from leaks and speculation.
+
+What can be confirmed from official trailers and Rockstar materials:
+
+- A large number of unique NPCs appear on the beach, behaving organically, such as applying sunscreen and recording videos. The crowd density appears to greatly exceed that of GTA5.
+- Depictions can be seen of NPCs recording the player's actions on their smartphones.
+- An in-game social media interface resembling TikTok or Reels appears, with staging in which events happening in the city flow in real time.
+- Weather changes such as storms and rainfall are expressed in the footage.
+- Character switching between the two protagonists, Jason and Lucia, is shown.
+
+On the other hand, things that remain at the leak or speculation stage and have not been officially confirmed by Rockstar:
+
+- Specific figures such as being able to enter 40% (or 70%) of buildings. These are leaks and rumors whose numbers also vary, and Rockstar has not officially stated a major expansion of enterable buildings.
+- A memory function in which NPCs remember the player's actions and reflect them in later behavior.
+- A mechanism in which weather steps into and affects gameplay, such as hurricanes blocking roads or police response changing.
+- A technical implementation that auto-generates interiors to make a large number of buildings enterable.
+
+In other words, the overall direction of a more living city can be read from the trailers, but the core part valued in RP — how many buildings you can enter and complete your life inside them — is at this point not confirmed information but in the realm of leak-driven expectations.
+
+---
+
+## Will RP Culture Be Ported to GTA6 (Speculation)
+
+Taking all the above into account, it becomes clear that the outlook of being able to enjoy RP in GTA6 as expected rests on a number of undetermined factors. Finally, let us organize, as speculation, what can and cannot be said at this point.
+
+There is material that bolsters expectations. The largest RP operation, NoPixel, has secured an official partnership; the foundation FiveM has reached its largest scale ever under Rockstar; and rumors of an official creative foundation like Project ROME never cease. It can also be read from trailers that GTA6 itself is aiming for a denser city. If these mesh together, there is a possibility that RP-style play will bloom greatly within an official framework.
+
+But there is no guarantee anywhere. Project ROME is unannounced, and even if it exists its nature is unknown. There are concerns from those involved that, if independent foundations are weeded out in the course of officialization and excessive monetization or restrictions are imposed, there is no guarantee that the free culture FiveM nurtured will be ported to GTA6 as is. The proportion of enterable buildings and the precision of NPCs in GTA6 are still no more than leak-stage expectations. And above all, GTA6 is unreleased, and not a single person has experienced just how far RP-style play actually goes.
+
+It is a fact that demand for RP-style play genuinely exists and that there are signs of Rockstar trying to absorb it. But whether that takes shape as a product remains a question to be verified after release.
+
+---
+
+## Summary: Organizing by Reliability, and Points of Caution
+
+Let us once again organize the information covered in this article by level of reliability.
+
+### Confirmed Facts
+
+- GTA6 is scheduled to release on November 19, 2026, for PS5 and Xbox Series X|S (the PC version comes later, with no timing announced).
+- On September 23, 2025, NoPixel announced NoPixel V through an official partnership with Rockstar. While built on FiveM, it will take a form in which it can be launched directly from platforms such as the Rockstar Games Launcher without separately installing the external FiveM client app.
+- On June 22, 2026, NoPixel V was confirmed to be registered as a title in the backend of the Rockstar Games Launcher (taken as a sign that release is near, but the release date, price, and access method are unannounced).
+- cfx.re, FiveM's developer, was acquired by Rockstar (Take-Two) in August 2023.
+- FiveM was registered on Steam in December 2025 and recorded over 200,000 concurrent players on March 15, 2026.
+- alt:V and RAGE:MP, having received cease-and-desist requests from Take-Two, are scheduled to end around July 6 and August 31, 2026, respectively. From September 2026 onward, FiveM is expected to become the only foundation for GTA V multiplayer modding.
+- On January 12, 2026, Rockstar launched the official mod store Cfx Marketplace for FiveM and RedM (paid mods up to about 390 dollars).
+- Twitch is working with Rockstar and Take-Two ahead of GTA6's release, and Rockstar has previously backed RP by offering prize money to RP streamers and distributing rewards through Twitch Drops.
+
+### Unverified Leaks and Rumors (Officially Unconfirmed)
+
+- The existence and content of the official modding foundation Project ROME.
+- Whether GTA6 Online will support RP or have official RP servers, and its features, name, and start timing.
+- The proportion of enterable buildings in GTA6 itself, an NPC memory function, weather's influence on gameplay, and auto-generation of interiors.
+- RP support on consoles (traditional FiveM is PC-only, and the means of RP on consoles depends on an official implementation).
+
+### Speculation and Assessment
+
+- Whether RP culture will be smoothly ported to GTA6.
+- The assessment of whether officialization is a step forward or backward for RP culture (there is conflict even among those involved).
+
+As a point of caution, GTA6 is unreleased at the time of writing. Caution is needed toward articles that assert RP can be enjoyed in GTA6 as one wishes, and toward information that pretends to have already played and discusses the details of RP features. In particular, given that GTA6 releases on consoles first and that traditional RP was a PC-only activity, information that talks as if traditional RP can be played from right after release is highly likely to diverge from reality. Since verification on actual hardware is not possible, what can be said with certainty at this point extends only as far as that demand for RP-style play exists and that Rockstar is showing moves to absorb it. In following the future of RP culture, an attitude that separates Rockstar's official announcements from leaks and speculation is indispensable.
+
+---
+
+*Note: This article is based on public information, various media reports, and statements by involved parties as of June 24, 2026. Project ROME, RP support in GTA6 Online, the proportion of enterable buildings, and the like are unconfirmed at the time of writing and need to be treated separately from confirmed information. We will update the content as soon as there are new official announcements.*`,
     fullContent: `# GTA6のロールプレイはどうなるのか——公式化・一本化が進むRP文化の現在地と行方
 
 GTA5の世界で警官や医療スタッフ、あるいは何者でもないただの一般市民として日常を過ごす——いわゆるロールプレイ(RP)は、いつしかGTAという作品のもう一つの遊び方として定着した。そして2026年11月19日に控えるGTA6でも、このRP的な遊びがさらに広がるのではないかという期待が高まっている。

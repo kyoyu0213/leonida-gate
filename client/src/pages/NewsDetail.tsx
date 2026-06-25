@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { getArticleById, CATEGORY_CONFIG, formatArticleDate } from '@/data/news';
+import { useLang } from '@/lib/i18n';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）を解決できずブロックしてしまう。
@@ -28,6 +29,7 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
 export default function NewsDetail() {
   const [match, params] = useRoute('/news/:id');
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const lang = useLang();
 
   if (!match) {
     return null;
@@ -51,6 +53,11 @@ export default function NewsDetail() {
   }
 
   const categoryLabel = CATEGORY_CONFIG[article.category].label;
+  // EN表示時は英語フィールドを使い、無ければ日本語にフォールバック。
+  const isEn = lang === 'en';
+  const title = isEn && article.titleEn ? article.titleEn : article.title;
+  const body = isEn && article.fullContentEn ? article.fullContentEn : article.fullContent;
+  const summary = isEn && article.aiSummaryEn ? article.aiSummaryEn : article.aiSummary;
 
   const relatedArticles = article.relatedArticles
     .map((id) => getArticleById(id))
@@ -80,7 +87,7 @@ export default function NewsDetail() {
             </div>
 
             <h1 className="article-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-400 to-lime-400 font-mono">
-              {article.title}
+              {title}
             </h1>
 
             <div className="article-meta text-gray-400 font-mono text-sm">
@@ -97,7 +104,7 @@ export default function NewsDetail() {
 
           {/* AIによる3行まとめ（あらかじめ用意した要約をクリックで開閉） */}
           {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
-          {article.aiSummary && article.aiSummary.length > 0 && (
+          {summary && summary.length > 0 && (
             <div className="mb-8">
               <button
                 onClick={() =>
@@ -141,12 +148,12 @@ export default function NewsDetail() {
               静的記事では画像などを誤って消すため false にする。 */}
           <div className="article-body mb-8">
             <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
-              {article.fullContent}
+              {body}
             </Streamdown>
           </div>
 
           {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール） */}
-          {article.aiSummary && article.aiSummary.length > 0 && (
+          {summary && summary.length > 0 && (
             <div id="ai-summary" className="mb-10 scroll-mt-24">
               <button
                 onClick={() => setSummaryOpen((o) => !o)}
@@ -159,7 +166,7 @@ export default function NewsDetail() {
               {summaryOpen && (
                 <div className="mt-3 rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/[0.06] p-5">
                   <ul className="m-0 list-none p-0 space-y-2.5">
-                    {article.aiSummary.map((line, i) => (
+                    {summary.map((line, i) => (
                       <li key={i} className="flex gap-2.5 text-[14px] text-white/85 leading-relaxed">
                         <span className="text-[#22d3ee] font-bold flex-none">{i + 1}.</span>
                         <span>{line}</span>
@@ -190,7 +197,7 @@ export default function NewsDetail() {
             <button
               onClick={() => {
                 const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                  `${article.title} | GTA6 FEED`
+                  `${title} | GTA6 FEED`
                 )}&url=${encodeURIComponent(window.location.href)}`;
                 window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
               }}
