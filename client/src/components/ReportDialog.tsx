@@ -9,6 +9,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { reportPost, REPORT_REASONS, boardErrorMessage } from '@/lib/board';
+import { useT } from '@/lib/i18n';
 
 interface Props {
   postId: string;
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export default function ReportDialog({ postId, reported, onReported }: Props) {
+  const tr = useT();
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState(REPORT_REASONS[0].value);
   const [detail, setDetail] = useState('');
@@ -34,7 +36,7 @@ export default function ReportDialog({ postId, reported, onReported }: Props) {
       if ((error.message ?? '').includes('duplicate report')) onReported(postId);
       return;
     }
-    toast.success('通報を受け付けました。ご協力ありがとうございます');
+    toast.success(tr('brd.toast.reportDone'));
     onReported(postId);
     setOpen(false);
     setDetail('');
@@ -48,9 +50,9 @@ export default function ReportDialog({ postId, reported, onReported }: Props) {
         onClick={() => setOpen(true)}
         disabled={reported}
         className="inline-flex items-center gap-1 text-[11px] font-bold text-white/30 hover:text-[#ff8fc0] transition-colors disabled:opacity-50 disabled:hover:text-white/30"
-        title={reported ? '通報済み' : 'この投稿を通報する'}
+        title={reported ? tr('brd.reportDone') : tr('brd.reportThis')}
       >
-        <Flag size={12} /> {reported ? '通報済み' : '通報'}
+        <Flag size={12} /> {reported ? tr('brd.reported') : tr('brd.report')}
       </button>
 
       <Dialog open={open} onOpenChange={setOpen}>
@@ -60,10 +62,10 @@ export default function ReportDialog({ postId, reported, onReported }: Props) {
         >
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-[#ff8fc0]">
-              <Flag size={18} /> 投稿を通報
+              <Flag size={18} /> {tr('brd.reportTitle')}
             </DialogTitle>
             <DialogDescription className="text-white/60">
-              問題のある投稿を運営に報告します。通報内容は管理者のみが確認します。
+              {tr('brd.reportDesc')}
             </DialogDescription>
           </DialogHeader>
 
@@ -82,21 +84,21 @@ export default function ReportDialog({ postId, reported, onReported }: Props) {
                     onChange={() => setReason(r.value)}
                     className="accent-[#a78bfa]"
                   />
-                  <span className="text-sm text-white/80">{r.label}</span>
+                  <span className="text-sm text-white/80">{tr(`brd.reason.${r.value}`)}</span>
                 </label>
               ))}
             </div>
 
             <div>
               <label className="block text-[12px] font-bold text-white/50 mb-1.5">
-                補足（任意・最大500文字）
+                {tr('brd.reportDetailLabel')}
               </label>
               <textarea
                 value={detail}
                 onChange={(e) => setDetail(e.target.value)}
                 rows={3}
                 maxLength={500}
-                placeholder="具体的な内容があればご記入ください"
+                placeholder={tr('brd.ph.reportDetail')}
                 className="w-full bg-white/[0.04] border border-white/12 rounded-xl px-3 py-2 text-sm text-[#f4eef8] placeholder:text-white/30 focus:outline-none focus:border-[#a78bfa]/60 transition-colors resize-none"
               />
             </div>
@@ -108,9 +110,9 @@ export default function ReportDialog({ postId, reported, onReported }: Props) {
               style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
             >
               {submitting ? (
-                <><Loader2 size={16} className="animate-spin" /> 送信中…</>
+                <><Loader2 size={16} className="animate-spin" /> {tr('brd.sending')}</>
               ) : (
-                <><Send size={16} /> 通報する</>
+                <><Send size={16} /> {tr('brd.reportSubmit')}</>
               )}
             </button>
           </form>

@@ -21,6 +21,7 @@ import {
 import { getBoard, BOARDS, boardColor } from '@/lib/boards';
 import { isLoggedIn, subscribeAdmin, adminCreateThread } from '@/lib/admin';
 import { submitServerApplication } from '@/lib/applications';
+import { useT, useLang } from '@/lib/i18n';
 
 const COOLDOWN_KEY = 'board_last_post';
 
@@ -40,10 +41,10 @@ const inputClass =
 
 // 並び替えの種類
 type SortKey = 'new' | 'count' | 'buzz';
-const SORTS: { key: SortKey; label: string }[] = [
-  { key: 'new', label: '新着' },
-  { key: 'count', label: 'レス数' },
-  { key: 'buzz', label: '賑わい' },
+const SORTS: { key: SortKey; labelKey: string }[] = [
+  { key: 'new', labelKey: 'brd.sort.new' },
+  { key: 'count', labelKey: 'brd.sort.count' },
+  { key: 'buzz', labelKey: 'brd.sort.buzz' },
 ];
 // 賑わい（勢い）：レス数 ÷ 経過時間（時間）。短期間に伸びているスレほど高い。
 const buzzScore = (t: BoardThread) => {
@@ -52,6 +53,8 @@ const buzzScore = (t: BoardThread) => {
 };
 
 export default function BoardThreadList() {
+  const tr = useT();
+  const lang = useLang();
   const [, navigate] = useLocation();
   const [, params] = useRoute('/board/:slug');
   // /board（slugなし）は先頭の掲示板を既定表示
@@ -109,7 +112,7 @@ export default function BoardThreadList() {
     const { data, error } = await listThreads(board.slug);
     if (error) {
       console.error(error);
-      toast.error('スレッド一覧の取得に失敗しました');
+      toast.error(tr('brd.toast.loadFail'));
       setThreads([]);
     } else {
       setThreads((data as BoardThread[]) ?? []);
@@ -127,8 +130,8 @@ export default function BoardThreadList() {
       <div className="vice-page vice-noise">
         <Header />
         <div className="max-w-[1080px] mx-auto px-4 pt-[120px] text-center">
-          <p className="text-white/60 mb-4">掲示板が見つかりません</p>
-          <a href="/board" className="text-[#a78bfa] hover:text-white font-bold">掲示板一覧に戻る</a>
+          <p className="text-white/60 mb-4">{tr('brd.notFound')}</p>
+          <a href="/board" className="text-[#a78bfa] hover:text-white font-bold">{tr('brd.backToList')}</a>
         </div>
       </div>
     );
@@ -151,12 +154,12 @@ export default function BoardThreadList() {
     e.preventDefault();
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!title.trim() || !body.trim()) {
-      toast.error('スレタイと本文を入力してください');
+      toast.error(tr('brd.toast.titleBodyReq'));
       return;
     }
     const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
     if (Date.now() - last < POST_COOLDOWN_MS) {
-      toast.error('投稿の間隔が短すぎます。少し待ってください');
+      toast.error(tr('brd.toast.tooFast'));
       return;
     }
     setSubmitting(true);
@@ -181,14 +184,20 @@ export default function BoardThreadList() {
       if (upErr) {
         toast.error(upErr);
       } else {
-        imageNote = requireApproval ? '（画像は承認後に表示されます）' : '（画像を添付しました）';
+        imageNote = requireApproval
+          ? lang === 'en'
+            ? ' (images will appear after approval)'
+            : '（画像は承認後に表示されます）'
+          : lang === 'en'
+            ? ' (images attached)'
+            : '（画像を添付しました）';
       }
       setFiles([]);
     }
     setSubmitting(false);
     setIcon(null);
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
-    toast.success('スレッドを立てました' + imageNote);
+    toast.success(tr('brd.toast.created') + imageNote);
     navigate(`/thread/${newThreadId}`);
   };
 
@@ -196,7 +205,7 @@ export default function BoardThreadList() {
     e.preventDefault();
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!app.server_name.trim() || !app.description.trim()) {
-      toast.error('サーバー名と説明は必須です');
+      toast.error(tr('brd.toast.nameDescReq'));
       return;
     }
     setSubmitting(true);
@@ -211,13 +220,13 @@ export default function BoardThreadList() {
     if (error) {
       console.error(error);
       const m = error.message ?? '';
-      if (m.includes('rate limited')) toast.error('申請の間隔が短すぎます。少し時間をおいてからお試しください');
-      else if (m.includes('banned word')) toast.error('禁止ワードが含まれているため申請できません');
-      else if (m.includes('blocked')) toast.error('現在申請できません');
-      else toast.error('申請に失敗しました。時間をおいて再度お試しください');
+      if (m.includes('rate limited')) toast.error(tr('brd.toast.appRateLimited'));
+      else if (m.includes('banned word')) toast.error(tr('brd.toast.bannedWord'));
+      else if (m.includes('blocked')) toast.error(tr('brd.toast.blocked'));
+      else toast.error(tr('brd.toast.appFail'));
       return;
     }
-    toast.success('申請を受け付けました！管理者の確認後にスレッドが作成されます');
+    toast.success(tr('brd.toast.appAccepted'));
     setApp({ server_name: '', description: '', contact: '', applicant: '' });
     setShowForm(false);
   };
@@ -231,8 +240,8 @@ export default function BoardThreadList() {
         <div className="flex items-end justify-between gap-5 flex-wrap mb-5">
           <div className="flex items-end gap-4 flex-wrap">
             <div>
-              <span className="text-xs font-extrabold tracking-[0.2em] text-[#a78bfa] uppercase">Community Board</span>
-              <h1 className="font-black text-3xl md:text-[44px] leading-tight mt-2">掲示板</h1>
+              <span className="text-xs font-extrabold tracking-[0.2em] text-[#a78bfa] uppercase">{tr('brd.eyebrow')}</span>
+              <h1 className="font-black text-3xl md:text-[44px] leading-tight mt-2">{tr('brd.title')}</h1>
             </div>
             {/* 掲示板内検索 */}
             <form
@@ -248,7 +257,7 @@ export default function BoardThreadList() {
               <input
                 value={boardQuery}
                 onChange={(e) => setBoardQuery(e.target.value)}
-                placeholder="掲示板内を検索…"
+                placeholder={tr('brd.searchPlaceholder')}
                 className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/35"
               />
             </form>
@@ -263,18 +272,18 @@ export default function BoardThreadList() {
             }}
           >
             {showForm ? (
-              <><X size={16} /> 閉じる</>
+              <><X size={16} /> {tr('brd.close')}</>
             ) : restricted ? (
-              <><Plus size={16} strokeWidth={3} /> 掲載を申請する</>
+              <><Plus size={16} strokeWidth={3} /> {tr('brd.apply')}</>
             ) : (
-              <><Plus size={16} strokeWidth={3} /> スレッドを立てる</>
+              <><Plus size={16} strokeWidth={3} /> {tr('brd.newThread')}</>
             )}
           </button>
         </div>
 
         {isAdmin && board.submitOnly && (
           <div className="mb-5 inline-flex items-center gap-2 text-[12px] font-extrabold text-[#3de0a0] bg-[#3de0a0]/10 border border-[#3de0a0]/30 rounded-full px-3 py-1.5">
-            ● 管理者モード：このジャンルにスレッドを作成できます
+            {tr('brd.adminMode')}
           </div>
         )}
 
@@ -295,7 +304,7 @@ export default function BoardThreadList() {
                 }}
               >
                 <span className="w-2 h-2 rounded-full flex-none" style={{ background: c, boxShadow: `0 0 7px ${c}` }} />
-                {b.title.replace('掲示板', '')}
+                {tr(`board.${b.slug}`)}
               </a>
             );
           })}
@@ -316,23 +325,23 @@ export default function BoardThreadList() {
               style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
             />
             <p className="text-[13px] text-white/60 leading-relaxed">
-              このジャンルは<strong className="text-[#a78bfa]">申請制</strong>です。掲載したいGTARPサーバーの情報を送信してください。管理者が内容を確認のうえ、専用スレッドを作成します（架空サーバー等の乱立を防ぐため厳選しています）。
+              {tr('brd.applyIntroPrefix')}<strong className="text-[#a78bfa]">{tr('brd.applyIntroMid')}</strong>{tr('brd.applyIntroSuffix')}
             </p>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">サーバー名 *</label>
-              <input value={app.server_name} onChange={(e) => setApp({ ...app, server_name: e.target.value })} placeholder="例: LEONIDA RP" maxLength={60} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.app.serverName')}</label>
+              <input value={app.server_name} onChange={(e) => setApp({ ...app, server_name: e.target.value })} placeholder={tr('brd.ph.serverName')} maxLength={60} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">サーバーの説明 *</label>
-              <textarea value={app.description} onChange={(e) => setApp({ ...app, description: e.target.value })} placeholder="サーバーの特徴・規模・コンセプトなど" rows={4} maxLength={500} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.app.serverDesc')}</label>
+              <textarea value={app.description} onChange={(e) => setApp({ ...app, description: e.target.value })} placeholder={tr('brd.ph.serverDesc')} rows={4} maxLength={500} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">連絡先（Discord招待URL など・任意）</label>
-              <input value={app.contact} onChange={(e) => setApp({ ...app, contact: e.target.value })} placeholder="https://discord.gg/xxxxxxx" maxLength={120} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.app.contact')}</label>
+              <input value={app.contact} onChange={(e) => setApp({ ...app, contact: e.target.value })} placeholder={tr('brd.ph.contact')} maxLength={120} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">申請者名（任意）</label>
-              <input value={app.applicant} onChange={(e) => setApp({ ...app, applicant: e.target.value })} placeholder="運営者名・ハンドルネームなど" maxLength={40} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.app.applicant')}</label>
+              <input value={app.applicant} onChange={(e) => setApp({ ...app, applicant: e.target.value })} placeholder={tr('brd.ph.applicant')} maxLength={40} className={inputClass} />
             </div>
             <button
               type="submit"
@@ -340,7 +349,7 @@ export default function BoardThreadList() {
               className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60"
               style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
             >
-              {submitting ? (<><Loader2 size={16} className="animate-spin" /> 送信中…</>) : (<><Send size={16} /> 掲載を申請する</>)}
+              {submitting ? (<><Loader2 size={16} className="animate-spin" /> {tr('brd.sending')}</>) : (<><Send size={16} /> {tr('brd.apply')}</>)}
             </button>
           </form>
         )}
@@ -359,23 +368,27 @@ export default function BoardThreadList() {
               style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
             />
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">スレタイ *</label>
-              <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="例: 初心者向けのおすすめRPサーバー教えて" maxLength={MAX_TITLE} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.threadTitle')}</label>
+              <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder={tr('brd.ph.threadTitle')} maxLength={MAX_TITLE} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">名前（空欄で「{DEFAULT_NAME}」）</label>
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">
+                {lang === 'en' ? `Name (blank = "${DEFAULT_NAME}")` : `名前（空欄で「${DEFAULT_NAME}」）`}
+              </label>
               <input value={name} onChange={(e) => setName(e.target.value)} placeholder={DEFAULT_NAME} maxLength={30} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">本文（1レス目）*</label>
-              <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="本文を入力…" rows={5} maxLength={MAX_BODY} className={inputClass} />
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.bodyFirst')}</label>
+              <textarea value={body} onChange={(e) => setBody(e.target.value)} placeholder={tr('brd.ph.body')} rows={5} maxLength={MAX_BODY} className={inputClass} />
             </div>
 
             {/* 画像添付（画像有効カテゴリのみ） */}
             {imagesEnabled && (
               <div>
                 <label className="block text-sm font-bold text-[#a78bfa] mb-2">
-                  画像（任意・jpg/png/webp・最大3枚{requireApproval ? '・承認後に表示' : ''}）
+                  {lang === 'en'
+                    ? `Images (optional, jpg/png/webp, up to 3${requireApproval ? ', shown after approval' : ''})`
+                    : `画像（任意・jpg/png/webp・最大3枚${requireApproval ? '・承認後に表示' : ''}）`}
                 </label>
                 {files.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-2">
@@ -397,7 +410,7 @@ export default function BoardThreadList() {
                   </div>
                 )}
                 <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#a78bfa] border border-white/15 rounded-lg px-3 py-2 transition-colors">
-                  <ImagePlus size={16} /> 画像を選ぶ
+                  <ImagePlus size={16} /> {tr('brd.pickImages')}
                   <input
                     type="file"
                     accept="image/jpeg,image/png,image/webp"
@@ -415,16 +428,16 @@ export default function BoardThreadList() {
 
             {/* スレッドアイコン（プリセットから選択・任意） */}
             <div>
-              <label className="block text-sm font-bold text-[#a78bfa] mb-2">スレッドのアイコン（任意）</label>
+              <label className="block text-sm font-bold text-[#a78bfa] mb-2">{tr('brd.threadIcon')}</label>
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
                   onClick={() => setIcon(null)}
-                  title="文字アイコン（デフォルト）"
+                  title={tr('brd.iconNoneTitle')}
                   className="w-12 h-12 rounded-xl flex-none flex items-center justify-center text-[11px] font-bold text-white/70 bg-white/[0.05]"
                   style={{ border: `2px solid ${icon === null ? '#a78bfa' : 'rgba(255,255,255,.12)'}` }}
                 >
-                  なし
+                  {tr('brd.iconNone')}
                 </button>
                 {BOARD_ICONS.map((ic) => (
                   <button
@@ -443,11 +456,11 @@ export default function BoardThreadList() {
 
             {/* 注意書き */}
             <div className="rounded-xl border border-white/10 bg-white/[0.03] px-3.5 py-3 text-[12px] text-white/55 leading-relaxed">
-              <p className="m-0 font-bold text-white/70 mb-1">投稿前にご確認ください</p>
+              <p className="m-0 font-bold text-white/70 mb-1">{tr('brd.checkBeforePost')}</p>
               <ul className="list-disc pl-5 space-y-0.5 m-0">
-                <li>誹謗中傷・個人情報の晒し・スパム・わいせつ等の投稿は禁止です。</li>
-                <li>違反・不適切な投稿は、予告なく削除・非表示にすることがあります。</li>
-                {imagesEnabled && <li>画像は管理者の承認後に表示されます（即時には公開されません）。</li>}
+                <li>{tr('brd.rule.prohibited')}</li>
+                <li>{tr('brd.rule.removal')}</li>
+                {imagesEnabled && <li>{tr('brd.rule.images')}</li>}
               </ul>
             </div>
 
@@ -457,7 +470,7 @@ export default function BoardThreadList() {
               className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60"
               style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
             >
-              {submitting ? (<><Loader2 size={16} className="animate-spin" /> 作成中…</>) : (<><Send size={16} /> スレを立てる</>)}
+              {submitting ? (<><Loader2 size={16} className="animate-spin" /> {tr('brd.creating')}</>) : (<><Send size={16} /> {tr('brd.createThread')}</>)}
             </button>
           </form>
         )}
@@ -466,7 +479,7 @@ export default function BoardThreadList() {
         {restricted && !showForm && (
           <div className="rounded-xl border border-[#a78bfa]/25 bg-[#a78bfa]/[0.06] px-4 py-3 mb-6">
             <p className="text-[13px] text-white/60 leading-relaxed">
-              ※ このジャンルは申請制です。スレッドは管理者が作成します。掲載を希望する場合は「掲載を申請する」からお送りください。
+              {tr('brd.restrictedNote')}
             </p>
           </div>
         )}
@@ -474,7 +487,7 @@ export default function BoardThreadList() {
         {/* 並び替え */}
         {!loading && threads.length > 0 && (
           <div className="flex items-center justify-end gap-2 mb-4 flex-wrap">
-            <span className="text-[12px] font-bold text-white/45">並び替え</span>
+            <span className="text-[12px] font-bold text-white/45">{tr('brd.sortLabel')}</span>
             {SORTS.map((s) => {
               const active = sort === s.key;
               return (
@@ -488,7 +501,7 @@ export default function BoardThreadList() {
                     color: active ? '#fff' : 'rgba(244,238,248,.65)',
                   }}
                 >
-                  {s.label}
+                  {tr(s.labelKey)}
                 </button>
               );
             })}
@@ -498,7 +511,7 @@ export default function BoardThreadList() {
         {/* thread list */}
         {loading ? (
           <div className="text-center py-16 text-white/50">
-            <Loader2 size={28} className="mx-auto mb-4 animate-spin" /> 取得中…
+            <Loader2 size={28} className="mx-auto mb-4 animate-spin" /> {tr('brd.loading')}
           </div>
         ) : threads.length > 0 ? (
           <div className="flex flex-col gap-2.5">
@@ -530,15 +543,19 @@ export default function BoardThreadList() {
                   <span className="text-[15px] font-bold text-[#15091c] truncate">{t.title}</span>
                   <span className="text-[12px] text-black/50 flex items-center gap-2 flex-wrap">
                     <span className="font-bold" style={{ color: boardColor(board.accent) }}>
-                      {board.title.replace('掲示板', '')}
+                      {tr(`board.${board.slug}`)}
                     </span>
                     <span className="opacity-50">・</span>
-                    <span>{formatPostDate(t.last_posted_at)} 更新</span>
+                    <span>
+                      {lang === 'en'
+                        ? `Updated ${formatPostDate(t.last_posted_at)}`
+                        : `${formatPostDate(t.last_posted_at)} 更新`}
+                    </span>
                   </span>
                 </span>
                 <span className="flex flex-col items-center gap-0.5 flex-none">
                   <span className="vice-num text-[19px] text-[#15091c] leading-none">{t.post_count}</span>
-                  <span className="text-[10px] text-black/45">レス</span>
+                  <span className="text-[10px] text-black/45">{tr('brd.replies')}</span>
                 </span>
               </a>
             ))}
@@ -546,14 +563,14 @@ export default function BoardThreadList() {
         ) : (
           <div className="text-center py-16">
             <p className="text-white/50 mb-4">
-              {restricted ? 'まだ掲載されたサーバーがありません' : 'まだスレッドがありません'}
+              {restricted ? tr('brd.emptyServers') : tr('brd.emptyThreads')}
             </p>
             <button
               onClick={() => setShowForm(true)}
               className="text-white font-extrabold px-6 py-3 rounded-full inline-flex items-center gap-1.5"
               style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
             >
-              <Plus size={16} strokeWidth={3} /> {restricted ? '掲載を申請する' : '最初のスレを立てる'}
+              <Plus size={16} strokeWidth={3} /> {restricted ? tr('brd.apply') : tr('brd.firstThread')}
             </button>
           </div>
         )}

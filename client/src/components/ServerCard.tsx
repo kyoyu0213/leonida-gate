@@ -3,6 +3,7 @@ import { Copy, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import type { FivemServer } from '@/lib/supabase';
 import { imagePublicUrl } from '@/lib/images';
+import { useT } from '@/lib/i18n';
 
 interface ServerCardProps {
   server: FivemServer;
@@ -14,9 +15,10 @@ interface ServerCardProps {
  * FiveMサーバーのカード。サーバー一覧ページ(/servers)で使用。
  */
 export default function ServerCard({ server, onTagClick }: ServerCardProps) {
+  const t = useT();
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
-    toast.success('コピーしました');
+    toast.success(t('srv.card.copied'));
   };
 
   return (
@@ -48,7 +50,7 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
       <div className="space-y-2 mb-4 text-sm">
         {server.connect_info && (
           <div className="flex items-center justify-between gap-2">
-            <span className="text-gray-400 font-mono shrink-0">接続:</span>
+            <span className="text-gray-400 font-mono shrink-0">{t('srv.card.connect')}</span>
             <div className="flex items-center gap-2 min-w-0">
               <code className="text-cyan-300 font-mono text-xs bg-background/50 px-2 py-1 rounded truncate">
                 {server.connect_info}
@@ -66,13 +68,13 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
 
         {server.language && (
           <div className="flex items-center justify-between">
-            <span className="text-gray-400 font-mono">言語:</span>
+            <span className="text-gray-400 font-mono">{t('srv.card.lang')}</span>
             <span className="text-cyan-300 text-xs">{server.language}</span>
           </div>
         )}
 
         <div className="flex items-center justify-between">
-          <span className="text-gray-400 font-mono">登録:</span>
+          <span className="text-gray-400 font-mono">{t('srv.card.registered')}</span>
           <span className="text-gray-400 text-xs font-mono">{server.created_at.slice(0, 10)}</span>
         </div>
       </div>
@@ -104,7 +106,7 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
             className="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm h-9 rounded transition-all duration-300"
           >
             <Copy size={14} className="mr-1" />
-            接続コピー
+            {t('srv.card.copy')}
           </Button>
         )}
         {server.discord_url && (

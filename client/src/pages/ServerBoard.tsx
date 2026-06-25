@@ -7,6 +7,7 @@ import { type FivemServer } from '@/lib/supabase';
 import { listApprovedServers, createFivemServer } from '@/lib/servers';
 import { uploadRawImages } from '@/lib/images';
 import { boardErrorMessage } from '@/lib/board';
+import { useT, useLang } from '@/lib/i18n';
 
 const SERVER_TYPES = [
   { id: 'all', label: 'すべて' },
@@ -30,6 +31,8 @@ const inputClass =
   'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-[#ff2d95]/60 transition-colors';
 
 export default function ServerBoard() {
+  const tr = useT();
+  const lang = useLang();
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -49,7 +52,7 @@ export default function ServerBoard() {
     const { data, error } = await listApprovedServers();
     if (error) {
       console.error('サーバー一覧の取得に失敗:', error);
-      toast.error('サーバー一覧の取得に失敗しました');
+      toast.error(tr('srv.toast.loadFail'));
       setServers([]);
     } else {
       setServers((data as FivemServer[]) ?? []);
@@ -88,11 +91,11 @@ export default function ServerBoard() {
     e.preventDefault();
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!form.name.trim() || !form.description.trim()) {
-      toast.error('サーバー名と説明は必須です');
+      toast.error(tr('srv.toast.nameDescReq'));
       return;
     }
     if (!form.connect_info.trim() && !form.discord_url.trim()) {
-      toast.error('接続情報かDiscordリンクのどちらかは入力してください');
+      toast.error(tr('srv.toast.connectOrDiscord'));
       return;
     }
     setSubmitting(true);
@@ -132,7 +135,7 @@ export default function ServerBoard() {
       toast.error(boardErrorMessage(error.message));
       return;
     }
-    toast.success('サーバーを掲載しました！');
+    toast.success(tr('srv.toast.posted'));
     setForm(emptyForm);
     setIconFile(null);
     setShowForm(false);
@@ -150,9 +153,9 @@ export default function ServerBoard() {
             <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">
               FiveM Server Recruit
             </span>
-            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">FiveMサーバー募集板</h1>
+            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">{tr('srv.heading')}</h1>
             <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
-              日本のFiveM RPサーバーを探せる掲示板。あなたのサーバーを掲載して、バイスシティで一緒に遊ぶ仲間を見つけよう。どなたでも掲載できます。
+              {tr('srv.lead')}
             </p>
           </div>
           <button
@@ -164,15 +167,15 @@ export default function ServerBoard() {
               color: showForm ? '#fff' : '#fff',
             }}
           >
-            {showForm ? (<><X size={16} /> 閉じる</>) : (<><Plus size={16} strokeWidth={3} /> 掲載する</>)}
+            {showForm ? (<><X size={16} /> {tr('srv.close')}</>) : (<><Plus size={16} strokeWidth={3} /> {tr('srv.post')}</>)}
           </button>
         </div>
 
         {/* Submission form */}
         {showForm && (
           <div className="mt-6 rounded-2xl border border-[#ff2d95]/25 bg-[#ff2d95]/[0.05] p-6">
-            <h2 className="text-xl font-black text-white mb-1">サーバーを掲載する</h2>
-            <p className="text-[13px] text-white/60 mb-5">投稿するとすぐに掲載されます。不適切な掲載は運営が削除する場合があります。</p>
+            <h2 className="text-xl font-black text-white mb-1">{tr('srv.formTitle')}</h2>
+            <p className="text-[13px] text-white/60 mb-5">{tr('srv.formNote')}</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* ハニーポット（人間には見えない・ボット対策） */}
               <input
@@ -186,41 +189,41 @@ export default function ServerBoard() {
                 style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
               />
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">サーバー名 *</label>
-                <input name="name" value={form.name} onChange={handleFormChange} placeholder="例: LEONIDA RP" maxLength={60} className={inputClass} />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.name')}</label>
+                <input name="name" value={form.name} onChange={handleFormChange} placeholder={tr('srv.ph.name')} maxLength={60} className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">説明 *</label>
-                <textarea name="description" value={form.description} onChange={handleFormChange} placeholder="サーバーの特徴やコンセプト" rows={4} maxLength={500} className={inputClass} />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.desc')}</label>
+                <textarea name="description" value={form.description} onChange={handleFormChange} placeholder={tr('srv.ph.desc')} rows={4} maxLength={500} className={inputClass} />
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">タイプ</label>
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.typeLabel')}</label>
                   <select name="type" value={form.type} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
-                    {SERVER_TYPES.filter((t) => t.id !== 'all').map((t) => (
-                      <option key={t.id} value={t.id} className="bg-[#15091c]">{t.label}</option>
+                    {SERVER_TYPES.filter((x) => x.id !== 'all').map((x) => (
+                      <option key={x.id} value={x.id} className="bg-[#15091c]">{tr(`srv.type.${x.id}`)}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">言語</label>
-                  <input name="language" value={form.language} onChange={handleFormChange} placeholder="日本語 / 英語 など" maxLength={30} className={inputClass} />
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.lang')}</label>
+                  <input name="language" value={form.language} onChange={handleFormChange} placeholder={tr('srv.ph.lang')} maxLength={30} className={inputClass} />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">接続情報（cfx.re コード または IP:ポート）</label>
-                <input name="connect_info" value={form.connect_info} onChange={handleFormChange} placeholder="例: cfx.re/join/abc123 もしくは 123.45.67.89:30120" maxLength={120} className={inputClass} />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.connect')}</label>
+                <input name="connect_info" value={form.connect_info} onChange={handleFormChange} placeholder={tr('srv.ph.connect')} maxLength={120} className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">Discord 招待URL</label>
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.discord')}</label>
                 <input name="discord_url" value={form.discord_url} onChange={handleFormChange} placeholder="https://discord.gg/xxxxxxx" maxLength={120} className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">タグ（カンマ区切り・最大8個）</label>
-                <input name="tags" value={form.tags} onChange={handleFormChange} placeholder="例: 初心者向け, ホワイトリスト, 経済システム" maxLength={120} className={inputClass} />
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.tags')}</label>
+                <input name="tags" value={form.tags} onChange={handleFormChange} placeholder={tr('srv.ph.tags')} maxLength={120} className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#22d3ee] mb-2">アイコン画像（任意・jpg/png/webp）</label>
+                <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('srv.icon')}</label>
                 {iconFile ? (
                   <div className="flex items-center gap-3">
                     <img
@@ -233,12 +236,12 @@ export default function ServerBoard() {
                       onClick={() => setIconFile(null)}
                       className="inline-flex items-center gap-1.5 text-[13px] font-bold text-white/70 hover:text-[#ff8fc0] border border-white/15 rounded-lg px-3 py-2"
                     >
-                      <X size={14} /> 取り消す
+                      <X size={14} /> {tr('srv.iconCancel')}
                     </button>
                   </div>
                 ) : (
                   <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#22d3ee] border border-white/15 rounded-lg px-3 py-2 transition-colors">
-                    <ImagePlus size={16} /> アイコンを選ぶ
+                    <ImagePlus size={16} /> {tr('srv.iconPick')}
                     <input
                       type="file"
                       accept="image/jpeg,image/png,image/webp"
@@ -251,16 +254,16 @@ export default function ServerBoard() {
                     />
                   </label>
                 )}
-                <p className="text-[11px] text-white/40 mt-1.5">サーバーのアイコンとしてカードに表示されます（即時掲載）。</p>
+                <p className="text-[11px] text-white/40 mt-1.5">{tr('srv.iconNote')}</p>
               </div>
-              <p className="text-xs text-white/40">* は必須。接続情報かDiscordリンクのどちらかは必ず入力してください。</p>
+              <p className="text-xs text-white/40">{tr('srv.required')}</p>
               <button
                 type="submit"
                 disabled={submitting}
                 className="w-full flex items-center justify-center gap-2 text-white font-extrabold py-3 rounded-full hover:-translate-y-0.5 transition-transform disabled:opacity-60"
                 style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
               >
-                {submitting ? (<><Loader2 size={16} className="animate-spin" /> 送信中...</>) : (<><Send size={16} /> 掲載する</>)}
+                {submitting ? (<><Loader2 size={16} className="animate-spin" /> {tr('srv.submitting')}</>) : (<><Send size={16} /> {tr('srv.post')}</>)}
               </button>
             </form>
           </div>
@@ -273,19 +276,19 @@ export default function ServerBoard() {
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="サーバー名・説明で検索…"
+              placeholder={tr('srv.searchPlaceholder')}
               className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
             />
           </div>
         </div>
 
         <div className="mt-4 flex gap-2 overflow-x-auto pb-1.5">
-          {SERVER_TYPES.map((t) => {
-            const active = selectedType === t.id;
+          {SERVER_TYPES.map((x) => {
+            const active = selectedType === x.id;
             return (
               <button
-                key={t.id}
-                onClick={() => setSelectedType(t.id)}
+                key={x.id}
+                onClick={() => setSelectedType(x.id)}
                 className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
                 style={{
                   border: `1px solid ${active ? '#ff2d95' : 'rgba(255,255,255,.14)'}`,
@@ -293,7 +296,7 @@ export default function ServerBoard() {
                   color: active ? '#fff' : 'rgba(244,238,248,.65)',
                 }}
               >
-                {t.label}
+                {tr(`srv.type.${x.id}`)}
               </button>
             );
           })}
@@ -322,7 +325,11 @@ export default function ServerBoard() {
         )}
 
         <div className="mt-5 text-white/50 text-sm font-mono">
-          {loading ? '読み込み中…' : `${filteredServers.length} 件のサーバー`}
+          {loading
+            ? tr('srv.loading')
+            : lang === 'ja'
+              ? `${filteredServers.length} 件のサーバー`
+              : `${filteredServers.length} server${filteredServers.length === 1 ? '' : 's'}`}
         </div>
 
         {/* Grid */}
@@ -330,7 +337,7 @@ export default function ServerBoard() {
           {loading ? (
             <div className="text-center py-16 text-white/50">
               <Loader2 size={28} className="mx-auto mb-4 animate-spin" />
-              サーバー情報を取得中…
+              {tr('srv.fetching')}
             </div>
           ) : filteredServers.length > 0 ? (
             <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(308px,1fr))' }}>
@@ -343,18 +350,18 @@ export default function ServerBoard() {
               <ServerIcon size={40} className="mx-auto mb-4 text-white/30" />
               {servers.length === 0 ? (
                 <>
-                  <p className="text-white/50 mb-4">まだ掲載されたサーバーがありません</p>
+                  <p className="text-white/50 mb-4">{tr('srv.emptyNone')}</p>
                   <button
                     onClick={() => setShowForm(true)}
                     className="text-white font-extrabold px-6 py-3 rounded-full inline-flex items-center gap-1.5"
                     style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
                   >
-                    <Plus size={16} strokeWidth={3} /> 最初のサーバーを掲載する
+                    <Plus size={16} strokeWidth={3} /> {tr('srv.postFirst')}
                   </button>
                 </>
               ) : (
                 <>
-                  <p className="text-white/50 mb-4">検索条件に一致するサーバーが見つかりません</p>
+                  <p className="text-white/50 mb-4">{tr('srv.noMatch')}</p>
                   <button
                     onClick={() => {
                       setSearchQuery('');
@@ -363,7 +370,7 @@ export default function ServerBoard() {
                     }}
                     className="text-[#f4eef8] font-bold px-6 py-3 rounded-full bg-white/[0.05] border border-white/15 hover:bg-white/10 transition-colors"
                   >
-                    フィルターをリセット
+                    {tr('srv.resetFilter')}
                   </button>
                 </>
               )}
@@ -374,7 +381,7 @@ export default function ServerBoard() {
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
+          {tr('footer.disclaimer')} © 2026 GTA6 FEED
         </div>
       </footer>
     </div>

@@ -23,6 +23,7 @@ import {
 } from '@/lib/board';
 import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
+import { useT, useLang } from '@/lib/i18n';
 
 const COOLDOWN_KEY = 'board_last_post';
 const REPORTED_KEY = 'board_reported_posts';
@@ -47,6 +48,8 @@ const avatarFor = (s: string) =>
   AVATARS[s.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % AVATARS.length];
 
 export default function BoardThread() {
+  const tr = useT();
+  const lang = useLang();
   const [match, params] = useRoute('/thread/:id');
   const threadId = params?.id;
 
@@ -169,7 +172,7 @@ export default function BoardThread() {
   const vote = async (postId: string, kind: VoteKind) => {
     const { data, error } = await votePost(postId, kind);
     if (error) {
-      toast.error('投票に失敗しました。時間をおいて再度お試しください');
+      toast.error(tr('brd.toast.voteFail'));
       return;
     }
     const r = data as { good: number; bad: number; my: VoteKind | null };
@@ -205,12 +208,12 @@ export default function BoardThread() {
     if (hp) return; // ハニーポットが埋まっている＝ボット。静かに無視。
     if (!threadId) return;
     if (!body.trim()) {
-      toast.error('本文を入力してください');
+      toast.error(tr('brd.toast.bodyReq'));
       return;
     }
     const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
     if (Date.now() - last < POST_COOLDOWN_MS) {
-      toast.error('投稿の間隔が短すぎます。少し待ってください');
+      toast.error(tr('brd.toast.tooFast'));
       return;
     }
     setSubmitting(true);
@@ -229,14 +232,20 @@ export default function BoardThread() {
       if (upErr) {
         toast.error(upErr);
       } else {
-        imageNote = requireApproval ? '（画像は承認後に表示されます）' : '（画像を添付しました）';
+        imageNote = requireApproval
+          ? lang === 'en'
+            ? ' (images will appear after approval)'
+            : '（画像は承認後に表示されます）'
+          : lang === 'en'
+            ? ' (images attached)'
+            : '（画像を添付しました）';
       }
       setFiles([]);
     }
     setSubmitting(false);
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
-    toast.success('書き込みました' + imageNote);
+    toast.success(tr('brd.toast.posted') + imageNote);
     load();
   };
 
@@ -254,17 +263,17 @@ export default function BoardThread() {
       <main className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-32 relative z-10">
         {loading ? (
           <div className="text-center py-16 text-white/50">
-            <Loader2 size={28} className="mx-auto mb-4 animate-spin" /> 取得中…
+            <Loader2 size={28} className="mx-auto mb-4 animate-spin" /> {tr('brd.loading')}
           </div>
         ) : notFound ? (
           <div className="text-center py-16">
-            <p className="text-white/60 mb-4">スレッドが見つかりません</p>
-            <a href="/board" className="text-[#a78bfa] hover:text-white font-bold">掲示板一覧に戻る</a>
+            <p className="text-white/60 mb-4">{tr('brd.threadNotFound')}</p>
+            <a href="/board" className="text-[#a78bfa] hover:text-white font-bold">{tr('brd.backToList')}</a>
           </div>
         ) : (
           <>
             <a href={backHref} className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-[13px] font-bold mb-5 transition-colors">
-              <ArrowLeft size={15} /> 一覧へ戻る
+              <ArrowLeft size={15} /> {tr('brd.backToBoard')}
             </a>
 
             {/* thread header */}
@@ -272,13 +281,15 @@ export default function BoardThread() {
               <div className="flex items-center gap-2 mb-3 flex-wrap">
                 {board && (
                   <span className="text-[11px] font-extrabold rounded-md px-2.5 py-1" style={{ color: boardColor, border: `1px solid ${boardColor}` }}>
-                    {board.title.replace('掲示板', '')}
+                    {tr(`board.${board.slug}`)}
                   </span>
                 )}
               </div>
               <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">{thread?.title}</h1>
               <p className="text-[13px] text-white/50 mt-3 m-0">
-                {thread?.post_count}件の返信・最終更新 {thread ? formatPostDate(thread.last_posted_at) : ''}
+                {lang === 'en'
+                  ? `${thread?.post_count} replies · last updated ${thread ? formatPostDate(thread.last_posted_at) : ''}`
+                  : `${thread?.post_count}件の返信・最終更新 ${thread ? formatPostDate(thread.last_posted_at) : ''}`}
               </p>
             </div>
 
@@ -289,7 +300,7 @@ export default function BoardThread() {
                   <a key={url} href={url} target="_blank" rel="noopener noreferrer">
                     <img
                       src={url}
-                      alt="投稿画像"
+                      alt={lang === 'en' ? 'Posted image' : '投稿画像'}
                       className="h-28 w-28 object-cover rounded-xl border border-white/10"
                       loading="lazy"
                     />
@@ -315,7 +326,7 @@ export default function BoardThread() {
                     className="w-10 h-10 rounded-full flex-none flex items-center justify-center font-black text-base text-white"
                     style={{ background: avatarFor(`${post.name}-${post.post_number}`) }}
                   >
-                    {post.name.trim().charAt(0) || '名'}
+                    {post.name.trim().charAt(0) || (lang === 'en' ? 'A' : '名')}
                   </span>
                   <div className="flex flex-col gap-1.5 min-w-0 flex-1">
                     <div className="flex items-center gap-2.5 flex-wrap">
@@ -328,9 +339,9 @@ export default function BoardThread() {
                             type="button"
                             onClick={() => replyTo(post.post_number)}
                             className="inline-flex items-center gap-1 text-[11px] font-bold text-white/30 hover:text-[#22d3ee] transition-colors"
-                            title="このレスに返信"
+                            title={lang === 'en' ? 'Reply to this post' : 'このレスに返信'}
                           >
-                            <Reply size={12} /> 返信
+                            <Reply size={12} /> {tr('brd.replyAction')}
                           </button>
                           <ReportDialog
                             postId={post.id}
@@ -342,7 +353,7 @@ export default function BoardThread() {
                     </div>
                     {post.hidden ? (
                       <p className="text-sm leading-[1.75] text-white/40 italic m-0">
-                        ※ この投稿は管理者により非表示にされました
+                        {tr('brd.hiddenPost')}
                       </p>
                     ) : (
                       <>
@@ -353,7 +364,7 @@ export default function BoardThread() {
                               <a key={url} href={url} target="_blank" rel="noopener noreferrer">
                                 <img
                                   src={url}
-                                  alt="投稿画像"
+                                  alt={lang === 'en' ? 'Posted image' : '投稿画像'}
                                   className="h-32 w-32 object-cover rounded-xl border border-white/10"
                                   loading="lazy"
                                 />
@@ -382,7 +393,7 @@ export default function BoardThread() {
                                   color: active ? accent : 'rgba(244,238,248,.55)',
                                 }}
                                 aria-pressed={active}
-                                title={kind === 'good' ? 'グッド' : 'バッド'}
+                                title={kind === 'good' ? tr('brd.good') : tr('brd.bad')}
                               >
                                 {kind === 'good' ? <ThumbsUp size={13} /> : <ThumbsDown size={13} />}
                                 {count}
@@ -409,13 +420,14 @@ export default function BoardThread() {
           <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3">
             {full ? (
               <div className="rounded-2xl border border-[#ff2d95]/40 bg-[#ff2d95]/[0.08] px-4 py-3 text-center text-[#ff8fc0] text-[13px] font-bold">
-                このスレッドは1000レスに到達したため書き込めません。新しいスレを立ててください。
+                {tr('brd.full')}
               </div>
             ) : (
               <>
                 <p className="text-[11px] text-white/40 text-center mb-1.5 px-2 leading-relaxed">
-                  誹謗中傷・個人情報の晒し・スパム等は禁止。違反投稿は予告なく削除・非表示にされます
-                  {imagesEnabled ? '（画像は承認後に表示）' : ''}。
+                  {lang === 'en'
+                    ? `No harassment, doxxing, spam, etc. Violating posts may be removed or hidden without notice${imagesEnabled ? ' (images shown after approval)' : ''}.`
+                    : `誹謗中傷・個人情報の晒し・スパム等は禁止。違反投稿は予告なく削除・非表示にされます${imagesEnabled ? '（画像は承認後に表示）' : ''}。`}
                 </p>
               <form
                 onSubmit={handleSubmit}
@@ -454,7 +466,7 @@ export default function BoardThread() {
                 )}
                 <div className="flex gap-2.5 items-end">
                 {imagesEnabled && (
-                  <label className="flex-none cursor-pointer text-white/55 hover:text-[#a78bfa] transition-colors self-center" title="画像を追加（jpg/png/webp・最大3枚）">
+                  <label className="flex-none cursor-pointer text-white/55 hover:text-[#a78bfa] transition-colors self-center" title={lang === 'en' ? 'Add images (jpg/png/webp, up to 3)' : '画像を追加（jpg/png/webp・最大3枚）'}>
                     <ImagePlus size={20} />
                     <input
                       type="file"
@@ -480,7 +492,7 @@ export default function BoardThread() {
                   ref={replyRef}
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
-                  placeholder="返信を入力…"
+                  placeholder={tr('brd.replyPlaceholder')}
                   rows={1}
                   maxLength={MAX_BODY}
                   className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"

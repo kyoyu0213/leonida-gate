@@ -5,8 +5,10 @@ import { toast } from 'sonner';
 import { supabase } from '@/lib/supabase';
 import { uploadRawImages } from '@/lib/images';
 import { getAnonId } from '@/lib/board';
+import { useT } from '@/lib/i18n';
 
 export default function Contact() {
+  const t = useT();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);
@@ -22,12 +24,12 @@ export default function Contact() {
     e.preventDefault();
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!formData.name || !formData.message) {
-      toast.error('お名前とお問い合わせ内容を入力してください');
+      toast.error(t('ct.toast.required'));
       return;
     }
     // メールは任意。入力された場合のみ形式チェック。
     if (formData.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) {
-      toast.error('メールアドレスの形式が正しくありません');
+      toast.error(t('ct.toast.emailInvalid'));
       return;
     }
     setSending(true);
@@ -54,12 +56,12 @@ export default function Contact() {
     setSending(false);
     if (error) {
       const m = error.message ?? '';
-      if (m.includes('rate limited')) toast.error('送信の間隔が短すぎます。少し時間をおいてからお試しください');
-      else if (m.includes('blocked')) toast.error('現在送信できません');
-      else toast.error('送信に失敗しました。時間をおいて再度お試しください');
+      if (m.includes('rate limited')) toast.error(t('ct.toast.rateLimited'));
+      else if (m.includes('blocked')) toast.error(t('ct.toast.blocked'));
+      else toast.error(t('ct.toast.fail'));
       return;
     }
-    toast.success('メッセージを送信しました！');
+    toast.success(t('ct.toast.sent'));
     setFormData({ name: '', email: '', message: '' });
     setFiles([]);
   };
@@ -73,13 +75,13 @@ export default function Contact() {
 
       <main className="max-w-[760px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <span className="text-xs font-extrabold tracking-[0.3em] text-[#22d3ee] uppercase">Contact</span>
-        <h1 className="vice-display vice-grad text-4xl md:text-5xl mt-2 mb-4">お問い合わせ</h1>
+        <h1 className="vice-display vice-grad text-4xl md:text-5xl mt-2 mb-4">{t('ct.title')}</h1>
         <p className="text-white/60 leading-relaxed mb-4">
-          情報提供・削除依頼などのお問い合わせはこちらから。GTA6・FiveM RPに関する情報提供、記事や掲示板・サーバー掲載内容の削除・修正のご依頼、その他のご連絡は、以下のフォームよりお送りください。内容を確認のうえ、必要に応じて対応いたします。
+          {t('ct.intro')}
         </p>
         <div className="mb-8 rounded-xl border border-[#ff2d95]/25 bg-[#ff2d95]/[0.07] px-4 py-3">
           <p className="text-[13px] text-white/60 leading-relaxed">
-            ※ いただいたお問い合わせの内容によっては、すべてのご要望にお応えできない場合や、個別にご返信できない場合がございます。あらかじめご了承ください。
+            {t('ct.notice')}
           </p>
         </div>
 
@@ -97,22 +99,22 @@ export default function Contact() {
               style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
             />
             <div>
-              <label className="block text-sm font-bold text-[#22d3ee] mb-2">お名前</label>
-              <input name="name" type="text" placeholder="お名前（ハンドルネーム可）" value={formData.name} onChange={handleInputChange} className={inputClass} />
+              <label className="block text-sm font-bold text-[#22d3ee] mb-2">{t('ct.name')}</label>
+              <input name="name" type="text" placeholder={t('ct.namePh')} value={formData.name} onChange={handleInputChange} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#22d3ee] mb-2">メールアドレス（返信が必要な方のみ）</label>
-              <input name="email" type="email" placeholder="your@email.com（任意）" value={formData.email} onChange={handleInputChange} className={inputClass} />
+              <label className="block text-sm font-bold text-[#22d3ee] mb-2">{t('ct.email')}</label>
+              <input name="email" type="email" placeholder={t('ct.emailPh')} value={formData.email} onChange={handleInputChange} className={inputClass} />
             </div>
             <div>
-              <label className="block text-sm font-bold text-[#22d3ee] mb-2">お問い合わせ内容</label>
-              <textarea name="message" placeholder="情報提供・削除依頼・その他のご連絡内容をご記入ください" rows={7} value={formData.message} onChange={handleInputChange} className={inputClass} />
+              <label className="block text-sm font-bold text-[#22d3ee] mb-2">{t('ct.message')}</label>
+              <textarea name="message" placeholder={t('ct.messagePh')} rows={7} value={formData.message} onChange={handleInputChange} className={inputClass} />
             </div>
 
             {/* 画像添付（任意・jpg/png/webp・最大3枚） */}
             <div>
               <label className="block text-sm font-bold text-[#22d3ee] mb-2">
-                画像の添付（任意・jpg/png/webp・最大3枚）
+                {t('ct.images')}
               </label>
               {files.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-2">
@@ -134,7 +136,7 @@ export default function Contact() {
                 </div>
               )}
               <label className="inline-flex items-center gap-1.5 cursor-pointer text-[13px] font-bold text-white/70 hover:text-[#22d3ee] border border-white/15 rounded-lg px-3 py-2 transition-colors">
-                <ImagePlus size={16} /> 画像を選ぶ
+                <ImagePlus size={16} /> {t('ct.pickImages')}
                 <input
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
@@ -157,11 +159,11 @@ export default function Contact() {
             >
               {sending ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" /> 送信中...
+                  <Loader2 className="w-4 h-4 animate-spin" /> {t('ct.submitting')}
                 </>
               ) : (
                 <>
-                  <Send className="w-4 h-4" /> 送信する
+                  <Send className="w-4 h-4" /> {t('ct.submit')}
                 </>
               )}
             </button>
@@ -170,14 +172,14 @@ export default function Contact() {
 
         <div className="mt-10">
           <a href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
-            &larr; ホームに戻る
+            {t('ct.backHome')}
           </a>
         </div>
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
         <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。© 2026 GTA6 FEED
+          {t('footer.disclaimer')} © 2026 GTA6 FEED
         </div>
       </footer>
     </div>
