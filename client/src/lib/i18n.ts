@@ -164,6 +164,8 @@ const JA: Dict = {
   'fg.card.gtarp.desc': 'GTAの世界で警察・市民・ギャングなどの役割を演じて遊ぶ、ロールプレイ文化を解説。',
   'fg.card.diff.title': 'FiveMとGTARPの違い',
   'fg.card.diff.desc': 'FiveMは遊ぶための土台、GTARPはその中で行われる遊び方。その違いを整理します。',
+  'fg.card.guide.title': 'サーバーの選び方',
+  'fg.card.guide.desc': '初心者がFiveMサーバーを選ぶときのチェックポイントを解説。失敗しない選び方ガイド。',
   'fg.card.board.title': 'GTARP掲示板',
   'fg.card.board.desc': '鯖選び、募集、雑談、RP文化について語れるGTARP専用掲示板。',
   // 記事の「3行まとめ」UI（ニュース記事・解説記事 共通）
@@ -381,6 +383,8 @@ const EN: Dict = {
   'fg.card.gtarp.desc': 'An explanation of the roleplay culture where you act as police, civilians, gangs, and more in the GTA world.',
   'fg.card.diff.title': 'FiveM vs GTARP',
   'fg.card.diff.desc': 'FiveM is the platform you play on; GTARP is a way of playing on it. We break down the difference.',
+  'fg.card.guide.title': 'How to Choose a Server',
+  'fg.card.guide.desc': 'Checkpoints for beginners choosing a FiveM server — a guide to picking one without regrets.',
   'fg.card.board.title': 'GTARP Board',
   'fg.card.board.desc': 'A GTARP-only board for choosing servers, recruiting, chatting, and discussing RP culture.',
   // 3-line summary UI (shared by news & explainer articles)

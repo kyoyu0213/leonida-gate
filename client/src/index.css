@@ -557,14 +557,9 @@
   display: none;
 }
 
-/* 画像の直後の段落は「キャプション」として小さく・控えめに・中央寄せ */
-.article-body [data-streamdown="image-wrapper"] + p {
-  margin: 0 auto 32px;
-  max-width: 90%;
-  font-size: 13px;
-  line-height: 1.7;
-  color: #9aa7c7;
-  text-align: center;
+/* 画像の下に余白を確保（直後の段落は通常の本文として表示する） */
+.article-body [data-streamdown="image-wrapper"] {
+  margin-bottom: 28px;
 }
 
 /* 6. 区切り線：薄すぎず主張しすぎない、上下に余白 */
