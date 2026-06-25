@@ -201,7 +201,7 @@ export default function Home() {
               alt="GTA6 FEED"
               className="block select-none"
               style={{
-                width: 'clamp(220px,66vw,340px)',
+                width: 'clamp(260px,82vw,400px)',
                 height: 'auto',
                 filter:
                   'drop-shadow(0 4px 22px rgba(0,0,0,.7)) drop-shadow(0 0 26px rgba(255,45,149,.28))',
@@ -240,21 +240,38 @@ export default function Home() {
               >
                 {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
               </a>
-              <a
-                href="/board"
-                className="font-extrabold text-white"
-                style={{
-                  fontSize: 14.5,
-                  padding: '13px 26px',
-                  borderRadius: 999,
-                  background: 'rgba(255,255,255,.1)',
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255,255,255,.25)',
-                }}
-              >
-                {lang === 'ja' ? '掲示板を見る' : 'Board'}
-              </a>
+              <div className="flex gap-2.5">
+                <a
+                  href="/board"
+                  className="font-extrabold text-white"
+                  style={{
+                    fontSize: 14.5,
+                    padding: '13px 20px',
+                    borderRadius: 999,
+                    background: 'rgba(255,255,255,.1)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255,255,255,.25)',
+                  }}
+                >
+                  {lang === 'ja' ? '掲示板を見る' : 'Board'}
+                </a>
+                <a
+                  href="/servers"
+                  className="font-extrabold text-white"
+                  style={{
+                    fontSize: 14.5,
+                    padding: '13px 20px',
+                    borderRadius: 999,
+                    background: 'rgba(255,255,255,.1)',
+                    backdropFilter: 'blur(8px)',
+                    WebkitBackdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255,255,255,.25)',
+                  }}
+                >
+                  {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
+                </a>
+              </div>
             </div>
           </div>
         </section>
