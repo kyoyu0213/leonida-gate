@@ -41,6 +41,19 @@ export interface NewsArticle {
   image?: string;
   // 任意：記事トップの「AIによる3行まとめ」ボタンで開く要約（3行程度。あらかじめ用意）。
   aiSummary?: string[];
+  // 任意：公開日時（時刻まで）。'YYYY-MM-DD HH:MM' か 'YYYY-MM-DDTHH:MM'。
+  //   あれば日付表示が「2026年6月25日 14:30」のように時刻つきになる（無ければ date を年月日表示）。
+  publishedAt?: string;
+}
+
+/** 記事の公開日時を「2026年6月25日 14:30」形式に整形する（publishedAt が無ければ年月日のみ）。 */
+export function formatArticleDate(article: NewsArticle): string {
+  const src = article.publishedAt || article.date;
+  const m = src.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+  if (!m) return src;
+  const [, y, mo, d, hh, mi] = m;
+  const base = `${y}年${Number(mo)}月${Number(d)}日`;
+  return hh != null && mi != null ? `${base} ${hh}:${mi}` : base;
 }
 
 // カテゴリごとの表示設定。

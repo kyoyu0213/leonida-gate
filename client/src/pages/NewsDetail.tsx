@@ -5,7 +5,7 @@ import { Calendar, Tag, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp }
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { getArticleById, CATEGORY_CONFIG } from '@/data/news';
+import { getArticleById, CATEGORY_CONFIG, formatArticleDate } from '@/data/news';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）を解決できずブロックしてしまう。
@@ -86,7 +86,7 @@ export default function NewsDetail() {
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
                 <Calendar size={14} />
-                {article.date}
+                {formatArticleDate(article)}
               </div>
               <div className="flex items-center gap-2">
                 <Tag size={14} />

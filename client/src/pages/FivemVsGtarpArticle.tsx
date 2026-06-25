@@ -70,6 +70,11 @@ export default function FivemVsGtarpArticle() {
       title={TITLE}
       icon="⚖️"
       body={BODY}
+      aiSummary={[
+        'FiveMは「遊ぶための土台（プラットフォーム）」、GTARPは「その上で行う遊び方（ジャンル）」でレイヤーが違う。',
+        'FiveM上にはRP以外（レース等）もあり、GTARPはその代表的な一ジャンル。密接だが別物として整理できる。',
+        '2026年に競合alt:V／RAGE:MPが終了し土台はFiveMへ一本化。GTA6時代に土台がどうなるかが次の焦点。',
+      ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
         <a

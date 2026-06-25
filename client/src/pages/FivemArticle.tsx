@@ -85,6 +85,11 @@ export default function FivemArticle() {
       title={TITLE}
       icon="🖥️"
       body={BODY}
+      aiSummary={[
+        'FiveMはPC版GTA5向けのコミュニティ製マルチプレイ基盤で、有志のカスタムサーバーに接続して遊ぶ仕組み。',
+        '公式GTAオンラインとは別物で、独自ルール・MOD・経済を作り込めるのが特徴。RP配信文化とともに普及した。',
+        '開発元Cfx.reは2023年にRockstar傘下入り。GTA6時代の扱い（FiveM継続か新基盤ROMEへ移行か）は未確定。',
+      ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
         <a

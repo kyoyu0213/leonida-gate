@@ -83,6 +83,11 @@ export default function GtarpArticle() {
       title={TITLE}
       icon="🎭"
       body={BODY}
+      aiSummary={[
+        'GTARPはFiveM等のサーバーで警察・市民・犯罪者などの役を演じ、人生を生きるように遊ぶロールプレイ。',
+        'IC/OOCの区別やRDM・メタゲーミング禁止などのルールがあり、配信文化（NoPixelやストグラ）とともに発展。',
+        '始めるにはPC版GTA5＋FiveMが前提。GTA6時代にどう遊べるかは未確定で、土台の移行が焦点。',
+      ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
         <a
