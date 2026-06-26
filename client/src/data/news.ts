@@ -2726,6 +2726,88 @@ Take-TwoのCEOは2026年3月のインタビューで「70ドルか80ドル」と
       "ルシアはメインライン初の本格的な女性主人公で、これは公式に確定した情報である。",
       "2人を切り替える操作や固有能力などの詳細は未確認で、プレイ済みを装う断定記事には注意したい。",
     ],
+    titleEn:
+      "GTA6 Has Two Protagonists — Jason and Lucia, the Already Official Parts and the Still a Rumor Parts",
+    descriptionEn:
+      "The protagonists are two people, Jason and Lucia. We sort out the confirmed facts Rockstar has officially revealed from the parts that still do not go beyond rumor.",
+    aiSummaryEn: [
+      "GTA6's protagonists are two people, Jason and Lucia, portrayed as a criminal couple in a romantic relationship.",
+      "Lucia is the first full-fledged female protagonist in the mainline series, and this is officially confirmed information.",
+      "Details such as how the two are switched and their unique abilities are unconfirmed, so be wary of articles that assert things as if the writer had already played the game.",
+    ],
+    fullContentEn: `# GTA6 Has Two Protagonists — Jason and Lucia, the Already Official Parts and the Still a Rumor Parts
+
+GTA6 supposedly has multiple protagonists, and you can switch between them — talk like this was once common, but the situation has now changed. That is because Rockstar has already officially announced two protagonists and revealed their names and backgrounds: Jason Duval and Lucia Caminos. In this article, we organize the picture of GTA6's protagonists while clearly separating the parts Rockstar has presented as confirmed information from the parts that still do not go beyond rumor and leaks.
+
+---
+
+## What Is Confirmed: The Protagonists Are Two People, Jason and Lucia
+
+First, let us cover the facts Rockstar has officially revealed.
+
+GTA6's protagonists are two people, Jason Duval and Lucia Caminos. Whereas GTA5 had three protagonists (Michael, Franklin, and Trevor), GTA6 is narrowed down to two. And the two are not mere partners but are portrayed as a criminal couple in a romantic relationship. Rockstar has likened this relationship to Bonnie and Clyde, and for the first time in the series, it has built the entire story of a numbered title on top of a romance-and-crime partnership.
+
+According to the official story description, the two get caught up in a conspiracy spreading across the whole state of Leonida after a job that should have been simple goes wrong, and they are forced to rely on each other in order to survive. Whereas GTA5's three were separate lives that intersected, the biggest difference is that Jason and Lucia are structured to experience a single story from two perspectives.
+
+---
+
+## Lucia Caminos — A Female Protagonist for the Series' History
+
+Lucia is the first full-fledged female protagonist placed at the center of a solo story in mainline GTA. Female characters existed in the past as well, in the first game, GTA2, and GTA Online, but they were all either silent, optional, or avatars for multiplayer. Lucia is the first woman to stand at the center of a single-player story, and that fact alone carries great significance in the series' history.
+
+The background of Lucia visible from the official character description is roughly as follows. As a child, she was taught how to fight by her father. After acting to protect her family, she ends up incarcerated in a Leonida state prison. Blessed with some luck, she gets out, and from here on she is determined to play it smart. The good, honest life her mother had dreamed of since the Liberty City days — she is trying to seize it with her own hands rather than leave it a half-baked fantasy. That is how her motivation is portrayed. In the trailer, she is shown in prison clothes, at a boxing gym, on a motorcycle, in a nightclub, and clutching wads of cash in the passenger seat of a car — suggesting a figure who moves back and forth between the bottom of society and the glamorous world.
+
+---
+
+## Jason Duval — A Man Who Seeks Peace but Cannot Reach It
+
+The other protagonist, Jason, is portrayed as a man who wishes for an easy life that always slips through his fingers.
+
+According to the official description, Jason grew up surrounded by scammers and lowlifes, and joined the army to escape a rough adolescence. But that did not work out either, and now he works as a local drug courier. Even so, he is trying something to change his life. About his meeting with Lucia, Rockstar writes suggestively that it could be the best thing or the worst thing to ever happen to him. It is also revealed that he works under a smuggler named Brian Heder in the Leonida Keys and is allowed to live in one of his properties.
+
+Placing the two side by side reveals a contrast between Lucia's calculated ambition and Jason's tendency to be swept along. This difference in temperature looks set to become the engine that drives the story.
+
+---
+
+## Does Character Switching Exist
+
+From here on, the line between confirmed information and rumor becomes important.
+
+In GTA5, the system of switching between the three protagonists at the press of a button became established as the series' modern idiom. It is widely expected that in GTA6 as well, the two protagonists can be switched. Indeed, judging from the trailers and the story structure, that is a natural expectation.
+
+What we should note, however, is that at this point Rockstar has not officially stated whether the two can be freely switched during exploration or missions. What the official side has shown extends only to the fact that the two are central figures and that they rely on each other after a job goes wrong; the mechanics on the control side are unconfirmed. Online there are articles that assertively describe the switching method or seamless switching, but those are unconfirmed conjecture.
+
+---
+
+## Be Wary of As If Already Played Details Circulating Online
+
+Around the protagonists, a great deal of seemingly concrete gameplay information is circulating. For example, talk of each character's unique slow-motion ability, a hidden meter that gauges the relationship between the two, a lineup system in which the wanted status changes depending on the NPCs who witnessed you, and banter in specific missions.
+
+These are interesting as reading material, but at this point none of them have been officially confirmed. GTA6 has not been released yet, and articles that describe details as if the writer had played the product are highly likely to be conjecture or fakes disguised as firsthand experience. We want to emphasize that they should not be treated as reliable information. What can be said for certain extends only this far: that the two protagonists each have different backgrounds (Jason, an army washout, and Lucia, who has fought since childhood), and that Rockstar has placed the relationship between the two at the core of the story.
+
+---
+
+## Why Is Two Talked About So Much
+
+From three to two. At first glance this choice may look like a reduction in scale, but it is rather understood as an aim to raise the story's density.
+
+GTA5's Michael, Franklin, and Trevor were a triangle of separate motivations and lives that intersected. A player could even spend many hours focused on a single protagonist while barely engaging with the other two. By contrast, Jason and Lucia are a pair who share a fate, and you cannot follow only one of them. Love, crime, and a shared craving to escape the circumstances they were born into bind the two together. Just as the previous title RDR2 generated narrative strength through deep emotional investment in its protagonist Arthur Morgan, GTA6 is trying to achieve that with two people — that is where many views converge.
+
+---
+
+## Summary
+
+- GTA6's protagonists are two people, Jason Duval and Lucia Caminos. This is officially confirmed information and no longer a leak.
+- Lucia is the first full-fledged female protagonist in mainline GTA. She is imprisoned for protecting her family, and after release she aims for an honest life.
+- Jason is a man who failed to make a fresh start in the army and lives as a drug courier. His meeting with Lucia becomes a turning point.
+- Details such as whether the two can be switched, each character's unique abilities, and hidden systems are all unconfirmed rumors. Be wary of articles that assert things as if the writer had already played the game.
+- The change from three to two is seen not as a reduction in scale but as a choice to heighten the story's density.
+
+That GTA6's story is built around a bond between two people, different from past entries in the series, is no longer in doubt. The remaining mechanics on the control side and the gameplay details should become clear in future trailers and at release (November 19, 2026).
+
+---
+
+*Note: Within this article, the gameplay details such as the specifications of character switching, each protagonist's unique abilities, the relationship meter, and the witness system include unconfirmed rumors and speculation. They are not an official announcement by Rockstar Games. That the protagonists are Jason Duval and Lucia Caminos, the framework of the two characters' backgrounds and relationship, and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) are confirmed information based on Rockstar's official announcements.*`,
     fullContent: `# GTA6の主人公は2人——ジェイソンとルシア、その「もう公式」な部分と「まだ噂」の部分
 
 「GTA6の主人公は複数いて、切り替えられるらしい」——かつてはこんなふうに語られていた話も、いまでは様相が変わっている。Rockstarがすでに2人の主人公を公式に発表し、名前も経歴も明かしているからだ。ジェイソン・デュバルとルシア・カミノス。この記事では、Rockstarが確定情報として示している部分と、いまだ噂やリークの域を出ない部分をはっきり切り分けながら、GTA6の主人公像を整理する。
@@ -2817,6 +2899,133 @@ GTA6の物語が、これまでのシリーズと違う「2人の絆」を軸に
       "数字はすべてトレーラー分析やリークによるコミュニティの推定で、諸説あり幅が大きい。",
       "都市・湿地・島・山などを含む多様さが特徴で、建物侵入率の高さもリーク段階の期待値である。",
     ],
+    titleEn: "GTA6 Map Size Over Twice That of GTA5",
+    descriptionEn:
+      "According to leaks, GTA6's map will be significantly larger than GTA5's and is set to include multiple urban areas.",
+    aiSummaryEn: [
+      "Roughly 2 to 2.5 times the size of GTA5 is considered the leading estimate for GTA6's map, but no official figure for the area has been released at all.",
+      "The numbers are all community estimates based on trailer analysis and leaks, with many theories and a wide range.",
+      "Its hallmark is diversity, including a city, wetlands, islands, and mountains, and the high rate of enterable buildings is also a leak-stage expectation.",
+    ],
+    fullContentEn: `# How Many Times Bigger Is GTA6's Map Than GTA5's? The Truth Behind the Over Twice the Size Leak and the Community's Reaction
+
+With its release confirmed for November 19, 2026, Grand Theft Auto VI (GTA6) is finally taking on a sense of reality. One of the topics fans are most fervent about is the size of the map that serves as the game's stage. From multiple leaks and community analyses, it is said to be over twice the size of GTA5, but what is the reality? We organize what is known at this point — the range of figures circulating, their basis, and the real voices of fans on social media and Reddit.
+
+![A leaked image circulating as a comparison of the map sizes of GTA5 (left) and GTA6 (right)](/images/news/GAT25qlaMAAXcS5.webp)
+
+A widely circulated comparison image in the community, said to place the maps of GTA5 (left, Los Santos) and GTA6 (right, Leonida / Vice City) side by side. Note that it is, after all, an unofficial fan-made or leaked image and does not guarantee an accurate scale.
+
+---
+
+## Is Over Twice True? Sorting Out the Figures Being Thrown Around
+
+The first thing to grasp is that Rockstar Games has not officially released the exact area of the map at all. The figures currently circulating are all estimates by the fan community based on trailer analysis and leaked footage.
+
+On that basis, lining up the multipliers spoken of in various places, you can see there is quite a range.
+
+- About 1.5 to 2 times: the most conservative view. A figure carefully estimated only from Rockstar's official trailers and screenshots.
+- About 2 times: the median value adopted by many media outlets and mapping sites. In terms of area, it is calculated at around 125 km² for GTA6 against roughly 75 to 80 km² for GTA5.
+- About 2.5 times: a figure prominently reported by overseas media such as CBR. This too is based on an area of around 125 km².
+- About 2.5 to 3 times: a bullish estimate claimed by some fans who have thoroughly analyzed the trailers.
+- About 3.5 times: a leak originating from a person called Sonarys. However, this was later denied by other Reddit users as fake or old information.
+
+In other words, the expression over twice itself is roughly correct as a direction, but the accurate understanding of the current situation is 2 to 2.5 times is the leading estimate, though there are many theories. In some places the phrasing 70% bigger than GTA5 is also used, and the expression varies by source.
+
+---
+
+## The Most Intuitive Comparison Is Map Crossing Time
+
+The square-kilometer figures are hard to grasp, but the comparison of the time to drive from end to end, calculated by the community, is easy to understand.
+
+- GTA5: about 3 minutes 30 seconds to drive across the map
+- GTA6: likewise, about 6 minutes 10 seconds
+
+In simple travel time, almost twice. Cruising along vast highways, or crossing islands modeled on the Florida Keys by plane — a sense of scale in which travel itself becomes an experience is anticipated.
+
+---
+
+## Why Can We Know This Much Detail When It Is Not Released
+
+Many people probably wonder, why can crossing time even be worked out when there is no official announcement? The answer is the fans' collective mapping project, which could even be called an obsession.
+
+A representative example is the volunteer interactive map called State of Leonida. On Discord, more than 16,000 members cooperate, reconstructing the map through detective work such as the following.
+
+- Analyzing every frame of official trailers 1 and 2 in 4K (trailer 1 alone has 2,276 frames)
+- Verifying development footage leaked in 2022 to 2024
+- Matching satellite imagery of real Miami and the Florida Keys against in-game locations
+- Estimating terrain types by analyzing background sounds
+
+The leaked 2022 footage is said to have had RAGE engine coordinate data embedded in it, which reportedly enabled accurate distance calculations on the map. In some quarters it is said to have reached 95 to 98% accuracy compared to the final version, and it has become a talking point that even store names and building positions match the trailer screenshots to an uncanny degree.
+
+One overseas outlet described this community's work as half a detective's hobby, half therapy to ease the anxiety until release. With no playable build available, the very act of assembling a world from fragments has become a pleasure for fans.
+
+---
+
+## It Is Not Just Big. Diversity Is the Biggest Evolution
+
+The reason GTA6's map draws attention is not mere area but the variety of its terrain. Whereas GTA5 had a configuration of Los Santos (one city) plus desert plus mountains plus a small town, GTA6's stage spreads across the entire fictional state of Leonida, modeled on Florida.
+
+The regions whose names Rockstar has revealed in official trailers and screenshots number six at this point. These are not leaks but officially confirmed locations.
+
+- Vice City: the central city modeled on Miami. Art deco hotels, neon-lit nightlife, canals and beaches. Said to be the most intricately crafted city in the series' history.
+- Leonida Keys: tropical islands reminiscent of the Florida Keys. Protagonist Jason's starting apartment is here.
+- Grassrivers: an Everglades-like wetland.
+- Port Gellhorn: an industrial port town.
+- Ambrosia: a rural, countryside area.
+- Mount Kalaga National Park: a mountainous region with terrain that has elevation changes.
+
+With a configuration in which city, wetlands, islands, mountains, an industrial zone, and countryside coexist in a single state, it is praised as the most geographically diverse map in the series' history. Furthermore, leaks say that about 70% of buildings are enterable, and that you can enter over 700 establishments such as nightclubs, hotels, restaurants, pawn shops, gun stores, and supermarkets. In GTA5, against the vast map there were only about 40 enterable buildings, and there was a complaint that the world feels empty, so this point is anticipated as a major evolution.
+
+---
+
+## A Small Firestorm Over Official Reporting
+
+Here is something worth touching on: the debate over the source of information.
+
+In April 2026, when the overseas outlet CBR ran an article with the headline that GTA6's map had been officially confirmed as 2.5 times the size of GTA5, the comment section grew heated. Readers fired off criticism such as, relying on leaks and official information are not the same, and there is no official statement by a Rockstar developer saying it is 2.5 times, so why write this as official?
+
+This is also an important lesson when reading articles. The figure 2.5 times is, after all, a community mapping estimate and not something Rockstar has stated. Headlines online are sometimes assertive, but the current situation is that everything remains in the realm of estimates — we want to keep this premise in mind.
+
+---
+
+## The Community's Reaction: Fervor, and Calm Requests
+
+Fans' reactions to the map's enormity broadly divide into two temperatures.
+
+### The Fervent Camp
+
+Toward the latest trailer's draw distance, praise poured in. On Reddit, voices lined up such as, this is what you get with a billion dollars of development cost, a new benchmark, and on top of that it was captured on a PS5, not even a PS5 Pro. From a technical viewpoint, some users speculated that Rockstar may have independently implemented dynamic polygon control like UE5's Nanite, running smoothly while maintaining a dense environment.
+
+There were also many comments of pure anticipation, such as, unbelievable; when we land in Vice City, this game is going to overwhelm us.
+
+### The Calm Camp Making Requests
+
+On the other hand, the view that bigger is not necessarily better is also persistent.
+
+In the game industry it has long been pointed out that if a map is too big, open-world fatigue occurs — a phenomenon where players are worn down by the monotony of travel and the pressure of exploration. A former designer has also sounded the alarm that without excellent fast travel and navigation, a huge map can backfire.
+
+On Reddit too, opinions seeking substance over area stand out. One user posted, I want the same atmosphere as Red Dead Redemption 2; just walking around town and watching the NPCs go about their lives is fun, that is the ideal, and gathered support from over 100 people. Down-to-earth expectations such as, the map does not need to be needlessly big; I would be satisfied if it is a bit larger than GTA5, with lots of enterable buildings and each region having its own character, won broad support.
+
+There were also requests beyond the city, such as, Vice City itself is dense and good, but how interesting the suburban areas outside it become is the key. By Rockstar choosing marketing that sells a state rather than sells a city, the most memorable missions may, rather, happen outside the city — such hopes and anxieties are mixed together.
+
+---
+
+## Summary: How It Feels Matters More Than Numbers
+
+Organizing what is known at this point, it is as follows.
+
+- GTA6's map is, as the leading estimate, 2 to 2.5 times the size of GTA5 (there are many theories, ranging from a 1.5x theory to a 3.5x theory).
+- However, no official figure for the area has been released by Rockstar at all. Everything is a community estimate.
+- Crossing time is about 3 minutes 30 seconds (GTA5) to about 6 minutes 10 seconds (GTA6), almost twice.
+- It is the most diverse map in the series' history, including a city, wetlands, islands, mountains, a port town, and countryside.
+- There is also a leak that about 70% of buildings are enterable, with anticipation gathering around an evolution in density rather than size.
+- The community is fervent while also holding a calm perspective on the harms of being too big.
+
+The full picture of the final map will become clear at the release on November 19, 2026, or in the next trailer that may be revealed before then. Until then, a time of expanding our imagination, relying on the volunteer mapping project and fragments of official information, looks set to continue.
+
+---
+
+*Note: The figures concerning area and multipliers in this article are community estimates based on trailer analysis and leaked footage. Please note that they are not an official announcement by Rockstar Games. The release date, stage (the state of Leonida / Vice City), and the six officially confirmed regions are based on Rockstar's official information.*`,
     fullContent: `# GTA6のマップはGTA5の何倍？「2倍以上」リークの真相とコミュニティの反応まとめ
 
 2026年11月19日の発売が確定し、いよいよ現実味を帯びてきた『Grand Theft Auto VI（GTA6）』。ファンが最も熱狂しているトピックのひとつが、ゲームの舞台となる「マップの広さ」だ。複数のリークやコミュニティ分析から「GTA5の2倍以上になる」と言われているが、実際のところはどうなのか。出回っている数字の幅、その根拠、そしてSNSやRedditでのリアルなファンの声まで、現時点でわかっていることを整理する。
@@ -3130,6 +3339,88 @@ GTA6の映像的な説得力は、レイトレーシング単体ではなく、�
       "最大の焦点はインフレや課金で崩れた経済の作り直しと、チート対策の現代化にある。",
       "初心者の参入障壁や課金とのバランス、RPやUGCといったコミュニティ機能の進化も課題とされる。",
     ],
+    titleEn:
+      "What Changes in GTA6's New Online? Reading the Future of Multiplayer From 13 Years of GTA Online Homework",
+    descriptionEn:
+      "A broken economy, cheating, the barrier to entry for newcomers — from 13 years of GTA Online's challenges, we examine how the new online's mechanics could change.",
+    aiSummaryEn: [
+      "GTA6's online is unannounced in its specifications, and this article is an examination based on things like GTA Online's track record.",
+      "The biggest focus is rebuilding the economy that collapsed from inflation and monetization, and modernizing anti-cheat measures.",
+      "The barrier to entry for newcomers, the balance with monetization, and the evolution of community features like RP and UGC are also seen as challenges.",
+    ],
+    fullContentEn: `# What Changes in GTA6's New Online? Reading the Future of Multiplayer From 13 Years of GTA Online Homework
+
+When it comes to Grand Theft Auto VI (GTA6), the conversation tends to be dominated by the question of when the online mode will start. But just as important is the question of how the content will change. The previous title's GTA Online was a monument that lasted 13 years, but over that long history it also came to carry structural challenges such as economic collapse, cheating, and newcomers being left behind. How will GTA6's new online tackle this homework? We examine it from a game-design perspective while separating confirmed information from speculation.
+
+Note: The overall picture, such as the new online's start timing and Project ROME, is covered in the separate article When Does GTA6's Online Start? This article focuses on and digs into the content and mechanics.
+
+---
+
+## Premise: The New Online's Specifications Have Not Yet Been Officially Announced
+
+To say it up front, Rockstar has not yet even officially announced that GTA6 has an online mode. No developer commentary or official explanation of mechanics has come out at all regarding the details of the economy system or game modes.
+
+The content covered in this article is centered on speculation assembled by the community and specialist media from trailers, Take-Two's statements to investors, the 2022 leaked materials, and 13 years of GTA Online's track record. Please read it strictly as an examination of how it might change.
+
+---
+
+## Homework 1: How to Rebuild the Broken Economy
+
+Unavoidable when discussing GTA Online is the economy that collapsed from inflation (soaring prices).
+
+In GTA Online, players earned money through missions, heists, and owned businesses, and spent it on cars, properties, weapons, and modifications. But as the years passed, new cars and properties were added with each update, and their prices kept climbing. While new cars and luxury properties reached tens of millions of GTA$, rewards were raised to match, and as a result the value of money itself was lost. It is a textbook case of power creep, in which updates constantly raise the bar, and it exposed the limits of GTA Online, which was not designed for long-term operation in the first place.
+
+What accelerated this distortion is said to be the Shark Card, a paid item that lets you buy in-game currency with real money. Furthermore, a vicious cycle also occurred in which players who generated money through glitches (bugs) or duplication injected vast amounts of funds, and Rockstar raised prices to balance the books. New players were forced into an eternal game of catch-up, never able to overtake those ahead of them.
+
+What is most anticipated for GTA6's new online is this rebuilding of the economy. In the community, ideas are discussed such as an MMO-like structure in which you belong to a faction (organization or gang), hold roles and goals, and fight over turf, resources, and market share, as well as player-driven markets, crafting, and production chains. But steering this is extremely difficult. They want to avoid a grind that forces endless busywork, yet if progression is too light, there is no sense of challenge. On top of that, they need to reconcile, within the same world, a satisfying single-player economy with a scarcity-based online economy where monetization works. How this tightrope is designed will be the biggest thing to watch.
+
+---
+
+## Homework 2: The Never-Ending War With Cheating
+
+Another deep-rooted challenge is the spread of cheating (illicit activity).
+
+In GTA Online, things like god mode, money hacks, various exploits, and DDoS attacks ran rampant, and players' trust was greatly damaged especially in the PC version. Rockstar advanced countermeasures such as introducing the anti-cheat BattlEye in 2024, but cheats that slip past it have also been reported, and the cat-and-mouse game continues.
+
+GTA6's new online is called on to have not just a new engine but modern-standard security design. Server-side verification of important data, real-time monitoring of suspicious behavior, robust anti-cheat — without these, it will end up repeating the same problems. From a technical viewpoint, there are also persistent voices saying it should adopt dedicated servers rather than the P2P (peer-to-peer) connections GTA Online used. Going to dedicated servers is expected to be effective on both fronts of anti-cheat and connection stability.
+
+---
+
+## Homework 3: The Barrier to Entry for Newcomers, and Solo-Friendly Playability
+
+The economy's distortion was itself also a barrier to entry for new players. Faced with cars and properties costing tens of millions, players who had just started could not catch up without spending an enormous amount of time. This created GTA Online's hard to get into nature.
+
+In addition, there were many missions premised on multiple participants, and there were scenes that were hard to play for solo players. That said, in its later years GTA Online gradually increased content that could be progressed with a small group or solo. Following this trend, there is a view that GTA6's new online may make a design playable comfortably even alone its core. The abundance of loading screens has also been a long-standing complaint, and improvement here is hoped for too.
+
+GTA6 will surely have a huge influx of new players on launch day. That is precisely why how to create a gentle entrance that does not make people give up in the first few hours will determine long-term success or failure.
+
+---
+
+## Homework 4: The Balance With Monetization, and Community Features
+
+Unavoidable is the balance with monetization.
+
+While the Shark Card brought enormous revenue to GTA Online, it is also seen as a factor that slowed the game's progression and distorted the economy. Take-Two positions GTA6 as a giant project that will rewrite the company's performance, and it needs to design online as a long-term revenue base. In other words, the question is how to reconcile a fair and fun economy with a structure where monetization works.
+
+For reference, Take-Two has indicated a policy of not introducing in-game advertising. At the very least, it will not head in a direction that ruins the world's atmosphere with ads.
+
+On the community-features side, in addition to the aforementioned faction concept, there are rumors of a move to officially incorporate roleplay (RP) and user-generated content (UGC). This was covered in detail in a separate article as Project ROME, but in that the new online could become a foundation where players create the world rather than just a playground, the evolution of community features is also deeply tied to the economy and mode design.
+
+---
+
+## Summary
+
+- GTA6's online mode is unannounced in its specifications. The content of this article is centered on speculation from GTA Online's track record, trailers, and leaked materials.
+- The biggest focus is rebuilding the economy. The question is how to prevent the collapse caused by inflation, Shark Cards, and duplication with a sustainable design.
+- Anti-cheat measures require modern-standard security. There are strong voices hoping for a shift from P2P to dedicated servers.
+- Improving the barrier to entry for newcomers and solo-friendly playability, and shortening loading, are also long-standing homework.
+- The balance with monetization, and the evolution of community features such as factions, RP, and UGC, will also shape the direction of the new online.
+
+GTA Online's 13 years were at once a history of success and a precious teaching material for learning from failure. How GTA6's new online will answer that homework — the full picture of the mechanics should gradually become clear after release (November 19, 2026). While anticipating it, we want to watch over it, keeping our distance from the undetermined parts as speculation.
+
+---
+
+*Note: Within this article, the descriptions concerning the new online's economy system, game modes, anti-cheat measures, and community features include examination based on GTA Online's track record, trailers and leaked materials, and the community's predictions. They are not an official announcement by Rockstar Games. That Take-Two has indicated a policy of not introducing in-game advertising, and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S), are confirmed information based on official announcements.*`,
     fullContent: `# GTA6の新オンラインは何が変わる？ 「GTA Online 13年の宿題」から読むマルチプレイヤーの行方
 
 『Grand Theft Auto VI（GTA6）』のオンラインモードは、いつ始まるのかという話題ばかりが先行しがちだ。だが、それと同じくらい重要なのが「中身がどう変わるのか」という問いである。前作のGTA Onlineは13年続いた金字塔だが、その長い歴史のなかで、経済の崩壊やチート、初心者の置いてけぼりといった構造的な課題も抱え込んできた。GTA6の新しいオンラインは、この「宿題」をどう片づけてくるのか。確定情報と推測を切り分けながら、ゲームデザインの観点から考察する。
@@ -3221,6 +3512,86 @@ GTA Onlineの13年は、成功の歴史であると同時に、貴重な「失�
       "流出映像は人質が逃げたり抵抗したりする動的な強盗や、通報で警察が動く手配度を示唆した。",
       "複数の解法は一定の説得力があるが、物語を大きく分岐させる道徳的ジレンマは裏づけが薄い。",
     ],
+    titleEn:
+      "How Will GTA6's Crime Evolve? The True Nature of the Heist System Shown by Leaked Footage, and Exaggerated Leaks to Watch Out For",
+    descriptionEn:
+      "The dynamic heists and the rebuilt wanted level shown by the 2022 leaked footage. We examine the crime system while separating confirmed information from exaggerated leaks.",
+    aiSummaryEn: [
+      "The details of GTA6's crime system are officially unannounced, and the concrete picture is mainly based on analysis of the 2022 leaked footage.",
+      "The leaked footage suggested dynamic heists in which hostages flee or resist, and a wanted level where police move once a call is made.",
+      "Multiple solutions carry a certain persuasiveness, but the moral dilemmas that would greatly branch the story have thin backing.",
+    ],
+    fullContentEn: `# How Will GTA6's Crime Evolve? The True Nature of the Heist System Shown by Leaked Footage, and Exaggerated Leaks to Watch Out For
+
+Surrounding Grand Theft Auto VI (GTA6), what fans are placing particular hope on is the overhaul of the crime (heist) system. Provocative talk is also flying around, such as there are multiple solutions and you are pressed to make moral choices. However, much of this information derives from early development footage that leaked in 2022 and from subsequent analysis, and the reality is that confirmed information, unconfirmed leaks, and exaggerated conjecture are all mixed together. In this article, we examine how GTA6's crime system looks set to evolve while separating what is certain and to what degree.
+
+---
+
+## First, the Premise: The Details of the Crime System Are Officially Unannounced
+
+To say it up front, Rockstar has not officially announced the details of the heist system or mission structure. The world and some behaviors have been shown in trailers and screenshots, but Rockstar has not explained the game-system mechanics such as missions have multiple solutions or choices change the story.
+
+The concrete picture of the crime system being discussed now is mainly based on the early development gameplay footage that leaked in September 2022 and on the analysis the community and overseas media subsequently performed. The leaked footage is, after all, a work in progress during development, and there is no guarantee it is reflected as-is in the final product — please read on with this premise in mind.
+
+---
+
+## The Dynamic Heists Shown by the Leaked Footage
+
+In GTA5, most big jobs like bank robberies in the heists were limited to tightly crafted story missions. The heists that players could freely plan and carry out were only a small portion.
+
+What the 2022 leaked footage showed was that this could greatly change. The footage depicted a scene in which the female protagonist (said to be Lucia) and her partner Jason raid a diner. Organizing the elements that could be read from this, it is as follows.
+
+- When the protagonist points a gun at a clerk and demands money, the clerk complies and places the money on the counter.
+- The partner Jason watches over the customers in the store, and the player appears to be handling that role manually through button operation.
+- The customers in the store (hostages) appear to each be assigned a different behavior label, suggesting that some may obediently comply while others may flee or resist.
+
+In other words, the estimate is that rather than a repetition of a fixed raid, dynamic heists in which the development changes according to the situation on the spot may be properly introduced for the first time in the series. This is drawing attention as the biggest evolution from GTA5.
+
+---
+
+## The Rebuilding of the Police (Wanted Level) System
+
+Closely tied to the overhaul of the crime system is the rebuilding of the wanted level — that is, the police's reaction.
+
+In GTA5, if you committed a crime within an officer's line of sight, a wanted level was attached instantly and the police rushed over right away. However, the reproduction of the process by which NPCs actually report you could not be called very realistic. From the leaked footage and leaks, it is pointed out that in GTA6 this mechanism may become more natural and dynamic.
+
+For example, behavior such as the police not moving until someone actually reports you, and the countdown beginning only once you are reported. If this is true, then tactics such as not letting the clerk pick up the phone, or quickly subduing hostages, will determine the success or failure of your escape. The tension will increase by an order of magnitude.
+
+It is also reported that the leaked footage had elements suggesting a new way of thinking about the wanted level, such as on-screen displays implying that the player can surrender to the police, and that the police will not respond lethally unless the player resorts to lethal means first.
+
+---
+
+## How True Are Multiple Solutions and Moral Dilemmas
+
+The points multiple solutions and morally complex choices, which were also in the original article's title, are themes of great fan anticipation. Here we especially want to separate things carefully.
+
+It is true that a dynamic heist system results in a breadth of approaches. Whether you tie up and silence the hostages, threaten them by force, or escape quickly — if the development changes by judgment on the spot, that can be called multiple solutions in a broad sense. Taking into account that the previous title RDR2 had a mechanism (the honor system) in which the reaction changed based on how you treated others, the speculation that GTA6 brings that philosophy into the context of crime carries a certain persuasiveness.
+
+However, the more far-reaching claims that the player's choices greatly branch the entire story or that heavy moral dilemmas are placed at the center have no solid backing at this point. Rockstar's past works have been better at crafted linear stories than at branching with choices. If you expect too much of a dramatic branching system, there is a possibility you will be let down by the gap with reality. It is level-headed to grasp freedom of approach and branching of the story as separate things.
+
+---
+
+## Be Wary of As If Already Played Details Circulating
+
+Around the crime system, seemingly concrete information overflows online. Talk such as unique skill trees, a detection ability resembling RDR2's Dead Eye, a mechanism to cash out stolen goods at pawn shops and black markets, and a wanted level that links nationwide.
+
+These are interesting as reading material, but at this point none of them have been officially confirmed. GTA6 has not been released yet, and articles that assert details as if the writer had played the product are highly likely to be conjecture or fakes disguised as firsthand experience. They should not be treated as reliable information. What can be said for certain extends only this far: that the 2022 leaked footage showed the direction of dynamic heists and more natural police reactions, and that it was from early in development.
+
+---
+
+## Summary
+
+- The details of GTA6's crime (heist) system are officially unannounced. The concrete picture being discussed is mainly based on the early development footage leaked in 2022 and its analysis.
+- What the leaked footage showed is dynamic heists in which the development changes according to the situation. Behavior in which hostages flee or resist was suggested.
+- The wanted level system may also be rebuilt. Elements such as police moving only once a report is made, and being able to surrender, have been reported.
+- Multiple solutions carries a certain persuasiveness as a result of the dynamic system, but moral dilemmas that greatly branch the story have thin backing. Over-expecting is forbidden.
+- Detailed assertions such as skill trees and detection abilities are unconfirmed. Be wary of articles that pretend to have already played.
+
+The direction that GTA6's crime system looks set to be far freer and more tense than GTA5's can be glimpsed from the leaked footage. But for its concrete mechanics to be officially revealed, we will need to wait for future trailers and the release (November 19, 2026). The more provocative the headline, the more we want to receive the information while checking its source and certainty.
+
+---
+
+*Note: Within this article, the descriptions concerning the heist system, the behavior of the wanted level, and mission solutions and branching include speculation based on the early development footage that leaked in 2022 and on analysis by the community and media. This is information from during development and may differ from the specifications of the final product. It is not an official announcement by Rockstar Games. The main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) is confirmed information based on official announcements.*`,
     fullContent: `# GTA6の「犯罪」はどう進化する？ 流出映像が示した強盗システムの正体と、注意したい誇張リーク
 
 『Grand Theft Auto VI（GTA6）』をめぐって、ファンが特に期待を寄せているのが「犯罪（強盗）システム」の刷新だ。「複数の解法がある」「道徳的な選択を迫られる」といった刺激的な話も飛び交っている。ただ、こうした情報の多くは2022年に流出した開発初期の映像や、その後の分析に由来するもので、確定情報と未確認のリーク、そして誇張された憶測が入り混じっているのが実情だ。この記事では、何がどこまで確からしいのかを切り分けながら、GTA6の犯罪システムがどう進化しそうかを考察する。
