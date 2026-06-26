@@ -2362,6 +2362,96 @@ GTA6のSwitch2版をめぐる状況を整理すると、こうなる。
       "第2弾では主人公ジェイソンとルシア、レオニダ州の陰謀、9人のキャラクターや多様な世界観が示された。",
       "予約開始は6月25日で確定だが、同日の第3弾トレーラー公開は推測でRockstar未発表である。",
     ],
+    titleEn:
+      "A Complete Rundown of the GTA6 Trailers — What Was in Trailer 2, and Where the Trailer 3 June 25 Theory Stands",
+    descriptionEn:
+      "A full rundown of what was in Trailer 1 and Trailer 2, leading up to where the theory of a Trailer 3 release timed to the start of preorders (June 25) currently stands.",
+    aiSummaryEn: [
+      "There are two GTA6 trailers so far: Trailer 1 released in December 2023 and Trailer 2 released on May 6, 2025.",
+      "Trailer 2 showed protagonists Jason and Lucia, the conspiracy spanning the state of Leonida, nine characters, and a richly varied world.",
+      "The June 25 start of preorders is confirmed, but a Trailer 3 release on the same day is speculation and has not been announced by Rockstar.",
+    ],
+    fullContentEn: `# A Complete Rundown of the GTA6 Trailers — What Was in Trailer 2, and Where the Trailer 3 June 25 Theory Stands
+
+The buzz around Grand Theft Auto VI (GTA6) is heating up once again. The spark was Rockstar's announcement that preorders will begin on June 25, 2026. Based on past patterns in the series, the view that the long-awaited Trailer 3 might be released to coincide with that day has rapidly gained traction. Here, we revisit and organize what was revealed in the previously released Trailer 1 and Trailer 2, and then look at what we can expect from Trailer 3.
+
+---
+
+## First, the Timeline: There Have Been Two Trailers So Far
+
+Since this often gets confused, let us first make the facts clear. As of now, two GTA6 trailers have been released.
+
+- Trailer 1: Released in December 2023, timed to Rockstar's 25th anniversary. It showed the world the return to Vice City and the existence of two protagonists. In its first 24 hours after release it racked up record-breaking view counts, leaving a historic number for a non-music YouTube video.
+- Trailer 2: Released on May 6, 2025. It was a so-called surprise release, coming just a few days after the announcement of a delay. The roughly three-minute stretch of new footage greatly deepened the outline of the story and the relationship between the two protagonists.
+
+In other words, Trailer 2 is not a recent event but something from over a year ago. The lengthening gap from then until Trailer 3 is what feeds fans' current craving.
+
+---
+
+## What Could Be Seen in Trailer 2
+
+Trailer 2 was not merely a showcase of footage; it laid out the direction of GTA6 as a work in fairly concrete terms. Let us organize the key points.
+
+### The Two Protagonists — Jason and Lucia
+
+At the center of the story are Jason Duval and Lucia Caminos. The trailer gets moving from a scene in which Jason, after going about his daily life, goes to pick up Lucia as she is released from prison. From there, the neon-soaked chaos of Vice City unfolds all at once, with the two repeating robberies, shootouts, and getaways.
+
+What deserves special mention is Lucia's presence. She is said to be the first full-fledged female protagonist placed at the center of a solo story in the series' main line (the numbered titles). It has been officially revealed that her father trained her to fight from a young age, and that her actions to protect her family ultimately landed her in a prison in the state of Leonida. Jason, on the other hand, is depicted as a man who failed at a fresh start in the military and returned to the underworld as a drug courier.
+
+Rockstar is presenting the relationship between these two as a crime-and-romance story likened to Bonnie and Clyde. Whereas GTA5 used three protagonists to separately depict satire, tragedy, and chaos, GTA6 narrows its focus to two people who share a destiny, seeking to make emotional tension the axis of the story.
+
+### How the Story Begins
+
+According to the official description, Jason and Lucia get caught up in a conspiracy that spreads across the entire state of Leonida after a job that was supposed to be easy goes wrong. To survive, they are forced to rely on each other more than ever before — that is the broad outline of the plot.
+
+### A Cast of Distinctive Supporting Characters
+
+To coincide with the release of Trailer 2, Rockstar revealed information on nine characters, including the two protagonists. They line up as figures from differing backgrounds: Boobie Ike, a legendary figure of Vice City; Dre'Quan Priest, aiming for success in the music business; Real Dimez, a music duo cloaked in social media and local fame; Raul Bautista, a professional bank robber; and Brian Heder, a smuggler in the Leonida Keys. The fact that the supporting cast is designed not as mere window dressing but as a network in which multiple stories intertwine is what sets GTA6 apart from previous GTA games.
+
+### The World and Its Details
+
+The setting is Vice City, modeled on Miami, and the fictional state of Leonida, modeled on Florida. After Trailer 2's release, numerous screenshots were also published, showing the individuality of each region: the touristy Leonida Keys, the nature-rich Mount Kalaga National Park, Port Gellhorn lined with cheap motels and strip clubs, the rural and industrial areas of Ambrosia that are home to a biker gang, and the wetland Grassrivers.
+
+Among fans, small details were eagerly discussed as well, such as an alligator in a parking lot, an NPC livestreaming a robbery, and license plates reading VC-86 that allude to the original version (the 1986 Vice City). It is worth noting that everything released so far is trailer or engine footage as cinematic works, and actual playing footage (raw gameplay) has not yet been officially shown.
+
+---
+
+## Trailer 3 Is Widely Expected to Release on June 25
+
+This is where the topic drawing the most attention right now comes in.
+
+Rockstar officially announced that GTA6 preorders will begin on June 25, 2026. In step with this, the view in the community that Trailer 3 might be released on the same day has rapidly spread.
+
+There are several grounds for this. First, the previous Trailer 2 was released on May 6, 2025, and over 400 days have already passed. The point is that it is hard to imagine reaching a major milestone like preorders with only a trailer from over a year ago. In fact, looking back at Rockstar's past marketing, with Red Dead Redemption 2 the flow was to put out a gameplay trailer about two months before release, after three cinematic trailers. The role division of Trailer 1 presenting the world and Trailer 2 introducing the story is the same for GTA6, so Trailer 3 is seen as likely to be a full-fledged story trailer.
+
+However, as of now Rockstar has not officially announced a release date for Trailer 3. The June 25 release is purely speculation from circumstantial evidence, and the possibility remains that only preorders begin first while the trailer comes on a different day. Precisely because this is a topic where expectations are running hot, this distinction is worth keeping in mind.
+
+---
+
+## What Can Be Expected From Trailer 3
+
+Given the role division of the previous two trailers, the following elements are expected from Trailer 3.
+
+- A more in-depth presentation of the story (the main plot) centered on Jason and Lucia
+- More gameplay-oriented footage, such as the mechanics of the heists that have so far been shown only in fragments
+- An announcement of the various preorder editions and pricing (in addition to a standard edition, there are also rumors of a collector's edition)
+
+GTA6 is scheduled to release on November 19, 2026, for PS5 and Xbox Series X|S. A PC version has not been officially announced, and going by the series' custom it is highly likely to come later. With less than half a year to go until release, Trailer 3 looks set to draw some of the series' greatest attention as the starting signal for the countdown to launch.
+
+---
+
+## Summary
+
+- There are two GTA6 trailers so far. Trailer 1 was released in December 2023, and Trailer 2 on May 6, 2025.
+- Trailer 2 showed the relationship between protagonists Jason and Lucia, a conspiracy set in the state of Leonida, nine distinctive characters, and a world that differs from region to region.
+- Preorders have been officially announced to begin on June 25, 2026. There is a strong observation that Trailer 3 will be released to coincide with this, but the release date has not been announced by Rockstar.
+- Trailer 3 is expected to be a full-fledged story trailer, and it looks set to be the one that signals the full launch of marketing toward release (November 19, 2026).
+
+GTA6's marketing, after a long silence, has finally begun to move. What will happen on June 25 — the answer will be revealed before long.
+
+---
+
+*Note: Within this article, the descriptions of the Trailer 3 release timing, the various preorder editions and pricing, and the contents of Trailer 3 include speculation based on circumstantial evidence and community observation. They are not official announcements by Rockstar Games. The release dates and contents of Trailer 1 and Trailer 2, the preorder start date (June 25, 2026), and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) are confirmed information based on official announcements.*`,
     fullContent: `# GTA6のトレーラーを総ざらい——第2弾の中身と、第3弾「6月25日説」の現在地
 
 『Grand Theft Auto VI（GTA6）』をめぐる話題が、ふたたび熱を帯びている。きっかけは、Rockstarが2026年6月25日からプレオーダー（予約購入）を開始すると発表したことだ。シリーズの過去のパターンから、この日に合わせて待望の第3弾トレーラーが公開されるのではないか、という観測が一気に強まっている。ここでは、これまでに公開された第1弾・第2弾トレーラーで何が判明したのかをあらためて整理したうえで、第3弾に何を期待できるのかを見ていく。
