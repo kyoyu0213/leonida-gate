@@ -102,30 +102,67 @@ export default function BoardThread() {
     window.setTimeout(() => setHighlight((cur) => (cur === n ? null : cur)), 3000);
   };
 
-  // 本文をレンダリング：>>N をアンカーリンクに変換する
+  // 本文をレンダリング：>>N をアンカーリンクに、URL をクリック可能なリンクに変換する
   const renderBody = (text: string): ReactNode[] => {
     const parts: ReactNode[] = [];
-    const re = />>(\d+)/g;
+    // >>レス番号 か URL のどちらかにマッチ
+    const re = /(>>\d+)|(https?:\/\/[^\s<>"']+)/g;
     let last = 0;
     let m: RegExpExecArray | null;
     let k = 0;
     while ((m = re.exec(text)) !== null) {
       if (m.index > last) parts.push(text.slice(last, m.index));
-      const n = Number(m[1]);
-      parts.push(
-        <button
-          key={k++}
-          type="button"
-          onClick={() => jumpToPost(n)}
-          className="text-[#22d3ee] hover:text-[#7df9ff] font-bold underline underline-offset-2"
-        >
-          {`>>${n}`}
-        </button>,
-      );
+      if (m[1]) {
+        // >>N アンカー
+        const n = Number(m[1].slice(2));
+        parts.push(
+          <button
+            key={k++}
+            type="button"
+            onClick={() => jumpToPost(n)}
+            className="text-[#22d3ee] hover:text-[#7df9ff] font-bold underline underline-offset-2"
+          >
+            {`>>${n}`}
+          </button>,
+        );
+      } else {
+        // URL リンク。末尾の句読点・閉じ括弧はリンクから外す。
+        let url = m[2];
+        let trail = '';
+        const tm = url.match(/[)\]}>＞、。，．,.!?！？…]+$/);
+        if (tm) {
+          trail = tm[0];
+          url = url.slice(0, url.length - trail.length);
+        }
+        parts.push(
+          <a
+            key={k++}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-[#22d3ee] hover:text-[#7df9ff] underline underline-offset-2 break-all"
+          >
+            {url}
+          </a>,
+        );
+        if (trail) parts.push(trail);
+      }
       last = m.index + m[0].length;
     }
     if (last < text.length) parts.push(text.slice(last));
     return parts;
+  };
+
+  // 本文中の YouTube URL から動画IDを抽出（重複は除く）。埋め込み表示に使う。
+  const extractYoutubeIds = (text: string): string[] => {
+    const re =
+      /(?:youtube\.com\/(?:watch\?(?:[^\s]*&)?v=|live\/|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/g;
+    const ids: string[] = [];
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(text)) !== null) {
+      if (!ids.includes(m[1])) ids.push(m[1]);
+    }
+    return ids;
   };
 
   const load = async () => {
@@ -358,6 +395,17 @@ export default function BoardThread() {
                     ) : (
                       <>
                         <p className="text-sm leading-[1.75] text-white/80 m-0 whitespace-pre-wrap break-words">{renderBody(post.body)}</p>
+                        {extractYoutubeIds(post.body).map((vid) => (
+                          <div key={vid} className="article-video mt-3 max-w-[480px]">
+                            <iframe
+                              src={`https://www.youtube-nocookie.com/embed/${vid}`}
+                              title="YouTube video player"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
                         {postImages[post.id]?.length > 0 && (
                           <div className="flex flex-wrap gap-2 mt-2">
                             {postImages[post.id].map((url) => (
