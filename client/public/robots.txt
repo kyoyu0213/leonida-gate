@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://gta6-feed.com/sitemap.xml
+Sitemap: https://gta6-feed.com/sitemap-news.xml
