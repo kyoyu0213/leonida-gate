@@ -2,54 +2,61 @@ import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import MobileTabBar from "./components/MobileTabBar";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import ServerBoard from "./pages/ServerBoard";
-import NewsList from "./pages/NewsList";
-import NewsDetail from "./pages/NewsDetail";
-import BoardThreadList from "./pages/BoardThreadList";
-import BoardThread from "./pages/BoardThread";
-import AdminReports from "./pages/AdminReports";
-import SearchPage from "./pages/Search";
-import Terms from "./pages/Terms";
-import Contact from "./pages/Contact";
-import FivemGtarp from "./pages/FivemGtarp";
-import FivemArticle from "./pages/FivemArticle";
-import GtarpArticle from "./pages/GtarpArticle";
-import FivemVsGtarpArticle from "./pages/FivemVsGtarpArticle";
-import FivemServerGuide from "./pages/FivemServerGuide";
-import FivemInstallGuide from "./pages/FivemInstallGuide";
+
+// 各ページは遅延読み込み（コード分割）。記事ページ用の重いライブラリ（Markdown
+// レンダラ等）をトップの本体JSから切り離し、初回表示を軽くする。
+const Home = lazy(() => import("./pages/Home"));
+const ServerBoard = lazy(() => import("./pages/ServerBoard"));
+const NewsList = lazy(() => import("./pages/NewsList"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail"));
+const BoardThreadList = lazy(() => import("./pages/BoardThreadList"));
+const BoardThread = lazy(() => import("./pages/BoardThread"));
+const AdminReports = lazy(() => import("./pages/AdminReports"));
+const SearchPage = lazy(() => import("./pages/Search"));
+const Terms = lazy(() => import("./pages/Terms"));
+const Contact = lazy(() => import("./pages/Contact"));
+const FivemGtarp = lazy(() => import("./pages/FivemGtarp"));
+const FivemArticle = lazy(() => import("./pages/FivemArticle"));
+const GtarpArticle = lazy(() => import("./pages/GtarpArticle"));
+const FivemVsGtarpArticle = lazy(() => import("./pages/FivemVsGtarpArticle"));
+const FivemServerGuide = lazy(() => import("./pages/FivemServerGuide"));
+const FivemInstallGuide = lazy(() => import("./pages/FivemInstallGuide"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// 遅延読み込み中のフォールバック（テーマ背景のみ。一瞬なので装飾は最小限）。
+function PageFallback() {
+  return <div className="vice-page" style={{ minHeight: "100vh" }} aria-hidden="true" />;
+}
 
 function Router() {
   return (
-    <>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/servers" component={ServerBoard} />
-        <Route path="/news" component={NewsList} />
-        <Route path="/news/:id" component={NewsDetail} />
-        <Route path="/board" component={BoardThreadList} />
-        <Route path="/board/:slug" component={BoardThreadList} />
-        <Route path="/thread/:id" component={BoardThread} />
-        <Route path="/fivem-gtarp" component={FivemGtarp} />
-        <Route path="/fivem-gtarp/what-is-fivem" component={FivemArticle} />
-        <Route path="/fivem-gtarp/what-is-gtarp" component={GtarpArticle} />
-        <Route path="/fivem-gtarp/fivem-vs-gtarp" component={FivemVsGtarpArticle} />
-        <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
-        <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
-        <Route path="/admin/reports" component={AdminReports} />
-        <Route path="/search" component={SearchPage} />
-        <Route path="/terms" component={Terms} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/404" component={NotFound} />
-        {/* Final fallback route */}
-        <Route component={NotFound} />
-      </Switch>
-    </>
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/servers" component={ServerBoard} />
+      <Route path="/news" component={NewsList} />
+      <Route path="/news/:id" component={NewsDetail} />
+      <Route path="/board" component={BoardThreadList} />
+      <Route path="/board/:slug" component={BoardThreadList} />
+      <Route path="/thread/:id" component={BoardThread} />
+      <Route path="/fivem-gtarp" component={FivemGtarp} />
+      <Route path="/fivem-gtarp/what-is-fivem" component={FivemArticle} />
+      <Route path="/fivem-gtarp/what-is-gtarp" component={GtarpArticle} />
+      <Route path="/fivem-gtarp/fivem-vs-gtarp" component={FivemVsGtarpArticle} />
+      <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
+      <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
+      <Route path="/admin/reports" component={AdminReports} />
+      <Route path="/search" component={SearchPage} />
+      <Route path="/terms" component={Terms} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/404" component={NotFound} />
+      {/* Final fallback route */}
+      <Route component={NotFound} />
+    </Switch>
   );
 }
 
@@ -68,7 +75,9 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <div className="dark">
-            <Router />
+            <Suspense fallback={<PageFallback />}>
+              <Router />
+            </Suspense>
             <MobileTabBar />
           </div>
           <GoogleAnalytics />
