@@ -2954,6 +2954,90 @@ Redditでも、「面積より中身」を求める意見が目立つ。ある�
       "エンジンはRAGE 9で、レイトレーシングによる光や反射の表現が最大の進化点と評価されている。",
       "解像度やフレームレートは公式未公表で、ベース機は4Kアップスケールの30fpsが現実的との見方が強い。",
     ],
+    titleEn:
+      "How Far Have GTA6's Graphics Evolved — Decoding the True Nature of RAGE 9 Through Trailer Analysis",
+    descriptionEn:
+      "Light, reflections, and crowd density — through a technical analysis of the trailers, we examine what drives the RAGE 9 engine and just how far it has evolved.",
+    aiSummaryEn: [
+      "GTA6's trailers were captured on actual PS5 hardware, and the footage is said to be close to actual gameplay.",
+      "The engine is RAGE 9, and its expression of light and reflections through ray tracing is rated as the biggest leap forward.",
+      "Resolution and frame rate have not been officially announced, and many believe a 30fps experience upscaled to 4K is the realistic outcome on base consoles.",
+    ],
+    fullContentEn: `# How Far Have GTA6's Graphics Evolved — Decoding the True Nature of RAGE 9 Through Trailer Analysis
+
+When many people first saw the trailer for Grand Theft Auto VI (GTA6), they gasped, wondering whether this was really in-game footage. The reflection of light, the texture of skin, the density of crowds — every element pushes the bar of open-world games up a notch. In this article, we technically analyze the released trailers and screenshots to examine what has driven GTA6's graphics and how far they have evolved, sorting out what is confirmed fact from what, for now, remains speculation.
+
+---
+
+## First, an Essential Premise: The Trailers Are Equivalent to Actual Hardware and Actual Gameplay
+
+Before discussing the technology, there is an important fact that serves as the foundation. Rockstar has stated that the second trailer released in May 2025 was captured on actual PlayStation 5 hardware, and that it is composed roughly half of gameplay and half of cutscenes.
+
+What this means is that the footage seen in the trailer is not a pre-rendered movie but is close to the screen you actually play on. Rockstar has a track record of keeping cutscene and actual-gameplay quality nearly identical in past titles. In RDR2 as well, the level of detail in the cutscenes was reproduced directly in actual gameplay. That is precisely why analyzing the trailer footage carries a certain meaning as a way to estimate the product's real capabilities.
+
+There is a caveat, however. The experts who perform technical analysis cautiously note that, at this stage, the trailer shots are nearly all there is, and they cannot assert how far the quality will be maintained during actual ordinary gameplay. We should keep this premise in mind.
+
+---
+
+## The Engine Is RAGE 9 — An Evolution Along the Same Line as RDR2
+
+What powers GTA6 is the latest version of Rockstar's proprietary RAGE (Rockstar Advanced Game Engine), the so-called ninth generation. This lies within the lineage of the engine that has supported GTA5 and RDR2, and is said to have evolved significantly over more than a decade.
+
+In frame-by-frame comparisons of GTA5 and GTA6 made by fans, the engine's progress is clearly visible. Many analyses conclude that not only have resolution and textures improved, but the fundamental aspects — environmental density, the handling of light, and physical expression — have reached a wholly different level.
+
+---
+
+## The Biggest Leap Forward: Expression of Light Through Ray Tracing
+
+What experts rate most highly in their trailer analysis is the expression of light and reflections through ray tracing.
+
+The team at Digital Foundry, which analyzes video technology, points out that GTA6's trailer uses full-fledged ray-traced global illumination (RTGI, a method that physically calculates the indirect bouncing of light), in which direct light, indirect light, and natural light richly mix together. They say the presence of indirect diffuse light can be felt in nearly every shot, and that this is especially pronounced in how the characters appear.
+
+Ray-traced reflections have also been confirmed. What earns particularly high praise is the reflections on transparent and smooth objects such as sunglasses, mirrors, and car windshields. Experts have expressed the view, in essence, that such expression cannot be achieved without ray tracing. On the other hand, conventional screen-space reflections (SSR) appear to be used in combination for reflections on rough surfaces, and some point out that noise still remains in things like the rendering of water surfaces. In other words, GTA6 is highly likely to be built as a hybrid that switches between ray tracing and conventional methods depending on the situation.
+
+The environment of the state of Leonida, modeled on Florida, is a stage that is like a showcase for this expression of light. Neon reflected on rain-soaked roads, the glare of glass-walled high-rises, sunlight passing through tropical trees — all of these are subjects in which ray tracing shines, and the world itself becomes a showcase for the technology.
+
+---
+
+## Resolution and Frame Rate: The Reality Surrounding 4K and 30fps
+
+The expectation of 4K and 60fps on next-generation hardware is often discussed, but this is a part we should view calmly.
+
+In the estimation of technical analysis, a stable, cinematic 30fps is considered the realistic target on the base PS5 and Xbox Series X. The rendering is expected to use a dynamic resolution of roughly 1152p to 1440p internally, then upscale from there to 4K. In other words, achieving native 4K at 60fps directly on the base consoles is difficult, and there is strong skepticism toward the inclusion of a 60fps mode.
+
+On the more powerful PS5 Pro, however, the situation changes. With a hardware upscaling technology called PSSR (PlayStation Spectral Super Resolution), it can reconstruct a sharp 4K image from a low base resolution, and this is expected to be the best experience at launch. Furthermore, on the less powerful Xbox Series S, a corresponding compromise is said to be unavoidable, and even the same game looks set to offer a range of experiences depending on the hardware.
+
+It should be emphasized that Rockstar has not, at this point, released any formal technical specifications such as resolution or frame-rate modes. The figures cited here are, to the end, analyses and conjecture by experts and the community.
+
+---
+
+## It Is Not Light Alone That Makes the Graphics Look Impressive
+
+GTA6's visual persuasiveness is born not from ray tracing on its own but from the accumulation of multiple elements. Organizing the elements that can be read from the trailer, the picture is as follows.
+
+- Crowd density. The streets of Vice City show an NPC density that exceeds GTA5 and RDR2. Moreover, the crowds react dynamically to the player's actions, flinching at weapons, fleeing from explosions, and filming with smartphones.
+- Weather system. It is said to reproduce Florida's extreme climate, from clear skies to torrential rain and hurricanes. Weather is also said to affect NPC behavior and driving physics, and is expected to be the most advanced weather expression in Rockstar's history.
+- Water rendering. Given the land's vast waterways, it needs to depict ocean waves, canal reflections, the murkiness of wetlands, and the transparent water of the Keys each differently. This water simulation is also a highlight in the trailer.
+- Diverse ecosystems (biomes). Tropical vegetation, wetlands, highland forests, beachside palms — it depicts environments that differ by region, and this raises the richness of the world.
+
+The very fact that these coexist at such high density tells of the engine's powerful processing capability.
+
+---
+
+## Summary
+
+- GTA6's trailers were captured on actual PS5 hardware, with gameplay and cutscenes split roughly half and half. The footage is thought to be close to actual gameplay.
+- The engine is RAGE 9. It is an evolved version carrying on RDR2's lineage, and its light, density, and physics have reached another dimension.
+- The biggest leap is light and reflections through ray tracing. Reflections on transparent objects earn especially high praise, while it appears to be a hybrid configuration used in combination with conventional methods.
+- Resolution and frame rate are unannounced. There is a strong view that a 30fps experience upscaled to 4K is realistic on base consoles, with skepticism toward 60fps. The PS5 Pro looks set to offer the best experience.
+- The footage's persuasiveness is also supported by the accumulation of elements such as crowd density, weather, water, and vegetation.
+
+Even from the released trailers alone, one can sense that GTA6's graphics are at a generation-defining level. The remaining formal specifications for resolution and frame rate should, by Rockstar's custom, be shown as the release (November 19, 2026) draws near. Just how far this footage will be reproduced in actual ordinary gameplay — the moment of truth for that answer is now less than half a year away.
+
+---
+
+*Note: Within this article, the descriptions concerning the specific implementation of ray tracing, the outlook for resolution and frame rate, and performance differences by hardware are based on third-party technical analysis such as Digital Foundry, and on conjecture from trailers and screenshots. They are not an official announcement of technical specifications by Rockstar Games. The facts that the second trailer was captured on actual PS5 hardware, that it is composed half of gameplay and half of cutscenes, and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) are confirmed information based on Rockstar's official announcements.*`,
+
     fullContent: `# GTA6のグラフィックスはどこまで進化したのか——トレーラー分析で読み解く「RAGE 9」の正体
 
 『Grand Theft Auto VI（GTA6）』のトレーラーを初めて見たとき、多くの人が「これが本当にゲーム画面なのか」と息をのんだ。光の反射、肌の質感、群衆の密度——どれもが、これまでのオープンワールドの水準を一段押し上げている。この記事では、公開済みのトレーラーやスクリーンショットを技術的に分析し、GTA6のグラフィックスが何によって、どこまで進化したのかを考察する。確定している事実と、現時点では推測にとどまる部分を切り分けながら見ていく。
