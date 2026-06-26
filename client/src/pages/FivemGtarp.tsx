@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, ArrowRight } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, ArrowRight } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT } from '@/lib/i18n';
 
@@ -36,6 +36,17 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.guide.title', descKey: 'fg.card.guide.desc', href: '/fivem-gtarp/server-guide', icon: Compass, accent: '#3de0a0' },
       { titleKey: 'fg.card.faq.title', descKey: 'fg.card.faq.desc', href: '/fivem-gtarp/faq', icon: HelpCircle, accent: '#34d399' },
       { titleKey: 'fg.card.commands.title', descKey: 'fg.card.commands.desc', href: '/fivem-gtarp/commands', icon: Terminal, accent: '#fb7185' },
+      { titleKey: 'fg.card.servers.title', descKey: 'fg.card.servers.desc', href: '/servers', icon: Megaphone, accent: '#fbbf24' },
+      { titleKey: 'fg.card.serverBoard.title', descKey: 'fg.card.serverBoard.desc', href: '/board/gtarp-servers', icon: MessageSquare, accent: '#ff8a3d' },
+    ],
+  },
+  {
+    labelKey: 'fg.group.watch',
+    accent: '#f472b6',
+    cards: [
+      { titleKey: 'fg.card.observer.title', descKey: 'fg.card.observer.desc', href: '/fivem-gtarp/observer-guide', icon: Eye, accent: '#e879f9' },
+      { titleKey: 'fg.card.streamerHistory.title', descKey: 'fg.card.streamerHistory.desc', href: '/fivem-gtarp/streamer-server-history', icon: Tv, accent: '#f472b6' },
+      { titleKey: 'fg.card.streamerBoard.title', descKey: 'fg.card.streamerBoard.desc', href: '/board/streamer-servers', icon: MessageSquare, accent: '#ff2d95' },
     ],
   },
   {
@@ -44,7 +55,6 @@ const GROUPS: CardGroup[] = [
     cards: [
       { titleKey: 'fg.card.glossary.title', descKey: 'fg.card.glossary.desc', href: '/fivem-gtarp/glossary', icon: BookOpen, accent: '#c084fc' },
       { titleKey: 'fg.card.history.title', descKey: 'fg.card.history.desc', href: '/fivem-gtarp/history', icon: History, accent: '#f0b429' },
-      { titleKey: 'fg.card.streamerHistory.title', descKey: 'fg.card.streamerHistory.desc', href: '/fivem-gtarp/streamer-server-history', icon: Tv, accent: '#f472b6' },
       { titleKey: 'fg.card.board.title', descKey: 'fg.card.board.desc', href: '/board/gtarp', icon: MessageSquare, accent: '#ff2d95' },
     ],
   },

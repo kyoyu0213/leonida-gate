@@ -30,6 +30,7 @@ const GtarpGlossaryArticle = lazy(() => import("./pages/GtarpGlossaryArticle"));
 const FivemFaqArticle = lazy(() => import("./pages/FivemFaqArticle"));
 const FivemCommandsArticle = lazy(() => import("./pages/FivemCommandsArticle"));
 const GtarpStreamerHistoryArticle = lazy(() => import("./pages/GtarpStreamerHistoryArticle"));
+const GtarpObserverGuideArticle = lazy(() => import("./pages/GtarpObserverGuideArticle"));
 const FivemServerGuide = lazy(() => import("./pages/FivemServerGuide"));
 const FivemInstallGuide = lazy(() => import("./pages/FivemInstallGuide"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -58,6 +59,7 @@ function Router() {
       <Route path="/fivem-gtarp/faq" component={FivemFaqArticle} />
       <Route path="/fivem-gtarp/commands" component={FivemCommandsArticle} />
       <Route path="/fivem-gtarp/streamer-server-history" component={GtarpStreamerHistoryArticle} />
+      <Route path="/fivem-gtarp/observer-guide" component={GtarpObserverGuideArticle} />
       <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
       <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
       <Route path="/admin/reports" component={AdminReports} />
