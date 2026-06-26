@@ -97,6 +97,250 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 23,
+    title: "GTA6小売ページに“未公開情報”――Amazon Brazil・KaBuMの記述は本物か、AI生成の宣伝文か",
+    description:
+      "6月25日の予約開始に合わせ、ブラジルのAmazon・KaBuMのGTA6商品ページに、他地域では確認できない踏み込んだゲームプレイ記述が掲載され話題に。何が公式情報で、何が小売ページ由来の未確認情報なのかを切り分けて整理する。",
+    icon: "🛒",
+    image: "/images/news/AmazonBrazilryuusyutu.png",
+    category: "speculation",
+    date: "2026-06-26",
+    publishedAt: "2026-06-26 14:20",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.rockstargames.com/VI",
+    relatedArticles: [22, 21, 20],
+    aiSummary: [
+      "6月25日の予約開始に合わせ、ブラジルのAmazonと小売KaBuMのGTA6商品ページに、他地域の公式ページにはない踏み込んだゲームプレイ記述（主人公のリアルタイム切替、SNS経由の秘密ミッション、PS5 Pro強化など）が掲載され話題に。Rockstar/Take-Twoは未コメント。",
+      "ただし内容の多くは既知情報の焼き直しで、英訳するとAI生成の宣伝文のように読めるとの指摘も。新しい部分として注目されるのはゲーム内SNSの具体仕様（秘密ミッションの発見）と、KaBuMの「生成AI不使用」明記。いずれもRockstar未確認のリーク。",
+      "同時期に出回る「Leonida Map Leaked」画像はファン作成の概念図で、今回のリークとも公式とも無関係。公式マップは未公開。GTA6は2026年11月19日発売予定で、本記事執筆時点では未発売。確定情報は公式発表で確認したい。",
+    ],
+    titleEn:
+      "“Unrevealed Info” on GTA6 Retail Pages: Are the Amazon Brazil and KaBuM Descriptions Real, or AI-Generated Marketing Copy?",
+    descriptionEn:
+      "Coinciding with the June 25 pre-order opening, the GTA6 product pages on Brazil's Amazon and the retailer KaBuM carry detailed gameplay descriptions not found on official pages in other regions. We sort out what is official information and what is unconfirmed info originating from the retail pages.",
+    aiSummaryEn: [
+      "Coinciding with the June 25 pre-order opening, the GTA6 product pages on Brazil's Amazon and the retailer KaBuM carried detailed gameplay descriptions (real-time protagonist switching, secret missions via in-game social media, PS5 Pro enhancements) not found on official pages elsewhere. Rockstar/Take-Two have not commented.",
+      "However, much of the content is a rehash of known info, and some note that translated into English it reads like AI-generated marketing copy. The parts drawing attention as new are the specifics of in-game social media (discovering secret missions) and KaBuM's explicit note of no generative AI. All are leaks unconfirmed by Rockstar.",
+      "The “Leonida Map Leaked” image circulating at the same time is a fan-made concept and is unrelated to this leak or to official info. No official map has been released. GTA6 is scheduled for November 19, 2026, and is unreleased as of writing. Confirm definitive info via official announcements.",
+    ],
+    fullContentEn: `# “Unrevealed Info” on GTA6 Retail Pages: Are the Amazon Brazil and KaBuM Descriptions Real, or AI-Generated Marketing Copy?
+
+Coinciding with the June 25 pre-order opening, the GTA6 product pages on Brazil's Amazon and the major retailer KaBuM are said to carry gameplay descriptions that cannot be confirmed on official pages in other regions, and this has drawn attention within the community.
+
+There you find content that goes further than official announcements: real-time switching between Jason and Lucia, secret missions through in-game social media, NPC daily routines, technical enhancements for the PS5 Pro, and more.
+
+That said, it is risky to take this at face value as “new information now confirmed.” The text contains a lot of rehashed known information, and there are pointers that, translated into English, it reads like AI-generated marketing copy. At GTA6 FEED, we sort out, for these descriptions, what is official information and what is unconfirmed info originating from the retail pages.
+
+This article is based on information as of June 26, 2026. We note up front that the following retail-page descriptions are not official announcements by Rockstar, but unconfirmed information.
+
+## What Happened
+
+On June 25, users discovered that Amazon Brazil's GTA6 pre-order page contained more detailed gameplay descriptions that differed from the official explanatory text Rockstar distributes to each retailer. The page of another Brazilian retailer, KaBuM, had even more detailed descriptions.
+
+What should be noted is that this page itself differs from a mere social-media-post-style leak; it has at least been confirmed as a normal product listing on Amazon Brazil. Even so, that does not guarantee that the content of the posted text is correct. It is more accurate to view it as a state in which “a legitimate page carries text different from the officially distributed version,” and Rockstar and its parent company Take-Two have not commented on the matter.
+
+Assessments of its reliability are split. While some accounts dealing with GTA-related information suggest the text may have been provided to the retailers by Rockstar's side, they also indicate that the possibility of a third party having edited it cannot be ruled out. In addition, because translated into English the text feels strongly promotional and gives the impression of generative AI, and because most of the content is already known, there are multiple voices saying it should be handled cautiously. No similar descriptions have been confirmed on the Amazon US page.
+
+## The Described Content (Unconfirmed Leak)
+
+We organize the gameplay elements both pages describe. None of them are officially confirmed.
+
+- Protagonists: Jason and Lucia can be switched in real time during heists and the like. There are “duo” missions where the two cooperate to progress.
+- Map: The largest and most densely packed open world in Rockstar's history. In addition to Vice City, you can explore various parts of the state of Leonida, including beaches, swamps, and small towns.
+- NPCs and World: Each NPC has its own daily routine, and random events occur. There are many shops and facilities you can enter, described as a “living world.” KaBuM describes “advanced AI and unprecedented urban density.”
+- In-Game Social Media: Using the in-game smartphone, you can watch viral videos and follow Vice City influencers to grasp what's happening in the world. Furthermore, it is said you can discover secret side missions via social media.
+- Graphics and Weather: Advanced lighting, natural animation, and high-detail environmental rendering. Dynamic weather where storms and the passage of time affect physics and gameplay.
+- PS5 Pro (KaBuM): Advanced ray tracing and improved global illumination, realistic reflections on cars and water surfaces. On the PS5 Pro, higher frame rates and resolution, and more stable operation, are said to be expected.
+
+KaBuM also states that no generative AI is used in the game.
+
+![Jason and Lucia, the two protagonists. Real-time switching during heists is one of the “unconfirmed” descriptions](/images/news/Jason_and_Lucia_Motel_landscape.jpg)
+
+## Separating the Already-Known from the New
+
+What to be careful about with this leak is that much of the reported content was known beforehand and is not something “newly uncovered.” However, even within that “beforehand,” there is a mix of things officially confirmable and things that had merely been inferred from patents and the like.
+
+Things confirmed or suggested in the official trailers and Rockstar's published materials, or previously inferred from past patents and the like:
+
+- The two-protagonist structure of Jason and Lucia (officially confirmed)
+- The setting of the state of Leonida and Vice City, and the existence of beaches and swamps (confirmable from official materials)
+- That the weather changes, that the city has many lively NPCs, and that in-game social media exists (the existence of each is confirmable in the trailers)
+- Mechanisms such as weather affecting gameplay, NPCs having their own daily routines, and auto-generated interiors (inferred from past Rockstar patents and job postings; not confirmed to be implemented in the product)
+
+It must be noted that patents and job postings can serve as grounds for a technical direction, but do not mean implementation is confirmed. In fact, several outlets assess that “the usefulness of the translated descriptions is exaggerated, and most is known information.”
+
+![The Leonida Keys area. The existence of waterside terrain like beaches and swamps is confirmable from official materials](/images/news/Leonida_Keys_01.jpg)
+
+On the other hand, things not officially confirmed and that can be called the detailed expressions unique to these retail pages this time:
+
+- The clear description of switching protagonists in real time during heists, and the mechanism of duo missions
+- The element of discovering secret side missions via social media
+- The explanation that NPCs' daily routines are driven by “advanced AI”
+- The concrete enhancement content of the PS5 Pro (ray tracing, global illumination, frame rate and resolution). On the PlayStation side, it is shown that GTA6 supports “PS5 Pro Enhanced,” but the concrete enhancement content is not stated on the official page.
+- The declaration of not using generative AI in the game
+
+Several outlets cite the concrete specifications of in-game social media (such as the discovery of secret missions) as the most noteworthy new part among these descriptions.
+
+Another interesting point is that KaBuM clearly states that “no generative AI is used in the game.” In recent game development, whether generative AI is used at all tends to become a point of contention, so deliberately touching on its non-use is eye-catching. However, whether this single line is truly based on retail-facing materials from Rockstar, or an explanation added by the page's creator, is unclear, and this too requires future confirmation.
+
+## A Note on the Spreading “Leak Map”
+
+Around the same time, a map image of the state of Leonida billed as the “Leonida Map Leaked” is circulating widely on social media. However, this is unrelated to this Amazon/KaBuM leak (which is, after all, a text product description); it is merely a conceptual diagram created and imagined by fans. No official map of GTA6 has been released at this point.
+
+Care should be taken not to mistake this kind of map image for part of this retail-page leak or for official information. The direction of terrain modeled on Florida is inferred from various sources, but the concrete shape of the map and place names are not confirmed.
+
+![The “Leonida Map Leaked” image spreading on social media. It is a fan-made concept, unrelated to the leak or official info](/images/news/leakmap.png)
+
+## Community Reactions
+
+Overlapping with the excitement of the pre-order opening, a movement to parse these descriptions word by word is heating up in the community.
+
+Voices placing expectations:
+
+- “Finally, new information. Every single word seems to have meaning.”
+- “If real-time switching during heists is real, that's amazing.”
+
+Cautious voices:
+
+- “Translated into English the text reads like it's AI-generated, so believing it as is would be risky.”
+- “Read carefully, it's mostly stuff we've known for a while.”
+
+Overall, the temperature is one of doubting the certainty while analyzing the content in detail.
+
+## Summary: Sorting Out the Confidence Levels
+
+Confirmable facts (official trailers and published materials):
+
+- The two protagonists (Jason / Lucia), and the setting of the state of Leonida and Vice City. Weather changes, lively NPCs, and in-game social media can all have their existence confirmed in the trailers.
+- The release is November 19, 2026, on PS5 and Xbox Series X|S. GTA6 is said to support “PS5 Pro Enhanced,” but the concrete enhancement content is officially undisclosed.
+
+Unconfirmed leaks (originating from the retail pages, unconfirmed by Rockstar):
+
+- Real-time protagonist switching during heists, the mechanism of duo missions, secret missions via social media, NPC routines driven by “advanced AI,” the concrete enhancement content of the PS5 Pro, and the declaration of not using generative AI.
+
+Speculation and cautions:
+
+- Weather affecting gameplay, NPCs having their own daily routines, auto-generated interiors, and the like are inferred from past patents and job postings, and are not confirmed implementations.
+- The spreading “Leonida Map Leaked” image is a fan-made conceptual diagram, unrelated to this leak or to official information. No official map has been released.
+- Regarding the descriptions themselves, there are voices pointing out the possibility of generative AI or placeholder text, and Rockstar has not commented.
+
+As a caution, GTA6 is unreleased as of the writing of this article. Care is needed regarding information that treats retail-page descriptions, leaks of unknown origin, and fan-made map images as if they were definitive. These descriptions, too, are at a stage where they should ultimately be confirmed by official trailers or Rockstar's announcements. Along with this, continue to beware of scams on unofficial sites that demand pre-order proxies or down payments, and it is best to confirm the latest information through Rockstar Games' official announcements.
+
+---
+
+## Disclaimer
+
+This article is an independent compilation and analysis by GTA6 FEED, based on the GTA6 product-page descriptions reported on Amazon Brazil and KaBuM, official trailers, Rockstar's official announcements, and overseas media. The retail-page descriptions are not official announcements by Rockstar but unconfirmed information. The spreading “Leonida Map Leaked” image is a fan-made conceptual diagram and is unrelated to this leak or to official information. GTA6 is an unreleased title, and its contents may change with future official announcements. For the latest information, please confirm via the official announcements from Rockstar Games.`,
+    fullContent: `# GTA6小売ページに“未公開情報”――Amazon Brazil・KaBuMの記述は本物か、AI生成の宣伝文か
+
+6月25日の予約開始に合わせて、ブラジルのAmazonと大手小売KaBuMのGTA6商品ページに、他地域の公式ページでは確認できないゲームプレイ説明が掲載されているとして、コミュニティで注目を集めている。
+
+そこには、ジェイソンとルシアのリアルタイム切替、ゲーム内SNSを通じた秘密ミッション、NPCの日常ルーチン、PS5 Pro向けの技術的強化など、公式発表より踏み込んだ内容が並ぶ。
+
+ただし、これをそのまま「新情報が確定した」と見るのは危うい。文面には既知情報の焼き直しも多く、英訳するとAI生成の宣伝文のように読めるという指摘もある。GTA6 FEEDでは、今回の記述について、何が公式情報で、何が小売ページ由来の未確認情報なのかを切り分けて整理する。
+
+本記事は2026年6月26日時点の情報にもとづく。以下の小売ページ由来の記述はRockstarの公式発表ではなく、未確認情報である点を最初に断っておく。
+
+## 何が起きたか
+
+6月25日、Amazon BrazilのGTA6予約ページに、Rockstarが各小売へ配布した公式説明文とは異なる、踏み込んだゲームプレイ記述が含まれているのをユーザーが発見した。もう一つのブラジルの小売KaBuMのページには、さらに詳細な記述があった。
+
+注意したいのは、このページ自体は単なるSNS投稿型のリークとは異なり、少なくともAmazon Brazil上の通常の商品リスティングとして確認されている点だ。とはいえ、それは掲載された文面の内容が正しいことまでを保証するものではない。「正規ページに、公式配布版とは別の文面が載っている」状態にあると見るのが正確で、Rockstarおよび親会社Take-Twoはこの件にコメントしていない。
+
+信頼性の評価は割れている。GTA関連の情報を扱う一部のアカウントは、この文面がRockstar側から小売に提供されたものではないかと指摘する一方、第三者が編集した可能性を否定しきれないとの見方も示している。加えて、文面を英訳すると宣伝臭が強く生成AIのような印象を受けること、内容の大半がすでに判明済みであることから、慎重に扱うべきだとする声も複数ある。Amazon USのページには同様の記述は確認されていない。
+
+## 記述された内容（未確認リーク）
+
+両ページが述べるゲームプレイ要素を整理する。いずれも公式に確認されたものではない。
+
+- 主人公: ジェイソンとルシアを強盗（ヒスト）などの最中にリアルタイムで切り替え可能。二人が協力して進める「デュオ」ミッションがある。
+- マップ: Rockstar史上最大・最も高密度のオープンワールド。Vice Cityに加え、ビーチ、沼地、小さな町など、レオニダ州の各地を探索できる。
+- NPC・世界: 各NPCが独自の日常ルーチンを持ち、ランダムイベントが発生する。入れる店舗・施設が多く、「生きた世界」と表現される。KaBuMは「高度なAIと前例のない都市密度」と記す。
+- ゲーム内SNS: ゲーム内スマートフォンでバイラル動画を視聴し、Vice Cityのインフルエンサーをフォローして世界の出来事を把握できる。さらに、SNS経由で秘密のサイドミッションを発見できるとされる。
+- グラフィック・天候: 先進的なライティング、自然なアニメーション、高精細な環境描写。嵐や時間変化が物理演算とゲームプレイに影響する動的な天候。
+- PS5 Pro（KaBuM）: 高度なレイトレーシングとグローバルイルミネーションの改善、車や水面のリアルな反射。PS5 Proではより高いフレームレートと解像度、より安定した動作が見込めるとされる。
+
+KaBuMはあわせて、ゲーム内に生成AIは使われていないとも記している。
+
+![二人の主人公ジェイソンとルシア。強盗中のリアルタイム切替は「未確認」の記述のひとつ](/images/news/Jason_and_Lucia_Motel_landscape.jpg)
+
+## 既出と新規の切り分け
+
+このリークで注意すべきは、報じられた内容の多くが以前から知られていたもので、「新たに発覚した」ものではない点だ。ただし、その「以前から」の中身にも、公式に確認できるものと、特許などから推測されていたにすぎないものが混在する。
+
+公式トレーラーやRockstarの公開素材で確認・示唆されていたもの、または過去の特許などから以前から推測されていたもの:
+
+- ジェイソンとルシアの二人主人公という構成（公式に確認済み）
+- レオニダ州とVice Cityという舞台、ビーチや沼地の存在（公式素材で確認できる）
+- 天候が変化すること、街に生き生きとしたNPCが多数いること、ゲーム内SNSが存在すること（いずれもトレーラーで存在自体は確認できる）
+- 天候がゲームプレイに影響する、NPCが固有の日課を持つ、内装を自動生成するといった仕組み（過去のRockstarの特許や求人情報から推測されてきたもので、製品への搭載が確定したわけではない）
+
+特許や求人情報は技術的な方向性の根拠にはなっても、実装の確定を意味しない点には注意が必要だ。実際、複数のメディアは「英訳された記述の有用性は誇張されており、既知の情報が大半だ」と評価している。
+
+![レオニダ・キーズ周辺。ビーチや沼地といった水辺の地形の存在は公式素材で確認できる](/images/news/Leonida_Keys_01.jpg)
+
+一方、公式には確認されておらず、今回の小売ページ特有の踏み込んだ表現といえるもの:
+
+- 強盗中にリアルタイムで主人公を切り替えるという明確な記述、デュオミッションの仕組み
+- SNS経由で秘密のサイドミッションを発見できるという要素
+- NPCの日課が「高度なAI」によって駆動されるという説明
+- PS5 Proの具体的な強化内容（レイトレーシング、グローバルイルミネーション、フレームレート・解像度）。PlayStation側ではGTA6が「PS5 Pro Enhanced」対応であることは示されているが、具体的な強化内容は公式ページ上で明示されていない。
+- ゲーム内に生成AIを使わないという表明
+
+複数のメディアが、今回の記述のなかで最も注目に値する新しい部分として、ゲーム内SNSの具体的な仕様（秘密ミッションの発見など）を挙げている。
+
+もう一つ興味深いのは、KaBuMが「ゲーム内に生成AIは使われていない」と明記している点だ。近年のゲーム開発では生成AIを使っているかどうか自体が論点になりやすく、わざわざその不使用に触れているのは目を引く。ただし、この一文が本当にRockstar由来の小売向け資料に基づくのか、ページ作成側が付け足した説明なのかは判然とせず、ここも今後の確認を要する。
+
+## 拡散している「リークマップ」への注意
+
+同じ時期に、「Leonida Map Leaked」と銘打たれたレオニダ州の地図画像がSNSで広く出回っている。ただし、これは今回のAmazon・KaBuMのリーク（あくまでテキストの商品説明）とは無関係であり、ファンが作成・想像した概念図にすぎない。GTA6の公式マップは現時点で一切公開されていない。
+
+この種の地図画像を、今回の小売ページリークの一部や公式情報と取り違えないよう注意したい。フロリダをモチーフにした地形という方向性は各種情報から推測されているが、具体的な地図の形状や地名は確定していない。
+
+![SNSで出回る「Leonida Map Leaked」画像。ファン作成の概念図で、リークとも公式とも無関係](/images/news/leakmap.png)
+
+## コミュニティの反応
+
+予約開始の高揚と重なり、コミュニティではこの記述を一語ずつ読み解く動きが過熱している。
+
+期待を寄せる声:
+
+- 「ついに新しい情報だ。一語一句に意味がありそう」
+- 「強盗中のリアルタイム切替が本当なら最高だ」
+
+慎重に見る声:
+
+- 「英訳するとAI生成っぽい文章で、そのまま信じるのは危うい」
+- 「よく読むと、ほとんど前から知っている内容だ」
+
+全体としては、確度を疑いつつも内容を細かく分析する、という温度感になっている。
+
+## まとめ：信頼度の整理
+
+確認できている事実（公式トレーラー・公開素材）:
+
+- 二人主人公（ジェイソン／ルシア）、レオニダ州・Vice Cityという舞台。天候の変化・生き生きとしたNPC・ゲーム内SNSは、いずれも存在自体がトレーラーで確認できる。
+- 発売は2026年11月19日、PS5・Xbox Series X|S。GTA6は「PS5 Pro Enhanced」対応とされるが、具体的な強化内容は公式に非公表。
+
+未確認のリーク（小売ページ由来、Rockstar未確認）:
+
+- 強盗中のリアルタイム主人公切替、デュオミッションの仕組み、SNS経由の秘密ミッション、NPCの「高度なAI」による日課、PS5 Proの具体的強化内容、生成AI不使用の表明。
+
+推測・注意:
+
+- 天候のゲームプレイへの影響、NPCの固有の日課、内装の自動生成などは、過去の特許・求人情報からの推測であり、実装確定ではない。
+- 拡散中の「Leonida Map Leaked」画像はファン作成の概念図であり、今回のリークとも公式情報とも無関係。公式マップは未公開。
+- 記述自体について、AI生成やプレースホルダの可能性を指摘する声もあり、Rockstarは未コメント。
+
+注意点として、GTA6は本記事執筆時点で未発売である。小売ページの記述や出所不明のリーク、ファン作成の地図画像を確定情報のように扱う情報には注意が必要だ。今回の記述も、最終的には公式トレーラーやRockstarの発表によって確認されるべき段階にある。あわせて、予約代行や前金を求める非公式サイトの詐欺にも引き続き注意し、最新情報はRockstar Games公式の発表で確認することが望ましい。
+
+---
+
+## 免責事項
+
+本記事は、Amazon Brazil・KaBuMで報じられたGTA6商品ページの記述、公式トレーラー、Rockstarの公式発表、海外メディアをもとに、GTA6 FEEDが独自に整理・考察したものである。小売ページの記述はRockstarの公式発表ではなく、未確認情報である。拡散している「Leonida Map Leaked」画像はファン作成の概念図であり、今回のリークとも公式情報とも無関係である。GTA6は未発売タイトルであり、内容は今後の公式発表によって変わる可能性がある。最新情報はRockstar Games の公式発表を確認されたい。`,
+  },
+  {
     id: 22,
     title: "GTA6カバーアートのヘリコプター――約25年続く「左上の伝統」と、選ばれた機体の意味",
     description:
