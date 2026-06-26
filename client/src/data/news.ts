@@ -2461,6 +2461,89 @@ GTA6は2026年11月19日に、PS5とXbox Series X|S向けに発売予定だ。PC
       "二度の延期を経たが、6月25日の予約開始と業績見通しへの組み込みで日付の確度は最も高い。",
       "価格は当記事時点で未発表、PC版とオンラインは本編より後になる公算が大きい。",
     ],
+    titleEn:
+      "GTA6's Release Date Is Locked In for November 19, 2026 — After Two Delays, Why We Can Now Say It Will Not Move",
+    descriptionEn:
+      "The release date is confirmed for November 19, 2026 (PS5 / Xbox Series X|S). We lay out the history of the two delays and why the start of preorders has raised confidence in the date.",
+    aiSummaryEn: [
+      "GTA6's release date is confirmed for November 19, 2026, on PS5 and Xbox Series X|S.",
+      "It went through two delays, but with preorders opening on June 25 and the date built into earnings guidance, confidence in it is at its highest ever.",
+      "The price is unannounced as of this article, and the PC version and online mode are likely to come after the main game.",
+    ],
+    fullContentEn: `# GTA6's Release Date Is Locked In for November 19, 2026 — After Two Delays, Why We Can Now Say It Will Not Move
+
+The release date for Grand Theft Auto VI (GTA6) is confirmed for November 19, 2026. In the past, time frames such as fall 2025 and May 2026 were mentioned, but each was delayed before settling on the current date. Then, in June 2026, the start date for preorders was finally announced officially, and the grounds for saying that this November 19 date will not move any longer have come together. We lay out the history surrounding the release date and sort out what is confirmed and what is not.
+
+---
+
+## What Is Confirmed
+
+First, let us nail down the facts that Rockstar has officially acknowledged.
+
+- The release date is November 19, 2026 (a Thursday).
+- The supported platforms are PlayStation 5 and Xbox Series X|S.
+- Preorders open on June 25, 2026.
+- The official cover art (the package image) was revealed at the same time.
+
+These are all based on Rockstar's official announcements and are not speculation. As for the PC version, at this point not only the release date but its very release has not been officially announced.
+
+---
+
+## From Fall 2025 to November 19 — The History of the Delays
+
+Originally this title was said to be coming out earlier. There were two delays before the release date settled into its current form.
+
+- In December 2023, when the first trailer was revealed, the plan was 2025.
+- After that, the time frame was made more specific to fall 2025.
+- The first delay pushed the release to May 26, 2026.
+- The second delay, on November 6, 2025, set it to the current November 19, 2026.
+
+When announcing the second delay, Rockstar apologized for extending an already long wait and explained that it needed additional time to bring the game to a level of completion that lives up to expectations. Notably, immediately after this second delay was announced, parent company Take-Two's stock price reacted by temporarily dropping sharply. That is a sign of just how much market attention this title commands.
+
+---
+
+## Why We Can Say It Will Not Move This Time
+
+Given the repeated delays, it is only natural that some people brace themselves and think it might slip again. Even so, this time the date is seen as firm. There are two main reasons.
+
+One is that the very start of preorders serves as strong evidence. Digital stores such as the PlayStation Store and the Xbox Store have an operational constraint whereby preorders cannot open until the release is within 12 months. The fact that preorders go live on June 25 means the stores are operating on the premise of the November 19 date. Conversely, pushing back to 2027 from here has effectively become difficult unless preorders are pulled down once.
+
+The other is that Take-Two has built this date into its earnings guidance. The company expects record-level net bookings of 8.0 to 8.2 billion dollars in fiscal year 2027, and it has named GTA6's November 19 release as the driving force behind that. CEO Strauss Zelnick has also repeatedly stated a November release at the May earnings call and in various interviews. When a publicly traded company ties a record earnings forecast to a specific date, it is natural to view that as having a corresponding degree of confidence in it.
+
+That said, there is no absolute in game development. In some prediction markets, there are still moves that price in a slight chance of another delay. Nevertheless, every official signal points to as planned.
+
+---
+
+## The Price Has Not Been Officially Announced Yet
+
+While the release date is firm, there is no official announcement on the price at this point.
+
+In a March 2026 interview, Take-Two's CEO referred to a level of 70 dollars or 80 dollars, and the prevailing view is that the standard edition will land somewhere around there. In addition, there has been talk of the possibility of a higher-tier edition (rumored to be around 100 dollars) bundling GTA Online-related perks. However, these are industry observations and not confirmed.
+
+What to watch out for are the prices shown early at some retailers (figures such as 99 euros in Europe and 69 to 86 pounds in the UK). These are likely placeholders (provisional values), and the official price is expected to be revealed when preorders open on June 25. Note that Take-Two has indicated a policy of not introducing in-game advertising, and has also hinted that it will not be greedy with its pricing.
+
+---
+
+## The PC Version and Online Come Later
+
+At launch, only PS5 and Xbox Series X|S are supported, and the PC version is not bundled. Rockstar has taken a console-first, PC-later approach with past titles as well; with GTA5, the PC version appeared about 18 months after the console version. Following this convention, many expect GTA6's PC version to land somewhere in late 2027 to 2028.
+
+As for the online mode, a launch simultaneous with the main game is not expected either. In past patterns, online started a few weeks to about a month after the main game's release, and GTA6 is likewise expected to see a similar phased rollout.
+
+---
+
+## Summary
+
+- GTA6's release date is confirmed for November 19, 2026 (PS5 / Xbox Series X|S). Fall 2025 and May 2026 are both old plans from before the delays.
+- It went through two delays, but with the June 25 start of preorders and its inclusion in Take-Two's earnings guidance, confidence in the date is the highest it has ever been.
+- The price is unannounced. There are views that the standard edition will be around 70 to 80 dollars and the higher tier around 100 dollars, but confirmation comes on June 25.
+- The PC version and online mode are likely to come after the main game.
+
+GTA6, which has kept fans waiting for so long, has finally reached a solid landing point. The next big milestone will be June 25, when preorders and pricing are revealed.
+
+---
+
+*Note: Within this article, the descriptions concerning the price outlook (such as 70 to 80 dollars for the standard edition), the contents of the higher-tier edition, the timing of the PC version and online, and the possibility of another delay include industry observations and community predictions. They are not official announcements by Rockstar Games. The release date (November 19, 2026 / PS5 and Xbox Series X|S), the preorder start date (June 25, 2026), and the history of the past delays are confirmed information based on official announcements.*`,
     fullContent: `# GTA6の発売日は2026年11月19日で確定——二度の延期を経て、いま「動かない」と言える理由
 
 『Grand Theft Auto VI（GTA6）』の発売日は、2026年11月19日で確定している。過去には「2025年秋」「2026年5月」といった時期が語られたこともあったが、いずれも延期され、現在の日付に落ち着いた。そして2026年6月、ついにプレオーダー（予約購入）の開始日が公式発表され、この11月19日という日付が「もう動かない」と言える根拠がそろってきた。発売日をめぐるこれまでの経緯と、いま確定していること・していないことを整理する。
