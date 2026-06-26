@@ -21,6 +21,31 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
   return plugin;
 }) as never;
 
+// 本文を「@youtube:動画ID」だけの行で分割し、動画埋め込み部分と Markdown 部分に分ける。
+type BodyPart = { type: 'md'; text: string } | { type: 'youtube'; id: string };
+const YOUTUBE_LINE = /^@youtube:\s*([A-Za-z0-9_-]{6,})\s*$/;
+function splitBodyByYoutube(body: string): BodyPart[] {
+  const parts: BodyPart[] = [];
+  let buf: string[] = [];
+  const flush = () => {
+    if (buf.length) {
+      parts.push({ type: 'md', text: buf.join('\n') });
+      buf = [];
+    }
+  };
+  for (const line of body.split('\n')) {
+    const m = line.match(YOUTUBE_LINE);
+    if (m) {
+      flush();
+      parts.push({ type: 'youtube', id: m[1] });
+    } else {
+      buf.push(line);
+    }
+  }
+  flush();
+  return parts;
+}
+
 interface Props {
   seoTitle: string;
   seoDesc: string;
@@ -115,11 +140,26 @@ export default function ArticleLayout({
             </div>
           )}
 
-          {/* Body */}
+          {/* Body：本文中に「@youtube:動画ID」だけの行があれば、その位置に動画を埋め込む。
+              それ以外は通常どおり Markdown として表示する（マーカーが無ければ従来と同じ）。 */}
           <div className="article-body mb-8">
-            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
-              {effBody}
-            </Streamdown>
+            {splitBodyByYoutube(effBody).map((part, i) =>
+              part.type === 'youtube' ? (
+                <div key={i} className="article-video my-8">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${part.id}`}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <Streamdown key={i} parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
+                  {part.text}
+                </Streamdown>
+              ),
+            )}
           </div>
 
           {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール） */}
