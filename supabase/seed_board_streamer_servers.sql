@@ -16,16 +16,16 @@
 delete from public.board_threads
 where board = 'streamer-servers'
   and title in (
-    'ストグラ（ストリートグラフィティ）'
+    'ストグラ'
     -- ここに追加したサーバー名も並べておくと再実行時に重複しません
   );
 
--- ストグラ（ストリートグラフィティ）
+-- ストグラ
 with t as (
   insert into public.board_threads (board, title, post_count, created_at, last_posted_at)
   values (
     'streamer-servers',
-    'ストグラ（ストリートグラフィティ）',
+    'ストグラ',
     5,
     now() - make_interval(days => 41, hours => 4),
     now() - make_interval(days => 2, hours => 1)
