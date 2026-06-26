@@ -97,6 +97,212 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 24,
+    title: "GTA6は本当に「史上最大の発売」になるのか――強気な販売予測を、公式の数字と切り分けて読む",
+    description:
+      "予約だけで10億ドル、発売60日で8,500万本、初年度数十億ドル――GTA6の販売予測は桁が大きい。だがその多くはアナリストの推計で、各社の見立ては2倍以上開く。何が公式の確定値で、何が予測かを切り分けて整理する。",
+    icon: "📈",
+    image: "/images/news/sijyousaidainohatubai.png",
+    category: "speculation",
+    date: "2026-06-26",
+    publishedAt: "2026-06-26 16:40",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.take2games.com/ir",
+    relatedArticles: [23, 22, 21],
+    aiSummary: [
+      "GTA6の販売をめぐっては「予約だけで10億ドル」「発売60日で8,500万本」など桁の大きな予測が飛び交う。だがその大半はアナリスト・調査会社の推計で、Rockstarやその親会社Take-Twoが約束した数字ではない。前提次第で各社の見立ては2倍以上開く。",
+      "公式の確定値はGTA6単体ではなくTake-Two全社の2027会計年度ネットブッキング見通し（80億〜82億ドル、複数タイトル込み）。比較の土台となるGTA5の実績（初日約8.16億ドル・1,121万本、3日で10億ドル、ギネス6冠）はギネス記録・開示として確認できる事実。",
+      "予測は価格・対象期間・課金の織り込み方で大きくぶれ、発売直後は記録的でも長期ではGTA5を下回るとの異論もある。GTA6は本記事執筆時点で未発売。販売規模はいずれも予測であり、確定実績のように扱う断定には注意したい。",
+    ],
+    titleEn:
+      "Will GTA6 Really Be the “Biggest Launch in History”? Reading the Bullish Sales Forecasts Apart from the Official Figures",
+    descriptionEn:
+      "A billion dollars from pre-orders alone, 85 million units in 60 days, billions in first-year revenue—the GTA6 sales forecasts are huge. But most are analyst estimates, and the firms' views diverge by more than 2x. We sort out what is an official confirmed figure and what is mere forecast.",
+    aiSummaryEn: [
+      "Around GTA6's sales, big-figure forecasts fly about—\"a billion dollars from pre-orders alone,\" \"85 million units in 60 days.\" But most are estimates by analysts and research firms, not figures promised by Rockstar or its parent Take-Two. Depending on assumptions, the firms' views diverge by more than 2x.",
+      "The official confirmed figure is not for GTA6 alone but Take-Two's company-wide FY2027 net bookings outlook ($8.0–8.2 billion, multiple titles included). The GTA5 results that form the basis for comparison (day-one ~$816M / 11.21M units, $1B in three days, six Guinness records) are facts confirmable as Guinness records and disclosures.",
+      "Forecasts swing widely with price, target period, and how recurring spending is factored in, and some argue that while the launch will be record-breaking, GTA6 may fall short of GTA5 long-term. GTA6 is unreleased as of writing; all sales figures are forecasts, so beware of treating them as confirmed results.",
+    ],
+    fullContentEn: `# Will GTA6 Really Be the “Biggest Launch in History”? Reading the Bullish Sales Forecasts Apart from the Official Figures
+
+A billion dollars from pre-orders alone, 85 million units in 60 days from launch, first-year revenue on the scale of several billion dollars—big-figure forecasts are flying around regarding GTA6's sales. Given that even GTA5 was one of the biggest hits in history, the view that this will surpass it carries a certain persuasiveness.
+
+However, most of these figures are forecasts by analysts and research firms, not numbers promised by Rockstar or its parent company Take-Two. Forecasts swing greatly depending on how the assumptions are set, and in reality the firms' estimates diverge by more than 2x. GTA6 FEED has sorted out what is an officially confirmed figure and what is merely a forecast.
+
+This article is based on information as of June 26, 2026.
+
+## What Is Official Is Not GTA6 Alone, but Take-Two's Company-Wide Outlook
+
+At this point, the most important official figure for considering GTA6's commercial scale is the net bookings (effectively, a sales outlook) for fiscal year 2027 (April 2026–March 2027) presented by Take-Two: $8.0–8.2 billion. Take-Two CEO Zelnick positions this year as one of record performance, and clearly states that the main driver is the November 19 launch of GTA6.
+
+However, this $8.0–8.2 billion is a company-wide, full-year figure including multiple titles; it is not GTA6's sales alone. It must be noted that Take-Two is not officially putting out an individual figure for how much GTA6 will sell.
+
+## The Basis for Comparison: The Records GTA5 Set (Confirmed)
+
+In gauging the validity of the forecasts, the track record of the previous title, GTA5, is a solid point of comparison. These are facts confirmable as Guinness records and Take-Two disclosures.
+
+![The three protagonists of GTA5. The game became one of the biggest hits in entertainment history](/images/news/530668.jpg)
+
+- GTA5 generated about $815.7 million in revenue on its launch day in 2013, selling 11.21 million units. This was the highest sales in history for an entertainment product over 24 hours at the time, reached $1 billion in three days, and set six Guinness World Records.
+- GTA5's cumulative sales have reached about 230 million units, and the GTA series as a whole has sold over 470 million units (Take-Two's FY2026 disclosure).
+- On the promotional side as well, the first trailer drew over 93 million views in 24 hours on YouTube, setting a record for the most-viewed non-music video, and the second trailer recorded over 475 million views cross-platform in 24 hours.
+
+The bullish forecasts for GTA6 all rest on the premise of "surpassing these records."
+
+## Analyst Forecasts (= Estimates; They Vary Widely by Firm)
+
+The figures cited from here on are all forecasts by named research firms and analysts, not confirmed values. Because the timing of release and the assumptions differ, the estimates diverge greatly.
+
+Pre-order / launch-day scale:
+
+- Tom Henderson of Insider Gaming has said it could reach the scale of a billion dollars in just the first hour from when pre-orders open. In unit terms, that corresponds to 12–14 million pre-orders in one hour.
+- DFC Intelligence initially saw over a billion dollars from pre-orders alone, but in its latest estimate after the price was confirmed (standard edition $79.99), it estimates launch-day sales centered on pre-orders at about 25 million units.
+- The investment bank Piper Sandler presents a bullish forecast of 46 million units on launch day, amounting to about $3 billion in revenue. However, note that this 46 million units stands out as exceptionally high even among the firms' forecasts and is a bullish estimate based on a proprietary model.
+- The investment firm Konvoy presents a view of 10 million pre-orders (about $800 million), plus 15 million units on launch day and 85 million units in 60 days from launch. However, note that Konvoy's series of estimates was issued as of 2025 and does not assume the later-confirmed launch date (November 19).
+
+First-year / medium-to-long-term scale:
+
+- DFC Intelligence forecasts 40 million units and about $3.2 billion in total revenue in the first year (this is double GTA5's first-year revenue).
+- Konvoy, including GTA+ subscriptions and in-game spending, puts out the most bullish figure of $7.6 billion in total revenue in 60 days from launch.
+- Piper Sandler expects over 35 million units in FY2027.
+- Visible Alpha estimates $5 billion by 2030.
+
+The reason the figures diverge this much is that the assumed price, the target period (launch day, 60 days, or one year), and how far recurring spending such as GTA+ is factored in all differ by firm. For example, Konvoy's $7.6 billion is a figure for "60 days" and including spending, while DFC's $3.2 billion is a "12-month" figure; they cannot be compared simply.
+
+## The Grounds for Bullishness
+
+Behind this concentration of expectations are several concrete factors.
+
+The long waiting period of 13 years since GTA5's release, the large installed base of current-generation consoles in the PS5 and Xbox Series X|S, the recent rise in prices, and the fact that it has become easier to design live-service-style revenue from launch day onward can all be cited. Furthermore, the fact that the trailers are being viewed at record levels, and the moves by competitors to shift the timing of their own titles to avoid GTA6's launch week, also show how the market views the weight of this title. The research firm Ampere Analysis estimates that the two launch delays caused the industry as a whole to lose about $2.7 billion in sales that would otherwise have been earned in the fall of 2025.
+
+![Jason and Lucia, the protagonists of GTA6. Expectations are concentrated on whether it will surpass GTA5's records](/images/news/Jason_and_Lucia_01_With_Logos_landscape.jpg)
+
+## Cautious Views and Counterarguments (Balance)
+
+On the other hand, there are views that are not uniformly bullish. To maintain the article's reliability, these counterarguments are worth noting too.
+
+As mentioned earlier, after the price was confirmed, DFC Intelligence revised its launch-day sales forecast downward to about 25 million units. This is still a huge figure, but it has been adjusted from the initial spirited estimate to a more realistic level.
+
+As a more pointed counterargument, Joost van Dreunen of NYU Stern School of Business (a former research-firm CEO) sees the launch as strong (38 million units / over $3 billion in the first year) while viewing the possibility that, long-term, GTA6 may fall below GTA5. As a reason, he cites that the rapid growth of the game market that continued from 2013, when GTA5 launched (global spending expanded about threefold), is unlikely to be repeated going forward. However, he expects per-person spending to instead rise, projecting a form that efficiently monetizes a smaller scale.
+
+And as the most important premise, Rockstar and Take-Two have not officially disclosed concrete figures for pre-order counts or sales. The phrasing of "reliably breaking GTA5's records" is an expectation, not a guaranteed fact.
+
+## Summary: Sorting Out the Confidence Levels
+
+Confirmed facts (official / track record):
+
+- Take-Two's FY2027 net bookings guidance is $8.0–8.2 billion (but this is company-wide, full-year, and includes multiple titles; it is not GTA6 alone).
+- GTA5 had a day-one of about $816 million / 11.21 million units, $1 billion in three days, and six Guinness records. Cumulative about 230 million units, series cumulative over 470 million units.
+- The price is $79.99 for the standard edition / $99.99 for the ultimate edition (confirmed June 25).
+
+Forecasts / estimates (various analyst firms; vary greatly by timing and assumptions):
+
+- Pre-order / launch day: a billion dollars in one hour (Henderson), about 25 million units on launch day (DFC) to 46 million units (Piper Sandler).
+- First-year / medium-to-long-term: 40 million units / $3.2 billion in the first year (DFC), $7.6 billion in 60 days (Konvoy), $5 billion by 2030 (Visible Alpha), and so on.
+
+Cautions / counterarguments:
+
+- Official figures for pre-order counts and sales are undisclosed, and these are all projected values expected to vary depending on assumptions.
+- There is also a view that, while the launch will be record-breaking, it may fall below GTA5 long-term.
+
+As a caution, GTA6 is unreleased as of the writing of this article, and the sales scales cited here are all forecasts. Beware of information that treats forecasts as if they were confirmed results, and of assertions like "X hundred million units guaranteed." The actual figures will become clear through Take-Two's earnings disclosures after launch and the like. For the latest and accurate information, it is best to confirm via Take-Two's official announcements.
+
+---
+
+## Disclaimer
+
+This article is an independent compilation and analysis by GTA6 FEED, based on Take-Two's official disclosures, Guinness World Records, and forecasts by overseas research firms and analysts. The figures from analysts and research firms are forecasts, not confirmed values, and may vary greatly depending on the assumptions. Take-Two has not officially disclosed an individual sales figure for GTA6. GTA6 is an unreleased title, and the sales scales cited here are all forecasts. For the latest information, please confirm via the official announcements from Take-Two and Rockstar Games.`,
+    fullContent: `# GTA6は本当に「史上最大の発売」になるのか――強気な販売予測を、公式の数字と切り分けて読む
+
+予約だけで10億ドル、発売60日で8,500万本、初年度の収益は数十億ドル規模――GTA6の販売をめぐっては、桁の大きな予測が飛び交っている。GTA5ですら過去最大級のヒットだったことを踏まえれば、それを超えるという見方には一定の説得力がある。
+
+ただし、これらの数字のほとんどはアナリストや調査会社による予測であり、Rockstarやその親会社Take-Twoが約束した数字ではない。予測は前提の置き方で大きくぶれ、実際には各社の見立てが2倍以上開いている。GTA6 FEEDが、何が公式に確定した数字で、何が予測にすぎないのかを切り分けて整理した。
+
+本記事は2026年6月26日時点の情報にもとづく。
+
+## 公式に出ているのはGTA6単体ではなく、Take-Two全社の見通し
+
+現時点で、GTA6の商業規模を考えるうえで最も重要な公式数字は、Take-Twoが示した2027会計年度（2026年4月〜2027年3月）のネットブッキング（実質的な売上見通し）で、80億〜82億ドルとされている。Take-TwoのZelnick CEOは、この年を記録的な業績の年と位置づけ、その主因が11月19日のGTA6発売だと明言している。
+
+ただし、この80億〜82億ドルは全社・通期・複数タイトルを含む数字であり、GTA6単体の売上ではない。GTA6がどれだけ売れるかという個別の数字を、Take-Twoが公式に出しているわけではない点には注意が必要だ。
+
+## 比較の土台:GTA5が打ち立てた記録（確定）
+
+予測の妥当性を測るうえで、前作GTA5の実績は確かな比較対象になる。これらはギネス記録やTake-Twoの開示として確認できる事実である。
+
+![GTA5の3人の主人公。同作はエンタメ史上最大級のヒットとなった](/images/news/530668.jpg)
+
+- GTA5は2013年の発売初日に約8億1,570万ドルの収益を上げ、1,121万本を販売した。これは当時のエンターテインメント製品として24時間で史上最高の売上で、3日で10億ドルに到達し、6つのギネス世界記録を打ち立てた。
+- GTA5の累計販売は約2億3,000万本に達しており、GTAシリーズ全体では4億7,000万本超を売り上げている（Take-Twoの2026会計年度開示）。
+- 宣伝面でも、第1弾トレーラーはYouTubeで24時間に9,300万回超を集めて非音楽動画の最多視聴記録を更新し、第2弾トレーラーはクロスプラットフォームで24時間に4億7,500万回超を記録している。
+
+GTA6の強気な予測は、いずれも「この記録を超える」という前提の上に成り立っている。
+
+## アナリストの予測（＝推測。各社で大きく割れる）
+
+ここから挙げる数字は、いずれも名前のわかる調査会社・アナリストによる予測であり、確定値ではない。発表時点や前提条件が異なるため、見立ては大きく分かれている。
+
+予約・発売日の規模:
+
+- Insider GamingのTom Hendersonは、予約開始から最初の1時間だけで10億ドル規模に達しうると述べている。本数にすると1時間で1,200万〜1,400万本の予約に相当する。
+- DFC Intelligenceは当初、予約だけで10億ドル超と見ていたが、価格確定（通常版79.99ドル）後の最新の見立てでは、予約を中心とする発売初日の販売を約2,500万本と推計している。
+- 投資銀行Piper Sandlerは、発売初日に4,600万本、収益にして約30億ドルという強気の予測を示している。ただしこの4,600万本は各社の予測のなかでも突出して高く、独自モデルに基づく強気な見立てである点には注意がいる。
+- 投資会社Konvoyは、予約1,000万本（約8億ドル）に加え、発売日に1,500万本、発売60日で8,500万本という見方を示す。ただしKonvoyの一連の試算は2025年時点に出されたもので、その後に確定した発売日（11月19日）を前提にしたものではない点には留意したい。
+
+初年度・中長期の規模:
+
+- DFC Intelligenceは初年度4,000万本・総収益約32億ドルと予測（これはGTA5の初年度収益の倍にあたる）。
+- KonvoyはGTA+課金やゲーム内課金も含め、発売60日で総収益76億ドルという最も強気な数字を出している。
+- Piper Sandlerは2027会計年度に3,500万本以上を見込む。
+- Visible Alphaは2030年までに50億ドルと推計している。
+
+これだけ数字が割れるのは、想定する価格、対象とする期間（発売日か、60日か、1年か）、そしてGTA+などの継続課金をどこまで織り込むかが各社で違うためだ。たとえばKonvoyの76億ドルは「60日間」かつ課金込みの数字で、DFCの32億ドルは「12カ月」の数字であり、単純には比較できない。
+
+## 強気の根拠
+
+これだけの期待が集まる背景には、いくつかの具体的な要因がある。
+
+GTA5の発売から13年という長い待機期間、PS5とXbox Series X|Sという現行機の普及台数の大きさ、近年の価格上昇、そして発売初日からライブサービス的な収益を設計しやすくなっている点が挙げられる。さらに、トレーラーが記録的に視聴されている事実や、競合各社がGTA6の発売週を避けて自社タイトルの時期をずらしている動きも、市場がこの作品の重さをどう見ているかを示している。調査会社Ampere Analysisは、二度の発売延期によって、本来2025年秋に得られたはずの売上が業界全体で約27億ドル失われたと試算している。
+
+![GTA6の主人公ジェイソンとルシア。GTA5の記録を超えられるかに期待が集まる](/images/news/Jason_and_Lucia_01_With_Logos_landscape.jpg)
+
+## 慎重論・異論（バランス）
+
+一方で、強気一辺倒ではない見方もある。記事の信頼度を保つうえで、こうした異論も押さえておきたい。
+
+前述のとおり、DFC Intelligenceは価格が確定したあと、発売初日の販売予測を約2,500万本へと下方修正している。これは依然として巨大な数字だが、当初の威勢のよい見立てから現実的な水準へ調整された形だ。
+
+より踏み込んだ異論として、NYUスターン経営大学院のJoost van Dreunen（調査会社の元CEO）は、発売直後は好調（初年度3,800万本・30億ドル超）としつつも、長期的にはGTA6がGTA5を下回る可能性があると見ている。理由として、GTA5が発売された2013年から続いたゲーム市場の急成長（世界の消費額が約3倍に拡大した）は今後繰り返されないだろうという点を挙げる。ただし、一人当たりの課金額はむしろ高くなると予想しており、より小さな規模を効率的に収益化する形になるとの見立てだ。
+
+そして最も重要な前提として、予約数や売上の具体的な数字をRockstar・Take-Twoは公式に開示していない。「GTA5の記録を確実に更新する」という言い回しは期待であって、保証された事実ではない。
+
+## まとめ:信頼度の整理
+
+確定している事実（公式・実績）:
+
+- Take-Twoの2027会計年度ネットブッキング・ガイダンスは80億〜82億ドル（ただし全社・通期・複数タイトル込み。GTA6単体ではない）。
+- GTA5は初日約8.16億ドル・1,121万本、3日で10億ドル、ギネス6冠。累計約2億3,000万本、シリーズ累計4億7,000万本超。
+- 価格は通常版79.99ドル／アルティメット99.99ドル（6月25日確定）。
+
+予測・推計（アナリスト各社、時点・前提により大きく異なる）:
+
+- 予約・発売日:1時間で10億ドル（Henderson）、発売日約2,500万本（DFC）〜4,600万本（Piper Sandler）。
+- 初年度・中長期:初年度4,000万本・32億ドル（DFC）、60日で76億ドル（Konvoy）、2030年までに50億ドル（Visible Alpha）など。
+
+注意・異論:
+
+- 予約数・売上の公式な数字は未開示で、これらはいずれも前提次第で変動する見込み値である。
+- 発売直後は記録的でも、長期的にはGTA5を下回るとの見方もある。
+
+注意点として、GTA6は本記事執筆時点で未発売であり、ここに挙げた販売規模はいずれも予測である。予測を確定した実績のように扱う情報や、「○億本突破確定」といった断定には注意したい。実際の数字は、発売後のTake-Twoの決算開示などを通じて明らかになる。最新かつ正確な情報は、Take-Twoの公式発表で確認することが望ましい。
+
+---
+
+## 免責事項
+
+本記事は、Take-Twoの公式開示、ギネス世界記録、海外の調査会社・アナリストによる予測をもとに、GTA6 FEEDが独自に整理・考察したものである。アナリストや調査会社の数字は予測であって確定値ではなく、前提次第で大きく変動しうる。Take-TwoはGTA6単体の販売数字を公式に開示していない。GTA6は未発売タイトルであり、ここに挙げた販売規模はいずれも予測である。最新情報はTake-Two および Rockstar Games の公式発表を確認されたい。`,
+  },
+  {
     id: 23,
     title: "GTA6小売ページに“未公開情報”――Amazon Brazil・KaBuMの記述は本物か、AI生成の宣伝文か",
     description:
