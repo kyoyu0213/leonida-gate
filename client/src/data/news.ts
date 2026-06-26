@@ -3226,6 +3226,84 @@ GTA6の犯罪システムが、GTA5よりはるかに自由で緊張感のある
       "Rockstarが伏せるのはネタバレ防止とマーケティング集中のための一貫した方針による。",
       "過去作では発売直前に判明しており、確実な答えは発売時のエンドクレジットで出る。",
     ],
+    titleEn:
+      "When Will We Know GTA6's Voice Cast? Why Rockstar Keeps the Names Hidden, and the Pattern From Past Titles",
+    descriptionEn:
+      "The voice actors playing the two protagonists have not been officially announced. We examine why Rockstar keeps the names hidden and, drawing on past titles, when the answer is likely to be revealed.",
+    aiSummaryEn: [
+      "The voice actors playing GTA6's two protagonists have not been officially announced by Rockstar at this point.",
+      "Rockstar keeps them hidden as part of a consistent policy aimed at preventing spoilers and concentrating its marketing.",
+      "In past titles the names came out just before release, and the definitive answer comes from the end credits at launch.",
+    ],
+    fullContentEn: `# When Will We Know GTA6's Voice Cast? Why Rockstar Keeps the Names Hidden, and the Pattern From Past Titles
+
+With the release of Grand Theft Auto VI (GTA6) approaching on November 19, 2026, there is a question that keeps simmering among fans: just who is playing the protagonists, Jason and Lucia? Articles naming voice actors have been circulating online, but to put the conclusion first, Rockstar has not officially announced the voice actors or cast at this point. So why are they kept hidden? And when will they be revealed? We read the timing of the answer from the pattern of past titles.
+
+---
+
+## The Current Situation: No One Has Been Officially Announced as a Voice Actor
+
+First, let us make the facts clear. Rockstar has officially revealed that GTA6's two protagonists are Jason Duval and Lucia Caminos. On the other hand, it has not disclosed at all, at this point, the names of the voice actors and motion-capture performers playing those two.
+
+Information seen online such as Lucia is played by so-and-so or Jason is played by so-and-so is all based on fan analysis and speculation, drawn from things like the content of casting calls or comparisons of voices. None of it has been acknowledged by Rockstar or by the performers themselves. It should be kept in mind from the outset that this should not be treated as reliable information.
+
+---
+
+## Why Does Rockstar Keep the Voice Actors Hidden
+
+Rockstar not revealing its cast until just before release is not a whim but a consistent policy. The reasons can be broadly organized into two.
+
+One is thorough measures against information leaks. Rockstar is known for not telling even the actors it hires the details of which work they are appearing in. In fact, in recent years one veteran voice actor, while revealing that they had been cast in a new Rockstar title, was not even told which game their voice was for, and described the production process as secrecy itself. If it were known in advance who is playing what role, that would become a clue for guessing the story's characters and developments. Restricting cast information is also a breakwater against story spoilers.
+
+The other is control of marketing. Rockstar is a company that thoroughly practices showing the real thing rather than telling it in words. Rather than releasing a cast list bit by bit, it takes a strategy of showing the world itself through trailers and screenshots, concentrating attention on a single point. The names of the voice actors are kept in reserve, within that larger flow, until the most effective timing.
+
+---
+
+## The Pattern From Past Titles: Names Come Out Just Before Release
+
+So when will they be revealed? The most useful reference is the flow of announcements for the previous title, GTA5.
+
+GTA5 was released on September 17, 2013. But the names of the actors who played the three protagonists (Michael, Franklin, and Trevor) — Ned Luke, Shawn Fonteno, and Steven Ogg — became widely known only when the release was fairly close at hand. Until then, their presence had barely surfaced publicly.
+
+What is distinctive is that the actors Rockstar hired were not especially well known at the time. The first game and GTA2 had no dedicated voice actor credits; GTA III was the first to use film actors, and Vice City even used big names like Ray Liotta. From San Andreas onward, however, the company shifted toward a policy of holding back on hiring big-name actors, especially for leading roles. Hiring near-unknown but skilled performers is meant to give the characters a sense of real existence, and at the same time it has the advantage of making appearances harder to leak.
+
+Taking this pattern into account, it is highly likely that the actors playing GTA6's protagonists will also be revealed as the release (November 19, 2026) draws near, through Rockstar's official character introductions or through the credits after launch.
+
+---
+
+## When Is the Answer Revealed — Three Milestones
+
+Organizing the specific milestones where voice actor information is likely to surface, they are as follows.
+
+- The timing when a third trailer or additional character introduction footage is released. If footage that delves into the core of the story comes out, performer information may be shown alongside it. However, Rockstar often does not put actor names front and center in its footage, so this is not certain.
+- Media exposure just before release. As the release draws near, it is customary for the actors themselves to appear in interviews and at events and begin talking about their roles. For GTA5 too, the actors started stepping into the spotlight around the time of release.
+- The end credits at launch. Ultimately, the most certain official answer comes from the credits of the game itself. This is where the entire cast is formally confirmed.
+
+In other words, a realistic estimate is: at the earliest, a little before release, and for certain, at release itself. It is wise to keep one's distance from any names that come out before then, treating them strictly as unconfirmed speculation.
+
+---
+
+## A Separate Interest: Will the GTA5 Cast Return
+
+Surrounding the voice actors, there is another topic fans are watching: whether the actors who played GTA5's protagonists might return to GTA6 in some form.
+
+In fact, Ned Luke, who played Michael in GTA5, and Shawn Fonteno, who played Franklin, have been asked at past events about appearing in GTA6. While hinting at hopes for a return, they have responded to the effect that even if they had been cast, they could not reveal it due to an NDA (non-disclosure agreement). This too is an episode that speaks to Rockstar's thorough information management. Because GTA6 is said to depict an era after GTA5, voices hoping for the return of the old cast are persistent, but there is no confirmed information at this point.
+
+---
+
+## Summary
+
+- GTA6's voice actors and cast have not been officially announced by Rockstar at this point. The names circulating are nothing more than fan speculation.
+- Rockstar keeps them hidden as part of a consistent policy, both to prevent information leaks including spoilers and to concentrate its marketing on a single point.
+- In the past title (GTA5), the actor names became widely known just before release. Hiring near-unknown but skilled performers serves both to prevent leaks and to create a sense of real existence.
+- The official answer comes, at the earliest, with media exposure just before release, and for certain, with the end credits at launch.
+- The return of the GTA5 cast is also a topic, but with the wall of the NDA, there is no confirmed information.
+
+The answer to the question of who the voice actors are will be revealed at the timing Rockstar chooses, heading toward the release (November 19, 2026). Until then, while carefully keeping our distance from information that asserts names as fact, we want to quietly await the day of the answer.
+
+---
+
+*This article is an examination based on Rockstar Games' announcement tendencies in past titles and on publicly available information. Rockstar has made no official announcement regarding GTA6's voice actors or cast, and this article does not treat any specific person's name as confirmed information either. That the protagonists are Jason Duval and Lucia Caminos, and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S), are confirmed facts based on Rockstar's official announcements.*`,
     fullContent: `# GTA6の声優はいつわかる？ Rockstarが名前を伏せる理由と過去作のパターン
 
 『Grand Theft Auto VI（GTA6）』の発売が2026年11月19日に迫るなか、ファンの間でくすぶり続けている疑問がある。「主人公ジェイソンとルシアを演じているのは、いったい誰なのか」だ。ネット上には声優の名前を挙げる記事も出回っているが、結論から言えば、現時点でRockstarは声優・出演者を公式に発表していない。では、なぜ伏せるのか。そして、いつ明らかになるのか。過去作のパターンから、その「答え合わせのタイミング」を読み解く。
