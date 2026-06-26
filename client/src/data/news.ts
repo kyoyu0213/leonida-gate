@@ -2124,6 +2124,118 @@ GTA5と同じ感覚で「オンラインはずっと先」と構えていると�
       "複数リーカーは開発やテストの可能性を語るが、見方は割れ確証はない。",
       "11月19日の発売時に並ぶ可能性は極めて低く、来るなら2027年以降の単体版が現実的とされる。",
     ],
+    titleEn: "Will There Be a Nintendo Switch 2 Version of GTA6?",
+    descriptionEn:
+      "GTA6 launches only on PS5 and Xbox Series X|S. Will a Switch 2 version arrive? We sort out the sources behind the multiple leakers and the theory that it will not be included at launch.",
+    aiSummaryEn: [
+      "Neither Rockstar nor Take-Two has officially announced a Switch 2 version of GTA6 at all.",
+      "Several leakers talk about the possibility of development or testing, but opinions are split and there is no solid proof.",
+      "The chances of it arriving alongside the November 19 launch are extremely low, and if it comes, a standalone version in 2027 or later is considered the realistic scenario.",
+    ],
+    fullContentEn: `# Will There Be a Nintendo Switch 2 Version of GTA6? Sorting Out the Leak Sources and the Not at Launch Theory
+
+With its release locked in for November 19, 2026 and pre-orders about to begin, Grand Theft Auto VI (GTA6) is launching only on PS5 and Xbox Series X|S, and even the PC version is expected to be significantly delayed. Amid all this, a question keeps smoldering among Switch 2 users: can GTA6 be played on Switch 2 as well? While several leakers claim that development itself is underway, the industry consensus is converging on the view that it will not arrive at launch, at the very least. We sort out who is saying what, and which scenarios are realistically possible.
+
+---
+
+## First, the Premise to Keep in Mind: No Official Announcement Exists
+
+The first thing to confirm is that neither Rockstar nor Take-Two Interactive has said a single word officially about a Switch 2 version. The only platforms officially named are PS5 and Xbox Series X|S; everything else is nothing more than unverified information from leakers and industry insiders.
+
+That said, baseless speculation and information from multiple proven leakers carry different weight. Here we break things down by source, sorting out what is being said and how far.
+
+---
+
+## Sorting Out the Leak Sources
+
+The Switch 2 version talk has spread mainly through the intertwined statements of four people.
+
+- NateTheHate: Regarded as a highly reliable figure who has correctly called many leaks in the past. In November 2025, he said that Rockstar has been testing for a while whether GTA6 can run on Switch 2. Importantly, he also cautioned that testing does not guarantee a release and that he himself does not know what the current status is.
+- Nash Weedle: A figure who specializes in Nintendo-related leaks. In November 2025, he confirmed development of a Switch 2 version. However, opinions about his reliability are divided.
+- Kiwi Talkz: In January 2026, he relayed that an Indian source claimed it would launch simultaneously with PS5 and others. However, he himself does not believe this and has publicly stated that he bet a meal on there being no simultaneous launch.
+- Rhys Riley: A skeptic. He has spoken with multiple Rockstar developers, but says none of them brought up a Switch 2 version. On the other hand, he also said he had heard from more than eight people about a Switch 2 version of Red Dead Redemption 2.
+
+To summarize, while there is some agreement on the point that testing was likely carried out, views are clearly split among the individuals on whether it will be released as a product and, if so, when.
+
+---
+
+## Nash Weedle's Claims, Which Shifted With the May 2026 Follow-Up
+
+Here, when GTA6 FEED looked into it further, even newer developments could be confirmed entering May 2026.
+
+- Development of the Switch 2 version is proceeding in parallel with the main platforms such as PS5 and Xbox.
+- A source told him it might make it in time for launch, but he himself is skeptical of that.
+- The Switch 2 version will likely not appear in the next trailer. Because Rockstar will prioritize technical showpieces, the read is that the Switch 2 version, which lags in performance, will not be put at the forefront of marketing.
+
+Overseas media reports also lean toward the prevailing view that, because development requires individual optimization for Nintendo's architecture, it will not be included in the Switch 2 launch lineup, and 2027 at the earliest. The assumption is that the RAGE engine would be optimized for Switch 2 and that upscaling technology would bridge the performance gap.
+
+In other words, the picture of development apparently being underway, but not at launch and arriving later even if it does, became even clearer from May onward.
+
+---
+
+## The Distance Between Take-Two and Nintendo Is Indeed Narrowing
+
+Beyond the leaks, there are also positive signs in the official side's posture.
+
+Take-Two's CEO has long made positive remarks about Nintendo platforms. The gist is that while the Nintendo market was once seen as aimed at younger audiences, the current Switch and Switch 2 can capture a broad range of users. And the company has shown its stance not only in words but in actions.
+
+- In 2021, it released Grand Theft Auto: The Trilogy - The Definitive Edition for the current Switch. It bundled remasters of three titles, GTA III, Vice City, and San Andreas, into one package, enhancing the graphics while optimizing for Switch.
+- The Switch 2 is significantly improved in performance compared to the Switch, supporting rendering of up to 4K/60fps when docked, as well as Nvidia's DLSS upscaling.
+
+In fact, CD Projekt Red brought Cyberpunk 2077 in as a Switch 2 launch title. The emergence of a real example of a heavyweight open world running has become one factor supporting expectations for a Switch 2 version.
+
+---
+
+## Why Not at Launch Has Nonetheless Become Nearly Settled
+
+On the other hand, the industry tone since entering 2026 is largely in agreement on the direction that it will not come at the November 19 timing, at the very least. There are three main reasons.
+
+The first is the sheer performance gap. The Switch 2 is said to have about 9GB of memory usable for games, with GPU performance roughly one quarter that of the PS5. Running the latest-generation RAGE engine that GTA6 assumes as is would require considerable compromise and engineering.
+
+The second is the overcrowded development schedule. The point is that finishing a third platform version, whose marketing has not even started, in parallel during the most important period just before launch is realistically untenable.
+
+The third is the historical pattern. Excluding remasters, no mainline home-console GTA has appeared on a Nintendo machine. GTA5 did not come to the current Switch, and Red Dead Redemption 2 was the same. The view is that there is little basis to think this flow would suddenly change with GTA6.
+
+Several overseas outlets have also reported, almost conclusively as of June, that the Switch 2 version will not be included in the launch lineup.
+
+---
+
+## If It Were to Happen, in What Form
+
+Even if a Switch 2 version were to come out, several scenarios are conceivable. Listed in order of likelihood, they are as follows.
+
+- A standalone release one to two years later: Considered the most realistic route. Optimization for the latest hardware is prioritized, and improvements gained in that process are carried over to the Switch 2 version. The prevailing industry view is 2027 or later.
+- Offered as a cloud gaming version: A method in which the game's processing is done on the server side and only the video is sent to the Switch 2. However, open worlds live and die on response speed and connection stability, and considering input lag, many voices say it would be harsh as a play experience.
+- A simultaneous release with the PS5 and Xbox versions: The most ideal, but the least likely at this point. Only a source of questionable reliability claimed this, and multiple leakers have clearly denied it.
+
+Whichever route it takes, the calm assessment at this point is that it will be difficult for Switch 2 users to get exactly the same experience as the PS5 version, at the same time.
+
+---
+
+## The Near-Term Schedule and Discerning Information
+
+In parallel with the Switch 2 version talk, information around the main release is steadily firming up.
+
+- The release date is confirmed for November 19. Take-Two's CEO has repeatedly stated this clearly, and it is built into the company's earnings outlook. It is hard to imagine a company carrying a commitment of this scale easily missing the date.
+- Pre-orders are scheduled to begin on June 25.
+- The third trailer is also expected to be released over the summer (late June to July).
+- The final update for GTA Online is said to be in July, marking a turning point for a live service that has continued for 13 years.
+
+Note that as the release nears, information of uncertain veracity is also increasing on social media. In June 2026, there was an incident in which a certain post about the Switch 2 version went viral, only for it to later turn out to be satire (a joke post) that many people had believed. The bigger the expectations around a topic, the easier it is for the line between confirmed information and rumor to blur. The habit of checking the source and the date pays off in situations like this.
+
+---
+
+## Summary: Not a Dream, Not Despair, but a Matter of Possibility
+
+Sorting out the situation surrounding a Switch 2 version of GTA6, it comes down to this.
+
+- There are multiple leaks, and it is highly likely that development and testing are being carried out.
+- Take-Two is positive about the Nintendo market, and the Switch 2's performance is on a different level from previous machines.
+- However, no official announcement exists, and the chances of a Switch 2 version lining up at the November 19 launch are extremely low.
+- Even if it is realized, a standalone release in 2027 or later, or a cloud version, is considered the realistic form.
+
+The fact that testing is being carried out shows that, at the very least, the development side is exploring the possibility. The conditions are gradually coming together, but excessive expectations at an uncertain stage only make the disappointment greater if you are let down. Receive unconfirmed information as unconfirmed, and wait for an official announcement — that is probably the smart way to deal with this kind of leak.
+`,
     fullContent: `# GTA6のSwitch2版は出るのか？ リークの発信源と「発売時は対象外」説を整理
 
 2026年11月19日の発売が確定し、プレオーダー開始も目前に迫った『Grand Theft Auto VI（GTA6）』。発売プラットフォームはPS5とXbox Series X|Sのみで、PC版すら大幅に遅れると見られている。そんな中、Switch2ユーザーの間でくすぶり続けているのが「GTA6はSwitch2でも遊べるのか」という問いだ。複数のリーカーが「開発自体は進んでいる」と主張する一方、業界の論調は「少なくとも発売時には来ない」でほぼ固まりつつある。誰が何を言っているのか、そして現実的にどのシナリオがありうるのかを整理する。
