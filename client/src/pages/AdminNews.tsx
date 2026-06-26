@@ -80,7 +80,7 @@ const emptyForm = () => ({
   published: true,
 });
 
-function Editor() {
+export function NewsEditor() {
   const [rows, setRows] = useState<NewsPostRow[]>([]);
   const [loadingList, setLoadingList] = useState(true);
   const [form, setForm] = useState(emptyForm());
@@ -172,17 +172,9 @@ function Editor() {
 
   return (
     <div className="max-w-[760px] mx-auto">
-      <div className="flex items-center justify-between mb-5">
-        <h1 className="flex items-center gap-2 font-black text-xl">
-          <Pencil size={18} className="text-[#a78bfa]" /> 記事の投稿・管理
-        </h1>
-        <button
-          onClick={() => logout()}
-          className="inline-flex items-center gap-1.5 text-[13px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
-        >
-          <LogOut size={14} /> ログアウト
-        </button>
-      </div>
+      <h1 className="flex items-center gap-2 font-black text-xl mb-5">
+        <Pencil size={18} className="text-[#a78bfa]" /> 記事の投稿・管理
+      </h1>
 
       {/* フォーム */}
       <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 mb-8 space-y-4">
@@ -400,7 +392,21 @@ export default function AdminNews() {
     <div className="vice-page vice-noise">
       <Header />
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-24 relative z-10">
-        {authed ? <Editor /> : <LoginGate />}
+        {authed ? (
+          <div className="max-w-[760px] mx-auto">
+            <div className="flex justify-end mb-3">
+              <button
+                onClick={() => logout()}
+                className="inline-flex items-center gap-1.5 text-[13px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
+              >
+                <LogOut size={14} /> ログアウト
+              </button>
+            </div>
+            <NewsEditor />
+          </div>
+        ) : (
+          <LoginGate />
+        )}
       </main>
     </div>
   );

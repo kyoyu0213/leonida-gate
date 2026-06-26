@@ -49,6 +49,7 @@ import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
 import { getBoard } from '@/lib/boards';
 import { getArticleById } from '@/data/news';
+import { NewsEditor } from './AdminNews';
 
 const reasonLabel = (value: string) =>
   REPORT_REASONS.find((r) => r.value === value)?.label ?? value;
@@ -1511,10 +1512,11 @@ function SearchLogsPanel() {
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
-  >('news');
+    'newspost' | 'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
+  >('newspost');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
+    newspost: '記事投稿',
     reports: '通報',
     posts: '投稿ログ',
     search: 'IP検索',
@@ -1549,7 +1551,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['news', 'servers', 'posts', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
+              {(['newspost', 'news', 'servers', 'posts', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1564,7 +1566,9 @@ export default function AdminReports() {
                 </button>
               ))}
             </div>
-            {tab === 'reports' ? (
+            {tab === 'newspost' ? (
+              <NewsEditor />
+            ) : tab === 'reports' ? (
               <ReportsPanel />
             ) : tab === 'posts' ? (
               <PostsPanel />
