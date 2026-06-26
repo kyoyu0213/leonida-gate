@@ -105,7 +105,7 @@ export const newsArticles: NewsArticle[] = [
     image: "/images/news/helicopter/helicoptereyecatch.webp",
     category: "speculation",
     date: "2026-06-26",
-    publishedAt: "2026-06-26 21:00",
+    publishedAt: "2026-06-26 11:05",
     source: "GTA6 FEED 編集部",
     sourceUrl: "https://www.rockstargames.com/VI",
     relatedArticles: [21, 20, 19],
@@ -114,6 +114,72 @@ export const newsArticles: NewsArticle[] = [
       "左上の機体は武装ヘリ「Sea Sparrow」とする見立てが有力（公式言明ではなく外観からの推定）。Vice City初出の水陸両用機で、トレーラー1・2にも登場とみられる。",
       "水辺の多いレオニダに水陸両用機は舞台に合う選択だが、ゲームプレイへの反映は未確定。事実・同定・考察を分けて受け止めたい。GTA6は2026年11月19日発売予定。",
     ],
+    titleEn:
+      "The Helicopter in the GTA6 Cover Art: The Roughly 25-Year-Old Top-Left Tradition and the Meaning of the Chosen Aircraft",
+    descriptionEn:
+      "The GTA6 cover art revealed on June 18, 2026. The helicopter in the top left is a roughly 25-year-old GTA tradition, with the sole exception being Chinatown Wars. We sort out the view that this aircraft is the Sea Sparrow and its connection to the setting of Leonida, separating fact, identification, and analysis.",
+    aiSummaryEn: [
+      "On June 18, 2026, Rockstar revealed the cover art (pre-orders started on June 25). The first thing fans checked was the helicopter in the top left, a roughly 25-year tradition upheld in almost every title since GTA3, with the sole exception being Chinatown Wars.",
+      "The leading view is that the aircraft in the top left is the armed Sea Sparrow helicopter (not an official statement, but an estimate based on appearance). It is an amphibious aircraft that debuted in Vice City and is also believed to appear in Trailers 1 and 2.",
+      "An amphibious aircraft is a fitting choice for the water-rich Leonida, but how it is reflected in gameplay is undetermined. Fact, identification, and analysis should be taken separately. GTA6 is scheduled for release on November 19, 2026.",
+    ],
+    fullContentEn: `# The Helicopter in the GTA6 Cover Art: The Roughly 25-Year-Old Top-Left Tradition and the Meaning of the Chosen Aircraft
+
+On June 18, 2026, Rockstar Games revealed the official cover art for GTA6. At the same time, it announced that pre-orders would begin on June 25. As of the June 18 reveal, there was no new trailer and no price announcement, but the cover art itself became a major topic among fans.
+
+What longtime GTA fans turned their attention to first was not the protagonist Jason, not his partner Lucia, and not Vice City in the background. It was whether there was a helicopter in the top left of the cover. To get straight to the point: there was. This is a hidden tradition of the GTA series that has continued for roughly 25 years.
+
+## The Confirmable Facts: The Top-Left Helicopter, Continuing for 25 Years
+
+This placement of the helicopter has been kept almost consistently in the cover art of the major titles of the 3D and HD eras since GTA3 (2001). GTA3, Vice City, San Andreas, GTA4, GTA5, and now GTA6. All of them adopt a collage (mosaic) style design, with multiple panels arranged around the central logo, and a helicopter placed in the top left.
+
+Rockstar has never officially explained this placement. Even so, because it has been repeated in title after title, it has become a kind of ritual among fans: when the cover of a new game comes out, the first thing you do is check the top left.
+
+The one major known exception is GTA Chinatown Wars (2009, Nintendo DS / PSP). Even though it adopts the same collage-style design, there is no helicopter in the top left. There is a theory that it was because you could not pilot a helicopter in Chinatown Wars, but GTA3 likewise does not let you pilot a helicopter and yet has a helicopter drawn on its cover, so this explanation does not hold up. Exactly why only Chinatown Wars broke from the pattern is not clear (this tradition and exception have also been covered by outlets such as Kotaku).
+
+At the center of the GTA6 cover, the protagonists Jason and Lucia are placed, with a brightly colored Vice City reminiscent of Florida spreading out in the background. An alligator is drawn beneath the logo, symbolizing the wetlands of the state of Leonida, where the game is set. These are facts within the range that can be directly confirmed from the cover image.
+
+![The official GTA6 cover art, with a helicopter placed in the top left](/images/news/Official_Cover_Art_landscape.webp)
+
+## What Is This Helicopter: The Sea Sparrow View
+
+From here, we need to handle the confirmable facts separately from the identification made by media and fans.
+
+Several overseas outlets (such as Beebom and TechWiser) and GTA-related databases lean strongly toward viewing the helicopter in the top left as the Sea Sparrow. This is the identification that what is drawn on the cover is an armed Sea Sparrow. However, note that this is not something Rockstar has officially stated as the aircraft's name; it is strictly an estimate based on appearance. In fact, some sources have a different view, calling it a police helicopter, so the identification is not entirely in agreement. At this point, the Sea Sparrow view stands as the leading one.
+
+![The helicopter placed in the top left of the cover (believed to be the Sea Sparrow)](/images/news/helicopter/helicopter.webp)
+
+So what is the Sea Sparrow? Because it is an aircraft that actually exists in past games, it can be explained as fact. According to databases such as [Grand Theft Wiki](https://www.grandtheftwiki.com/Sea_Sparrow), the Sea Sparrow is an amphibious helicopter that first appeared in GTA Vice City (2002), serving as an improved version of the standard Sparrow. Instead of landing skids, it is equipped with pontoons (floats), allowing it to land on water. It carries a machine gun on its underside. It later appeared in San Andreas and Vice City Stories as well, becoming an aircraft familiar to the series.
+
+Note that this Sea Sparrow did not make its first appearance in the GTA6 cover. Within what can be confirmed, an aircraft believed to be a Sea Sparrow flying over Vice Beach can also be seen in Trailer 1 (around 0:22) and Trailer 2 (around 0:38).
+
+## Analysis: Why This Aircraft Is Fitting
+
+From here on is analysis by GTA6 FEED.
+
+If the helicopter in the top left is indeed a Sea Sparrow, then that choice takes on a meaning beyond simply following tradition. The setting of GTA6 is Leonida, modeled on Florida, where waterside areas such as coastlines and wetlands occupy a large share. Placing an amphibious aircraft there can be called a choice suited to the setting. The top left of past covers has held helicopters matched to each game's atmosphere, and it appears that this policy has been carried over this time as well.
+
+Among fans, there is talk of an expectation that the Sea Sparrow's ability to land on water, combined with a water-rich map, might lead to some form of gameplay. However, this is nothing more than speculation. While it is a fact from past games that the Sea Sparrow itself can land on water, nothing has been officially shown about how that function will be handled in GTA6, or whether there will be customization elements. Voices saying there will be more water-based action or that it might be customizable do not, at this point, go beyond wishful thinking.
+
+What can be read from the single helicopter drawn in the cover art is, at most, that Rockstar likely chose an aircraft to match the setting. Anything beyond that, regarding gameplay, is best treated as speculation.
+
+## Why Fans Get Excited Over This
+
+The reason this helicopter hunt gets exciting lies less in the aircraft's performance itself and more in a fan-participation culture. Each time the cover of a new game is revealed, fans around the world check the top left all at once and confirm with each other that it is there again this time. The consistency upheld over 25 years leads to a sense of reassurance that this is properly GTA.
+
+Thirteen years passed between GTA5 and GTA6. With such a long gap, there was a possibility that Rockstar would overhaul the cover design and abandon the old style. But when the lid was lifted, there was a helicopter in the top left. The very fact that the tradition was kept holds great meaning for longtime fans.
+
+## Summary
+
+What can be said for certain is that the GTA6 cover art was revealed on June 18, 2026, and that a helicopter is placed in the top left. This is a tradition that has been kept in almost every title since GTA3, with the sole exception being Chinatown Wars.
+
+The view that this helicopter is a Sea Sparrow is the leading one, but it is not an official statement by Rockstar; it is an identification based on appearance. That the Sea Sparrow is an amphibious aircraft is a fact from past games, but how that characteristic will be reflected in GTA6's gameplay has not been decided at all. The range that can be read from the cover art and the speculation that extends from it should be taken separately.
+
+---
+
+## Disclaimer
+
+This article is an independent compilation and analysis by GTA6 FEED, based on the published GTA6 cover art, trailers, Rockstar's official announcements, overseas media, and GTA-related databases. The view that the helicopter in the top left is a Sea Sparrow is not an official announcement but an estimate based on appearance. While facts such as the Sea Sparrow being an amphibious aircraft hold true in past games, descriptions concerning gameplay, including how that characteristic will be handled in GTA6, contain speculation. GTA6 is an unreleased title, and its contents may change with future official announcements. For the latest information, please check the official announcements from Rockstar Games.`,
     fullContent: `# GTA6カバーアートのヘリコプター――約25年続く「左上の伝統」と、選ばれた機体の意味
 
 2026年6月18日、Rockstar Games が GTA6 の公式カバーアートを公開した。あわせて、予約注文が6月25日に開始されることも告知された。6月18日の発表時点では、新しいトレーラーも価格の発表もなかったが、ファンの間ではカバーアートそのものが大きな話題になった。
@@ -181,7 +247,7 @@ GTA5 から GTA6 までは13年が空いた。これだけ間が空けば、Rock
     image: "/images/news/hurricane.webp",
     category: "speculation",
     date: "2026-06-26",
-    publishedAt: "2026-06-26 18:30",
+    publishedAt: "2026-06-26 10:30",
     source: "GTA6 FEED 編集部",
     sourceUrl: "https://www.rockstargames.com/VI",
     relatedArticles: [20, 12, 15],
@@ -190,6 +256,93 @@ GTA5 から GTA6 までは13年が空いた。これだけ間が空けば、Rock
       "「動的天候システム」搭載説は求人票やリーク画像が根拠の推測。一方でハリケーン等の極端気象は「当初計画→カット」とするリークもあり、両説が並存している。",
       "確定はトレーラーの描写まで。天候が「演出」か「システム」かは未確定で、GTARPで天候が共有されれば災害RPの土台にも。GTA6は2026年11月19日発売予定。",
     ],
+    titleEn:
+      "Is GTA6's Weather Really Scary? Confirmed Depictions, Leaked Concepts, and the Cut Theory",
+    descriptionEn:
+      "Florida, the model for the setting of Leonida, is a hurricane-prone region. From the weather depictions confirmable in the trailers, to the leak of a dynamic weather system, to the theory that extreme weather was cut, we sort out fact, leak, and analysis.",
+    aiSummaryEn: [
+      "Florida, the model for the setting of Leonida, is a hurricane-prone region. In the trailers you can confirm the flooded Grassrivers wetlands, a rain-soaked city, and a Hurricane Roxy display (interpretations are divided).",
+      "The theory that a dynamic weather system is included is speculation based on job listings and leaked images. On the other hand, there is also a leak claiming that extreme weather such as hurricanes was initially planned and then cut, so the two theories coexist.",
+      "What is confirmed extends only to the depictions in the trailers. Whether the weather is staging or a system is undetermined, and if weather is shared in GTA RP it could also become a foundation for disaster RP. GTA6 is scheduled for release on November 19, 2026.",
+    ],
+    fullContentEn: `# Is GTA6's Weather Really Scary? Confirmed Depictions, Leaked Concepts, and the Cut Theory
+
+Florida is one of the parts of America most frequently struck by hurricanes. Every year from June to November the hurricane season arrives, and each time one approaches, residents are forced to decide whether to evacuate. The fictional state of Leonida, the setting of GTA6, is modeled on that Florida. A stormy sky and a flooded city are inseparable from the story of this land.
+
+So how far does GTA6 bring reality into its weather? Online, talk such as a hurricane is coming or the city will be submerged flies around, but much of it is not an official announcement but a leak or speculation. Here, we sort out the confirmable facts, the unverified leaks, and the analysis separately.
+
+## This Far Can Be Confirmed: The Weather the Trailers Showed
+
+First, let us confirm the range actually shown in the official trailers.
+
+Trailer 1 (released December 2023) features a wetland area called Grassrivers, modeled on the Everglades. This perpetually flooded region is shown with residents traveling by fan boat (airboat), and creatures such as flamingos and alligators can also be confirmed. The depiction of traveling by boat across flooded land shows that Florida's natural environment has been dropped directly into the map's terrain.
+
+![The flooded Grassrivers wetlands (modeled on the Everglades)](/images/news/Grassrivers_04.webp)
+
+Trailer 2 (released May 2025) offers a more direct clue. In a bar scene, a Hurricane Roxy display can be confirmed in front of the bell on the counter. When GTA6 FEED examined analyses by overseas media, there were both a view that reads this as a hint of a storm (hurricane) and a view that it refers to Roxy, a character expected to appear later, so interpretations are divided. Note that since Roxy is also the name of a person expected to appear in the game, it does not necessarily mean a hurricane in the meteorological sense.
+
+In addition, the night scene in Trailer 2 depicts the texture of a rain-soaked city, such as light reflecting off wet road surfaces. While these are material showing that the weather depiction has evolved from GTA5, they are strictly within the range of visual presentation, and nothing is shown about how they affect gameplay.
+
+What can be said at this stage extends only to the point that Leonida is a land reflecting Florida's climate, and that rain and flooded terrain are depicted as part of the world.
+
+## From Here On Are Leaks: The Rumors Around a Dynamic Weather System
+
+From here on, we enter the realm of leaks and speculation that have not been officially confirmed.
+
+There is a persistent theory in the community that GTA6 might include a dynamic weather system that affects gameplay in real time. The grounds cited for this are mainly fragments like the following.
+
+One is what is said to be a Rockstar job listing. In a posting for a Senior Environmental Systems Programmer, experience with dynamic weather simulation and real-time environmental interaction was sought, as pointed out by community investigation. Another is a statement to the effect, made in a developer interview, of immersive environmental storytelling where weather affects both the world and the player's decisions.
+
+Furthermore, there is information that a screenshot of a mission screen said to have leaked included warning displays such as severe thunderstorms and heatwave conditions. If these are true, the possibility emerges that weather functions not merely as a backdrop but as a condition of missions.
+
+However, all of these are not primary sources but speculation based on the wording of job listings and leaked images. Even if such wording existed in a job posting, that is not proof it was implemented in GTA6.
+
+## An Easily Overlooked Point: The Theory That Extreme Weather Was Cut
+
+Here, we also need to introduce a leak that is the exact opposite of the tone that anticipates hurricanes. Ignoring it would skew the discussion in one direction.
+
+Rockstar Universe, a source said to be knowledgeable about GTA6, claims that extreme weather such as hurricanes and tornadoes was initially planned but was later cut. Whether this was due to technical constraints or some other reason is said to be unknown. The overseas outlet ComicBook has also reported this claim.
+
+There is also a development-side rationale pointed out for the view that it was cut. If hurricanes and tornadoes occur randomly in an open world, there may be surprise at first, but as they repeat, they could end up hindering the freedom of play. For example, if you suddenly become unable to move because of a flood while fleeing from the police, it could become simply unreasonable rather than tense. For that reason, there is also an analysis that extreme weather can be used effectively precisely in specific, staged scenes.
+
+In other words, at this point the leak that a dynamic weather system will be included and the leak that extreme weather was cut coexist. Which is correct will not be settled until Rockstar itself shows us.
+
+## Analysis: The Boundary Between Staging and System
+
+From here on is analysis by GTA6 FEED.
+
+If weather were to function as a full-fledged system, its significance would be great. Rain makes road surfaces slippery, robs you of visibility, flooding blocks roads, and NPCs begin to evacuate. When such elements combine, weather changes from something to look at into something to deal with. The previous game, Red Dead Redemption 2, heightened immersion by weaving weather such as fog, wind, rain, and snow into the world, so there is a foundation for Rockstar to advance further along that line.
+
+On the other hand, what the aforementioned cut theory suggests is the possibility that Rockstar is cautious about the balance between realism and playability. Implementing realistic hurricanes and shaping them into a form players can enjoy are separate problems. Using flooding and torrential rain as staging that occurs only in specific missions or story climaxes, rather than as a random event that always occurs, is less likely to break down as an experience.
+
+As long as Leonida is modeled on Florida, incorporating the feel of storms into the world is itself natural. The question is the depth of it. Will it be beautifully depicted as a backdrop, or will it go as far as a system that changes the conditions of play? What is visible in the trailers extends only to the former, while the latter remains at the stage of leaks and wishful thinking.
+
+## The Impact on GTA RP: If Weather Were Shared
+
+Considered from the perspective of roleplay (RP), the imagination expands even further. This too is not a confirmed fact but strictly a matter of possibility.
+
+If the same weather were shared across an entire server, and on a stormy night every player were placed in the same situation, a natural disaster itself could become an RP scenario. Developments such as evacuation, rescue, and post-disaster chaos could occur naturally as a consequence of the weather system, rather than as an operator-run event. In the GTA5 RP environment, scenes where weather influenced the experience were limited, so if this were realized, it could become a foundation for a new way to play.
+
+However, this is a story that only holds up once the premise that weather affects gameplay is established. We want to emphasize again that the premise itself does not yet go beyond the realm of a leak.
+
+## Summary
+
+What can be said for certain at this point extends only to the fact that Leonida is a land reflecting Florida's climate, and that flooded wetlands and a rain-soaked city are depicted in the trailers. As for a dynamic weather system or extreme weather, both leaks that support it and leaks that deny it exist, and it is not settled.
+
+GTA6 is scheduled for release on November 19, 2026, for PS5 and Xbox Series X|S (at the time Trailer 2 was released it was given as May 26, 2026, but it was subsequently delayed). After release, when the rain begins to fall, how far that sky will move the world is what we want to watch.
+
+---
+
+## Disclaimer
+
+This article is an independent compilation and analysis by GTA6 FEED, based on the published trailers, overseas media reports, and leak information from the community.
+
+- The content described as depictions in the trailers is fact within the range that can be confirmed in the official footage.
+- The job listings, the screenshot said to have leaked, and the extreme weather cut theory by Rockstar Universe are all unverified leaks and speculation, not official announcements by Rockstar Games. There is no guarantee they will be reflected in the final product.
+- The boundary between staging and system and the impact on GTA RP are analysis by GTA6 FEED, not confirmed information.
+- GTA6 is an unreleased title, and the content of this article may change with future official announcements.
+
+For the latest information, please check the official announcements from Rockstar Games.`,
     fullContent: `# GTA6の天候は本当に「怖い」のか――確認された描写、リークされた構想、そして「カット説」
 
 フロリダ州は、アメリカでもっともハリケーンに襲われる土地のひとつである。毎年6月から11月にかけてハリケーンシーズンが訪れ、住民は接近のたびに避難の判断を迫られる。GTA6の舞台となる架空の州レオニダ（Leonida）は、そのフロリダをモデルにしている。荒れる空と冠水する街は、この土地の物語と切り離せない。
