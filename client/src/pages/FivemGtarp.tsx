@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, ArrowRight } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, ArrowRight } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT } from '@/lib/i18n';
 
@@ -34,6 +34,7 @@ const GROUPS: CardGroup[] = [
     cards: [
       { titleKey: 'fg.card.install.title', descKey: 'fg.card.install.desc', href: '/fivem-gtarp/how-to-install', icon: Download, accent: '#38bdf8' },
       { titleKey: 'fg.card.guide.title', descKey: 'fg.card.guide.desc', href: '/fivem-gtarp/server-guide', icon: Compass, accent: '#3de0a0' },
+      { titleKey: 'fg.card.firstDay.title', descKey: 'fg.card.firstDay.desc', href: '/fivem-gtarp/first-day-guide', icon: Footprints, accent: '#facc15' },
       { titleKey: 'fg.card.faq.title', descKey: 'fg.card.faq.desc', href: '/fivem-gtarp/faq', icon: HelpCircle, accent: '#34d399' },
       { titleKey: 'fg.card.commands.title', descKey: 'fg.card.commands.desc', href: '/fivem-gtarp/commands', icon: Terminal, accent: '#fb7185' },
       { titleKey: 'fg.card.servers.title', descKey: 'fg.card.servers.desc', href: '/servers', icon: Megaphone, accent: '#fbbf24' },

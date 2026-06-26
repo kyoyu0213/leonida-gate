@@ -98,6 +98,12 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 一方で、巷では「ストグラは2024年6月開始」とする記述も見られるが、ストグラの運営開始は2022年8月28日が正しい。2024年6月に始まったのは、にじさんじ専用のにじGTAであり、これと混同されたものとみられる。また、各サーバーの細かな稼働時間や定休日、終了日、全参加者などは開催ごとに変動するため、本記事では断定を避けている。本記事に挙げた参加者は各サーバーの代表的な例であり、全参加者を網羅したものではない。参加状況は回や時期によって変わるため、正確な日程・参加者は各公式情報を確認してほしい。
 
+## 出典・参考
+
+出典・参考：ストグラ運営公式X／ファミ通／インサイド／リアルサウンド／電撃オンライン／4Gamer／KAI-YOU／Wikipedia／ピクシブ百科事典 ほか
+
+本記事はGTA6 FEEDによる解説であり、Rockstar Games／Take-Two Interactiveおよび各企画の運営とは一切関係がない。開催情報は変動するため、最新情報は各公式の発表を確認されたい。
+
 ## 免責事項
 
 本記事はGTA6 FEEDが各種公開情報をもとに調査・整理した解説記事であり、Rockstar GamesおよびTake-Two Interactive、ならびに各企画・各サーバーの運営とは一切関係がない。配信者サーバーの開催情報や運営体制は時間の経過とともに変化し、SNS・まとめサイト上の情報には食い違いも見られる。最新かつ正確な情報については、各企画の公式X（旧Twitter）やDiscordなど、公式の発表を確認されたい。`;
@@ -199,6 +205,12 @@ Stgra has also broadened the range of its development, and multilayered informat
 Among the content of this article, the start of Stgra Season 1 (August 28, 2022, originally "Streamer Grand Theft") and the server name change on April 17, 2023, the end of Season 1 (September 21, 2025), the start of Season 2 (December 19, 2025), the July 2023 holding of the first VCR GTA, the December 2023 holding of VCR GTA2, the June 2024 holding of Niji GTA (June 15–25), the September 2024 holding of Holo GTA (September 17–23) and its award at VTuber Awards 2024, the December 2024 holding of VCR GTA3 (December 2–12), the June and October 2025 holdings of MadTown, and the February 2026 holding of NEWTOWN are information that can be confirmed through reporting and the announcements of each project.
 
 On the other hand, descriptions saying "Stgra started in June 2024" can be seen in the wild, but the start of Stgra's operation is correctly August 28, 2022. What started in June 2024 was the Nijisanji-exclusive Niji GTA, and it appears this was confused with that. Also, the detailed operating hours, regular days off, end dates, and all participants of each server vary by occasion, so this article avoids definitive statements. The participants listed in this article are representative examples for each server and do not cover all participants. Because participation status changes by occasion and time, please check each official source for accurate schedules and participants.
+
+## Sources / References
+
+Sources / References: the official X of the Stgra operations, Famitsu, Inside, Real Sound, Dengeki Online, 4Gamer, KAI-YOU, Wikipedia, Pixiv Encyclopedia, and others.
+
+This article is a commentary by GTA6 FEED and has no relationship whatsoever with Rockstar Games / Take-Two Interactive or the operators of the various projects. Because event information varies, please check each official announcement for the latest information.
 
 ## Disclaimer
 
