@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, newsByDate, CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
+import { CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
+import { useMergedNews } from '@/hooks/useNews';
 import { useT, useLang } from '@/lib/i18n';
 
 /**
@@ -11,9 +12,10 @@ export default function NewsList() {
   const t = useT();
   const lang = useLang();
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
+  const { articles: allNews } = useMergedNews();
 
   const filtered =
-    selectedCat === 'all' ? newsByDate : newsByDate.filter((n) => n.category === selectedCat);
+    selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat);
 
   return (
     <div className="vice-page vice-noise">
@@ -26,8 +28,8 @@ export default function NewsList() {
           <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">{t('newsList.title')}</h1>
           <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
             {lang === 'ja'
-              ? `GTA6の公式情報・考察・リークを日本語でお届け。全${newsArticles.length}件の記事を掲載中。`
-              : `Official news, analysis, and leaks on GTA6. ${newsArticles.length} articles published.`}
+              ? `GTA6の公式情報・考察・リークを日本語でお届け。全${allNews.length}件の記事を掲載中。`
+              : `Official news, analysis, and leaks on GTA6. ${allNews.length} articles published.`}
           </p>
         </div>
 

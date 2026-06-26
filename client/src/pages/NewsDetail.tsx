@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { getArticleById, formatArticleDate } from '@/data/news';
+import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
@@ -34,8 +35,8 @@ export default function NewsDetail() {
   const t = useT();
   const isEn = lang === 'en';
 
-  // 記事データは client/src/data/news.ts で一元管理しています
-  const article = match ? getArticleById(params.id) : undefined;
+  // 記事は静的データ（data/news.ts）＋管理画面から投稿された DB 記事を解決する。
+  const { article, loading } = useArticleById(match ? params.id : undefined);
 
   // 記事ごとに <title> / description / OGP を設定（フックは早期returnの前で呼ぶ）。
   const seoTitle = article
@@ -54,14 +55,25 @@ export default function NewsDetail() {
     return null;
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <div className="container py-20 text-center">
+          <p className="text-gray-400 font-mono">{lang === 'ja' ? '読み込み中…' : 'Loading…'}</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!article) {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Header />
         <div className="container py-20 text-center">
-          <p className="text-gray-400 font-mono mb-4">記事が見つかりません</p>
+          <p className="text-gray-400 font-mono mb-4">{lang === 'ja' ? '記事が見つかりません' : 'Article not found'}</p>
           <a href="/" className="text-cyan-400 hover:text-cyan-300 font-mono">
-            ホームに戻る
+            {lang === 'ja' ? 'ホームに戻る' : 'Back to home'}
           </a>
         </div>
       </div>

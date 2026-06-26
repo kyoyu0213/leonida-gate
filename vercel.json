@@ -4,6 +4,7 @@
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
   "rewrites": [
+    { "source": "/news/:id(\\d+)", "destination": "/api/news-og?id=:id" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

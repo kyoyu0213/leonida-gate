@@ -17,6 +17,7 @@ const NewsDetail = lazy(() => import("./pages/NewsDetail"));
 const BoardThreadList = lazy(() => import("./pages/BoardThreadList"));
 const BoardThread = lazy(() => import("./pages/BoardThread"));
 const AdminReports = lazy(() => import("./pages/AdminReports"));
+const AdminNews = lazy(() => import("./pages/AdminNews"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
       <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
       <Route path="/admin/reports" component={AdminReports} />
+      <Route path="/admin/news" component={AdminNews} />
       <Route path="/search" component={SearchPage} />
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />

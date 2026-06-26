@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, newsByDate, CATEGORY_CONFIG, CATEGORIES, type NewsCategory } from '@/data/news';
+import { CATEGORY_CONFIG, CATEGORIES, type NewsCategory } from '@/data/news';
+import { useMergedNews } from '@/hooks/useNews';
 import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
@@ -33,8 +34,9 @@ export default function Home() {
     ).then(setTrends);
   }, []);
 
+  const { articles: allNews } = useMergedNews();
   const filteredNews = (
-    selectedCat === 'all' ? newsByDate : newsByDate.filter((n) => n.category === selectedCat)
+    selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
   // 発売まで（2026-11-19）の残り日数
@@ -380,8 +382,8 @@ export default function Home() {
                 className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-sm font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
                 {lang === 'ja'
-                  ? `すべての記事を見る（全${newsArticles.length}件）→`
-                  : `View all articles (${newsArticles.length}) →`}
+                  ? `すべての記事を見る（全${allNews.length}件）→`
+                  : `View all articles (${allNews.length}) →`}
               </a>
             </div>
           </div>
