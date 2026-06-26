@@ -400,19 +400,29 @@ export default function Home() {
                 const c = boardColor(board.accent);
                 return (
                   <div key={board.slug} className="mt-6 first:mt-5">
-                    {/* カテゴリー見出し＋区切り線 */}
-                    <div
-                      className="flex items-center gap-2 pb-2 mb-2.5 border-b"
+                    {/* カテゴリー見出し＝その掲示板一覧へのリンク */}
+                    <a
+                      href={`/board/${board.slug}`}
+                      className="group flex items-center gap-2 pb-2 mb-2.5 border-b hover:opacity-90 transition-opacity"
                       style={{ borderColor: `${c}40` }}
                     >
                       <span
                         className="w-2.5 h-2.5 rounded-full flex-none"
                         style={{ background: c, boxShadow: `0 0 8px ${c}` }}
                       />
-                      <span className="text-[13.5px] font-extrabold tracking-wide" style={{ color: c }}>
+                      <span
+                        className="text-[13.5px] font-extrabold tracking-wide group-hover:underline"
+                        style={{ color: c }}
+                      >
                         {t(`board.${board.slug}`)}
                       </span>
-                    </div>
+                      <span
+                        className="ml-auto text-[12px] opacity-0 group-hover:opacity-100 transition-opacity"
+                        style={{ color: c }}
+                      >
+                        →
+                      </span>
+                    </a>
 
                     {threads.length > 0 ? (
                       <div className="flex flex-col gap-1.5">
