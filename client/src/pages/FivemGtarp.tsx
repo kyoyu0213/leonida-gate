@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, ArrowRight } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, ArrowRight } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT } from '@/lib/i18n';
 
@@ -46,6 +46,20 @@ const CARDS: Card[] = [
     href: '/fivem-gtarp/glossary',
     icon: BookOpen,
     accent: '#c084fc',
+  },
+  {
+    titleKey: 'fg.card.faq.title',
+    descKey: 'fg.card.faq.desc',
+    href: '/fivem-gtarp/faq',
+    icon: HelpCircle,
+    accent: '#34d399',
+  },
+  {
+    titleKey: 'fg.card.commands.title',
+    descKey: 'fg.card.commands.desc',
+    href: '/fivem-gtarp/commands',
+    icon: Terminal,
+    accent: '#fb7185',
   },
   {
     titleKey: 'fg.card.install.title',
