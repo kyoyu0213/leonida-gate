@@ -161,6 +161,9 @@ const JA: Dict = {
   'fg.lead':
     'GTA5から続くロールプレイ(RP)文化は、GTA6時代に向けてますます広がっています。「FiveMって何？」「GTARPはどう遊ぶの？」という初心者向けに、基本と違いをまとめました。GTARP専用の掲示板もこちらから。',
   'fg.learnMore': 'くわしく見る',
+  'fg.group.basics': 'まず基本を知る',
+  'fg.group.play': '遊ぶ準備・困ったとき',
+  'fg.group.more': '用語・歴史・コミュニティ',
   'fg.seo.title': 'FiveM/GTARP｜GTA6時代のロールプレイ文化・掲示板まとめ',
   'fg.seo.desc':
     'FiveMとは何か、GTARPとは何か、GTA6時代のロールプレイ文化や掲示板情報を初心者向けにまとめています。',
@@ -421,6 +424,9 @@ const EN: Dict = {
   'fg.lead':
     'The roleplay (RP) culture that grew out of GTA5 keeps expanding heading into the GTA6 era. For beginners wondering "What is FiveM?" or "How do you play GTARP?", here are the basics and the differences. The GTARP board is here too.',
   'fg.learnMore': 'Learn more',
+  'fg.group.basics': 'Learn the Basics',
+  'fg.group.play': 'Getting Started & Help',
+  'fg.group.more': 'Glossary, History & Community',
   'fg.seo.title': 'FiveM/GTARP | RP culture and boards for the GTA6 era',
   'fg.seo.desc':
     'A beginner-friendly overview of what FiveM is, what GTARP is, and the roleplay culture and boards for the GTA6 era.',

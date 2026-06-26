@@ -11,76 +11,41 @@ interface Card {
   accent: string; // ネオン色
 }
 
-const CARDS: Card[] = [
+interface CardGroup {
+  labelKey: string;
+  accent: string;
+  cards: Card[];
+}
+
+// カードが増えて縦に長くなったため、用途ごとに3グループへ分けて見つけやすくする。
+const GROUPS: CardGroup[] = [
   {
-    titleKey: 'fg.card.fivem.title',
-    descKey: 'fg.card.fivem.desc',
-    href: '/fivem-gtarp/what-is-fivem',
-    icon: Server,
+    labelKey: 'fg.group.basics',
     accent: '#22d3ee',
+    cards: [
+      { titleKey: 'fg.card.fivem.title', descKey: 'fg.card.fivem.desc', href: '/fivem-gtarp/what-is-fivem', icon: Server, accent: '#22d3ee' },
+      { titleKey: 'fg.card.gtarp.title', descKey: 'fg.card.gtarp.desc', href: '/fivem-gtarp/what-is-gtarp', icon: Users, accent: '#a78bfa' },
+      { titleKey: 'fg.card.diff.title', descKey: 'fg.card.diff.desc', href: '/fivem-gtarp/fivem-vs-gtarp', icon: GitCompare, accent: '#ff8a3d' },
+    ],
   },
   {
-    titleKey: 'fg.card.gtarp.title',
-    descKey: 'fg.card.gtarp.desc',
-    href: '/fivem-gtarp/what-is-gtarp',
-    icon: Users,
-    accent: '#a78bfa',
-  },
-  {
-    titleKey: 'fg.card.diff.title',
-    descKey: 'fg.card.diff.desc',
-    href: '/fivem-gtarp/fivem-vs-gtarp',
-    icon: GitCompare,
-    accent: '#ff8a3d',
-  },
-  {
-    titleKey: 'fg.card.history.title',
-    descKey: 'fg.card.history.desc',
-    href: '/fivem-gtarp/history',
-    icon: History,
-    accent: '#f0b429',
-  },
-  {
-    titleKey: 'fg.card.glossary.title',
-    descKey: 'fg.card.glossary.desc',
-    href: '/fivem-gtarp/glossary',
-    icon: BookOpen,
-    accent: '#c084fc',
-  },
-  {
-    titleKey: 'fg.card.faq.title',
-    descKey: 'fg.card.faq.desc',
-    href: '/fivem-gtarp/faq',
-    icon: HelpCircle,
+    labelKey: 'fg.group.play',
     accent: '#34d399',
+    cards: [
+      { titleKey: 'fg.card.install.title', descKey: 'fg.card.install.desc', href: '/fivem-gtarp/how-to-install', icon: Download, accent: '#38bdf8' },
+      { titleKey: 'fg.card.guide.title', descKey: 'fg.card.guide.desc', href: '/fivem-gtarp/server-guide', icon: Compass, accent: '#3de0a0' },
+      { titleKey: 'fg.card.faq.title', descKey: 'fg.card.faq.desc', href: '/fivem-gtarp/faq', icon: HelpCircle, accent: '#34d399' },
+      { titleKey: 'fg.card.commands.title', descKey: 'fg.card.commands.desc', href: '/fivem-gtarp/commands', icon: Terminal, accent: '#fb7185' },
+    ],
   },
   {
-    titleKey: 'fg.card.commands.title',
-    descKey: 'fg.card.commands.desc',
-    href: '/fivem-gtarp/commands',
-    icon: Terminal,
-    accent: '#fb7185',
-  },
-  {
-    titleKey: 'fg.card.install.title',
-    descKey: 'fg.card.install.desc',
-    href: '/fivem-gtarp/how-to-install',
-    icon: Download,
-    accent: '#38bdf8',
-  },
-  {
-    titleKey: 'fg.card.guide.title',
-    descKey: 'fg.card.guide.desc',
-    href: '/fivem-gtarp/server-guide',
-    icon: Compass,
-    accent: '#3de0a0',
-  },
-  {
-    titleKey: 'fg.card.board.title',
-    descKey: 'fg.card.board.desc',
-    href: '/board/gtarp',
-    icon: MessageSquare,
-    accent: '#ff2d95',
+    labelKey: 'fg.group.more',
+    accent: '#c084fc',
+    cards: [
+      { titleKey: 'fg.card.glossary.title', descKey: 'fg.card.glossary.desc', href: '/fivem-gtarp/glossary', icon: BookOpen, accent: '#c084fc' },
+      { titleKey: 'fg.card.history.title', descKey: 'fg.card.history.desc', href: '/fivem-gtarp/history', icon: History, accent: '#f0b429' },
+      { titleKey: 'fg.card.board.title', descKey: 'fg.card.board.desc', href: '/board/gtarp', icon: MessageSquare, accent: '#ff2d95' },
+    ],
   },
 ];
 
@@ -102,44 +67,66 @@ export default function FivemGtarp() {
           {t('fg.lead')}
         </p>
 
-        {/* Cards */}
-        <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {CARDS.map((c) => {
-            const Icon = c.icon;
-            return (
-              <a
-                key={c.href}
-                href={c.href}
-                className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-6 transition-all hover:-translate-y-0.5"
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
-              >
+        {/* Cards：用途ごとにグループ化し、デスクトップは3列で並べてスクロールを抑える */}
+        <div className="mt-10 flex flex-col gap-9">
+          {GROUPS.map((g) => (
+            <section key={g.labelKey}>
+              <div className="flex items-center gap-3 mb-4">
                 <span
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-                  style={{
-                    background: `${c.accent}1f`,
-                    border: `1px solid ${c.accent}55`,
-                    color: c.accent,
-                    boxShadow: `0 0 18px ${c.accent}33`,
-                  }}
+                  className="h-4 w-1 rounded-full"
+                  style={{ background: g.accent, boxShadow: `0 0 10px ${g.accent}88` }}
+                />
+                <h2
+                  className="text-[12px] font-extrabold tracking-[0.18em] uppercase m-0"
+                  style={{ color: g.accent }}
                 >
-                  <Icon size={22} />
-                </span>
-                <h2 className="text-lg font-extrabold text-white mb-1.5">{t(c.titleKey)}</h2>
-                <p className="text-[13.5px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
-                <span
-                  className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold"
-                  style={{ color: c.accent }}
-                >
-                  {t('fg.learnMore')}
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </span>
-              </a>
-            );
-          })}
+                  {t(g.labelKey)}
+                </h2>
+                <span className="flex-1 h-px bg-white/10" />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {g.cards.map((c) => {
+                  const Icon = c.icon;
+                  return (
+                    <a
+                      key={c.href}
+                      href={c.href}
+                      className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
+                    >
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <span
+                          className="w-10 h-10 flex-none rounded-xl flex items-center justify-center"
+                          style={{
+                            background: `${c.accent}1f`,
+                            border: `1px solid ${c.accent}55`,
+                            color: c.accent,
+                            boxShadow: `0 0 18px ${c.accent}33`,
+                          }}
+                        >
+                          <Icon size={20} />
+                        </span>
+                        <h3 className="text-[15px] font-extrabold text-white m-0">{t(c.titleKey)}</h3>
+                      </div>
+                      <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
+                      <span
+                        className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                        style={{ color: c.accent }}
+                      >
+                        {t('fg.learnMore')}
+                        <ArrowRight
+                          size={14}
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
         </div>
       </main>
 
