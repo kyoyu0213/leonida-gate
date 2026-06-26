@@ -3475,6 +3475,86 @@ GTA5は2013年9月17日に発売された。だが、3人の主人公（マイ�
       "肌・髪・表情のリアルさや服の物理、豊富な衣装バリエーションがトレーラーで確認できる。",
       "筋トレで体型が変わるシステムの復活が噂されるが、これは未確認の推測にとどまる。",
     ],
+    titleEn:
+      "How Detailed Will GTA6's Characters Be? Clothing, Accessories, and the Rumor of Getting Buff From Working Out",
+    descriptionEn:
+      "The realism of skin, hair, and clothing, modern accessories, and the rumored return of a physique-change system. We sort the confirmed facts from the speculation as we examine how detailed the characters are.",
+    aiSummaryEn: [
+      "The full scope of GTA6's character customization has not been officially announced, and the confirmed elements come from the trailers.",
+      "The realism of skin, hair, and facial expressions, cloth physics, and a rich variety of outfits can all be seen in the trailers.",
+      "A system in which working out changes your physique is rumored to return, but this remains unconfirmed speculation.",
+    ],
+    fullContentEn: `# How Detailed Will GTA6's Characters Be? Clothing, Accessories, and the Rumor of Getting Buff From Working Out
+
+Many people who watched the trailers for Grand Theft Auto VI (GTA6) must have felt that the characters look strikingly realistic. The texture of the skin, the movement of the hair, the wrinkles in the clothing — the level of detail is on another level compared to the previous title, GTA5. On top of that, rumors about customization are heating up among fans, such as the freedom of dressing up and accessories, and the idea that working out changes the character. This article examines how detailed GTA6's characters are likely to be, while separating the facts that can be confirmed in the trailers from unverified leaks and rumors.
+
+Note: Topics about technology such as map size and ray tracing are covered in separate articles. This piece focuses solely on the appearance and customization of the characters.
+
+---
+
+## First, the Premise: The Full Scope of Customization Has Not Been Officially Announced
+
+Let us start by making clear that Rockstar has not officially detailed the mechanics of character customization. There are elements that can be read from the trailers and screenshots, but the full scope of the system (how freely things can be changed) has not been revealed.
+
+The content covered here is based on analysis of the trailers, the early development footage leaked in 2022, and the track record of past titles and fan speculation. We will go through it while clearly separating confirmed information from speculation.
+
+---
+
+## The Evolution Visible in the Trailers: The Realism of Skin, Hair, and Clothing
+
+First, let us start with the evolution that can be read relatively clearly from the trailers and screenshots.
+
+The models of GTA6's protagonists Jason and Lucia have clearly become more realistic compared to GTA5's relatively flat models. Even fine changes in expression during tense scenes (micro-expressions) have been crafted in, and the texture of the skin and hair has risen a notch as well. As for the hair, it has been confirmed to sway dynamically in response to the character's movement and the environment, making it a more advanced expression than in past GTA titles.
+
+The way clothing is rendered is also a highlight. It is not merely that there are many types; the physics behavior stands out. Clothing naturally forms wrinkles in line with the body's movement, and fine touches such as rolled-up sleeves or a cap brim turned backward can be seen. In the trailers and screenshots, Jason and Lucia appear in different outfits in nearly every cut, and the variation of those combinations gives the impression of surpassing past GTA protagonists. According to one fan's tally, the second trailer alone confirmed around 29 outfits for Jason and around 26 for Lucia. This suggests a system that lets you freely combine a large number of clothing items (mix and match).
+
+---
+
+## Modern Accessories, and Jason's Tattoos
+
+It is not just clothing — modern realism also resides in the accessories.
+
+As an element that GTA5 lacked, characters have been confirmed wearing wireless earbuds or a smartwatch while relaxing or exercising. It is a detail unique to a work set in the present day. Moreover, these accessories are said to be given physics behavior, crafted so that the worn items look like a natural part of the outfit. There are also observations that the same physics applies to the accessories of NPCs, not just the protagonists.
+
+In addition, multiple tattoos have been confirmed on Jason's body, and these are believed to be tied to his background in the military. His appearance also takes on the role of conveying the character's backstory.
+
+As with past titles (GTA Online and RDR2), there is also hope for a system that lets you save multiple custom outfits and switch between them depending on the situation, but at this point this does not go beyond speculation.
+
+---
+
+## The Main Rumor: Will the Physique-Change System Where Working Out Makes You Buff Return?
+
+In the area of customization, what fans are most excited about right now is the character's physique-change system.
+
+The origin traces back to 2004's GTA San Andreas. In that game, not only protagonist CJ's hairstyle and clothing but his very physique changed depending on how much he exercised and what he ate. Going to the gym built muscle, while eating only fast food made him fat — that was the system. This level of in-depth physique crafting was no longer seen in the GTA titles that followed.
+
+The rumor that this San Andreas-style physique change will return in GTA6 is persistent. In fan analyses compiling leaks, patents, and leaked information, there are claims that, in addition to Jason and Lucia's degree of tan and their hairstyles, you can change the physique from slim to buff. In fact, when comparing the leaked footage and the trailers, there are observations that Jason, who was slim in the early leaks, looks more muscular in the trailers, and this has drawn attention as circumstantial evidence of a physique-change system.
+
+That said, it is worth viewing this calmly. The physique-change system where working out makes you buff is not something Rockstar has officially acknowledged at this point; it is strictly at the rumor and speculation stage. The fact that there is a precedent in San Andreas, and that GTA6 is realism-oriented overall, leads people to call it likely, but it is not confirmed information. Similarly, many fine details are circulating, such as hair and beards growing (a mechanic that existed in RDR2), being able to change your nails, and sweating, but these too are unconfirmed. It would be wise to keep your hopes up while avoiding firm assertions.
+
+---
+
+## Beware of Articles That Assert as if They Had Already Played It
+
+Character customization is a field where fan demand is especially strong (there have long been many voices asking for more clothing and accessories). For that very reason, the internet is flooded with specific information that stokes expectations.
+
+Such talk includes: that sweating makes you easier for NPCs to spot, that your muscle condition affects combat efficiency, that you can layer a necklace inside or outside a T-shirt, and that nail salons exist. While such descriptions are fun to read, none of them have been officially confirmed. GTA6 has not been released yet, and articles that assert details as if they had played the product are likely to be speculation disguised as firsthand experience. What is certain extends only as far as the abundance and physics behavior of the clothing and accessories visible in the trailers, and the fact that the same kinds of mechanics existed in past titles (San Andreas and RDR2).
+
+---
+
+## Summary
+
+- The full scope of GTA6's character customization has not been officially announced. The confirmed elements come from the trailers; everything else is speculation.
+- The evolution that can be confirmed is the realism of skin, hair, and facial expressions, cloth physics (wrinkles, rolled-up sleeves), and a rich variety of clothing (around 29 outfits for Jason and around 26 for Lucia in Trailer 2).
+- Modern accessories such as earbuds and smartwatches appear, and they are given physics behavior. Jason's tattoos are tied to his backstory.
+- The physique-change system where working out makes you buff is rumored as a revival of San Andreas, but it is unconfirmed. Hair and beard growth, nails, and sweat are likewise at the rumor stage.
+- Because it is a field with strong expectations, there are many articles making firm assertions. Be wary of information that pretends to be from someone who has already played.
+
+The direction in which GTA6's characters look set to evolve greatly from past titles, in both the detail of their appearance and the freedom of customization, can be amply glimpsed from the trailers. Whether an in-depth system like physique change will truly return should become clear in future trailers or at release (November 19, 2026). The more exciting a rumor is, the more we want to receive it while checking its source and reliability.
+
+---
+
+*Note: Among the descriptions in this article, those concerning the physique-change system, hair and beard growth, fine details such as nails and sweat, and outfit saving include speculation based on the track record of past titles, the footage leaked in 2022, and community analysis. They are not official announcements by Rockstar Games. The variation and physics behavior of clothing and accessories that can be confirmed in the trailers, and the main release date (November 19, 2026 / PS5, Xbox Series X|S), are based on official materials and official announcements.*`,
     fullContent: `# GTA6のキャラクターはどこまで作り込まれる？ 服・アクセサリー、そして「筋トレでムキムキ」の噂
 
 『Grand Theft Auto VI（GTA6）』のトレーラーを見て、登場人物の見た目が「やけにリアルだ」と感じた人は多いはずだ。肌の質感、髪の動き、服のしわ——細部の作り込みが、前作GTA5とは段違いになっている。さらにファンの間では、着せ替えやアクセサリーの自由度、そして「筋トレをするとキャラが変化する」といったカスタマイズの噂も盛り上がっている。この記事では、トレーラーで確認できる事実と、未確認のリーク・噂を切り分けながら、GTA6のキャラクターがどこまで作り込まれそうかを考察する。
