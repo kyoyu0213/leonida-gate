@@ -36,6 +36,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/board/streamer-servers</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/fivem-gtarp</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

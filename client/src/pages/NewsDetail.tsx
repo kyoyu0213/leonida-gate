@@ -92,6 +92,15 @@ export default function NewsDetail() {
       {/* Article Content */}
       <article className="article-container">
         <div>
+          {/* パンくず（内部リンク・SEO） */}
+          <nav className="flex items-center gap-1.5 text-[12px] text-gray-400 font-mono mb-5" aria-label="パンくず">
+            <a href="/" className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? 'ホーム' : 'Home'}</a>
+            <span className="opacity-50">/</span>
+            <a href="/news" className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? '最新情報' : 'News'}</a>
+            <span className="opacity-50">/</span>
+            <span className="text-gray-500 truncate max-w-[55vw] sm:max-w-[420px]">{title}</span>
+          </nav>
+
           {/* Header */}
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-5">
