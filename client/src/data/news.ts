@@ -98,7 +98,7 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 export const newsArticles: NewsArticle[] = [
   {
     id: 24,
-    title: "GTA6は本当に「史上最大の発売」になるのか――強気な販売予測を、公式の数字と切り分けて読む",
+    title: "予約だけで10億ドル、発売60日で8,500万本、GTA6は本当に「史上最大の発売」になるのか",
     description:
       "予約だけで10億ドル、発売60日で8,500万本、初年度数十億ドル――GTA6の販売予測は桁が大きい。だがその多くはアナリストの推計で、各社の見立ては2倍以上開く。何が公式の確定値で、何が予測かを切り分けて整理する。",
     icon: "📈",
