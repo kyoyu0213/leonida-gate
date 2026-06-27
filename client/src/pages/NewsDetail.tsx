@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Calendar, Tag, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
+import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
@@ -31,6 +31,7 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
 export default function NewsDetail() {
   const [match, params] = useRoute('/news/:id');
   const [summaryOpen, setSummaryOpen] = useState(false);
+  const [commentCount, setCommentCount] = useState<number | null>(null);
   const lang = useLang();
   const t = useT();
   const isEn = lang === 'en';
@@ -126,33 +127,41 @@ export default function NewsDetail() {
               {title}
             </h1>
 
+            {/* 日付＋トップのボタン群（コメント欄へ移動／末尾の3行まとめへスクロール）を同じ行に並べる */}
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
                 <Calendar size={14} />
                 {formatArticleDate(article, lang)}
               </div>
-              <div className="flex items-center gap-2">
-                <Tag size={14} />
-                {isEn && article.source === 'GTA6 FEED 編集部' ? t('article.editorial') : article.source}
-              </div>
-            </div>
-          </div>
 
-          {/* AIによる3行まとめ（あらかじめ用意した要約をクリックで開閉） */}
-          {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
-          {summary && summary.length > 0 && (
-            <div className="mb-8">
+              {/* この記事へのコメント：押すとコメント欄までスクロール */}
               <button
                 onClick={() =>
-                  document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  document.getElementById('news-comments')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border border-cyan-500/50 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/20 transition-colors whitespace-nowrap"
               >
-                <Sparkles size={16} /> {t('sum.button')}
+                <MessageSquare size={16} />
+                {isEn
+                  ? `Comments on this article${commentCount !== null ? ` (${commentCount})` : ''}`
+                  : `この記事へのコメント${commentCount !== null ? `（${commentCount}件）` : ''}`}
                 <ChevronDown size={16} />
               </button>
+
+              {/* AIによる3行まとめ：押すと記事末尾の「3行まとめ」までスクロール */}
+              {summary && summary.length > 0 && (
+                <button
+                  onClick={() =>
+                    document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors whitespace-nowrap"
+                >
+                  <Sparkles size={16} /> {t('sum.button')}
+                  <ChevronDown size={16} />
+                </button>
+              )}
             </div>
-          )}
+          </div>
 
           {/* アイキャッチ画像（記事に image がある場合のみ。記事冒頭に表示） */}
           {article.image && (
@@ -283,7 +292,7 @@ export default function NewsDetail() {
           </div>
 
           {/* コメント */}
-          <NewsComments articleId={String(article.id)} />
+          <NewsComments articleId={String(article.id)} onCountChange={setCommentCount} />
         </div>
       </article>
 

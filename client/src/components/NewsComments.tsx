@@ -20,9 +20,11 @@ const COOLDOWN_KEY = 'news_comment_last';
 
 interface Props {
   articleId: string;
+  // コメント件数が変わったら親に通知（記事トップの「コメントへ」ボタンの件数表示に使う）
+  onCountChange?: (count: number) => void;
 }
 
-export default function NewsComments({ articleId }: Props) {
+export default function NewsComments({ articleId, onCountChange }: Props) {
   const t = useT();
   const [comments, setComments] = useState<NewsComment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -36,7 +38,11 @@ export default function NewsComments({ articleId }: Props) {
   const load = async () => {
     setLoading(true);
     const { data, error } = await listNewsComments(articleId);
-    if (!error) setComments((data as NewsComment[]) ?? []);
+    if (!error) {
+      const list = (data as NewsComment[]) ?? [];
+      setComments(list);
+      onCountChange?.(list.length);
+    }
     setLoading(false);
   };
 
@@ -182,7 +188,7 @@ export default function NewsComments({ articleId }: Props) {
   };
 
   return (
-    <section className="mt-12">
+    <section id="news-comments" className="mt-12 scroll-mt-24">
       <h2 className="flex items-center gap-2 text-2xl font-bold mb-6 text-[#22d3ee] font-mono">
         <MessageSquare size={22} /> {t('cmt.title')}
         <span className="text-base text-white/40">（{comments.length}）</span>
