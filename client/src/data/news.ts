@@ -97,6 +97,223 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 26,
+    title:
+      "GTA6に「グラフィック劣化」論争が再燃——ジェイソンの家の比較画像は本当にダウングレードなのか",
+    description:
+      "6月24日の価格発表とともに公開された新スクリーンショットを、トレーラー2と見比べて「画質が落ちた」という声がSNSで拡大。中心はジェイソンのセーフハウスの比較だ。何が事実で、何が主観・推測かを切り分けて整理する。",
+    icon: "🖼️",
+    image: "/images/news/graphicdowngrade/eyecatch.png",
+    category: "speculation",
+    date: "2026-06-28",
+    publishedAt: "2026-06-28 03:33",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [25, 24, 23],
+    aiSummary: [
+      "6月24日に多数の新スクリーンショットが公開され、トレーラー2との比較で「劣化したのでは」という声がSNSで拡大。中心はジェイソンのセーフハウス周辺の比較で、草木・フェンス・色味・影の違いが指摘されている。",
+      "一方で「劣化と断じるのは早い」という反論も同程度に多い。最大の理由は撮影条件(時間帯・天候・アングル・ポーズ)の違いで、演出されたトレーラーと通常のゲーム内画像を直接並べれば差が出るのは当然という見方が強い。",
+      "GTA6は未発売で、確定しているのは「比較論争が起きていること」と「過去にGTA5でアップデート1.08による実際の劣化が起き修正された事例」のみ。今回が劣化かどうかは発売後の実機を見るまで判断できない。",
+    ],
+    fullContent: `# GTA6に「グラフィック劣化」論争が再燃——ジェイソンの家の比較画像は本当にダウングレードなのか
+
+6月24日、価格発表とともに大量の新スクリーンショットが公開されると、昨年のトレーラー2と見比べて「画質が落ちたのではないか」という声がSNSで一気に広がった。中心になっているのは、ジェイソンのセーフハウス周辺の比較だ。
+
+ただし、現時点で言えるのは「比較論争が起きている」ところまでで、本当に劣化したのかどうかは、発売前である以上まだ判断できない。GTA6 FEEDが、何が事実で、何が主観的な印象で、何が推測なのかを切り分けて整理した。
+
+本記事は2026年6月27日時点の情報にもとづく。
+
+---
+
+## 何が起きているか(議論が起きていること自体は事実)
+
+6月24日、Rockstarは予約開始と価格の発表にあわせて、アルティメット・エディションの紹介などで多数の新スクリーンショットを公開した。ファンはこれを、1年以上前に公開されたトレーラー2の同じ場所(ジェイソンの海辺のセーフハウス)と並べて比較し始めた。Kotakuが最初に取り上げ、その後TheGamerや各国のメディアが追随して、Reddit・X・GTAフォーラムを中心に比較画像が拡散している。
+
+![SNSで広く拡散した比較画像。2025年のトレーラー2(上)と2026年6月の新スクリーンショット(下)を並べたもの](/images/news/graphicdowngrade/GOLDEN.png)
+
+---
+
+## 指摘されている点(主観的な比較)
+
+劣化を疑う側が挙げているのは、おおむね次のような点だ。
+
+- ジェイソンの家の周辺で、草木の密度やディテールが減ったように見える。家の前のフェンスが金網から木製に変わり、水たまりが減り、全体に黄色いフィルターがかかったような色味になっている。
+- 影の表現が単純になり、車体の下にできる遮蔽影が粗く見える。
+- ジェイソンの髪や髭の質感、建物や水面の反射が、トレーラー時より落ちたように見える。
+
+![ジェイソンの顔のクローズアップ比較。髪や髭の質感が落ちたのではないか、という指摘も挙がっている](/images/news/graphicdowngrade/Jason.png)
+
+こうした比較画像とともに、「明らかに劣化している」「Rockstarはまたこれをやるのか」といった声がSNSで広がっている。
+
+![ジェイソンの家周辺の比較。フェンスや草木、色味の違いが指摘されている(左:トレーラー/右:新スクリーンショット)](/images/news/graphicdowngrade/grass.png)
+
+---
+
+## 擁護・反論(こちらも多い)
+
+一方で、これを「劣化」と断じるのは早いという声も同じくらい多い。
+
+最も多い指摘は、撮影条件の違いだ。トレーラーの該当シーンと新スクリーンショットでは、時間帯・天候・カメラアングル・キャラのポーズが異なる。トレーラーは作品を最高に見せるために作り込まれた映像で、夕方のやわらかい光などドラマチックな条件が選ばれやすい。対して新スクリーンショットは、別の時間帯や角度で撮られた通常のゲーム内画像だ。演出された映像と通常の一枚を直接並べれば、差が出るのはむしろ当然だという見方である。
+
+![6月24日に公開された新スクリーンショットの一枚。通常のゲーム内画像は、最良の条件で作り込まれたトレーラー映像とは撮影条件そのものが異なる](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.jpg)
+
+数年にわたる開発のなかで細部が足し引きされるのも普通のことだ、という指摘もある。Kotakuの書き手は、新しいスクリーンショットのなかには最初のトレーラーより良く見えるものもあると述べ、大規模な劣化は起きていないと結論づけている。フェンスや植生の変化についても、季節を反映するメカニクスや、レオニダの乾季、物語の進行に伴う拠点の変化といった、劣化以外の理由を挙げる声もある。
+
+さらに、こうした論争自体が、否定的な比較投稿ほど反応を集めやすいというSNSの仕組みによって増幅されている面も指摘される。一部のYouTuberが「公式が劣化させた」と断定的に煽る動画を出していることも、火種を広げている。
+
+コミュニティの声も割れている。
+
+- 「照明が違うだけだ。昼と夕方を並べて劣化と言うのは無理がある」
+- 「アングルもポーズも違う。髭で劣化を語るのはさすがにこじつけだ」
+- 「いや、光の条件を差し引いても影や色は明らかに落ちて見える」
+
+---
+
+## 技術的に考えられる要因(推測)
+
+なぜ印象が変わって見えるのか、技術的な背景としていくつかの可能性が語られている。ただし、いずれも外部からの推測であり、特定の技術が削られたと確認できる材料はない点は強調しておきたい。
+
+![草木のセルフシャドウやグローバルイルミネーションの欠如を指摘するReddit上の議論](/images/news/graphicdowngrade/reddit.png)
+
+挙げられるのは、照明やグローバルイルミネーションの条件の違い、ブルームや被写界深度、色調補正といったポストプロセスの差、遠景や背景の描き込み(LOD)の設定の違い、そして静止画では柔らかく見えやすいテンポラルアップスケーリングの影響などだ。コンソールで安定したフレームレートを保つために描画の一部を最適化した可能性も指摘されるが、これも確認はできていない。要するに、見え方を左右する変数が多すぎて、スクリーンショット一枚から「劣化」と断定するのは難しい。
+
+---
+
+## 過去のGTAではどうだったか
+
+この「トレーラー対実機」論争は、GTAシリーズではおなじみの光景でもある。
+
+GTA5(2011〜2013年)でも、早期のトレーラーが映画的だったことから、発売後に「トレーラーほど綺麗ではない」「照明が違う」という不満が出た。だが最終的には「ゲーム自体は十分に綺麗だ」という評価に落ち着き、Rockstarのトレーラーは最良の条件で見せる特別な映像だ、という理解が広まった。
+
+一方で、「本物のダウングレード」が起きた例も実際にある。2015年3月、GTA5のタイトルアップデート1.08(オンラインに強盗を追加した更新)が配信されると、PS4・Xbox One版で視差遮蔽マッピング(POM)が失われ、異方性フィルタリングの低下、車のダメージ表現の簡略化、ポップインの増加といった劣化が起きた。これはDigital Foundryなどがゲームプレイ映像で詳細に検証し、Rockstarも不具合を認めて調査を表明し、続くアップデート(1.09、1.10)で順次修正された。これは発売後の実機で測定できた確定事例であり、今回のような「発売前のスクリーンショット比較」とは性質が異なる。
+
+つまり過去を振り返ると、発売前の比較論争はおおむね杞憂に終わってきた一方、実際の劣化は発売後に実機で初めて確認され、しかも修正されてきた、という二つのパターンがあったことになる。
+
+---
+
+## まとめ:信頼度の整理
+
+確定している事実:
+
+- 6月24日に新スクリーンショットが公開され、トレーラー2との比較論争が起きていること。
+- 過去にGTA5で、アップデート1.08による実際のグラフィック低下が起き、Rockstarがそれを認めて修正した事例があること。
+
+主観・未確定:
+
+- 今回のスクリーンショットが「劣化」かどうか。現状は、照明・時間帯・アングルの違いで説明できるという見方が強い。
+
+推測:
+
+- グローバルイルミネーション、LOD、アップスケーリングなどの技術的要因。いずれも断定できる材料はない。
+
+![最終的なグラフィックの評価ができるのは、実際にゲームが動く11月19日の発売以降になる](/images/news/graphicdowngrade/Jason_Duval_02.jpg)
+
+注意点として、GTA6は本記事執筆時点で未発売であり、グラフィックの最終的な品質は実際にゲームが動くところを見るまで判断できない。スクリーンショット一枚を切り取って「ダウングレード確定」と断じる情報や、再生数を狙って劣化を煽る動画には注意したい。最終的な評価ができるのは、11月19日の発売以降になる。`,
+    titleEn:
+      "The “Graphics Downgrade” Debate Reignites for GTA6 — Is the Comparison of Jason's House Really a Downgrade?",
+    descriptionEn:
+      "New screenshots released alongside the June 24 price announcement were compared against Trailer 2, and cries of “the image quality dropped” spread on social media. At the center is the comparison of Jason's safehouse. We separate what's fact from what's subjective impression and speculation.",
+    aiSummaryEn: [
+      "On June 24, many new screenshots were released, and compared against Trailer 2, voices saying “hasn't it been downgraded?” spread on social media. The center is the comparison around Jason's safehouse, pointing to differences in foliage, fences, color tone, and shadows.",
+      "At the same time, rebuttals that “it's too early to call it a downgrade” are just as numerous. The biggest reason is the difference in shooting conditions (time of day, weather, angle, pose); the strong view is that a gap is only natural when you place a staged trailer directly next to an ordinary in-game image.",
+      "GTA6 is unreleased, and the only confirmed facts are that “a comparison debate is happening” and that “there was a real downgrade from update 1.08 in GTA5 in the past, which was fixed.” Whether this case is a downgrade can't be judged until the released game is seen running.",
+    ],
+    fullContentEn: `# The “Graphics Downgrade” Debate Reignites for GTA6 — Is the Comparison of Jason's House Really a Downgrade?
+
+On June 24, when a large batch of new screenshots was released alongside the price announcement, voices saying “hasn't the image quality dropped?” spread rapidly on social media as people compared them with last year's Trailer 2. At the center is the comparison around Jason's safehouse.
+
+That said, what can be stated at this point only goes as far as “a comparison debate is happening”; whether it has actually been downgraded cannot yet be judged, as the game is unreleased. GTA6 FEED has organized this by separating what is fact, what is subjective impression, and what is speculation.
+
+This article is based on information as of June 27, 2026.
+
+---
+
+## What Is Happening (That a Debate Is Occurring Is Itself a Fact)
+
+On June 24, alongside the start of pre-orders and the price announcement, Rockstar released many new screenshots, including for the Ultimate Edition. Fans began lining these up against the same location from Trailer 2, released over a year earlier (Jason's seaside safehouse), and comparing them. Kotaku picked it up first, after which TheGamer and outlets in various countries followed, and comparison images are spreading mainly across Reddit, X, and GTA forums.
+
+![A comparison image that spread widely on social media, placing Trailer 2 from 2025 (top) next to a new screenshot from June 2026 (bottom)](/images/news/graphicdowngrade/GOLDEN.png)
+
+---
+
+## The Points Being Raised (Subjective Comparisons)
+
+What the side suspecting a downgrade raises is broadly the following points.
+
+- Around Jason's house, the density and detail of grass and trees appear reduced. The fence in front of the house has changed from chain-link to wood, puddles have decreased, and the overall color tone looks as though a yellow filter has been applied.
+- Shadow rendering has become simpler, and the occlusion shadows under car bodies look coarse.
+- The texture of Jason's hair and beard, and the reflections on buildings and water surfaces, look diminished compared to the trailer.
+
+![A close-up comparison of Jason's face. There are also claims that the texture of his hair and beard may have dropped](/images/news/graphicdowngrade/Jason.png)
+
+Alongside these comparison images, voices such as “it's clearly degraded” and “is Rockstar doing this again?” are spreading on social media.
+
+![A comparison around Jason's house. Differences in the fence, foliage, and color tone are being pointed out (left: trailer / right: new screenshot)](/images/news/graphicdowngrade/grass.png)
+
+---
+
+## Defenses and Counterarguments (These Are Many Too)
+
+On the other hand, voices saying it's too early to declare this a “downgrade” are just as numerous.
+
+The most common point is the difference in shooting conditions. Between the relevant scene in the trailer and the new screenshots, the time of day, weather, camera angle, and character poses differ. A trailer is footage crafted to show the work at its best, and dramatic conditions—such as the soft light of evening—are readily chosen. The new screenshots, by contrast, are ordinary in-game images shot at a different time of day or angle. The view is that when you place staged footage directly next to an ordinary single shot, a gap appearing is, if anything, only to be expected.
+
+![One of the new screenshots released on June 24. An ordinary in-game image differs in its very shooting conditions from trailer footage crafted under the best conditions](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.jpg)
+
+There's also the point that adding and subtracting details over years of development is perfectly normal. The Kotaku writer states that some of the new screenshots look better than the first trailer, concluding that no large-scale downgrade has occurred. Regarding the changes to the fence and vegetation as well, some cite reasons other than a downgrade, such as mechanics that reflect the seasons, Leonida's dry season, and changes to the base as the story progresses.
+
+Furthermore, it's pointed out that the debate itself is amplified by the mechanics of social media, where more negative comparison posts tend to gather more engagement. The fact that some YouTubers have put out videos asserting categorically that “the official side downgraded it” is also spreading the kindling.
+
+The community's voices are split too.
+
+- “The lighting is just different. Lining up daytime and evening and calling it a downgrade is a stretch.”
+- “The angle and pose are different too. Talking about a downgrade based on the beard is really far-fetched.”
+- “No, even setting aside the lighting conditions, the shadows and colors clearly look worse.”
+
+---
+
+## Technically Conceivable Factors (Speculation)
+
+As to why the impression looks changed, several possibilities are discussed as technical background. However, we want to emphasize that all of these are speculation from outside, and there is no material confirming that any specific technology has been cut.
+
+![A discussion on Reddit pointing to the lack of self-shadowing on foliage and degraded global illumination](/images/news/graphicdowngrade/reddit.png)
+
+What gets cited includes differences in lighting and global illumination conditions; differences in post-processing such as bloom, depth of field, and color grading; differences in the settings for distant and background detail (LOD); and the influence of temporal upscaling, which tends to look soft in still images. The possibility that part of the rendering was optimized to maintain a stable frame rate on consoles is also raised, but this too cannot be confirmed. In short, there are too many variables that sway how things look to declare a “downgrade” from a single screenshot.
+
+---
+
+## How Was It in Past GTA Games
+
+This “trailer vs. actual hardware” debate is also a familiar sight in the GTA series.
+
+With GTA5 (2011–2013) too, because the early trailers were cinematic, complaints arose after release that “it's not as pretty as the trailer” and “the lighting is different.” But in the end the evaluation settled on “the game itself is plenty pretty,” and the understanding spread that Rockstar's trailers are special footage shown under the best conditions.
+
+On the other hand, there are actual examples where a “real downgrade” occurred. In March 2015, when GTA5's title update 1.08 (the update that added heists to online) was distributed, on the PS4 and Xbox One versions parallax occlusion mapping (POM) was lost, and degradations occurred such as reduced anisotropic filtering, simplified car damage rendering, and increased pop-in. Digital Foundry and others verified this in detail with gameplay footage, Rockstar also acknowledged the issue and stated it would investigate, and it was progressively fixed in the following updates (1.09, 1.10). This is a confirmed case that could be measured on actual hardware after release, and it is different in nature from a “pre-release screenshot comparison” like this time.
+
+In other words, looking back at the past, there have been two patterns: pre-release comparison debates have largely ended up being needless worry, while actual downgrades were first confirmed on real hardware after release—and were, moreover, fixed.
+
+---
+
+## Summary: Sorting Out the Confidence Levels
+
+Confirmed facts:
+
+- That new screenshots were released on June 24, and a comparison debate with Trailer 2 is occurring.
+- That in the past with GTA5, an actual graphics drop occurred due to update 1.08, and Rockstar acknowledged and fixed it.
+
+Subjective / unconfirmed:
+
+- Whether this time's screenshots are a “downgrade.” At present, the strong view is that it can be explained by differences in lighting, time of day, and angle.
+
+Speculation:
+
+- Technical factors such as global illumination, LOD, and upscaling. There is no material to declare any of them definitively.
+
+![A final verdict on the graphics will only be possible after the November 19 release, once the game is actually running](/images/news/graphicdowngrade/Jason_Duval_02.jpg)
+
+As a caveat, GTA6 is unreleased at the time of writing, and the final quality of the graphics cannot be judged until you see the game actually running. We should be wary of information that cuts out a single screenshot and declares a “confirmed downgrade,” and of videos that fan the flames of a downgrade to chase view counts. A final evaluation will only be possible after the November 19 release.`,
+  },
+  {
     id: 25,
     title:
       "GTA6の物理版にディスクが入っていない——12月に“本物のディスク版”が出るという情報は本当か",
