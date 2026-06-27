@@ -28,6 +28,7 @@ const STATIC_ROUTES = [
   { path: '/fivem-gtarp/what-is-gtarp', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/fivem-vs-gtarp', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/server-guide', priority: '0.7', changefreq: 'monthly' },
+  { path: '/fivem-gtarp/server-setup', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/how-to-install', priority: '0.7', changefreq: 'monthly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },

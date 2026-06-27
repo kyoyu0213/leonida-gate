@@ -165,6 +165,7 @@ const JA: Dict = {
   'fg.group.play': '自分で遊ぶ・困ったとき',
   'fg.group.watch': '配信で楽しむ（観る人向け）',
   'fg.group.more': '用語・歴史・交流',
+  'fg.group.dev': '開発者向け',
   'fg.seo.title': 'FiveM/GTARP｜GTA6時代のロールプレイ文化・掲示板まとめ',
   'fg.seo.desc':
     'FiveMとは何か、GTARPとは何か、GTA6時代のロールプレイ文化や掲示板情報を初心者向けにまとめています。',
@@ -200,6 +201,8 @@ const JA: Dict = {
   'fg.card.guide.desc': '初心者がFiveMサーバーを選ぶときのチェックポイントを解説。失敗しない選び方ガイド。',
   'fg.card.board.title': 'GTARP掲示板',
   'fg.card.board.desc': '鯖選び、募集、雑談、RP文化について語れるGTARP専用掲示板。',
+  'fg.card.serverSetup.title': 'FiveMサーバーの立て方',
+  'fg.card.serverSetup.desc': '完全初心者向けに、txAdminを使ってローカルテストサーバーを起動するまでを8ステップで解説。',
   // 記事の「3行まとめ」UI（ニュース記事・解説記事 共通）
   'sum.button': 'AIによる3行まとめ',
   'sum.open': '3行まとめを開く',
@@ -441,6 +444,7 @@ const EN: Dict = {
   'fg.group.play': 'Play It Yourself & Help',
   'fg.group.watch': 'Enjoy via Streams (For Viewers)',
   'fg.group.more': 'Glossary, History & Community',
+  'fg.group.dev': 'For Developers',
   'fg.seo.title': 'FiveM/GTARP | RP culture and boards for the GTA6 era',
   'fg.seo.desc':
     'A beginner-friendly overview of what FiveM is, what GTARP is, and the roleplay culture and boards for the GTA6 era.',
@@ -476,6 +480,8 @@ const EN: Dict = {
   'fg.card.guide.desc': 'Checkpoints for beginners choosing a FiveM server — a guide to picking one without regrets.',
   'fg.card.board.title': 'GTARP Board',
   'fg.card.board.desc': 'A GTARP-only board for choosing servers, recruiting, chatting, and discussing RP culture.',
+  'fg.card.serverSetup.title': 'How to Set Up a FiveM Server',
+  'fg.card.serverSetup.desc': 'A beginner-friendly, 8-step guide to launching a local test server using txAdmin.',
   // 3-line summary UI (shared by news & explainer articles)
   'sum.button': 'AI 3-line summary',
   'sum.open': 'Open summary',
