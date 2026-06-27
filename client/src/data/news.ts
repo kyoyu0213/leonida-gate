@@ -97,6 +97,169 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 25,
+    title:
+      "GTA6の物理版にディスクが入っていない——12月に“本物のディスク版”が出るという情報は本当か",
+    description:
+      "GTA6の物理版は発売時、箱の中身がダウンロードコードのみの「コード・イン・ボックス」。さらに「12月に本物のディスク版が出る」というインサイダー情報も広がる。確定情報とリークを切り分けて整理する。",
+    icon: "💿",
+    image: "/images/news/Jason_Lucia_03_With_Logos_landscape.jpg",
+    category: "speculation",
+    date: "2026-06-27",
+    publishedAt: "2026-06-27 17:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [24, 23, 22],
+    aiSummary: [
+      "発売時（11月19日）の物理版はディスク非同梱の「コード・イン・ボックス」形式だとRockstarが正式に確認。理由はリーク対策とプレロード対応で、一部小売は取り扱いを見送り、コミュニティの不満も大きい。",
+      "「12月に本物のディスク版が出る」という情報はポーランドのPPE.plがインサイダーGraczdari発として報道。発売時ディスクなしを最初に当てた実績はあるが、単独・匿名でRockstar未確認の噂にとどまる。",
+      "ディスク版とオンライン開始を結びつける情報は現時点でなし。GTA6は未発売で、確定しているのは「発売時はコードのみ」という点だけ。続報は公式発表での確認が望ましい。",
+    ],
+    fullContent: `# GTA6の物理版にディスクが入っていない——12月に“本物のディスク版”が出るという情報は本当か
+
+「パッケージを買ったのに、箱の中身はダウンロードコードだけ」。GTA6の物理版をめぐって、この仕様への不満がコミュニティで噴き出している。一方で、「発売の少しあと、12月に本物のディスク入り版が出る」という情報も広がり始めた。発信元は、発売時のディスクなしをいち早く当てたインサイダーだ。
+
+ただし、確定しているのは「発売時はコードのみ」というところまでで、12月のディスク版はあくまで未確認の情報にとどまる。GTA6 FEEDが、確定情報とリークを切り分けて整理した。
+
+本記事は2026年6月27日時点の情報にもとづく。
+
+---
+
+## 確定:発売時の物理版は「箱の中にコードだけ」
+
+2026年11月19日の発売にあわせて並ぶ物理版は、ディスクを同梱しない「コード・イン・ボックス」形式であることが、Rockstarから正式に確認されている。店頭に並ぶのは通常のパッケージだが、中に入っているのはダウンロードコードであり、ゲーム本体は結局ダウンロードして遊ぶことになる。
+
+この形式を採る理由として挙げられているのが、発売前の大規模リーク対策だ。物理ディスクは製造・輸送・店頭の各段階で発売前に出回りやすく、過去には発売前に内容が流出・配信される事例が繰り返されてきた。ディスクを最初から作らなければ、その窓口をふさげる。あわせて、11月12日からのプレロードを成立させる狙いもあるとされる。
+
+これに対し、コミュニティの反応は厳しい。「物理版なのにディスクがないなら、ただの箱だ」「所有している感覚がない」「貸し借りも中古売却もできない」といった声が並ぶ。実際に一部の小売店は、ディスクのないパッケージの取り扱いを見送る姿勢を示している。
+
+![GTA6アルティメットエディションの特典イメージ。豪華版を選んでも、物理パッケージの中身はディスクではなくダウンロードコードになる](/images/news/ULTIMATE_EDITION_GOODTIME_GEAR_01.jpg)
+
+---
+
+## リーク:12月に“本物のディスク版”が出る?(未確認)
+
+ここからは未確認の情報だ。ポーランドのゲームメディアPPE.plが、インサイダーのGraczdariの話として、GTA6の本物のディスク入り物理版が2026年12月にPS5・Xbox Series X向けで発売される、と報じている。
+
+主張の中身はこうだ。発売時のコード・イン・ボックス版は初回生産分だけの“一発限り”で、それが売り切れると、入れ替わるようにディスク入りの通常版が登場する。タイミングはホリデー商戦の前で、ディスク版であればアカウントへのコード紐付けなしでインストールできる、とされる。実際、コード版はすでに売り切れ始めているとも伝えられており、もしこの話のとおりなら、いったん店頭から姿を消したあとにディスク版が出てくる流れになる。
+
+この情報がある程度の重みをもって受け止められているのは、発信元の実績による。Graczdariは2026年3月頃、「GTA6は発売時にディスクが付かない」と最初に報じた人物だ。当時はTake-Twoが後発の物理版について否定し、信じる人は少なかったが、その後コード・イン・ボックス形式が公式に確認され、結果的に予測が当たった形になった。ヨーロッパの物理ゲーム流通に携わる立場とされ、過去にも複数のタイトルの物理版発売時期を的中させているという。
+
+ただし、留保も多い。これは単独・匿名の情報源によるもので、文面はポーランド語からの機械翻訳を経ている。Rockstarはこの12月のディスク版について何も認めておらず、そもそもTake-Twoは以前、発売後の物理版の計画自体を否定していた。加えて、Rockstarのサポートが問い合わせに対し「物理版は後日入手可能」と返信した例も伝えられているが、これはサポート側が質問を取り違えた可能性も指摘されており、公式なロードマップの表明とは言いがたい。VGCやGematsu、Vice、Kotaku、RockstarINTELなど複数のメディアが取り上げて広がってはいるものの、現時点では「実績のあるインサイダー発の、信ぴょう性のある噂」という位置づけが妥当だ。
+
+![アルティメットエディションに含まれる特典車両。「コードだけの箱」に納得がいかず、ディスク版を待つという声も根強い](/images/news/ULTIMATE_EDITION_GROTTI_CHEETAH_02.jpg)
+
+コミュニティの受け止めも分かれている。
+
+- 「13年待ったんだから、ディスク版をあと1カ月待つくらい平気だ」
+- 「コードだけの箱は買わない。ディスク版が出るまで待つ」
+- 「結局、デジタルで一度、ディスクでもう一度買わせる二重取りでは」
+
+---
+
+## オンラインとの関係(現時点ではつながらない)
+
+「ディスク版が出る12月に、オンライン(GTA Online相当)も始まるのではないか」とも考えられるため、その線も調べた。結論として、両者を結びつけるリークや公式のヒントは現時点で見当たらない。
+
+GTA6は発売時点ではシングルプレイヤー体験のみで、オンラインは含まれない。その追加時期について、Rockstarは一切発表しておらず、インサイダーやアナリストの間でも数カ月後から2027年以降までと見方が割れている。今回のPPE.plの情報はあくまで物理ディスクの流通に関するもので、オンラインの開始時期とは別の話として扱われている。ゲーム内ファイルから将来のオンライン要素を示唆する痕跡が見つかったという報告はあるが、こちらも時期は不明だ。
+
+---
+
+## まとめ:信頼度の整理
+
+確定している事実(公式):
+
+- 発売時(11月19日)の物理版はディスクなしのコード・イン・ボックス形式。理由はリーク対策とプレロード対応。
+- この仕様にファンの不満が集まり、一部小売は取り扱いを見送っている。
+
+未確認のリーク(PPE.pl・Graczdari、Rockstar未確認):
+
+- 12月にディスク入りの物理版が出る。コード版は初回分のみで、売り切れ後にディスク版へ移行。ディスク版はアカウント紐付けなしでインストール可能。
+
+推測・注意:
+
+- 「物理版は後日入手可能」というサポート返信は、内容が曖昧で公式の確約ではない。
+- ディスク版とオンライン開始を結びつける情報は現時点でなく、オンラインの時期は依然として不明。
+
+注意点として、GTA6は本記事執筆時点で未発売である。12月のディスク版は実績のあるインサイダー発の情報ではあるが、Rockstarの公式発表ではない。未確認の情報を確定したかのように扱わず、続報は公式発表で確認するのが望ましい。ディスク版を待つかどうかを今すぐ判断する必要がある場面では、現時点で確定しているのは「発売時はコードのみ」という点だけだという前提で考えるのが安全だ。`,
+    titleEn:
+      "GTA6's Physical Edition Has No Disc Inside — Is the Talk of a “Real Disc Version” in December True?",
+    descriptionEn:
+      "At launch, GTA6's physical edition is a “code-in-box” with nothing but a download code inside. On top of that, insider talk that “a real disc version will arrive in December” is spreading. We separate the confirmed facts from the leaks.",
+    aiSummaryEn: [
+      "Rockstar has officially confirmed that the physical edition at launch (November 19) is a disc-less “code-in-box” format. The reasons are leak countermeasures and preload support; some retailers are declining to carry it, and community dissatisfaction is high.",
+      "The claim that “a real disc version will arrive in December” was reported by Poland's PPE.pl, citing the insider Graczdari. The source has a track record—being first to correctly call the no-disc launch—but it remains a single, anonymous rumor unconfirmed by Rockstar.",
+      "There is currently no information connecting the disc version to the start of online. GTA6 is unreleased, and the only confirmed fact is that “at launch it's code-only.” Verifying follow-up news through official announcements is advisable.",
+    ],
+    fullContentEn: `# GTA6's Physical Edition Has No Disc Inside — Is the Talk of a “Real Disc Version” in December True?
+
+“I bought the package, but all that's in the box is a download code.” Frustration over this specification has erupted in the community surrounding GTA6's physical edition. At the same time, talk that “a little after launch, in December, a real version with a disc inside will be released” has begun to spread. The source is an insider who was early to correctly call the no-disc situation at launch.
+
+That said, what is confirmed only goes as far as “at launch it's code-only”; the December disc version remains nothing more than unverified information. GTA6 FEED has organized this by separating the confirmed facts from the leaks.
+
+This article is based on information as of June 27, 2026.
+
+---
+
+## Confirmed: The Physical Edition at Launch Is “Just a Code in the Box”
+
+It has been officially confirmed by Rockstar that the physical edition lining up for the November 19, 2026 launch will be a “code-in-box” format that does not include a disc. What sits on store shelves is an ordinary package, but what's inside is a download code, and you end up downloading the game itself to play after all.
+
+The reason cited for adopting this format is countermeasures against large-scale leaks before release. Physical discs are prone to circulating before release at each stage of manufacturing, shipping, and retail, and in the past there have been repeated cases of contents leaking or being streamed before launch. If no disc is made in the first place, that avenue can be shut off. It is also said to serve the aim of enabling the preload starting November 12.
+
+In response, the community's reaction is harsh. Voices line up such as “if it's a physical edition with no disc, it's just a box,” “there's no sense of ownership,” and “you can't lend, borrow, or resell it secondhand.” In fact, some retailers have indicated a stance of declining to handle the disc-less package.
+
+![A look at the GTA6 Ultimate Edition bonuses. Even if you pick the deluxe edition, what's inside the physical package is a download code, not a disc](/images/news/ULTIMATE_EDITION_GOODTIME_GEAR_01.jpg)
+
+---
+
+## Leak: A “Real Disc Version” in December? (Unverified)
+
+From here on is unverified information. The Polish gaming outlet PPE.pl, citing the insider Graczdari, reports that a real disc-included physical edition of GTA6 will be released in December 2026 for PS5 and Xbox Series X.
+
+The substance of the claim is as follows. The code-in-box version at launch is a “one-and-done” of only the initial production run, and once it sells out, an ordinary disc-included version appears in its place. The timing is before the holiday shopping season, and a disc version, it's said, can be installed without tying a code to an account. In fact, it's also reported that the code version has already begun selling out, and if this account is accurate, the flow would be that the disc version emerges after it has once disappeared from store shelves.
+
+The reason this information is being received with a certain weight is due to the track record of its source. Graczdari is the person who, around March 2026, first reported that “GTA6 will not come with a disc at launch.” At the time, Take-Two denied a later physical edition and few believed it, but the code-in-box format was subsequently officially confirmed, and the prediction ended up being correct. The source is said to be in a position involved in physical game distribution in Europe, and to have accurately called the physical-edition release timing of multiple titles in the past.
+
+However, there are also many reservations. This comes from a single, anonymous source, and the text has gone through machine translation from Polish. Rockstar has acknowledged nothing about this December disc version, and Take-Two had in the first place previously denied the very plan for a post-launch physical edition. In addition, there's a reported example of Rockstar support replying to an inquiry that “the physical edition will be available at a later date,” but it has also been pointed out that support may have misread the question, and it can hardly be called an official roadmap statement. Although multiple outlets such as VGC, Gematsu, Vice, Kotaku, and RockstarINTEL have picked it up and it has spread, at present the appropriate positioning is “a credible rumor originating from an insider with a track record.”
+
+![A bonus vehicle included in the Ultimate Edition. Unconvinced by a “box with only a code,” some are firmly choosing to wait for a disc version](/images/news/ULTIMATE_EDITION_GROTTI_CHEETAH_02.jpg)
+
+The community's reception is also divided.
+
+- “I waited 13 years, so waiting one more month for a disc version is no problem.”
+- “I won't buy a box with just a code. I'll wait until the disc version comes out.”
+- “In the end, isn't this double-dipping—making us buy once digitally and once again on disc?”
+
+---
+
+## The Relationship with Online (No Connection at This Point)
+
+Because one might think that “online (the GTA Online equivalent) may also start in December when the disc version comes out,” we looked into that line too. Our conclusion is that no leak or official hint connecting the two can be found at present.
+
+GTA6 will be a single-player experience only at launch, with online not included. Rockstar has announced nothing about when it will be added, and even among insiders and analysts, views are split, ranging from a few months later to 2027 or beyond. This PPE.pl information concerns only physical disc distribution and is treated as a separate matter from the timing of the online launch. There are reports that traces suggesting future online elements have been found in in-game files, but the timing for these is unknown as well.
+
+---
+
+## Summary: Sorting Out the Confidence Levels
+
+Confirmed facts (official):
+
+- The physical edition at launch (November 19) is a disc-less code-in-box format. The reasons are leak countermeasures and preload support.
+- Fan dissatisfaction has gathered over this specification, and some retailers are declining to carry it.
+
+Unverified leak (PPE.pl / Graczdari, unconfirmed by Rockstar):
+
+- A disc-included physical edition will come out in December. The code version is only the initial run, transitioning to the disc version after it sells out. The disc version can be installed without account linking.
+
+Speculation / caveats:
+
+- The “physical edition available at a later date” support reply is vague in content and not an official commitment.
+- There is no information at present connecting the disc version to the start of online, and the timing of online remains unknown.
+
+As a note of caution, GTA6 is unreleased as of the time of writing. The December disc version is information originating from an insider with a track record, but it is not an official Rockstar announcement. It is advisable not to treat unverified information as if it were confirmed, and to verify follow-up news through official announcements. In situations where you must decide right now whether to wait for the disc version, it is safest to think on the premise that the only thing confirmed at present is the single point that “at launch it's code-only.”`,
+  },
+  {
     id: 24,
     title: "予約だけで10億ドル、発売60日で8,500万本、GTA6は本当に「史上最大の発売」になるのか",
     description:
