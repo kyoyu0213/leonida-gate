@@ -64,6 +64,7 @@ const GROUPS: CardGroup[] = [
     accent: '#60a5fa',
     cards: [
       { titleKey: 'fg.card.serverSetup.title', descKey: 'fg.card.serverSetup.desc', href: '/fivem-gtarp/server-setup', icon: Wrench, accent: '#60a5fa' },
+      { titleKey: 'fg.card.serverPromo.title', descKey: 'fg.card.serverPromo.desc', href: '/servers', icon: Megaphone, accent: '#38bdf8' },
     ],
   },
 ];
