@@ -106,7 +106,7 @@ export const newsArticles: NewsArticle[] = [
     image: "/images/news/Jason_Lucia_03_With_Logos_landscape.jpg",
     category: "speculation",
     date: "2026-06-27",
-    publishedAt: "2026-06-27 17:00",
+    publishedAt: "2026-06-27 14:45",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
     relatedArticles: [24, 23, 22],
