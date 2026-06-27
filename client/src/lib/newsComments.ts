@@ -10,7 +10,7 @@ export interface NewsComment {
   name: string;
   body: string;
   created_at: string;
-  // 返信機能（news_comments_votes_replies.sql 適用後）。未適用時は undefined。
+  // 返信機能（news_comments_votes_replies.sql 適用後）。返信先のレスID（多階層ツリー）。未適用時は undefined。
   parent_id?: string | null;
   good?: number;
   bad?: number;
@@ -43,7 +43,7 @@ export async function listNewsComments(articleId: string) {
     .order('created_at', { ascending: true });
 }
 
-/** コメントを投稿する。parentId を渡すと返信になる（1階層）。 */
+/** コメントを投稿する。parentId を渡すと返信になる（返信への返信も可＝多階層ツリー。news_comments_reply_tree.sql 適用後）。 */
 export async function createNewsComment(
   articleId: string,
   name: string,

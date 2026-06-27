@@ -17,6 +17,8 @@ import { formatPostDate } from '@/lib/board';
 import { useT } from '@/lib/i18n';
 
 const COOLDOWN_KEY = 'news_comment_last';
+// ツリーの見た目上のインデント段数の上限（論理的な深さは無制限）。
+const MAX_VISUAL_DEPTH = 8;
 
 interface Props {
   articleId: string;
@@ -34,6 +36,8 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
   const [myVotes, setMyVotes] = useState<Record<string, NewsCommentVoteKind>>({});
   // 返信中のコメントID（nullなら返信フォーム非表示）
   const [replyTo, setReplyTo] = useState<string | null>(null);
+  // >>N でジャンプしたときに一瞬ハイライトするレス番号
+  const [highlight, setHighlight] = useState<number | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -52,18 +56,30 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [articleId]);
 
-  // トップレベルと返信に分け、親IDごとに返信をまとめる。
-  const { topLevel, repliesByParent } = useMemo(() => {
-    const top: NewsComment[] = [];
+  // 掲示板風のツリー構造を組み立てる。
+  //  - numberById: 投稿時刻順の連番（レス番号）。返信も本体も区別なく通し番号。
+  //  - childrenByParent: 親IDごとの返信（投稿時刻順）。
+  //  - roots: トップレベル（または親が非表示で見つからない）コメント。
+  const { roots, childrenByParent, numberById } = useMemo(() => {
+    const ordered = [...comments].sort((a, b) => {
+      const d = a.created_at.localeCompare(b.created_at);
+      return d !== 0 ? d : a.id.localeCompare(b.id);
+    });
+    const numById: Record<string, number> = {};
+    ordered.forEach((c, i) => {
+      numById[c.id] = i + 1;
+    });
+    const ids = new Set(ordered.map((c) => c.id));
     const byParent: Record<string, NewsComment[]> = {};
-    for (const c of comments) {
-      if (c.parent_id) {
+    const top: NewsComment[] = [];
+    for (const c of ordered) {
+      if (c.parent_id && ids.has(c.parent_id)) {
         (byParent[c.parent_id] ??= []).push(c);
       } else {
         top.push(c);
       }
     }
-    return { topLevel: top, repliesByParent: byParent };
+    return { roots: top, childrenByParent: byParent, numberById: numById };
   }, [comments]);
 
   const postComment = async (text: string, parentId: string | null): Promise<boolean> => {
@@ -109,56 +125,85 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
     setMyVotes(loadMyCommentVotes());
   };
 
+  // >>N をクリックしたとき、その番号のレスへスクロールして一瞬光らせる。
+  const jumpTo = (num: number) => {
+    const el = document.getElementById(`news-cmt-${num}`);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setHighlight(num);
+    window.setTimeout(() => setHighlight((cur) => (cur === num ? null : cur)), 1400);
+  };
+
   const inputClass =
     'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-cyan-500/60 transition-colors font-sans';
 
-  // 1コメント分の表示（本文＋グッド/バッド＋返信ボタン）。
-  const renderComment = (c: NewsComment, isReply: boolean) => {
+  // 1レス分の行（レス番号＋本文＋グッド/バッド＋返信）。ツリーは子を再帰描画。
+  const renderNode = (c: NewsComment, depth: number): React.ReactElement => {
     const my = myVotes[c.id];
-    return (
-      <div
-        key={c.id}
-        className={`rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 ${
-          isReply ? 'mt-2 ml-5 sm:ml-8 border-l-2 border-l-cyan-500/30' : ''
-        }`}
-      >
-        <div className="flex items-center gap-2.5 mb-1.5">
-          {isReply && <CornerDownRight size={13} className="text-cyan-400/70 flex-none" />}
-          <span className="text-sm font-bold text-white">{c.name}</span>
-          <span className="text-[11.5px] text-white/40 font-mono">{formatPostDate(c.created_at)}</span>
-        </div>
-        <p className="text-sm leading-[1.8] text-white/80 m-0 whitespace-pre-wrap break-words">
-          {c.body}
-        </p>
+    const num = numberById[c.id];
+    const parentNum = c.parent_id ? numberById[c.parent_id] : undefined;
+    const children = childrenByParent[c.id] ?? [];
+    const isHighlighted = highlight === num;
 
-        {/* アクション行：グッド / バッド / 返信 */}
-        <div className="flex items-center gap-2 mt-2.5">
-          <button
-            type="button"
-            onClick={() => handleVote(c.id, 'good')}
-            aria-label={t('cmt.good')}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono border transition-colors ${
-              my === 'good'
-                ? 'border-emerald-400/60 bg-emerald-400/15 text-emerald-300'
-                : 'border-white/12 text-white/55 hover:border-emerald-400/40 hover:text-emerald-300'
-            }`}
-          >
-            <ThumbsUp size={13} /> {c.good ?? 0}
-          </button>
-          <button
-            type="button"
-            onClick={() => handleVote(c.id, 'bad')}
-            aria-label={t('cmt.bad')}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono border transition-colors ${
-              my === 'bad'
-                ? 'border-rose-400/60 bg-rose-400/15 text-rose-300'
-                : 'border-white/12 text-white/55 hover:border-rose-400/40 hover:text-rose-300'
-            }`}
-          >
-            <ThumbsDown size={13} /> {c.bad ?? 0}
-          </button>
-          {/* 返信は親コメントにのみ表示（1階層） */}
-          {!isReply && (
+    return (
+      <div key={c.id}>
+        <div
+          id={`news-cmt-${num}`}
+          className={`px-4 py-3.5 scroll-mt-24 transition-colors ${
+            depth > 0 ? 'border-t border-white/[0.06]' : ''
+          } ${isHighlighted ? 'bg-cyan-400/10' : ''}`}
+        >
+          <div className="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
+            {/* レス番号（掲示板風） */}
+            <span className="font-mono text-[12px] font-bold text-cyan-300/90 tabular-nums">
+              {num}
+            </span>
+            <span className="text-sm font-bold text-white">{c.name}</span>
+            <span className="text-[11.5px] text-white/40 font-mono">
+              {formatPostDate(c.created_at)}
+            </span>
+            {/* 返信先への参照（>>N をクリックでジャンプ） */}
+            {parentNum != null && (
+              <button
+                type="button"
+                onClick={() => jumpTo(parentNum)}
+                className="font-mono text-[11.5px] text-cyan-400/80 hover:text-cyan-300 hover:underline"
+              >
+                &gt;&gt;{parentNum}
+              </button>
+            )}
+          </div>
+          <p className="text-sm leading-[1.8] text-white/80 m-0 whitespace-pre-wrap break-words">
+            {c.body}
+          </p>
+
+          {/* アクション行：グッド / バッド / 返信 */}
+          <div className="flex items-center gap-2 mt-2.5">
+            <button
+              type="button"
+              onClick={() => handleVote(c.id, 'good')}
+              aria-label={t('cmt.good')}
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono border transition-colors ${
+                my === 'good'
+                  ? 'border-emerald-400/60 bg-emerald-400/15 text-emerald-300'
+                  : 'border-white/12 text-white/55 hover:border-emerald-400/40 hover:text-emerald-300'
+              }`}
+            >
+              <ThumbsUp size={13} /> {c.good ?? 0}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleVote(c.id, 'bad')}
+              aria-label={t('cmt.bad')}
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono border transition-colors ${
+                my === 'bad'
+                  ? 'border-rose-400/60 bg-rose-400/15 text-rose-300'
+                  : 'border-white/12 text-white/55 hover:border-rose-400/40 hover:text-rose-300'
+              }`}
+            >
+              <ThumbsDown size={13} /> {c.bad ?? 0}
+            </button>
+            {/* 返信はすべてのレスに付く（返信への返信＝レスバ可） */}
             <button
               type="button"
               onClick={() => setReplyTo((cur) => (cur === c.id ? null : c.id))}
@@ -166,22 +211,34 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
             >
               <CornerDownRight size={13} /> {t('cmt.reply')}
             </button>
+          </div>
+
+          {/* 返信フォーム（このレスに返信中のときだけ） */}
+          {replyTo === c.id && (
+            <ReplyForm
+              inputClass={inputClass}
+              replyToNum={num}
+              name={name}
+              onNameChange={setName}
+              onCancel={() => setReplyTo(null)}
+              onSubmit={async (text) => {
+                const ok = await postComment(text, c.id);
+                if (ok) setReplyTo(null);
+                return ok;
+              }}
+            />
           )}
         </div>
 
-        {/* 返信フォーム（このコメントに返信中のときだけ） */}
-        {!isReply && replyTo === c.id && (
-          <ReplyForm
-            inputClass={inputClass}
-            name={name}
-            onNameChange={setName}
-            onCancel={() => setReplyTo(null)}
-            onSubmit={async (text) => {
-              const ok = await postComment(text, c.id);
-              if (ok) setReplyTo(null);
-              return ok;
-            }}
-          />
+        {/* 子レス（同じボックス内にインデント＋ガイド線でツリー表示） */}
+        {children.length > 0 && (
+          <div
+            className={
+              depth < MAX_VISUAL_DEPTH ? 'ml-3 sm:ml-5 border-l-2 border-cyan-500/15' : ''
+            }
+          >
+            {children.map((ch) => renderNode(ch, depth + 1))}
+          </div>
         )}
       </div>
     );
@@ -226,7 +283,7 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
         </div>
       </form>
 
-      {/* コメント一覧 */}
+      {/* コメント一覧（返信付きはひとつのボックスにツリーで収まる） */}
       {loading ? (
         <div className="text-center py-10 text-white/50">
           <Loader2 size={24} className="mx-auto mb-2 animate-spin" /> {t('cmt.loading')}
@@ -235,10 +292,12 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
         <div className="text-center py-10 text-white/45 font-mono text-sm">{t('cmt.empty')}</div>
       ) : (
         <div className="flex flex-col gap-3">
-          {topLevel.map((c) => (
-            <div key={c.id}>
-              {renderComment(c, false)}
-              {(repliesByParent[c.id] ?? []).map((r) => renderComment(r, true))}
+          {roots.map((c) => (
+            <div
+              key={c.id}
+              className="rounded-2xl border border-white/[0.1] bg-white/[0.03] overflow-hidden"
+            >
+              {renderNode(c, 0)}
             </div>
           ))}
         </div>
@@ -250,12 +309,14 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
 // 返信フォーム（本文は内部状態。名前は親フォームと共有）。
 function ReplyForm({
   inputClass,
+  replyToNum,
   name,
   onNameChange,
   onCancel,
   onSubmit,
 }: {
   inputClass: string;
+  replyToNum: number;
   name: string;
   onNameChange: (v: string) => void;
   onCancel: () => void;
@@ -278,7 +339,10 @@ function ReplyForm({
   };
 
   return (
-    <form onSubmit={submit} className="mt-3 ml-5 sm:ml-8 space-y-2">
+    <form onSubmit={submit} className="mt-3 space-y-2">
+      <div className="font-mono text-[11.5px] text-cyan-400/80">
+        &gt;&gt;{replyToNum} {t('cmt.reply')}
+      </div>
       <input
         value={name}
         onChange={(e) => onNameChange(e.target.value)}
