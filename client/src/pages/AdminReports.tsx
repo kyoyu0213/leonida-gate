@@ -47,7 +47,7 @@ import {
 } from '@/lib/admin';
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
-import { getBoard } from '@/lib/boards';
+import { getBoard, BOARDS } from '@/lib/boards';
 import { getArticleById } from '@/data/news';
 import { NewsEditor } from './AdminNews';
 
@@ -951,10 +951,12 @@ function PostsPanel() {
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
+  // 板で絞り込み（''＝すべての板）。全板を横断すると新着から溢れる板が出るため。
+  const [board, setBoard] = useState('');
 
   const load = async () => {
     setLoading(true);
-    const { data, error } = await listAdminPosts();
+    const { data, error } = await listAdminPosts(board || undefined);
     if (error) toast.error(error);
     setRows(data);
     setLoading(false);
@@ -963,7 +965,7 @@ function PostsPanel() {
   useEffect(() => {
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [board]);
 
   const act = async (id: string, fn: () => Promise<{ error?: string }>, okMsg: string) => {
     setBusyId(id);
@@ -977,20 +979,33 @@ function PostsPanel() {
     load();
   };
 
-  if (loading) {
-    return (
-      <div className="text-center py-16 text-white/50">
-        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
-      </div>
-    );
-  }
-  if (rows.length === 0) {
-    return <div className="text-center py-16 text-white/50">投稿がありません</div>;
-  }
+  const filterSel =
+    'bg-white/[0.05] border border-white/12 rounded-lg px-3 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
 
   return (
-    <div className="flex flex-col gap-3">
-      {rows.map((p) => {
+    <div className="flex flex-col gap-4">
+      {/* 板で絞り込み（すべての板＝新着横断／個別＝その板の新着のみ） */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-[12px] text-white/50">板で絞り込み</span>
+        <select value={board} onChange={(e) => setBoard(e.target.value)} className={filterSel}>
+          <option value="">すべての板</option>
+          {BOARDS.map((b) => (
+            <option key={b.slug} value={b.slug}>
+              {b.title.replace('掲示板', '')}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {loading ? (
+        <div className="text-center py-16 text-white/50">
+          <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+        </div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-16 text-white/50">投稿がありません</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {rows.map((p) => {
         const board = getBoard(p.board);
         const busy = busyId === p.id;
         return (
@@ -1049,7 +1064,9 @@ function PostsPanel() {
             {expanded === p.id && <PostMetaDetail postId={p.id} />}
           </div>
         );
-      })}
+          })}
+        </div>
+      )}
     </div>
   );
 }

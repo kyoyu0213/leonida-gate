@@ -180,8 +180,14 @@ export interface AdminPostRow {
   report_count: number;
 }
 
-export async function listAdminPosts(): Promise<{ data: AdminPostRow[]; error?: string }> {
-  const { data, error } = await supabase.rpc('admin_list_posts', { p_token: adminToken, p_limit: 100 });
+export async function listAdminPosts(
+  board?: string,
+): Promise<{ data: AdminPostRow[]; error?: string }> {
+  // p_board は板を選んだときだけ渡す。未選択（全板）のときは渡さないことで、
+  // board 対応SQL を適用する前でも従来の admin_list_posts(token, limit) で動く。
+  const params: Record<string, unknown> = { p_token: adminToken, p_limit: 200 };
+  if (board) params.p_board = board;
+  const { data, error } = await supabase.rpc('admin_list_posts', params);
   if (error) {
     handleAuthError(error.message);
     return { data: [], error: adminErrorMessage(error.message) };
