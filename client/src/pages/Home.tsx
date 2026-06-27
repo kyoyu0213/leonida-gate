@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
 import { CATEGORY_CONFIG, CATEGORIES, type NewsCategory } from '@/data/news';
-import { useMergedNews } from '@/hooks/useNews';
+import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
@@ -35,6 +35,7 @@ export default function Home() {
   }, []);
 
   const { articles: allNews } = useMergedNews();
+  const commentCounts = useNewsCommentCounts();
   const filteredNews = (
     selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
@@ -371,7 +372,7 @@ export default function Home() {
             <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(248px,1fr))' }}>
               {filteredNews.map((item, idx) => (
                 <div key={item.id} className={idx === 0 ? '' : 'hidden sm:block'}>
-                  <NewsCard article={item} index={idx} />
+                  <NewsCard article={item} index={idx} commentCount={commentCounts[String(item.id)] ?? 0} />
                 </div>
               ))}
             </div>

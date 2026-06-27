@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
 import { CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
-import { useMergedNews } from '@/hooks/useNews';
+import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { useT, useLang } from '@/lib/i18n';
 
 /**
@@ -13,6 +13,7 @@ export default function NewsList() {
   const lang = useLang();
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const { articles: allNews } = useMergedNews();
+  const commentCounts = useNewsCommentCounts();
 
   const filtered =
     selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat);
@@ -60,7 +61,12 @@ export default function NewsList() {
         {filtered.length > 0 ? (
           <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(248px,1fr))' }}>
             {filtered.map((item, idx) => (
-              <NewsCard key={item.id} article={item} index={idx} />
+              <NewsCard
+                key={item.id}
+                article={item}
+                index={idx}
+                commentCount={commentCounts[String(item.id)] ?? 0}
+              />
             ))}
           </div>
         ) : (

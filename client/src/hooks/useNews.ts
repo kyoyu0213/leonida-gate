@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { newsByDate, getArticleById, type NewsArticle } from '@/data/news';
 import { listDbArticles, getDbArticle, isDbArticleId } from '@/lib/newsDb';
+import { getNewsCommentCounts } from '@/lib/newsComments';
 
 // 静的記事（data/news.ts）と DB 記事（管理画面から投稿）をまとめて扱うためのフック群。
 
@@ -37,6 +38,26 @@ export function useMergedNews(): { articles: NewsArticle[]; loadingDb: boolean }
   );
 
   return { articles, loadingDb };
+}
+
+/**
+ * 全記事のコメント数を { [articleId]: 件数 } で返す（記事一覧カードのバッジ用）。
+ * 取得前・未投稿の記事は 0 件扱い（キー無し）。
+ */
+export function useNewsCommentCounts(): Record<string, number> {
+  const [counts, setCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    let alive = true;
+    getNewsCommentCounts().then((c) => {
+      if (alive) setCounts(c);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  return counts;
 }
 
 /**

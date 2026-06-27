@@ -43,6 +43,22 @@ export async function listNewsComments(articleId: string) {
     .order('created_at', { ascending: true });
 }
 
+/**
+ * 全記事のコメント数をまとめて取得する（記事一覧カードのバッジ用）。
+ * RLS により hidden=false のコメントだけが返るので、それを article_id ごとに集計する。
+ * 返り値は { [articleId]: 件数 }。失敗時は空オブジェクト。
+ */
+export async function getNewsCommentCounts(): Promise<Record<string, number>> {
+  const { data, error } = await supabase.from('news_comments').select('article_id');
+  if (error || !data) return {};
+  const counts: Record<string, number> = {};
+  for (const row of data as { article_id: string }[]) {
+    const id = String(row.article_id);
+    counts[id] = (counts[id] ?? 0) + 1;
+  }
+  return counts;
+}
+
 /** コメントを投稿する。parentId を渡すと返信になる（返信への返信も可＝多階層ツリー。news_comments_reply_tree.sql 適用後）。 */
 export async function createNewsComment(
   articleId: string,

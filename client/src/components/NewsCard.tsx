@@ -1,3 +1,4 @@
+import { MessageSquare } from 'lucide-react';
 import { CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
 import { useT, useLang } from '@/lib/i18n';
 
@@ -32,12 +33,14 @@ function ThumbPalm() {
 interface NewsCardProps {
   article: NewsArticle;
   index?: number;
+  /** この記事のコメント数（0 のときは非表示）。 */
+  commentCount?: number;
 }
 
 /**
  * VICE HUB スタイルのニュースカード。トップページと記事一覧(/news)で共用。
  */
-export default function NewsCard({ article, index = 0 }: NewsCardProps) {
+export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsCardProps) {
   const t = useT();
   const lang = useLang();
   const color = CATEGORY_CONFIG[article.category].vice;
@@ -97,6 +100,14 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
         </h3>
         <div className="flex items-center gap-3 mt-auto text-black/45 text-[11.5px] font-semibold">
           <span className="vice-num">{article.date}</span>
+          {commentCount > 0 && (
+            <span className="inline-flex items-center gap-1 ml-auto text-[#ff2d95]">
+              <MessageSquare size={13} strokeWidth={2.4} />
+              {lang === 'ja' ? 'コメント' : 'Comments'}
+              <span className="vice-num">{commentCount}</span>
+              {lang === 'ja' ? '件' : ''}
+            </span>
+          )}
         </div>
       </div>
     </a>
