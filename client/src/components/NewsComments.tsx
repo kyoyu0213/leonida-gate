@@ -17,8 +17,8 @@ import { formatPostDate } from '@/lib/board';
 import { useT } from '@/lib/i18n';
 
 const COOLDOWN_KEY = 'news_comment_last';
-// ツリーの見た目上のインデント段数の上限（論理的な深さは無制限）。
-const MAX_VISUAL_DEPTH = 8;
+// ツリーの見た目上のインデント段数の上限（論理的な深さは無制限。深くなりすぎたら段差を止める）。
+const MAX_VISUAL_DEPTH = 6;
 
 interface Props {
   articleId: string;
@@ -138,20 +138,43 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
     'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-cyan-500/60 transition-colors font-sans';
 
   // 1レス分の行（レス番号＋本文＋グッド/バッド＋返信）。ツリーは子を再帰描画。
-  const renderNode = (c: NewsComment, depth: number): React.ReactElement => {
+  // isLast: 同じ親の最後の返信なら、連結線の縦棒をエルボーで止める（下に垂らさない）。
+  const renderNode = (c: NewsComment, depth: number, isLast = true): React.ReactElement => {
     const my = myVotes[c.id];
     const num = numberById[c.id];
     const parentNum = c.parent_id ? numberById[c.parent_id] : undefined;
     const children = childrenByParent[c.id] ?? [];
     const isHighlighted = highlight === num;
+    // 返信（depth>0）かつ親側がインデント（=線を引く余白）を持っているときだけ連結線を描く。
+    const showConnector = depth > 0 && depth <= MAX_VISUAL_DEPTH;
 
     return (
-      <div key={c.id}>
+      <div key={c.id} className="relative">
+        {/* 親子をつなぐ連結線（薄いグレー）。角が少し丸いエルボー＋必要なら縦の続き。 */}
+        {showConnector && (
+          <>
+            <span
+              aria-hidden
+              className="absolute left-[-9px] top-0 h-6 w-[9px] border-l border-b border-white/[0.1] rounded-bl-[6px]"
+            />
+            {/* 返信を指す小さな矢じり（右向き） */}
+            <span
+              aria-hidden
+              className="absolute left-[-1px] top-[20px] h-0 w-0 border-y-[4px] border-y-transparent border-l-[5px] border-l-white/[0.18]"
+            />
+            {!isLast && (
+              <span
+                aria-hidden
+                className="absolute left-[-9px] top-6 bottom-0 w-px bg-white/[0.1]"
+              />
+            )}
+          </>
+        )}
         <div
           id={`news-cmt-${num}`}
-          className={`px-4 py-3.5 scroll-mt-24 transition-colors ${
-            depth > 0 ? 'border-t border-white/[0.06]' : ''
-          } ${isHighlighted ? 'bg-cyan-400/10' : ''}`}
+          className={`px-4 py-3.5 scroll-mt-24 transition-colors rounded-lg ${
+            isHighlighted ? 'bg-cyan-400/10' : ''
+          }`}
         >
           <div className="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
             {/* レス番号（掲示板風） */}
@@ -230,14 +253,10 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
           )}
         </div>
 
-        {/* 子レス（同じボックス内にインデント＋ガイド線でツリー表示） */}
+        {/* 子レス（インデント＋薄いグレーの連結線でツリー表示） */}
         {children.length > 0 && (
-          <div
-            className={
-              depth < MAX_VISUAL_DEPTH ? 'ml-3 sm:ml-5 border-l-2 border-cyan-500/15' : ''
-            }
-          >
-            {children.map((ch) => renderNode(ch, depth + 1))}
+          <div className={depth < MAX_VISUAL_DEPTH ? 'relative ml-2.5 pl-4 sm:ml-4 sm:pl-5' : ''}>
+            {children.map((ch, i) => renderNode(ch, depth + 1, i === children.length - 1))}
           </div>
         )}
       </div>
