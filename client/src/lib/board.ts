@@ -16,8 +16,10 @@ export interface BoardThread {
 // スレッド作成時に選べるプリセットアイコン（client/public/images/icon/ に実体を配置）。
 // 値は createThread の許可リスト（board_thread_icon.sql）と一致させること。
 export const BOARD_ICONS = [
+  'Official_Cover_Art_square.jpg',
   'Jason_and_Lucia_01_square.jpg',
   'Jason_and_Lucia_02_square.jpg',
+  'Jason_and_Lucia_03_square.jpg',
   'Jason_and_Lucia_Motel_square.jpg',
   'Boobie_Ike_square.jpg',
   'Brian_Heder_square.jpg',

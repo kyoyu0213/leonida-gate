@@ -1,10 +1,10 @@
 -- ============================================================================
---  掲示板スレッドのアイコン（プリセット9枚から選択）
+--  掲示板スレッドのアイコン（プリセット11枚から選択）
 --  Supabase → SQL Editor に貼って Run。
 --  前提：spam_measures.sql 適用済み（create_thread の最新版を上書きする）。
 --
 --  - board_threads に icon 列を追加（選んだプリセット画像のファイル名を保存）。
---  - create_thread に p_icon を追加。許可リスト(9枚)以外は無視して null 扱い
+--  - create_thread に p_icon を追加。許可リスト(11枚)以外は無視して null 扱い
 --    （anon が直接RPCを叩いて任意のパスを入れるのを防ぐ）。
 --  - 画像実体は client/public/images/icon/ に置く（DBにはファイル名だけ保存）。
 -- ============================================================================
@@ -25,7 +25,8 @@ declare
   v_allowed text[] := array[
     'Boobie_Ike_square.jpg', 'Brian_Heder_square.jpg', 'Cal_Hampton_square.jpg',
     'DreQuan_Priest_square.jpg', 'Jason_and_Lucia_01_square.jpg', 'Jason_and_Lucia_02_square.jpg',
-    'Jason_and_Lucia_Motel_square.jpg', 'Raul_Bautista_square.jpg', 'Real_Dimez_square.jpg'
+    'Jason_and_Lucia_03_square.jpg', 'Jason_and_Lucia_Motel_square.jpg',
+    'Official_Cover_Art_square.jpg', 'Raul_Bautista_square.jpg', 'Real_Dimez_square.jpg'
   ];
 begin
   if char_length(coalesce(trim(p_board), '')) = 0 or char_length(p_board) > 40 then raise exception 'invalid board'; end if;
