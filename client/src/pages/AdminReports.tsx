@@ -24,6 +24,7 @@ import {
   getPostMeta,
   setPostNote,
   listAdminPosts,
+  ADMIN_POSTS_PAGE,
   searchAdminPosts,
   listBlocks,
   addBlock,
@@ -953,13 +954,30 @@ function PostsPanel() {
   const [busyId, setBusyId] = useState<string | null>(null);
   // 板で絞り込み（''＝すべての板）。全板を横断すると新着から溢れる板が出るため。
   const [board, setBoard] = useState('');
+  // 「もっと見る」で古い投稿を遡れるか／読み込み中か
+  const [hasMore, setHasMore] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const load = async () => {
     setLoading(true);
-    const { data, error } = await listAdminPosts(board || undefined);
+    const { data, error } = await listAdminPosts(board || undefined, 0);
     if (error) toast.error(error);
     setRows(data);
+    setHasMore(data.length === ADMIN_POSTS_PAGE);
     setLoading(false);
+  };
+
+  // 続き（古い投稿）を取得して末尾に追加する
+  const loadMore = async () => {
+    setLoadingMore(true);
+    const { data, error } = await listAdminPosts(board || undefined, rows.length);
+    if (error) {
+      toast.error(error);
+    } else {
+      setRows((prev) => [...prev, ...data]);
+      setHasMore(data.length === ADMIN_POSTS_PAGE);
+    }
+    setLoadingMore(false);
   };
 
   useEffect(() => {
@@ -1065,6 +1083,18 @@ function PostsPanel() {
           </div>
         );
           })}
+          {hasMore && (
+            <div className="flex justify-center pt-1">
+              <button
+                onClick={loadMore}
+                disabled={loadingMore}
+                className="inline-flex items-center gap-2 text-[13px] font-bold text-white/80 border border-white/15 rounded-lg px-5 py-2.5 hover:bg-white/10 disabled:opacity-50"
+              >
+                {loadingMore ? <Loader2 size={14} className="animate-spin" /> : null}
+                {loadingMore ? '読み込み中…' : 'もっと見る（古い投稿）'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

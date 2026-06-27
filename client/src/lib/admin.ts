@@ -180,13 +180,18 @@ export interface AdminPostRow {
   report_count: number;
 }
 
+/** 投稿ログの1ページの件数（「もっと見る」で offset を増やして遡る）。 */
+export const ADMIN_POSTS_PAGE = 200;
+
 export async function listAdminPosts(
   board?: string,
+  offset = 0,
 ): Promise<{ data: AdminPostRow[]; error?: string }> {
-  // p_board は板を選んだときだけ渡す。未選択（全板）のときは渡さないことで、
-  // board 対応SQL を適用する前でも従来の admin_list_posts(token, limit) で動く。
-  const params: Record<string, unknown> = { p_token: adminToken, p_limit: 200 };
+  // p_board / p_offset は必要なときだけ渡す。未選択かつ先頭ページのときは渡さないことで、
+  // board/offset 対応SQL を適用する前でも従来の admin_list_posts(token, limit) で動く。
+  const params: Record<string, unknown> = { p_token: adminToken, p_limit: ADMIN_POSTS_PAGE };
   if (board) params.p_board = board;
+  if (offset > 0) params.p_offset = offset;
   const { data, error } = await supabase.rpc('admin_list_posts', params);
   if (error) {
     handleAuthError(error.message);
