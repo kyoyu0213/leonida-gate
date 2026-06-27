@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
-import { Calendar, Tag, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
+import { Calendar, Tag, Sparkles, ChevronDown, ChevronUp, Link2 } from 'lucide-react';
+import { toast } from 'sonner';
 import Header from '@/components/Header';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { useSeo } from '@/hooks/useSeo';
@@ -190,6 +191,34 @@ export default function ArticleLayout({
           )}
 
           <div className="border-t border-cyan-500/30 my-10" />
+
+          {/* シェア：リンクをコピー／Xでシェア（掲示板以外の解説記事に表示） */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            <button
+              onClick={() => {
+                navigator.clipboard?.writeText(window.location.href);
+                toast.success(t('nd.copied'));
+              }}
+              className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
+            >
+              <Link2 size={14} />
+              {t('nd.copyLink')}
+            </button>
+            <button
+              onClick={() => {
+                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                  `${effTitle} | GTA6 FEED`,
+                )}&url=${encodeURIComponent(window.location.href)}`;
+                window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
+              }}
+              className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
+            >
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              {t('nd.shareX')}
+            </button>
+          </div>
 
           {children}
         </div>

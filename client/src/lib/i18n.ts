@@ -216,6 +216,7 @@ const JA: Dict = {
   // ニュース記事詳細のUI
   'nd.share': 'シェア',
   'nd.shareX': 'Xでシェア',
+  'nd.copyLink': 'リンクをコピー',
   'nd.source': '出典を見る',
   'nd.copied': 'リンクをコピーしました',
   'nd.related': '関連記事',
@@ -500,6 +501,7 @@ const EN: Dict = {
   // News article detail UI
   'nd.share': 'Share',
   'nd.shareX': 'Share on X',
+  'nd.copyLink': 'Copy link',
   'nd.source': 'View source',
   'nd.copied': 'Link copied',
   'nd.related': 'Related articles',
