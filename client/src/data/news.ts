@@ -133,7 +133,7 @@ export const newsArticles: NewsArticle[] = [
 
 これに対し、コミュニティの反応は厳しい。「物理版なのにディスクがないなら、ただの箱だ」「所有している感覚がない」「貸し借りも中古売却もできない」といった声が並ぶ。実際に一部の小売店は、ディスクのないパッケージの取り扱いを見送る姿勢を示している。
 
-![GTA6アルティメットエディションの特典イメージ。豪華版を選んでも、物理パッケージの中身はディスクではなくダウンロードコードになる](/images/news/ULTIMATE_EDITION_GOODTIME_GEAR_01.jpg)
+![発売時の物理版がディスク非同梱（コード・イン・ボックス）であることは、Rockstar側の案内で確認できる](/images/news/rockstarFAQ.png)
 
 ---
 
@@ -147,7 +147,7 @@ export const newsArticles: NewsArticle[] = [
 
 ただし、留保も多い。これは単独・匿名の情報源によるもので、文面はポーランド語からの機械翻訳を経ている。Rockstarはこの12月のディスク版について何も認めておらず、そもそもTake-Twoは以前、発売後の物理版の計画自体を否定していた。加えて、Rockstarのサポートが問い合わせに対し「物理版は後日入手可能」と返信した例も伝えられているが、これはサポート側が質問を取り違えた可能性も指摘されており、公式なロードマップの表明とは言いがたい。VGCやGematsu、Vice、Kotaku、RockstarINTELなど複数のメディアが取り上げて広がってはいるものの、現時点では「実績のあるインサイダー発の、信ぴょう性のある噂」という位置づけが妥当だ。
 
-![アルティメットエディションに含まれる特典車両。「コードだけの箱」に納得がいかず、ディスク版を待つという声も根強い](/images/news/ULTIMATE_EDITION_GROTTI_CHEETAH_02.jpg)
+![物理版のディスクをめぐる議論は収まらず、「12月にディスク版が出る」という未確認情報にも注目が集まっている](/images/news/dischoudou.png)
 
 コミュニティの受け止めも分かれている。
 
@@ -209,7 +209,7 @@ The reason cited for adopting this format is countermeasures against large-scale
 
 In response, the community's reaction is harsh. Voices line up such as “if it's a physical edition with no disc, it's just a box,” “there's no sense of ownership,” and “you can't lend, borrow, or resell it secondhand.” In fact, some retailers have indicated a stance of declining to handle the disc-less package.
 
-![A look at the GTA6 Ultimate Edition bonuses. Even if you pick the deluxe edition, what's inside the physical package is a download code, not a disc](/images/news/ULTIMATE_EDITION_GOODTIME_GEAR_01.jpg)
+![That the launch physical edition ships without a disc (code-in-box) can be confirmed from Rockstar's own notices](/images/news/rockstarFAQ.png)
 
 ---
 
@@ -223,7 +223,7 @@ The reason this information is being received with a certain weight is due to th
 
 However, there are also many reservations. This comes from a single, anonymous source, and the text has gone through machine translation from Polish. Rockstar has acknowledged nothing about this December disc version, and Take-Two had in the first place previously denied the very plan for a post-launch physical edition. In addition, there's a reported example of Rockstar support replying to an inquiry that “the physical edition will be available at a later date,” but it has also been pointed out that support may have misread the question, and it can hardly be called an official roadmap statement. Although multiple outlets such as VGC, Gematsu, Vice, Kotaku, and RockstarINTEL have picked it up and it has spread, at present the appropriate positioning is “a credible rumor originating from an insider with a track record.”
 
-![A bonus vehicle included in the Ultimate Edition. Unconvinced by a “box with only a code,” some are firmly choosing to wait for a disc version](/images/news/ULTIMATE_EDITION_GROTTI_CHEETAH_02.jpg)
+![The debate over the physical edition's disc shows no sign of settling, and the unverified talk of a “December disc version” is drawing attention too](/images/news/dischoudou.png)
 
 The community's reception is also divided.
 
