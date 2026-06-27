@@ -205,6 +205,8 @@ const JA: Dict = {
   'fg.card.serverSetup.desc': '完全初心者向けに、txAdminを使ってローカルテストサーバーを起動するまでを8ステップで解説。',
   'fg.card.serverPromo.title': 'サーバー募集板に掲載する',
   'fg.card.serverPromo.desc': '作ったサーバーを宣伝するならこちら。メンバー募集や告知を投稿して、一緒に遊ぶ仲間を集めよう。',
+  'fg.card.devBoard.title': 'FiveM開発者交流掲示板',
+  'fg.card.devBoard.desc': 'サーバー開発・スクリプト・リソース制作・チート対策などを語り合う、FiveM開発者向けの掲示板。',
   // 記事の「3行まとめ」UI（ニュース記事・解説記事 共通）
   'sum.button': 'AIによる3行まとめ',
   'sum.open': '3行まとめを開く',
@@ -487,6 +489,8 @@ const EN: Dict = {
   'fg.card.serverSetup.desc': 'A beginner-friendly, 8-step guide to launching a local test server using txAdmin.',
   'fg.card.serverPromo.title': 'List Your Server on the Board',
   'fg.card.serverPromo.desc': 'Built a server? Promote it here. Post recruitment and announcements to gather people to play with.',
+  'fg.card.devBoard.title': 'FiveM Developers Board',
+  'fg.card.devBoard.desc': 'A board for FiveM developers to discuss server development, scripting, resource creation, anti-cheat, and more.',
   // 3-line summary UI (shared by news & explainer articles)
   'sum.button': 'AI 3-line summary',
   'sum.open': 'Open summary',
