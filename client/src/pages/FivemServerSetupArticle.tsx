@@ -6,7 +6,9 @@ const TITLE =
 
 // 本文は fivem-server-setup-basics.md の内容をそのまま使用（テキストは改変なし）。
 // fivemservertatekata フォルダの画像を各手順に挿入している。
-const BODY = `FiveMは、PC版の『グランド・セフト・オートV（GTA5）』を使って、自分専用のマルチプレイサーバーを構築できる改造フレームワークである。日本国内のGTAロールプレイ（GTARP）人気を支えているのもこのFiveMであり、「自分でもサーバーを立ててみたい」という入口に立つ人は年々増えている。
+const BODY = `![FiveMサーバーの立て方](/images/fivemservertatekata/eyecatch.png)
+
+FiveMは、PC版の『グランド・セフト・オートV（GTA5）』を使って、自分専用のマルチプレイサーバーを構築できる改造フレームワークである。日本国内のGTAロールプレイ（GTARP）人気を支えているのもこのFiveMであり、「自分でもサーバーを立ててみたい」という入口に立つ人は年々増えている。
 
 ただし、サーバー構築は最初の一歩でつまずきやすい。本記事は、完全な初心者が「自分だけが入れるローカルテストサーバー」を起動し、実際に接続するところまでを8ステップで解説する。いきなり公開サーバーやESX/QBCoreのような大型フレームワークを目指すのではなく、まず最小構成で動かすことを目標とする。これが遠回りに見えて、結局いちばん理解が早い。
 
@@ -219,7 +221,9 @@ connect localhost
 const TITLE_EN =
   'How to Set Up a FiveM Server: 8 Steps for a Complete Beginner to Launch a Local Test Server';
 
-const BODY_EN = `FiveM is a modding framework that lets you build your own multiplayer server using the PC version of "Grand Theft Auto V (GTA5)." It is FiveM that underpins the popularity of GTA roleplay (GTARP) in Japan, and the number of people standing at the entrance thinking "I want to try running a server myself" grows year by year.
+const BODY_EN = `![How to set up a FiveM server](/images/fivemservertatekata/eyecatch.png)
+
+FiveM is a modding framework that lets you build your own multiplayer server using the PC version of "Grand Theft Auto V (GTA5)." It is FiveM that underpins the popularity of GTA roleplay (GTARP) in Japan, and the number of people standing at the entrance thinking "I want to try running a server myself" grows year by year.
 
 That said, building a server is easy to stumble on at the very first step. This article explains, in eight steps, how a complete beginner can launch "a local test server that only you can join" and actually connect to it. Rather than aiming straight for a public server or a large framework like ESX/QBCore, the goal is to first get it running with a minimal setup. This looks like a detour, but in the end it is the fastest way to understand.
 
