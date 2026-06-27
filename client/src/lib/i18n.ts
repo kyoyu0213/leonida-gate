@@ -249,6 +249,7 @@ const JA: Dict = {
   'board.streamer-servers': '配信者サーバー',
   'board.gtarp': 'ロールプレイ情報交換',
   'board.gta6': 'GTA6情報交換',
+  'board.fivem-dev': 'FiveM開発者交流',
   // 掲示板（/board・/thread・通報）
   'brd.eyebrow': 'Community Board',
   'brd.title': '掲示板',
@@ -528,6 +529,7 @@ const EN: Dict = {
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
   'board.gta6': 'GTA6 Info',
+  'board.fivem-dev': 'FiveM Developers',
   // Board (/board, /thread, report)
   'brd.eyebrow': 'Community Board',
   'brd.title': 'Board',

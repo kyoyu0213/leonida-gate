@@ -41,6 +41,12 @@ export const BOARDS: BoardConfig[] = [
     description: 'GTA6の最新情報・リーク・考察・雑談を交換する場所',
     accent: 'purple',
   },
+  {
+    slug: 'fivem-dev',
+    title: 'FiveM開発者交流掲示板',
+    description: 'FiveMサーバー開発・スクリプト・リソース制作・txAdminなどについて情報交換する場所',
+    accent: 'cyan',
+  },
 ];
 
 export const getBoard = (slug?: string): BoardConfig | undefined =>
