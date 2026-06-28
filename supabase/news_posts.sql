@@ -17,7 +17,7 @@ create table if not exists public.news_posts (
   description text not null default '',
   body text not null,
   category text not null default 'speculation'
-    check (category in ('release', 'update', 'speculation', 'event')),
+    check (category in ('release', 'topic', 'update', 'speculation', 'event')),
   icon text not null default '📰',
   eyecatch_url text,
   published boolean not null default true,
@@ -56,7 +56,7 @@ begin
   if coalesce(btrim(p_title), '') = '' or coalesce(btrim(p_body), '') = '' then
     raise exception 'title and body required';
   end if;
-  if p_category not in ('release', 'update', 'speculation', 'event') then
+  if p_category not in ('release', 'topic', 'update', 'speculation', 'event') then
     raise exception 'invalid category';
   end if;
   insert into news_posts (title, description, body, category, icon, eyecatch_url, published_at, published)
@@ -95,7 +95,7 @@ begin
   if coalesce(btrim(p_title), '') = '' or coalesce(btrim(p_body), '') = '' then
     raise exception 'title and body required';
   end if;
-  if p_category not in ('release', 'update', 'speculation', 'event') then
+  if p_category not in ('release', 'topic', 'update', 'speculation', 'event') then
     raise exception 'invalid category';
   end if;
   update news_posts set

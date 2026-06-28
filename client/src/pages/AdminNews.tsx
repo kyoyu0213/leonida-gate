@@ -15,7 +15,7 @@ import {
 import { uploadRawImages, imagePublicUrl } from '@/lib/images';
 import { CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
 
-const CATS: NewsCategory[] = ['release', 'update', 'speculation', 'event'];
+const CATS: NewsCategory[] = ['release', 'topic', 'update', 'speculation', 'event'];
 
 const inputClass =
   'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-[#a78bfa]/60 transition-colors';

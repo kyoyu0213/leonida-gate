@@ -244,6 +244,7 @@ const JA: Dict = {
   // ニュースのカテゴリ
   'cat.all': 'すべて',
   'cat.release': '公式情報',
+  'cat.topic': '話題',
   'cat.update': 'アップデート',
   'cat.speculation': '考察・リーク',
   'cat.event': 'イベント',
@@ -528,6 +529,7 @@ const EN: Dict = {
   'footer.terms': 'Terms & Privacy',
   'cat.all': 'All',
   'cat.release': 'Official',
+  'cat.topic': 'Trending',
   'cat.update': 'Updates',
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',

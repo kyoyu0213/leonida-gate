@@ -22,7 +22,7 @@
 //     編集する必要はありません。
 // ============================================================================
 
-export type NewsCategory = "release" | "update" | "speculation" | "event";
+export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
 
 export interface NewsArticle {
   id: number;
@@ -78,6 +78,7 @@ export const CATEGORY_CONFIG: Record<
   { label: string; vice: string; color: "primary" | "secondary" | "accent"; status: string; filterIcon: string }
 > = {
   release: { label: "公式情報", vice: "#ff8a3d", color: "primary", status: "ACTIVE", filterIcon: "📢" },
+  topic: { label: "話題", vice: "#ffd24a", color: "secondary", status: "TOPIC", filterIcon: "🔥" },
   update: { label: "アップデート", vice: "#22d3ee", color: "secondary", status: "UPDATE", filterIcon: "🔄" },
   speculation: { label: "考察・リーク", vice: "#ff2d95", color: "primary", status: "INTEL", filterIcon: "🔍" },
   event: { label: "イベント", vice: "#a78bfa", color: "accent", status: "EVENT", filterIcon: "🎉" },
@@ -87,6 +88,7 @@ export const CATEGORY_CONFIG: Record<
 export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string }[] = [
   { id: "all", label: "すべて", icon: "◆" },
   { id: "release", label: CATEGORY_CONFIG.release.label, icon: CATEGORY_CONFIG.release.filterIcon },
+  { id: "topic", label: CATEGORY_CONFIG.topic.label, icon: CATEGORY_CONFIG.topic.filterIcon },
   { id: "update", label: CATEGORY_CONFIG.update.label, icon: CATEGORY_CONFIG.update.filterIcon },
   { id: "speculation", label: CATEGORY_CONFIG.speculation.label, icon: CATEGORY_CONFIG.speculation.filterIcon },
   { id: "event", label: CATEGORY_CONFIG.event.label, icon: CATEGORY_CONFIG.event.filterIcon },
@@ -104,7 +106,7 @@ export const newsArticles: NewsArticle[] = [
       "6月24日の価格発表とともに公開された新スクリーンショットを、トレーラー2と見比べて「画質が落ちた」という声がSNSで拡大。中心はジェイソンのセーフハウスの比較だ。何が事実で、何が主観・推測かを切り分けて整理する。",
     icon: "🖼️",
     image: "/images/news/graphicdowngrade/eyecatch.png",
-    category: "speculation",
+    category: "topic",
     date: "2026-06-28",
     publishedAt: "2026-06-28 03:33",
     source: "GTA6 FEED 編集部",
