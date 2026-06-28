@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT } from '@/lib/i18n';
 
@@ -39,6 +40,7 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.commands.title', descKey: 'fg.card.commands.desc', href: '/fivem-gtarp/commands', icon: Terminal, accent: '#fb7185' },
       { titleKey: 'fg.card.servers.title', descKey: 'fg.card.servers.desc', href: '/servers', icon: Megaphone, accent: '#fbbf24' },
       { titleKey: 'fg.card.serverBoard.title', descKey: 'fg.card.serverBoard.desc', href: '/board/gtarp-servers', icon: MessageSquare, accent: '#ff8a3d' },
+      { titleKey: 'fg.card.board.title', descKey: 'fg.card.board.desc', href: '/board/gtarp', icon: MessageSquare, accent: '#ff2d95' },
     ],
   },
   {
@@ -56,7 +58,6 @@ const GROUPS: CardGroup[] = [
     cards: [
       { titleKey: 'fg.card.glossary.title', descKey: 'fg.card.glossary.desc', href: '/fivem-gtarp/glossary', icon: BookOpen, accent: '#c084fc' },
       { titleKey: 'fg.card.history.title', descKey: 'fg.card.history.desc', href: '/fivem-gtarp/history', icon: History, accent: '#f0b429' },
-      { titleKey: 'fg.card.board.title', descKey: 'fg.card.board.desc', href: '/board/gtarp', icon: MessageSquare, accent: '#ff2d95' },
     ],
   },
   {
@@ -68,11 +69,32 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.devBoard.title', descKey: 'fg.card.devBoard.desc', href: '/board/fivem-dev', icon: MessageSquare, accent: '#22d3ee' },
     ],
   },
+  {
+    labelKey: 'fg.group.tools',
+    accent: '#ff2d95',
+    cards: [
+      { titleKey: 'fg.card.imageResize.title', descKey: 'fg.card.imageResize.desc', href: '/fivem-gtarp/tools/image-resize', icon: ImageDown, accent: '#2de2e6' },
+      { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
+    ],
+  },
+];
+
+// カテゴリ絞り込みチップ。'all' + 各グループ。チップのラベルは短縮版（fg.tab.*）。
+const TABS = [
+  { id: 'all', tabKey: 'fg.tab.all', color: '#ff2d95' },
+  ...GROUPS.map((g) => ({
+    id: g.labelKey,
+    tabKey: g.labelKey.replace('fg.group.', 'fg.tab.'),
+    color: g.accent,
+  })),
 ];
 
 export default function FivemGtarp() {
   const t = useT();
   useSeo(t('fg.seo.title'), t('fg.seo.desc'));
+  const [selected, setSelected] = useState<string>('all');
+
+  const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);
 
   return (
     <div className="vice-page vice-noise">
@@ -88,9 +110,31 @@ export default function FivemGtarp() {
           {t('fg.lead')}
         </p>
 
+        {/* カテゴリ絞り込みチップ（newsの一覧と同じ操作感）。カードが増えたため用途で絞れるように。 */}
+        <div className="flex gap-2 overflow-x-auto pb-1.5 mt-8">
+          {TABS.map((tab) => {
+            const active = selected === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setSelected(tab.id)}
+                className="flex-none flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                style={{
+                  border: `1px solid ${active ? tab.color : 'rgba(255,255,255,.14)'}`,
+                  background: active ? `${tab.color}22` : 'rgba(255,255,255,.05)',
+                  color: active ? tab.color : 'rgba(255,255,255,.7)',
+                }}
+              >
+                <span className="w-[7px] h-[7px] rounded-full" style={{ background: tab.color }} />
+                {t(tab.tabKey)}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Cards：用途ごとにグループ化し、デスクトップは3列で並べてスクロールを抑える */}
-        <div className="mt-10 flex flex-col gap-9">
-          {GROUPS.map((g) => (
+        <div className="mt-7 flex flex-col gap-9">
+          {visibleGroups.map((g) => (
             <section key={g.labelKey}>
               <div className="flex items-center gap-3 mb-4">
                 <span

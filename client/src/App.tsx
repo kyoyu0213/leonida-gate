@@ -35,6 +35,9 @@ const GtarpFirstDayGuideArticle = lazy(() => import("./pages/GtarpFirstDayGuideA
 const FivemServerGuide = lazy(() => import("./pages/FivemServerGuide"));
 const FivemServerSetupArticle = lazy(() => import("./pages/FivemServerSetupArticle"));
 const FivemInstallGuide = lazy(() => import("./pages/FivemInstallGuide"));
+const ToolsIndex = lazy(() => import("./pages/ToolsIndex"));
+const ImageResizeTool = lazy(() => import("./pages/ImageResizeTool"));
+const ImageMaskTool = lazy(() => import("./pages/ImageMaskTool"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // 遅延読み込み中のフォールバック（テーマ背景のみ。一瞬なので装飾は最小限）。
@@ -66,6 +69,9 @@ function Router() {
       <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
       <Route path="/fivem-gtarp/server-setup" component={FivemServerSetupArticle} />
       <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
+      <Route path="/fivem-gtarp/tools" component={ToolsIndex} />
+      <Route path="/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
+      <Route path="/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
       <Route path="/admin/reports" component={AdminReports} />
       <Route path="/admin/news" component={AdminNews} />
       <Route path="/search" component={SearchPage} />
