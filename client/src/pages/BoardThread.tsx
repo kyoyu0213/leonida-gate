@@ -465,7 +465,10 @@ export default function BoardThread() {
           className="fixed bottom-0 left-0 right-0 z-50"
           style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)' }}
         >
-          <div className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3">
+          <div
+            className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3"
+            style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}
+          >
             {full ? (
               <div className="rounded-2xl border border-[#ff2d95]/40 bg-[#ff2d95]/[0.08] px-4 py-3 text-center text-[#ff8fc0] text-[13px] font-bold">
                 {tr('brd.full')}

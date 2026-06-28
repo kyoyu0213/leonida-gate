@@ -22,6 +22,10 @@ export default function MobileTabBar() {
   const t = useT();
   const [location] = useLocation();
 
+  // スレッド詳細では下部に返信ボックスが固定表示されるため、タブバーを隠す。
+  // （両方が fixed bottom-0 になり、入力欄がタブバーに被って書き込めない問題の対策）
+  if (location.startsWith('/thread')) return null;
+
   return (
     <nav
       className="sm:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 backdrop-blur-md"
