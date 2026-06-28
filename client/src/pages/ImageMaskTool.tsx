@@ -8,11 +8,13 @@ import './imageTools.css';
 // 検証済みHTML（tool_image_mask.html）の挙動を「正」として移植したもの。
 // 矩形は画像座標で保持し出力時に実解像度へ換算する／目隠し無しは元バイトを無加工で出力、
 // といった計算ロジックは改変していない。
-// 要素参照はルート配下に限定し、イベントは AbortController で一括解除する。
+// 表示文言は i18n 化。動的文字列は最新の t を参照する tRef 経由で取得する。
 export default function ImageMaskTool() {
   const t = useT();
   useSeo(t('tools.imageMask.seo.title'), t('tools.imageMask.seo.desc'));
   const rootRef = useRef<HTMLDivElement>(null);
+  const tRef = useRef(t);
+  tRef.current = t;
 
   useEffect(() => {
     const root = rootRef.current;
@@ -20,6 +22,7 @@ export default function ImageMaskTool() {
     const ac = new AbortController();
     const signal = ac.signal;
     const $ = (id: string): any => root.querySelector('#' + id);
+    const tr = (k: string) => tRef.current(k);
 
     const drop = $('drop'), file = $('file'), ws = $('ws'), srcCanvas = $('srcCanvas'),
       fname = $('fname'), srcMeta = $('srcMeta'), reset = $('reset'),
@@ -82,8 +85,8 @@ export default function ImageMaskTool() {
       undoMask.disabled = masks.length === 0;
       clearMask.disabled = masks.length === 0;
       maskNote.innerHTML = masks.length
-        ? `<b>${masks.length}か所</b>を目隠し中。さらにドラッグで追加できる。`
-        : '画像の上をドラッグして、隠したい範囲を囲む。';
+        ? tr('toolM.note.count').replace('{n}', String(masks.length))
+        : tr('toolM.note.default');
     }
 
     // ---- load ----
@@ -96,7 +99,7 @@ export default function ImageMaskTool() {
 
     async function loadFile(f: any) {
       if (!/^image\/(png|jpeg|webp)$/.test(f.type)) {
-        alert('PNG / JPEG / WebP の画像を選んで。');
+        alert(tr('tool.alert.fileType'));
         return;
       }
       originalSize = f.size; originalName = f.name.replace(/\.[^.]+$/, '') || 'image'; originalMime = f.type; originalFile = f;
@@ -110,7 +113,7 @@ export default function ImageMaskTool() {
       drawToCanvas(srcCanvas, bitmap, 600, 340);
       redrawSource();
       fname.textContent = f.name;
-      srcMeta.textContent = `${baseW}×${baseH} ・ ${fmtBytes(originalSize)}`;
+      srcMeta.textContent = `${baseW}×${baseH}` + tr('tool.sep') + fmtBytes(originalSize);
       drop.style.display = 'none';
       ws.classList.add('on');
       go.disabled = false;
@@ -185,7 +188,7 @@ export default function ImageMaskTool() {
 
     go.addEventListener('click', async () => {
       if (!bitmap) return;
-      go.disabled = true; go.textContent = '保存中…';
+      go.disabled = true; go.textContent = tr('toolM.go.busy');
       try {
         const res = await buildOutput();
         outBlob = res.blob;
@@ -202,15 +205,15 @@ export default function ImageMaskTool() {
 
         let note;
         if (res.untouched) {
-          note = '目隠しを使っていないため、元ファイルを無加工で保存した（1バイトも変えていない）。';
+          note = tr('toolM.result.untouched');
         } else {
-          note = `${masks.length}か所を目隠しして保存した。寸法・形式を維持・画質はほぼ維持（容量は前後する）。`;
+          note = tr('toolM.result.masked').replace('{n}', String(masks.length));
         }
         resultNote.textContent = note;
       } catch (err) {
-        resultNote.textContent = '処理に失敗した。別の画像で試して。';
+        resultNote.textContent = tr('toolM.err');
       } finally {
-        go.disabled = false; go.textContent = 'ダウンロード';
+        go.disabled = false; go.textContent = tr('toolM.go');
       }
     }, { signal });
 
@@ -224,20 +227,20 @@ export default function ImageMaskTool() {
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <div className="img-mask-tool" ref={rootRef}>
           <div className="wrap">
-            <div className="eyebrow">FiveM / GTARP ツール</div>
-            <h1>見られたくない情報を<span className="hl">ドラッグで隠す</span></h1>
-            <p className="sub">画像の上をなぞって、ID・名前・場所バレを隠す。隠した範囲はベタ塗りかモザイクで焼き込む。</p>
-            <div className="privacy"><b>画像はこの端末から出ない。</b>すべてブラウザ内で処理する。</div>
+            <div className="eyebrow">{t('tool.eyebrow')}</div>
+            <h1>{t('toolM.h1.pre')}<span className="hl">{t('toolM.h1.hl')}</span>{t('toolM.h1.post')}</h1>
+            <p className="sub">{t('toolM.sub')}</p>
+            <div className="privacy"><b>{t('tool.privacy.bold')}</b>{t('tool.privacy.rest')}</div>
 
             <div className="card">
-              <div className="drop" id="drop" tabIndex={0} role="button" aria-label="画像を選ぶ">
+              <div className="drop" id="drop" tabIndex={0} role="button" aria-label={t('tool.drop.title')}>
                 <div className="ring">
                   <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 16V4M12 4l-4 4M12 4l4 4" /><path d="M5 20h14" />
                   </svg>
                 </div>
-                <h2>画像をドロップ</h2>
-                <p>または <span className="browse">ファイルを選ぶ</span> ・ PNG / JPEG / WebP に対応</p>
+                <h2>{t('tool.drop.title')}</h2>
+                <p>{t('tool.drop.or')} <span className="browse">{t('tool.drop.browse')}</span> {t('tool.drop.formats')}</p>
                 <input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden />
               </div>
 
@@ -247,33 +250,33 @@ export default function ImageMaskTool() {
                   <div className="filerow">
                     <span className="filename" id="fname">—</span>
                     <span id="srcMeta">—</span>
-                    <button className="reset" id="reset">別の画像</button>
+                    <button className="reset" id="reset">{t('tool.reset')}</button>
                   </div>
                 </div>
 
                 <div className="controls">
                   <div className="group">
-                    <span className="lab">隠し方</span>
+                    <span className="lab">{t('toolM.lab')}</span>
                     <div className="formats" id="maskRow">
-                      <div className="fmt active" data-mask="solid">ベタ塗り<small>最も確実</small></div>
-                      <div className="fmt" data-mask="mosaic">モザイク<small>粗く隠す</small></div>
+                      <div className="fmt active" data-mask="solid">{t('toolM.solid')}<small>{t('toolM.solid.small')}</small></div>
+                      <div className="fmt" data-mask="mosaic">{t('toolM.mosaic')}<small>{t('toolM.mosaic.small')}</small></div>
                     </div>
-                    <p className="masknote" id="maskNote">画像の上をドラッグして、隠したい範囲を囲む。</p>
+                    <p className="masknote" id="maskNote">{t('toolM.note.default')}</p>
                     <div className="maskbtns">
-                      <button type="button" id="undoMask" disabled>一つ戻す</button>
-                      <button type="button" id="clearMask" disabled>全部消す</button>
+                      <button type="button" id="undoMask" disabled>{t('toolM.undo')}</button>
+                      <button type="button" id="clearMask" disabled>{t('toolM.clear')}</button>
                     </div>
                   </div>
 
-                  <button className="go" id="go" disabled>ダウンロード</button>
+                  <button className="go" id="go" disabled>{t('toolM.go')}</button>
                   <p className="note" id="resultNote"></p>
                 </div>
               </div>
             </div>
 
             <p className="footnote">
-              画像はサーバーに送信されない。すべてこの端末のブラウザ内で処理される。<br />
-              絶対に読まれたくないID・番号は、モザイクより<b style={{ color: 'var(--text)' }}>ベタ塗り</b>が確実。
+              {t('tool.footnote.privacy')}<br />
+              {t('toolM.footnote.bPre')}<b style={{ color: 'var(--text)' }}>{t('toolM.footnote.bBold')}</b>{t('toolM.footnote.bPost')}
             </p>
           </div>
         </div>

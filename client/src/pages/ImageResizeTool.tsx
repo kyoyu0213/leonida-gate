@@ -7,12 +7,14 @@ import './imageTools.css';
 // 画像リサイズ・圧縮ツール。
 // 検証済みHTML（tool_image_resize.html）の挙動を「正」として移植したもの。
 // Canvas処理ロジック（品質の二分探索・寸法縮小フォールバック）は改変していない。
-// DOM操作はそのまま活かし、要素参照はルート配下に限定（querySelector）、
-// イベントは AbortController でアンマウント時に一括解除する。
+// 表示文言は i18n 化。静的部分は t()、useEffect 内の動的文字列は最新の t を参照する
+// tRef 経由で取得する（言語切替後も再アタッチ無しで最新言語の文言になる）。
 export default function ImageResizeTool() {
   const t = useT();
   useSeo(t('tools.imageResize.seo.title'), t('tools.imageResize.seo.desc'));
   const rootRef = useRef<HTMLDivElement>(null);
+  const tRef = useRef(t);
+  tRef.current = t;
 
   useEffect(() => {
     const root = rootRef.current;
@@ -20,6 +22,7 @@ export default function ImageResizeTool() {
     const ac = new AbortController();
     const signal = ac.signal;
     const $ = (id: string): any => root.querySelector('#' + id);
+    const tr = (k: string) => tRef.current(k);
 
     const drop = $('drop'), file = $('file'), ws = $('ws'), srcCanvas = $('srcCanvas'),
       fname = $('fname'), srcMeta = $('srcMeta'), reset = $('reset'),
@@ -59,7 +62,7 @@ export default function ImageResizeTool() {
 
     async function loadFile(f: any) {
       if (!/^image\/(png|jpeg|webp)$/.test(f.type)) {
-        alert('PNG / JPEG / WebP の画像を選んで。');
+        alert(tr('tool.alert.fileType'));
         return;
       }
       originalSize = f.size; originalName = f.name.replace(/\.[^.]+$/, '') || 'image';
@@ -71,7 +74,7 @@ export default function ImageResizeTool() {
       baseW = bitmap.width; baseH = bitmap.height;
       drawToCanvas(srcCanvas, bitmap, 600, 340);
       fname.textContent = f.name;
-      srcMeta.textContent = `${baseW}×${baseH} ・ ${fmtBytes(originalSize)}`;
+      srcMeta.textContent = `${baseW}×${baseH}` + tr('tool.sep') + fmtBytes(originalSize);
       wIn.value = baseW; hIn.value = baseH;
       drop.style.display = 'none';
       ws.classList.add('on');
@@ -154,7 +157,7 @@ export default function ImageResizeTool() {
 
     go.addEventListener('click', async () => {
       if (!bitmap) return;
-      go.disabled = true; go.textContent = '圧縮中…';
+      go.disabled = true; go.textContent = tr('toolR.go.busy');
       try {
         const targetBytes = Math.round(targetMb * 1048576);
         const res = await compress();
@@ -169,10 +172,10 @@ export default function ImageResizeTool() {
           drawToCanvas($('outCanvas'), outBmp, 600, 300);
         } catch (_) { }
         const pct = Math.max(0, Math.round((1 - outBlob.size / originalSize) * 100));
-        ratio.textContent = (outBlob.size < originalSize) ? `−${pct}%` : '変化なし';
+        ratio.textContent = (outBlob.size < originalSize) ? `−${pct}%` : tr('toolR.noChange');
 
         const under = outBlob.size <= targetBytes;
-        verdict.textContent = under ? '目標内' : '目標を超過';
+        verdict.textContent = under ? tr('toolR.verdict.under') : tr('toolR.verdict.over');
         verdict.className = 'verdict ' + (under ? 'ok' : 'over');
 
         const ratioToTarget = Math.min(140, (outBlob.size / targetBytes) * 100);
@@ -181,23 +184,23 @@ export default function ImageResizeTool() {
           ? 'linear-gradient(90deg,var(--cyan),var(--green))'
           : 'linear-gradient(90deg,var(--sunset),var(--magenta))';
         targetMark.style.left = '100%';
-        afterLabel.textContent = '後 ' + fmtBytes(outBlob.size);
-        tgtLabel.textContent = '目標 ' + fmtBytes(targetBytes);
+        afterLabel.textContent = tr('toolR.afterLabel') + fmtBytes(outBlob.size);
+        tgtLabel.textContent = tr('toolR.tgtLabel') + fmtBytes(targetBytes);
 
-        let note = `${res.w}×${res.h} で出力`;
-        if (res.q !== null) note += ` ・ 品質 ${Math.round(res.q * 100)}%`;
-        if (res.scaled) note += ' ・ 目標に合わせて寸法を縮小した';
-        if (mime === 'image/png' && !under) note += ' ・ PNGは可逆形式のため、容量を下げるには寸法縮小かJPEG/WebPへの変更が有効';
-        if (res.failed) note += ' ・ 指定容量まで下げられなかった。目標を上げるかJPEG/WebPを試して。';
+        let note = `${res.w}×${res.h}` + tr('toolR.note.size');
+        if (res.q !== null) note += tr('tool.sep') + tr('toolR.note.qualityLabel') + ` ${Math.round(res.q * 100)}%`;
+        if (res.scaled) note += tr('tool.sep') + tr('toolR.note.scaled');
+        if (mime === 'image/png' && !under) note += tr('tool.sep') + tr('toolR.note.png');
+        if (res.failed) note += tr('tool.sep') + tr('toolR.note.failed');
         resultNote.textContent = note;
 
         result.classList.add('on');
         result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } catch (err) {
-        resultNote.textContent = '処理に失敗した。別の形式や画像で試して。';
+        resultNote.textContent = tr('toolR.err');
         result.classList.add('on');
       } finally {
-        go.disabled = false; go.textContent = '圧縮する';
+        go.disabled = false; go.textContent = tr('toolR.go');
       }
     }, { signal });
 
@@ -220,20 +223,20 @@ export default function ImageResizeTool() {
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <div className="img-resize-tool" ref={rootRef}>
           <div className="wrap">
-            <div className="eyebrow">FiveM / GTARP ツール</div>
-            <h1>スクショを<span className="hl">Discordに収まる</span>サイズへ</h1>
-            <p className="sub">画像をドロップして目標の容量を選ぶだけ。あとは自動で圧縮する。寸法の指定も後から足せる。</p>
-            <div className="privacy"><b>画像はこの端末から出ない。</b>すべてブラウザ内で処理する。</div>
+            <div className="eyebrow">{t('tool.eyebrow')}</div>
+            <h1>{t('toolR.h1.pre')}<span className="hl">{t('toolR.h1.hl')}</span>{t('toolR.h1.post')}</h1>
+            <p className="sub">{t('toolR.sub')}</p>
+            <div className="privacy"><b>{t('tool.privacy.bold')}</b>{t('tool.privacy.rest')}</div>
 
             <div className="card">
-              <div className="drop" id="drop" tabIndex={0} role="button" aria-label="画像を選ぶ">
+              <div className="drop" id="drop" tabIndex={0} role="button" aria-label={t('tool.drop.title')}>
                 <div className="ring">
                   <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 16V4M12 4l-4 4M12 4l4 4" /><path d="M5 20h14" />
                   </svg>
                 </div>
-                <h2>画像をドロップ</h2>
-                <p>または <span className="browse">ファイルを選ぶ</span> ・ PNG / JPEG / WebP に対応</p>
+                <h2>{t('tool.drop.title')}</h2>
+                <p>{t('tool.drop.or')} <span className="browse">{t('tool.drop.browse')}</span> {t('tool.drop.formats')}</p>
                 <input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden />
               </div>
 
@@ -243,73 +246,73 @@ export default function ImageResizeTool() {
                   <div className="filerow">
                     <span className="filename" id="fname">—</span>
                     <span id="srcMeta">—</span>
-                    <button className="reset" id="reset">別の画像</button>
+                    <button className="reset" id="reset">{t('tool.reset')}</button>
                   </div>
                 </div>
 
                 <div className="controls">
                   <div className="group">
-                    <span className="lab">目標の容量</span>
+                    <span className="lab">{t('toolR.lab.target')}</span>
                     <div className="segs" id="targetSegs">
                       <button className="seg active" data-mb="10">10 MB</button>
                       <button className="seg" data-mb="8">8 MB</button>
-                      <button className="seg" data-mb="custom">カスタム</button>
+                      <button className="seg" data-mb="custom">{t('toolR.seg.custom')}</button>
                     </div>
                     <div className="custom" id="customWrap">
-                      <input type="number" id="customMb" min="0.1" step="0.1" placeholder="例: 2.5" />
-                      <span className="unit">MB 以下</span>
+                      <input type="number" id="customMb" min="0.1" step="0.1" placeholder={t('toolR.customPh')} />
+                      <span className="unit">{t('toolR.unit')}</span>
                     </div>
                   </div>
 
                   <div className="group">
-                    <span className="lab">出力形式</span>
+                    <span className="lab">{t('toolR.lab.format')}</span>
                     <div className="formats" id="fmtRow">
-                      <div className="fmt active" data-fmt="image/jpeg">JPEG<small>容量重視</small></div>
-                      <div className="fmt" data-fmt="image/webp">WebP<small>軽い・高画質</small></div>
-                      <div className="fmt" data-fmt="image/png">PNG<small>劣化なし</small></div>
+                      <div className="fmt active" data-fmt="image/jpeg">JPEG<small>{t('toolR.fmt.jpeg.small')}</small></div>
+                      <div className="fmt" data-fmt="image/webp">WebP<small>{t('toolR.fmt.webp.small')}</small></div>
+                      <div className="fmt" data-fmt="image/png">PNG<small>{t('toolR.fmt.png.small')}</small></div>
                     </div>
                   </div>
 
                   <details className="adv">
-                    <summary>寸法を指定（任意）</summary>
+                    <summary>{t('toolR.adv.summary')}</summary>
                     <div className="dims">
-                      <input type="number" id="w" min="1" placeholder="幅 px" />
+                      <input type="number" id="w" min="1" placeholder={t('toolR.dim.w')} />
                       <span className="x">×</span>
-                      <input type="number" id="h" min="1" placeholder="高さ px" />
+                      <input type="number" id="h" min="1" placeholder={t('toolR.dim.h')} />
                     </div>
-                    <label className="lock"><input type="checkbox" id="aspect" defaultChecked />縦横比を保つ</label>
+                    <label className="lock"><input type="checkbox" id="aspect" defaultChecked />{t('toolR.lock')}</label>
                   </details>
 
-                  <button className="go" id="go">圧縮する</button>
+                  <button className="go" id="go">{t('toolR.go')}</button>
                 </div>
               </div>
 
               <div className="result" id="result">
                 <div className="rhead">
-                  <span className="ttl">結果</span>
-                  <span className="verdict ok" id="verdict">目標内</span>
+                  <span className="ttl">{t('toolR.result.title')}</span>
+                  <span className="verdict ok" id="verdict">{t('toolR.verdict.under')}</span>
                 </div>
                 <div className="stage" style={{ minHeight: 'auto', marginBottom: 18 }}><canvas id="outCanvas"></canvas></div>
                 <div className="nums">
-                  <div className="num"><div className="k">前</div><div className="v before" id="beforeSize">—</div></div>
+                  <div className="num"><div className="k">{t('toolR.before')}</div><div className="v before" id="beforeSize">—</div></div>
                   <span className="arrow">→</span>
-                  <div className="num"><div className="k">後</div><div className="v after" id="afterSize">—</div></div>
+                  <div className="num"><div className="k">{t('toolR.after')}</div><div className="v after" id="afterSize">—</div></div>
                   <span className="ratio" id="ratio">—</span>
                 </div>
                 <div className="meter"><div className="fill" id="fill"></div><div className="target" id="targetMark"></div></div>
-                <div className="meterlab"><span id="afterLabel">—</span><span className="tgt" id="tgtLabel">目標 —</span></div>
+                <div className="meterlab"><span id="afterLabel">—</span><span className="tgt" id="tgtLabel">{t('toolR.tgtLabel')}—</span></div>
                 <button className="dl" id="dl">
                   <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4v12M12 16l-4-4M12 16l4-4" /><path d="M5 20h14" /></svg>
-                  ダウンロード
+                  {t('toolR.dl')}
                 </button>
                 <p className="note" id="resultNote"></p>
-                <p className="note">保存できない環境では、上の圧縮後プレビューを右クリック（長押し →「画像を保存」）でも保存できる。</p>
+                <p className="note">{t('toolR.note.fallback')}</p>
               </div>
             </div>
 
             <p className="footnote">
-              画像はサーバーに送信されない。すべてこの端末のブラウザ内で処理される。<br />
-              Discordの添付上限はプランや時期で変わる。迷ったら小さめを選ぶのが安全。
+              {t('tool.footnote.privacy')}<br />
+              {t('toolR.footnote.b')}
             </p>
           </div>
         </div>
