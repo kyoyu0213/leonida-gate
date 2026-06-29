@@ -75,7 +75,16 @@ function Router() {
       <Route path="/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
 
       {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
-          日英の対が無いページ（掲示板・servers 等）には /en/ を作らない。 */}
+          記事・fivem-gtarp・tools・contact・terms は hreflang/sitemap で正式な英語版として扱う。
+          掲示板・servers・home・検索 など（中身が日本語UGC/動的）は UI を英語表示できるよう /en を
+          用意するが、hreflang は張らず canonical は日本語版に集約する（重複インデックスを避ける）。 */}
+      <Route path="/en" component={Home} />
+      <Route path="/en/news" component={NewsList} />
+      <Route path="/en/servers" component={ServerBoard} />
+      <Route path="/en/board" component={BoardThreadList} />
+      <Route path="/en/board/:slug" component={BoardThreadList} />
+      <Route path="/en/thread/:id" component={BoardThread} />
+      <Route path="/en/search" component={SearchPage} />
       <Route path="/en/news/:id" component={NewsDetail} />
       <Route path="/en/fivem-gtarp" component={FivemGtarp} />
       <Route path="/en/fivem-gtarp/what-is-fivem" component={FivemArticle} />

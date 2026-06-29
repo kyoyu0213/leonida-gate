@@ -57,9 +57,10 @@ export default function BoardThreadList() {
   const tr = useT();
   const lang = useLang();
   const [, navigate] = useLocation();
-  const [, params] = useRoute('/board/:slug');
-  // /board（slugなし）は先頭の掲示板を既定表示
-  const slug = params?.slug ?? BOARDS[0].slug;
+  const [, paramsJa] = useRoute('/board/:slug');
+  const [, paramsEn] = useRoute('/en/board/:slug');
+  // /board（slugなし）は先頭の掲示板を既定表示。日本語 /board/:slug と英語 /en/board/:slug の両対応。
+  const slug = paramsJa?.slug ?? paramsEn?.slug ?? BOARDS[0].slug;
   const board = getBoard(slug);
   // 板ごとに title/description/canonical を出し分け（canonical は slug 付きの正規URLへ）
   useSeo(

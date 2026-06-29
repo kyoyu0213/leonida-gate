@@ -51,8 +51,11 @@ const avatarFor = (s: string) =>
 export default function BoardThread() {
   const tr = useT();
   const lang = useLang();
-  const [match, params] = useRoute('/thread/:id');
-  const threadId = params?.id;
+  // 日本語 /thread/:id と英語 /en/thread/:id の両方にマッチさせる（言語は useLang が URL から判定）。
+  const [matchJa, paramsJa] = useRoute('/thread/:id');
+  const [matchEn, paramsEn] = useRoute('/en/thread/:id');
+  const match = matchJa || matchEn;
+  const threadId = paramsJa?.id ?? paramsEn?.id;
 
   const [thread, setThread] = useState<ThreadType | null>(null);
   const [posts, setPosts] = useState<BoardPost[]>([]);
