@@ -6,6 +6,7 @@ import { Route, Switch } from "wouter";
 import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import MobileTabBar from "./components/MobileTabBar";
+import LangBanner from "./components/LangBanner";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 // 各ページは遅延読み込み（コード分割）。記事ページ用の重いライブラリ（Markdown
@@ -72,6 +73,30 @@ function Router() {
       <Route path="/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
+
+      {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
+          日英の対が無いページ（掲示板・servers 等）には /en/ を作らない。 */}
+      <Route path="/en/news/:id" component={NewsDetail} />
+      <Route path="/en/fivem-gtarp" component={FivemGtarp} />
+      <Route path="/en/fivem-gtarp/what-is-fivem" component={FivemArticle} />
+      <Route path="/en/fivem-gtarp/what-is-gtarp" component={GtarpArticle} />
+      <Route path="/en/fivem-gtarp/fivem-vs-gtarp" component={FivemVsGtarpArticle} />
+      <Route path="/en/fivem-gtarp/history" component={FivemHistoryArticle} />
+      <Route path="/en/fivem-gtarp/glossary" component={GtarpGlossaryArticle} />
+      <Route path="/en/fivem-gtarp/faq" component={FivemFaqArticle} />
+      <Route path="/en/fivem-gtarp/commands" component={FivemCommandsArticle} />
+      <Route path="/en/fivem-gtarp/streamer-server-history" component={GtarpStreamerHistoryArticle} />
+      <Route path="/en/fivem-gtarp/observer-guide" component={GtarpObserverGuideArticle} />
+      <Route path="/en/fivem-gtarp/first-day-guide" component={GtarpFirstDayGuideArticle} />
+      <Route path="/en/fivem-gtarp/server-guide" component={FivemServerGuide} />
+      <Route path="/en/fivem-gtarp/server-setup" component={FivemServerSetupArticle} />
+      <Route path="/en/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
+      <Route path="/en/fivem-gtarp/tools" component={ToolsIndex} />
+      <Route path="/en/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
+      <Route path="/en/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
+      <Route path="/en/contact" component={Contact} />
+      <Route path="/en/terms" component={Terms} />
+
       <Route path="/admin/reports" component={AdminReports} />
       <Route path="/admin/news" component={AdminNews} />
       <Route path="/search" component={SearchPage} />
@@ -103,6 +128,7 @@ function App() {
               <Router />
             </Suspense>
             <MobileTabBar />
+            <LangBanner />
           </div>
           <GoogleAnalytics />
           <Analytics />

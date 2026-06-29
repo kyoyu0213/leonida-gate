@@ -29,7 +29,11 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
 }) as never;
 
 export default function NewsDetail() {
-  const [match, params] = useRoute('/news/:id');
+  // 日本語 /news/:id と英語 /en/news/:id の両方にマッチさせる（言語は useLang が URL から判定）。
+  const [matchJa, paramsJa] = useRoute('/news/:id');
+  const [matchEn, paramsEn] = useRoute('/en/news/:id');
+  const match = matchJa || matchEn;
+  const params = (paramsJa || paramsEn) as { id: string } | undefined;
   const [summaryOpen, setSummaryOpen] = useState(false);
   const [commentCount, setCommentCount] = useState<number | null>(null);
   const lang = useLang();
@@ -37,7 +41,7 @@ export default function NewsDetail() {
   const isEn = lang === 'en';
 
   // 記事は静的データ（data/news.ts）＋管理画面から投稿された DB 記事を解決する。
-  const { article, loading } = useArticleById(match ? params.id : undefined);
+  const { article, loading } = useArticleById(match ? params?.id : undefined);
 
   // 記事ごとに <title> / description / OGP を設定（フックは早期returnの前で呼ぶ）。
   const seoTitle = article
@@ -49,7 +53,8 @@ export default function NewsDetail() {
   useSeo(seoTitle, seoDesc, {
     image: article?.image,
     type: 'article',
-    url: article ? `/news/${article.id}` : undefined,
+    // canonical/og:url は自言語URL（現在URL）。hreflang は ja/en の対として出す。
+    localized: true,
   });
 
   if (!match) {

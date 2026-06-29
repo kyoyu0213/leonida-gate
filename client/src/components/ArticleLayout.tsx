@@ -92,7 +92,9 @@ export default function ArticleLayout({
   const effBody = isEn && bodyEn ? bodyEn : body;
   const effSummary = isEn && aiSummaryEn ? aiSummaryEn : aiSummary;
   const effSource = source ?? t('article.editorial');
-  useSeo(isEn && seoTitleEn ? seoTitleEn : seoTitle, isEn && seoDescEn ? seoDescEn : seoDesc);
+  useSeo(isEn && seoTitleEn ? seoTitleEn : seoTitle, isEn && seoDescEn ? seoDescEn : seoDesc, {
+    localized: true,
+  });
   const [summaryOpen, setSummaryOpen] = useState(false);
 
   return (

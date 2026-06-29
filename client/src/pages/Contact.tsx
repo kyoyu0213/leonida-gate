@@ -10,7 +10,7 @@ import { useSeo } from '@/hooks/useSeo';
 
 export default function Contact() {
   const t = useT();
-  useSeo(t('seo.contact.title'), t('seo.contact.desc'), { url: '/contact' });
+  useSeo(t('seo.contact.title'), t('seo.contact.desc'), { localized: true });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);

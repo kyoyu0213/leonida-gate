@@ -1,61 +1,44 @@
-import { useSyncExternalStore } from 'react';
+import { useLocation } from 'wouter';
 
-// サイトの表示言語（日本語デフォルト＋英語）。localStorage に保存し、
-// ボタンで切り替える。まずはトップページの固定文言を対象にする。
+// サイトの表示言語。第3弾で「URLベース（1URL=1言語）」に変更。
+// /en 配下＝英語、それ以外＝日本語。ブラウザ言語による自動切替・自動リダイレクトはしない。
+// 日本語URLは現行のまま、英語は /en/ プレフィックス。
 export type Lang = 'ja' | 'en';
 
-const KEY = 'site_lang';
+/** パスから言語を決める（/en 配下＝英語）。 */
+export function langFromPath(path: string): Lang {
+  return path === '/en' || path.startsWith('/en/') ? 'en' : 'ja';
+}
 
-// ブラウザ言語から初期言語を推定（日本語ブラウザ=ja、それ以外=en）。
-// 海外（日本語以外）からのアクセスは英語をデフォルト表示にする狙い。
-function detectFromBrowser(): Lang {
+/** 言語プレフィックスを除いた日本語側の論理パスを返す（/en/foo → /foo、/en → /）。 */
+export function stripLangPrefix(path: string): string {
+  if (path === '/en') return '/';
+  if (path.startsWith('/en/')) return path.slice(3);
+  return path;
+}
+
+/** 指定言語のURLを作る（en は /en プレフィックス付与、ja はプレフィックス無し）。 */
+export function pathForLang(path: string, lang: Lang): string {
+  const base = stripLangPrefix(path);
+  if (lang === 'en') return base === '/' ? '/en' : `/en${base}`;
+  return base;
+}
+
+/** ブラウザの言語が英語寄りか（誘導バナーの表示判定にのみ使用。表示切替には使わない）。 */
+export function prefersEnglish(): boolean {
   try {
     const langs =
       navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
-    const isJa = langs.some((l) => typeof l === 'string' && l.toLowerCase().startsWith('ja'));
-    return isJa ? 'ja' : 'en';
+    return !langs.some((l) => typeof l === 'string' && l.toLowerCase().startsWith('ja'));
   } catch {
-    return 'ja';
+    return false;
   }
 }
 
-function read(): Lang {
-  // ユーザーが明示的に選んだ言語があれば最優先。
-  try {
-    const saved = localStorage.getItem(KEY);
-    if (saved === 'en' || saved === 'ja') return saved;
-  } catch {
-    /* ignore */
-  }
-  // 未選択ならブラウザ言語で判定（保存はしない＝明示選択するまで自動）。
-  return detectFromBrowser();
-}
-
-let current: Lang = read();
-const listeners = new Set<() => void>();
-
-export function getLang(): Lang {
-  return current;
-}
-export function setLang(l: Lang): void {
-  if (l === current) return;
-  current = l;
-  try {
-    localStorage.setItem(KEY, l);
-  } catch {
-    /* ignore */
-  }
-  listeners.forEach((fn) => fn());
-}
-function subscribe(fn: () => void): () => void {
-  listeners.add(fn);
-  return () => {
-    listeners.delete(fn);
-  };
-}
-/** 現在の言語を購読して返す（変更で再描画）。 */
+/** 現在の言語（フック）。URL（wouter の location）から導出する。SSR でも ssrPath から決まる。 */
 export function useLang(): Lang {
-  return useSyncExternalStore(subscribe, getLang, getLang);
+  const [loc] = useLocation();
+  return langFromPath(loc);
 }
 
 type Dict = Record<string, string>;

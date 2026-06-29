@@ -91,7 +91,7 @@ const TABS = [
 
 export default function FivemGtarp() {
   const t = useT();
-  useSeo(t('fg.seo.title'), t('fg.seo.desc'));
+  useSeo(t('fg.seo.title'), t('fg.seo.desc'), { localized: true });
   const [selected, setSelected] = useState<string>('all');
 
   const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);

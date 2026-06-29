@@ -32,10 +32,17 @@ function setMeta(html: string, key: string, content: string): string {
   return html.replace(re, `$1${esc(content)}$2`);
 }
 
-function buildHtml(article: (typeof newsArticles)[number]): string {
-  const title = `${article.title} | ${SITE_NAME}`;
-  const desc = (article.description || '').replace(/\s+/g, ' ').trim().slice(0, 160);
-  const url = `${ORIGIN}/news/${article.id}`;
+function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): string {
+  const isEn = lang === 'en';
+  const aTitle = (isEn && article.titleEn ? article.titleEn : article.title) || '';
+  const aDesc = isEn && article.descriptionEn ? article.descriptionEn : article.description;
+
+  const title = `${aTitle} | ${SITE_NAME}`;
+  const desc = (aDesc || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+  const base = `/news/${article.id}`;
+  const url = `${ORIGIN}${isEn ? '/en' : ''}${base}`;
+  const jaUrl = `${ORIGIN}${base}`;
+  const enUrl = `${ORIGIN}/en${base}`;
   const image = toAbs(article.image || DEFAULT_IMAGE);
   const published = /T|\s/.test(article.publishedAt || '')
     ? (article.publishedAt as string).replace(' ', 'T')
@@ -44,7 +51,7 @@ function buildHtml(article: (typeof newsArticles)[number]): string {
   let html = TEMPLATE;
   // <title>
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
-  // canonical
+  // canonical（各言語版は自言語URLを自己参照）
   html = html.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`);
   // meta 各種
   html = setMeta(html, 'description', desc);
@@ -57,13 +64,24 @@ function buildHtml(article: (typeof newsArticles)[number]): string {
   html = setMeta(html, 'twitter:description', desc);
   html = setMeta(html, 'twitter:image', image);
 
+  // hreflang（記事は日英の対あり）。
+  const alt = [
+    `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
+    `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
+    `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
+  ].join('\n    ');
+  html = html.replace('</head>', `    ${alt}\n  </head>`);
+
   // JSON-LD（NewsArticle + パンくず）。"<" はエスケープして </script> 破壊を防ぐ。
+  const crumbHome = isEn ? 'Home' : 'ホーム';
+  const crumbNews = isEn ? 'News' : '最新情報';
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'NewsArticle',
-        headline: article.title,
+        inLanguage: isEn ? 'en' : 'ja',
+        headline: aTitle,
         description: desc,
         image: [image],
         datePublished: published,
@@ -75,9 +93,9 @@ function buildHtml(article: (typeof newsArticles)[number]): string {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${ORIGIN}/` },
-          { '@type': 'ListItem', position: 2, name: '最新情報', item: `${ORIGIN}/news` },
-          { '@type': 'ListItem', position: 3, name: article.title, item: url },
+          { '@type': 'ListItem', position: 1, name: crumbHome, item: `${ORIGIN}${isEn ? '/en' : '/'}` },
+          { '@type': 'ListItem', position: 2, name: crumbNews, item: `${ORIGIN}${isEn ? '/en' : ''}/news` },
+          { '@type': 'ListItem', position: 3, name: aTitle, item: url },
         ],
       },
     ],
@@ -90,10 +108,13 @@ function buildHtml(article: (typeof newsArticles)[number]): string {
 
 let count = 0;
 for (const article of newsArticles) {
-  const html = buildHtml(article);
-  const dir = resolve(ROOT, `dist/public/news/${article.id}`);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(resolve(dir, 'index.html'), html, 'utf8');
-  count++;
+  // 日本語版（/news/<id>）と英語版（/en/news/<id>）の両方を生成。
+  for (const lang of ['ja', 'en'] as const) {
+    const html = buildHtml(article, lang);
+    const dir = resolve(ROOT, `dist/public${lang === 'en' ? '/en' : ''}/news/${article.id}`);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(resolve(dir, 'index.html'), html, 'utf8');
+    count++;
+  }
 }
-console.log(`[prerender] ${count} 記事ページを生成: dist/public/news/<id>/index.html`);
+console.log(`[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html`);

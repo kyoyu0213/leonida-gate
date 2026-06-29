@@ -51,7 +51,10 @@ const ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
 };
 
-export const ROUTE_PATHS = Object.keys(ROUTES);
+// 日本語ルート＋その英語版（/en/...）の両方をプリレンダ対象にする。
+// 言語は URL（ssrPath）から useLang が判定するため、同じコンポーネントで英語版が描画される。
+const JA_PATHS = Object.keys(ROUTES);
+export const ROUTE_PATHS = [...JA_PATHS, ...JA_PATHS.map((p) => `/en${p}`)];
 
 export interface RenderResult {
   html: string;
@@ -60,7 +63,8 @@ export interface RenderResult {
 
 /** 1ルートを静的HTML化して返す。未登録ルートは null。 */
 export function render(url: string): RenderResult | null {
-  const Comp = ROUTES[url];
+  const jaPath = url.startsWith('/en/') ? url.slice(3) : url;
+  const Comp = ROUTES[jaPath];
   if (!Comp) return null;
   const html = renderToString(
     <ThemeProvider defaultTheme="dark">

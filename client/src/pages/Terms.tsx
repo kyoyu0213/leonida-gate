@@ -203,7 +203,7 @@ const EN: TermsContent = {
 export default function Terms() {
   const lang = useLang();
   const t = useT();
-  useSeo(t('seo.terms.title'), t('seo.terms.desc'), { url: '/terms' });
+  useSeo(t('seo.terms.title'), t('seo.terms.desc'), { localized: true });
   const c = lang === 'en' ? EN : JA;
 
   const h2 = 'vice-display text-xl text-white mb-3';

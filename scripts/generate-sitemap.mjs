@@ -76,17 +76,26 @@ function urlEntry({ loc, lastmod, priority, changefreq }) {
 }
 
 const articles = extractArticles();
+
+// 日英の対がある（=/en/ 版を持つ）静的ルートか。client/src/lib/routes.ts と一致させる。
+const isLocalized = (p) => p.startsWith('/fivem-gtarp') || p === '/contact' || p === '/terms';
+
 const entries = [
+  // 日本語：固定ページ
   ...STATIC_ROUTES.map((r) =>
     urlEntry({ loc: `${ORIGIN}${r.path}`, priority: r.priority, changefreq: r.changefreq }),
   ),
+  // 英語：日英の対がある固定ページのみ /en/ を追加
+  ...STATIC_ROUTES.filter((r) => isLocalized(r.path)).map((r) =>
+    urlEntry({ loc: `${ORIGIN}/en${r.path}`, priority: r.priority, changefreq: r.changefreq }),
+  ),
+  // 日本語：記事
   ...articles.map((a) =>
-    urlEntry({
-      loc: `${ORIGIN}/news/${a.id}`,
-      lastmod: a.date,
-      priority: '0.8',
-      changefreq: 'weekly',
-    }),
+    urlEntry({ loc: `${ORIGIN}/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
+  ),
+  // 英語：記事（日英の対あり）
+  ...articles.map((a) =>
+    urlEntry({ loc: `${ORIGIN}/en/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
   ),
 ];
 

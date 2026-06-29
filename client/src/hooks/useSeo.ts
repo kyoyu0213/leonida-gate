@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { stripLangPrefix, pathForLang } from '@/lib/i18n';
 
 /** 本番ドメイン（OGP/canonical の絶対URL生成に使う）。 */
 export const SITE_ORIGIN = 'https://gta6-feed.com';
@@ -12,6 +13,11 @@ export interface SeoOptions {
   type?: 'website' | 'article';
   /** canonical / og:url。未指定なら現在のURL。 */
   url?: string;
+  /**
+   * 日英の対が存在するページか。true のとき hreflang（ja/en/x-default）を
+   * 現在のパスから自動生成して出す。対が無いページ（掲示板等）では指定しない。
+   */
+  localized?: boolean;
 }
 
 // --- ビルド時プリレンダ（SSR）用の収集口 ---------------------------------------
@@ -24,6 +30,7 @@ export interface CollectedSeo {
   image?: string;
   type?: 'website' | 'article';
   url?: string;
+  localized?: boolean;
 }
 let collectedSeo: CollectedSeo | null = null;
 /** 直近の描画で useSeo に渡された SEO 値を取り出す（取り出すとクリア）。SSR専用。 */
@@ -66,10 +73,11 @@ export function useSeo(title: string, description?: string, options?: SeoOptions
   const image = options?.image;
   const type = options?.type ?? 'website';
   const url = options?.url;
+  const localized = options?.localized ?? false;
 
   // SSR（ビルド時プリレンダ）では useEffect が走らないので、描画中に値を控える。
   if (typeof window === 'undefined') {
-    collectedSeo = { title, description, image, type, url };
+    collectedSeo = { title, description, image, type, url, localized };
   }
 
   useEffect(() => {
@@ -123,9 +131,29 @@ export function useSeo(title: string, description?: string, options?: SeoOptions
       else if (prevHref !== null) link!.setAttribute('href', prevHref);
     });
 
+    // hreflang（日英の対があるページのみ）。現在のパスから ja/en/x-default を生成。
+    if (localized) {
+      const path = window.location.pathname;
+      const jaUrl = toAbsolute(stripLangPrefix(path));
+      const enUrl = toAbsolute(pathForLang(path, 'en'));
+      const alts: Array<[string, string]> = [
+        ['ja', jaUrl],
+        ['en', enUrl],
+        ['x-default', jaUrl],
+      ];
+      for (const [hl, href] of alts) {
+        const el = document.createElement('link');
+        el.setAttribute('rel', 'alternate');
+        el.setAttribute('hreflang', hl);
+        el.setAttribute('href', href);
+        document.head.appendChild(el);
+        restore.push(() => el.remove());
+      }
+    }
+
     return () => {
       // 逆順で元に戻す。
       for (let i = restore.length - 1; i >= 0; i--) restore[i]();
     };
-  }, [title, description, image, type, url]);
+  }, [title, description, image, type, url, localized]);
 }

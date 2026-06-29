@@ -11,7 +11,7 @@ import './imageTools.css';
 // 表示文言は i18n 化。動的文字列は最新の t を参照する tRef 経由で取得する。
 export default function ImageMaskTool() {
   const t = useT();
-  useSeo(t('tools.imageMask.seo.title'), t('tools.imageMask.seo.desc'));
+  useSeo(t('tools.imageMask.seo.title'), t('tools.imageMask.seo.desc'), { localized: true });
   const rootRef = useRef<HTMLDivElement>(null);
   const tRef = useRef(t);
   tRef.current = t;

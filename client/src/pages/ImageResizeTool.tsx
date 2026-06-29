@@ -11,7 +11,7 @@ import './imageTools.css';
 // tRef 経由で取得する（言語切替後も再アタッチ無しで最新言語の文言になる）。
 export default function ImageResizeTool() {
   const t = useT();
-  useSeo(t('tools.imageResize.seo.title'), t('tools.imageResize.seo.desc'));
+  useSeo(t('tools.imageResize.seo.title'), t('tools.imageResize.seo.desc'), { localized: true });
   const rootRef = useRef<HTMLDivElement>(null);
   const tRef = useRef(t);
   tRef.current = t;

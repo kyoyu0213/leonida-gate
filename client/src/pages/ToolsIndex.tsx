@@ -12,7 +12,7 @@ const CARDS = [
 
 export default function ToolsIndex() {
   const t = useT();
-  useSeo(t('tools.index.seo.title'), t('tools.index.seo.desc'));
+  useSeo(t('tools.index.seo.title'), t('tools.index.seo.desc'), { localized: true });
 
   return (
     <div className="vice-page vice-noise">

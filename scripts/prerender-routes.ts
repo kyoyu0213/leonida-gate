@@ -34,7 +34,14 @@ function setMeta(html: string, key: string, content: string): string {
 
 interface RenderResult {
   html: string;
-  seo: { title: string; description?: string; image?: string; type?: string; url?: string } | null;
+  seo: {
+    title: string;
+    description?: string;
+    image?: string;
+    type?: string;
+    url?: string;
+    localized?: boolean;
+  } | null;
 }
 interface ServerEntry {
   render: (url: string) => RenderResult | null;
@@ -73,6 +80,19 @@ for (const route of mod.ROUTE_PATHS) {
   html = setMeta(html, 'twitter:title', title);
   html = setMeta(html, 'twitter:description', desc);
   html = setMeta(html, 'twitter:image', image);
+
+  // hreflang（日英の対があるページのみ）。日URL/英URL/x-default(=日) を相互に張る。
+  if (seo?.localized) {
+    const jaPath = route.startsWith('/en/') ? route.slice(3) : route;
+    const jaUrl = `${ORIGIN}${jaPath}`;
+    const enUrl = `${ORIGIN}/en${jaPath}`;
+    const alt = [
+      `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
+      `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
+    ].join('\n    ');
+    html = html.replace('</head>', `    ${alt}\n  </head>`);
+  }
 
   // #root に本文を焼き込む（クライアントの createRoot がマウント時に置き換える）。
   if (!html.includes('<div id="root"></div>')) {
