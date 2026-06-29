@@ -99,6 +99,171 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 27,
+    title:
+      "GTA6のルシアとジェイソンは誰が演じているのか——ファンが推す候補と、Rockstarが明かさない理由",
+    description:
+      "ルシア役にManni L. Perez、ジェイソン役にDylan Rourke——ファンの間では本命のように語られているが、Rockstarはキャストを一切公表しておらず、いずれも未確認の推測にとどまる。何が事実で何が憶測なのかを切り分けて整理する。",
+    icon: "🎭",
+    image: "/images/news/lusiahadarenanoka/luciaeyecatch.png",
+    category: "topic",
+    date: "2026-06-29",
+    publishedAt: "2026-06-29 23:45",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [26, 25, 24],
+    aiSummary: [
+      "GTA6の主人公ルシアとジェイソンの「中の人」について、ファンの間ではルシア役にManni L. Perez、ジェイソン役にDylan Rourkeという名前が本命のように語られている。だがRockstarはキャストを一切公表していない。",
+      "Manni L. PerezはGTA OnlineのDiamond Casinoでディーラー役を演じた事実があり、声や容姿の類似とあわせて有力視される。一方ジェイソン側の推測はルシアほど固まっておらず、過去にはTroy Baker説も浮上して本人に否定された。",
+      "主要メディアも「広く噂されている」という慎重な表現にとどめており、独立した裏付けはない。GTA6は未発売で、配役はRockstarの公式発表があるまで確定しない。",
+    ],
+    fullContent: `# GTA6のルシアとジェイソンは誰が演じているのか——ファンが推す候補と、Rockstarが明かさない理由
+
+GTA6の二人の主人公、ルシアとジェイソンの「中の人」は誰なのか。ファンの間では、ルシア役にManni L. Perez、ジェイソン役にDylan Rourkeという名前がほぼ本命のように語られている。だがRockstarはキャストを一切公表しておらず、これらはいずれも未確認の推測にとどまる。GTA6 FEEDが、何が事実で何が憶測なのかを切り分けて整理した。
+
+本記事は2026年6月27日時点の情報にもとづく。
+
+---
+
+## 大前提:Rockstarはキャストを公表していない
+
+まず押さえるべきは、Rockstarが声優・モーションキャプチャー俳優を誰一人として公式に発表していないという点だ。公式サイトのキャラクター紹介でも、声優の欄はすべて「TBA(未定・後日発表)」のままになっている。
+
+これはRockstarの一貫した方針で、GTA5やRDR2でも、キャストは発売間際、あるいは発売後まで明かされなかった。秘匿の理由としては、発売前のリーク防止、発売後にプレイヤーが配役を「発見」する楽しみの演出に加えて、開発期間中に俳優が嫌がらせの標的になるのを防ぐ目的もあるとされる。つまり、現時点でキャストについて「確定」していることは何もない、というのが出発点になる。
+
+---
+
+## ルシア役の候補:Manni L. Perez(最有力視されるが未確認)
+
+ファンの間で最も多く名前が挙がるのが、アメリカの俳優Manni L. Perezだ。Law & Order: SVU、Jessica Jones、Blindspotなどに出演してきたラテン系の俳優で、近年はボイスアクトやモーションキャプチャーの仕事への移行を公言している。
+
+ルシア役として名前が広まった主なきっかけは、トレーラーに登場するルシアと、声や容姿が似ているという比較だった。
+
+![トレーラーのルシアとManni L. Perezを並べた比較。声や容姿が似ているという指摘が、配役の噂が広まる主なきっかけになった](/images/news/lusiahadarenanoka/luciahikaku1.png)
+
+これに加えて、検証できる状況証拠として挙げられるのが、Rockstarとの過去の接点だ。Manni L. PerezはGTA OnlineのDiamond Casino関連のアップデートで、カジノのディーラー役の一人として声を担当している。この事実が判明したことで、ルシア役ではないかという見方が一段と強まった。また、インタビューでGTAについて問われた際、本人がNDA(秘密保持契約)を理由に明言を避けたとされる場面も、噂を後押しする材料として語られている。
+
+![ファンが根拠として挙げる容姿の比較。ただし似ているという印象は、配役を証明するものではない](/images/news/lusiahadarenanoka/lucihikaku2.png)
+
+ただし、これらはいずれも決定的な証拠ではない。声や容姿が似ていることも、過去にRockstar作品に関わったことも、ルシア役であることを証明するものではない。Rockstarも本人も、公式にこの配役を認めていない。
+
+---
+
+## ジェイソン役の候補:Dylan Rourke(ルシアほど固まっていない)
+
+ジェイソン役については、Dylan Rourkeという俳優の名前が最もよく挙がる。きっかけは、ゲーム系クリエイターのLegacyKillaDXが2024年に「ジェイソンはDylan Rourke」と主張したことで、トレーラーの声との類似や、モーションキャプチャーの経験があることが根拠とされている。
+
+![トレーラーのジェイソンと、ファンが候補として挙げる俳優を並べた比較画像](/images/news/lusiahadarenanoka/Jason.png)
+
+もっとも、ジェイソン側の推測はルシアほど一点に集中しておらず、確度はより低いとみられている。実際、当初はTroy Bakerの声ではないかという説が広まったが、本人が「自分ではない」と否定した経緯がある(別の著名声優Roger Craig Smithも関与を否定している)。ジェイソン役の候補は、これまでにも二転三転してきた。
+
+![ジェイソンの容姿比較。声や見た目の類似が根拠とされるが、候補はこれまでにも二転三転してきた](/images/news/lusiahadarenanoka/jasonhikaku1.png)
+
+![ファンが挙げるジェイソンの比較画像。ルシアほど一点に絞り込まれておらず、確度は低いとみられている](/images/news/lusiahadarenanoka/jasonhikaku2.png)
+
+---
+
+## なぜ「ほぼ確定」とは言えないのか
+
+これだけ名前が広まっていても、確定情報として扱うべきではない理由がいくつかある。
+
+IGNやGameSpotといった主要メディアも、この件を報じる際には「広く噂されている」「コミュニティで推測されている」といった慎重な表現を用いている。本人やRockstar、あるいは信頼できる第三者による独立した裏付けは、現時点で取れていない。
+
+また、ファンが根拠として挙げる状況証拠の一部は、対象となる俳優のSNS上の振る舞いを読み解いたものだ。相手は実在の一般の俳優であり、こうした詮索が過度になれば、本人にとっては迷惑にもなりうる。Rockstarがキャストを秘匿する理由の一つが、まさに開発中の俳優を嫌がらせから守ることにある点も踏まえ、未確認の推測を断定として広めるのは避けたい。仮に発売後、配役がまったくの別人だと判明すれば、長年の盛り上がりは、SNSやLinkedIn発の配役の噂をどこまで信じてよいかという教訓として残ることになる。
+
+---
+
+## まとめ:信頼度の整理
+
+確定している事実:
+
+- Rockstarはキャストを一切公表していない(公式の声優欄は全員「TBA」)。
+- Manni L. PerezとDylan Rourkeはいずれも実在の俳優で、Manni L. Perezが過去にGTA Onlineでディーラー役を演じたことは事実。
+
+噂・推測(未確認):
+
+- ルシア役=Manni L. Perez、ジェイソン役=Dylan Rourke。声や容姿の類似、本人のボイス・モーションキャプチャーへの転向公言、過去のRockstar作品への関与などが根拠とされるが、決定的な証拠はない。
+
+注意点として、GTA6は本記事執筆時点で未発売であり、キャストはRockstarの公式発表(過去の例では発売前後)があるまで確定しない。声や見た目が似ているという理由で実在の人物を配役と断定したり、本人のSNSを詮索したりする情報の扱いには注意したい。続報は、Rockstarの公式発表で確認するのが望ましい。`,
+    titleEn:
+      "Who Plays Lucia and Jason in GTA6? — The Fan-Favorite Candidates, and Why Rockstar Won't Say",
+    descriptionEn:
+      "Manni L. Perez for Lucia, Dylan Rourke for Jason — fans talk about them as near-certainties, yet Rockstar has revealed no cast at all, leaving both as unconfirmed speculation. We separate what is fact from what is conjecture.",
+    aiSummaryEn: [
+      "Regarding who voices GTA6's protagonists Lucia and Jason, fans talk about Manni L. Perez for Lucia and Dylan Rourke for Jason as if they were near-certainties. But Rockstar has not disclosed any cast at all.",
+      "Manni L. Perez did voice a dealer in GTA Online's Diamond Casino, and combined with vocal and physical resemblance she is seen as a strong candidate. The Jason guess is less settled than Lucia's; a Troy Baker theory once spread but he denied it.",
+      "Major outlets stick to cautious wording like \"widely rumored,\" and there is no independent corroboration. GTA6 is unreleased, and the casting won't be confirmed until Rockstar's official announcement.",
+    ],
+    fullContentEn: `# Who Plays Lucia and Jason in GTA6? — The Fan-Favorite Candidates, and Why Rockstar Won't Say
+
+Who are the people behind GTA6's two protagonists, Lucia and Jason? Among fans, the names Manni L. Perez for Lucia and Dylan Rourke for Jason are talked about almost as front-runners. But Rockstar has not disclosed any cast at all, and these all remain unconfirmed speculation. GTA6 FEED has organized this by separating what is fact from what is conjecture.
+
+This article is based on information as of June 27, 2026.
+
+---
+
+## The Premise: Rockstar Has Not Disclosed the Cast
+
+The first thing to grasp is that Rockstar has not officially announced a single voice or motion-capture actor. On the official site's character introductions, the voice-actor field for everyone remains "TBA (to be announced)."
+
+This is a consistent Rockstar policy; for GTA5 and RDR2 as well, the cast was not revealed until just before release, or even after it. The reasons cited for the secrecy include preventing pre-release leaks, preserving the fun of players "discovering" the casting after launch, and also protecting actors from becoming targets of harassment during development. In short, the starting point is that nothing about the cast is "confirmed" at this time.
+
+---
+
+## Candidate for Lucia: Manni L. Perez (Seen as the Strongest, but Unconfirmed)
+
+The name raised most often among fans is the American actor Manni L. Perez. A Latina actor who has appeared in Law & Order: SVU, Jessica Jones, and Blindspot, she has in recent years publicly stated she is moving into voice-acting and motion-capture work.
+
+The main trigger for her name spreading as Lucia was a comparison noting that her voice and appearance resemble the Lucia who appears in the trailers.
+
+![A comparison placing the trailer's Lucia next to Manni L. Perez. The claim that the voice and appearance resemble each other was the main trigger for the casting rumor spreading](/images/news/lusiahadarenanoka/luciahikaku1.png)
+
+In addition, the verifiable circumstantial evidence cited is a past connection with Rockstar. Manni L. Perez voiced one of the casino dealers in a GTA Online update related to the Diamond Casino. Once this fact came to light, the view that she might be Lucia grew even stronger. There is also a scene, often cited as fuel for the rumor, in which she reportedly avoided commenting when asked about GTA in an interview, citing an NDA (non-disclosure agreement).
+
+![An appearance comparison cited by fans as evidence. But an impression of resemblance does not prove the casting](/images/news/lusiahadarenanoka/lucihikaku2.png)
+
+However, none of this is decisive evidence. Neither a resemblance in voice and appearance nor past involvement in a Rockstar title proves she is Lucia. Neither Rockstar nor the actor herself has officially confirmed this casting.
+
+---
+
+## Candidate for Jason: Dylan Rourke (Less Settled Than Lucia)
+
+For Jason, the actor whose name comes up most is Dylan Rourke. The trigger was the gaming creator LegacyKillaDX claiming in 2024 that "Jason is Dylan Rourke," with the resemblance to the trailer's voice and his motion-capture experience cited as grounds.
+
+![A comparison image placing the trailer's Jason next to the actor fans raise as a candidate](/images/news/lusiahadarenanoka/Jason.png)
+
+That said, the guess on the Jason side is not concentrated on a single point the way Lucia's is, and is seen as lower in confidence. In fact, a theory that it was Troy Baker's voice spread early on, but he denied it, saying "it's not me" (another well-known voice actor, Roger Craig Smith, has also denied involvement). The candidates for Jason have shifted back and forth several times.
+
+![An appearance comparison for Jason. Vocal and visual resemblance are cited as grounds, but the candidates have shifted back and forth](/images/news/lusiahadarenanoka/jasonhikaku1.png)
+
+![A Jason comparison image raised by fans. It is not narrowed to a single point the way Lucia's is, and is seen as lower in confidence](/images/news/lusiahadarenanoka/jasonhikaku2.png)
+
+---
+
+## Why It Can't Be Called "Nearly Confirmed"
+
+Even with the names this widespread, there are several reasons it should not be treated as confirmed information.
+
+Major outlets like IGN and GameSpot, when reporting on this, use cautious wording such as "widely rumored" and "speculated by the community." Independent corroboration by the actors themselves, by Rockstar, or by a reliable third party has not been obtained at this time.
+
+Also, part of the circumstantial evidence fans cite is read out of the actors' behavior on social media. These are real, ordinary actors, and if such prying becomes excessive it can become a nuisance to them. Given that one of the reasons Rockstar keeps the cast secret is precisely to protect actors in development from harassment, we want to avoid spreading unconfirmed speculation as if it were certainty. If, after release, the casting turns out to be someone else entirely, years of excitement will remain as a lesson in how far one should trust casting rumors originating from social media and LinkedIn.
+
+---
+
+## Summary: Sorting by Reliability
+
+Confirmed facts:
+
+- Rockstar has not disclosed the cast at all (the official voice-actor field is "TBA" for everyone).
+- Manni L. Perez and Dylan Rourke are both real actors, and it is a fact that Manni L. Perez previously voiced a dealer in GTA Online.
+
+Rumor / speculation (unconfirmed):
+
+- Lucia = Manni L. Perez, Jason = Dylan Rourke. The grounds cited are vocal and physical resemblance, their public statements about shifting into voice and motion-capture work, and past involvement in Rockstar titles — but there is no decisive evidence.
+
+As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be confirmed until Rockstar's official announcement (around release, based on past examples). Be careful with information that declares a real person to be cast simply because the voice or look resembles a character, or that pries into the actors' social media. For follow-ups, it is best to confirm via Rockstar's official announcement.`,
+  },
+  {
     id: 26,
     title:
       "GTA6に「グラフィック劣化」論争が再燃——ジェイソンの家の比較画像は本当にダウングレードなのか",
