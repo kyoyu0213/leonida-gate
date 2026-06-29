@@ -62,7 +62,7 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
         {article.image ? (
           <img
             src={article.image}
-            alt=""
+            alt={title}
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"
           />

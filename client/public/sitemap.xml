@@ -41,6 +41,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/board/fivem-dev</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/fivem-gtarp</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -76,6 +81,56 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/history</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/glossary</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/commands</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/streamer-server-history</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/observer-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/first-day-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/tools</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/tools/image-resize</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/tools/image-mask</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
@@ -84,6 +139,12 @@
     <loc>https://gta6-feed.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/26</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gta6-feed.com/news/25</loc>

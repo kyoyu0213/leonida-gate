@@ -8,6 +8,7 @@ import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
 import { type FivemServer } from '@/lib/supabase';
 import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 // Topページに表示するニュースサムネの件数
 const TOP_NEWS_COUNT = 6;
@@ -17,6 +18,7 @@ const TREND_PER_BOARD = 3;
 export default function Home() {
   const t = useT();
   const lang = useLang();
+  useSeo(t('seo.home.title'), t('seo.home.desc'), { url: '/' });
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [trends, setTrends] = useState<{ board: BoardConfig; threads: BoardThread[] }[]>([]);

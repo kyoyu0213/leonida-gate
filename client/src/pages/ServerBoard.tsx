@@ -8,6 +8,7 @@ import { listApprovedServers, createFivemServer } from '@/lib/servers';
 import { uploadRawImages } from '@/lib/images';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 const SERVER_TYPES = [
   { id: 'all', label: 'すべて' },
@@ -33,6 +34,7 @@ const inputClass =
 export default function ServerBoard() {
   const tr = useT();
   const lang = useLang();
+  useSeo(tr('seo.servers.title'), tr('seo.servers.desc'), { url: '/servers' });
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');

@@ -6,6 +6,8 @@ import { newsArticles, CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
 import { searchPosts, searchThreads, formatPostDate } from '@/lib/board';
 import { getBoard, boardColor } from '@/lib/boards';
 import { logSearch } from '@/lib/searchLog';
+import { useT } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 interface BoardHit {
   key: string;
@@ -49,6 +51,8 @@ const makeSnippet = (text: string, q: string, len = 120): string => {
 };
 
 export default function SearchPage() {
+  const t = useT();
+  useSeo(t('seo.search.title'), t('seo.search.desc'), { url: '/search' });
   const search = useSearch();
   const params = new URLSearchParams(search);
   const q = (params.get('q') ?? '').trim();

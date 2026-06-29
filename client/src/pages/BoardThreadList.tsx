@@ -22,6 +22,7 @@ import { getBoard, BOARDS, boardColor } from '@/lib/boards';
 import { isLoggedIn, subscribeAdmin, adminCreateThread } from '@/lib/admin';
 import { submitServerApplication } from '@/lib/applications';
 import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 const COOLDOWN_KEY = 'board_last_post';
 
@@ -60,6 +61,12 @@ export default function BoardThreadList() {
   // /board（slugなし）は先頭の掲示板を既定表示
   const slug = params?.slug ?? BOARDS[0].slug;
   const board = getBoard(slug);
+  // 板ごとに title/description/canonical を出し分け（canonical は slug 付きの正規URLへ）
+  useSeo(
+    board ? `${board.title}｜GTA6 FEED` : tr('seo.board.title'),
+    board?.description,
+    { url: `/board/${slug}` },
+  );
 
   const [threads, setThreads] = useState<BoardThread[]>([]);
   const [loading, setLoading] = useState(true);

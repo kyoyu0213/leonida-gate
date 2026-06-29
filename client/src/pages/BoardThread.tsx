@@ -24,6 +24,7 @@ import {
 import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
 import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 const COOLDOWN_KEY = 'board_last_post';
 const REPORTED_KEY = 'board_reported_posts';
@@ -57,6 +58,13 @@ export default function BoardThread() {
   const [posts, setPosts] = useState<BoardPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+
+  // スレッド読込後に件名から title を生成（読込中は無難な仮title）。canonical は実URLへ。
+  useSeo(
+    thread?.title ? `${thread.title}｜GTA6 FEED` : tr('seo.thread.loading'),
+    tr('seo.thread.desc'),
+    { url: threadId ? `/thread/${threadId}` : undefined },
+  );
 
   const [name, setName] = useState('');
   const [body, setBody] = useState('');
@@ -139,7 +147,7 @@ export default function BoardThread() {
             key={k++}
             href={url}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="noopener noreferrer nofollow ugc"
             className="text-[#22d3ee] hover:text-[#7df9ff] underline underline-offset-2 break-all"
           >
             {url}

@@ -4,6 +4,7 @@ import NewsCard from '@/components/NewsCard';
 import { CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
 import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 /**
  * ニュース一覧ページ（/news）。全記事をカテゴリ絞り込み付きで表示する。
@@ -11,6 +12,7 @@ import { useT, useLang } from '@/lib/i18n';
 export default function NewsList() {
   const t = useT();
   const lang = useLang();
+  useSeo(t('seo.news.title'), t('seo.news.desc'), { url: '/news' });
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const { articles: allNews } = useMergedNews();
   const commentCounts = useNewsCommentCounts();

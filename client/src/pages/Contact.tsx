@@ -6,9 +6,11 @@ import { supabase } from '@/lib/supabase';
 import { uploadRawImages } from '@/lib/images';
 import { getAnonId } from '@/lib/board';
 import { useT } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 export default function Contact() {
   const t = useT();
+  useSeo(t('seo.contact.title'), t('seo.contact.desc'), { url: '/contact' });
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);

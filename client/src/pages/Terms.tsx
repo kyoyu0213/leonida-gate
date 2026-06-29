@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
-import { useLang } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
+import { useSeo } from '@/hooks/useSeo';
 
 type Block = { p: string } | { ul: string[] } | { contact: true };
 interface Section {
@@ -201,6 +202,8 @@ const EN: TermsContent = {
 
 export default function Terms() {
   const lang = useLang();
+  const t = useT();
+  useSeo(t('seo.terms.title'), t('seo.terms.desc'), { url: '/terms' });
   const c = lang === 'en' ? EN : JA;
 
   const h2 = 'vice-display text-xl text-white mb-3';
