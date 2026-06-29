@@ -60,7 +60,7 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
   //  - numberById: 投稿時刻順の連番（レス番号）。返信も本体も区別なく通し番号。
   //  - childrenByParent: 親IDごとの返信（投稿時刻順）。
   //  - roots: トップレベル（または親が非表示で見つからない）コメント。
-  const { roots, childrenByParent, numberById } = useMemo(() => {
+  const { roots, childrenByParent, numberById, labelById } = useMemo(() => {
     const ordered = [...comments].sort((a, b) => {
       const d = a.created_at.localeCompare(b.created_at);
       return d !== 0 ? d : a.id.localeCompare(b.id);
@@ -79,7 +79,15 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
         top.push(c);
       }
     }
-    return { roots: top, childrenByParent: byParent, numberById: numById };
+    // 表示用のレス番号ラベル。トップレベルは通し番号、返信は「親-連番」で階層化
+    //（例: 1 の返信 → 1-1 / 1-2、その返信 → 1-1-1）。わかりやすさのため返信だけ細かくする。
+    const labelById: Record<string, string> = {};
+    const assignLabel = (c: NewsComment, label: string) => {
+      labelById[c.id] = label;
+      (byParent[c.id] ?? []).forEach((ch, i) => assignLabel(ch, `${label}-${i + 1}`));
+    };
+    for (const root of top) assignLabel(root, String(numById[root.id]));
+    return { roots: top, childrenByParent: byParent, numberById: numById, labelById };
   }, [comments]);
 
   const postComment = async (text: string, parentId: string | null): Promise<boolean> => {
@@ -142,7 +150,9 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
   const renderNode = (c: NewsComment, depth: number, isLast = true): React.ReactElement => {
     const my = myVotes[c.id];
     const num = numberById[c.id];
+    const label = labelById[c.id];
     const parentNum = c.parent_id ? numberById[c.parent_id] : undefined;
+    const parentLabel = c.parent_id ? labelById[c.parent_id] : undefined;
     const children = childrenByParent[c.id] ?? [];
     const isHighlighted = highlight === num;
     // 返信（depth>0）かつ親側がインデント（=線を引く余白）を持っているときだけ連結線を描く。
@@ -177,9 +187,9 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
           }`}
         >
           <div className="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1.5">
-            {/* レス番号（掲示板風） */}
+            {/* レス番号（掲示板風）。返信は 1-1 / 1-2 の階層番号で表示。 */}
             <span className="font-mono text-[12px] font-bold text-cyan-300/90 tabular-nums">
-              {num}
+              {label}
             </span>
             <span className="text-sm font-bold text-white">{c.name}</span>
             <span className="text-[11.5px] text-white/40 font-mono">
@@ -192,7 +202,7 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
                 onClick={() => jumpTo(parentNum)}
                 className="font-mono text-[11.5px] text-cyan-400/80 hover:text-cyan-300 hover:underline"
               >
-                &gt;&gt;{parentNum}
+                &gt;&gt;{parentLabel}
               </button>
             )}
           </div>
@@ -240,7 +250,7 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
           {replyTo === c.id && (
             <ReplyForm
               inputClass={inputClass}
-              replyToNum={num}
+              replyToLabel={label}
               name={name}
               onNameChange={setName}
               onCancel={() => setReplyTo(null)}
@@ -328,14 +338,14 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
 // 返信フォーム（本文は内部状態。名前は親フォームと共有）。
 function ReplyForm({
   inputClass,
-  replyToNum,
+  replyToLabel,
   name,
   onNameChange,
   onCancel,
   onSubmit,
 }: {
   inputClass: string;
-  replyToNum: number;
+  replyToLabel: string;
   name: string;
   onNameChange: (v: string) => void;
   onCancel: () => void;
@@ -360,7 +370,7 @@ function ReplyForm({
   return (
     <form onSubmit={submit} className="mt-3 space-y-2">
       <div className="font-mono text-[11.5px] text-cyan-400/80">
-        &gt;&gt;{replyToNum} {t('cmt.reply')}
+        &gt;&gt;{replyToLabel} {t('cmt.reply')}
       </div>
       <input
         value={name}
