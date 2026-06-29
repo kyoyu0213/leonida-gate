@@ -218,6 +218,7 @@ export default function BoardThreadList() {
     }
     setSubmitting(true);
     const { error } = await submitServerApplication({
+      board: board.slug,
       server_name: app.server_name.trim(),
       description: app.description.trim(),
       contact: app.contact.trim(),

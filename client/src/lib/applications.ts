@@ -5,6 +5,7 @@ import { getAnonId } from './board';
 // ユーザーが申請 → 管理者が内容確認のうえスレッドを作成する。
 // 直接 insert ではなく RPC 経由（連投制限・NGワード・ブロック・メタ保存はサーバー側）。
 export async function submitServerApplication(data: {
+  board: string; // 申請元の掲示板 slug（承認時にこの板へスレ作成）
   server_name: string;
   description: string;
   contact: string;
@@ -18,5 +19,6 @@ export async function submitServerApplication(data: {
     p_applicant: data.applicant || null,
     p_anon_id: getAnonId(),
     p_hp: data.hp,
+    p_board: data.board,
   });
 }

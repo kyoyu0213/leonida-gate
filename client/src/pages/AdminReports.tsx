@@ -21,6 +21,8 @@ import {
   deleteApplication,
   listFivemServers,
   deleteFivemServer,
+  listAdminThreads,
+  deleteThread,
   getPostMeta,
   setPostNote,
   listAdminPosts,
@@ -39,6 +41,7 @@ import {
   type ContactRow,
   type ApplicationRow,
   type FivemServerRow,
+  type AdminThreadRow,
   type PostMeta,
   type AdminPostRow,
   type BlockRow,
@@ -719,6 +722,9 @@ function ApplicationsPanel() {
                 }}
               >
                 {a.approved ? '対応済み' : '未対応'}
+              </span>
+              <span className="rounded px-2 py-0.5 text-[#a78bfa] border border-[#a78bfa]/40 font-bold">
+                {getBoard(a.board)?.title.replace('掲示板', '') ?? a.board}
               </span>
               <span className="font-bold text-white text-[14px]">{a.server_name}</span>
               {a.applicant && <span className="text-white/45">申請者: {a.applicant}</span>}
@@ -1488,6 +1494,108 @@ function NewsCommentsPanel() {
   );
 }
 
+function ThreadsPanel() {
+  const [rows, setRows] = useState<AdminThreadRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  // 板で絞り込み（''＝すべての板）。既定は申請制の板が見やすいよう全板から。
+  const [board, setBoard] = useState('');
+
+  const load = async () => {
+    setLoading(true);
+    const { data, error } = await listAdminThreads(board || undefined);
+    if (error) toast.error(error);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [board]);
+
+  const remove = async (t: AdminThreadRow) => {
+    if (!confirm(`スレッド「${t.title}」を削除します。レス・画像・通報も全て消えます。よろしいですか？`)) return;
+    setBusyId(t.id);
+    const { error } = await deleteThread(t.id);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('スレッドを削除しました');
+    load();
+  };
+
+  const filterSel =
+    'bg-white/[0.05] border border-white/12 rounded-lg px-3 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
+
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-[12px] text-white/50">板で絞り込み</span>
+        <select value={board} onChange={(e) => setBoard(e.target.value)} className={filterSel}>
+          <option value="">すべての板</option>
+          {BOARDS.map((b) => (
+            <option key={b.slug} value={b.slug}>
+              {b.title.replace('掲示板', '')}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {loading ? (
+        <div className="text-center py-16 text-white/50">
+          <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+        </div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-16 text-white/50">スレッドがありません</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {rows.map((t) => {
+            const b = getBoard(t.board);
+            const busy = busyId === t.id;
+            return (
+              <div key={t.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+                <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
+                  <span className="rounded px-2 py-0.5 text-[#a78bfa] border border-[#a78bfa]/40 font-bold">
+                    {b?.title.replace('掲示板', '') ?? t.board}
+                  </span>
+                  <span className="font-bold text-white text-[14px]">{t.title}</span>
+                  <span className="vice-num text-white/55">{t.post_count} レス</span>
+                  <span className="ml-auto text-white/40">{formatPostDate(t.last_posted_at)}</span>
+                </div>
+                {t.op_body && (
+                  <p className="text-sm text-white/75 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0 max-h-28 overflow-auto">
+                    {t.op_body}
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  <a
+                    href={`/thread/${t.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 hover:text-white border border-white/15 rounded-lg px-3 py-1.5"
+                  >
+                    <ExternalLink size={13} /> スレッドへ
+                  </a>
+                  <button
+                    disabled={busy}
+                    onClick={() => remove(t)}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+                  >
+                    {busy ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />} スレッド削除
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function SearchLogsPanel() {
   const [top, setTop] = useState<TopSearchRow[]>([]);
   const [recent, setRecent] = useState<SearchLogRow[]>([]);
@@ -1559,13 +1667,14 @@ function SearchLogsPanel() {
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'newspost' | 'reports' | 'posts' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
+    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
   >('newspost');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
     newspost: '記事投稿',
     reports: '通報',
     posts: '投稿ログ',
+    threads: 'スレッド',
     search: 'IP検索',
     searchlog: '検索ログ',
     images: '画像承認',
@@ -1598,7 +1707,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['newspost', 'news', 'servers', 'posts', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
+              {(['newspost', 'news', 'servers', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1619,6 +1728,8 @@ export default function AdminReports() {
               <ReportsPanel />
             ) : tab === 'posts' ? (
               <PostsPanel />
+            ) : tab === 'threads' ? (
+              <ThreadsPanel />
             ) : tab === 'search' ? (
               <SearchPanel />
             ) : tab === 'searchlog' ? (

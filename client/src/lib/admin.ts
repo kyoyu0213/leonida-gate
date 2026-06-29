@@ -286,6 +286,43 @@ export async function adminCreateThread(board: string, title: string, name: stri
   return { data: data as string | null, error };
 }
 
+// ---- スレッドの一覧・削除 -------------------------------------------------
+
+export interface AdminThreadRow {
+  id: string;
+  board: string;
+  title: string;
+  post_count: number;
+  created_at: string;
+  last_posted_at: string;
+  op_body: string | null;
+}
+
+/** スレッド一覧（板で絞り込み可・新着順）。board 未指定で全板。 */
+export async function listAdminThreads(
+  board?: string,
+): Promise<{ data: AdminThreadRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_threads', {
+    p_token: adminToken,
+    p_board: board ?? null,
+  });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as AdminThreadRow[]) ?? [] };
+}
+
+/** スレッドを丸ごと削除（レス・投票・通報・画像も連鎖削除）。 */
+export async function deleteThread(threadId: string) {
+  const { error } = await supabase.rpc('admin_delete_thread', {
+    p_token: adminToken,
+    p_thread_id: threadId,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 // ---- 画像の承認キュー（②・デフォルトOFF） --------------------------------
 
 export interface PendingImage {
@@ -434,6 +471,7 @@ export async function topSearches(days = 30): Promise<{ data: TopSearchRow[]; er
 
 export interface ApplicationRow {
   id: string;
+  board: string;
   server_name: string;
   description: string;
   contact: string | null;

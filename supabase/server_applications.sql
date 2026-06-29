@@ -14,6 +14,7 @@
 
 create table if not exists public.server_applications (
   id uuid primary key default gen_random_uuid(),
+  board text not null default 'gtarp-servers',  -- 申請元の掲示板（承認時にこの板へスレ作成）
   server_name text not null,
   description text not null,
   contact text,          -- Discord招待URLなどの連絡先
@@ -24,6 +25,7 @@ create table if not exists public.server_applications (
 );
 
 -- 既存テーブルの移行
+alter table public.server_applications add column if not exists board text not null default 'gtarp-servers';
 alter table public.server_applications add column if not exists ip text;
 alter table public.server_applications add column if not exists ua text;
 alter table public.server_applications add column if not exists anon_id text;
@@ -38,12 +40,21 @@ revoke select (ip, ua, anon_id, ip_hash, ip_subnet) on public.server_application
 revoke select (ip, ua, anon_id, ip_hash, ip_subnet) on public.server_applications from authenticated;
 
 -- 申請（誰でも・ハニーポット・連投制限・ブロック・NGワード・メタ保存）
+-- 旧シグネチャ（p_board なし）を破棄してから作り直す。
+drop function if exists public.create_server_application(text, text, text, text, text, text);
 create or replace function public.create_server_application(
   p_server_name text, p_description text, p_contact text default null,
-  p_applicant text default null, p_anon_id text default null, p_hp text default null
+  p_applicant text default null, p_anon_id text default null, p_hp text default null,
+  p_board text default 'gtarp-servers'
 ) returns void language plpgsql security definer set search_path = public, extensions as $$
-declare m record; v_anon text := nullif(btrim(p_anon_id), '');
+declare
+  m record;
+  v_anon text := nullif(btrim(p_anon_id), '');
+  -- 申請を受け付ける板は申請制（submitOnly）の2板のみ。想定外は既定の gtarp-servers に丸める。
+  v_board text := coalesce(nullif(btrim(p_board), ''), 'gtarp-servers');
 begin
+  if v_board not in ('gtarp-servers', 'streamer-servers') then v_board := 'gtarp-servers'; end if;
+
   -- ハニーポット：隠し項目が埋まっている＝ボット。何もせず静かに終了。
   if coalesce(btrim(p_hp), '') <> '' then return; end if;
 
@@ -73,25 +84,25 @@ begin
   ) then raise exception 'rate limited'; end if;
 
   insert into server_applications
-    (server_name, description, contact, applicant, approved, ip, ua, anon_id, ip_hash, ip_subnet)
+    (board, server_name, description, contact, applicant, approved, ip, ua, anon_id, ip_hash, ip_subnet)
   values
-    (trim(p_server_name), trim(p_description),
+    (v_board, trim(p_server_name), trim(p_description),
      nullif(btrim(coalesce(p_contact, '')), ''), nullif(btrim(coalesce(p_applicant, '')), ''),
      false, m.ip, m.ua, v_anon, m.ip_hash, m.ip_subnet);
 end; $$;
-grant execute on function public.create_server_application(text, text, text, text, text, text) to anon;
+grant execute on function public.create_server_application(text, text, text, text, text, text, text) to anon;
 
 -- 管理者：掲載申請の一覧（申請者メタ込み・未対応を先頭に）
 drop function if exists public.admin_list_applications(text);
 create or replace function public.admin_list_applications(p_token text)
 returns table (
-  id uuid, server_name text, description text, contact text, applicant text, approved boolean,
+  id uuid, board text, server_name text, description text, contact text, applicant text, approved boolean,
   ip text, ua text, anon_id text, ip_subnet text, created_at timestamptz
 ) language plpgsql security definer set search_path = public as $$
 begin
   perform _admin_check(p_token);
   return query
-  select a.id, a.server_name, a.description, a.contact, a.applicant, a.approved,
+  select a.id, a.board, a.server_name, a.description, a.contact, a.applicant, a.approved,
          a.ip, a.ua, a.anon_id, a.ip_subnet, a.created_at
   from server_applications a
   order by a.approved asc, a.created_at desc
@@ -99,17 +110,21 @@ begin
 end; $$;
 grant execute on function public.admin_list_applications(text) to anon;
 
--- 管理者：申請を承認 → gtarp-servers にスレッドを作成し、申請を承認済みにする。新スレIDを返す。
+-- 管理者：申請を承認 → 申請元の板（board）にスレッドを作成し、申請を承認済みにする。新スレIDを返す。
 create or replace function public.admin_approve_application(p_token text, p_id uuid)
 returns uuid language plpgsql security definer set search_path = public as $$
 declare
   v_app server_applications;
   v_thread_id uuid;
   v_body text;
+  v_board text;
 begin
   perform _admin_check(p_token);
   select * into v_app from server_applications where id = p_id;
   if v_app.id is null then raise exception 'not found'; end if;
+
+  -- 申請元の板へ作成（旧データで board が空なら gtarp-servers にフォールバック）。
+  v_board := coalesce(nullif(btrim(v_app.board), ''), 'gtarp-servers');
 
   v_body := v_app.description;
   if coalesce(btrim(v_app.contact), '') <> '' then
@@ -117,7 +132,7 @@ begin
   end if;
 
   insert into board_threads (board, title)
-    values ('gtarp-servers', left(trim(v_app.server_name), 60))
+    values (v_board, left(trim(v_app.server_name), 60))
     returning id into v_thread_id;
   insert into board_posts (thread_id, post_number, name, body)
     values (v_thread_id, 1, coalesce(nullif(btrim(v_app.applicant), ''), '名無しさん'), v_body);
