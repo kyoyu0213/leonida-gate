@@ -80,22 +80,28 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
       }
     }
     // 表示用のレス番号ラベル。トップレベルは「トップだけで」1,2,3…。
-    // 返信は深さに関わらず、スレッド単位で 1-1, 1-2, 1-3…（2段まで）にしてシンプルに。
-    // 採番は表示と同じツリー順（深さ優先）なので、番号と表示順が一致する。
+    // 返信は深さに関わらず、スレッド単位で 1-1, 1-2, 1-3…（2段まで）。
+    // 採番は投稿時刻順（ordered は created_at 昇順）なので、番号が古い順＝投稿順になる。
+    const byId: Record<string, NewsComment> = {};
+    ordered.forEach((c) => {
+      byId[c.id] = c;
+    });
     const labelById: Record<string, string> = {};
     top.forEach((root, i) => {
-      const rootLabel = String(i + 1);
-      labelById[root.id] = rootLabel;
-      let n = 0;
-      const dfs = (c: NewsComment) => {
-        for (const ch of byParent[c.id] ?? []) {
-          n += 1;
-          labelById[ch.id] = `${rootLabel}-${n}`;
-          dfs(ch);
-        }
-      };
-      dfs(root);
+      labelById[root.id] = String(i + 1);
     });
+    const rootIdOf = (c: NewsComment): string => {
+      let cur = c;
+      while (cur.parent_id && ids.has(cur.parent_id)) cur = byId[cur.parent_id];
+      return cur.id;
+    };
+    const replyCount: Record<string, number> = {};
+    for (const c of ordered) {
+      if (labelById[c.id]) continue; // トップは採番済み
+      const rid = rootIdOf(c);
+      replyCount[rid] = (replyCount[rid] ?? 0) + 1;
+      labelById[c.id] = `${labelById[rid]}-${replyCount[rid]}`;
+    }
     return { roots: top, childrenByParent: byParent, numberById: numById, labelById };
   }, [comments]);
 
