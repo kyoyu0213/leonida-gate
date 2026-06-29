@@ -79,14 +79,23 @@ export default function NewsComments({ articleId, onCountChange }: Props) {
         top.push(c);
       }
     }
-    // 表示用のレス番号ラベル。トップレベルは「トップだけで」1,2,3…の連番、
-    // 返信は「親-連番」で階層化（例: 1 の返信 → 1-1 / 1-2、その返信 → 1-1-1）。
+    // 表示用のレス番号ラベル。トップレベルは「トップだけで」1,2,3…。
+    // 返信は深さに関わらず、スレッド単位で 1-1, 1-2, 1-3…（2段まで）にしてシンプルに。
+    // 採番は表示と同じツリー順（深さ優先）なので、番号と表示順が一致する。
     const labelById: Record<string, string> = {};
-    const assignLabel = (c: NewsComment, label: string) => {
-      labelById[c.id] = label;
-      (byParent[c.id] ?? []).forEach((ch, i) => assignLabel(ch, `${label}-${i + 1}`));
-    };
-    top.forEach((root, i) => assignLabel(root, String(i + 1)));
+    top.forEach((root, i) => {
+      const rootLabel = String(i + 1);
+      labelById[root.id] = rootLabel;
+      let n = 0;
+      const dfs = (c: NewsComment) => {
+        for (const ch of byParent[c.id] ?? []) {
+          n += 1;
+          labelById[ch.id] = `${rootLabel}-${n}`;
+          dfs(ch);
+        }
+      };
+      dfs(root);
+    });
     return { roots: top, childrenByParent: byParent, numberById: numById, labelById };
   }, [comments]);
 
