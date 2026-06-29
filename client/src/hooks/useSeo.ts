@@ -14,6 +14,25 @@ export interface SeoOptions {
   url?: string;
 }
 
+// --- ビルド時プリレンダ（SSR）用の収集口 ---------------------------------------
+// renderToString では useEffect が走らないため、描画フェーズで useSeo に渡された
+// 値を控えておき、prerender スクリプトが <head> を組み立てるのに使う。
+// クライアント実行時（window あり）には一切作用しない。
+export interface CollectedSeo {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  url?: string;
+}
+let collectedSeo: CollectedSeo | null = null;
+/** 直近の描画で useSeo に渡された SEO 値を取り出す（取り出すとクリア）。SSR専用。 */
+export function readCollectedSeo(): CollectedSeo | null {
+  const v = collectedSeo;
+  collectedSeo = null;
+  return v;
+}
+
 /** パスを絶対URLへ（http(s) で始まるものはそのまま）。 */
 function toAbsolute(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
@@ -47,6 +66,11 @@ export function useSeo(title: string, description?: string, options?: SeoOptions
   const image = options?.image;
   const type = options?.type ?? 'website';
   const url = options?.url;
+
+  // SSR（ビルド時プリレンダ）では useEffect が走らないので、描画中に値を控える。
+  if (typeof window === 'undefined') {
+    collectedSeo = { title, description, image, type, url };
+  }
 
   useEffect(() => {
     const restore: Array<() => void> = [];

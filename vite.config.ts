@@ -205,6 +205,12 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  // ビルド時プリレンダ（scripts/prerender-routes.ts）用の SSR ビルドでは依存をバンドルする。
+  // 外部化すると streamdown→katex などの .css import を Node が解釈できず失敗するため。
+  // この設定は SSR ビルド時のみ効き、通常のクライアントビルドには影響しない。
+  ssr: {
+    noExternal: true,
+  },
   server: {
     port: 3000,
     strictPort: false, // Will find next available port if 3000 is busy
