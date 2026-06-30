@@ -99,6 +99,211 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 28,
+    title:
+      "GTA6にコレクターズエディションは出るのか——公式未発表のいま、リークと過去作から読む",
+    description:
+      "予約が始まったGTA6だが、用意されているのはStandardとUltimateの2種類だけ。フィギュアやグッズを詰めたコレクターズエディション(CE)は未発表だ。根拠になっているリークと過去作の前例を、確定情報・リーク・推測に分けて整理する。",
+    icon: "📦",
+    image: "/images/news/collectorsedition/GTAVSpecialEditionofficial.png",
+    category: "topic",
+    date: "2026-06-30",
+    publishedAt: "2026-06-30 22:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [27, 26, 25],
+    aiSummary: [
+      "GTA6で現在用意されているのはStandard(79.99ドル)とUltimate(99.99ドル)の2種類のみで、コレクターズエディション(CE)はRockstarから一切発表されていない。「いずれ後から出る」という見方の根拠はリークと過去作の前例だ。",
+      "CEの存在を示唆するのはFNAC(ポルトガル)のSKUリーク(最上位€199.99)、YouTuber Ricfazeresの「CEは存在する」という証言、最大6エディション説など。いずれも公式未確認で、プレースホルダの可能性も指摘されている。",
+      "GTA6のディスクは発売時も以降も予定がなく、仮にCEが出てもコード＋物理グッズの形になる見込み。過去作(GTA IV/V、RDR2)では豪華版が後発で登場した実績があり、価格は200〜300ドル前後と予想されるが、中身の確定情報はない。",
+    ],
+    fullContent: `# GTA6にコレクターズエディションは出るのか——公式未発表のいま、リークと過去作から読む
+
+予約が始まったGTA6だが、現在用意されているのはStandard EditionとUltimate Editionの2種類だけで、フィギュアやグッズを詰めたコレクターズエディション(CE)は見当たらない。ファンの間では「いずれ後から出る」という見方が主流だが、Rockstarからの公式発表は一切ない。根拠になっているのはリークと、過去作の前例だ。GTA6 FEEDが、確定情報・リーク・推測に分けて整理した。
+
+本記事は2026年6月30日時点の情報にもとづく。
+
+---
+
+## 確定:現時点でCEは発表されていない
+
+まず事実から。Rockstarが公式に発表しているエディションは、Standard(79.99ドル)とUltimate(99.99ドル)の2種類のみで、コレクターズエディションは存在しない。公式サイトにもストアにも、CEの記載はない。
+
+さらに前提として押さえておきたいのが、物理ディスクの扱いだ。The Hollywood Reporterの報道によれば、GTA6のディスクを生産する計画は発売時にも以降にもない。したがって、仮にCEが後から登場するとしても、その中身はディスクではなく「ダウンロードコード＋物理グッズ」になる公算が大きい。
+
+なお、Take-TwoのZelnick CEOが5月のCNBCのインタビューで、GTA6には「大きな物理要素(big physical component)」があると述べたことが、豪華なCEへの期待を後押しした。ただしこの発言は、当時はディスク版やCEを示唆するものと受け取られたものの、その後「物理版＝コード・イン・ボックスのパッケージ」を指していたことが明らかになっている。経営者の発言を額面以上に読み込むのは禁物だ、という教訓でもある。
+
+---
+
+## リーク・噂:CEの存在を示唆する情報(未確認)
+
+ここからは未確認の情報になる。CEがいずれ出るという見方を支えているのが、主に次の三つだ。
+
+FNAC(ポルトガル)のSKUリーク。予約開始前、ポルトガルのFNACのサイトに、RS1〜RS5という社内コードらしき複数のSKUが一時的に掲載された。価格は€89.99、€99.99、€109.99、€119.99、€199.99などが並び、最上位の€199.99がCEではないかと解釈されて広く報じられた。これらの掲載には発売日として2026年11月19日が正しく入っていた点が、プレースホルダにしては精度が高いとして一定の重みをもって受け止められた。ただしリストはすでに削除され、FNACもRockstarも真偽にコメントしておらず、小売リークに定評のあるbillbil_kunはプレースホルダの可能性を指摘している。最初に見つけたのはResetEraのユーザーやポルトガルのコミュニティだ。
+
+Ricfazeresの証言。ポルトガルで実績のあるYouTuberのRicfazeresが、情報筋から得たとして、CEはまだ発表されていないが存在し、価格は€199.99だと動画の中で触れた。具体的な中身には踏み込まず、動画の終盤でさらりと言及して次の話題に移ったため、再生数稼ぎの煽りとは異なる出し方だと受け止められている。OpenCriticなどのメディアも「信頼できる情報源」として取り上げた。ただし、これも裏付けのない一人の証言である点は変わらない。
+
+複数エディション説。リーカーのDetectiveSeedsは、GTA6に最大6種類の購入オプションがあるとし、その中にデジタル/物理のStandard、早期アクセスとGTA Online向け通貨が付くプレミアムなデジタル版、そして物理グッズ(アートブック、マップ、スティールブックなど)を含むCEが含まれると述べている。
+
+これらはいずれも未確認の情報であり、確定したものは一つもない。
+
+---
+
+## 推測:出るとしたら、いつ・いくら・何が入るのか
+
+確定情報をもとにした予想として、よく語られるのが次の点だ。あくまで推測である。
+
+時期。Rockstarは過去、CEを標準版より遅れて発表することが多かった。RDR2のCEも、標準版・上位版より数カ月あとに予約が始まった経緯がある。このため、GTA6でも夏に本格化するマーケティングの中で、あるいは発売前後のタイミングでCEが発表される、というシナリオが有力視されている。
+
+価格。$200〜300、あるいは€199.99〜229.99前後という数字がよく挙がる。近年のAAAタイトルのCEは、フィギュアや大型アートブック付きの最上位版が250ドルを超える例も珍しくなく、GTA6のCEがこの帯に入ること自体は不自然ではない。ただし、ディスクが入らない方針である以上、「2万円台後半を払っても、遊べるディスクは入っていない」という値ごろ感の問題は残る。
+
+内容。予想として挙がるのは、スティールブック、アートブック、Vice Cityのマップ、ルシアとジェイソンのフィギュア、ネオンや80年代をモチーフにしたグッズ、Rockstar恒例のロックボックス的なアイテム、そして追加車両などのデジタル特典だ。ただし、中身に関する具体的なリークはまだほとんどなく、確定情報はゼロに等しい。
+
+---
+
+## 過去のGTA・Rockstar作品ではどうだったか(確定事実)
+
+CEが出るという見方の最大の根拠は、Rockstarがこれまで繰り返し豪華版を出してきた実績だ。いずれも公式発表に基づく事実である。
+
+![GTA IV Special Edition(2008年)。アートブック、サウンドトラックCD、鍵付きのロックボックスなどを同梱した豪華版](/images/news/collectorsedition/GTAIVSpecialEdition.png)
+
+- GTA IV Special Edition(2008年):2008年当時で約90ドル(英国で約70ポンド)。アートブック、サウンドトラックCD、鍵付きのロックボックス、Rockstarのキーチェーン、限定ダッフルバッグなどを同梱。
+
+![GTA V Special Edition。限定アートのスティールブックやブループリントマップ、ゲーム内特典を含む](/images/news/collectorsedition/GTAVSpecialEdition.png)
+
+- GTA V Special Edition(79.99ドル):マイケル・トレバー・フランクリンの限定アートを使ったスティールブック、ロスサントスとブレイン群のブループリントマップ、ゲーム内特典(特殊能力ゲージが25%速く溜まるブースト、スタント飛行、追加の衣装・タトゥー・武器など)。
+- GTA V Collector's Edition(149.99ドル):Special Editionの全内容に加え、鍵付きのセキュリティバッグ(お金袋)、New EraのGTA Vスナップバックキャップ、Collector's限定の車両(Hotknife、Carbon RSなど)と専用ガレージ。
+
+![RDR2 Collector's Box(2018年)。ゲーム本体を含まない、世界観に沿った金属製の箱とグッズのセット](/images/news/collectorsedition/RDR2CollectorsBox.png)
+
+- RDR2 Collector's Box(2018年):ゲーム本体を含まない、世界観に沿った金属製の箱とグッズ(チャレンジコイン、バンダナ、トレジャーマップ、ピンバッジ、トランプなど)。
+
+共通するのは、スティールブックやテーマに沿った物理グッズに、ゲーム内のデジタル特典を組み合わせる構成で、CEは後発で登場することが多かった点だ。これらは発売時に売り切れ、後に中古価格が高騰しやすい傾向もある。GTA6でも同様のパターンが想定される、というのがファンやメディアの読みになっている。
+
+---
+
+## まとめ:信頼度の整理
+
+確定している事実:
+
+- 現時点で発表されているのはStandard(79.99ドル)とUltimate(99.99ドル)のみで、CEは未発表。
+- GTA6のディスクは発売時も以降も予定がなく、仮にCEが出てもコード＋グッズの形になる見込み。
+- Zelnickの「大きな物理要素」発言は、コード・イン・ボックスのパッケージを指していたことが判明済み。
+- Rockstarは過去作でSpecial/Collector's Editionを繰り返し出してきた(GTA IV、GTA V、RDR2)。
+
+未確認のリーク・噂:
+
+- FNACのSKUリーク(最上位€199.99がCEか)、Ricfazeresの「CEは存在する」という証言、最大6エディション説。いずれも公式未確認。
+
+推測:
+
+- CEは後発で発表される可能性が高い。価格は200〜300ドル前後、内容はスティールブックやグッズ＋デジタル特典という予想だが、中身の確定情報はない。
+
+コミュニティの声も、期待と冷めた見方が混在している。
+
+- 「スティールブックだけでいいから、中間の特別版を出してほしい」
+- 「2万円台でディスクも入っていないなら、グッズにそこまで払えるか微妙だ」
+
+注意点として、GTA6は本記事執筆時点で未発売で、CEは公式に発表されていない。FNACのようなリストはプレースホルダの可能性があり、「信頼できる情報源」であっても外れることはある。CEを名目に予約や前金を求める非公式サイトの詐欺にも注意したい。発表があるとしても、過去の例では夏以降のマーケティングや発売前後になるとみられる。確実な情報は、Rockstarの公式発表で確認するのが望ましい。`,
+    titleEn:
+      "Will GTA6 Get a Collector's Edition? — With Nothing Official Yet, Reading the Leaks and Past Releases",
+    descriptionEn:
+      "Pre-orders for GTA6 have opened, but only the Standard and Ultimate editions exist — a Collector's Edition (CE) packed with figures and merch is unannounced. We organize the leaks and past precedents into confirmed facts, leaks, and speculation.",
+    aiSummaryEn: [
+      "For GTA6, only the Standard ($79.99) and Ultimate ($99.99) editions currently exist, and no Collector's Edition (CE) has been announced by Rockstar at all. The basis for the “it'll come later” view is leaks and the precedent of past games.",
+      "Pointing to a CE are the FNAC (Portugal) SKU leak (top tier €199.99), YouTuber Ricfazeres's testimony that “the CE exists,” and a theory of up to six editions. All are officially unconfirmed, and the possibility of placeholders has been noted.",
+      "GTA6 discs are not planned at launch or after, so even if a CE appears it will likely be a code-plus-merch package. Past games (GTA IV/V, RDR2) have a track record of deluxe editions arriving later; prices are guessed at $200–300, but there's no confirmed info on contents.",
+    ],
+    fullContentEn: `# Will GTA6 Get a Collector's Edition? — With Nothing Official Yet, Reading the Leaks and Past Releases
+
+Pre-orders for GTA6 have opened, but right now only two editions are available — Standard and Ultimate — and a Collector's Edition (CE) packed with figures and merch is nowhere to be seen. Among fans, the dominant view is that “it'll come later,” but there is no official announcement from Rockstar whatsoever. What it rests on is leaks and the precedent of past games. GTA6 FEED has organized this into confirmed facts, leaks, and speculation.
+
+This article is based on information as of June 30, 2026.
+
+---
+
+## Confirmed: No CE Has Been Announced at This Point
+
+First, the facts. The editions Rockstar has officially announced are only two — Standard ($79.99) and Ultimate ($99.99) — and a Collector's Edition does not exist. Neither the official site nor the store mentions a CE.
+
+Another premise worth grasping is the handling of physical discs. According to a report by The Hollywood Reporter, there is no plan to produce GTA6 discs at launch or afterward. Therefore, even if a CE were to appear later, its contents would most likely be a “download code plus physical merch” rather than a disc.
+
+Incidentally, Take-Two CEO Zelnick saying in a CNBC interview in May that GTA6 has a “big physical component” fueled expectations for a lavish CE. However, while that remark was taken at the time to hint at a disc version or a CE, it later became clear it referred to a “physical version = code-in-a-box package.” It is also a lesson that reading more than face value into an executive's remarks is unwise.
+
+---
+
+## Leaks / Rumors: Information Suggesting a CE Exists (Unconfirmed)
+
+From here on is unconfirmed information. Supporting the view that a CE will eventually appear are mainly the following three.
+
+The FNAC (Portugal) SKU leak. Before pre-orders opened, multiple SKUs that looked like internal codes — RS1 through RS5 — were temporarily listed on Portugal's FNAC site. Prices such as €89.99, €99.99, €109.99, €119.99, and €199.99 lined up, and the top €199.99 was interpreted as possibly being the CE and widely reported. The fact that these listings correctly carried November 19, 2026 as the release date was taken with a certain weight, as being unusually accurate for a placeholder. However, the list has already been removed, neither FNAC nor Rockstar has commented on its veracity, and billbil_kun, well-regarded for retail leaks, has pointed out the possibility of a placeholder. It was first spotted by ResetEra users and the Portuguese community.
+
+Ricfazeres's testimony. Ricfazeres, a YouTuber with a track record in Portugal, mentioned in a video — citing sources — that the CE has not been announced yet but does exist, and that the price is €199.99. He did not get into specific contents, and since he mentioned it casually near the end of the video and moved on to the next topic, it was taken as a delivery different from view-baiting hype. Outlets such as OpenCritic also picked it up as coming from a “reliable source.” Still, this remains the unbacked testimony of a single person.
+
+The multiple-editions theory. The leaker DetectiveSeeds says GTA6 has up to six purchase options, including digital/physical Standard, a premium digital version with early access and GTA Online currency, and a CE containing physical merch (an art book, a map, a steelbook, etc.).
+
+All of these are unconfirmed, and not one of them is settled.
+
+---
+
+## Speculation: If It Comes, When, How Much, and What's Inside
+
+As predictions based on confirmed information, the following points are often discussed. These are speculation only.
+
+Timing. In the past, Rockstar often announced CEs later than the standard edition. RDR2's CE also had pre-orders begin several months after the standard and higher-tier editions. For this reason, the leading scenario is that for GTA6 too, a CE will be announced amid the marketing that ramps up in summer, or around the time of release.
+
+Price. Figures like $200–300, or around €199.99–229.99, often come up. Among recent AAA titles, it is not unusual for top-tier CEs with figures and large art books to exceed $250, so a GTA6 CE landing in this band is not unnatural in itself. However, given the no-disc policy, the value-for-money issue remains: “you pay a high price and there's still no playable disc inside.”
+
+Contents. Predicted items include a steelbook, an art book, a map of Vice City, figures of Lucia and Jason, neon- and 80s-themed merch, a Rockstar-staple lockbox-type item, and digital bonuses such as extra vehicles. However, there are still almost no concrete leaks about the contents, and confirmed information is essentially zero.
+
+---
+
+## How Past GTA / Rockstar Titles Did It (Confirmed Facts)
+
+The biggest basis for the view that a CE will come is Rockstar's track record of repeatedly releasing deluxe editions. All of these are facts based on official announcements.
+
+![GTA IV Special Edition (2008). A deluxe edition bundling an art book, a soundtrack CD, a lockable lockbox, and more](/images/news/collectorsedition/GTAIVSpecialEdition.png)
+
+- GTA IV Special Edition (2008): around $90 at the time (about £70 in the UK). Bundled an art book, a soundtrack CD, a lockable lockbox, a Rockstar keychain, a limited duffel bag, and more.
+
+![GTA V Special Edition. Includes a limited-art steelbook, a blueprint map, and in-game bonuses](/images/news/collectorsedition/GTAVSpecialEdition.png)
+
+- GTA V Special Edition ($79.99): a steelbook using limited art of Michael, Trevor, and Franklin; a blueprint map of Los Santos and Blaine County; in-game bonuses (a boost that fills the special-ability meter 25% faster, stunt flying, additional outfits, tattoos, and weapons, etc.).
+- GTA V Collector's Edition ($149.99): everything in the Special Edition plus a lockable security bag (money bag), a New Era GTA V snapback cap, Collector's-exclusive vehicles (Hotknife, Carbon RS, etc.) and a dedicated garage.
+
+![RDR2 Collector's Box (2018). A set of a metal box and merch fitting the world, not including the game itself](/images/news/collectorsedition/RDR2CollectorsBox.png)
+
+- RDR2 Collector's Box (2018): not including the base game, a metal box and merch fitting the world (a challenge coin, a bandana, a treasure map, a pin badge, playing cards, etc.).
+
+What they share is a structure combining a steelbook and theme-appropriate physical merch with in-game digital bonuses, and CEs often appeared later. These also tend to sell out at launch and have their secondhand prices spike afterward. The fan and media read is that a similar pattern can be expected for GTA6.
+
+---
+
+## Summary: Sorting by Reliability
+
+Confirmed facts:
+
+- At present, only Standard ($79.99) and Ultimate ($99.99) are announced; no CE.
+- GTA6 discs are not planned at launch or after, so even if a CE comes it will likely take a code-plus-merch form.
+- Zelnick's “big physical component” remark has been found to refer to a code-in-a-box package.
+- Rockstar has repeatedly released Special/Collector's Editions in past titles (GTA IV, GTA V, RDR2).
+
+Unconfirmed leaks / rumors:
+
+- The FNAC SKU leak (is the top €199.99 the CE?), Ricfazeres's testimony that “the CE exists,” and the up-to-six-editions theory. All officially unconfirmed.
+
+Speculation:
+
+- A CE is likely to be announced later. Price guessed around $200–300, contents predicted to be a steelbook and merch plus digital bonuses — but there's no confirmed info on the contents.
+
+Community voices, too, mix expectation and cooled-off views.
+
+- “Even just a steelbook is fine — I wish they'd put out a mid-tier special edition.”
+- “If it's in the ¥20,000s and doesn't even include a disc, it's questionable whether I can pay that much for merch.”
+
+As a caveat, GTA6 is unreleased at the time of writing, and a CE has not been officially announced. Lists like FNAC's may be placeholders, and even a “reliable source” can be wrong. Beware also of scams on unofficial sites that demand pre-orders or deposits in the name of a CE. Even if there is an announcement, based on past examples it is expected to come during the summer-onward marketing or around release. For reliable information, it is best to confirm via Rockstar's official announcement.`,
+  },
+  {
     id: 27,
     title:
       "GTA6のルシアとジェイソンは誰が演じているのか——ファンが推す候補と、Rockstarが明かさない理由",
