@@ -99,6 +99,127 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 29,
+    title:
+      "GTA Online、Discord連携で「Rockstar Varsity Crewneck」を無料配布——7月1日まで、Discord特典は今回が最後",
+    description:
+      "RockstarアカウントとDiscordを連携すると、バーガンディ色の「Rockstar Varsity Crewneck」をGTA Onlineで無料で受け取れる。受け取りは7月1日まで。RockstarはこれをもってDiscord連携特典の配布を終了すると案内しており、最後の機会となる。",
+    icon: "👕",
+    image: "/images/news/17e36ec78dc74d11dca7bc7a7c15294b510ee1843e92ed0477e8c59aaa538151.png",
+    category: "event",
+    date: "2026-07-01",
+    publishedAt: "2026-07-01 10:00",
+    source: "Rockstar Games 公式Discord",
+    sourceUrl: "https://discord.gg/rockstargames",
+    relatedArticles: [28, 27, 26],
+    aiSummary: [
+      "GTA Onlineで、RockstarアカウントとDiscordを連携すると、バーガンディ色の「Rockstar Varsity Crewneck」を無料で受け取れる。期間は6月11日〜7月1日で、本記事公開時点では締め切り当日にあたる。",
+      "受け取りは公式Rockstar Games Discordの「#discord-rewards」チャンネルで「/claim」を実行し、Reward→RockstarCrewneckを選ぶ。報酬は最大72時間以内にワードローブのTops→Special Tops→Unlocksへ追加される。",
+      "対象は1プレイヤー1回のみで、オンラインチュートリアル完了済みのキャラが必要。RockstarはこれをもってDiscord連携特典の配布を終了すると案内しており、これが最後の機会。報酬を装ったDMや非公式サイトのフィッシングには注意したい。",
+    ],
+    fullContent: `# GTA Online、Discord連携で「Rockstar Varsity Crewneck」を無料配布——7月1日まで、Discord特典は今回が最後
+
+GTA Onlineで、RockstarアカウントとDiscordを連携することで、バーガンディ色の「Rockstar Varsity Crewneck(ロックスター・バーシティ・クルーネック)」を無料で受け取れるキャンペーンが実施されている。受け取り期間は6月11日から7月1日まで。あわせてRockstarは、今回をもってDiscord連携特典の配布を終了することを明らかにしている。GTA6 FEEDが入手手順と注意点を整理した。
+
+本記事は2026年7月1日時点の情報にもとづく。受け取り期限が本日にあたるため、まだ手に入れていない場合は早めの対応が望ましい。
+
+---
+
+## 配布されるアイテム
+
+今回もらえるのは、Rockstar Gamesのロゴが入ったバーシティ風のクルーネック(トレーナー)のバーガンディ(臙脂)色版だ。同じデザインの黒色版は、2025年11月のDLC前のミッション報酬として配布されており、今回はその色違いにあたる。Discord連携を通じてのみ入手できる、GTA Online向けの無料アイテムである。
+
+Rockstarはこの配布について、Discord連携特典としては今回が最後だと案内している。アカウント連携によるこの種の報酬を受け取れるのは、当面これが区切りになる。
+
+---
+
+## 入手手順
+
+受け取りは、Rockstarの公式Discordサーバーから行う。手順は次のとおり。
+
+1. RockstarアカウントとDiscordアカウントを連携する(連携方法はRockstarサポートの案内ページに従う)。
+2. 公式の[Rockstar Games Discordサーバー](https://discord.gg/rockstargames)に参加する。
+3. サーバー内の「#discord-rewards」チャンネルを開く。
+4. メッセージ欄に「/claim」と入力して送信し、表示されるメニューから「Reward(報酬)」→「RockstarCrewneck」を選んで送信する。
+5. GTA Onlineをプレイする。報酬は72時間以内に、ワードローブの「Tops(トップス)」→「Special Tops」→「Unlocks」に追加される。
+
+---
+
+## 注意点
+
+スムーズに受け取るために、いくつか押さえておきたい点がある。
+
+- GTA Onlineのオンラインチュートリアルを完了したキャラクターが必要となる。連携するRockstarアカウントとDiscordアカウントが正しい組み合わせかどうかも、事前に確認しておきたい。
+- 受け取りは対象プレイヤーにつき1回のみ。
+- 報酬は claim 後すぐにワードローブへ反映されるとは限らない。多数のプレイヤーが同時に受け取るため、配布は段階的に行われる。最大72時間ほどかかる場合があるので、数時間おきに確認するとよい。
+- 受け取り期限は7月1日。本記事公開時点では締め切り当日にあたるため、未取得の場合は残り時間がごく短いとみておきたい。
+
+安全面の注意として、受け取りは必ず公式のRockstar Games Discordサーバーから行うこと。報酬をうたってリンクのクリックやアカウント情報の入力を求めるダイレクトメッセージや、非公式のサイト・サーバーには応じないようにしたい。アカウント連携を装ったフィッシングには注意が必要だ。
+
+---
+
+## 補足:今週のGTA Online
+
+このクルーネック配布は、6月25日から始まった今週のGTA Onlineの更新の一部だ。同じ期間には、7月13日まで続くFine Art Collector Program(ログインでGTA$50万や無料車両などが受け取れる)、Acid Lab関連ミッションの報酬2倍、FIB Filesの報酬アップなども実施されている。
+
+GTA6の予約開始が大きな話題となるなか、GTA Onlineは引き続き毎週の更新を重ねている。そうしたタイミングで、これまで続いてきたDiscord連携特典が一区切りを迎える形となった。受け取れるうちに、最後の機会を逃さないようにしたい。`,
+    titleEn:
+      "GTA Online Gives Away the Rockstar Varsity Crewneck via Discord Link — Through July 1, and This Is the Last Discord Reward",
+    descriptionEn:
+      "By linking your Rockstar account with Discord, you can claim the burgundy Rockstar Varsity Crewneck for free in GTA Online. The claim window runs through July 1, and Rockstar says this will be the final Discord-linking reward — making it the last chance.",
+    aiSummaryEn: [
+      "In GTA Online, linking your Rockstar account with Discord lets you claim the burgundy Rockstar Varsity Crewneck for free. The window runs June 11–July 1, and as of this article's publication it is the final day.",
+      "To claim, go to the #discord-rewards channel in the official Rockstar Games Discord, run \"/claim,\" and choose Reward → RockstarCrewneck. The item is added to your wardrobe under Tops → Special Tops → Unlocks within up to 72 hours.",
+      "It is limited to one claim per player and requires a character who has finished the online tutorial. Rockstar says this is the last Discord-linking reward, so it's the final chance. Beware of phishing DMs and unofficial sites posing as the reward.",
+    ],
+    fullContentEn: `# GTA Online Gives Away the Rockstar Varsity Crewneck via Discord Link — Through July 1, and This Is the Last Discord Reward
+
+In GTA Online, a campaign is underway that lets you claim the burgundy Rockstar Varsity Crewneck for free by linking your Rockstar account with Discord. The claim window runs from June 11 to July 1. Rockstar has also made clear that this will be the final Discord-linking reward. GTA6 FEED has organized the claim steps and things to watch for.
+
+This article is based on information as of July 1, 2026. Because the claim deadline falls today, anyone who hasn't claimed it yet should act sooner rather than later.
+
+---
+
+## The Item Being Given Away
+
+What you get this time is the burgundy version of a varsity-style crewneck (sweatshirt) bearing the Rockstar Games logo. A black version of the same design was handed out as a pre-DLC mission reward in November 2025, and this is its color variant. It's a free GTA Online item obtainable only through Discord linking.
+
+Rockstar has noted that, as a Discord-linking reward, this is the last one. For the time being, this marks the end of receiving this kind of reward via account linking.
+
+---
+
+## How to Claim
+
+You claim it from Rockstar's official Discord server. The steps are as follows.
+
+1. Link your Rockstar account with your Discord account (follow Rockstar Support's instructions for how to link).
+2. Join the official [Rockstar Games Discord server](https://discord.gg/rockstargames).
+3. Open the "#discord-rewards" channel in the server.
+4. Type "/claim" in the message box and send it, then from the menu that appears choose "Reward" → "RockstarCrewneck" and send.
+5. Play GTA Online. The reward is added within 72 hours to your wardrobe under "Tops" → "Special Tops" → "Unlocks."
+
+---
+
+## Things to Watch For
+
+To claim smoothly, there are a few points worth keeping in mind.
+
+- You need a character who has completed the GTA Online tutorial. It's also worth confirming in advance that the Rockstar account and Discord account you're linking are the correct pair.
+- Claiming is limited to once per eligible player.
+- The reward won't necessarily appear in your wardrobe right after you claim. Because many players claim at once, distribution is staggered. It can take up to about 72 hours, so check back every few hours.
+- The claim deadline is July 1. As of this article's publication it is the final day, so if you haven't claimed it, assume there's very little time left.
+
+As a safety note, always claim from the official Rockstar Games Discord server. Don't respond to direct messages that promise rewards while asking you to click links or enter account information, nor to unofficial sites or servers. Be wary of phishing disguised as account linking.
+
+---
+
+## Note: GTA Online This Week
+
+This crewneck giveaway is part of this week's GTA Online update, which began on June 25. During the same period, the Fine Art Collector Program (running through July 13, with logins granting GTA$500K, a free vehicle, and more), double rewards on Acid Lab missions, and boosted FIB Files payouts are also running.
+
+With GTA6 pre-orders making big waves, GTA Online continues to roll out weekly updates. At this juncture, the long-running Discord-linking rewards have reached a stopping point. Don't miss this last chance while you still can.`,
+  },
+  {
     id: 28,
     title:
       "GTA6にコレクターズエディションは出るのか——公式未発表のいま、リークと過去作から読む",
