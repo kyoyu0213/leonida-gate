@@ -9,7 +9,7 @@
 
 export const siteLinks = {
   /** Discord 招待 URL（例: 'https://discord.gg/xxxxxxx'） */
-  discord: "",
+  discord: "https://discord.gg/TGUGVrq3X",
   /** コミュニティ（Discord）メンバー数の表示。discord を設定すると自己紹介欄に表示される（例: '1,200+'） */
   discordMembers: "",
   /** X / Twitter のプロフィール URL */

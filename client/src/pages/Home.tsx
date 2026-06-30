@@ -6,9 +6,19 @@ import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
+import { siteLinks } from '@/data/site';
 import { type FivemServer } from '@/lib/supabase';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+
+// Discord ロゴ（lucide に無いため簡易インラインSVG）
+function DiscordIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="flex-none">
+      <path d="M20.317 4.369A19.79 19.79 0 0 0 15.885 3c-.214.382-.463.898-.636 1.307a18.27 18.27 0 0 0-5.497 0C9.578 3.898 9.327 3.382 9.113 3a19.74 19.74 0 0 0-4.435 1.369C1.86 8.59 1.092 12.708 1.476 16.766a19.9 19.9 0 0 0 6.073 3.058c.49-.666.927-1.374 1.302-2.117-.714-.27-1.4-.602-2.045-.99.171-.126.34-.257.502-.391 3.944 1.81 8.21 1.81 12.106 0 .164.135.332.265.502.39-.647.39-1.333.722-2.047.992.375.743.812 1.45 1.302 2.116a19.86 19.86 0 0 0 6.076-3.058c.45-4.705-.769-8.785-3.93-12.397zM8.02 14.331c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.952-2.42 2.156-2.42 1.211 0 2.176 1.094 2.156 2.42 0 1.334-.952 2.419-2.156 2.419zm7.96 0c-1.183 0-2.156-1.085-2.156-2.419 0-1.333.952-2.42 2.156-2.42 1.211 0 2.176 1.094 2.156 2.42 0 1.334-.945 2.419-2.156 2.419z" />
+    </svg>
+  );
+}
 
 // Topページに表示するニュースサムネの件数
 const TOP_NEWS_COUNT = 6;
@@ -196,6 +206,24 @@ export default function Home() {
               >
                 {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
               </a>
+              {siteLinks.discord && (
+                <a
+                  href={siteLinks.discord}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-extrabold text-white inline-flex items-center gap-2"
+                  style={{
+                    fontSize: 'clamp(13px,1.6vw,14.5px)',
+                    padding: '13px 24px',
+                    borderRadius: 999,
+                    background: '#5865F2',
+                    boxShadow: '0 6px 24px rgba(88,101,242,.45)',
+                  }}
+                >
+                  <DiscordIcon />
+                  {lang === 'ja' ? 'Discordに参加' : 'Join Discord'}
+                </a>
+              )}
             </div>
           </div>
 
@@ -325,6 +353,24 @@ export default function Home() {
                     {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
                   </a>
                 </div>
+                {siteLinks.discord && (
+                  <a
+                    href={siteLinks.discord}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-extrabold text-white inline-flex items-center gap-2"
+                    style={{
+                      fontSize: 14.5,
+                      padding: '13px 26px',
+                      borderRadius: 999,
+                      background: '#5865F2',
+                      boxShadow: '0 6px 24px rgba(88,101,242,.45)',
+                    }}
+                  >
+                    <DiscordIcon />
+                    {lang === 'ja' ? 'Discordに参加' : 'Join Discord'}
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -388,6 +434,67 @@ export default function Home() {
                   ? `すべての記事を見る（全${allNews.length}件）→`
                   : `View all articles (${allNews.length}) →`}
               </a>
+            </div>
+
+            {/* ===================== Discord コミュニティ告知バナー ===================== */}
+            <div
+              className="mt-8 relative overflow-hidden rounded-2xl p-6 md:p-8"
+              style={{
+                background: 'linear-gradient(135deg,#0a0613 0%,#190d2c 55%,#2a1140 100%)',
+                border: '1px solid rgba(167,139,250,.35)',
+                boxShadow: '0 0 30px rgba(167,139,250,.18), inset 0 0 44px rgba(255,45,149,.06)',
+              }}
+            >
+              {/* ネオンのグロー（装飾・クリック無効） */}
+              <div
+                className="pointer-events-none absolute -top-16 -right-12 w-48 h-48 rounded-full"
+                style={{ background: 'radial-gradient(circle, rgba(34,211,238,.25), transparent 70%)' }}
+              />
+              <div
+                className="pointer-events-none absolute -bottom-20 -left-12 w-56 h-56 rounded-full"
+                style={{ background: 'radial-gradient(circle, rgba(255,45,149,.22), transparent 70%)' }}
+              />
+
+              <div className="relative z-10">
+                <span
+                  className="inline-flex items-center gap-2 text-[11px] font-extrabold tracking-[0.25em] uppercase"
+                  style={{ color: '#a78bfa' }}
+                >
+                  <DiscordIcon /> Community
+                </span>
+
+                <h3 className="font-black text-xl md:text-2xl mt-3 mb-2 text-white">
+                  {lang === 'ja'
+                    ? 'GTA6 FEED Discordサーバー開設'
+                    : 'GTA6 FEED Discord Server Is Live'}
+                </h3>
+
+                <p
+                  className="text-[14px] md:text-[15px] leading-relaxed m-0 max-w-[640px]"
+                  style={{ color: 'rgba(244,238,248,.82)' }}
+                >
+                  {lang === 'ja'
+                    ? 'GTA6の最新情報・考察・FiveM/GTARP・リーク整理をみんなで共有するコミュニティです。記事の感想、情報提供、GTARP初心者質問も歓迎。'
+                    : 'A community for sharing GTA6 news, analysis, FiveM/GTARP, and leak round-ups together. Thoughts on articles, tips, and beginner GTARP questions are all welcome.'}
+                </p>
+
+                <a
+                  href={siteLinks.discord || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-extrabold text-white mt-5"
+                  style={{
+                    fontSize: 14.5,
+                    padding: '13px 26px',
+                    borderRadius: 999,
+                    background: 'linear-gradient(95deg,#ff2d95,#a78bfa 55%,#c44be0)',
+                    boxShadow: '0 6px 24px rgba(255,45,149,.42)',
+                  }}
+                >
+                  <DiscordIcon />
+                  {lang === 'ja' ? 'Discordに参加する →' : 'Join the Discord →'}
+                </a>
+              </div>
             </div>
           </div>
 
