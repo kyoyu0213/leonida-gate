@@ -99,6 +99,193 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 30,
+    title:
+      "GTA6のPC版はいつ来るのか——発表されない理由と、過去作から読む現実的な時期",
+    description:
+      "2026年6月25日に予約が始まったGTA6だが、対象はPS5とXbox Series X|Sのみ。PC版はストアページも要件も時期も未発表だ。発表されない理由と、過去作から読む現実的な発売時期を、確認できる事実と考察に分けて整理する。",
+    icon: "🖥️",
+    image: "/images/news/ULTIMATE_EDITION_01.jpg",
+    category: "topic",
+    date: "2026-07-01",
+    publishedAt: "2026-07-01 18:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [29, 28, 27],
+    aiSummary: [
+      "2026年6月25日にGTA6の予約が始まったが、対象はPS5とXbox Series X|Sのみ。PC版はストアページ・システム要件・発売時期のいずれも未発表で、「出ない」のではなく「まだ何も発表されていない」状態だ。",
+      "Rockstarはコンソール先行が一貫方針で、過去作のPC版はGTA4が約8か月、GTA5が約18か月、RDR2が約13か月遅れて登場した。前例に従えば、GTA6のPC版は2027年後半〜2028年ごろが現実的とみられている。",
+      "「2027年2月」という早期説はリーカーDetectiveSeeds発で根拠が弱く懐疑的。CEO発言からPC軽視ではなく、海賊版・チート対策や二段構えの商業戦略でタイミングを計っているとの読みが有力だ。",
+    ],
+    fullContent: `# GTA6のPC版はいつ来るのか——発表されない理由と、過去作から読む現実的な時期
+
+2026年6月25日、GTA6の予約注文が始まった。しかし対象は PS5 と Xbox Series X|S だけだった。PC版については、ストアページもシステム要件も発売時期も、いっさい発表されていない。
+
+11月19日の発売が近づき、予約まで始まったこのタイミングで、PC版だけが沈黙を保っている。その沈黙が、かえって多くのプレイヤーの関心を集めている。GTA6は PC で遊べるのか、遊べるとしたらいつなのか。ここでは、確認できる事実と、そこから読み取れる見通しを分けて整理する。
+
+## 確認できる事実——PC版は「発表されていない」
+
+まず押さえておきたいのは、PC版が「出ない」と決まったわけではなく、「まだ何も発表されていない」という状態である。この二つは似ているようで違う。
+
+現時点で Rockstar が公式に認めているのは、GTA6が2026年11月19日に PS5 と Xbox Series X|S 向けに発売される、という一点だけである。6月25日に始まった予約注文も、この2機種が対象だった。PC版については、対応の有無、発売時期、システム要件、配信プラットフォームのいずれについても、公式の言及がない。
+
+Take-Two の CEO ストラウス・ゼルニック（Strauss Zelnick）は、2026年5月の Bloomberg のインタビューで、PC版が同時発売されない理由に触れている。海外メディアによれば、ゼルニックは「Rockstar は常にコンソールから始める」とし、コアとなる消費者にまず最善の体験を届けることが重視される、という趣旨を語っている。これは Rockstar が長年とってきた方針と一致している。
+
+## なぜ後回しなのか——Rockstar の一貫したパターン
+
+Rockstar がコンソールを先行させ、PC版を後から出すのは、今回に限った話ではない。過去作を見れば、明確なパターンがある。
+
+過去作の待機期間を並べると、この傾向がよく分かる。GTA4 は2008年4月のコンソール版から約8か月後の同年12月に PC版が出た。GTA5 は2013年9月のコンソール版に対し、PC版は2015年4月で、その差はおよそ18か月。Red Dead Redemption 2 は2018年10月のコンソール版から約13か月後の2019年11月に PC版が登場した。HD 時代以降は「コンソールで先行し、1年前後から1年半ほど遅れて PC版を出す」というのが基本線になっている。
+
+この前例に従うなら、GTA6の PC版も発売から1年以上遅れる可能性が高い。海外メディアの多くは、現実的な時期として2027年後半から2028年を挙げている。
+
+## ここに矛盾がある
+
+ここからはGTA6 FEEDによる考察である。
+
+「コンソールがコアだから PC は後回し」という説明は、一見筋が通っている。だが、これには見過ごせない矛盾がある。
+
+同じゼルニックが、別の場面では PC の重要性を認めているのだ。海外メディアの報道によれば、ゼルニックは大型タイトルの発売において PC が売上の45〜50%を占めうると述べたことがある。また、2026年2月には、PC がますます重要な市場になっており、その傾向は続くだろうという趣旨の発言もしている。
+
+つまり、Rockstar 自身が PC を無視できない市場だと理解している。それでも PC版を同時に出さないのだとすれば、「PC がコアではないから」という説明だけでは足りない。理由は別のところにあると考えるのが自然だ。
+
+有力とされる見方はいくつかある。ひとつは、海賊版やチート対策である。PC は MOD やチートが作られやすい環境であり、発売直後の最も売上が伸びる時期を、対策の整いにくい PC に開放したくない、という判断があってもおかしくない。もうひとつは、商業戦略としての二段構えである。まずコンソールで販売と話題を集中させ、コミュニティが育ったころに PC版を投入すれば、コンソールですでに遊んだ層の買い直しも含めて、二度目の販売の波を作れる。GTA5 が PC版と MOD 文化によってコンソールの寿命をはるかに超えて遊ばれ続けたことを踏まえれば、この二段構えには合理性がある。
+
+言い換えれば、PC版の遅れは「PC が軽視されているから」ではなく、「PC の価値を最大化するタイミングを計っているから」という読み方ができる。
+
+![ヴァイスシティの街並みを背にしたルシアとジェイソン。こうした風景を最高の解像度とフレームレートで味わえるPC版が来るのは、まだ先になりそうだ](/images/news/ULTIMATE_EDITION_02.jpg)
+
+## どのプラットフォームで来るのか
+
+配信プラットフォームについても、公式発表はまだない。ここも推測の域を出ないが、候補として挙げられているのは Steam、Epic Games Store、そして Rockstar 自身の Rockstar Games Launcher である。
+
+GTA5 が Steam で長く強い売上を維持してきたことを考えれば、Steam が有力な選択肢であることは間違いない。一方で、Rockstar は自社ランチャーを持っており、一定期間はそこでの独占配信を挟む可能性も指摘されている。過去作では、ウルトラワイド対応、フレームレート上限の解放、DLSS や FSR への対応、そして MOD 対応といった PC ならではの要素が用意されてきた。PC版がいつ出るにせよ、単なる移植ではなく、技術的な見どころのある版になることは期待できる。
+
+## 「2027年2月」という噂の真偽
+
+具体的な時期として、一部で「2027年2月」という説が出回っている。これは押さえておくべきだが、扱いには注意が必要な情報である。
+
+この噂の出所は、X（旧Twitter）のリーカー DetectiveSeeds である。海外メディアの報道によれば、この人物は元Rockstar社員90人ほどに LinkedIn で接触し、返答した3人が、Take-Two の会計年度末（2027年3月）より前、具体的には2027年2月を目標にしている、と示唆したという。会計年度内に PC版を出したいという事情と重ねて、この時期が挙げられている。
+
+ただし、この説は懐疑的に受け止められている。理由は二つある。ひとつは、コンソール発売からわずか3か月後という時期が、過去作の18か月・13か月という実績とかけ離れており、Rockstar がこれまで一度もやったことのない速さになる点。もうひとつは、情報源である DetectiveSeeds が過去に別タイトルの発売時期を繰り返し外しており、リーカーとしての信頼性が高くないと見られている点である。本人も「確定ではない」と注記している。
+
+まとめると、2027年2月説は「そうなれば嬉しいが、根拠は弱い」という位置づけになる。業界の一般的な見立ては、これより遅い2027年後半から2028年である。
+
+## PC版を待つ価値はあるのか
+
+ここで、PC版を待つ側の視点にも触れておきたい。コンソールを買うか、PC版を待つか。この判断は、多くのプレイヤーにとって現実的な悩みである。
+
+過去作を振り返ると、Rockstar の PC版は「待った甲斐があった」と評価されることが多い。GTA5 の PC版は、コンソールから1年半以上遅れて登場したが、高い解像度、上限のないフレームレート、そして MOD 対応によって、シリーズで最も長く遊ばれる版になった。今でも「GTA5 を本気で遊ぶなら PC版」という声は根強い。Red Dead Redemption 2 の PC版も、美しいビジュアルと MOD の拡張性で高く評価されている。
+
+ただし、いい面ばかりではない。RDR2 の PC版は、発売直後にクラッシュなどの技術的な不具合が相次ぎ、安定するまで時間がかかった。PC版は「最終的には最良の版になるが、出た瞬間が最良とは限らない」という点は、覚えておいてよい。
+
+待つことのデメリットもはっきりしている。コンソールで先に遊んだ層にとっては、PC版を買い直すと二重の出費になる。友人とコンソールで同時に遊びたい場合、PC版を待つ意味は薄れる。過去には、発売初期の PC版でチート対策が追いつかず、オンラインで不快な思いをしたという声もあった。
+
+整理すると、ビジュアルや MOD を重視し、いちばん完成された版でじっくり遊びたいなら、PC版を待つ価値は十分にある。一方で、発売直後の熱量の中でストーリーを早く体験したい、友人とコンソールで一緒に遊びたい、という人にとっては、待たずにコンソールで始める選択も理にかなっている。
+
+## まとめ
+
+現時点で確実に言えるのは、GTA6が2026年11月19日に PS5 と Xbox Series X|S で発売され、PC版については何も発表されていない、という点である。過去作のパターンに従うなら、PC版は発売から1年以上遅れ、2027年後半から2028年ごろになる可能性が高い。「2027年2月」という早期説も出回っているが、根拠は弱く、あくまで噂の域を出ない。いずれにせよ、公式に約束された時期ではない。
+
+Rockstar が PC を軽視しているわけではないことは、CEO 自身の発言からも読み取れる。PC版が来るかどうかを問う段階は、おそらくもう過ぎている。問いは「いつ来るのか」に移っており、その答えだけが、まだ Rockstar の沈黙の向こうにある。
+
+---
+
+## 免責事項
+
+本記事は、Rockstar Games および Take-Two Interactive の公式発表、CEO ストラウス・ゼルニックのインタビュー報道、海外メディアの記事をもとに、GTA6 FEEDが独自に整理・考察したものである。
+
+GTA6が2026年11月19日に PS5・Xbox Series X|S で発売されること、予約が6月25日に始まったこと、PC版が未発表であることは、確認できる事実である。過去作（GTA4・GTA5・Red Dead Redemption 2）のコンソール版と PC版の発売間隔も、確認できる事実である。PC版の発売時期（2027〜2028年）、配信プラットフォーム、後回しの理由に関する記述は、過去作の前例と海外メディアの分析にもとづく予想および考察であり、Rockstar による公式発表ではない。「2027年2月」という時期は、リーカー DetectiveSeeds による未確認の主張であり、懐疑的に受け止められている。過去作 PC版の評価やプレイヤーの反応は、コミュニティの一般的な論調をまとめたものである。GTA6は未発売タイトルであり、内容は今後の公式発表によって変わる可能性がある。最新情報は Rockstar Games の公式発表を確認されたい。`,
+    titleEn:
+      "When Will GTA6's PC Version Arrive? — Why It's Unannounced, and a Realistic Timing Read from Past Games",
+    descriptionEn:
+      "Pre-orders for GTA6 opened on June 25, 2026, but only for PS5 and Xbox Series X|S. The PC version has no store page, no requirements, and no date. We separate the confirmable facts from analysis to read why it's unannounced and a realistic release window from past games.",
+    aiSummaryEn: [
+      "GTA6 pre-orders opened on June 25, 2026, but only for PS5 and Xbox Series X|S. The PC version has no store page, system requirements, or release date announced — it's not that it “won't come,” but that “nothing has been announced yet.”",
+      "Rockstar consistently leads with consoles: past PC versions arrived about 8 months later for GTA4, about 18 months for GTA5, and about 13 months for RDR2. Following precedent, a GTA6 PC version is realistically seen around late 2027 to 2028.",
+      "The early “February 2027” claim comes from leaker DetectiveSeeds and rests on weak grounds, drawing skepticism. From the CEO's own remarks, the read is not that PC is neglected but that the timing is being managed for piracy/cheat mitigation and a two-stage commercial strategy.",
+    ],
+    fullContentEn: `# When Will GTA6's PC Version Arrive? — Why It's Unannounced, and a Realistic Timing Read from Past Games
+
+On June 25, 2026, pre-orders for GTA6 opened. But they were only for PS5 and Xbox Series X|S. As for the PC version — the store page, the system requirements, the release window — nothing at all has been announced.
+
+With the November 19 launch approaching and pre-orders even underway, the PC version alone keeps its silence. That silence is, if anything, drawing a great deal of player interest. Can GTA6 be played on PC, and if so, when? Here we organize the confirmable facts separately from the outlook that can be read from them.
+
+## Confirmable Facts — The PC Version Is “Unannounced”
+
+The first thing to grasp is that it has not been decided that the PC version “won't come,” but rather that “nothing has been announced yet.” These two look alike but differ.
+
+At this point, what Rockstar officially acknowledges is a single thing: that GTA6 launches on November 19, 2026 for PS5 and Xbox Series X|S. The pre-orders that began on June 25 were also for these two platforms. Regarding the PC version, there is no official mention of whether it's supported, its release window, its system requirements, or its distribution platform.
+
+Take-Two CEO Strauss Zelnick touched on the reason the PC version isn't launching simultaneously in a Bloomberg interview in May 2026. According to overseas media, Zelnick said “Rockstar always starts with consoles,” conveying that delivering the best experience first to the core consumer is prioritized. This aligns with the policy Rockstar has taken for many years.
+
+## Why Is It Pushed Back? — Rockstar's Consistent Pattern
+
+Rockstar leading with consoles and releasing the PC version later is not unique to this time. Looking at past games, there is a clear pattern.
+
+Lining up the waiting periods of past titles makes this tendency clear. GTA4's PC version came in December 2008, about 8 months after the April 2008 console version. For GTA5, against the September 2013 console version, the PC version was April 2015 — a gap of roughly 18 months. Red Dead Redemption 2's PC version appeared in November 2019, about 13 months after the October 2018 console version. Since the HD era, “lead on console, then release the PC version around a year to a year and a half later” has been the baseline.
+
+Following this precedent, GTA6's PC version too is likely to lag more than a year behind launch. Much of the overseas media cites late 2027 to 2028 as a realistic window.
+
+## Here Is a Contradiction
+
+From here on is analysis by GTA6 FEED.
+
+The explanation that “consoles are core, so PC is pushed back” seems, at a glance, to make sense. But there is a contradiction here that can't be overlooked.
+
+The same Zelnick, in another context, acknowledges the importance of PC. According to overseas media reports, Zelnick has stated that for major title launches, PC can account for 45–50% of sales. He also, in February 2026, conveyed that PC is becoming an increasingly important market and that the trend will continue.
+
+In other words, Rockstar itself understands that PC is a market it can't ignore. If it still doesn't release the PC version simultaneously, then “because PC isn't core” alone is not enough of an explanation. It's natural to think the reason lies elsewhere.
+
+There are a few views considered likely. One is piracy and cheat countermeasures. PC is an environment where MODs and cheats are easily made, and it wouldn't be strange if there were a judgment not to open up the period right after launch — when sales grow the most — to PC, where countermeasures are harder to have in place. Another is a two-stage commercial strategy. First concentrate sales and buzz on console, and then, once the community has grown, deploy the PC version, creating a second wave of sales — including re-purchases by those who already played on console. Given that GTA5, through its PC version and MOD culture, kept being played far beyond the console's lifespan, this two-stage approach has its rationale.
+
+Put differently, the PC version's delay can be read not as “because PC is treated lightly,” but as “because they're timing it to maximize PC's value.”
+
+![Lucia and Jason against the Vice City skyline. A PC version that lets you savor scenes like this at the highest resolution and frame rate looks to be still some way off](/images/news/ULTIMATE_EDITION_02.jpg)
+
+## On Which Platform Will It Come
+
+There is no official announcement about the distribution platform either. This too is no more than speculation, but the candidates raised are Steam, the Epic Games Store, and Rockstar's own Rockstar Games Launcher.
+
+Given that GTA5 has maintained long, strong sales on Steam, there's no doubt Steam is a strong option. On the other hand, Rockstar has its own launcher, and it's been pointed out that it may insert a period of exclusive distribution there. In past titles, PC-specific elements have been prepared — ultrawide support, unlocked frame-rate caps, DLSS and FSR support, and MOD support. Whenever the PC version comes, it can be expected to be a version with technical highlights, not a mere port.
+
+## The Truth of the “February 2027” Rumor
+
+As a concrete window, a “February 2027” claim is circulating in some places. This is worth noting, but it's information that needs to be handled with caution.
+
+The source of this rumor is the X (formerly Twitter) leaker DetectiveSeeds. According to overseas media reports, this person contacted about 90 former Rockstar employees on LinkedIn, and the three who replied suggested that the target is before Take-Two's fiscal year-end (March 2027) — specifically, February 2027. This window is cited in overlap with the circumstance of wanting to release the PC version within the fiscal year.
+
+However, this claim is received with skepticism, for two reasons. One is that a window of just 3 months after the console launch is far removed from the 18-month and 13-month track records of past titles, and would be a speed Rockstar has never done before. The other is that the source, DetectiveSeeds, has repeatedly missed the release timing of other titles in the past and is seen as not highly reliable as a leaker. The person themselves notes it's “not confirmed.”
+
+To sum up, the February 2027 theory sits at “it'd be nice if so, but the grounds are weak.” The general industry read is later than that — late 2027 to 2028.
+
+## Is It Worth Waiting for the PC Version?
+
+Here, let's also touch on the perspective of those waiting for the PC version. Buy a console, or wait for the PC version? For many players, this is a real dilemma.
+
+Looking back at past titles, Rockstar's PC versions are often rated as “worth the wait.” GTA5's PC version appeared more than a year and a half after console, but with high resolution, an uncapped frame rate, and MOD support, it became the version played the longest in the series. Even now, the voice that “if you're playing GTA5 seriously, it's the PC version” remains strong. Red Dead Redemption 2's PC version is also highly rated for its beautiful visuals and MOD extensibility.
+
+That said, it's not all upside. RDR2's PC version had a string of technical issues such as crashes right after launch, and took time to stabilize. It's worth remembering that a PC version “becomes the best version in the end, but the moment it launches isn't necessarily the best.”
+
+The downsides of waiting are also clear. For those who played first on console, re-buying the PC version means a double expense. If you want to play with friends on console at the same time, the point of waiting for the PC version diminishes. In the past, there were also voices that cheat countermeasures couldn't keep up in the early PC version, making for an unpleasant time online.
+
+Organizing this: if you value visuals and MODs and want to play the most complete version thoroughly, waiting for the PC version is well worth it. On the other hand, for someone who wants to experience the story early amid the launch-day heat, or to play together with friends on console, the choice to start on console without waiting also makes sense.
+
+## Summary
+
+What can be said with certainty at this point is that GTA6 launches on November 19, 2026 for PS5 and Xbox Series X|S, and that nothing has been announced about the PC version. If we follow the pattern of past titles, the PC version is likely to lag more than a year behind launch, arriving around late 2027 to 2028. An early “February 2027” theory is also circulating, but its grounds are weak and it's no more than a rumor. In any case, it's not an officially promised window.
+
+That Rockstar isn't treating PC lightly can be read from the CEO's own remarks. The stage of asking whether a PC version will come has probably already passed. The question has shifted to “when will it come,” and only that answer still lies beyond Rockstar's silence.
+
+---
+
+## Disclaimer
+
+This article is an independent organization and analysis by GTA6 FEED based on official announcements by Rockstar Games and Take-Two Interactive, reporting on CEO Strauss Zelnick's interviews, and overseas media articles.
+
+That GTA6 launches on November 19, 2026 for PS5 and Xbox Series X|S, that pre-orders began on June 25, and that the PC version is unannounced, are confirmable facts. The intervals between the console and PC versions of past titles (GTA4, GTA5, Red Dead Redemption 2) are also confirmable facts. Descriptions regarding the PC version's release window (2027–2028), distribution platform, and the reason for the delay are predictions and analysis based on the precedent of past titles and overseas media analysis, and are not official announcements by Rockstar. The “February 2027” window is an unconfirmed claim by leaker DetectiveSeeds and is received with skepticism. Evaluations of past PC versions and player reactions are a summary of the general tone of the community. GTA6 is an unreleased title, and its contents may change with future official announcements. For the latest information, please check Rockstar Games' official announcements.`,
+  },
+  {
     id: 29,
     title:
       "GTA Online、Discord連携で「Rockstar Varsity Crewneck」を無料配布——7月1日まで、Discord特典は今回が最後",
