@@ -136,6 +136,8 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 
 ![独立記念日イベントで無料配布されるLago Zancudoバンカー。通常100万GTA$超の物件がタダで手に入る](/images/news/IndependenceDay/GTAO1.png)
 
+![Gun Vanで無料になる花火ランチャー。独立記念日らしく夜空を彩れる](/images/news/IndependenceDay/hanabirancya.jpg)
+
 ---
 
 ## 報酬アップとボーナス
@@ -146,7 +148,9 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 - スタントレースの報酬が3倍(トリプル)。Running Back(Remix)なども登場する。
 - ウィークリーチャレンジは、7月2日〜8日はバンカーリサーチミッションを3回完了でGTA$10万とBlue Jock Cranley Jumpsuit。9日〜13日はレースに2回勝利で同じ報酬が得られる。
 
-![報酬アップの対象となるスタントレース。トリプルRPやGTA$のボーナスで資金稼ぎがはかどる](/images/news/IndependenceDay/GTAO4.png)
+![報酬2倍となるバンカー売却ミッション。The Kortz Center Heistに向けた資金稼ぎに向く](/images/news/IndependenceDay/bankerbonus.jpg)
+
+![報酬3倍となるスタントレース。トリプルのGTA$・RPボーナスで一気に稼げる](/images/news/IndependenceDay/stuntlace.jpg)
 
 ---
 
@@ -209,6 +213,8 @@ This event is especially generous with items you can receive for free.
 
 ![The Lago Zancudo Bunker given away free during the Independence Day event. A property normally worth over GTA$1M for nothing](/images/news/IndependenceDay/GTAO1.png)
 
+![The firework launcher, free from the Gun Van. Light up the night sky in true Independence Day fashion](/images/news/IndependenceDay/hanabirancya.jpg)
+
 ---
 
 ## Reward Boosts and Bonuses
@@ -219,7 +225,9 @@ There are also plenty of money-making opportunities. It's a good week to stockpi
 - Stunt Races pay triple rewards. Modes such as Running Back (Remix) are featured.
 - For weekly challenges: from July 2–8, complete three Bunker Research missions for GTA$100K and the Blue Jock Cranley Jumpsuit. From the 9th–13th, win two races for the same reward.
 
-![Stunt Races, eligible for the reward boost. Triple RP and GTA$ bonuses make earning money easier](/images/news/IndependenceDay/GTAO4.png)
+![Bunker Sell Missions, paying double rewards. Good for stockpiling cash ahead of The Kortz Center Heist](/images/news/IndependenceDay/bankerbonus.jpg)
+
+![Stunt Races, paying triple rewards. Triple GTA$ and RP bonuses let you earn fast](/images/news/IndependenceDay/stuntlace.jpg)
 
 ---
 
