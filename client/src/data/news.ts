@@ -99,6 +99,163 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 31,
+    title:
+      "GTA Online、独立記念日イベント開始——Lago Zancudoバンカーが無料、「過去最大」のセールも",
+    description:
+      "GTA Onlineで独立記念日イベントが7月2日に開幕。通常100万GTA$超のLago Zancudoバンカーが無料でもらえるほか、Rockstarが「過去最大」と称する大規模セールも実施中。多くは7月13日まで。内容と押さえどころをまとめた。",
+    icon: "🎆",
+    image: "/images/news/IndependenceDay/GTAO.png",
+    category: "event",
+    date: "2026-07-03",
+    publishedAt: "2026-07-03 09:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [29, 30, 28],
+    aiSummary: [
+      "GTA Onlineで独立記念日(Independence Day)イベントが7月2日に開幕。目玉は通常100万GTA$を超えるLago Zancudoバンカーの無料配布で、Maze Bank Foreclosuresから7月13日まで取得できる。バンカー改造・アップグレードも40%オフ。",
+      "報酬アップも手厚く、バンカー売却ミッションは2倍、スタントレースは3倍。花火ランチャーやマスケット、独立記念日バケットハットなども無料で、ウィークリーチャレンジ達成でGTA$10万＋限定衣装ももらえる。",
+      "セールはRockstarが「過去最大」と称する規模で、航空機・特殊車両・プロパティなどが大幅値引き。GTA+会員は無料Ocelot Strombergやマンション200万GTA$割引などの追加特典も。未所持なら無料バンカーは取り逃さず受け取りたい。",
+    ],
+    fullContent: `# GTA Online、独立記念日イベント開始——Lago Zancudoバンカーが無料、「過去最大」のセールも
+
+GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7月2日に始まった。目玉は、通常100万GTA$を超えるLago Zancudoバンカーの無料配布と、Rockstarが「過去最大」と称する大規模セールだ。無料バンカーやセールの多くは7月13日まで続く。GTA6 FEEDが内容と押さえどころをまとめた。
+
+本記事は2026年7月2日時点の情報にもとづく。
+
+---
+
+## 無料でもらえるもの
+
+今回のイベントは、無料で受け取れるアイテムが特に手厚い。
+
+- Lago Zancudoバンカー:Maze Bank Foreclosuresから無料で取得できる(7月13日まで)。通常は100万GTA$を超える物件で、一度受け取れば恒久的に自分の資産になる。あわせて、バンカーの改造・アップグレードが40%オフになる。
+- ハイエンドガレージも無料で入手できる。
+- 花火ランチャー(Gun Van)とマスケット(Ammu-Nation)が無料。ログインすると独立記念日仕様のバケットハットも受け取れる。
+- Business Battlesでは、ビールハット各種やStatue of Happiness Tシャツといった期間限定のコスメティックが手に入る。
+
+![独立記念日イベントで無料配布されるLago Zancudoバンカー。通常100万GTA$超の物件がタダで手に入る](/images/news/IndependenceDay/GTAO1.png)
+
+---
+
+## 報酬アップとボーナス
+
+資金稼ぎの機会も多い。今月後半に控えるThe Kortz Center Heistに向けて、GTA$を貯めるのに向いた週になっている。
+
+- バンカー売却ミッションの報酬が2倍(GTA$・RP)。バンカーやガンランニング関連のミッションにもボーナスが付く。
+- スタントレースの報酬が3倍(トリプル)。Running Back(Remix)なども登場する。
+- ウィークリーチャレンジは、7月2日〜8日はバンカーリサーチミッションを3回完了でGTA$10万とBlue Jock Cranley Jumpsuit。9日〜13日はレースに2回勝利で同じ報酬が得られる。
+
+![報酬アップの対象となるスタントレース。トリプルRPやGTA$のボーナスで資金稼ぎがはかどる](/images/news/IndependenceDay/GTAO4.png)
+
+---
+
+## 「過去最大」のセール
+
+セール規模も大きい。航空機、特殊車両・武装車両、プロパティなど広範囲が大幅に値引きされている。独立記念日の衣類・リバリー・パラシュートの煙・フェイスペイントなどは40%オフ、星条旗をあしらったSovereignバイクとLiberatorモンスタートラックは50%オフとなっている。公式の告知画像でも、数十万から数百万GTA$規模の割引が並ぶ、目玉の車両・航空機がいくつも示されている。
+
+GTA+会員には、さらに追加の特典がある。限定の独立記念日衣類、無料のOcelot Stromberg、Chameleon Paints、そしてMansion(豪邸)の200万GTA$割引などが用意されている。
+
+![「過去最大」とうたわれるセール。航空機や特殊車両など広範囲が大幅値引きされている](/images/news/IndependenceDay/GTAO2.png)
+
+---
+
+## 無料バンカーは取っておくべきか
+
+結論から言えば、まだバンカーを持っていないなら、この無料のLago Zancudoは受け取っておくのがよい。通常100万GTA$超の物件がタダになるだけでなく、ガンランニング、放置中も進む受動収入、Mk II武器のリサーチといった、GTA Onlineでも屈指の長期ビジネスの土台になるからだ。単なる無料の建物というより、収益の仕組みそのものが一つ増えると考えたほうが近い。
+
+ただし一点だけ補足すると、すでにChumashやFarmhouseのバンカーを持っている場合は、無理に乗り換える必要はない。この2か所は配送ルートが短く、売却ミッションの効率で有利とされる。Lago Zancudoは立地の関係で一部の売却に時間がかかるため、優先度で言えば中位だ。とはいえ「無料でもらえる100万超の物件」であることは変わらないので、未所持なら取り逃さないよう、期限の7月13日までに受け取っておきたい。
+
+![バンカーはガンランニングやMk II武器のリサーチなど、長期ビジネスの土台になる](/images/news/IndependenceDay/GTAO3.png)
+
+---
+
+## 補足:今月のGTA Online
+
+このイベントは、7月中に配信予定の新アップデートThe Kortz Center Heistへ向けた流れの一部でもある。並行して、7月13日まで続くFine Art Collector Program(ログインでGTA$50万や無料車両などが得られる)も進行中だ。
+
+GTA6の予約が大きな話題となる一方で、GTA Onlineは毎週の更新を続けている。独立記念日の今週は、無料の物件やアイテム、報酬アップが重なる、この数週間でも特に得の多い内容になっている。
+
+---
+
+## 免責事項
+
+本記事は、Rockstar Games の公式告知および Rockstar Newswire、海外メディアの報道をもとに、GTA6 FEEDが内容を整理してまとめたものである。無料配布アイテム、報酬倍率、セール内容、期間などは2026年7月2日時点の情報にもとづく。GTA Online のイベント内容や割引率、対象アイテム、期間は Rockstar により予告なく変更される場合がある。ゲーム内価格やボーナスの適用条件はプラットフォームやタイミングによって異なることがある。最新かつ正確な情報は、必ずゲーム内表示および Rockstar Games の公式発表を確認されたい。`,
+    titleEn:
+      "GTA Online Independence Day Event Begins — A Free Lago Zancudo Bunker and Rockstar's “Biggest Ever” Sale",
+    descriptionEn:
+      "GTA Online's Independence Day event kicked off on July 2. A Lago Zancudo Bunker normally worth over GTA$1M is free, alongside a large-scale sale Rockstar calls its “biggest ever.” Most of it runs through July 13. Here's what's on offer and what to prioritize.",
+    aiSummaryEn: [
+      "GTA Online's Independence Day event began on July 2. The headline is a free Lago Zancudo Bunker — normally over GTA$1M — claimable from Maze Bank Foreclosures through July 13, plus 40% off bunker modifications and upgrades.",
+      "Reward boosts are generous too: Bunker Sell Missions pay double, Stunt Races pay triple. A firework launcher, a musket, and an Independence Day bucket hat are free, and completing weekly challenges grants GTA$100K plus limited-time cosmetics.",
+      "The sale is what Rockstar calls its “biggest ever,” with heavy discounts on aircraft, special/weaponized vehicles, and properties. GTA+ members get extras like a free Ocelot Stromberg and GTA$2M off a Mansion. If you don't own a bunker yet, don't miss the free one.",
+    ],
+    fullContentEn: `# GTA Online Independence Day Event Begins — A Free Lago Zancudo Bunker and Rockstar's “Biggest Ever” Sale
+
+In GTA Online, an event commemorating Independence Day began on July 2. The highlights are a free Lago Zancudo Bunker — a property normally worth over GTA$1M — and a large-scale sale that Rockstar calls its “biggest ever.” Much of the free content and the sale run through July 13. GTA6 FEED has summarized what's on offer and what to keep an eye on.
+
+This article is based on information as of July 2, 2026.
+
+---
+
+## What You Can Get for Free
+
+This event is especially generous with items you can receive for free.
+
+- Lago Zancudo Bunker: You can claim it for free from Maze Bank Foreclosures (through July 13). Normally a property worth over GTA$1M, once claimed it becomes a permanent asset of yours. On top of that, bunker modifications and upgrades are 40% off.
+- A high-end garage is also available for free.
+- A firework launcher (Gun Van) and a musket (Ammu-Nation) are free. Log in and you'll also receive an Independence Day–themed bucket hat.
+- In Business Battles, you can obtain limited-time cosmetics such as various beer hats and a Statue of Happiness T-shirt.
+
+![The Lago Zancudo Bunker given away free during the Independence Day event. A property normally worth over GTA$1M for nothing](/images/news/IndependenceDay/GTAO1.png)
+
+---
+
+## Reward Boosts and Bonuses
+
+There are also plenty of money-making opportunities. It's a good week to stockpile GTA$ ahead of The Kortz Center Heist coming later this month.
+
+- Bunker Sell Missions pay double rewards (GTA$ and RP). Bonuses also apply to bunker and gunrunning-related missions.
+- Stunt Races pay triple rewards. Modes such as Running Back (Remix) are featured.
+- For weekly challenges: from July 2–8, complete three Bunker Research missions for GTA$100K and the Blue Jock Cranley Jumpsuit. From the 9th–13th, win two races for the same reward.
+
+![Stunt Races, eligible for the reward boost. Triple RP and GTA$ bonuses make earning money easier](/images/news/IndependenceDay/GTAO4.png)
+
+---
+
+## The “Biggest Ever” Sale
+
+The scale of the sale is large too. A wide range — aircraft, special and weaponized vehicles, properties, and more — is heavily discounted. Independence Day clothing, liveries, parachute smoke, and face paint are 40% off, while the Stars-and-Stripes Sovereign bike and the Liberator monster truck are 50% off. The official promotional image also shows numerous headline vehicles and aircraft with discounts ranging from hundreds of thousands to millions of GTA$.
+
+GTA+ members get further perks. Exclusive Independence Day clothing, a free Ocelot Stromberg, Chameleon Paints, and GTA$2M off a Mansion are among the offerings.
+
+![The sale billed as the “biggest ever.” A wide range including aircraft and special vehicles is heavily discounted](/images/news/IndependenceDay/GTAO2.png)
+
+---
+
+## Should You Grab the Free Bunker?
+
+To get straight to the point: if you don't own a bunker yet, you should claim this free Lago Zancudo. Not only does a property normally worth over GTA$1M become free, but it also serves as the foundation for one of GTA Online's premier long-term businesses — gunrunning, passive income that accrues even while idle, and Mk II weapon research. Rather than just a free building, it's closer to gaining an entire revenue-generating system.
+
+One caveat, though: if you already own the Chumash or Farmhouse bunker, there's no need to force a switch. These two have short delivery routes and are considered advantageous for sell-mission efficiency. Because of its location, Lago Zancudo takes longer for some sell missions, so in terms of priority it sits in the middle. That said, it remains “a GTA$1M-plus property you can get for free,” so if you don't own one, make sure to claim it before the July 13 deadline.
+
+![A bunker forms the foundation of long-term businesses like gunrunning and Mk II weapon research](/images/news/IndependenceDay/GTAO3.png)
+
+---
+
+## A Note: GTA Online This Month
+
+This event is also part of the lead-up to The Kortz Center Heist, a new update scheduled to release during July. Running in parallel is the Fine Art Collector Program (log in to receive GTA$500K, a free vehicle, and more), which continues through July 13.
+
+While GTA6 pre-orders are a big topic, GTA Online keeps up its weekly updates. This Independence Day week — with free properties and items and reward boosts all stacking together — is one of the most rewarding stretches in recent weeks.
+
+---
+
+## Disclaimer
+
+This article is a summary organized by GTA6 FEED based on Rockstar Games' official announcements, the Rockstar Newswire, and overseas media reporting. Free giveaway items, reward multipliers, sale contents, and periods are based on information as of July 2, 2026. GTA Online event contents, discount rates, eligible items, and periods may be changed by Rockstar without notice. In-game prices and bonus eligibility conditions may vary by platform and timing. For the latest and most accurate information, always check the in-game display and Rockstar Games' official announcements.`,
+  },
+  {
     id: 30,
     title:
       "GTA6のPC版はいつ来るのか——発表されない理由と、過去作から読む現実的な時期",
