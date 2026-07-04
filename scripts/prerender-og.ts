@@ -25,11 +25,27 @@ const esc = (s: string) =>
 
 const toAbs = (p: string) => (/^https?:\/\//i.test(p) ? p : ORIGIN + (p.startsWith('/') ? p : `/${p}`));
 
+// 置換パターンが1つも見つからなかったキーを集約し、ビルド最後に WARN する。
+// （テンプレートの <head> フォーマット変更で silent に既定値が残る事故を検知するため）
+const missedReplacements = new Set<string>();
+
+/** re がマッチしなければ label を記録して素通しする（silent no-op を検知可能にする）。 */
+function replaceTracked(html: string, re: RegExp, replacement: string, label: string): string {
+  if (!re.test(html)) {
+    missedReplacements.add(label);
+    return html;
+  }
+  return html.replace(re, replacement);
+}
+
+// <meta name|property="key" content="..."> の content を置換。
+// 属性間の空白は \s+ とし、prettier が長い content を折り返した複数行<meta>
+// （<meta 改行 name="..." 改行 content="...">）にもマッチさせる。key で確実にアンカーし、
+// content="[^"]*" の非貪欲な文字クラスで隣接する他の<meta>は巻き込まない。
 function setMeta(html: string, key: string, content: string): string {
-  const re = new RegExp(
-    `(<meta (?:name|property)="${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" content=")[^"]*(")`,
-  );
-  return html.replace(re, `$1${esc(content)}$2`);
+  const k = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(<meta\\s+(?:name|property)="${k}"\\s+content=")[^"]*(")`);
+  return replaceTracked(html, re, `$1${esc(content)}$2`, `meta[${key}]`);
 }
 
 function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): string {
@@ -50,9 +66,9 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
 
   let html = TEMPLATE;
   // <title>
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
+  html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   // canonical（各言語版は自言語URLを自己参照）
-  html = html.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`);
+  html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
   // meta 各種
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', 'article');
@@ -118,3 +134,9 @@ for (const article of newsArticles) {
   }
 }
 console.log(`[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html`);
+if (missedReplacements.size) {
+  console.warn(
+    `[prerender] WARN: <head> 置換が未マッチ: ${[...missedReplacements].join(', ')} ` +
+      `— テンプレート(dist/public/index.html)の<head>フォーマット変更の可能性。該当メタが既定値のまま出力されています。`,
+  );
+}

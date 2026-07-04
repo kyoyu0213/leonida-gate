@@ -25,11 +25,27 @@ const esc = (s: string) =>
 
 const toAbs = (p: string) => (/^https?:\/\//i.test(p) ? p : ORIGIN + (p.startsWith('/') ? p : `/${p}`));
 
+// 置換パターンが1つも見つからなかったキーを集約し、ビルド最後に WARN する。
+// （テンプレートの <head> フォーマット変更で silent に既定値が残る事故を検知するため）
+const missedReplacements = new Set<string>();
+
+/** re がマッチしなければ label を記録して素通しする（silent no-op を検知可能にする）。 */
+function replaceTracked(html: string, re: RegExp, replacement: string, label: string): string {
+  if (!re.test(html)) {
+    missedReplacements.add(label);
+    return html;
+  }
+  return html.replace(re, replacement);
+}
+
+// <meta name|property="key" content="..."> の content を置換。
+// 属性間の空白は \s+ とし、prettier が長い content を折り返した複数行<meta>
+// （<meta 改行 name="..." 改行 content="...">）にもマッチさせる。key で確実にアンカーし、
+// content="[^"]*" の非貪欲な文字クラスで隣接する他の<meta>は巻き込まない。
 function setMeta(html: string, key: string, content: string): string {
-  const re = new RegExp(
-    `(<meta (?:name|property)="${key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" content=")[^"]*(")`,
-  );
-  return html.replace(re, `$1${esc(content)}$2`);
+  const k = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`(<meta\\s+(?:name|property)="${k}"\\s+content=")[^"]*(")`);
+  return replaceTracked(html, re, `$1${esc(content)}$2`, `meta[${key}]`);
 }
 
 interface RenderResult {
@@ -69,8 +85,8 @@ for (const route of mod.ROUTE_PATHS) {
 
   let html = TEMPLATE;
   // <head>：title / canonical / 各メタを当該ルートの値へ差し替え
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
-  html = html.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`);
+  html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
+  html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', seo?.type || 'website');
   html = setMeta(html, 'og:url', url);
@@ -108,3 +124,9 @@ for (const route of mod.ROUTE_PATHS) {
 
 console.log(`[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html`);
 if (skipped.length) console.log(`[prerender-routes] スキップ: ${skipped.join(', ')}`);
+if (missedReplacements.size) {
+  console.warn(
+    `[prerender-routes] WARN: <head> 置換が未マッチ: ${[...missedReplacements].join(', ')} ` +
+      `— テンプレート(dist/public/index.html)の<head>フォーマット変更の可能性。該当メタが既定値のまま出力されています。`,
+  );
+}
