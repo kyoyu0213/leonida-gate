@@ -150,6 +150,14 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 
 ---
 
+## 独立記念日仕様のCommunity Series
+
+あわせて、独立記念日にあわせた特別版のCommunity Seriesも実施されている。ラリーレース、西部劇風の早撃ち(クイックドロー)対決、マスケット銃のデスマッチなど、コミュニティが手がけたミッション・モードが対象で、これらをプレイするとGTA$とRPが2倍になる。こちらも期間は7月13日まで。無料バンカーやセールと同じ期間に走っているため、資金稼ぎのついでに普段と違うモードで遊ぶ動機にもなる。
+
+![独立記念日仕様のCommunity Series。ラリーレースやクイックドロー対決などコミュニティ製モードでGTA$・RPが2倍になる](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.jpg)
+
+---
+
 ## 「過去最大」のセール
 
 セール規模も大きい。航空機、特殊車両・武装車両、プロパティなど広範囲が大幅に値引きされている。独立記念日の衣類・リバリー・パラシュートの煙・フェイスペイントなどは40%オフ、星条旗をあしらったSovereignバイクとLiberatorモンスタートラックは50%オフとなっている。公式の告知画像でも、数十万から数百万GTA$規模の割引が並ぶ、目玉の車両・航空機がいくつも示されている。
@@ -220,6 +228,14 @@ There are also plenty of money-making opportunities. It's a good week to stockpi
 - For weekly challenges: from July 2–8, complete three Bunker Research missions for GTA$100K and the Blue Jock Cranley Jumpsuit. From the 9th–13th, win two races for the same reward.
 
 ![Stunt Races, paying triple rewards. Triple GTA$ and RP bonuses let you earn fast](/images/news/IndependenceDay/stuntlace.jpg)
+
+---
+
+## An Independence Day Community Series
+
+A special Independence Day–themed Community Series is also running. It features community-made missions and modes — rally races, Western-style quick-draw duels, musket deathmatches, and more — and playing these earns double GTA$ and RP. This too runs through July 13. Since it overlaps with the free bunker and the sale, it's also a reason to enjoy some out-of-the-ordinary modes while you're earning cash.
+
+![The Independence Day Community Series. Community-made modes like rally races and quick-draw duels earn double GTA$ and RP](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.jpg)
 
 ---
 
