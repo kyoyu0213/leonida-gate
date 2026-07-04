@@ -575,6 +575,26 @@
   display: none;
 }
 
+/* 本文中に埋め込む動画（.mp4等）：画像と同じ角丸・ネオン枠・中央寄せで揃える */
+.article-body .article-inline-video {
+  display: block;
+  width: 100%;
+  margin: 36px auto 28px;
+  text-align: center;
+}
+
+.article-body .article-inline-video video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  box-shadow: 0 0 24px rgba(0, 245, 255, 0.12);
+  background: #000;
+}
+
 /* 画像の下に余白を確保（直後の段落は通常の本文として表示する） */
 .article-body [data-streamdown="image-wrapper"] {
   margin-bottom: 28px;

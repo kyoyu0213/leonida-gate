@@ -28,6 +28,29 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
   return plugin;
 }) as never;
 
+// 記事本文のメディアレンダラ。動画ファイル（.mp4 等）は <video> プレーヤーとして描画し、
+// それ以外の画像は Streamdown 標準と同じ image-wrapper 構造を再現して既存記事の見た目を保つ。
+// これにより本文中の `![キャプション](/path/foo.mp4)` を好きな位置に置くと動画が埋め込める。
+const VIDEO_EXT_RE = /\.(mp4|webm|ogg|ogv|mov)(\?.*)?$/i;
+
+function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
+  if (!src) return null;
+  if (VIDEO_EXT_RE.test(src)) {
+    return (
+      <span data-streamdown="video-wrapper" className="article-inline-video">
+        <video src={src} controls playsInline preload="metadata" aria-label={alt || undefined} />
+      </span>
+    );
+  }
+  return (
+    <span className="group relative my-4 inline-block" data-streamdown="image-wrapper">
+      <img alt={alt} className="max-w-full rounded-lg" data-streamdown="image" src={src} loading="lazy" />
+    </span>
+  );
+}
+
+const articleComponents = { img: ArticleMedia } as never;
+
 export default function NewsDetail() {
   // 日本語 /news/:id と英語 /en/news/:id の両方にマッチさせる（言語は useLang が URL から判定）。
   const [matchJa, paramsJa] = useRoute('/news/:id');
@@ -197,7 +220,7 @@ export default function NewsDetail() {
               parseIncompleteMarkdown はストリーミング表示用の「未完成Markdown除去」機能で、
               静的記事では画像などを誤って消すため false にする。 */}
           <div className="article-body mb-8">
-            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
+            <Streamdown parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins} components={articleComponents}>
               {body}
             </Streamdown>
           </div>
