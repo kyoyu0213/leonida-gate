@@ -29,9 +29,12 @@ import FivemInstallGuide from '@/pages/FivemInstallGuide';
 import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
+import BoardThreadList from '@/pages/BoardThreadList';
+import ServerBoard from '@/pages/ServerBoard';
 
-// プリレンダ対象ルート（App.tsx のルーター定義と一致させる）。
-const ROUTES: Record<string, ComponentType> = {
+// 日英ペアがある（hreflang 付き）プリレンダ対象ルート。/en 版も生成する。
+// （App.tsx のルーター定義と一致させる）。
+const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp': FivemGtarp,
   '/fivem-gtarp/what-is-fivem': FivemArticle,
   '/fivem-gtarp/what-is-gtarp': GtarpArticle,
@@ -51,10 +54,28 @@ const ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
 };
 
-// 日本語ルート＋その英語版（/en/...）の両方をプリレンダ対象にする。
+// 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。
+// これまで共通 index.html シェル（canonical=ホーム／既定title／空 #root）のまま配信され、
+// Google にホームの重複として正規化されていた。各ルートを本文＋自己参照 canonical で生成する。
+const JA_ONLY_ROUTES: Record<string, ComponentType> = {
+  '/board': BoardThreadList,
+  '/board/gta6': BoardThreadList,
+  '/board/gtarp': BoardThreadList,
+  '/board/gtarp-servers': BoardThreadList,
+  '/board/streamer-servers': BoardThreadList,
+  '/board/fivem-dev': BoardThreadList,
+  '/servers': ServerBoard,
+};
+
+// render() が参照する全ルート表（日本語キー）。
+const ROUTES: Record<string, ComponentType> = { ...LOCALIZED_ROUTES, ...JA_ONLY_ROUTES };
+
+// プリレンダするパス一覧：全ルートの日本語版＋（localized ルートのみ）その英語版 /en/...。
 // 言語は URL（ssrPath）から useLang が判定するため、同じコンポーネントで英語版が描画される。
-const JA_PATHS = Object.keys(ROUTES);
-export const ROUTE_PATHS = [...JA_PATHS, ...JA_PATHS.map((p) => `/en${p}`)];
+export const ROUTE_PATHS = [
+  ...Object.keys(ROUTES),
+  ...Object.keys(LOCALIZED_ROUTES).map((p) => `/en${p}`),
+];
 
 export interface RenderResult {
   html: string;
