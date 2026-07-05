@@ -99,6 +99,177 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 33,
+    title:
+      "GTA6のトレーラー3はいつ来るのか——最有力は「7月中旬、World Cup決勝の前後」",
+    description:
+      "予約は始まったのに第3弾トレーラーはまだ来ていない。公式発表はないが、Take-TwoのCEO発言と過去のパターンから、7月中旬〜下旬、FIFA World Cup決勝(7月19日)の前後が最有力の窓とみられる。ただし時期は推測で、Rockstarは予告なく映像を落とす会社だ。根拠と留意点を整理した。",
+    icon: "🎬",
+    image: "/images/news/toreira3haitukurunoka/Vice_City_01.332891cf.jpg",
+    category: "speculation",
+    date: "2026-07-04",
+    publishedAt: "2026-07-04 12:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [32, 30, 20],
+    aiSummary: [
+      "予約は始まったのに第3弾トレーラーはまだ来ていない。公式発表はないが、Take-TwoのZelnick CEOの「マーケティングを夏に開始・SNS中心」という発言と過去のパターンから、7月中旬〜下旬、FIFA World Cup決勝(7月19日)の前後が最有力の窓とみられる。ただし時期はあくまで推測だ。",
+      "6月24〜25日に価格・エディション・予約開始・60枚超の新スクリーンショットが一気に公開されたが、映像トレーラーは伴わなかった。発売日は11月19日で変更なし。別候補として7月21日や、決算前後にあたる7月28日・8月4日も挙がる。",
+      "内容は、第1弾・第2弾がシネマティック中心だったことから、第3弾は運転・ミッション・銃撃など実際のゲームプレイを見せる番との見方が強い。ただしRockstarは予告なく動く会社で、予約開始日(6月25日)にもトレーラーは来ず、日付の予想は何度も外れている。確実な情報は公式チャンネルで確認したい。",
+    ],
+    fullContent: `# GTA6のトレーラー3はいつ来るのか——最有力は「7月中旬、World Cup決勝の前後」
+
+予約は始まったのに、第3弾トレーラーはまだ来ていない。GTA6の次の大きな映像はいつ公開されるのか。公式の発表はないものの、Take-TwoのCEO発言と過去のパターンから、7月中旬から下旬、FIFA World Cup決勝(7月19日)の前後が最有力の窓とみられている。ただし時期はあくまで推測であり、Rockstarは予告なく映像を落とす会社だ。GTA6 FEEDが、根拠と留意点を整理した。
+
+本記事は2026年7月4日時点の情報にもとづく。
+
+---
+
+## まず確定していること
+
+トレーラー3そのものはRockstarから告知されていないが、時期を読むうえで手がかりになる公式発言はある。
+
+Take-TwoのZelnick CEOは、GTA6のマーケティングを「夏に」開始すると述べ、その時期を6月下旬から7月上旬と補足していた。あわせて、今回の宣伝は「オーディエンスと注目が今どこにあるか」を反映したソーシャルメディア中心の戦略になるとし、前作GTA Vと同じやり方はしないとも語っている。価格の発表・予約・マーケティングは同じ流れで来るとされ、実際に6月24〜25日には価格とエディション、予約開始、60枚を超える新スクリーンショットが一気に公開された。
+
+ただし、そのタイミングで映像トレーラーは出なかった。7月上旬の現時点でも、第3弾トレーラーは未発表のままだ。なお発売日は2026年11月19日(PS5・Xbox Series X|S)で変わっていない。
+
+![6月24〜25日に公開された新スクリーンショットの一つ(GTA6のULTIMATE EDITIONイメージより)。映像トレーラーは伴わなかった](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.jpg)
+
+---
+
+## 最有力の時期:7月中旬〜下旬
+
+ここからは推測になる。現時点で最も有力視されているのは、7月中旬、FIFA World Cup決勝(7月19日)の前後という窓だ。
+
+World Cupは6月11日から7月19日まで開催され、この期間は世界の注目とSNS上の活動が一年でも最高潮に達する。Rockstarが自社チャンネルで独立してトレーラーを落とし、そのSNSの交通量に乗せて拡散を最大化する——というのが、Zelnickの「注目のある場所で仕掛ける」というソーシャル中心の方針と噛み合う、という読みだ。テレビ広告として決勝に差し込む可能性も指摘されるが、まず自社チャンネルでコア層に届け、その後にマス向けの露出を重ねる、という現代的な流れが想定されている。
+
+別の候補日も挙がっている。決勝翌週の火曜にあたる7月21日、あるいは8月の決算発表前後にあたる7月28日や8月4日などだ。Rockstarはこれまで、決算のタイミングに合わせてGTA6の情報を出す傾向があった。また、GTA Onlineの夏の大型アップデート(7月14日頃と噂される)とは別の週になる公算が大きい。Rockstarは自社製品同士の注目を食い合わせないよう、大型アップデートとGTA6の情報発信を同じ週にぶつけない傾向があるためだ。
+
+もっとも、正直な留保も必要だ。Rockstarは予告ゼロで、どの火曜に落としてもおかしくない。予想を裏切るのがこのスタジオのスタイルであり、実際、多くのファンが期待した予約開始日(6月25日)にもトレーラーは来なかった。日付の予想はこれまで何度も外れている。
+
+![GTA6のULTIMATE EDITIONイメージより。トレーラー3の時期はCEO発言と過去の傾向にもとづく予想で、Rockstarは予告なく動く](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.jpg)
+
+---
+
+## 何を見せるのか——今度こそゲームプレイか
+
+内容についても推測が飛び交っている。第1弾・第2弾はシネマティック(演出映像)が中心で、予約開始時にもスクリーンショットは出たが、動く映像は出なかった。ここまで来ると、第3弾は実際のゲームプレイ——運転、ミッション、銃撃、そして街が実際に動く様子——を見せる番だ、というのがおおむね一致した見方だ。
+
+小売ページ由来の未確認リークで語られてきた要素(ゲーム内のSNS機能、SNS経由の秘密ミッション、NPCの高度なAIなど)が、もし本物であれば、次のトレーラーで裏づけられるかもしれない。ただしこれらはあくまで未確認の情報で、GTA6 FEEDでは別途詳しく整理している。GTA Onlineとの連携や、オンラインモードがどうなるのかも注目点だが、いずれも公式には発表されていない。
+
+![GTA6のULTIMATE EDITIONイメージより。第3弾では運転やミッションなど、実際のゲームプレイが見られると期待されている](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.jpg)
+
+---
+
+## まとめ:信頼度の整理
+
+確定している事実:
+
+- Take-TwoのZelnick CEOは、マーケティングを夏(6月下旬〜7月上旬)に始めると発言し、ソーシャルメディア中心の戦略を強調していた。
+- 6月24〜25日に価格・予約・スクリーンショットが公開されたが、映像トレーラーは伴わなかった。第3弾トレーラーは現時点で未発表。
+- 発売日は11月19日で変更なし。
+
+推測:
+
+- 第3弾トレーラーは7月中旬〜下旬、World Cup決勝(7月19日)の前後が最有力の窓。内容はゲームプレイ中心になるとの見方が強い。ただし時期・内容とも公式には確認されていない。
+
+ファンの反応も期待にあふれている。
+
+- 「スクショはもう十分。そろそろゲームプレイを見せてほしい」
+- 「World Cup決勝に合わせて仕掛けてくるはずだ」
+- 「どうせ誰も予想しない火曜に抜き打ちで来る」
+
+注意点として、トレーラー3の時期・内容はRockstarから何も発表されておらず、ここで示したのはCEO発言と過去の傾向にもとづく予想である。これまでも日付の予想は当たっておらず(予約開始時にトレーラーは来なかった)、Rockstarは予告なく動く。確実な情報は、Rockstarの公式チャンネルとNewswireで確認するのが望ましい。
+
+![GTA6のULTIMATE EDITIONイメージより。確実な情報はRockstarの公式チャンネルとNewswireで確認したい](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.jpg)
+
+---
+
+## 免責事項
+
+本記事は、Take-Two/Rockstar Games の公式発言および発表、海外メディアの報道やコミュニティの分析をもとに、GTA6 FEEDが内容を整理してまとめたものである。トレーラー3の公開時期や内容に関する記述の多くは、CEO発言と過去の傾向にもとづく分析・推測であり、Rockstarが公表した確定情報ではない。日付や内容は予告なく変わりうる。最新かつ正確な情報は、必ず Rockstar Games の公式チャンネルおよび Newswire を確認されたい。`,
+    titleEn:
+      "When Will GTA6's Trailer 3 Arrive? The Frontrunner: “Mid-July, Around the World Cup Final”",
+    descriptionEn:
+      "Pre-orders are open, but Trailer 3 still hasn't dropped. There's no official announcement, yet Take-Two's CEO comments and past patterns point to mid-to-late July — around the FIFA World Cup Final (July 19) — as the most likely window. But the timing is speculation, and Rockstar drops footage without warning. Here's the reasoning and the caveats.",
+    aiSummaryEn: [
+      "Pre-orders are open, but Trailer 3 still hasn't arrived. There's no official announcement, yet Take-Two CEO Zelnick's comments — that marketing would start “in the summer” and be social-media-centric — plus past patterns point to mid-to-late July, around the FIFA World Cup Final (July 19), as the most likely window. But the timing is purely speculation.",
+      "On June 24–25, pricing, editions, pre-orders, and 60-plus new screenshots all dropped at once — but with no video trailer. The release date remains November 19. Other candidate dates floated include July 21, and July 28 / August 4 around the earnings report.",
+      "As for content, since Trailers 1 and 2 were cinematic-heavy, the strong view is that Trailer 3 is the turn to show actual gameplay — driving, missions, gunfights. But Rockstar moves without warning: no trailer came on pre-order day (June 25), and date predictions have missed many times. Confirm via official channels.",
+    ],
+    fullContentEn: `# When Will GTA6's Trailer 3 Arrive? The Frontrunner: “Mid-July, Around the World Cup Final”
+
+Pre-orders have opened, yet the third trailer still hasn't come. When will GTA6's next major footage be released? There's no official announcement, but based on Take-Two's CEO comments and past patterns, mid-to-late July — around the FIFA World Cup Final (July 19) — is seen as the most likely window. That said, the timing is strictly speculation, and Rockstar is a studio that drops footage without warning. GTA6 FEED has organized the reasoning and the caveats.
+
+This article is based on information as of July 4, 2026.
+
+---
+
+## First, What's Confirmed
+
+Trailer 3 itself hasn't been announced by Rockstar, but there are official statements that serve as clues for reading the timing.
+
+Take-Two CEO Zelnick said GTA6's marketing would begin “in the summer,” adding that this would be around late June to early July. He also said this campaign would be a social-media-centric strategy reflecting “where the audience and attention are right now,” and that they wouldn't do it the same way as with the previous game, GTA V. Pricing announcements, pre-orders, and marketing were said to come in the same flow — and indeed, on June 24–25, pricing and editions, the start of pre-orders, and over 60 new screenshots all dropped at once.
+
+However, no video trailer came at that timing. Even now in early July, Trailer 3 remains unannounced. Note that the release date is unchanged at November 19, 2026 (PS5 and Xbox Series X|S).
+
+![One of the new screenshots released on June 24–25 (from GTA6's ULTIMATE EDITION imagery). No video trailer accompanied it](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.jpg)
+
+---
+
+## The Most Likely Timing: Mid-to-Late July
+
+From here on it's speculation. Right now, the most heavily favored window is mid-July, around the FIFA World Cup Final (July 19).
+
+The World Cup runs from June 11 to July 19, and during this period global attention and social-media activity reach their yearly peak. Rockstar dropping a trailer independently on its own channels and riding that social-media traffic to maximize reach — that reading fits Zelnick's social-centric approach of “striking where the attention is.” There's also speculation it could be slotted into the final as a TV ad, but the assumed modern flow is to first reach the core audience via its own channels, then layer on mass-market exposure afterward.
+
+Other candidate dates have been raised too. July 21, the Tuesday of the week after the final; or July 28 and August 4, around the August earnings report. Rockstar has historically tended to release GTA6 information timed to earnings. It's also likely to be a different week from GTA Online's big summer update (rumored around July 14). Rockstar tends not to pit a major update and GTA6 news in the same week, so as not to have its own products cannibalize each other's attention.
+
+Still, an honest reservation is needed. Rockstar gives zero warning, and it wouldn't be surprising on any given Tuesday. Defying expectations is this studio's style — and indeed, no trailer came even on the pre-order start date (June 25) that many fans had hoped for. Date predictions have missed many times before.
+
+![From GTA6's ULTIMATE EDITION imagery. Trailer 3's timing is a projection based on CEO comments and past tendencies, and Rockstar moves without warning](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.jpg)
+
+---
+
+## What Will It Show — Gameplay at Last?
+
+Speculation is flying about the content, too. Trailers 1 and 2 were cinematic-centric, and while screenshots came out at pre-order time, no moving footage did. At this point, the roughly consensus view is that Trailer 3 is the turn to show actual gameplay — driving, missions, gunfights, and the city actually in motion.
+
+Elements that have been discussed in unconfirmed leaks originating from retailer pages (in-game social-media features, secret missions via social media, advanced NPC AI, and so on), if real, might be substantiated in the next trailer. However, these are strictly unconfirmed, and GTA6 FEED covers them in detail separately. Ties to GTA Online and what the online mode will look like are also points of interest, but none of it has been officially announced.
+
+![From GTA6's ULTIMATE EDITION imagery. Trailer 3 is expected to show actual gameplay such as driving and missions](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.jpg)
+
+---
+
+## Summary: Sorting by Confidence
+
+Confirmed facts:
+
+- Take-Two CEO Zelnick said marketing would begin in the summer (late June to early July), emphasizing a social-media-centric strategy.
+- On June 24–25, pricing, pre-orders, and screenshots were released, but no video trailer accompanied them. Trailer 3 is unannounced as of now.
+- The release date is unchanged at November 19.
+
+Speculation:
+
+- Trailer 3's most likely window is mid-to-late July, around the World Cup Final (July 19). The strong view is that the content will be gameplay-centric. However, neither the timing nor the content has been officially confirmed.
+
+Fan reactions are full of anticipation, too.
+
+- “Enough with the screenshots. Time to show us gameplay.”
+- “They're sure to strike in sync with the World Cup Final.”
+- “It'll drop out of the blue on a Tuesday no one predicts.”
+
+As a caveat, nothing about Trailer 3's timing or content has been announced by Rockstar; what's presented here is a projection based on CEO comments and past tendencies. Date predictions haven't panned out before (no trailer came at pre-order start), and Rockstar moves without warning. For reliable information, it's best to check Rockstar's official channels and the Newswire.
+
+![From GTA6's ULTIMATE EDITION imagery. For reliable information, check Rockstar's official channels and the Newswire](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.jpg)
+
+---
+
+## Disclaimer
+
+This article was compiled and organized by GTA6 FEED based on official statements and announcements from Take-Two/Rockstar Games, as well as reporting from overseas media and community analysis. Much of what is written about Trailer 3's release timing and content is analysis and speculation based on CEO comments and past tendencies, not confirmed information disclosed by Rockstar. Dates and content are subject to change without notice. For the latest and most accurate information, please always check Rockstar Games' official channels and the Newswire.`,
+  },
+  {
     id: 32,
     title:
       "GTA6はPS5 Proでも30fps止まりか——Digital Foundryが「60fpsは厳しい」と分析、その根拠と反論",
