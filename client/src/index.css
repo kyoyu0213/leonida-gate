@@ -595,6 +595,22 @@
   background: #000;
 }
 
+/* X(旧Twitter)の引用埋め込み：中央寄せで幅を抑え、読み込み中の余白も自然に */
+.article-body .article-tweet {
+  display: block;
+  width: 100%;
+  margin: 32px auto 28px;
+}
+
+.article-body .article-tweet .twitter-tweet {
+  margin: 0 auto !important;
+}
+
+.article-body .article-tweet .twitter-tweet-rendered {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
 /* 画像の下に余白を確保（直後の段落は通常の本文として表示する） */
 .article-body [data-streamdown="image-wrapper"] {
   margin-bottom: 28px;

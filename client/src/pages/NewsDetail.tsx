@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
@@ -28,13 +28,56 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
   return plugin;
 }) as never;
 
-// 記事本文のメディアレンダラ。動画ファイル（.mp4 等）は <video> プレーヤーとして描画し、
+// 記事本文のメディアレンダラ。動画ファイル（.mp4 等）は <video> プレーヤー、
+// X(旧Twitter)の投稿URLは公式ウィジェットの引用埋め込みとして描画し、
 // それ以外の画像は Streamdown 標準と同じ image-wrapper 構造を再現して既存記事の見た目を保つ。
-// これにより本文中の `![キャプション](/path/foo.mp4)` を好きな位置に置くと動画が埋め込める。
+// これにより本文中の `![キャプション](/path/foo.mp4)` で動画、
+// `![](https://x.com/user/status/123)` でX投稿を、好きな位置に埋め込める。
 const VIDEO_EXT_RE = /\.(mp4|webm|ogg|ogv|mov)(\?.*)?$/i;
+const TWEET_URL_RE = /^https?:\/\/(?:www\.)?(?:x|twitter|mobile\.twitter)\.com\/[^/]+\/status\/(\d+)/i;
+
+// X(旧Twitter)投稿を公式 widgets.js で埋め込む。スクリプト読込前後どちらでも描画されるよう、
+// 既存スクリプトがあれば load() を呼び、無ければ動的に読み込む。読込失敗時は blockquote 内の
+// リンク（投稿への導線）がそのまま残るため、最低限のフォールバックになる。
+function TweetEmbed({ url }: { url: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const w = window as unknown as { twttr?: { widgets?: { load?: (el?: HTMLElement | null) => void } } };
+    // 引数なしの load() はページ全体の未変換 .twitter-tweet を走査するため、
+    // 万一 blockquote がラッパー外に移動しても確実に描画される。
+    const render = () => w.twttr?.widgets?.load?.();
+    if (w.twttr?.widgets) {
+      render();
+      return;
+    }
+    const existing = document.getElementById('twitter-wjs') as HTMLScriptElement | null;
+    if (existing) {
+      existing.addEventListener('load', render, { once: true });
+      return;
+    }
+    const s = document.createElement('script');
+    s.id = 'twitter-wjs';
+    s.src = 'https://platform.twitter.com/widgets.js';
+    s.async = true;
+    s.addEventListener('load', render, { once: true });
+    document.body.appendChild(s);
+  }, [url]);
+
+  return (
+    <span className="article-tweet" ref={ref as never}>
+      <blockquote className="twitter-tweet" data-dnt="true" data-theme="dark">
+        <a href={url}>{url}</a>
+      </blockquote>
+    </span>
+  );
+}
 
 function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
   if (!src) return null;
+  if (TWEET_URL_RE.test(src)) {
+    return <TweetEmbed url={src} />;
+  }
   if (VIDEO_EXT_RE.test(src)) {
     return (
       <span data-streamdown="video-wrapper" className="article-inline-video">

@@ -99,6 +99,181 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 34,
+    title:
+      "「GTA6が待ちきれない」——25歳のAI起業家が、AIだけで“自作GTA6”を作り始めた",
+    description:
+      "GTA6の発売を待ちきれず、25歳のAI起業家Ziwen XuがAIエージェント(主にClaude)を回す「vibe coding」でGTA6風ゲーム「GT-Caliber」を6月10日から開発中。目標は本物(11月19日発売)より先に出すこと。無謀だが、その過程が「AIの現在地」を映す公開実験として話題だ。",
+    icon: "🤖",
+    image: "/images/news/Ziwen.png",
+    category: "topic",
+    date: "2026-07-06",
+    publishedAt: "2026-07-06 18:46",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [33, 32, 30],
+    aiSummary: [
+      "GTA6の発売を待ちきれず、25歳のAI起業家Ziwen XuがAIエージェント(主にClaude)を回す「vibe coding」で、GTA6風のオープンワールド犯罪ゲーム「GT-Caliber」を6月10日から開発している。掲げた目標は、本物のGTA6(11月19日発売)より先にリリースすることだ。",
+      "9日ほどで、青い箱が跳ねるだけの状態から、NPCや車が走りSNS入りスマホまで動く街へと急速に進化。一方で舞台をマイアミではなくロサンゼルス風に生成してしまうなどのつまずきもあり、AIの「速さ」と「文化的に正確な世界＝創造的ビジョンの不在」が同時に浮き彫りになっている。",
+      "多くの観測者は、価値は「競合」ではなく「実験」にあると見る。皮肉にも、この件はTake-TwoのZelnick CEOの「AIは道具として有用でも大作を生む創造的ビジョンは持たない」という主張を裏づける例とも受け取られている。Rockstarとは無関係の、個人によるファン制作の公開実験だ。",
+    ],
+    fullContent: `# 「GTA6が待ちきれない」——25歳のAI起業家が、AIだけで“自作GTA6”を作り始めた
+
+GTA6の発売を待ちきれず、自分で作り始めた人物がいる。25歳のAI起業家Ziwen Xuが、AIエージェント(主にClaude)を回す「vibe coding」で、GTA6風のオープンワールド犯罪ゲーム「GT-Caliber」を6月10日から開発している。掲げた目標は、本物のGTA6(11月19日発売)より先にリリースすること。無謀ではあるが、その開発過程が「AIの現在地」を映す公開実験として話題になっている。GTA6 FEEDが概要をまとめた。
+
+本記事は2026年7月4日時点の情報にもとづく。
+
+---
+
+## 何をやっているのか
+
+Ziwen Xuは、AIエージェントのスタートアップHyperecho(企業のAI活用を支援する)の創業者だ。6月10日、「GTA6を作り始めた。まだ打っていて実感が湧かない」という趣旨の投稿とともにプロジェクトを開始し、この開発のためにClaudeの上位プラン(Claude Max 20x)へ課金したと明かした。
+
+![](https://x.com/ziwenxu_/status/2073147150201155804)
+
+開発手法は、AIエージェントをループのように連続稼働させ、コードの生成・テスト・修正を任せる「vibe coding」と呼ばれるやり方だ。ほぼ毎日Xで進捗を公開し、コードはGitHubで一般公開、AIが作業する様子をライブ配信することもある。あわせて、モデリング・作曲・レベルデザインなどができる人間の協力者も募集している。すべてをAIに丸投げしているわけではない。
+
+きっかけは、AI投資家のMatt Shumerが投げかけた挑戦だった。Shumerは「モデルをループさせて、初期トレーラー以上の品質と規模を持つGTA6級のオープンワールドを作れないか」という趣旨の投稿をしており、Xuはこれを再投稿したうえで自ら着手した。目標について本人は「野心的で、たぶん愚か。それでもやる」と書いている。
+
+---
+
+## 進捗:9日ほどで「青い箱」から街へ
+
+進み方は速く、そして混沌としている。
+
+初日の映像は、青い箱のようなキャラクターが平面の上を跳ね回るだけのものだった。2日目には人型のキャラクターが街を走り、3日目にはNPCが歩き、車が道路を走り、射撃や、Instagram風のSNSが入ったスマートフォンまで登場した。7日目には道路のある一帯の街並みが現れ、本人が「初めてGTAらしく見えた」と語る段階に至った。現在は、運転、NPC、射撃、電話(マップ・連絡先・財布つき)、イントロ画面とオリジナルBGM、天候の変化などが実装されている。道路や歩道の細部は、AIだけでは詰め切れず手作業で調整しているという。
+
+![](https://x.com/ziwenxu_/status/2073870048481997126)
+
+開発エンジンは当初、無料のGodotで始めたが、7日目にUnreal Engineへ移行した。この間、エンジン選定は二転三転したと報じられている。
+
+---
+
+## つまずきと“事件”
+
+面白がられているのは、完成度そのものより、その過程で起きるトラブルだ。
+
+最も象徴的なのが、舞台の取り違えだ。GTA6のVice Cityのモデルはマイアミ(フロリダ)だが、AIエージェントはあるとき、ロサンゼルス風の高層ビル群を生成してしまった。この一件は各所で「AIは汎用的な箱(サンドボックス)なら速く作れるが、GTAをGTAたらしめている固有で意図的な、文化的に正確な世界までは作れない」ことの好例として引かれた。
+
+コストの問題も生々しい。Xuは、Claudeの週間利用枠(20倍プラン)を1日で33%消費し、「時計が動き始めた」と書いている。AIを回し続ける開発は、利用枠との戦いでもある。なお、この進捗投稿が盛り上がったのは、ちょうどRockstarがGTA6の予約開始(6月25日)を発表した時期と重なったことも大きい。
+
+---
+
+## 評価:AIの「速さ」と「ビジョンの不在」
+
+このプロジェクトをどう見るべきか。結論から言えば、数日でサンドボックスを立ち上げてしまう速さは、エージェント型のAI開発の到達点として素直に驚くべきものだ。一方で、本物のGTA6に匹敵する・先に出すという目標が現実に達成されるとは、ほとんどの観測者が見ていない。価値は「競合」ではなく「実験」にある、というのが妥当な評価だ。
+
+鍵になるのが、先のロサンゼルス取り違えだ。AIは機能や見た目の断片を高速で量産できるが、「何を作るのか」という創造的なビジョン——どの街を、どんなラジオ局を、どんなジョークやキャラクターを置くか——は、依然として人間の領域にある。速い、しかしビジョンがない。これが多くのメディアの共通した見立てだ。
+
+皮肉なことに、この実験はTake-TwoのZelnick CEOの主張を裏づける材料とも受け取られている。Zelnickは、AIは開発の道具としては有用でも、GTAのような10億ドル規模の大作を生み出す創造的ビジョンは持たない、と繰り返し述べてきた。Rockstar自身、GTA6の開発ではAIの活用を避けたと報じられている。11月19日に、13年をかけて手作業で作り込まれたGTA6が出れば、その対比はかえって際立つことになる。
+
+反応も割れている。
+
+- 「数日でここまで動くのか。AIの可能性を感じる」
+- 「本気すぎて逆に応援したくなる」
+- 「面白いけど、まだGTA6には程遠い」
+- 「結局はバズ狙いのエンゲージメント目的では」
+
+なお、GTAに似せた作品は、素材を直接流用していなくても、トーンや街の型といったトレードドレスの面で、将来的に権利者の視線を集めやすいという指摘もある。この点は、AI時代のファン制作物が今後直面しうる論点でもある。
+
+---
+
+## まとめ
+
+- 何をしているか:25歳のAI起業家Ziwen Xuが、AI(主にClaude)を回してGTA6風ゲーム「GT-Caliber」を制作。目標は本物より先に出すことだが、GTA6に匹敵するとの見方は大勢ではない。
+- なぜ注目されるか:AIエージェント開発の「速さ」と「創造的ビジョンの不在」を、毎日の公開更新としてリアルタイムに見せているから。
+
+このプロジェクトは、Rockstarと無関係の個人によるファン制作の実験である。GTA6そのものの情報ではないが、発売を待つ間に「AIはどこまでゲームを作れるのか」を考えさせる、いまならではの話題だと言える。
+
+---
+
+## 免責事項
+
+本記事は、Ziwen Xu 本人のX(旧Twitter)投稿および海外メディアの報道をもとに、GTA6 FEEDが内容を整理してまとめたものである。「GT-Caliber」は Rockstar Games・Take-Two Interactive とは一切関係のない、個人によるファン制作プロジェクトであり、GTA6 の公式な開発・発表とは無関係である。開発状況や実装内容、目標は2026年7月4日時点の情報にもとづき、今後変わりうる。最新の状況は本人のX等の一次情報を確認されたい。`,
+    titleEn:
+      "“I Can't Wait for GTA6” — a 25-Year-Old AI Entrepreneur Starts Building His Own GTA6, With AI Alone",
+    descriptionEn:
+      "Unable to wait for GTA6, 25-year-old AI entrepreneur Ziwen Xu has been building a GTA6-style open-world crime game, “GT-Caliber,” since June 10 via “vibe coding” — running AI agents (mainly Claude). The goal: release before the real GTA6 (Nov 19). Reckless, but the process has become a public experiment mirroring where AI stands today.",
+    aiSummaryEn: [
+      "Unable to wait for GTA6, 25-year-old AI entrepreneur Ziwen Xu has been building a GTA6-style open-world crime game, “GT-Caliber,” since June 10 through “vibe coding” — running AI agents (mainly Claude). His stated goal: to release before the real GTA6 (out November 19).",
+      "In about nine days it went from a bouncing blue box to a city with walking NPCs, driving cars, and a smartphone with an Instagram-like social feed. But there were stumbles too — the AI once generated an LA-style skyline instead of Miami — laying bare both AI's speed and its absence of a culturally accurate world, i.e. creative vision.",
+      "Most observers see the value as an “experiment,” not a “competitor.” Ironically, the episode is also read as backing Take-Two CEO Zelnick's claim that AI is useful as a tool but lacks the creative vision to produce a blockbuster. It's a solo fan-made public experiment, unaffiliated with Rockstar.",
+    ],
+    fullContentEn: `# “I Can't Wait for GTA6” — a 25-Year-Old AI Entrepreneur Starts Building His Own GTA6, With AI Alone
+
+Unable to wait for GTA6's release, one person started building it himself. Ziwen Xu, a 25-year-old AI entrepreneur, has been developing a GTA6-style open-world crime game, “GT-Caliber,” since June 10 through “vibe coding” — running AI agents (mainly Claude). His stated goal: to release before the real GTA6 (out November 19). It's reckless, but the development process has become a talking point as a public experiment mirroring where AI stands today. GTA6 FEED has summarized the overview.
+
+This article is based on information as of July 4, 2026.
+
+---
+
+## What Is He Doing
+
+Ziwen Xu is the founder of Hyperecho, an AI-agent startup (which helps companies adopt AI). On June 10, he kicked off the project with a post to the effect of “I've started making GTA6. I'm still typing and it hasn't sunk in yet,” and revealed he'd paid for Claude's higher-tier plan (Claude Max 20x) for this development.
+
+![](https://x.com/ziwenxu_/status/2073147150201155804)
+
+His development method is what's called “vibe coding” — running AI agents continuously in a loop and letting them handle generating, testing, and fixing code. He posts progress on X almost daily, publishes the code openly on GitHub, and sometimes livestreams the AI at work. He is also recruiting human collaborators who can do modeling, composing, level design, and so on. It's not that he's dumping everything on the AI.
+
+The trigger was a challenge thrown down by AI investor Matt Shumer. Shumer had posted, in essence, “Can you loop a model and build a GTA6-class open world with quality and scale beyond the initial trailer?” — and Xu reposted it and then set to work himself. Of the goal, he wrote: “Ambitious, and probably foolish. I'll do it anyway.”
+
+---
+
+## Progress: From a “Blue Box” to a City in About Nine Days
+
+The pace is fast — and chaotic.
+
+Day one's footage was just a blue-box-like character bouncing around on a flat plane. By day two a humanoid character was running through a city; by day three NPCs were walking, cars were driving on roads, and there was even shooting and a smartphone with an Instagram-like social feed. By day seven, a stretch of cityscape with roads appeared, reaching the stage where he said it “looked like GTA for the first time.” Currently implemented are driving, NPCs, shooting, a phone (with map, contacts, and wallet), an intro screen with original BGM, weather changes, and more. The fine details of roads and sidewalks, he says, can't be nailed by AI alone and are being adjusted by hand.
+
+![](https://x.com/ziwenxu_/status/2073870048481997126)
+
+The development engine initially started with the free Godot, but on day seven he moved to Unreal Engine. During this period, the engine choice reportedly flip-flopped several times.
+
+---
+
+## Stumbles and “Incidents”
+
+What people find amusing isn't the level of completion so much as the trouble that happens along the way.
+
+The most emblematic is the mix-up over the setting. GTA6's Vice City is modeled on Miami (Florida), but at one point the AI agent generated an LA-style cluster of skyscrapers. This episode was cited all over as a prime example of how “AI can quickly build a generic box (sandbox), but it can't build the specific, deliberate, culturally accurate world that makes GTA GTA.”
+
+The cost issue is vivid too. Xu wrote that he burned through 33% of Claude's weekly quota (on the 20x plan) in a single day — “the clock has started ticking.” Development that keeps running AI is also a battle against your usage quota. It's worth noting that this progress-posting took off largely because it coincided with the timing of Rockstar announcing GTA6 pre-orders (June 25).
+
+---
+
+## Assessment: AI's “Speed” and “Absence of Vision”
+
+How should we view this project? Bluntly put, the speed of spinning up a sandbox in a few days is genuinely astonishing as a milestone for agentic AI development. On the other hand, almost no observer believes the goal of matching — or beating to market — the real GTA6 will actually be achieved. The fair assessment is that the value lies in the “experiment,” not the “competition.”
+
+The key is that LA mix-up from earlier. AI can mass-produce fragments of features and looks at high speed, but the creative vision of “what to make” — which city, which radio stations, which jokes and characters to place — still belongs to the human domain. Fast, but no vision. That's the shared read across much of the media.
+
+Ironically, this experiment is also taken as material backing Take-Two CEO Zelnick's argument. Zelnick has repeatedly said that while AI is useful as a development tool, it doesn't have the creative vision to produce a billion-dollar blockbuster like GTA. Rockstar itself reportedly avoided using AI in developing GTA6. If GTA6 — hand-crafted over 13 years — arrives on November 19, the contrast will only stand out more.
+
+Reactions are split, too.
+
+- “It runs this well in just a few days? I feel AI's potential.”
+- “He's so serious about it that it makes you want to root for him.”
+- “Interesting, but still a long way from GTA6.”
+- “In the end, isn't this just engagement-baiting for buzz?”
+
+It's also been pointed out that works made to resemble GTA — even without directly reusing assets — can, in terms of trade dress like tone and the mold of the city, more easily draw the rights holder's gaze down the line. This is a point that fan-made works in the AI era may face going forward.
+
+---
+
+## Summary
+
+- What he's doing: 25-year-old AI entrepreneur Ziwen Xu is making a GTA6-style game, “GT-Caliber,” by running AI (mainly Claude). The goal is to release before the real thing, but the view that it rivals GTA6 is not the majority.
+- Why it's drawing attention: because it shows, in real time as daily public updates, both the “speed” of AI-agent development and the “absence of creative vision.”
+
+This project is a fan-made experiment by an individual unaffiliated with Rockstar. It isn't information about GTA6 itself, but while waiting for release it's a very of-the-moment topic that makes you consider “how far can AI build a game?”
+
+---
+
+## Disclaimer
+
+This article was compiled and organized by GTA6 FEED based on Ziwen Xu's own posts on X (formerly Twitter) and reporting from overseas media. “GT-Caliber” is a fan-made project by an individual with no relation whatsoever to Rockstar Games or Take-Two Interactive, and is unrelated to the official development or announcements of GTA6. The development status, implemented content, and goals are based on information as of July 4, 2026, and are subject to change. For the latest status, please check primary sources such as the creator's own X account.`,
+  },
+  {
     id: 33,
     title:
       "GTA6のトレーラー3はいつ来るのか——最有力は「7月中旬、World Cup決勝の前後」",
