@@ -31,6 +31,7 @@ import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
 import BoardThreadList from '@/pages/BoardThreadList';
 import ServerBoard from '@/pages/ServerBoard';
+import NewsDetail from '@/pages/NewsDetail';
 
 // 日英ペアがある（hreflang 付き）プリレンダ対象ルート。/en 版も生成する。
 // （App.tsx のルーター定義と一致させる）。
@@ -70,6 +71,11 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
 // render() が参照する全ルート表（日本語キー）。
 const ROUTES: Record<string, ComponentType> = { ...LOCALIZED_ROUTES, ...JA_ONLY_ROUTES };
 
+// news記事は動的ルート（/news/<数字>）。ROUTES の静的キーには載せず、パターンで判定する。
+// 本文は NewsDetail が getArticleById で同期解決するため renderToString で本文まで描画できる。
+// プリレンダ対象IDの列挙は行わない（scripts/prerender-og.ts が newsArticles を回して render を呼ぶ）。
+const NEWS_PATH_RE = /^\/news\/\d+$/;
+
 // プリレンダするパス一覧：全ルートの日本語版＋（localized ルートのみ）その英語版 /en/...。
 // 言語は URL（ssrPath）から useLang が判定するため、同じコンポーネントで英語版が描画される。
 export const ROUTE_PATHS = [
@@ -85,7 +91,7 @@ export interface RenderResult {
 /** 1ルートを静的HTML化して返す。未登録ルートは null。 */
 export function render(url: string): RenderResult | null {
   const jaPath = url.startsWith('/en/') ? url.slice(3) : url;
-  const Comp = ROUTES[jaPath];
+  const Comp = ROUTES[jaPath] ?? (NEWS_PATH_RE.test(jaPath) ? NewsDetail : undefined);
   if (!Comp) return null;
   const html = renderToString(
     <ThemeProvider defaultTheme="dark">
