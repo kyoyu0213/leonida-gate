@@ -8,9 +8,10 @@
 //  実行: tsx scripts/prerender-og.ts （build スクリプトから呼ぶ）
 // ============================================================================
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { newsArticles } from '../client/src/data/news';
+import { injectSsrBody } from './lib/inject-ssr-body';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -19,6 +20,21 @@ const DEFAULT_IMAGE = '/images/news/Official_Cover_Art_landscape.webp';
 const SITE_NAME = 'GTA6 FEED';
 
 const TEMPLATE = readFileSync(resolve(ROOT, 'dist/public/index.html'), 'utf8');
+
+// SSRバンドル（dist/server/entry-server.js）の render() で記事本文を生HTML化する。
+// このスクリプトは <head>（title/canonical/OG/JSON-LD）の所有者であり続け、本文だけを
+// #root へ足す。render は同期（getArticleById で記事を即解決）。
+// ※ build スクリプトは vite build --ssr の後にこのスクリプトを実行すること。
+interface ServerEntry {
+  render: (url: string) => { html: string } | null;
+}
+const server = (await import(
+  pathToFileURL(resolve(ROOT, 'dist/server/entry-server.js')).href
+)) as unknown as ServerEntry;
+
+// 本文SSRに失敗した（本文が入らなかった）ルートを集約し、最後に WARN する。
+// head は入っているので致命ではないが、CSRシェルに逆戻りした記事を検知できるようにする。
+const bodyFailures: string[] = [];
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -119,6 +135,20 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   const ldScript = `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`;
   html = html.replace('</head>', `${ldScript}</head>`);
 
+  // 本文を #root へ焼き込む（head はここまでで確定済み。body だけ足す）。
+  // SSRで例外が出ても head は残したままビルドを止めない（本文はCSRにフォールバック）。
+  const route = `${isEn ? '/en' : ''}/news/${article.id}`;
+  try {
+    const out = server.render(route);
+    if (out && out.html) {
+      html = injectSsrBody(html, out.html, 'prerender-og');
+    } else {
+      bodyFailures.push(route);
+    }
+  } catch (e) {
+    bodyFailures.push(`${route} (${(e as Error).message})`);
+  }
+
   return html;
 }
 
@@ -134,6 +164,12 @@ for (const article of newsArticles) {
   }
 }
 console.log(`[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html`);
+if (bodyFailures.length) {
+  console.warn(
+    `[prerender] WARN: 本文SSRが入らなかったルート: ${bodyFailures.join(', ')} ` +
+      `— head は出力済みだが #root は空シェルのまま（該当記事は本文がCSRに逆戻り）。`,
+  );
+}
 if (missedReplacements.size) {
   console.warn(
     `[prerender] WARN: <head> 置換が未マッチ: ${[...missedReplacements].join(', ')} ` +

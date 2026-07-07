@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { injectSsrBody } from './lib/inject-ssr-body';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -111,10 +112,7 @@ for (const route of mod.ROUTE_PATHS) {
   }
 
   // #root に本文を焼き込む（クライアントの createRoot がマウント時に置き換える）。
-  if (!html.includes('<div id="root"></div>')) {
-    throw new Error('[prerender-routes] index.html に空の #root が見つからない（テンプレート想定外）');
-  }
-  html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
+  html = injectSsrBody(html, body, 'prerender-routes');
 
   const dir = resolve(ROOT, `dist/public${route}`);
   mkdirSync(dir, { recursive: true });
