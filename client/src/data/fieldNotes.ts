@@ -295,8 +295,218 @@ I set up the foundation with txAdmin and vMenu, and gradually crushed the inconv
 This article is a record of the GTA6 FEED operator actually building a FiveM server on his own PC. The technical information is written after confirming the official documentation and each tool's offering as of May 2026, but the specifications and difficulty vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
 };
 
+// ---------------------------------------------------------------------------
+//  訪問記 #1 HeliosCity
+// ---------------------------------------------------------------------------
+const heliosCity: FieldNote = {
+  slug: 'helios-city',
+  category: 'visit-note',
+  title:
+    'HeliosCityとは？2026年4月開街・ピーク同接150人前後の日本語ライトRPサーバーを初訪問',
+  titleEn:
+    'What Is HeliosCity? A First Visit to a Japanese Light-RP Server (Opened April 2026, ~150 Peak Concurrent)',
+  date: '2026-06-16',
+  excerpt:
+    '2026年4月開街の日本語ライトRPサーバー「HeliosCity」を初訪問。同接ピーク150人前後、ホワイトジョブ7種、犯罪の時間制、六法の特徴など初日に確認できた事実を記録。',
+  excerptEn:
+    'A first visit to HeliosCity, a Japanese light-RP server opened in April 2026 — peak ~150 concurrent, 7 white-collar jobs, time-limited crime, and its rulebook, recorded from day one.',
+  image: '/images/taikenki/serverhoumon/HeliosCity/eyecatch.png',
+  icon: '📍',
+  seoTitle: 'HeliosCityとは？2026年4月開街の日本語ライトRPサーバーを初訪問｜GTA6 FEED',
+  seoDesc:
+    '2026年4月25日開街の日本語FiveMライトRPサーバー「HeliosCity」をGTA6 FEEDが初訪問。同接ピーク150人前後、接続方法、ホワイトジョブ7種、犯罪可能時間(19:15〜02:45)、強盗20種、六法の特徴、素材屋・リサセンなどを初日の観測として記録。',
+  seoTitleEn:
+    'What Is HeliosCity? First Visit to a Japanese Light-RP FiveM Server Opened in April 2026 | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's first visit to HeliosCity, a Japanese light-RP FiveM server opened on April 25, 2026 — peak ~150 concurrent, how to join, 7 white-collar jobs, the crime window (19:15–02:45), 20 heists, rulebook features, crafting facilities and more, recorded from day one.",
+  body: `![HeliosCityの街を流すタクシー（Downtown Cab Co）。奥はメカニック「West Coast Garage」](/images/taikenki/serverhoumon/HeliosCity/eyecatch.png)
+
+HeliosCityは、2026年4月25日に本オープンした日本語のFiveMロールプレイサーバーである。太陽（Helios）をモチーフに掲げ、過度な現実再現よりも雰囲気と気軽さを重視したライトRPを方針とする。GTA6 FEEDが初訪問し、初日に確認できた範囲の事実を記録する。以下、実際に観測・確認した確定情報と、初訪問では確認しきれなかった未確認項目を分けて記す。
+
+## 基本情報
+
+- コンセプト：太陽をモチーフにしたライトRP志向の日本語RPサーバー。運営は過度な現実再現ではなく、楽しさと雰囲気を重視するRPを掲げている
+- 接続方法：公式Discordに参加し、ロール（役割）申請を行って参加する
+- 同時接続数：156人（2026年6月16日 22時時点・観測値）。サーバー告知では、開街当初のピークが100人超、開街1か月後のピークが150人前後とされている
+- 稼働時間：24時間オープン。再起動（街瞑想）は12:00／19:00／3:00の1日3回
+
+![HeliosCityの全体マップ。カジノ・ガレージ・北署／南署・素材屋（月兎屋）・飲食店（料亭よひら）・ストレス軽減店（千葉たばこ店）などの施設マーカーが並ぶ](/images/taikenki/serverhoumon/HeliosCity/map.png)
+
+## 街の雰囲気
+
+初訪問時、街の各所に多数のプレイヤーがおり、複数の店舗で人の出入りが見られた。プレイヤーの服装・髪型のバリエーションは幅広く、キャラメイクの作り込みに個人差が出ていた。遅い時間帯でも飲食店が営業していた。
+
+![夜、ドレス姿など思い思いの服装で集まるプレイヤーたち](/images/taikenki/serverhoumon/HeliosCity/nightlife.png)
+
+マップのベースはGTA5のバニラ（ロスサントス）に近いが、メカニックや病院などの施設にはMLO（カスタム内装）が導入されている。
+
+![深夜営業の飲食店「BAR Arcana」の深夜限定メニュー（23:00〜27:00）](/images/taikenki/serverhoumon/HeliosCity/cafe-menu.png)
+
+## 経済・職業（ホワイトジョブ）
+
+ジョブセンターから申請できるホワイトジョブとして、初訪問時に以下の7種を確認した。
+
+- 清掃員（ゴミ収集）
+- 記者
+- ホットドッグ屋台
+- 運送（トラック運転手）
+- タクシー
+- レッカー
+- バス運転手
+
+![ジョブセンターの申請画面。清掃員・記者・ホットドッグ屋台・運送・タクシー・レッカー・バス運転手の7職種が並ぶ](/images/taikenki/serverhoumon/HeliosCity/jobcenter.png)
+
+このほか、募集制の職業として警察、EMS（救急）、個人医、メカニック、飲食店、ストレス回復店がサーバー告知に挙げられている。店舗系は、確認できた範囲でメカニックが4か所、飲食店が4店、ストレス回復店が5店だった。募集制の職業は募集のタイミングが限られるため、これらを目指す参加者はDiscordでの募集告知に注意する必要がある。
+
+告知では釣り・ハンティング・高圧洗浄といった無人ジョブや、起業して自分の店を持つ仕組みにも触れられているが、これらの実態は初訪問では確認していない。
+
+## 治安構造
+
+![スマホの「会社」アプリ。Police・Ambulance・Mechanic・Taxi が稼働先として表示されている](/images/taikenki/serverhoumon/HeliosCity/phone-companies.png)
+
+警察（LSPD）とEMSは、深夜3時の時点でも稼働していることを確認した。犯罪コンテンツには時間制限が設けられており、犯罪可能時間は19:15〜02:45とされている。小型犯罪については、警察が一定人数いる場合に可能となる。再起動（街瞑想）の前後15分間は、すべての犯罪行為が禁止されている。
+
+この時間制は、犯罪の可否がプレイヤーの参加時間帯に左右されることを意味する。白市民（非犯罪ロール）を中心に遊ぶか、犯罪ロールで遊ぶかによって、活動しやすい時間帯が変わる構造になっている。
+
+## 犯罪・ギャング
+
+強盗コンテンツは20種類が用意されている。ギャングについては、シマ取り（縄張り）システムがギャング5個の結成時点で実装される予定とされており、初訪問の時点では未実装だった。したがって現状のギャング数は5未満である。ギャングへの具体的な加入方法・加入条件は初訪問では確認していない。
+
+![犯罪コンテンツの一覧パネル。小型〜超大型の強盗が並び、上部にオンデューティのPD2人・EMS1人と同接32/200が表示されている](/images/taikenki/serverhoumon/HeliosCity/crime.png)
+
+## クラフト・経済基盤
+
+リサイクルセンター（リサセン）の存在は確認した。武器クラフトの仕組み、車パーツの製作やメカニックへの素材供給、素材の買い取り制度が実際に機能しているかどうかは、初訪問では確認できていない。街には素材屋と見られる施設があったが、その運用実態は未確認である。
+
+![HELIOSブランドの商品が並ぶショップ（HELIOSサンド・コーヒー・キャンディ、無線機、IFAK、ダイビングギアなど）](/images/taikenki/serverhoumon/HeliosCity/shop.png)
+
+設備が存在することと、それが経済として回っているかは別の話であり、後者は継続的にプレイしないと判断できない領域になる。
+
+## 六法・ルールの特徴
+
+![シティホール内の裁判所エリア。COURT CASES／CRIMINAL RECORDS／COURT ROOM の案内が見える](/images/taikenki/serverhoumon/HeliosCity/courthouse.png)
+
+HeliosCityはライトRPを目的としたサーバーであり、過度な現実再現よりも楽しさと雰囲気を重視する方針を掲げている。六法（ルールブック）で定められている特徴的な規定として、以下が挙げられる。
+
+- 犯罪開始前に必ず予告が必要
+- 犯罪可能時間は19:15〜02:45
+- 再起動（街瞑想）の前後15分間は犯罪行為が禁止
+- 再起動の15分前までにすべての犯罪行為を終える
+
+## キャラメイク・初心者案内
+
+![RCORE系のキャラメイク画面。顔の遺伝や肌の色などを細かく調整できる](/images/taikenki/serverhoumon/HeliosCity/charactercreate.png)
+
+参加後はキャラメイクを経て街に入る流れになっている。初心者案内は用意されているが、初訪問では未受講のため、その内容は未確認である。
+
+## 状態マーカー
+
+稼働中（2026年7月時点）
+
+---
+
+出典・参考
+
+- HeliosCity 公式Discord・サーバー告知
+- GTA6 FEEDによる初訪問時の観測（2026年6月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、HeliosCity運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は初訪問時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![A taxi (Downtown Cab Co) cruising through HeliosCity, with the "West Coast Garage" mechanic shop behind it](/images/taikenki/serverhoumon/HeliosCity/eyecatch.png)
+
+HeliosCity is a Japanese-language FiveM roleplay server that had its full opening on April 25, 2026. Taking the sun (Helios) as its motif, it sets out a light-RP direction that prioritizes atmosphere and a casual feel over excessive real-life recreation. GTA6 FEED made a first visit and records the facts we could confirm within day one. Below, we separate the confirmed information we actually observed and verified from the items we could not fully confirm on a first visit.
+
+## Basic Information
+
+- Concept: a Japanese RP server with a light-RP bent themed on the sun. The operators state an RP that values fun and atmosphere rather than excessive real-life recreation
+- How to join: join the official Discord and apply for a role to participate
+- Concurrent players: 156 (observed at 22:00 on June 16, 2026). Per the server's announcements, the peak at launch was over 100, and the peak one month after opening was around 150
+- Uptime: open 24 hours. Restarts ("city meditation") happen three times a day, at 12:00 / 19:00 / 3:00
+
+![The full map of HeliosCity, dotted with facility markers — casino, garages, north/south police stations, the material shop (Getsutoya), a restaurant (Ryotei Yohira), and a stress-relief shop (Chiba Tobacco)](/images/taikenki/serverhoumon/HeliosCity/map.png)
+
+## The Feel of the City
+
+On the first visit, there were many players all over the city, and people were coming and going at several shops. The variety in players' clothing and hairstyles was broad, with individual differences showing in how carefully characters were made. Even late at night, restaurants were open.
+
+![At night, players gathered in outfits of their own choosing, including in dresses](/images/taikenki/serverhoumon/HeliosCity/nightlife.png)
+
+The map's base is close to vanilla GTA5 (Los Santos), but facilities like the mechanic and hospital have MLOs (custom interiors) installed.
+
+![The late-night limited menu (23:00–27:00) of the restaurant "BAR Arcana," open into the small hours](/images/taikenki/serverhoumon/HeliosCity/cafe-menu.png)
+
+## Economy & Jobs (White-Collar Jobs)
+
+As white-collar jobs you can apply for from the Job Center, we confirmed the following seven on the first visit.
+
+- Sanitation worker (garbage collection)
+- Reporter
+- Hot dog stand
+- Delivery (truck driver)
+- Taxi
+- Tow truck
+- Bus driver
+
+![The Job Center application screen, listing the seven jobs: Garbage Collector, News Reporter, Hot Dog Stand, Trucker, Taxi, Tow Truck, and Bus Driver](/images/taikenki/serverhoumon/HeliosCity/jobcenter.png)
+
+Beyond these, the server's announcements list application-based jobs such as police, EMS (emergency medical), private doctor, mechanic, restaurant, and stress-relief shop. As for storefront jobs, within what we could confirm there were 4 mechanic shops, 4 restaurants, and 5 stress-relief shops. Because application-based jobs have limited recruitment timing, participants aiming for these need to watch the recruitment announcements on Discord.
+
+The announcements also touch on unattended jobs like fishing, hunting, and pressure washing, as well as a system for starting a business and owning your own shop, but we did not confirm how these actually work on a first visit.
+
+## Public-Safety Structure
+
+![The phone's "Companies" app, showing Police, Ambulance, Mechanic, and Taxi as workplaces](/images/taikenki/serverhoumon/HeliosCity/phone-companies.png)
+
+We confirmed that the police (LSPD) and EMS were active even at 3 a.m. Crime content has a time restriction, with the crime-allowed window stated as 19:15–02:45. Minor crimes become possible when a certain number of police are present. For 15 minutes before and after a restart ("city meditation"), all criminal acts are prohibited.
+
+This time system means whether crime is possible depends on the time slot a player joins. Depending on whether you mainly play as a white citizen (a non-crime role) or as a crime role, the hours in which you can be active differ.
+
+## Crime & Gangs
+
+There are 20 kinds of heist content. As for gangs, a turf-war (territory) system is said to be scheduled for implementation at the point when 5 gangs are formed, and it was not yet implemented at the time of our first visit. Therefore the current number of gangs is fewer than 5. We did not confirm the specific methods or conditions for joining a gang on a first visit.
+
+![The crime-content list panel: heists ranging from small to super-large are listed, with 2 PD and 1 EMS on duty and 32/200 concurrent shown at the top](/images/taikenki/serverhoumon/HeliosCity/crime.png)
+
+## Crafting & Economic Base
+
+We confirmed the existence of a recycling center ("risasen"). Whether the weapon-crafting system, the production of car parts and supplying materials to mechanics, and a material buyback system actually function, we could not confirm on a first visit. There was a facility in town that appeared to be a material shop, but how it is actually operated is unconfirmed.
+
+![A shop lined with HELIOS-branded goods (HELIOS sandwich, coffee, and candy, plus a radio, IFAK, diving gear, and more)](/images/taikenki/serverhoumon/HeliosCity/shop.png)
+
+The existence of facilities and whether they turn as an economy are separate matters, and the latter is a domain you cannot judge without playing continuously.
+
+## Rulebook Features
+
+![The courthouse area inside City Hall, with signs for COURT CASES, CRIMINAL RECORDS, and COURT ROOM visible](/images/taikenki/serverhoumon/HeliosCity/courthouse.png)
+
+HeliosCity is a server aimed at light RP, and it sets out a policy that values fun and atmosphere over excessive real-life recreation. Distinctive provisions defined in the rulebook include the following.
+
+- A warning is always required before starting a crime
+- The crime-allowed window is 19:15–02:45
+- Criminal acts are prohibited for 15 minutes before and after a restart ("city meditation")
+- All criminal acts must be finished by 15 minutes before a restart
+
+## Character Creation & Beginner Guidance
+
+![An RCORE-style character creation screen, where you can finely adjust facial genetics, skin color, and more](/images/taikenki/serverhoumon/HeliosCity/charactercreate.png)
+
+After joining, the flow is to go through character creation and then enter the city. Beginner guidance is provided, but since we did not take it on the first visit, its contents are unconfirmed.
+
+## Status Marker
+
+Active (as of July 2026)
+
+---
+
+Sources & References
+
+- HeliosCity official Discord and server announcements
+- GTA6 FEED's observations during the first visit (June 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the HeliosCity operators, Rockstar Games, or Take-Two Interactive. The content is information as of the first visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
-export const fieldNotes: FieldNote[] = [devDiary2, devDiary1];
+export const fieldNotes: FieldNote[] = [devDiary2, devDiary1, heliosCity];
 
 /** slug から体験記を解決（SSR/CSR 共通）。 */
 export function getFieldNoteBySlug(slug?: string): FieldNote | undefined {
