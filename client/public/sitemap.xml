@@ -76,6 +76,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/field-notes/dev-diary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/field-notes/visit-note</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/fivem-gtarp/how-to-install</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -171,6 +181,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/dev-diary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/visit-note</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/en/fivem-gtarp/how-to-install</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -234,6 +254,54 @@
     <loc>https://gta6-feed.com/en/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/34</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/33</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/32</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/31</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/30</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/29</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/28</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/news/27</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gta6-feed.com/news/26</loc>
@@ -386,6 +454,54 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/en/news/34</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/33</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/32</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/31</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/30</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/29</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/28</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/news/27</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/en/news/26</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -534,5 +650,29 @@
     <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/field-notes/dev-diary/server-dev-diary-1</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/field-notes/dev-diary/server-dev-diary-2</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/dev-diary/server-dev-diary-1</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/dev-diary/server-dev-diary-2</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

@@ -35,6 +35,8 @@ const GtarpObserverGuideArticle = lazy(() => import("./pages/GtarpObserverGuideA
 const GtarpFirstDayGuideArticle = lazy(() => import("./pages/GtarpFirstDayGuideArticle"));
 const FivemServerGuide = lazy(() => import("./pages/FivemServerGuide"));
 const FivemServerSetupArticle = lazy(() => import("./pages/FivemServerSetupArticle"));
+const FieldNotesList = lazy(() => import("./pages/FieldNotesList"));
+const FieldNoteDetail = lazy(() => import("./pages/FieldNoteDetail"));
 const FivemInstallGuide = lazy(() => import("./pages/FivemInstallGuide"));
 const ToolsIndex = lazy(() => import("./pages/ToolsIndex"));
 const ImageResizeTool = lazy(() => import("./pages/ImageResizeTool"));
@@ -69,6 +71,9 @@ function Router() {
       <Route path="/fivem-gtarp/first-day-guide" component={GtarpFirstDayGuideArticle} />
       <Route path="/fivem-gtarp/server-guide" component={FivemServerGuide} />
       <Route path="/fivem-gtarp/server-setup" component={FivemServerSetupArticle} />
+      <Route path="/fivem-gtarp/field-notes/dev-diary" component={FieldNotesList} />
+      <Route path="/fivem-gtarp/field-notes/visit-note" component={FieldNotesList} />
+      <Route path="/fivem-gtarp/field-notes/:category/:slug" component={FieldNoteDetail} />
       <Route path="/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
       <Route path="/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
@@ -99,6 +104,9 @@ function Router() {
       <Route path="/en/fivem-gtarp/first-day-guide" component={GtarpFirstDayGuideArticle} />
       <Route path="/en/fivem-gtarp/server-guide" component={FivemServerGuide} />
       <Route path="/en/fivem-gtarp/server-setup" component={FivemServerSetupArticle} />
+      <Route path="/en/fivem-gtarp/field-notes/dev-diary" component={FieldNotesList} />
+      <Route path="/en/fivem-gtarp/field-notes/visit-note" component={FieldNotesList} />
+      <Route path="/en/fivem-gtarp/field-notes/:category/:slug" component={FieldNoteDetail} />
       <Route path="/en/fivem-gtarp/how-to-install" component={FivemInstallGuide} />
       <Route path="/en/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/en/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />

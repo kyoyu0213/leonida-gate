@@ -30,6 +30,8 @@ const STATIC_ROUTES = [
   { path: '/fivem-gtarp/fivem-vs-gtarp', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/server-guide', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/server-setup', priority: '0.7', changefreq: 'monthly' },
+  { path: '/fivem-gtarp/field-notes/dev-diary', priority: '0.7', changefreq: 'weekly' },
+  { path: '/fivem-gtarp/field-notes/visit-note', priority: '0.6', changefreq: 'weekly' },
   { path: '/fivem-gtarp/how-to-install', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/history', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/glossary', priority: '0.7', changefreq: 'monthly' },
@@ -75,7 +77,25 @@ function urlEntry({ loc, lastmod, priority, changefreq }) {
     .join('\n');
 }
 
+// --- 体験記（fieldNotes.ts から slug と日付を抽出） ------------------------
+// 体験記の記事は動的ルート（/fivem-gtarp/field-notes/<slug>）で日英の対がある。
+function extractFieldNotes() {
+  const src = readFileSync(resolve(ROOT, 'client/src/data/fieldNotes.ts'), 'utf8');
+  const notes = [];
+  const slugRe = /\bslug:\s*["']([a-z0-9-]+)["']/g;
+  let m;
+  while ((m = slugRe.exec(src))) {
+    const slug = m[1];
+    const rest = src.slice(m.index, m.index + 800);
+    const catMatch = rest.match(/\bcategory:\s*["'](dev-diary|visit-note)["']/);
+    const dateMatch = rest.match(/\bdate:\s*["'](\d{4}-\d{2}-\d{2})["']/);
+    notes.push({ slug, category: catMatch ? catMatch[1] : 'dev-diary', date: dateMatch ? dateMatch[1] : null });
+  }
+  return notes;
+}
+
 const articles = extractArticles();
+const fieldNotes = extractFieldNotes();
 
 // 日英の対がある（=/en/ 版を持つ）静的ルートか。client/src/lib/routes.ts と一致させる。
 const isLocalized = (p) => p.startsWith('/fivem-gtarp') || p === '/contact' || p === '/terms';
@@ -97,6 +117,14 @@ const entries = [
   ...articles.map((a) =>
     urlEntry({ loc: `${ORIGIN}/en/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
   ),
+  // 日本語：体験記の記事（/fivem-gtarp/field-notes/<category>/<slug>）
+  ...fieldNotes.map((n) =>
+    urlEntry({ loc: `${ORIGIN}/fivem-gtarp/field-notes/${n.category}/${n.slug}`, lastmod: n.date, priority: '0.7', changefreq: 'monthly' }),
+  ),
+  // 英語：体験記の記事（日英の対あり）
+  ...fieldNotes.map((n) =>
+    urlEntry({ loc: `${ORIGIN}/en/fivem-gtarp/field-notes/${n.category}/${n.slug}`, lastmod: n.date, priority: '0.7', changefreq: 'monthly' }),
+  ),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -107,4 +135,4 @@ ${entries.join('\n')}
 
 const out = resolve(ROOT, 'client/public/sitemap.xml');
 writeFileSync(out, xml, 'utf8');
-console.log(`[sitemap] ${STATIC_ROUTES.length} static + ${articles.length} articles → client/public/sitemap.xml`);
+console.log(`[sitemap] ${STATIC_ROUTES.length} static + ${articles.length} articles + ${fieldNotes.length} field-notes → client/public/sitemap.xml`);

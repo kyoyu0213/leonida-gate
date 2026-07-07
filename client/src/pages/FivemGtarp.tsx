@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, NotebookPen, MapPinned } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT } from '@/lib/i18n';
 
@@ -67,6 +67,15 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.serverSetup.title', descKey: 'fg.card.serverSetup.desc', href: '/fivem-gtarp/server-setup', icon: Wrench, accent: '#60a5fa' },
       { titleKey: 'fg.card.serverPromo.title', descKey: 'fg.card.serverPromo.desc', href: '/servers', icon: Megaphone, accent: '#38bdf8' },
       { titleKey: 'fg.card.devBoard.title', descKey: 'fg.card.devBoard.desc', href: '/board/fivem-dev', icon: MessageSquare, accent: '#22d3ee' },
+    ],
+  },
+  {
+    // GTA6 FEED 運営者自身の一次記録（サーバー開発日記・サーバー訪問記）。既存6色と被らないオレンジ。
+    labelKey: 'fg.group.fieldnotes',
+    accent: '#fb923c',
+    cards: [
+      { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
+      { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
     ],
   },
   {
