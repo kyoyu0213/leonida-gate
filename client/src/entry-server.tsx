@@ -25,7 +25,10 @@ import GtarpObserverGuideArticle from '@/pages/GtarpObserverGuideArticle';
 import GtarpFirstDayGuideArticle from '@/pages/GtarpFirstDayGuideArticle';
 import FivemServerGuide from '@/pages/FivemServerGuide';
 import FivemServerSetupArticle from '@/pages/FivemServerSetupArticle';
+import FieldNotesList from '@/pages/FieldNotesList';
+import FieldNoteDetail from '@/pages/FieldNoteDetail';
 import FivemInstallGuide from '@/pages/FivemInstallGuide';
+import { fieldNotes } from '@/data/fieldNotes';
 import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
@@ -49,6 +52,8 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/first-day-guide': GtarpFirstDayGuideArticle,
   '/fivem-gtarp/server-guide': FivemServerGuide,
   '/fivem-gtarp/server-setup': FivemServerSetupArticle,
+  '/fivem-gtarp/field-notes/dev-diary': FieldNotesList,
+  '/fivem-gtarp/field-notes/visit-note': FieldNotesList,
   '/fivem-gtarp/how-to-install': FivemInstallGuide,
   '/fivem-gtarp/tools': ToolsIndex,
   '/fivem-gtarp/tools/image-resize': ImageResizeTool,
@@ -76,11 +81,18 @@ const ROUTES: Record<string, ComponentType> = { ...LOCALIZED_ROUTES, ...JA_ONLY_
 // プリレンダ対象IDの列挙は行わない（scripts/prerender-og.ts が newsArticles を回して render を呼ぶ）。
 const NEWS_PATH_RE = /^\/news\/\d+$/;
 
-// プリレンダするパス一覧：全ルートの日本語版＋（localized ルートのみ）その英語版 /en/...。
+// 体験記の記事も動的ルート（/fivem-gtarp/field-notes/<category>/<slug>）。data/fieldNotes.ts
+// から列挙し、日英ペアで prerender-routes.ts の localized 経路（hreflang付き）に載せる。
+const FIELD_NOTE_PATH_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)\/[a-z0-9-]+$/;
+const FIELD_NOTE_PATHS = fieldNotes.map((n) => `/fivem-gtarp/field-notes/${n.category}/${n.slug}`);
+
+// プリレンダするパス一覧：全ルートの日本語版＋（localized ルート＋体験記記事の）英語版 /en/...。
 // 言語は URL（ssrPath）から useLang が判定するため、同じコンポーネントで英語版が描画される。
 export const ROUTE_PATHS = [
   ...Object.keys(ROUTES),
+  ...FIELD_NOTE_PATHS,
   ...Object.keys(LOCALIZED_ROUTES).map((p) => `/en${p}`),
+  ...FIELD_NOTE_PATHS.map((p) => `/en${p}`),
 ];
 
 export interface RenderResult {
@@ -91,7 +103,10 @@ export interface RenderResult {
 /** 1ルートを静的HTML化して返す。未登録ルートは null。 */
 export function render(url: string): RenderResult | null {
   const jaPath = url.startsWith('/en/') ? url.slice(3) : url;
-  const Comp = ROUTES[jaPath] ?? (NEWS_PATH_RE.test(jaPath) ? NewsDetail : undefined);
+  const Comp =
+    ROUTES[jaPath] ??
+    (NEWS_PATH_RE.test(jaPath) ? NewsDetail : undefined) ??
+    (FIELD_NOTE_PATH_RE.test(jaPath) ? FieldNoteDetail : undefined);
   if (!Comp) return null;
   const html = renderToString(
     <ThemeProvider defaultTheme="dark">

@@ -20,6 +20,8 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
   '/fivem-gtarp/first-day-guide',
   '/fivem-gtarp/server-guide',
   '/fivem-gtarp/server-setup',
+  '/fivem-gtarp/field-notes/dev-diary',
+  '/fivem-gtarp/field-notes/visit-note',
   '/fivem-gtarp/how-to-install',
   '/fivem-gtarp/tools',
   '/fivem-gtarp/tools/image-resize',
@@ -31,10 +33,17 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
 /** ニュース記事（/news/:id）は日英の対がある（記事データに titleEn/bodyEn を持つ）。 */
 const NEWS_PATH_RE = /^\/news\/\d+$/;
 
+/** 体験記の記事（/fivem-gtarp/field-notes/<category>/<slug>）も日英の対がある。 */
+const FIELD_NOTE_PATH_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)\/[a-z0-9-]+$/;
+
 /**
  * 日本語側の論理パス（プレフィックス無し）に英語版が存在するか。
  * 言語トグル・誘導バナー・hreflang の出し分けに使う。
  */
 export function isLocalizedPath(jaPath: string): boolean {
-  return LOCALIZED_STATIC_PATHS.includes(jaPath) || NEWS_PATH_RE.test(jaPath);
+  return (
+    LOCALIZED_STATIC_PATHS.includes(jaPath) ||
+    NEWS_PATH_RE.test(jaPath) ||
+    FIELD_NOTE_PATH_RE.test(jaPath)
+  );
 }
