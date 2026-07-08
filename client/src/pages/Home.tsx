@@ -462,7 +462,7 @@ export default function Home() {
                   boxShadow: '0 0 12px rgba(56,189,248,.5)',
                 }}
               />
-              {lang === 'ja' ? '体験記' : 'Field Notes'}
+              {lang === 'ja' ? 'FiveMさんぽ日記' : 'Field Notes'}
             </h2>
 
             <div className="grid gap-4 sm:grid-cols-2">
