@@ -7,6 +7,12 @@ import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
 import { siteLinks } from '@/data/site';
+import {
+  fieldNotes,
+  FIELD_NOTE_CATEGORY_CONFIG,
+  type FieldNote,
+  type FieldNoteCategory,
+} from '@/data/fieldNotes';
 import { type FivemServer } from '@/lib/supabase';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -21,7 +27,7 @@ function DiscordIcon() {
 }
 
 // Topページに表示するニュースサムネの件数
-const TOP_NEWS_COUNT = 6;
+const TOP_NEWS_COUNT = 4;
 // 各掲示板で表示するトレンドスレッドの件数
 const TREND_PER_BOARD = 3;
 
@@ -51,6 +57,15 @@ export default function Home() {
   const filteredNews = (
     selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
+
+  // 体験記：開発日記・訪問記から、それぞれ最新の1本だけを取り出して並べる
+  const latestFieldNotes = (['dev-diary', 'visit-note'] as FieldNoteCategory[])
+    .map((category) =>
+      fieldNotes
+        .filter((n) => n.category === category)
+        .reduce<FieldNote | undefined>((newest, n) => (!newest || n.date > newest.date ? n : newest), undefined),
+    )
+    .filter((n): n is FieldNote => Boolean(n));
 
   // 発売まで（2026-11-19）の残り日数
   const releaseDays = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00').getTime() - Date.now()) / 86400000));
@@ -434,6 +449,69 @@ export default function Home() {
                   ? `すべての記事を見る（全${allNews.length}件）→`
                   : `View all articles (${allNews.length}) →`}
               </a>
+            </div>
+
+            {/* ===================== 体験記（開発日記・訪問記の最新1本ずつ） ===================== */}
+            <h2 className="font-black text-xl md:text-[28px] m-0 mt-10 mb-4 flex items-center gap-2.5">
+              <span
+                className="inline-block rounded-[3px]"
+                style={{
+                  width: 5,
+                  height: 24,
+                  background: 'linear-gradient(#fb923c,#38bdf8)',
+                  boxShadow: '0 0 12px rgba(56,189,248,.5)',
+                }}
+              />
+              {lang === 'ja' ? '体験記' : 'Field Notes'}
+            </h2>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {latestFieldNotes.map((note) => {
+                const cat = FIELD_NOTE_CATEGORY_CONFIG[note.category];
+                const prefix = lang === 'en' ? '/en' : '';
+                return (
+                  <a
+                    key={note.slug}
+                    href={`${prefix}/fivem-gtarp/field-notes/${note.category}/${note.slug}`}
+                    className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.04] transition-all hover:-translate-y-0.5"
+                  >
+                    <div className="relative overflow-hidden" style={{ aspectRatio: '16/10', background: '#160a22' }}>
+                      <img
+                        src={note.image}
+                        alt={lang === 'en' ? note.titleEn : note.title}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"
+                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0) 55%,rgba(8,6,15,.55) 100%)' }}
+                      />
+                      <span
+                        className="absolute top-3 left-3 text-[10.5px] font-black rounded-md"
+                        style={{ background: cat.color, color: '#0a0612', padding: '4px 10px' }}
+                      >
+                        {lang === 'en' ? cat.en : cat.ja}
+                      </span>
+                      <span className="absolute top-3 right-3 text-2xl">{note.icon}</span>
+                    </div>
+                    <div className="p-5 flex flex-col gap-2.5 flex-1">
+                      <span className="text-white/45 text-[11.5px] font-semibold vice-num">{note.date}</span>
+                      <h3 className="text-[15px] font-extrabold text-white leading-[1.5] m-0 line-clamp-3">
+                        {lang === 'en' ? note.titleEn : note.title}
+                      </h3>
+                      <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0 line-clamp-3">
+                        {lang === 'en' ? note.excerptEn : note.excerpt}
+                      </p>
+                      <span
+                        className="mt-1 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                        style={{ color: cat.color }}
+                      >
+                        {lang === 'en' ? 'Read more →' : 'くわしく見る →'}
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
 
             {/* ===================== Discord コミュニティ告知バナー ===================== */}
