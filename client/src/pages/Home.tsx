@@ -722,7 +722,13 @@ export default function Home() {
           </div>
           <p className="text-[11.5px] text-white/40 m-0 leading-relaxed max-w-[640px] mx-auto text-center">
             {t('footer.disclaimer')}{' '}
-            <a href="/terms" className="underline hover:text-white/70">{t('footer.terms')}</a>
+            <a href={lang === 'en' ? '/en/about' : '/about'} className="underline hover:text-white/70">
+              {t('footer.about')}
+            </a>
+            {' / '}
+            <a href={lang === 'en' ? '/en/terms' : '/terms'} className="underline hover:text-white/70">
+              {t('footer.terms')}
+            </a>
             　© 2026 GTA6 FEED
           </p>
         </div>

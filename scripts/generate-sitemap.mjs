@@ -43,6 +43,7 @@ const STATIC_ROUTES = [
   { path: '/fivem-gtarp/tools', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/image-resize', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/image-mask', priority: '0.6', changefreq: 'monthly' },
+  { path: '/about', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
 ];
@@ -98,7 +99,8 @@ const articles = extractArticles();
 const fieldNotes = extractFieldNotes();
 
 // 日英の対がある（=/en/ 版を持つ）静的ルートか。client/src/lib/routes.ts と一致させる。
-const isLocalized = (p) => p.startsWith('/fivem-gtarp') || p === '/contact' || p === '/terms';
+const isLocalized = (p) =>
+  p.startsWith('/fivem-gtarp') || p === '/about' || p === '/contact' || p === '/terms';
 
 const entries = [
   // 日本語：固定ページ

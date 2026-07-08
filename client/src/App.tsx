@@ -22,6 +22,7 @@ const AdminNews = lazy(() => import("./pages/AdminNews"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Contact = lazy(() => import("./pages/Contact"));
+const About = lazy(() => import("./pages/About"));
 const FivemGtarp = lazy(() => import("./pages/FivemGtarp"));
 const FivemArticle = lazy(() => import("./pages/FivemArticle"));
 const GtarpArticle = lazy(() => import("./pages/GtarpArticle"));
@@ -111,6 +112,7 @@ function Router() {
       <Route path="/en/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/en/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/en/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
+      <Route path="/en/about" component={About} />
       <Route path="/en/contact" component={Contact} />
       <Route path="/en/terms" component={Terms} />
 
@@ -119,6 +121,7 @@ function Router() {
       <Route path="/search" component={SearchPage} />
       <Route path="/terms" component={Terms} />
       <Route path="/contact" component={Contact} />
+      <Route path="/about" component={About} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

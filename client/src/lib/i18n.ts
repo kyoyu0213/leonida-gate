@@ -229,6 +229,9 @@ const JA: Dict = {
   'seo.contact.desc': '情報提供・削除依頼などのお問い合わせはこちら。GTA6・FiveM RPに関するご連絡を受け付けています。',
   'seo.terms.title': '利用規約｜GTA6 FEED',
   'seo.terms.desc': 'GTA6 FEED の利用規約・免責事項です。',
+  'seo.about.title': '運営者情報・編集方針 | GTA6 FEED',
+  'seo.about.desc':
+    'GTA6 FEED の運営者情報と編集方針。確定情報・未確認情報・考察を区別し、出典を明示する日本語の GTA6・FiveM/GTARP ファンメディア。',
   'seo.notfound.title': 'ページが見つかりません｜GTA6 FEED',
   'seo.notfound.desc': 'お探しのページは見つかりませんでした。',
   'seo.board.title': '掲示板｜GTA6 FEED',
@@ -338,6 +341,7 @@ const JA: Dict = {
   'footer.disclaimer':
     '本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
   'footer.terms': '利用規約・プライバシー',
+  'footer.about': '運営者情報・編集方針',
   // ニュースのカテゴリ
   'cat.all': 'すべて',
   'cat.release': '公式情報',
@@ -629,6 +633,9 @@ const EN: Dict = {
   'seo.contact.desc': 'Contact us for tips, takedown requests, and other inquiries about GTA6 and FiveM RP.',
   'seo.terms.title': 'Terms of Use | GTA6 FEED',
   'seo.terms.desc': 'Terms of use and disclaimer for GTA6 FEED.',
+  'seo.about.title': 'About Us & Editorial Policy | GTA6 FEED',
+  'seo.about.desc':
+    'About GTA6 FEED and our editorial policy. A Japanese-language GTA6 and FiveM/GTARP fan media outlet that separates confirmed information, unconfirmed leaks, and analysis, and cites its sources.',
   'seo.notfound.title': 'Page not found | GTA6 FEED',
   'seo.notfound.desc': 'The page you are looking for could not be found.',
   'seo.board.title': 'Board | GTA6 FEED',
@@ -738,6 +745,7 @@ const EN: Dict = {
   'footer.disclaimer':
     'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
   'footer.terms': 'Terms & Privacy',
+  'footer.about': 'About',
   'cat.all': 'All',
   'cat.release': 'Official',
   'cat.topic': 'Trending',

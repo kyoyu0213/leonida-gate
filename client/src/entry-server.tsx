@@ -32,6 +32,7 @@ import { fieldNotes } from '@/data/fieldNotes';
 import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
+import About from '@/pages/About';
 import BoardThreadList from '@/pages/BoardThreadList';
 import ServerBoard from '@/pages/ServerBoard';
 import NewsDetail from '@/pages/NewsDetail';
@@ -58,6 +59,7 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools': ToolsIndex,
   '/fivem-gtarp/tools/image-resize': ImageResizeTool,
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
+  '/about': About,
 };
 
 // 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。
