@@ -112,9 +112,12 @@ export default function ArticleLayout({
               </span>
             </div>
 
-            <h1 className="article-title font-bold">
-              {effTitle}
-            </h1>
+            {/* タイトルの背面にだけ敷く帯（記事詳細ページと共通） */}
+            <div className="article-title-band">
+              <h1 className="article-title font-bold">
+                {effTitle}
+              </h1>
+            </div>
 
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
