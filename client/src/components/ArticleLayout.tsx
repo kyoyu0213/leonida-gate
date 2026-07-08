@@ -112,7 +112,7 @@ export default function ArticleLayout({
               </span>
             </div>
 
-            <h1 className="article-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-400 to-lime-400 font-mono">
+            <h1 className="article-title font-bold">
               {effTitle}
             </h1>
 

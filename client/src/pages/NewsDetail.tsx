@@ -157,6 +157,11 @@ export default function NewsDetail() {
   const title = isEn && article.titleEn ? article.titleEn : article.title;
   const body = isEn && article.fullContentEn ? article.fullContentEn : article.fullContent;
   const summary = isEn && article.aiSummaryEn ? article.aiSummaryEn : article.aiSummary;
+  // ファーストビューで本文冒頭が見えるように、タイトル＋メタの直下に出すリード文
+  const lead = isEn && article.descriptionEn ? article.descriptionEn : article.description;
+  // 記事ページのh1に出す表示用タイトル（無ければSEO用のtitleをそのまま使う）。
+  // displayTitle の改行はそのまま反映される（.article-title は white-space: pre-line）。
+  const headingTitle = (isEn ? article.displayTitleEn : article.displayTitle) ?? title;
 
   const relatedArticles = article.relatedArticles
     .map((id) => getArticleById(id))
@@ -186,7 +191,7 @@ export default function NewsDetail() {
           </nav>
 
           {/* Header */}
-          <div className="mb-8">
+          <div className="mb-4">
             <div className="flex items-center gap-3 mb-5">
               <span className="text-2xl">{article.icon}</span>
               <span className={`px-3 py-1 rounded text-xs font-mono border ${categoryColors[article.category]}`}>
@@ -194,8 +199,8 @@ export default function NewsDetail() {
               </span>
             </div>
 
-            <h1 className="article-title font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-cyan-400 to-lime-400 font-mono">
-              {title}
+            <h1 className="article-title font-bold">
+              {headingTitle}
             </h1>
 
             {/* 日付＋トップのボタン群（コメント欄へ移動／末尾の3行まとめへスクロール）を同じ行に並べる */}
@@ -232,16 +237,19 @@ export default function NewsDetail() {
                 </button>
               )}
             </div>
+
+            {/* リード文：開いてすぐ本文冒頭が読めるように、メタ情報の下に2〜3行だけ出す */}
+            {lead && <p className="article-lead">{lead}</p>}
           </div>
 
           {/* アイキャッチ画像（記事に image がある場合のみ。記事冒頭に表示） */}
           {article.image && (
-            <div className="mb-10 rounded-2xl overflow-hidden border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+            <div className="article-hero rounded-2xl overflow-hidden border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
               <img
                 src={article.image}
                 alt={article.title}
                 loading="lazy"
-                className="w-full h-auto block"
+                className="w-full block"
               />
             </div>
           )}

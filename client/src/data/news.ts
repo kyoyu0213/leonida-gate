@@ -44,6 +44,12 @@ export interface NewsArticle {
   // 任意：公開日時（時刻まで）。'YYYY-MM-DD HH:MM' か 'YYYY-MM-DDTHH:MM'。
   //   あれば日付表示が「2026年6月25日 14:30」のように時刻つきになる（無ければ date を年月日表示）。
   publishedAt?: string;
+  // 任意：記事ページのh1だけに使う表示用タイトル。
+  //   title はSEO（<title>・OGP・一覧カード・関連記事）に使い続け、
+  //   displayTitle があれば記事ページの見出しだけこちらに差し替える。
+  //   改行（\n）を入れるとその位置でそのまま改行される（h1 は white-space: pre-line）。
+  displayTitle?: string;
+  displayTitleEn?: string;
   // 任意：英語版（EN表示時に使う。空の項目は日本語にフォールバック）。
   titleEn?: string;
   descriptionEn?: string;
@@ -102,6 +108,11 @@ export const newsArticles: NewsArticle[] = [
     id: 35,
     title:
       "GTA6の公式画像に「もっと無駄なものを買え」——Ultimate Edition宣伝カットの隠しメッセージが話題",
+    // 記事ページのh1だけ、意味の切れ目で改行した表示用タイトルを使う（SEOの title は上のまま）
+    displayTitle:
+      "GTA6公式画像の“隠しメッセージ”が話題\n「もっと無駄なものを買え」は\nUltimate Edition宣伝カットへの皮肉？",
+    displayTitleEn:
+      "A “Hidden Message” in an Official GTA6 Image\nIs “Buy More Useless Shit”\na Jab at the Ultimate Edition Promo Shot?",
     description:
       "Ultimate Editionを紹介するRockstar公式スクリーンショットに、「Buy more useless shit(もっと無駄なものを買え)」と書かれた小さなステッカーが写り込んでいるとファンが発見。100ドルの上位版を売る当のRockstarによる自虐に見える、と海外コミュニティで拡散している。",
     icon: "🏷️",
