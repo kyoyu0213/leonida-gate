@@ -386,9 +386,9 @@
 /* タイトル・メタ・リード文・アイキャッチ・本文をすべてこの1本のコンテンツ幅に揃える。
    個別に max-width を足して幅をずらさないこと。 */
 .article-container {
-  max-width: 880px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 56px 24px 96px;
+  padding: 44px 24px 96px;
 }
 
 /* 動画埋め込み（YouTube）：16:9レスポンシブ＋ネオン枠 */
@@ -411,13 +411,47 @@
   border: 0;
 }
 
+/* 1b. 記事ヘッダー：カテゴリ・タイトル・リード文・メタ情報のまとまり。
+       カードで囲わず、背景・枠線・影・角丸を持たないフラットなレイアウトにする。
+       ネオン感はカテゴリタグとボタン側だけに残す（note/Zenn 寄りの読みやすさ優先）。 */
+.article-band {
+  display: block;
+  /* 下の余白はアイキャッチ側（.article-hero の margin-top）が持つ */
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 1c. タイトルの背面に敷く帯。中身は記事タイトルだけ。
+       フラットな濃紺のベタ塗り＋左端の細いネオンラインのみ（影・グラデーション・発光なし）。 */
+.article-title-band {
+  position: relative;
+  margin: 0 0 18px;
+  padding: 18px 22px;
+  border-radius: 8px;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+/* 左端に走る細いネオンライン（GTA6 FEEDらしさはここだけ） */
+.article-title-band::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, #00e5ff, #ff2d95);
+}
+
 /* 2. タイトル：可読性を最優先。白文字ベース＋日本語ゴシック体（グラデーション文字は使わない）。
       ネオン感はカテゴリタグ／コメント・AIまとめボタン側に残す。 */
 .article-title {
   font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
-  color: #f5f7ff;
-  /* ファーストビューで本文冒頭まで見えるよう、やや小さめに抑える */
-  font-size: clamp(28px, 2.8vw, 40px);
+  color: #f8fafc;
+  /* 派手な見出しではなく「記事見出し」として読める大きさに抑える */
+  font-size: clamp(25px, 2.3vw, 33px);
   line-height: 1.35;
   letter-spacing: 0;
   /* text-wrap: balance は「もっと無駄な / ものを買え」のように意味の途中で切るため使わない。
@@ -425,66 +459,55 @@
   white-space: pre-line;
   text-wrap: pretty;
   overflow-wrap: anywhere;
-  margin: 0 0 18px;
+  /* 下余白は帯（.article-title-band）側で持つ */
+  margin: 0;
 }
 
-/* タイトル下のメタ情報（日付・出典）を横並びで整える */
+/* リード文の下に置くメタ情報（日付・ボタン群）。囲みは作らず、余白だけでコンパクトに区切る */
 .article-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px 20px;
+  gap: 10px 16px;
+  margin-top: 14px;
 }
 
-/* 2b. リード文：タイトル＋メタの直下に置き、開いてすぐ記事の要旨が読めるようにする
-       （幅は .article-container に揃える。ここで max-width を足さない） */
+/* 2b. リード文：タイトル直下に置き、開いてすぐ記事の要旨が読めるようにする
+       （幅は帯の内側いっぱい。ここで max-width を足さない） */
 .article-lead {
-  margin: 16px 0 0;
-  font-size: 17px;
-  line-height: 1.85;
-  color: #d7dcec;
-  /* 2〜3行に収めてファーストビューを圧迫しない */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  /* 本文(#e6ecff)より少し薄くして主張を抑える */
+  color: rgba(230, 236, 255, 0.72);
+  /* 記事詳細では省略しない（line-clamp / ellipsis を使わない）。
+     一覧カード側の省略は NewsCard などの line-clamp で個別に行う。 */
 }
 
-/* 2c. アイキャッチ：幅はコンテンツ幅いっぱい。高さだけ抑えて本文冒頭を押し出さない */
+/* 2c. アイキャッチ：メタ情報の下・本文の上。大きくなりすぎないよう高さを抑える */
 .article-hero {
   margin: 20px 0 28px;
-  max-height: 420px;
+  max-height: 360px;
 }
 
 .article-hero img {
   width: 100%;
   height: 100%;
-  max-height: 420px;
+  max-height: 360px;
   object-fit: cover;
 }
 
 /* 3. 本文：読みやすいフォントサイズ・行間・柔らかい白（幅は .article-container に揃える） */
 .article-body {
   font-size: 17px;
-  line-height: 2;
+  line-height: 1.8;
   color: #e6ecff;
 }
 
 .article-body p {
-  margin: 0 0 1.6em;
+  margin: 0 0 1.5em;
 }
 
-/* 記事冒頭のリード文をカード化（最初の段落） */
-.article-body p:first-of-type {
-  margin: 8px 0 40px;
-  padding: 22px 26px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  font-size: 18px;
-  line-height: 1.95;
-  color: #eef2ff;
-}
 
 /* 本文先頭にある重複タイトル（Markdownの # 見出し）は非表示にして、
    上部のグラデーションタイトルに一本化する */
@@ -694,14 +717,26 @@
     padding: 36px 18px 72px;
   }
 
+  .article-band {
+    margin-bottom: 0;
+  }
+
+  .article-title-band {
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+
   .article-lead {
-    font-size: 15.5px;
+    font-size: 15px;
     line-height: 1.8;
-    margin-top: 14px;
+  }
+
+  .article-meta {
+    margin-top: 12px;
   }
 
   .article-hero {
-    margin: 16px auto 22px;
+    margin: 16px 0 22px;
     max-height: 240px;
   }
 
@@ -720,11 +755,6 @@
   .article-body {
     font-size: 16px;
     line-height: 1.9;
-  }
-
-  .article-body p:first-of-type {
-    font-size: 16px;
-    padding: 18px 18px;
   }
 
   .article-body [data-streamdown="heading-2"] {

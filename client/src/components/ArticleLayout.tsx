@@ -103,8 +103,8 @@ export default function ArticleLayout({
 
       <article className="article-container">
         <div>
-          {/* Header */}
-          <div className="mb-8">
+          {/* Header：カテゴリ／タイトル／メタ情報を1枚の“帯”にまとめる（記事詳細と共通の見た目） */}
+          <header className="article-band">
             <div className="flex items-center gap-3 mb-5">
               <span className="text-2xl">{icon}</span>
               <span className="px-3 py-1 rounded text-xs font-mono border border-cyan-500/50 bg-cyan-500/10 text-cyan-300">
@@ -126,7 +126,7 @@ export default function ArticleLayout({
                 {effSource}
               </div>
             </div>
-          </div>
+          </header>
 
           {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
           {effSummary && effSummary.length > 0 && (

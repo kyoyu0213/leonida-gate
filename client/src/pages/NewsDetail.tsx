@@ -190,20 +190,26 @@ export default function NewsDetail() {
             <span className="text-gray-500 truncate max-w-[55vw] sm:max-w-[420px]">{title}</span>
           </nav>
 
-          {/* Header */}
-          <div className="mb-4">
-            <div className="flex items-center gap-3 mb-5">
+          {/* Header：カテゴリ／タイトル／リード文／メタ情報を1枚の“帯”にまとめたヒーロー */}
+          <header className="article-band">
+            <div className="flex items-center gap-2.5 mb-4">
               <span className="text-2xl">{article.icon}</span>
               <span className={`px-3 py-1 rounded text-xs font-mono border ${categoryColors[article.category]}`}>
                 {categoryLabel}
               </span>
             </div>
 
-            <h1 className="article-title font-bold">
-              {headingTitle}
-            </h1>
+            {/* タイトルの背面にだけ敷く帯（囲みカードにはしない） */}
+            <div className="article-title-band">
+              <h1 className="article-title font-bold">
+                {headingTitle}
+              </h1>
+            </div>
 
-            {/* 日付＋トップのボタン群（コメント欄へ移動／末尾の3行まとめへスクロール）を同じ行に並べる */}
+            {/* リード文：開いてすぐ記事の要旨が読めるように、タイトル直下に2〜3行だけ出す */}
+            {lead && <p className="article-lead">{lead}</p>}
+
+            {/* 帯の下部：日付＋ボタン群（コメント欄へ移動／末尾の3行まとめへスクロール） */}
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
                 <Calendar size={14} />
@@ -215,13 +221,13 @@ export default function NewsDetail() {
                 onClick={() =>
                   document.getElementById('news-comments')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold border border-cyan-500/50 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/20 transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-bold border border-cyan-500/40 bg-cyan-500/[0.08] text-cyan-200 hover:bg-cyan-500/20 transition-colors whitespace-nowrap"
               >
-                <MessageSquare size={16} />
+                <MessageSquare size={14} />
                 {isEn
                   ? `Comments on this article${commentCount !== null ? ` (${commentCount})` : ''}`
                   : `この記事へのコメント${commentCount !== null ? `（${commentCount}件）` : ''}`}
-                <ChevronDown size={16} />
+                <ChevronDown size={14} />
               </button>
 
               {/* AIによる3行まとめ：押すと記事末尾の「3行まとめ」までスクロール */}
@@ -230,21 +236,18 @@ export default function NewsDetail() {
                   onClick={() =>
                     document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[13px] font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors whitespace-nowrap"
                 >
-                  <Sparkles size={16} /> {t('sum.button')}
-                  <ChevronDown size={16} />
+                  <Sparkles size={14} /> {t('sum.button')}
+                  <ChevronDown size={14} />
                 </button>
               )}
             </div>
+          </header>
 
-            {/* リード文：開いてすぐ本文冒頭が読めるように、メタ情報の下に2〜3行だけ出す */}
-            {lead && <p className="article-lead">{lead}</p>}
-          </div>
-
-          {/* アイキャッチ画像（記事に image がある場合のみ。記事冒頭に表示） */}
+          {/* アイキャッチ画像（記事に image がある場合のみ。メタ情報のあと・本文の前に表示） */}
           {article.image && (
-            <div className="article-hero rounded-2xl overflow-hidden border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+            <div className="article-hero rounded-xl overflow-hidden border border-cyan-500/25">
               <img
                 src={article.image}
                 alt={article.title}
@@ -267,7 +270,7 @@ export default function NewsDetail() {
             </div>
           )}
 
-          {/* Full Content (Markdown対応)。
+          {/* 本文（アイキャッチの下から始まる）。
               parseIncompleteMarkdown はストリーミング表示用の「未完成Markdown除去」機能で、
               静的記事では画像などを誤って消すため false にする。 */}
           <div className="article-body mb-8">
