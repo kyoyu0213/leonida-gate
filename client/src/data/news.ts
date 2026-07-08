@@ -99,6 +99,151 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 35,
+    title:
+      "GTA6の公式画像に「もっと無駄なものを買え」——Ultimate Edition宣伝カットの隠しメッセージが話題",
+    description:
+      "Ultimate Editionを紹介するRockstar公式スクリーンショットに、「Buy more useless shit(もっと無駄なものを買え)」と書かれた小さなステッカーが写り込んでいるとファンが発見。100ドルの上位版を売る当のRockstarによる自虐に見える、と海外コミュニティで拡散している。",
+    icon: "🏷️",
+    image: "/images/news/ULTIMATE_EDITION_STOCK_305_04.jpg",
+    category: "topic",
+    date: "2026-07-08",
+    publishedAt: "2026-07-08 21:10",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [34, 19, 33],
+    aiSummary: [
+      "Rockstar公式サイトでUltimate Editionの特典を紹介するスクリーンショット(限定服屋Stock 305・ルシア)のカウンターに、「Buy more useless shit(もっと無駄なものを買え)」と書かれたバーコード風ステッカーが写り込んでいるとファンが発見し、SNSで拡散した。",
+      "約100ドルのUltimate Editionは、追加が主に車両・武器・衣装・限定店舗といった見た目や利便性の特典であることから、「高い上位版を売るRockstar自身が、それを買う行為を茶化している」という自虐的でメタな構図として受け取られている。",
+      "ただし意図的なイースターエッグか、単なる環境装飾の偶然かは不明で、Rockstarはコメントしていない。皮肉にもTom Hendersonのアンケートでは8割超がUltimate Editionを購入予定と報じられている。",
+    ],
+    fullContent: `# GTA6の公式画像に「もっと無駄なものを買え」——Ultimate Edition宣伝カットの隠しメッセージが話題
+
+GTA6の公式プロモ画像に、皮肉の効いた一文が仕込まれていた。Ultimate Editionを紹介する公式スクリーンショットの1枚に、「Buy more useless shit(もっと無駄なものを買え)」と書かれた小さなステッカーが写り込んでいるのをファンが発見し、海外コミュニティで大きく拡散している。100ドルの上位版を売っている当のRockstarが、まるで自分自身を茶化しているように見える、というわけだ。GTA6 FEEDがまとめた。
+
+本記事は2026年7月6日時点の情報にもとづく。
+
+---
+
+## 何が見つかったのか
+
+問題の一枚は、Rockstar公式サイトでUltimate Editionの特典を紹介するために公開されたスクリーンショットだ。舞台はUltimate Edition限定の服屋Stock 305で、女性キャラクター(ルシア)がカウンターにもたれて立っている。そのカウンターに貼られたバーコード風のステッカーに、小さな文字で「Buy more useless shit」と書かれている。ぱっと見では気づきにくいが、拡大するとはっきり読める。
+
+![カウンター左下のバーコード風ステッカーに「BUY MORE USELESS SHIT」の文字が読める](/images/news/HMeWeMxXkAA58wI.jpg)
+
+![ステッカーを拡大したところ。バーコードの下に「BUY MORE USELESS SHIT」とはっきり書かれている](/images/news/ULTIMATE_EDITION_STOCK_305_04up.jpg)
+
+重要なのは、これがファンの加工ではなく、Rockstarのサイトにそのまま載っている本物のプロモ画像に含まれている点だ。ファンアカウントのGTA 6 Countdownなどが投稿したことをきっかけに、SNSで一気に広まった。
+
+![発見を広めたファンアカウント「GTA 6 Countdown」の投稿。34万件超の表示を集めた](/images/news/buy-more-useless-shit-post.png)
+
+---
+
+## なぜ刺さるのか
+
+このステッカーが話題になったのは、Ultimate Editionという商品の性格と重なって見えるからだ。
+
+Ultimate Edition(約100ドル)は、Standard Edition(約80ドル)より20ドル高いが、追加されるのは主に車両・武器・衣装・限定店舗といった、見た目や利便性の特典で、ゲームの根幹を変えるものではない。さらに、物理版すらディスクを同梱せずダウンロードコードのみという方針も重なっている。そこへ「もっと無駄なものを買え」というメッセージだ。高い上位版を売っているRockstar自身が、それを買う行為を自ら茶化しているように読める——という自虐的でメタな構図が、多くの人に刺さった。
+
+GTAシリーズはもともと、アメリカの消費社会や広告、ブランド信仰を徹底的に風刺してきた作品だ。店の看板やスローガンで皮肉を効かせる手口は過去作でも定番で、今回のメッセージは、その矛先を「自分たちの商売」に向けたメタ版だと受け取られている。
+
+---
+
+## 意図的なのかどうかは、まだ分からない
+
+ただし、一点だけ注意が要る。このステッカーが狙って仕込まれたイースターエッグなのか、それとも単なる環境装飾が偶然スクリーンショットに写り込んだだけなのかは、現時点では分かっていない。複数のメディアもこの点は不明だとしており、Rockstarはコメントしていない。
+
+もっとも、同社のこれまでの作風からすれば、意図的な仕込みであってもまったく不思議はない、という見方が大勢だ。断定はできないが、「またRockstarがやった」と受け止める空気が強い。
+
+---
+
+## コミュニティの反応
+
+反応は割れている。
+
+- 「上位版を買う人をバカにしている。コミュニティをディスってるだろ」
+- 「最高にRockstarらしい。これぞGTAのユーモアだ」
+- 「プレイヤー個人ではなく、消費社会そのものを風刺しているだけだろう」
+- 「いっそ商品ページに直接この一文を貼ってくれたら、その正直さは尊敬した」
+
+皮肉なオチもある。これだけ自虐ネタが笑われている一方で、Tom Hendersonが実施したとされるアンケートでは、8割を超える人がUltimate Editionを購入する予定だと報じられている。「無駄なものを買え」とからかわれても、結局は買う——という構図まで含めて、Rockstarらしい一幕になっている。
+
+---
+
+## まとめ
+
+第3弾トレーラーもまだ公開されず、公式素材が乏しいなかで、ファンは一つひとつの画像を1ピクセル単位で精査している。そうした時期だけに、こうした小さな仕込みは大きく跳ねやすい。折しもディスクなしのパッケージ版をめぐる不満とも重なり、上位版商法そのものへの議論に火をつける格好にもなった。
+
+事実としては、Rockstarの公式Ultimate Edition画像に「Buy more useless shit」というステッカーが写っている、という一点だ。それが自虐的な消費社会の風刺として広く受け取られたのは間違いないが、意図的な仕込みかどうかはRockstarが明かしておらず未確認である。GTAらしいイースターエッグとしてニヤリとする層と、高額版の商法への皮肉と見る層に分かれたまま、発売後にあらためて掘り起こされそうな小ネタだ。`,
+    titleEn:
+      "“Buy More Useless Shit” Hidden in an Official GTA6 Image — the Sticker in Rockstar's Ultimate Edition Promo Shot",
+    descriptionEn:
+      "Fans spotted a tiny sticker reading “Buy more useless shit” in an official Rockstar screenshot promoting the Ultimate Edition. With Rockstar itself selling the $100 tier, it reads as self-deprecation — and it's spreading fast across the community.",
+    aiSummaryEn: [
+      "Fans discovered that an official Rockstar screenshot promoting the Ultimate Edition — set in the exclusive clothing store Stock 305, with Lucia leaning on the counter — includes a barcode-style sticker reading “Buy more useless shit.” The find spread rapidly on social media.",
+      "Because the roughly $100 Ultimate Edition mostly adds cosmetic and convenience perks (vehicles, weapons, outfits, an exclusive store), the message reads as a self-deprecating, meta jab: Rockstar itself poking fun at the act of buying its own premium tier.",
+      "Whether it's a deliberate easter egg or incidental set dressing is unknown, and Rockstar hasn't commented. Ironically, a poll reportedly run by Tom Henderson found over 80% still plan to buy the Ultimate Edition.",
+    ],
+    fullContentEn: `# “Buy More Useless Shit” Hidden in an Official GTA6 Image — the Sticker in Rockstar's Ultimate Edition Promo Shot
+
+A rather pointed line was tucked into an official GTA6 promo image. Fans discovered that one of the official screenshots promoting the Ultimate Edition contains a small sticker reading “Buy more useless shit,” and the find has spread widely across the overseas community. The joke being: Rockstar, the very company selling the $100 premium tier, appears to be poking fun at itself. GTA6 FEED has summarized it.
+
+This article is based on information as of July 6, 2026.
+
+---
+
+## What Was Found
+
+The image in question is a screenshot published on Rockstar's official site to showcase the Ultimate Edition's bonuses. The setting is Stock 305, the Ultimate Edition-exclusive clothing store, where the female protagonist (Lucia) stands leaning against a counter. On that counter is a barcode-style sticker, and in tiny lettering it reads: “Buy more useless shit.” It's hard to catch at a glance, but zoom in and it's clearly legible.
+
+![On the sticker at the lower-left of the counter, the words “BUY MORE USELESS SHIT” are legible](/images/news/HMeWeMxXkAA58wI.jpg)
+
+![A close-up of the sticker: below the barcode, “BUY MORE USELESS SHIT” is clearly written](/images/news/ULTIMATE_EDITION_STOCK_305_04up.jpg)
+
+What matters is that this isn't a fan edit — it's in the genuine promo image as posted on Rockstar's own site. Posts from fan accounts such as GTA 6 Countdown set it off, and it swept across social media.
+
+![The post from fan account “GTA 6 Countdown” that spread the discovery, drawing over 340,000 views](/images/news/buy-more-useless-shit-post.png)
+
+---
+
+## Why It Lands
+
+The sticker took off because it seems to overlap with the very nature of the Ultimate Edition as a product.
+
+The Ultimate Edition (about $100) costs $20 more than the Standard Edition (about $80), but what it adds is mainly cosmetic and convenience perks — vehicles, weapons, outfits, an exclusive store — nothing that changes the core of the game. On top of that, even the physical edition ships without a disc, containing only a download code. And into that lands the message “Buy more useless shit.” It reads as though Rockstar, the one selling the pricier tier, is itself mocking the act of buying it — a self-deprecating, meta framing that landed with a lot of people.
+
+The GTA series has always been a thorough satire of American consumer culture, advertising, and brand worship. Slipping irony into store signage and slogans is a staple of past entries; this time, the message is being read as a meta version that turns that barrel on “their own business.”
+
+---
+
+## Whether It's Deliberate Is Still Unknown
+
+One caveat, though. Whether the sticker is an easter egg placed on purpose, or merely environmental set dressing that happened to land in a screenshot, is not known at this point. Multiple outlets have flagged that this is unclear, and Rockstar has not commented.
+
+That said, given the studio's track record, most feel it would be no surprise at all if it were deliberate. Nothing can be asserted, but the prevailing mood is “Rockstar's done it again.”
+
+---
+
+## Community Reaction
+
+Reactions are split.
+
+- “They're mocking people who buy the premium edition. That's dissing the community.”
+- “Peak Rockstar. This is exactly GTA's humor.”
+- “They're satirizing consumer culture itself, not individual players.”
+- “Honestly, if they'd slapped that line straight on the store page, I'd respect the honesty.”
+
+There's an ironic punchline, too. While everyone laughs at the self-own, a poll reportedly conducted by Tom Henderson found that over 80% of respondents plan to buy the Ultimate Edition. Told to “buy more useless shit,” people buy it anyway — and that framing, too, makes for a very Rockstar moment.
+
+---
+
+## Summary
+
+With the third trailer still unreleased and official material scarce, fans are scrutinizing every image pixel by pixel. In exactly such a stretch, a small planted detail like this bounces high. Coinciding as it does with frustration over the disc-less physical edition, it has also served to light a fire under the debate about premium-edition business practices themselves.
+
+As a matter of fact, all we have is this: a sticker reading “Buy more useless shit” appears in Rockstar's official Ultimate Edition image. There's no doubt it was widely received as a self-deprecating satire of consumer culture — but whether it was planted deliberately remains unconfirmed, with Rockstar staying silent. Split between those who grin at it as a very GTA easter egg and those who read it as a jab at premium-edition monetization, it's the kind of trivia likely to be dug up all over again after release.`,
+  },
+  {
     id: 34,
     title:
       "「GTA6が待ちきれない」——25歳のAI起業家が、AIだけで“自作GTA6”を作り始めた",
