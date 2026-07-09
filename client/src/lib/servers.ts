@@ -1,11 +1,16 @@
 import { supabase } from './supabase';
 import { getAnonId } from './board';
 
+// 匿名に公開して良い列だけを明示指定する。
+// （投稿者メタ ip/ua/anon_id/ip_hash/ip_subnet は含めない。select('*') は列権限で拒否されるため）
+const PUBLIC_COLS =
+  'id,name,description,type,connect_info,discord_url,language,tags,approved,created_at,icon';
+
 // 承認済みのFiveMサーバーを新しい順に取得。limit を渡すと件数を絞る（Topのプレビュー用）。
 export async function listApprovedServers(limit?: number) {
   let query = supabase
     .from('fivem_servers')
-    .select('*')
+    .select(PUBLIC_COLS)
     .eq('approved', true)
     .order('created_at', { ascending: false });
 
