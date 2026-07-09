@@ -182,23 +182,29 @@ export async function getPostId(threadId: string, postNumber: number): Promise<s
   return (data as { id: string } | null)?.id ?? null;
 }
 
-/** レス本文を全文検索（非表示は除外）。スレタイ・板も一緒に取得。 */
+// フレンド募集・クルー募集の合成スレ（board='friends'/'crews'）は、掲示板横断検索の
+// 対象外にする（返信やカード本文がスレ検索結果に混ざらないように）。専用ページで扱う。
+const EXCLUDED_SEARCH_BOARDS = '(friends,crews)';
+
+/** レス本文を全文検索（非表示・friends/crews は除外）。スレタイ・板も一緒に取得。 */
 export async function searchPosts(q: string) {
   return supabase
     .from('board_posts')
     .select('thread_id, post_number, body, created_at, hidden, board_threads!inner(title, board)')
     .ilike('body', `%${q}%`)
     .eq('hidden', false)
+    .not('board_threads.board', 'in', EXCLUDED_SEARCH_BOARDS)
     .order('created_at', { ascending: false })
     .limit(50);
 }
 
-/** スレッドのタイトルを検索。 */
+/** スレッドのタイトルを検索（friends/crews は除外）。 */
 export async function searchThreads(q: string) {
   return supabase
     .from('board_threads')
     .select('id, title, board, last_posted_at, post_count')
     .ilike('title', `%${q}%`)
+    .not('board', 'in', EXCLUDED_SEARCH_BOARDS)
     .order('last_posted_at', { ascending: false })
     .limit(50);
 }

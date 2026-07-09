@@ -10,6 +10,8 @@ import {
   listReports,
   setPostHidden,
   deletePost,
+  deleteFriendByThread,
+  deleteCrewByThread,
   resolveReports,
   listPendingImages,
   approveImage,
@@ -57,6 +59,14 @@ import { NewsEditor } from './AdminNews';
 
 const reasonLabel = (value: string) =>
   REPORT_REASONS.find((r) => r.value === value)?.label ?? value;
+
+// 掲示板ラベル。friends/crews はカード型のため BOARDS に無い（個別対応）。
+const CARD_BOARD_LABELS: Record<string, string> = {
+  friends: 'フレンド募集',
+  crews: 'クルー募集',
+};
+const boardLabel = (slug: string) =>
+  CARD_BOARD_LABELS[slug] ?? getBoard(slug)?.title.replace('掲示板', '') ?? slug;
 
 const inputClass =
   'w-full bg-white/[0.04] border border-white/12 rounded-xl px-4 py-3 text-[#f4eef8] placeholder:text-white/35 focus:outline-none focus:border-[#a78bfa]/60 transition-colors';
@@ -325,9 +335,10 @@ function ReportsPanel() {
   return (
     <div className="flex flex-col gap-3">
       {rows.map((r) => {
-        const board = getBoard(r.board);
         const jump = `/thread/${r.thread_id}#post-${r.post_number}`;
         const busy = busyId === r.post_id;
+        // friends/crews のカード本文(post#1)通報は、カードごと削除する。
+        const isCard = (r.board === 'friends' || r.board === 'crews') && r.post_number === 1;
         return (
           <div
             key={r.post_id}
@@ -344,7 +355,7 @@ function ReportsPanel() {
               >
                 {r.status === 'open' ? '未対応' : '対応済み'}
               </span>
-              <span className="text-white/55">{board?.title.replace('掲示板', '') ?? r.board}</span>
+              <span className="text-white/55">{boardLabel(r.board)}</span>
               <span className="text-white/30">#{r.post_number}</span>
               <span className="vice-num text-[#ff2d95]">通報 {r.report_count} 件</span>
               {r.hidden && <span className="text-white/40">（非表示中）</span>}
@@ -398,13 +409,20 @@ function ReportsPanel() {
               <button
                 disabled={busy}
                 onClick={() => {
-                  if (confirm('この投稿を完全に削除します。よろしいですか？')) {
+                  if (isCard) {
+                    if (confirm('この募集カード（本文・返信・通報・投票）をまとめて削除します。よろしいですか？')) {
+                      const del = r.board === 'friends'
+                        ? () => deleteFriendByThread(r.thread_id)
+                        : () => deleteCrewByThread(r.thread_id);
+                      act(r.post_id, del, 'カードを削除しました');
+                    }
+                  } else if (confirm('この投稿を完全に削除します。よろしいですか？')) {
                     act(r.post_id, () => deletePost(r.post_id), '削除しました');
                   }
                 }}
                 className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
               >
-                <Trash2 size={13} /> 削除
+                <Trash2 size={13} /> {isCard ? 'カード削除' : '削除'}
               </button>
               {r.status === 'open' && (
                 <button

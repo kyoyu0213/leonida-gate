@@ -24,6 +24,8 @@ const STATIC_ROUTES = [
   { path: '/board/gtarp-servers', priority: '0.7', changefreq: 'daily' },
   { path: '/board/streamer-servers', priority: '0.7', changefreq: 'daily' },
   { path: '/board/fivem-dev', priority: '0.7', changefreq: 'daily' },
+  { path: '/board/friends', priority: '0.7', changefreq: 'daily' },
+  { path: '/board/crews', priority: '0.7', changefreq: 'daily' },
   { path: '/fivem-gtarp', priority: '0.8', changefreq: 'weekly' },
   { path: '/fivem-gtarp/what-is-fivem', priority: '0.7', changefreq: 'monthly' },
   { path: '/fivem-gtarp/what-is-gtarp', priority: '0.7', changefreq: 'monthly' },

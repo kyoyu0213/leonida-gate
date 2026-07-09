@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useRoute } from 'wouter';
 import { Plus, X, Send, Loader2, Search, ImagePlus } from 'lucide-react';
 import Header from '@/components/Header';
+import BoardTabs from '@/components/BoardTabs';
 import { toast } from 'sonner';
 import { getBoardImageSetting, uploadImages } from '@/lib/images';
 import {
@@ -296,28 +297,8 @@ export default function BoardThreadList() {
           </div>
         )}
 
-        {/* board tabs */}
-        <div className="flex flex-col sm:flex-row gap-2 sm:overflow-x-auto pb-2 mb-5">
-          {BOARDS.map((b) => {
-            const active = b.slug === board.slug;
-            const c = boardColor(b.accent);
-            return (
-              <a
-                key={b.slug}
-                href={`/board/${b.slug}`}
-                className="w-full sm:w-auto sm:flex-none flex items-center gap-2 px-5 py-2.5 rounded-[13px] text-sm font-extrabold whitespace-nowrap transition-colors"
-                style={{
-                  border: `1px solid ${active ? c : 'rgba(255,255,255,.1)'}`,
-                  background: active ? `${c}1f` : 'rgba(255,255,255,.05)',
-                  color: active ? '#fff' : 'rgba(244,238,248,.65)',
-                }}
-              >
-                <span className="w-2 h-2 rounded-full flex-none" style={{ background: c, boxShadow: `0 0 7px ${c}` }} />
-                {tr(`board.${b.slug}`)}
-              </a>
-            );
-          })}
-        </div>
+        {/* board tabs（共有コンポーネント：フレンド募集・クルー募集も含む） */}
+        <BoardTabs active={board.slug} />
 
         {/* form: 申請制（鯖別・非管理者）は申請フォーム、それ以外は通常のスレ作成フォーム */}
         {showForm && restricted && (

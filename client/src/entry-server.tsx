@@ -34,6 +34,8 @@ import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
 import About from '@/pages/About';
 import BoardThreadList from '@/pages/BoardThreadList';
+import FriendsBoard from '@/pages/FriendsBoard';
+import CrewsBoard from '@/pages/CrewsBoard';
 import ServerBoard from '@/pages/ServerBoard';
 import NewsDetail from '@/pages/NewsDetail';
 
@@ -72,6 +74,8 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   '/board/gtarp-servers': BoardThreadList,
   '/board/streamer-servers': BoardThreadList,
   '/board/fivem-dev': BoardThreadList,
+  '/board/friends': FriendsBoard,
+  '/board/crews': CrewsBoard,
   '/servers': ServerBoard,
 };
 

@@ -264,6 +264,26 @@ export async function deletePost(postId: string) {
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }
 
+// フレンド募集カードを合成スレ経由で削除（通報→カード削除用）。CASCADE で post/通報/投票も消える。
+export async function deleteFriendByThread(threadId: string) {
+  const { error } = await supabase.rpc('admin_delete_friend_by_thread', {
+    p_token: adminToken,
+    p_thread_id: threadId,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+// クルー募集カードを合成スレ経由で削除。
+export async function deleteCrewByThread(threadId: string) {
+  const { error } = await supabase.rpc('admin_delete_crew_by_thread', {
+    p_token: adminToken,
+    p_thread_id: threadId,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 export async function resolveReports(postId: string) {
   const { error } = await supabase.rpc('admin_resolve_reports', {
     p_token: adminToken,

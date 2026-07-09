@@ -17,6 +17,10 @@ const NewsList = lazy(() => import("./pages/NewsList"));
 const NewsDetail = lazy(() => import("./pages/NewsDetail"));
 const BoardThreadList = lazy(() => import("./pages/BoardThreadList"));
 const BoardThread = lazy(() => import("./pages/BoardThread"));
+const FriendsBoard = lazy(() => import("./pages/FriendsBoard"));
+const CrewsBoard = lazy(() => import("./pages/CrewsBoard"));
+const FriendDetail = lazy(() => import("./pages/FriendDetail"));
+const CrewDetail = lazy(() => import("./pages/CrewDetail"));
 const AdminReports = lazy(() => import("./pages/AdminReports"));
 const AdminNews = lazy(() => import("./pages/AdminNews"));
 const SearchPage = lazy(() => import("./pages/Search"));
@@ -57,6 +61,11 @@ function Router() {
       <Route path="/news" component={NewsList} />
       <Route path="/news/:id" component={NewsDetail} />
       <Route path="/board" component={BoardThreadList} />
+      {/* フレンド募集・クルー募集（カード型・自由投稿）。/board/:slug より前に置く。 */}
+      <Route path="/board/friends" component={FriendsBoard} />
+      <Route path="/board/friends/:id" component={FriendDetail} />
+      <Route path="/board/crews" component={CrewsBoard} />
+      <Route path="/board/crews/:id" component={CrewDetail} />
       <Route path="/board/:slug" component={BoardThreadList} />
       <Route path="/thread/:id" component={BoardThread} />
       <Route path="/fivem-gtarp" component={FivemGtarp} />
@@ -88,6 +97,10 @@ function Router() {
       <Route path="/en/news" component={NewsList} />
       <Route path="/en/servers" component={ServerBoard} />
       <Route path="/en/board" component={BoardThreadList} />
+      <Route path="/en/board/friends" component={FriendsBoard} />
+      <Route path="/en/board/friends/:id" component={FriendDetail} />
+      <Route path="/en/board/crews" component={CrewsBoard} />
+      <Route path="/en/board/crews/:id" component={CrewDetail} />
       <Route path="/en/board/:slug" component={BoardThreadList} />
       <Route path="/en/thread/:id" component={BoardThread} />
       <Route path="/en/search" component={SearchPage} />
