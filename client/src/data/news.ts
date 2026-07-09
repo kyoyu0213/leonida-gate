@@ -105,6 +105,167 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 36,
+    title:
+      "GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信——約6年ぶりの大仕事、美術館から名画を奪え",
+    displayTitle:
+      "GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信\n約6年ぶりの大仕事、美術館から名画を奪え",
+    description:
+      "Rockstarが、GTA Onlineの新強盗「The Kortz Center Heist」を7月14日に配信すると発表。舞台は美術館Kortz Center。完全新規の大型強盗はCayo Perico以来およそ6年ぶりで、GTA6発売前・最後級の大型アップデートとみられる。内容と準備の要点をまとめた。",
+    icon: "🖼️",
+    image: "/images/news/gta_online_kortz_center_heist_article/ff97a2a5a3c452c1049a75eae778870674ff0e48.jpg",
+    category: "update",
+    date: "2026-07-10",
+    publishedAt: "2026-07-10 12:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.rockstargames.com/newswire",
+    relatedArticles: [31, 35, 33],
+    aiSummary: [
+      "Rockstarは、GTA Onlineの新しい強盗「The Kortz Center Heist」を7月14日に全機種で配信する。舞台はロスサントスの美術館Kortz Centerで、名画を盗み出す多段階の強盗。完全新規の大型強盗としてはCayo Perico以来およそ6年ぶりで、11月19日のGTA6発売を前にした最後級の大型アップデートとみられている。",
+      "主催にはマンション物件と新規のArt Studio拡張が必要。贋作師が本物とすり替える偽物を作り、盗んだ絵は故買屋に売るか自宅に飾れる。盗める絵画は毎週3枚が入れ替わる。新車Grotti Veleno GTはGTA+会員が7月14日から無料入手できる。",
+      "配信に先立ち無料の準備イベント「Fine Art Collector Program」が7月13日まで実施中で、ログイン＋強盗1回クリアで最大GTA$150万と装甲リムジンがもらえる。ただし強盗本編の報酬額は配信まで未確定である。",
+    ],
+    fullContent: `# GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信——約6年ぶりの大仕事、美術館から名画を奪え
+
+Rockstarは、GTA Onlineの新しい強盗(heist)ミッション「The Kortz Center Heist」を7月14日に配信すると公式に発表した。舞台はロスサントスの美術館Kortz Center。完全新規の大型強盗としてはCayo Perico以来、およそ6年ぶりで、11月19日のGTA6発売を前にした最後級の大型アップデートになるとみられている。GTA6 FEEDが、内容と準備の要点をまとめた。
+
+本記事は2026年7月10日時点の情報にもとづく。
+
+---
+
+## どんな強盗か
+
+配信は7月14日、対応は全機種(PS5・PS4・Xbox Series X|S・Xbox One・PC)。狙うのは、Pacific Bluffsの丘に建つ美術館Kortz Centerだ。2013年からマップに存在しながら中に入れなかった名所で、GTA5のストーリー終盤で緊迫した対峙が起きた場所でもある。そこに眠る名画を盗み出す、多段階の強盗となる。
+
+![美術館Kortz Centerから戦利品を持って逃走する強盗団。追跡するヘリと警察をかわして逃げ切る](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.jpg)
+
+流れは、施設を下見し、侵入の方法を選び、潜入し、戦利品を持って逃げる、というもの。これはCayo PericoやDiamond Casinoの強盗と同じ構造で、いずれもGTA Onlineで最も繰り返し遊ばれてきた人気コンテンツだ。ソロでも、最大4人のクルーでも挑める。仲間が多いほど多くの戦利品を持ち出しやすくなる一方、ソロは難度が上がるが一人当たりの取り分は大きくなる(このあたりもCayo Pericoと同様だ)。
+
+---
+
+## ホストに必要なもの:マンションとArt Studio
+
+リーダーとしてこの強盗を主催するには、マンション物件と、新たに追加されるArt Studio拡張が必要になる。
+
+![Art Studioに住み込む贋作師。盗んだ本物とすり替えるための偽物(フォージェリ)を制作する](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.jpg)
+
+Art Studioには贋作師が住み込み、盗んだ本物とすり替えるための偽物(フォージェリ)を制作する。ここは計画の拠点も兼ね、準備を進めるほど装備や技術がストックされ、フィナーレではその中からロードアウトを組める。強盗中は、Rafが偵察や重要な情報を共有する連絡役となり、マンションのAIアシスタントも役に立つ。
+
+盗み出した主目標の絵画は、故買屋Mr. Faberの顧客に売って現金化するか、あるいは自分のマンションに飾って所有するかを選べる。さらに、盗める絵画は毎週3枚が新たに入れ替わり、繰り返し遊ぶ動機になる。
+
+![盗める絵画の一例。盗んだ本物は故買屋に売って現金化するか、自分のマンションに飾って所有できる](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.jpg)
+
+---
+
+## 新車とその他の追加
+
+アップデートでは新しい車両も追加される。目玉のGrotti Veleno GTは、GTA+会員なら7月14日からVinewood Car Clubのショールームで無料で受け取れる。一般販売はその1週間後で、会員は先行して入手できる形だ。このほかにも新しいスーパーカーや、Drift、Hao's Special Worksに対応した車両が加わる。あわせて、Rockstar Mission Creatorのアップデートなども予定されている。
+
+![目玉の新車Grotti Veleno GT。GTA+会員は7月14日から無料で入手でき、一般販売は1週間後](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.jpg)
+
+---
+
+## 準備:Fine Art Collector Program(7月13日まで)
+
+配信に先立ち、無料の準備イベント「Fine Art Collector Program」が7月13日まで実施されている。受け取れる主な報酬は次のとおり。
+
+- GTA Onlineに7月13日までにログインしてプレイする:GTA$50万と、装甲仕様のリムジンBenefactor Turreted Limo(屋根にマシンガンを備える)。
+- 期間中にいずれかの強盗を1回クリアする:追加でGTA$100万と、NOOSE Special Forcesスーツ。これで合計最大GTA$150万になる。
+- マンション所有者が7月13日までにプレイする:上位の「Elitist」資格が得られ、Annihilator Stealthヘリの無料入手、Art Studio拡張のGTA$100万割引、Kortz Centerの彫像、そして高額な絵画を盗む機会が付く。
+- GTA+会員:Prix Luxury Real EstateのマンションがGTA$200万割引。
+
+上の2段階の報酬は条件達成から72時間以内に付与され、「Elitist」分は強盗の配信後に受け取れる。
+
+---
+
+## 報酬(ペイアウト)はまだ未確定
+
+一点、注意しておきたい。強盗本編で得られる報酬額は、7月14日の配信まで公式に明らかになっていない。Cayo Pericoやカジノの強盗と同じ多段階の構造であることから、おおむねそれらと同程度(1回あたりおよそGTA$100万〜数百万規模)と予想されているが、これはあくまで推測だ。配信前に出回る具体的な金額は、いずれも見込みの数字として受け止めておきたい。
+
+---
+
+## 位置づけと、今やっておくべきこと
+
+この強盗が注目されるのは、その規模と時期だ。完全新規の大型強盗としては、2020年12月のCayo Perico以来およそ6年ぶりで、この間のGTA Onlineは車両の小出しや事業の調整が中心だった。GTA6の発売(11月19日)が近づくなか、これはオンラインの最後を飾る大型更新の一つになるとみられ、「有終の美」と受け止める声も多い。プレスリリースの見出し「The Next Big Score」が、GTA5終盤の強盗「The Big Score」を想起させる点も話題になっている。
+
+実際的な備えとしては、まず準備イベントをこなしておくのがよい。ログインと強盗1回クリアで最大GTA$150万と装甲リムジンが実質タダで手に入るので、7月13日までに済ませておいて損はない。一方、自分で強盗を主催したい場合はマンションとArt Studioが必須になるが、これは相応の出費であり、しかも本編の報酬額はまだ確定していない。頻繁に回すつもりなら投資する価値は高いが、たまに遊ぶ程度なら、配信後に実際の稼ぎが判明してから購入を判断するのが堅実だ。`,
+    titleEn:
+      "GTA Online’s New Heist “The Kortz Center Heist” Arrives July 14 — the First Big Job in ~6 Years: Steal Masterpieces from a Museum",
+    displayTitleEn:
+      "GTA Online’s New “Kortz Center Heist” Arrives July 14\nThe First Big Job in ~6 Years: Steal Masterpieces from a Museum",
+    descriptionEn:
+      "Rockstar has announced that GTA Online’s new heist, “The Kortz Center Heist,” arrives July 14, set in the Kortz Center museum. The first all-new major heist since Cayo Perico — roughly six years — it looks to be one of the last big updates before GTA6’s launch. Here’s what it is and how to prepare.",
+    aiSummaryEn: [
+      "Rockstar is releasing GTA Online’s new heist, “The Kortz Center Heist,” on July 14 across all platforms. Set in Los Santos’ Kortz Center museum, it’s a multi-stage heist to steal masterpiece paintings. As the first all-new major heist since Cayo Perico — about six years — it looks to be one of the last big updates before GTA6’s November 19 launch.",
+      "Hosting requires a mansion property and the new Art Studio expansion. A forger makes fakes to swap for the originals; stolen paintings can be sold to a fence or hung in your mansion. The available paintings rotate three each week. The new Grotti Veleno GT is free for GTA+ members from July 14.",
+      "Ahead of launch, a free prep event, the “Fine Art Collector Program,” runs through July 13 — logging in plus clearing one heist nets up to GTA$1.5M and an armored limo. However, the heist’s actual payout stays unconfirmed until launch.",
+    ],
+    fullContentEn: `# GTA Online’s New Heist “The Kortz Center Heist” Arrives July 14 — the First Big Job in ~6 Years: Steal Masterpieces from a Museum
+
+Rockstar has officially announced that GTA Online’s new heist mission, “The Kortz Center Heist,” will be released on July 14. The setting is the Kortz Center, a museum in Los Santos. As the first all-new major heist since Cayo Perico — roughly six years — it’s seen as one of the last big updates before GTA6’s November 19 launch. GTA6 FEED has summarized what it is and the key points for preparing.
+
+This article is based on information as of July 10, 2026.
+
+---
+
+## What Kind of Heist Is It
+
+It releases July 14 on all platforms (PS5, PS4, Xbox Series X|S, Xbox One, PC). The target is the Kortz Center, a museum perched on the hills of Pacific Bluffs. It’s a landmark that has existed on the map since 2013 but was never enterable, and it’s also where a tense standoff took place near the end of GTA5’s story. This is a multi-stage heist to steal the masterpieces held inside.
+
+![The crew flees the Kortz Center museum with the loot, shaking off pursuing helicopters and police](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.jpg)
+
+The flow is: scope out the facility, choose your method of entry, infiltrate, and escape with the loot. This is the same structure as the Cayo Perico and Diamond Casino heists — both among the most-replayed, most-popular content in GTA Online. You can take it on solo or with a crew of up to four. The more teammates, the easier it is to carry out more loot; solo is harder but the per-person cut is larger (this, too, mirrors Cayo Perico).
+
+---
+
+## What the Host Needs: a Mansion and an Art Studio
+
+To host this heist as the leader, you’ll need a mansion property and the newly added Art Studio expansion.
+
+![The forger who lives in the Art Studio, making the fakes (forgeries) used to swap out the stolen originals](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.jpg)
+
+A forger lives in the Art Studio, producing the fakes (forgeries) used to swap for the stolen originals. It doubles as your planning hub: the more prep you do, the more equipment and skills are stocked, and at the finale you assemble your loadout from them. During the heist, Raf acts as your contact, sharing recon and key intel, and the mansion’s AI assistant also helps.
+
+The primary target painting you steal can be cashed out by selling it to the fence Mr. Faber’s clients, or you can keep it and hang it in your own mansion. On top of that, the paintings available to steal rotate — three new ones each week — giving you a reason to replay.
+
+![An example of a stealable painting. Stolen originals can be sold to a fence for cash or kept and displayed in your mansion](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.jpg)
+
+---
+
+## The New Car and Other Additions
+
+The update also adds new vehicles. The headliner, the Grotti Veleno GT, can be claimed for free at the Vinewood Car Club showroom from July 14 if you’re a GTA+ member. General sale is a week later, so members get it early. Beyond that, new supercars and vehicles compatible with Drift and Hao’s Special Works are added, along with a planned update to the Rockstar Mission Creator and more.
+
+![The headline new car, the Grotti Veleno GT. GTA+ members can claim it free from July 14, with general sale a week later](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.jpg)
+
+---
+
+## Prep: the Fine Art Collector Program (Through July 13)
+
+Ahead of the release, a free prep event, the “Fine Art Collector Program,” is running through July 13. The main rewards you can earn are as follows.
+
+- Log in and play GTA Online by July 13: GTA$500K and the armored limousine Benefactor Turreted Limo (fitted with a roof-mounted machine gun).
+- Clear any one heist during the period: an additional GTA$1M and the NOOSE Special Forces outfit. That brings the total to up to GTA$1.5M.
+- Mansion owners who play by July 13: earn the higher “Elitist” status, which grants a free Annihilator Stealth helicopter, a GTA$1M discount on the Art Studio expansion, a Kortz Center statue, and the chance to steal high-value paintings.
+- GTA+ members: a GTA$2M discount on a Prix Luxury Real Estate mansion.
+
+The two-tier rewards above are granted within 72 hours of meeting the conditions, and the “Elitist” portion can be claimed after the heist launches.
+
+---
+
+## Payouts Are Still Unconfirmed
+
+One caveat worth noting. The payout you earn from the heist proper has not been officially revealed and won’t be until the July 14 launch. Because it shares the same multi-stage structure as the Cayo Perico and casino heists, it’s expected to be roughly on par with those (around GTA$1M to several million per run), but that’s pure speculation. Any specific figures circulating before launch should be treated as estimates.
+
+---
+
+## Where It Sits, and What to Do Now
+
+What draws attention to this heist is its scale and its timing. As the first all-new major heist since Cayo Perico in December 2020 — about six years — the intervening GTA Online has mostly been drip-fed vehicles and business tweaks. With GTA6’s launch (November 19) approaching, this looks to be one of the last big updates capping off the online mode, and many take it as a fitting finale. The press-release headline “The Next Big Score,” evoking GTA5’s endgame heist “The Big Score,” has also become a talking point.
+
+As for practical prep, first knock out the prep event. Logging in and clearing one heist nets up to GTA$1.5M and an armored limo essentially for free, so there’s no downside to getting it done by July 13. On the other hand, if you want to host the heist yourself, a mansion and Art Studio are required — a considerable outlay, and the heist’s payout is still unconfirmed. If you plan to run it often, it’s well worth the investment; if you only play occasionally, the safe move is to hold off and decide after launch, once the actual earnings are known.`,
+  },
+  {
     id: 35,
     title:
       "GTA6の公式画像に「もっと無駄なものを買え」——Ultimate Edition宣伝カットの隠しメッセージが話題",
