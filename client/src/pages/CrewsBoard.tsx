@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Plus, X, Send, Loader2, Search, Shield } from 'lucide-react';
 import Header from '@/components/Header';
-import BoardTabs from '@/components/BoardTabs';
+import RecruitTabs from '@/components/RecruitTabs';
 import CrewCard from '@/components/CrewCard';
 import { toast } from 'sonner';
 import { listPublishedCrews, createCrew, CREW_GENRES, type Crew } from '@/lib/crews';
@@ -114,8 +114,8 @@ export default function CrewsBoard() {
       <Header />
 
       <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
-        {/* 共通ジャンルタブ帯 */}
-        <BoardTabs active="crews" />
+        {/* 募集掲示板グループの共通タブ帯 */}
+        <RecruitTabs active="crews" />
 
         {/* Hero */}
         <div className="flex items-end justify-between gap-5 flex-wrap mb-2">

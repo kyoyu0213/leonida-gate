@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Plus, X, Send, Loader2, Search, Users } from 'lucide-react';
 import Header from '@/components/Header';
-import BoardTabs from '@/components/BoardTabs';
+import RecruitTabs from '@/components/RecruitTabs';
 import FriendCard from '@/components/FriendCard';
 import { toast } from 'sonner';
 import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, type Friend } from '@/lib/friends';
@@ -111,8 +111,8 @@ export default function FriendsBoard() {
       <Header />
 
       <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
-        {/* 共通ジャンルタブ帯 */}
-        <BoardTabs active="friends" />
+        {/* 募集掲示板グループの共通タブ帯 */}
+        <RecruitTabs active="friends" />
 
         {/* Hero */}
         <div className="flex items-end justify-between gap-5 flex-wrap mb-2">

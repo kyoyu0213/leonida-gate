@@ -1,31 +1,26 @@
 import { BOARDS, boardColor, type Accent } from '@/lib/boards';
 import { useT } from '@/lib/i18n';
 
-// /board 配下の共通ジャンルタブ帯。既存のスレッド型板（BOARDS）＋カード型の
-// フレンド募集・クルー募集を1本の帯にまとめ、全 /board/* ページで使い回す。
+// 「掲示板」グループ（スレッド式の BOARDS）のジャンルタブ帯。
+// カード式の募集板（/servers・/board/friends・/board/crews）は RecruitTabs 側で扱う。
 interface TabItem {
   slug: string;
   href: string;
   accent: Accent;
 }
 
-// 既存タブの並びの後ろに「フレンド募集」「クルー募集」を追加する。
-const EXTRA_TABS: TabItem[] = [
-  { slug: 'friends', href: '/board/friends', accent: 'cyan' },
-  { slug: 'crews', href: '/board/crews', accent: 'orange' },
-];
-
 interface BoardTabsProps {
-  /** アクティブなタブの slug（'gtarp' / 'friends' / 'crews' など）。 */
+  /** アクティブなタブの slug（'gtarp' / 'gta6' など）。 */
   active: string;
 }
 
 export default function BoardTabs({ active }: BoardTabsProps) {
   const tr = useT();
-  const tabs: TabItem[] = [
-    ...BOARDS.map((b) => ({ slug: b.slug, href: `/board/${b.slug}`, accent: b.accent })),
-    ...EXTRA_TABS,
-  ];
+  const tabs: TabItem[] = BOARDS.map((b) => ({
+    slug: b.slug,
+    href: `/board/${b.slug}`,
+    accent: b.accent,
+  }));
 
   // 横スクロールはさせず、収まらない分は折り返す（タブが増えても2行程度に収まる）。
   return (

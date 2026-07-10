@@ -46,7 +46,7 @@ type Dict = Record<string, string>;
 const JA: Dict = {
   'nav.home': 'ホーム',
   'nav.news': 'GTA6最新情報',
-  'nav.servers': 'FiveMサーバー募集',
+  'nav.servers': '募集掲示板',
   'nav.board': '掲示板',
   'nav.fivemgtarp': 'FiveM/GTARP',
   'nav.contact': 'お問い合わせ',
@@ -361,6 +361,8 @@ const JA: Dict = {
   'board.fivem-dev': 'FiveM開発者交流',
   'board.friends': 'フレンド募集',
   'board.crews': 'クルー募集',
+  // 募集掲示板グループのタブ名（/servers はカード式の募集板。スレッド式 board.gtarp-servers とは別物）
+  'recruit.servers': 'FiveMサーバー募集',
   // フレンド募集（/board/friends）
   'fr.heading': 'フレンド募集掲示板',
   'fr.lead': 'GTA6/GTAオンラインで一緒に遊ぶフレンドを探そう。プレイスタイルや活動時間で相手を見つけて、気軽に募集できます。どなたでも掲載できます。',
@@ -552,7 +554,7 @@ const JA: Dict = {
 const EN: Dict = {
   'nav.home': 'Home',
   'nav.news': 'GTA6 News',
-  'nav.servers': 'FiveM Servers',
+  'nav.servers': 'Recruit Boards',
   'nav.board': 'Board',
   'nav.fivemgtarp': 'FiveM/GTARP',
   'nav.contact': 'Contact',
@@ -863,6 +865,7 @@ const EN: Dict = {
   'board.gtarp': 'Roleplay Info',
   'board.friends': 'Find Friends',
   'board.crews': 'Find a Crew',
+  'recruit.servers': 'FiveM Servers',
   // Find Friends (/board/friends)
   'fr.heading': 'Find Friends Board',
   'fr.lead': 'Find friends to play GTA6 / GTA Online with. Match by play style and active hours, and post your listing freely. Anyone can post.',

@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { Search, Menu, X } from 'lucide-react';
 import LangToggle from '@/components/LangToggle';
+import { isRecruitPath, isThreadBoardPath } from '@/lib/boards';
 import { useT } from '@/lib/i18n';
 
 const NAV = [
   { key: 'nav.home', href: '/', match: (l: string) => l === '/' },
   { key: 'nav.news', href: '/news', match: (l: string) => l.startsWith('/news') },
-  { key: 'nav.servers', href: '/servers', match: (l: string) => l.startsWith('/servers') },
-  { key: 'nav.board', href: '/board', match: (l: string) => l.startsWith('/board') || l.startsWith('/thread') },
+  { key: 'nav.servers', href: '/servers', match: isRecruitPath },
+  { key: 'nav.board', href: '/board', match: isThreadBoardPath },
   { key: 'nav.fivemgtarp', href: '/fivem-gtarp', match: (l: string) => l.startsWith('/fivem-gtarp') },
   { key: 'nav.contact', href: '/contact', match: (l: string) => l.startsWith('/contact') },
 ];

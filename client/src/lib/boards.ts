@@ -52,6 +52,18 @@ export const BOARDS: BoardConfig[] = [
 export const getBoard = (slug?: string): BoardConfig | undefined =>
   BOARDS.find((b) => b.slug === slug);
 
+// ナビのグループ判定。カード式の募集板は /board 配下にもあるため、
+// パスの前方一致だけでは「掲示板」と「募集掲示板」を区別できない。
+const RECRUIT_ROOTS = ['/servers', '/board/friends', '/board/crews'];
+
+/** 「募集掲示板」グループ（/servers・/board/friends・/board/crews とその詳細ページ）か。 */
+export const isRecruitPath = (loc: string): boolean =>
+  RECRUIT_ROOTS.some((p) => loc === p || loc.startsWith(`${p}/`));
+
+/** 「掲示板」グループ（スレッド式の5板）か。募集板は除外する。 */
+export const isThreadBoardPath = (loc: string): boolean =>
+  !isRecruitPath(loc) && (loc === '/board' || loc.startsWith('/board/') || loc.startsWith('/thread'));
+
 // 管理者判定・申請制スレの作成はサーバー側で認可する（client/src/lib/admin.ts）。
 // 合言葉はクライアント／バンドルに一切置かない。
 

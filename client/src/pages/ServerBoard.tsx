@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Plus, X, Send, Server as ServerIcon, Loader2, Search, ImagePlus } from 'lucide-react';
 import Header from '@/components/Header';
+import RecruitTabs from '@/components/RecruitTabs';
 import ServerCard from '@/components/ServerCard';
 import { toast } from 'sonner';
 import { type FivemServer } from '@/lib/supabase';
@@ -149,6 +150,9 @@ export default function ServerBoard() {
       <Header />
 
       <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-16 relative z-10">
+        {/* 募集掲示板グループの共通タブ帯 */}
+        <RecruitTabs active="servers" />
+
         {/* Hero */}
         <div className="flex items-end justify-between gap-5 flex-wrap mb-2">
           <div>
