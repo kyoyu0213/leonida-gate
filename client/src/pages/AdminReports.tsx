@@ -23,6 +23,12 @@ import {
   deleteApplication,
   listFivemServers,
   deleteFivemServer,
+  listFriends,
+  listCrews,
+  deleteFriend,
+  deleteCrew,
+  setFriendStatus,
+  setCrewStatus,
   listAdminThreads,
   deleteThread,
   getPostMeta,
@@ -43,6 +49,8 @@ import {
   type ContactRow,
   type ApplicationRow,
   type FivemServerRow,
+  type FriendAdminRow,
+  type CrewAdminRow,
   type AdminThreadRow,
   type PostMeta,
   type AdminPostRow,
@@ -971,6 +979,287 @@ function ServersPanel() {
   );
 }
 
+// 募集掲示板（フレンド募集／クルー募集）のカード管理。
+// 公開/非表示の切替は friends|crews.status を直接更新する（一覧の表示可否）。
+// 削除は合成スレごと消えるため、返信・通報・投票も CASCADE で削除される。
+function RecruitPanel() {
+  const [kind, setKind] = useState<'friends' | 'crews'>('friends');
+  const [friends, setFriends] = useState<FriendAdminRow[]>([]);
+  const [crews, setCrews] = useState<CrewAdminRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  const load = async () => {
+    setLoading(true);
+    if (kind === 'friends') {
+      const { data, error } = await listFriends();
+      if (error) toast.error(error);
+      setFriends(data);
+    } else {
+      const { data, error } = await listCrews();
+      if (error) toast.error(error);
+      setCrews(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [kind]);
+
+  const act = async (id: string, fn: () => Promise<{ error?: string }>, msg: string) => {
+    setBusyId(id);
+    const { error } = await fn();
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(msg);
+    load();
+  };
+
+  const isUrl = (s: string) => /^https?:\/\//i.test(s);
+
+  // 表示用に friends / crews を共通の形へ正規化する。
+  const rows =
+    kind === 'friends'
+      ? friends.map((f) => ({
+          id: f.id,
+          badge: f.play_style,
+          title: f.title,
+          sub: null as string | null,
+          body: f.body,
+          contact: f.contact,
+          thread_id: f.thread_id,
+          status: f.status,
+          created_at: f.created_at,
+          ip: f.ip,
+          ua: f.ua,
+          anon_id: f.anon_id,
+          ip_subnet: f.ip_subnet,
+          href: `/board/friends/${f.id}`,
+          fields: [
+            ['プラットフォーム', f.platform],
+            ['ボイスチャット', f.voice_chat],
+            ['活動時間帯', f.active_time],
+            ['年齢層', f.age_range],
+          ] as Array<[string, string | null]>,
+        }))
+      : crews.map((c) => ({
+          id: c.id,
+          badge: c.genre,
+          title: c.title,
+          sub: c.crew_name as string | null,
+          body: c.body,
+          contact: c.contact,
+          thread_id: c.thread_id,
+          status: c.status,
+          created_at: c.created_at,
+          ip: c.ip,
+          ua: c.ua,
+          anon_id: c.anon_id,
+          ip_subnet: c.ip_subnet,
+          href: `/board/crews/${c.id}`,
+          fields: [
+            ['プラットフォーム', c.platform],
+            ['規模・募集人数', c.size],
+            ['参加条件', c.requirements],
+            ['活動時間帯', c.active_time],
+          ] as Array<[string, string | null]>,
+        }));
+
+  const accent = kind === 'friends' ? '#22d3ee' : '#ff8a3d';
+  const from = kind === 'friends' ? 'フレンド募集から' : 'クルー募集から';
+
+  return (
+    <div>
+      {/* フレンド / クルー 切替 */}
+      <div className="flex gap-2 mb-4">
+        {(['friends', 'crews'] as const).map((k) => {
+          const on = kind === k;
+          const c = k === 'friends' ? '#22d3ee' : '#ff8a3d';
+          return (
+            <button
+              key={k}
+              onClick={() => {
+                setKind(k);
+                setExpanded(null);
+              }}
+              className="px-4 py-2 rounded-full text-[13px] font-extrabold transition-colors"
+              style={{
+                border: `1px solid ${on ? c : 'rgba(255,255,255,.1)'}`,
+                background: on ? `${c}1f` : 'rgba(255,255,255,.05)',
+                color: on ? '#fff' : 'rgba(244,238,248,.65)',
+              }}
+            >
+              {k === 'friends' ? 'フレンド募集' : 'クルー募集'}
+            </button>
+          );
+        })}
+      </div>
+
+      {loading ? (
+        <div className="text-center py-16 text-white/50">
+          <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+        </div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-16 text-white/50">掲載中の募集はありません</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {rows.map((r) => {
+            const busy = busyId === r.id;
+            const hidden = r.status !== 'published';
+            return (
+              <div
+                key={r.id}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4"
+                style={{ borderColor: hidden ? 'rgba(255,255,255,.06)' : undefined, opacity: hidden ? 0.75 : 1 }}
+              >
+                <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
+                  <span
+                    className="font-extrabold rounded px-2 py-0.5"
+                    style={{
+                      color: hidden ? '#ff8fc0' : '#3de0a0',
+                      border: `1px solid ${hidden ? '#ff2d95' : '#3de0a0'}55`,
+                    }}
+                  >
+                    {hidden ? '非表示' : '公開中'}
+                  </span>
+                  {r.badge && (
+                    <span className="font-extrabold rounded px-2 py-0.5" style={{ color: accent, border: `1px solid ${accent}66` }}>
+                      {r.badge}
+                    </span>
+                  )}
+                  {r.sub && <span className="text-white/55 font-bold">{r.sub}</span>}
+                  <span className="font-bold text-white text-[14px]">{r.title}</span>
+                  <span className="ml-auto text-white/40">{formatPostDate(r.created_at)}</span>
+                </div>
+
+                <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0 max-h-40 overflow-auto">
+                  {r.body}
+                </p>
+
+                <div className="text-[12px] text-white/60 mt-2 flex flex-col gap-1">
+                  {r.fields
+                    .filter(([, v]) => v)
+                    .map(([k, v]) => (
+                      <span key={k} className="break-all">
+                        <span className="text-white/40">{k}: </span>
+                        {v}
+                      </span>
+                    ))}
+                  {r.contact && (
+                    <span className="break-all">
+                      <span className="text-white/40">連絡先: </span>
+                      {isUrl(r.contact) ? (
+                        <a href={r.contact} target="_blank" rel="noopener noreferrer" className="text-[#22d3ee] hover:underline">
+                          {r.contact}
+                        </a>
+                      ) : (
+                        r.contact
+                      )}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap justify-end gap-2 mt-3">
+                  <a
+                    href={r.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+                  >
+                    <ExternalLink size={13} /> カードを見る
+                  </a>
+                  {r.thread_id && (
+                    <a
+                      href={`/thread/${r.thread_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+                    >
+                      <ExternalLink size={13} /> 返信スレ
+                    </a>
+                  )}
+                  <button
+                    onClick={() => setExpanded((cur) => (cur === r.id ? null : r.id))}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10"
+                  >
+                    <Info size={13} /> {expanded === r.id ? '詳細を閉じる' : '詳細'}
+                  </button>
+                  <button
+                    disabled={busy}
+                    onClick={() => {
+                      const next = hidden ? 'published' : 'hidden';
+                      const fn =
+                        kind === 'friends'
+                          ? () => setFriendStatus(r.id, next)
+                          : () => setCrewStatus(r.id, next);
+                      act(r.id, fn, hidden ? '再表示しました' : '非表示にしました');
+                    }}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ffcf8a] border border-[#ffcf8a]/30 rounded-lg px-3 py-1.5 hover:bg-[#ffcf8a]/10 disabled:opacity-50"
+                  >
+                    {hidden ? <Eye size={13} /> : <EyeOff size={13} />} {hidden ? '再表示' : '非表示'}
+                  </button>
+                  <button
+                    disabled={busy}
+                    onClick={() => {
+                      if (!confirm(`「${r.title}」を削除します。返信・通報・投票もまとめて消えます。よろしいですか？`)) return;
+                      const fn = kind === 'friends' ? () => deleteFriend(r.id) : () => deleteCrew(r.id);
+                      act(r.id, fn, '削除しました');
+                    }}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+                  >
+                    {busy ? <Loader2 size={13} className="animate-spin" /> : <Trash2 size={13} />} 削除
+                  </button>
+                </div>
+
+                {expanded === r.id && (
+                  <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 text-[12px] flex flex-col gap-1.5">
+                    <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPアドレス</span><span className="text-white/80 break-all">{r.ip ?? '—'}</span></div>
+                    <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">IPサブネット</span><span className="text-white/80 break-all">{r.ip_subnet ?? '—'}</span></div>
+                    <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">匿名Cookie ID</span><span className="text-white/80 break-all">{r.anon_id ?? '—'}</span></div>
+                    <div className="flex gap-2"><span className="text-white/40 w-28 flex-none">User-Agent</span><span className="text-white/80 break-all">{r.ua ?? '—'}</span></div>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {r.ip && (
+                        <button
+                          onClick={async () => {
+                            if (!confirm(`IP ${r.ip} をブロックします。よろしいですか？`)) return;
+                            const { error } = await addBlock('ip', r.ip!, from);
+                            toast[error ? 'error' : 'success'](error ?? 'このIPをブロックしました');
+                          }}
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                        >
+                          <Ban size={12} /> このIPをブロック
+                        </button>
+                      )}
+                      {r.anon_id && (
+                        <button
+                          onClick={async () => {
+                            if (!confirm('この匿名Cookie IDをブロックします。よろしいですか？')) return;
+                            const { error } = await addBlock('anon', r.anon_id!, from);
+                            toast[error ? 'error' : 'success'](error ?? 'このCookieをブロックしました');
+                          }}
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-2.5 py-1 hover:bg-[#ff2d95]/10"
+                        >
+                          <Ban size={12} /> このCookieをブロック
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function PostsPanel() {
   const [rows, setRows] = useState<AdminPostRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1685,7 +1974,7 @@ function SearchLogsPanel() {
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'news' | 'blocks'
+    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'recruit' | 'news' | 'blocks'
   >('newspost');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
@@ -1699,6 +1988,7 @@ export default function AdminReports() {
     contacts: 'お問い合わせ',
     applications: '掲載申請',
     servers: 'サーバー募集',
+    recruit: '募集掲示板',
     news: '記事コメント',
     blocks: 'ブロック',
   } as const;
@@ -1725,7 +2015,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['newspost', 'news', 'servers', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
+              {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -1760,6 +2050,8 @@ export default function AdminReports() {
               <ApplicationsPanel />
             ) : tab === 'servers' ? (
               <ServersPanel />
+            ) : tab === 'recruit' ? (
+              <RecruitPanel />
             ) : tab === 'news' ? (
               <NewsCommentsPanel />
             ) : (

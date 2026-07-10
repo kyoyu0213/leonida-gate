@@ -264,6 +264,98 @@ export async function deletePost(postId: string) {
   return { error: error ? adminErrorMessage(error.message) : undefined };
 }
 
+// ---- 募集掲示板（フレンド／クルー）の管理 ---------------------------------
+export interface FriendAdminRow {
+  id: string;
+  title: string;
+  platform: string | null;
+  play_style: string | null;
+  voice_chat: string | null;
+  active_time: string | null;
+  age_range: string | null;
+  body: string;
+  contact: string | null;
+  thread_id: string | null;
+  status: string;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
+  created_at: string;
+}
+
+export interface CrewAdminRow {
+  id: string;
+  crew_name: string;
+  title: string;
+  platform: string | null;
+  genre: string | null;
+  size: string | null;
+  requirements: string | null;
+  active_time: string | null;
+  body: string;
+  contact: string | null;
+  thread_id: string | null;
+  status: string;
+  ip: string | null;
+  ua: string | null;
+  anon_id: string | null;
+  ip_subnet: string | null;
+  created_at: string;
+}
+
+export async function listFriends(): Promise<{ data: FriendAdminRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_friends', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as FriendAdminRow[]) ?? [] };
+}
+
+export async function listCrews(): Promise<{ data: CrewAdminRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_list_crews', { p_token: adminToken });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  return { data: (data as CrewAdminRow[]) ?? [] };
+}
+
+/** カードを削除（合成スレ→CASCADE で返信・通報・投票も消える）。 */
+export async function deleteFriend(id: string) {
+  const { error } = await supabase.rpc('admin_delete_friend', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function deleteCrew(id: string) {
+  const { error } = await supabase.rpc('admin_delete_crew', { p_token: adminToken, p_id: id });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+/** カードの公開ステータスを切り替える（'published' | 'hidden'）。 */
+export async function setFriendStatus(id: string, status: 'published' | 'hidden') {
+  const { error } = await supabase.rpc('admin_set_friend_status', {
+    p_token: adminToken,
+    p_id: id,
+    p_status: status,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
+export async function setCrewStatus(id: string, status: 'published' | 'hidden') {
+  const { error } = await supabase.rpc('admin_set_crew_status', {
+    p_token: adminToken,
+    p_id: id,
+    p_status: status,
+  });
+  if (error) handleAuthError(error.message);
+  return { error: error ? adminErrorMessage(error.message) : undefined };
+}
+
 // フレンド募集カードを合成スレ経由で削除（通報→カード削除用）。CASCADE で post/通報/投票も消える。
 export async function deleteFriendByThread(threadId: string) {
   const { error } = await supabase.rpc('admin_delete_friend_by_thread', {
