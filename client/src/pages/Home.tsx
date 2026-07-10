@@ -473,7 +473,7 @@ export default function Home() {
                   <a
                     key={note.slug}
                     href={`${prefix}/fivem-gtarp/field-notes/${note.category}/${note.slug}`}
-                    className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.04] transition-all hover:-translate-y-0.5"
+                    className="group flex flex-col rounded-2xl overflow-hidden border border-black/10 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <div className="relative overflow-hidden" style={{ aspectRatio: '16/10', background: '#160a22' }}>
                       <img
@@ -495,11 +495,11 @@ export default function Home() {
                       <span className="absolute top-3 right-3 text-2xl">{note.icon}</span>
                     </div>
                     <div className="p-5 flex flex-col gap-2.5 flex-1">
-                      <span className="text-white/45 text-[11.5px] font-semibold vice-num">{note.date}</span>
-                      <h3 className="text-[15px] font-extrabold text-white leading-[1.5] m-0 line-clamp-3">
+                      <span className="text-black/45 text-[11.5px] font-semibold vice-num">{note.date}</span>
+                      <h3 className="text-[15px] font-extrabold text-[#15091c] leading-[1.5] m-0 line-clamp-3">
                         {lang === 'en' ? note.titleEn : note.title}
                       </h3>
-                      <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0 line-clamp-3">
+                      <p className="text-[13px] text-black/55 leading-relaxed flex-1 m-0 line-clamp-3">
                         {lang === 'en' ? note.excerptEn : note.excerpt}
                       </p>
                       <span

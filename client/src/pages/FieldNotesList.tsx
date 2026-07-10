@@ -108,9 +108,9 @@ export default function FieldNotesList() {
               <a
                 key={n.slug}
                 href={`${prefix}/fivem-gtarp/field-notes/${n.category}/${n.slug}`}
-                className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.04] transition-all hover:-translate-y-0.5"
+                className="group flex flex-col rounded-2xl overflow-hidden border border-black/10 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${cat.color}99`)}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(0,0,0,.10)')}
               >
                 <div className="relative overflow-hidden" style={{ aspectRatio: '16/10', background: '#160a22' }}>
                   <img
@@ -132,14 +132,14 @@ export default function FieldNotesList() {
                   <span className="absolute top-3 right-3 text-2xl">{n.icon}</span>
                 </div>
                 <div className="p-5 flex flex-col gap-2.5 flex-1">
-                  <div className="flex items-center gap-2 text-white/45 text-[11.5px] font-semibold">
+                  <div className="flex items-center gap-2 text-black/45 text-[11.5px] font-semibold">
                     <Calendar size={13} />
                     <span className="vice-num">{n.date}</span>
                   </div>
-                  <h2 className="text-[15px] font-extrabold text-white leading-[1.5] m-0 line-clamp-3">
+                  <h2 className="text-[15px] font-extrabold text-[#15091c] leading-[1.5] m-0 line-clamp-3">
                     {isEn ? n.titleEn : n.title}
                   </h2>
-                  <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0 line-clamp-3">
+                  <p className="text-[13px] text-black/55 leading-relaxed flex-1 m-0 line-clamp-3">
                     {isEn ? n.excerptEn : n.excerpt}
                   </p>
                   <span

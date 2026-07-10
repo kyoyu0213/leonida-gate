@@ -49,22 +49,8 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
   return (
     <a
       href={`/news/${article.id}`}
-      className="group flex flex-col h-full rounded-2xl overflow-hidden border hover:-translate-y-[3px] transition-all"
-      style={{
-        // サイト全体のダーク基調に合わせた暗色カード。
-        // 背景をページ地色より少し明るくし、枠線＋影でカード同士の境界を出す。
-        background: '#1a0f28',
-        borderColor: 'rgba(255,255,255,.10)',
-        boxShadow: '0 6px 20px rgba(0,0,0,.35)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${color}80`;
-        e.currentTarget.style.boxShadow = `0 10px 28px rgba(0,0,0,.45), 0 0 18px ${color}33`;
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(255,255,255,.10)';
-        e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,.35)';
-      }}
+      className="group flex flex-col h-full rounded-2xl overflow-hidden border border-black/10 hover:-translate-y-[3px] transition-all shadow-sm hover:shadow-md"
+      style={{ background: '#ffffff' }}
     >
       <div
         className="relative overflow-hidden"
@@ -109,10 +95,10 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
         {!article.image && <span className="absolute top-3 right-3 text-2xl">{article.icon}</span>}
       </div>
       <div className="p-[14px] pt-3.5 flex flex-col gap-2.5 flex-1">
-        <h3 className="text-[15px] font-bold leading-[1.5] m-0 line-clamp-3 min-h-[68px] text-[#f5f7ff]">
+        <h3 className="text-[15px] font-bold leading-[1.5] m-0 line-clamp-3 min-h-[68px] text-[#15091c]">
           {title}
         </h3>
-        <div className="flex items-center gap-3 mt-auto text-white/50 text-[11.5px] font-semibold">
+        <div className="flex items-center gap-3 mt-auto text-black/45 text-[11.5px] font-semibold">
           <span className="vice-num">{article.date}</span>
           {commentCount > 0 && (
             <span className="inline-flex items-center gap-1 ml-auto text-[#ff2d95]">
