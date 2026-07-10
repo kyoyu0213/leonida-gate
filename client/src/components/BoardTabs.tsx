@@ -27,8 +27,9 @@ export default function BoardTabs({ active }: BoardTabsProps) {
     ...EXTRA_TABS,
   ];
 
+  // 横スクロールはさせず、収まらない分は折り返す（タブが増えても2行程度に収まる）。
   return (
-    <div className="flex flex-col sm:flex-row gap-2 sm:overflow-x-auto pb-2 mb-5">
+    <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-5">
       {tabs.map((t) => {
         const on = t.slug === active;
         const c = boardColor(t.accent);
@@ -36,14 +37,14 @@ export default function BoardTabs({ active }: BoardTabsProps) {
           <a
             key={t.slug}
             href={t.href}
-            className="w-full sm:w-auto sm:flex-none flex items-center gap-2 px-5 py-2.5 rounded-[13px] text-sm font-extrabold whitespace-nowrap transition-colors"
+            className="flex-none inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-[12px] sm:text-[13px] font-extrabold whitespace-nowrap transition-colors"
             style={{
               border: `1px solid ${on ? c : 'rgba(255,255,255,.1)'}`,
               background: on ? `${c}1f` : 'rgba(255,255,255,.05)',
               color: on ? '#fff' : 'rgba(244,238,248,.65)',
             }}
           >
-            <span className="w-2 h-2 rounded-full flex-none" style={{ background: c, boxShadow: `0 0 7px ${c}` }} />
+            <span className="w-1.5 h-1.5 rounded-full flex-none" style={{ background: c, boxShadow: `0 0 6px ${c}` }} />
             {tr(`board.${t.slug}`)}
           </a>
         );
