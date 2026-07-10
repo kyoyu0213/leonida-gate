@@ -105,6 +105,171 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 37,
+    title:
+      "GTA6の予約詐欺・偽ベータに注意——公式そっくりの偽サイトが世界で拡散、カスペルスキーが警告",
+    displayTitle:
+      "GTA6の予約詐欺・偽ベータに注意\n公式そっくりの偽サイトが世界で拡散、カスペルスキーが警告",
+    description:
+      "GTA6の予約開始(6月25日)以降、その人気に便乗したサイバー詐欺が世界で急増している。公式そっくりの偽予約サイトや、「ベータ版」を装うマルウェア配布が、個人情報やカード情報、アカウントを狙う。詐欺サイトは多言語で作られており、日本のユーザーも標的になりうる。手口と対策を整理した。",
+    icon: "⚠️",
+    image: "/images/news/sagisaito/eyecatch.png",
+    category: "topic",
+    date: "2026-07-10",
+    publishedAt: "2026-07-10 22:30",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.kaspersky.com/",
+    relatedArticles: [19, 28, 25],
+    aiSummary: [
+      "GTA6の予約が始まった6月25日以降、その人気に便乗したサイバー詐欺が世界で急増している。セキュリティ企業カスペルスキーが警告を発しており、偽ページは多言語で作られているため、日本語話者も標的になりうる。",
+      "主な手口は三つ。Rockstar公式や正規小売そっくりの偽予約サイトでカード情報や金銭をだまし取るもの、「ベータ版」「早期アクセス」「リーク版」を装ってマルウェアを配布するもの、そしてゲーム名に似せたトークンで暗号資産を狙うものだ。「残りわずか」などと焦らせるのが共通の特徴。",
+      "最も確実な見分け方は「GTA6に公開ベータや早期アクセスは存在しない」という事実。Rockstarが公表しているのは11月19日発売と6月25日予約開始だけで、それらをうたう時点で詐欺である。予約は公式サイト(rockstargames.com)と正規ストアに限り、URLを確認し、支払い情報を安易に入力しないこと。",
+    ],
+    fullContent: `# GTA6の予約詐欺・偽ベータに注意——公式そっくりの偽サイトが世界で拡散、カスペルスキーが警告
+
+GTA6の予約開始(6月25日)以降、その人気に便乗したサイバー詐欺が世界で急増している。セキュリティ企業のカスペルスキーが警告を発しており、公式そっくりの偽予約サイトや、「ベータ版」を装うマルウェア配布などが、個人情報やカード情報、アカウントを狙っている。詐欺サイトは多言語で作られており、日本のユーザーが標的になる可能性も十分にある。GTA6 FEEDが、手口と対策を整理した。
+
+本記事は2026年7月10日時点の情報にもとづく。
+
+なお、本記事に添えた画像は、公式さながらの見た目を模倣した偽の予約サイトの例である（画像提供：カスペルスキー）。一見して本物と区別するのは難しい。
+
+---
+
+## いま何が起きているのか
+
+カスペルスキーによれば、GTA6の予約が始まった直後から、サイバー犯罪者がこの熱狂を餌にした「幅広い詐欺の手口」を展開し始めているという。同社のOlga Altukhovaは、こうした詐欺は期待が高まる時期を狙って周到に仕掛けられ、興奮によって利用者の警戒心が下がり、偽の緊急感が生まれやすいことを突いてくる、と指摘している。
+
+![公式サイトそっくりに作られた偽の予約ページの例。トレーラーや宣伝用アートまで流用し、「Pre-order Now」ボタンで登録フォームへ誘導する](/images/news/sagisaito/rd7uUoPxLGWds5RBKSztLW-678-80.png.webp)
+
+*公式サイトそっくりに作られた偽の予約ページの例。「Pre-order Now」ボタンで登録フォームへ誘導する（画像提供：カスペルスキー）*
+
+確認された偽ページは複数の言語で作られており、世界中の利用者を無差別に狙っていることがうかがえる。英語圏だけの問題ではなく、日本語話者も対象に含まれうるという前提で身構えておきたい。
+
+---
+
+## 主な手口
+
+報告されている詐欺は、大きく三つに分けられる。
+
+1. 偽の予約サイト。最も多いのがこの手口だ。Rockstar公式やPlayStation Store、正規の小売店そっくりのデザインで作られ、本物のトレーラーや宣伝用アートまで流用している。「今すぐ予約」ボタンから登録フォームへ誘導し、氏名・メール・住所・電話番号・支払い情報などを入力させる。だがゲームが届くことはなく、カード情報を抜かれたり、架空の予約で金銭をだまし取られたりする。偽の星5レビューや年齢レーティング、予約価格の表示を並べて、本物らしく見せかける例も確認されている。
+
+2. 偽のベータ版・リーク配布。「GTA6ベータ版」「早期アクセス」「リーク版」などと称してダウンロードを促す手口だ。SNSや動画プラットフォームで「安全にダウンロードする方法」と題した動画を拡散し、コメント欄で「これは本物だ」と装って信用させる。ダウンロードしたファイルを実行するとマルウェアに感染し、データの窃取、アカウントの乗っ取り、ブラウザに保存したパスワードや暗号資産ウォレット情報の流出、さらには端末の遠隔操作にまでつながる恐れがある。「GTA 6 Beta」といった偽のAndroidアプリ(APK)も出回っている。
+
+![公式サイトの見た目を模倣し、ダウンロードを促す偽サイトの例](/images/news/sagisaito/8NL5KtvjaVfMUtFMHrA2KW-678-80.png.webp)
+
+*公式サイトの見た目を模倣し、ダウンロードを促す偽サイトの例（画像提供：カスペルスキー）*
+
+3. 暗号資産をめぐる詐欺。ゲームのタイトルに似せた名前のトークンを、ロゴやビジュアルごと模倣したサイトで宣伝する手口だ。こうした素性の怪しいページに関わると、暗号資産を失う結果になりうる。
+
+これらの偽サイトやファイルの多くはAIを使って本物らしく作り込まれており、「残りわずか」「今日まで」といった文言で焦りを煽るのが共通の特徴だ。
+
+---
+
+## 最重要:GTA6の公開ベータは存在しない
+
+詐欺を見抜くうえで、最も確実な物差しがこれだ。Rockstarは、GTA6の公開ベータテスト、早期アクセス、PC版のベータ、モバイル版やAPKを一切発表していない。公式ページに載っているのは、2026年11月19日発売(PS5・Xbox Series X|S)と、6月25日からの予約開始という情報だけである。
+
+したがって、「今すぐプレイできる」「ベータキーを配布」「早期アクセス権を販売」といった触れ込みは、その時点で100%詐欺と考えてよい。存在しないものを配っている、と言っている時点で偽物だ。
+
+---
+
+## 安全に予約し、発売を待つための対策
+
+カスペルスキーなどが繰り返し推奨している対策をまとめる。
+
+- 公式ルートだけを使う。Rockstar公式サイト(rockstargames.com)、PlayStation Store、Microsoft(Xbox)ストア、Amazonなどの正規の小売に限る。
+- URLと表記を必ず確認する。「rockstar-games.com」のような、公式に似せた紛らわしいドメインに注意する。公式は「rockstargames.com」だ。組織名や綴りの微妙な違いは、偽物を見破る手がかりになる。
+- 支払いはプリペイドカードやゲーム専用の決済サービスを使う。本物のクレジットカードや銀行口座の情報を、見慣れないサイトに直接入力しない。
+- 非公式サイトや動画リンクからのダウンロードは絶対に避ける。
+- 二段階認証(多要素認証)を有効にし、明細を定期的に確認する。信頼できるセキュリティソフトを導入しておく。
+- 少しでも怪しいと感じたら、すぐに離脱し、個人情報を入力しない。
+
+---
+
+## まとめ
+
+GTA6の予約人気に便乗した詐欺——公式そっくりの偽予約サイト、偽のベータ配布によるマルウェア、暗号資産を狙う偽トークン——が世界規模で広がっており、カスペルスキーをはじめとするセキュリティ各社が警告している。多言語対応のため、日本のユーザーも例外ではない。
+
+覚えておくべき原則はシンプルだ。GTA6に公開ベータや早期アクセスは存在しないので、それらをうたう時点で詐欺である。予約は公式サイトと正規ストアだけで行い、URLを確認し、支払い情報は安易に入力しない。発売を心待ちにする気持ちにつけ込むのが相手の狙いだけに、急かしてくる誘いほど、一歩引いて疑うことが自分を守る一番の方法になる。`,
+    titleEn:
+      "Beware GTA6 Pre-Order Scams and Fake Betas — Convincing Counterfeit Sites Spread Worldwide, Kaspersky Warns",
+    displayTitleEn:
+      "Beware GTA6 Pre-Order Scams and Fake Betas\nConvincing Counterfeit Sites Spread Worldwide, Kaspersky Warns",
+    descriptionEn:
+      "Since GTA6 pre-orders opened on June 25, cyber scams riding on the hype have surged worldwide. Fake pre-order sites that look just like the official one, and malware disguised as a “beta,” are after personal data, card details, and accounts. The scam sites are built in multiple languages, so Japanese users are targets too. Here are the tactics and how to protect yourself.",
+    aiSummaryEn: [
+      "Since GTA6 pre-orders opened on June 25, cyber scams exploiting the hype have surged worldwide. Security firm Kaspersky has issued a warning, and because the fake pages are built in multiple languages, Japanese speakers can be targeted too.",
+      "There are three main tactics: fake pre-order sites mimicking Rockstar’s official site or legitimate retailers to steal card details and money; malware distributed under the guise of a “beta,” “early access,” or “leaked build”; and crypto scams using tokens named after the game. A shared trait is manufactured urgency — “only a few left,” “today only.”",
+      "The surest test is this: there is no public beta or early access for GTA6. All Rockstar has announced is a November 19 release and June 25 pre-orders, so anything claiming otherwise is a scam. Pre-order only through the official site (rockstargames.com) and legitimate stores, check the URL, and never casually enter payment details.",
+    ],
+    fullContentEn: `# Beware GTA6 Pre-Order Scams and Fake Betas — Convincing Counterfeit Sites Spread Worldwide, Kaspersky Warns
+
+Since GTA6 pre-orders opened on June 25, cyber scams riding on the game’s popularity have surged around the world. Security firm Kaspersky has issued a warning: fake pre-order sites that look just like the official one, and malware distributed under the guise of a “beta,” are going after personal information, card details, and accounts. The scam sites are built in multiple languages, so there is a real chance Japanese users will be targeted. GTA6 FEED has summarized the tactics and the countermeasures.
+
+This article is based on information as of July 10, 2026.
+
+The images accompanying this article are examples of fake pre-order sites that imitate the look of the official one (images courtesy of Kaspersky). At a glance, they’re hard to tell apart from the real thing.
+
+---
+
+## What’s Happening Right Now
+
+According to Kaspersky, cybercriminals began rolling out “a wide range of scam tactics” feeding on the frenzy immediately after GTA6 pre-orders opened. The company’s Olga Altukhova notes that these scams are carefully timed to periods of peak anticipation, exploiting the way excitement lowers users’ guard and makes a false sense of urgency easy to create.
+
+![An example of a fake pre-order page built to look just like the official site. It even reuses the real trailers and promotional art, funneling visitors from a “Pre-order Now” button into a registration form](/images/news/sagisaito/rd7uUoPxLGWds5RBKSztLW-678-80.png.webp)
+
+*An example of a fake pre-order page built to look just like the official site. A “Pre-order Now” button funnels visitors into a registration form (image courtesy of Kaspersky)*
+
+The fake pages identified so far exist in several languages, suggesting they target users worldwide indiscriminately. This isn’t only an English-speaking problem — it’s safest to assume Japanese speakers are among the targets as well.
+
+---
+
+## The Main Tactics
+
+The scams reported so far fall into three broad categories.
+
+1. Fake pre-order sites. This is the most common tactic. They’re designed to look just like Rockstar’s official site, the PlayStation Store, or legitimate retailers, and they even reuse the real trailers and promotional art. A “Pre-order Now” button leads to a registration form asking for your name, email, address, phone number, payment information, and more. But no game ever arrives — your card details get stolen, or you’re defrauded of money for a pre-order that never existed. Some examples pile on fake five-star reviews, age ratings, and pre-order pricing to look authentic.
+
+2. Fake betas and leaked builds. These push downloads billed as a “GTA6 beta,” “early access,” or a “leaked build.” Videos titled “how to download it safely” spread on social media and video platforms, with comment sections seeded with “this one’s real” to build trust. Running the downloaded file infects your machine with malware, which can lead to data theft, account takeover, the leaking of browser-saved passwords and crypto wallet information, and even remote control of your device. Fake Android apps (APKs) named things like “GTA 6 Beta” are circulating too.
+
+![An example of a fake site pushing a download, imitating the look of the official site](/images/news/sagisaito/8NL5KtvjaVfMUtFMHrA2KW-678-80.png.webp)
+
+*An example of a fake site pushing a download, imitating the look of the official site (image courtesy of Kaspersky)*
+
+3. Crypto scams. These promote tokens named to resemble the game’s title, advertised on sites that copy its logos and visuals. Engaging with pages of such dubious provenance can leave you out of pocket in crypto.
+
+Many of these fake sites and files are crafted with AI to look convincing, and a shared trait is stoking urgency with lines like “only a few left” or “today only.”
+
+---
+
+## Most Important: There Is No Public GTA6 Beta
+
+This is the single most reliable yardstick for spotting a scam. Rockstar has announced no public beta test for GTA6 — no early access, no PC beta, no mobile version or APK. All the official pages say is that it launches November 19, 2026 (PS5, Xbox Series X|S), with pre-orders opening June 25.
+
+So any pitch along the lines of “play it right now,” “beta keys available,” or “buy early access” is, on that basis alone, 100% a scam. The moment someone claims to be handing out something that doesn’t exist, it’s fake.
+
+---
+
+## How to Pre-Order Safely and Wait for Launch
+
+Here are the countermeasures Kaspersky and others repeatedly recommend.
+
+- Use official routes only. Stick to Rockstar’s official site (rockstargames.com), the PlayStation Store, the Microsoft (Xbox) store, and legitimate retailers such as Amazon.
+- Always check the URL and the wording. Watch out for confusingly similar domains like “rockstar-games.com.” The official one is “rockstargames.com.” Subtle differences in organization names and spelling are your clue to spotting a fake.
+- Pay with a prepaid card or a gaming-specific payment service. Don’t enter real credit card or bank account details directly into an unfamiliar site.
+- Never download from unofficial sites or video links.
+- Enable two-factor (multi-factor) authentication, check your statements regularly, and install reputable security software.
+- If anything feels even slightly off, leave immediately and don’t enter any personal information.
+
+---
+
+## In Summary
+
+Scams riding on GTA6’s pre-order hype — fake pre-order sites that look just like the official one, malware distributed as a fake beta, and counterfeit tokens targeting crypto holders — are spreading globally, and Kaspersky along with other security firms are sounding the alarm. Because they’re built for multiple languages, Japanese users are no exception.
+
+The principle to remember is simple. There is no public beta or early access for GTA6, so the moment something claims otherwise, it’s a scam. Pre-order only through the official site and legitimate stores, check the URL, and don’t enter payment information casually. Precisely because the scammers prey on your eagerness for launch day, the best way to protect yourself is to step back and get suspicious the moment an offer starts rushing you.`,
+  },
+  {
     id: 36,
     title:
       "GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信——約6年ぶりの大仕事、美術館から名画を奪え",
