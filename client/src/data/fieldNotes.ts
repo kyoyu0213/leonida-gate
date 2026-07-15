@@ -525,8 +525,389 @@ Sources & References
 This article was independently reported and recorded by GTA6 FEED and has no relationship with the HeliosCity operators, Rockstar Games, or Take-Two Interactive. The content is information as of the first visit, and the server's specifications and rules are subject to change.`,
 };
 
+// ---------------------------------------------------------------------------
+//  訪問記 #2 Refloria Town
+// ---------------------------------------------------------------------------
+const refloriaTown: FieldNote = {
+  slug: 'refloria-town',
+  category: 'visit-note',
+  title:
+    'Refloria Townとは？同接216人・ギャング抗争とテリトリー制を備えた日本語RPサーバー',
+  titleEn:
+    'What Is Refloria Town? A Japanese RP Server with 216 Concurrent Players, Gang Wars, and a Territory System',
+  date: '2026-07-13',
+  excerpt:
+    '日本語FiveMロールプレイサーバー「Refloria Town」をGTA6 FEEDが取材。同接216人、テリトリー制のギャング抗争、リサイクル・狩り・薬局・季節限定メニュー・遺伝式キャラメイクなど、観測できた事実を記録する。',
+  excerptEn:
+    'GTA6 FEED visits Refloria Town, a Japanese FiveM roleplay server — 216 concurrent players, territory-based gang wars, recycling, hunting, a pharmacy, seasonal menus, and genetics-based character creation, recorded as observed.',
+  image: '/images/taikenki/serverhoumon/RefloriaTown/matinoyousu.png',
+  icon: '📍',
+  seoTitle:
+    'Refloria Townとは？同接216人・テリトリー制ギャング抗争の日本語RPサーバー｜GTA6 FEED',
+  seoDesc:
+    '日本語FiveMロールプレイサーバー「Refloria Town」をGTA6 FEEDが取材。同接216人、多数のMLO、テリトリー（縄張り）制のギャング抗争、リサイクルセンター、狩り、リーフ薬局の価格表、七夕の季節限定メニュー、遺伝式キャラメイクなど、観測できた確定情報と未確認項目を分けて記録。',
+  seoTitleEn:
+    'What Is Refloria Town? A Japanese RP FiveM Server with 216 Concurrent, Gang Wars & Territories | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's report on Refloria Town, a Japanese FiveM roleplay server — 216 concurrent players, many MLOs, territory-based gang wars, a recycling center, hunting, the Leaf Pharmacy price list, Tanabata seasonal menus, and genetics-based character creation, separating what we confirmed from what we could not.",
+  body: `![山の上、本来バインウッド看板がある位置に掲げられたRefloria Townのロゴ看板。右上には「指名手配終了」の通知が流れている](/images/taikenki/serverhoumon/RefloriaTown/matinoyousu.png)
+
+Refloria Townは、日本語のFiveMロールプレイサーバーである。多数のMLO（カスタム内装）を導入した街づくりと、テリトリー（縄張り）制を軸にしたギャング抗争システムを備える。GTA6 FEEDが取材し、観測できた事実を記録する。以下、確認した確定情報と、確認できていない未確認項目を分けて記す。
+
+## 基本情報
+
+- 接続方法：公式Discordに参加し、ロール（役割）申請を行って参加する
+- 同時接続数：216人（2026年7月3日 22時時点・観測値）
+- サーバー再起動：1時／6時／12時／17時／21時の1日5回
+
+## 街の雰囲気
+
+街には多数のMLOが導入されており、建物の内装が作り込まれている。ベースはロスサントスだが、山上のバインウッド看板はRefloria Townのロゴに差し替えられている。
+
+![桜並木の向こうに広がる街並み。「Auto Exotic」の大型施設が通り沿いに建つ](/images/taikenki/serverhoumon/RefloriaTown/dealer.png)
+
+マップのランドマーク一覧には109件が登録されており、飲食店やメカニック、各種店舗が個別に登録されている。
+
+一部のエリアはセーフゾーンに指定されており、該当エリアに入ると画面上に「あなたはセーフゾーンにいます」と表示される。
+
+指名手配は街全体への通知として流れる仕組みになっており、取材中も指名手配の発生・終了通知が確認できた。警察車両が街を走行する場面も繰り返し見られ、犯罪行為の発生頻度が高い街である。
+
+![高架の下に整備されたMLOのエリア。STOP標識のゲートや店舗が並ぶ](/images/taikenki/serverhoumon/RefloriaTown/mechanic.png)
+
+食べ物や飲み物には賞味期限が設定されており、期限が切れると所持品から消滅する。
+
+住人の挙動としては、接触事故が起きた際に相手が停車して謝罪するやり取りが見られた。また、質問に対して応答する住人が複数いた。
+
+## 経済・職業
+
+市役所（地図上506番地）内の職業センターで、以下の5職を確認した。
+
+![市役所の内装。大理石の階段と、MAYOR OFFICE／MEETING ROOM／VOTING ROOM／OFFICESへの案内板が見える（506番地）](/images/taikenki/serverhoumon/RefloriaTown/siyakusyojob.png)
+
+- ホットドッグ屋
+- ゴミ収集作業員
+- バスの運転手
+- 農家
+- タクシー
+
+![職業センターの応募メニュー。ホットドッグ屋・ゴミ収集作業員・バスの運転手・農家・タクシーが並び、その場で応募できる](/images/taikenki/serverhoumon/RefloriaTown/siyakusyojob2.png)
+
+いずれもその場で応募できる。市役所の館内表示にはMAYOR OFFICE（市長室）、MEETING ROOM、VOTING ROOM（投票室）、OFFICESの案内があるが、これらの運用実態は取材時点では確認していない。
+
+このほか、マイニング、木こり、狩りといったジョブが存在する。
+
+飲食店は多数あり、深夜2時の時点で13店舗が営業していた。飲食店以外のユニークジョブとして、キャバクラ、ガールズバー、ペットショップ、結婚式場を確認した。ペットショップにはシチュエーションボイスを販売する店舗も存在する。メカニックは5か所を確認した。
+
+![ペットショップのシチュエーションボイス販売広告。「ペットショップのボイス」CV：とあるペットショップ店員、収録時間00:40](/images/taikenki/serverhoumon/RefloriaTown/boisuhanbai.png)
+
+## 体力・食料・水分の管理
+
+体力、食料、水分がそれぞれ数値で管理されており、飲食物や医薬品で回復する。回復量は品目ごとに設定されている。
+
+薬局（リーフ薬局・577番地）では、以下の価格・回復量を確認した。
+
+![リーフ薬局（Leaf Pharmacy）のメニュー。絆創膏¥13,000ほか、品目ごとの価格と回復量が並ぶ（577番地）](/images/taikenki/serverhoumon/RefloriaTown/yakkyokumenyu.png)
+
+- 絆創膏：¥13,000（体力10%回復）
+- 塗り薬：¥26,000（体力20%回復）
+- 痛み止め：¥55,000（体力35%回復）
+- 包帯：¥100,000（体力30%回復＋怪我完治）
+- リーフinゼリー：¥6,000（食料35%回復）
+- リーフD：¥6,000（水分35%回復）
+
+飲食店には店舗ごとのオリジナルメニューが設定されている。和風の店舗（庵椿）では、椿印のお饅頭が¥60,000（体力40%回復）、天ぷらうどんが¥44,000（30%回復）、三色団子が¥32,000（25%回復）、抹茶が¥18,000（15%回復）といった価格設定になっていた。このほか海鮮丼、あらっ汁などが提供されている。
+
+![和風店「庵椿」のおしながき。椿印のお饅頭40%、天ぷらうどん30%、三色団子25%、抹茶15%など、体力回復率つきで並ぶ](/images/taikenki/serverhoumon/RefloriaTown/insyokumenyu9.png)
+
+季節に応じた限定メニューも用意されており、七夕の時期には七夕スイーツプレート（¥15,000・食料50%回復）と星空カクテル（¥15,000・水分50%回復）が提供されていた。
+
+![七夕スペシャルメニュー。七夕スイーツプレート（食料50%・¥15,000）と星空カクテル（水分50%・¥15,000）](/images/taikenki/serverhoumon/RefloriaTown/insyokumenyu0.png)
+
+## 治安構造
+
+警察とEMS（救急）は、深夜帯でも稼働していることを確認した。
+
+犯罪行為については、サーバー再起動の前後15分間はいかなる犯罪行為も禁止されている。再起動が1日5回設定されているため、この禁止時間は1日5回発生する。これ以外の時間帯における犯罪可能時間の制限は、取材時点では確認していない。
+
+ギャング同士の抗争については、後述のとおり曜日と時間が指定されている。
+
+## 犯罪・ギャング
+
+ギャングは5つ確認した。それぞれのテリトリーはマップ上で色分けして表示され、ロスサントス市街地を中心に区画が分割されている。
+
+![マップ上に色分け表示されたギャングのテリトリー。ロスサントス市街地を中心に赤・紫・黄・緑などの区画が分かれ、右側にランドマーク一覧（17/109）が表示されている](/images/taikenki/serverhoumon/RefloriaTown/gyanguiro.png)
+
+### 設立条件
+
+ギャングの設立には、BOSS・UNDERBOSSに加え、CAPO/MEMBER5人以上が必要となる。申請はDiscordの専用チャンネルで行い、構成員全員のDiscord名とゲーム内名を明記する。申請後、BOSSと運営の面談があり、希望するカラーや装備の相談もこの場で行われる。ギャング用衣装・傭兵衣装（カラーが明確なもの）は事前に用意する必要がある。BOSSが交代する場合は再度面談となる。
+
+最大メンバー数は13人までだったが、2026年6月15日から15人までに拡大されている。
+
+活動実態のないギャングに対しては、運営が活動状況の確認とログによる事実確認を行う。組織として機能していないと判断された場合は警告が出され、2回目の警告で解散となる。このほか、BOSSからの解散申請、メンバー数が設立条件を下回った場合、メンバーによる悪質なルール違反が確認された場合も解散対象となる。違反は1人であっても組織全体が解散対象となり得る。
+
+### テリトリー
+
+テリトリー範囲内では、NPCへの薬物販売や、壁に自ギャング名をスプレーする行為によって忠誠度を上げられる。また、テリトリー内の無人店舗などに対してみかじめ料の徴収が可能となっている。有人店舗は対象外である。
+
+### 抗争
+
+抗争日は火曜日・金曜日・日曜日の21時30分〜23時30分に設定されている。この時間内にギャング服を着用しているプレイヤーは抗争参加中と判断され、戦闘の対象となる。抗争に参加しないギャングは、Discordの「抗争不参加申請」への書き込みが必要となる。
+
+抗争中の主な制限は以下のとおり。
+
+- 死亡した場合、蘇生後10分間はギャング活動（戦闘・薬物販売など）が禁止される
+- 逮捕された場合、PD解放後10分間はギャング活動が禁止される
+- ギャング服を脱いだ場合も10分間はギャング活動が禁止される
+- ギャング間の同盟行為は禁止されている
+- 抗争で死亡したギャング同士のROB（強奪）は許可されるが、抗争外でのROBは禁止されている
+- 抗争中にNPCを故意に殺害する行為は禁止されている
+- 抗争で使用する車両の窓へのスモークカスタムは禁止されている
+
+ギャング活動禁止時間中は、ギャング服を脱ぎ、ギャングと関係のないカラーの車両で行動することが求められる。
+
+## クラフト・経済基盤
+
+リサイクルセンター（リサセン）はパレト湾のグレート・オーシャン・ハイウェイ沿いにある。
+
+リサセンはルーム制になっており、入室時にルームを選択する。ルームAは誰でも何人でも入れる常時開放の共有部屋で、ルームB以降は利用人数の上限が5人に設定されている。各ルームは公開とパスワード付きを選択でき、パスワードを設定すれば仲間内だけで作業できる。
+
+![リサイクルルームの選択画面。ルームA（誰でも何人でも入れる共有部屋）からルームK（利用人数1/5・パスワード付き）までが並ぶ](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter4.png)
+
+作業の流れは、ルームに入り、心の目（インタラクト操作）で素材を回収し、これを運んで奥にいるNPCに渡すとリサイクルボックスと交換できる。このリサイクルボックスを使用すると、中身が排出される仕組みになっている。
+
+![リサセンの倉庫内部。奥にNPCが立ち、右上に「リサイクル Lv1/30・XP86/300・作業+200」の進行表示がある](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter.png)
+
+![木箱を「検索中（59%）」で調べているところ。心の目で素材を回収する作業の様子](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter2.png)
+
+![奥のNPCの「素材交換」メニュー。1素材・10素材・50素材・100素材の交換が並ぶ](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter3.png)
+
+![所持品内のリサイクルボックス（200g 2x）。使用すると中身が排出される](/images/taikenki/serverhoumon/RefloriaTown/recyclebox.png)
+
+リサイクルにはレベル制が導入されており、上限はレベル30。作業1回ごとに200XPが加算され、レベル1から2への到達には300XPが必要となっていた。
+
+買い取り制度は機能しており、ゲーム内SNSで素材の買い取りを募集する住人も見られた。
+
+武器クラフトの仕組み、車パーツ製作やメカニックへの素材供給については、取材時点では確認していない。
+
+## 実際に狩りを体験
+
+無人ジョブのうち、狩りを実際に行った。狩りを始めるには弓の購入が必要で、開始時点で初期費用が発生する。弓にはスコープが備わっており、これを覗いて動物を狙う。画面には「0/1」の進行カウンタが表示され、対象の狩猟状況が分かるようになっている。
+
+![パレトの森の道路脇で弓を構えたところ。画面左に「0/1」の進行カウンタが表示されている](/images/taikenki/serverhoumon/RefloriaTown/kari.png)
+
+![弓のスコープを覗き、森の中の動物を狙っている画面。距離目盛りと「0/1」カウンタが見える](/images/taikenki/serverhoumon/RefloriaTown/kari2.png)
+
+仕留めた動物は食肉加工場に持ち込む。加工場はパレト湾（3013番地）にあり、NPCに渡すことで食肉に加工される。これを売却して収益とする流れになる。
+
+![パレト湾（3013番地）の食肉加工場。搬入口の前にエプロン姿のNPCが立つ](/images/taikenki/serverhoumon/RefloriaTown/syokunikukakou.png)
+
+初期費用を先に支払う構造のため、弓の代金を回収するまでは収支がマイナスから始まる。一方で、加工・売却まで到達した時点での単価は高く、狩りを継続するほど初期費用の比重は下がっていく。
+
+## キャラメイク・初心者案内
+
+スタート地点はレギオン（レギオンスクエア）で、同所にキャラメイクを行える場所がある。キャラメイクの結果が気に入らない場合、後から整形することも可能になっている。
+
+キャラメイクは遺伝システムを採用しており、まず父と母それぞれの顔をIDから選択し、ブレンドスライダーでどちらの親にどれだけ似せるかを決める。肌の色も両親から継承する仕組みで、父・母それぞれのブレンド比率を調整できる。
+
+![bincoのキャラメイク「遺伝」画面。父（ID:21）と母（ID:33）の顔を選び、ブレンドスライダーで似せ具合を調整する。左には遺伝・顔の特徴・髪型・肌の欠点などの項目が並ぶ](/images/taikenki/serverhoumon/RefloriaTown/kyarameiku.png)
+
+調整項目は遺伝、顔の特徴、髪型、肌の欠点、ひげ、眉毛、老化、メイク、チーク、肌質、日焼け跡、口紅、ほくろ・そばかす、胸毛など多岐にわたる。上半身・下半身・アクセサリーの衣装も同じ画面で設定でき、「衣装として保存」も可能になっている。
+
+初心者案内が用意されている。
+
+## 状態マーカー
+
+稼働中（2026年7月時点）
+
+---
+
+出典・参考
+
+- Refloria Town 公式Discord・六法（ルールブック）
+- GTA6 FEEDによる取材時の観測（2026年7月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、Refloria Town運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は取材時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![Refloria Town's logo sign raised on the mountaintop where the Vinewood sign would normally be. At the top right, a "wanted status ended" notification is showing](/images/taikenki/serverhoumon/RefloriaTown/matinoyousu.png)
+
+Refloria Town is a Japanese-language FiveM roleplay server. It features city-building with many MLOs (custom interiors) installed, along with a gang-war system built around a territory (turf) mechanic. GTA6 FEED reported on it and records the facts we were able to observe. Below, we separate the confirmed information we verified from the items we could not confirm.
+
+## Basic Information
+
+- How to join: join the official Discord and apply for a role to participate
+- Concurrent players: 216 (observed at 22:00 on July 3, 2026)
+- Server restarts: five times a day, at 1:00 / 6:00 / 12:00 / 17:00 / 21:00
+
+## The Feel of the City
+
+Many MLOs are installed throughout the city, and building interiors are carefully crafted. The base is Los Santos, but the Vinewood sign on the mountain has been swapped for the Refloria Town logo.
+
+![A cityscape spreading out beyond a row of cherry-blossom trees, with the large "Auto Exotic" facility standing along the street](/images/taikenki/serverhoumon/RefloriaTown/dealer.png)
+
+The map's landmark list has 109 entries registered, with restaurants, mechanics, and various shops registered individually.
+
+Some areas are designated as safe zones, and when you enter such an area, "You are in a safe zone" is displayed on screen.
+
+Wanted status flows as a notification to the entire city, and during our visit we were able to confirm both the start and end notifications of wanted statuses. We repeatedly saw police vehicles driving through the city as well; this is a city with a high frequency of criminal activity.
+
+![An MLO area laid out beneath an overpass, lined with a STOP-sign gate and shops](/images/taikenki/serverhoumon/RefloriaTown/mechanic.png)
+
+Food and drinks have expiration dates set, and once they expire they vanish from your inventory.
+
+As for resident behavior, when a fender-bender occurred we saw the other party stop their vehicle and apologize. There were also several residents who responded when spoken to.
+
+## Economy & Jobs
+
+At the Job Center inside City Hall (address 506 on the map), we confirmed the following five jobs.
+
+![The interior of City Hall. A marble staircase, and a signboard pointing to MAYOR OFFICE / MEETING ROOM / VOTING ROOM / OFFICES (address 506)](/images/taikenki/serverhoumon/RefloriaTown/siyakusyojob.png)
+
+- Hot dog vendor
+- Garbage collector
+- Bus driver
+- Farmer
+- Taxi
+
+![The Job Center application menu, listing hot dog vendor, garbage collector, bus driver, farmer, and taxi — all of which you can apply for on the spot](/images/taikenki/serverhoumon/RefloriaTown/siyakusyojob2.png)
+
+You can apply for any of them on the spot. City Hall's interior signage points to MAYOR OFFICE, MEETING ROOM, VOTING ROOM, and OFFICES, but how these are actually operated we did not confirm at the time of our visit.
+
+Beyond these, there are jobs such as mining, lumberjacking, and hunting.
+
+There are many restaurants; at 2 a.m., 13 shops were open. As unique jobs beyond restaurants, we confirmed a cabaret club, a girls' bar, a pet shop, and a wedding hall. The pet shop also includes a store selling situation voice recordings. We confirmed five mechanic shops.
+
+![An ad for situation voice recordings sold at the pet shop: "Pet Shop Voice," CV: a certain pet shop clerk, running time 00:40](/images/taikenki/serverhoumon/RefloriaTown/boisuhanbai.png)
+
+## Managing Health, Food & Hydration
+
+Health, food, and hydration are each managed as numeric values, recovered via food, drink, and medicine. The recovery amount is set per item.
+
+At the pharmacy (Leaf Pharmacy, address 577), we confirmed the following prices and recovery amounts.
+
+![The Leaf Pharmacy menu. Bandage ¥13,000 and others, with the price and recovery amount listed per item (address 577)](/images/taikenki/serverhoumon/RefloriaTown/yakkyokumenyu.png)
+
+- Adhesive bandage: ¥13,000 (10% health recovery)
+- Ointment: ¥26,000 (20% health recovery)
+- Painkiller: ¥55,000 (35% health recovery)
+- Bandage: ¥100,000 (30% health recovery + fully heals injuries)
+- Leaf-in Jelly: ¥6,000 (35% food recovery)
+- Leaf D: ¥6,000 (35% hydration recovery)
+
+Restaurants have original menus set per shop. At a Japanese-style shop (Antsubaki), prices were set like this: Tsubaki-brand manju at ¥60,000 (40% health recovery), tempura udon at ¥44,000 (30% recovery), tricolor dango at ¥32,000 (25% recovery), and matcha at ¥18,000 (15% recovery). Beyond these, seafood bowls and ara-jiru soup are served.
+
+![The menu at the Japanese-style shop "Antsubaki." Tsubaki-brand manju 40%, tempura udon 30%, tricolor dango 25%, matcha 15%, and more, each with a health-recovery rate](/images/taikenki/serverhoumon/RefloriaTown/insyokumenyu9.png)
+
+Seasonal limited menus are also prepared, and during the Tanabata season a Tanabata Sweets Plate (¥15,000, 50% food recovery) and a Starry Sky Cocktail (¥15,000, 50% hydration recovery) were served.
+
+![The Tanabata special menu. Tanabata Sweets Plate (50% food, ¥15,000) and Starry Sky Cocktail (50% hydration, ¥15,000)](/images/taikenki/serverhoumon/RefloriaTown/insyokumenyu0.png)
+
+## Public-Safety Structure
+
+We confirmed that the police and EMS (emergency medical) were active even during late-night hours.
+
+As for criminal acts, all criminal activity is prohibited for the 15 minutes before and after a server restart. Because restarts are set for five times a day, this prohibited window occurs five times a day. Any restriction on the crime-allowed hours outside of these times, we did not confirm at the time of our visit.
+
+As for wars between gangs, the days and times are designated, as described below.
+
+## Crime & Gangs
+
+We confirmed five gangs. Each one's territory is displayed color-coded on the map, with the districts divided mainly around downtown Los Santos.
+
+![Gang territories displayed color-coded on the map. Districts in red, purple, yellow, green, and more are divided mainly around downtown Los Santos, with a landmark list (17/109) shown on the right](/images/taikenki/serverhoumon/RefloriaTown/gyanguiro.png)
+
+### Founding Conditions
+
+To found a gang, in addition to a BOSS and UNDERBOSS, you need five or more CAPO/MEMBERs. Applications are made in a dedicated Discord channel, stating the Discord name and in-game name of every member. After applying, there is an interview between the BOSS and the operators, and consultation on desired colors and equipment also takes place here. Gang outfits and mercenary outfits (with clear colors) must be prepared in advance. If the BOSS changes, another interview is held.
+
+The maximum number of members was up to 13, but from June 15, 2026 it was expanded to up to 15.
+
+For gangs with no actual activity, the operators check activity status and verify facts via logs. If a gang is judged not to be functioning as an organization, a warning is issued, and a second warning results in disbandment. In addition, a disbandment application from the BOSS, the member count falling below the founding conditions, or a confirmed malicious rule violation by a member are all grounds for disbandment. Even if the violation is by a single person, the entire organization can become subject to disbandment.
+
+### Territory
+
+Within a territory, you can raise loyalty by selling drugs to NPCs or by spraying your own gang's name on walls. It is also possible to collect protection money from unmanned shops and the like within the territory. Player-run shops are excluded.
+
+### Wars
+
+War days are set for Tuesday, Friday, and Sunday, from 21:30 to 23:30. Players wearing gang clothing during these hours are judged to be participating in the war and become valid combat targets. Gangs not participating in a war are required to post in the "war non-participation application" on Discord.
+
+The main restrictions during a war are as follows.
+
+- If you die, gang activity (combat, drug sales, etc.) is prohibited for 10 minutes after revival
+- If you are arrested, gang activity is prohibited for 10 minutes after release from the PD
+- If you take off your gang clothing, gang activity is also prohibited for 10 minutes
+- Alliances between gangs are prohibited
+- ROB (robbery) between gangs killed in a war is permitted, but ROB outside of a war is prohibited
+- Deliberately killing NPCs during a war is prohibited
+- Smoke customization on the windows of vehicles used in a war is prohibited
+
+During the gang-activity prohibition period, you are required to take off your gang clothing and move around in a vehicle whose color is unrelated to the gang.
+
+## Crafting & Economic Base
+
+The recycling center ("risasen") is along the Great Ocean Highway in Paleto Bay.
+
+The recycling center uses a room system, and you select a room when entering. Room A is a permanently open shared room that anyone, in any number, can enter, while Room B and beyond have a cap of 5 users. Each room can be set to public or password-protected, and if you set a password, you can work only among your own group.
+
+![The recycling-room selection screen. Rooms range from Room A (a shared room anyone in any number can enter) to Room K (1/5 users, password-protected)](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter4.png)
+
+The workflow is to enter a room, gather materials with the "mind's eye" (interact action), then carry them to the NPC at the back to exchange them for a recycle box. Using this recycle box then dispenses its contents.
+
+![The interior of the recycling center's warehouse. An NPC stands at the back, and the top right shows the progress display "Recycle Lv1/30, XP86/300, work +200"](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter.png)
+
+![Examining a wooden crate at "searching (59%)." The scene of gathering materials with the mind's eye](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter2.png)
+
+![The "material exchange" menu of the NPC at the back, listing exchanges of 1, 10, 50, and 100 materials](/images/taikenki/serverhoumon/RefloriaTown/recyclecenter3.png)
+
+![A recycle box (200g 2x) in the inventory. Using it dispenses the contents](/images/taikenki/serverhoumon/RefloriaTown/recyclebox.png)
+
+Recycling has a level system, with a cap of level 30. Each work action adds 200 XP, and reaching level 2 from level 1 required 300 XP.
+
+The buyback system functions, and we saw residents recruiting for material buybacks on the in-game SNS.
+
+The weapon-crafting system, car-parts production, and supplying materials to mechanics, we did not confirm at the time of our visit.
+
+## Actually Trying Hunting
+
+Of the unattended jobs, I actually tried hunting. To start hunting you need to buy a bow, so an initial cost is incurred at the start. The bow has a scope, and you look through it to aim at animals. A "0/1" progress counter is shown on screen so you can see the status of your target hunt.
+
+![Taking aim with a bow at the roadside in the Paleto Forest. A "0/1" progress counter is shown on the left of the screen](/images/taikenki/serverhoumon/RefloriaTown/kari.png)
+
+![Looking through the bow's scope to aim at an animal in the forest. The distance scale and the "0/1" counter are visible](/images/taikenki/serverhoumon/RefloriaTown/kari2.png)
+
+The animals you take down are brought to a meat-processing plant. The plant is in Paleto Bay (address 3013), and by handing them to the NPC they are processed into meat. The flow is then to sell this for profit.
+
+![The meat-processing plant in Paleto Bay (address 3013). An NPC in an apron stands in front of the loading entrance](/images/taikenki/serverhoumon/RefloriaTown/syokunikukakou.png)
+
+Because the structure has you pay the initial cost up front, your balance starts in the negative until you recoup the price of the bow. On the other hand, the per-unit price once you reach processing and selling is high, and the more you keep hunting, the smaller the weight of the initial cost becomes.
+
+## Character Creation & Beginner Guidance
+
+The starting point is Legion (Legion Square), and there is a spot there where you can do character creation. If you don't like the result of your character creation, you can also get cosmetic surgery afterward.
+
+Character creation adopts a genetics system: first you select the faces of the father and mother each by ID, then use a blend slider to decide how much to resemble each parent. Skin color is also inherited from both parents, and you can adjust the blend ratio for the father and mother respectively.
+
+![Binco's "genetics" character-creation screen. You select the father (ID:21) and mother (ID:33) faces and adjust the resemblance with a blend slider. On the left are items such as genetics, facial features, hairstyle, and skin imperfections](/images/taikenki/serverhoumon/RefloriaTown/kyarameiku.png)
+
+The adjustable items span a wide range: genetics, facial features, hairstyle, skin imperfections, beard, eyebrows, aging, makeup, blush, skin texture, tan lines, lipstick, moles/freckles, chest hair, and more. Upper-body, lower-body, and accessory outfits can also be set on the same screen, and "save as outfit" is possible as well.
+
+Beginner guidance is provided.
+
+## Status Marker
+
+Active (as of July 2026)
+
+---
+
+Sources & References
+
+- Refloria Town official Discord and rulebook
+- GTA6 FEED's observations during the visit (July 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the Refloria Town operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
-export const fieldNotes: FieldNote[] = [devDiary2, devDiary1, heliosCity];
+export const fieldNotes: FieldNote[] = [devDiary2, devDiary1, refloriaTown, heliosCity];
 
 /** slug から体験記を解決（SSR/CSR 共通）。 */
 export function getFieldNoteBySlug(slug?: string): FieldNote | undefined {
