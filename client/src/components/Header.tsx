@@ -10,7 +10,17 @@ const NAV = [
   { key: 'nav.news', href: '/news', match: (l: string) => l.startsWith('/news') },
   { key: 'nav.servers', href: '/servers', match: isRecruitPath },
   { key: 'nav.board', href: '/board', match: isThreadBoardPath },
-  { key: 'nav.fivemgtarp', href: '/fivem-gtarp', match: (l: string) => l.startsWith('/fivem-gtarp') },
+  {
+    key: 'nav.fivemgtarp',
+    href: '/fivem-gtarp',
+    // 体験記は別項目で扱うため、ハブ側の active 判定からは field-notes 配下を除外。
+    match: (l: string) => l.startsWith('/fivem-gtarp') && !l.startsWith('/fivem-gtarp/field-notes'),
+  },
+  {
+    key: 'nav.fieldnotes',
+    href: '/fivem-gtarp/field-notes/dev-diary',
+    match: (l: string) => l.startsWith('/fivem-gtarp/field-notes'),
+  },
   { key: 'nav.contact', href: '/contact', match: (l: string) => l.startsWith('/contact') },
 ];
 

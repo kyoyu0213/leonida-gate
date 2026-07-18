@@ -49,6 +49,7 @@ const JA: Dict = {
   'nav.servers': '募集掲示板',
   'nav.board': '掲示板',
   'nav.fivemgtarp': 'FiveM/GTARP',
+  'nav.fieldnotes': '体験記',
   'nav.contact': 'お問い合わせ',
   // スマホ下部タブバー（短縮ラベル）
   'tab.home': 'ホーム',
@@ -557,6 +558,7 @@ const EN: Dict = {
   'nav.servers': 'Recruit Boards',
   'nav.board': 'Board',
   'nav.fivemgtarp': 'FiveM/GTARP',
+  'nav.fieldnotes': 'Field Notes',
   'nav.contact': 'Contact',
   // Mobile bottom tab bar (short labels)
   'tab.home': 'Home',

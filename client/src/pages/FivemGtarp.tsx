@@ -2,7 +2,8 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, NotebookPen, MapPinned } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
-import { useT } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
+import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 
 interface Card {
   titleKey: string;
@@ -27,6 +28,17 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.fivem.title', descKey: 'fg.card.fivem.desc', href: '/fivem-gtarp/what-is-fivem', icon: Server, accent: '#22d3ee' },
       { titleKey: 'fg.card.gtarp.title', descKey: 'fg.card.gtarp.desc', href: '/fivem-gtarp/what-is-gtarp', icon: Users, accent: '#a78bfa' },
       { titleKey: 'fg.card.diff.title', descKey: 'fg.card.diff.desc', href: '/fivem-gtarp/fivem-vs-gtarp', icon: GitCompare, accent: '#ff8a3d' },
+    ],
+  },
+  {
+    // オリジナル一次情報（体験記）をハブ上位＝基本の直後に昇格。カードは render 側で
+    // 個別4記事への直リンク（言語対応）としてデータ駆動描画する。ここの cards は
+    // 「一覧への導線」を併存させるための予備であり、実描画では個別記事を主にする。
+    labelKey: 'fg.group.fieldnotes',
+    accent: '#fb923c',
+    cards: [
+      { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
+      { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
     ],
   },
   {
@@ -70,15 +82,6 @@ const GROUPS: CardGroup[] = [
     ],
   },
   {
-    // GTA6 FEED 運営者自身の一次記録（サーバー開発日記・サーバー訪問記）。既存6色と被らないオレンジ。
-    labelKey: 'fg.group.fieldnotes',
-    accent: '#fb923c',
-    cards: [
-      { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
-      { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
-    ],
-  },
-  {
     labelKey: 'fg.group.tools',
     accent: '#ff2d95',
     cards: [
@@ -100,10 +103,15 @@ const TABS = [
 
 export default function FivemGtarp() {
   const t = useT();
+  const lang = useLang();
   useSeo(t('fg.seo.title'), t('fg.seo.desc'), { localized: true });
   const [selected, setSelected] = useState<string>('all');
 
   const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);
+
+  // 体験記は個別4記事を新しい順で、言語対応の直リンクとして描画する（データ駆動）。
+  const notesSorted = [...fieldNotes].sort((a, b) => b.date.localeCompare(a.date));
+  const langPrefix = lang === 'en' ? '/en' : '';
 
   return (
     <div className="vice-page vice-noise">
@@ -159,46 +167,113 @@ export default function FivemGtarp() {
                 <span className="flex-1 h-px bg-white/10" />
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {g.cards.map((c) => {
-                  const Icon = c.icon;
-                  return (
-                    <a
-                      key={c.href}
-                      href={c.href}
-                      className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
-                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
-                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
-                    >
-                      <div className="flex items-center gap-3 mb-2.5">
-                        <span
-                          className="w-10 h-10 flex-none rounded-xl flex items-center justify-center"
-                          style={{
-                            background: `${c.accent}1f`,
-                            border: `1px solid ${c.accent}55`,
-                            color: c.accent,
-                            boxShadow: `0 0 18px ${c.accent}33`,
-                          }}
+              {g.labelKey === 'fg.group.fieldnotes' ? (
+                <>
+                  {/* 体験記＝オリジナル一次情報。個別4記事へ言語対応で直リンク（1ホップ）。 */}
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {notesSorted.map((note) => {
+                      const cat = FIELD_NOTE_CATEGORY_CONFIG[note.category];
+                      return (
+                        <a
+                          key={note.slug}
+                          href={`${langPrefix}/fivem-gtarp/field-notes/${note.category}/${note.slug}`}
+                          className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
+                          onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${cat.color}99`)}
+                          onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
                         >
-                          <Icon size={20} />
-                        </span>
-                        <h3 className="text-[15px] font-extrabold text-white m-0">{t(c.titleKey)}</h3>
-                      </div>
-                      <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
-                      <span
-                        className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
-                        style={{ color: c.accent }}
-                      >
-                        {t('fg.learnMore')}
-                        <ArrowRight
-                          size={14}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </span>
+                          <div className="flex items-center gap-3 mb-2.5">
+                            <span
+                              className="w-10 h-10 flex-none rounded-xl flex items-center justify-center text-xl"
+                              style={{
+                                background: `${cat.color}1f`,
+                                border: `1px solid ${cat.color}55`,
+                                boxShadow: `0 0 18px ${cat.color}33`,
+                              }}
+                            >
+                              {note.icon}
+                            </span>
+                            <span
+                              className="text-[10.5px] font-black rounded-md px-2 py-0.5"
+                              style={{ background: cat.color, color: '#0a0612' }}
+                            >
+                              {lang === 'en' ? cat.en : cat.ja}
+                            </span>
+                          </div>
+                          <h3 className="text-[14.5px] font-extrabold text-white m-0 mb-1.5 leading-snug line-clamp-2">
+                            {lang === 'en' ? note.titleEn : note.title}
+                          </h3>
+                          <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0 line-clamp-2">
+                            {lang === 'en' ? note.excerptEn : note.excerpt}
+                          </p>
+                          <span
+                            className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                            style={{ color: cat.color }}
+                          >
+                            {t('fg.learnMore')}
+                            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  {/* 一覧ページへの導線も併存（sitemap収録・被リンク経路として維持） */}
+                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[12.5px] font-bold">
+                    <a
+                      href={`${langPrefix}/fivem-gtarp/field-notes/dev-diary`}
+                      className="inline-flex items-center gap-1 text-[#fb923c] hover:underline"
+                    >
+                      {lang === 'en' ? 'All dev diaries' : '開発日記の一覧'} →
                     </a>
-                  );
-                })}
-              </div>
+                    <a
+                      href={`${langPrefix}/fivem-gtarp/field-notes/visit-note`}
+                      className="inline-flex items-center gap-1 text-[#38bdf8] hover:underline"
+                    >
+                      {lang === 'en' ? 'All visit notes' : '訪問記の一覧'} →
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {g.cards.map((c) => {
+                    const Icon = c.icon;
+                    return (
+                      <a
+                        key={c.href}
+                        href={c.href}
+                        className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
+                        onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
+                        onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
+                      >
+                        <div className="flex items-center gap-3 mb-2.5">
+                          <span
+                            className="w-10 h-10 flex-none rounded-xl flex items-center justify-center"
+                            style={{
+                              background: `${c.accent}1f`,
+                              border: `1px solid ${c.accent}55`,
+                              color: c.accent,
+                              boxShadow: `0 0 18px ${c.accent}33`,
+                            }}
+                          >
+                            <Icon size={20} />
+                          </span>
+                          <h3 className="text-[15px] font-extrabold text-white m-0">{t(c.titleKey)}</h3>
+                        </div>
+                        <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
+                        <span
+                          className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                          style={{ color: c.accent }}
+                        >
+                          {t('fg.learnMore')}
+                          <ArrowRight
+                            size={14}
+                            className="transition-transform group-hover:translate-x-1"
+                          />
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </section>
           ))}
         </div>
