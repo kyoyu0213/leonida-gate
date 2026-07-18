@@ -97,7 +97,12 @@ function extractFieldNotes() {
   return notes;
 }
 
-const articles = extractArticles();
+// sitemap から除外する記事ID（統合で301した記事・noindex にした記事）。
+//  17: id19 へ 301 統合（vercel.json redirects）
+//  29: noindex,follow（prerender-og.ts の NOINDEX_IDS）
+const EXCLUDE_IDS = new Set(['17', '29']);
+
+const articles = extractArticles().filter((a) => !EXCLUDE_IDS.has(String(a.id)));
 const fieldNotes = extractFieldNotes();
 
 // 日英の対がある（=/en/ 版を持つ）静的ルートか。client/src/lib/routes.ts と一致させる。

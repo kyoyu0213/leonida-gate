@@ -21,6 +21,12 @@ const SITE_NAME = 'GTA6 FEED';
 
 const TEMPLATE = readFileSync(resolve(ROOT, 'dist/public/index.html'), 'utf8');
 
+// noindex 対象の記事ID（本文・URLは残しつつ検索インデックスからのみ外す）。
+// ここに入れた記事は <head> に <meta name="robots" content="noindex,follow"> を
+// 焼き込む（日英とも）。CSR側(useSeo)は robots メタに触れないため実行時も保持される。
+// 併せて generate-sitemap.mjs 側でも sitemap から除外すること。
+const NOINDEX_IDS = new Set<number>([29]);
+
 // SSRバンドル（dist/server/entry-server.js）の render() で記事本文を生HTML化する。
 // このスクリプトは <head>（title/canonical/OG/JSON-LD）の所有者であり続け、本文だけを
 // #root へ足す。render は同期（getArticleById で記事を即解決）。
@@ -85,6 +91,10 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   // canonical（各言語版は自言語URLを自己参照）
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
+  // robots: noindex 対象のみ <head> に焼き込む（本文・canonical は残す）。
+  if (NOINDEX_IDS.has(article.id)) {
+    html = html.replace('</head>', `    <meta name="robots" content="noindex,follow" />\n  </head>`);
+  }
   // meta 各種
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', 'article');

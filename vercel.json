@@ -3,6 +3,10 @@
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
+  "redirects": [
+    { "source": "/news/17", "destination": "/news/19", "statusCode": 301 },
+    { "source": "/en/news/17", "destination": "/en/news/19", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/sitemap-news.xml", "destination": "/api/sitemap-news" },
     { "source": "/news/:id(\\d+)", "destination": "/api/news-og?id=:id" },

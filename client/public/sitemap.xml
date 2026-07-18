@@ -324,12 +324,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gta6-feed.com/news/29</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://gta6-feed.com/news/28</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -392,12 +386,6 @@
   <url>
     <loc>https://gta6-feed.com/news/18</loc>
     <lastmod>2026-06-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gta6-feed.com/news/17</loc>
-    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -540,12 +528,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gta6-feed.com/en/news/29</loc>
-    <lastmod>2026-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://gta6-feed.com/en/news/28</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -608,12 +590,6 @@
   <url>
     <loc>https://gta6-feed.com/en/news/18</loc>
     <lastmod>2026-06-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gta6-feed.com/en/news/17</loc>
-    <lastmod>2026-06-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -727,7 +703,7 @@
   </url>
   <url>
     <loc>https://gta6-feed.com/fivem-gtarp/field-notes/visit-note/refloria-town</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -751,7 +727,7 @@
   </url>
   <url>
     <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/visit-note/refloria-town</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
