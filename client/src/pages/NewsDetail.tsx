@@ -11,8 +11,11 @@ import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
-// 相対パス画像（/images/...）を解決できずブロックしてしまう。
-// 自サイトのオリジンを渡して、相対パスの記事画像を表示できるようにする。
+// 相対パス画像（/images/...）や相対リンク（/news/...）を解決できずブロックしてしまう。
+// SSR（プリレンダ）では window が無く origin を取れないため、本番オリジンを既定にする。
+// これが無いと prerender 生HTMLで本文中の内部リンクが <a> にならず [blocked] span になり、
+// クローラーに記事間リンクが見えない（CSRハイドレーション後にしか復活しない）。
+const SSR_DEFAULT_ORIGIN = 'https://gta6-feed.com';
 const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plugin]) => {
   if (key === 'harden' && Array.isArray(plugin)) {
     return [
@@ -21,7 +24,7 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
         allowedImagePrefixes: ['*'],
         allowedLinkPrefixes: ['*'],
         allowDataImages: true,
-        defaultOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+        defaultOrigin: typeof window !== 'undefined' ? window.location.origin : SSR_DEFAULT_ORIGIN,
       },
     ];
   }
