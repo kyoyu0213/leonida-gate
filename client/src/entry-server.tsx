@@ -38,6 +38,7 @@ import FriendsBoard from '@/pages/FriendsBoard';
 import CrewsBoard from '@/pages/CrewsBoard';
 import ServerBoard from '@/pages/ServerBoard';
 import NewsDetail from '@/pages/NewsDetail';
+import Home from '@/pages/Home';
 
 // 日英ペアがある（hreflang 付き）プリレンダ対象ルート。/en 版も生成する。
 // （App.tsx のルーター定義と一致させる）。
@@ -106,10 +107,16 @@ export interface RenderResult {
   seo: CollectedSeo | null;
 }
 
-/** 1ルートを静的HTML化して返す。未登録ルートは null。 */
+/** 1ルートを静的HTML化して返す。未登録ルートは null。
+ *  ホーム（'/' と '/en'）は ROUTES/ROUTE_PATHS には載せず、専用の
+ *  prerender-home.ts から render('/')・render('/en') で個別に呼ぶ
+ *  （'/' を ROUTE_PATHS に入れると prerender-routes が dist/public/index.html＝
+ *   catch-all シェル兼テンプレートを上書きしてしまうため）。 */
 export function render(url: string): RenderResult | null {
-  const jaPath = url.startsWith('/en/') ? url.slice(3) : url;
+  // '/en'（末尾スラッシュ無し）も ja パス '/' に写す。
+  const jaPath = url === '/en' ? '/' : url.startsWith('/en/') ? url.slice(3) : url;
   const Comp =
+    (jaPath === '/' ? Home : undefined) ??
     ROUTES[jaPath] ??
     (NEWS_PATH_RE.test(jaPath) ? NewsDetail : undefined) ??
     (FIELD_NOTE_PATH_RE.test(jaPath) ? FieldNoteDetail : undefined);

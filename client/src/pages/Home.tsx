@@ -7,12 +7,7 @@ import { listApprovedServers } from '@/lib/servers';
 import { listThreads, type BoardThread } from '@/lib/board';
 import { BOARDS, boardColor, type BoardConfig } from '@/lib/boards';
 import { siteLinks } from '@/data/site';
-import {
-  fieldNotes,
-  FIELD_NOTE_CATEGORY_CONFIG,
-  type FieldNote,
-  type FieldNoteCategory,
-} from '@/data/fieldNotes';
+import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { type FivemServer } from '@/lib/supabase';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -34,7 +29,7 @@ const TREND_PER_BOARD = 3;
 export default function Home() {
   const t = useT();
   const lang = useLang();
-  useSeo(t('seo.home.title'), t('seo.home.desc'), { url: '/' });
+  useSeo(t('seo.home.title'), t('seo.home.desc'), { url: '/', localized: true });
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [trends, setTrends] = useState<{ board: BoardConfig; threads: BoardThread[] }[]>([]);
@@ -58,14 +53,8 @@ export default function Home() {
     selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
-  // 体験記：開発日記・訪問記から、それぞれ最新の1本だけを取り出して並べる
-  const latestFieldNotes = (['dev-diary', 'visit-note'] as FieldNoteCategory[])
-    .map((category) =>
-      fieldNotes
-        .filter((n) => n.category === category)
-        .reduce<FieldNote | undefined>((newest, n) => (!newest || n.date > newest.date ? n : newest), undefined),
-    )
-    .filter((n): n is FieldNote => Boolean(n));
+  // 体験記：オリジナル一次情報を「見本市」としてトップに全4本、新しい順で並べる。
+  const latestFieldNotes = [...fieldNotes].sort((a, b) => b.date.localeCompare(a.date));
 
   // 発売まで（2026-11-19）の残り日数
   const releaseDays = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00').getTime() - Date.now()) / 86400000));

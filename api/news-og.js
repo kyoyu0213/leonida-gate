@@ -31,12 +31,14 @@ function esc(s) {
 export default async function handler(req, res) {
   const id = parseInt(String((req.query && req.query.id) || ''), 10);
 
-  // 1) ベースの index.html を自ホストから取得（SPA本体を維持したままメタだけ差し替える）。
+  // 1) ベースの空シェル（app.html）を自ホストから取得（SPA本体を維持したままメタだけ差し替える）。
+  //    ※ index.html はホームをプリレンダ焼き込み済みなので使わない。catch-all と同じ
+  //      pristine シェル app.html を使う（DB記事に本文が無い＝空 #root を返すのが正）。
   const host = req.headers['x-forwarded-host'] || req.headers.host;
   const proto = req.headers['x-forwarded-proto'] || 'https';
   let html = '';
   try {
-    const r = await fetch(`${proto}://${host}/index.html`);
+    const r = await fetch(`${proto}://${host}/app.html`);
     if (r.ok) html = await r.text();
   } catch {
     /* fallback below */

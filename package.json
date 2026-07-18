@@ -8,7 +8,7 @@
     "gen:sitemap": "node scripts/generate-sitemap.mjs",
     "prebuild": "node scripts/generate-sitemap.mjs",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir",
-    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir && tsx scripts/prerender-og.ts && tsx scripts/prerender-routes.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir && tsx scripts/prerender-og.ts && tsx scripts/prerender-routes.ts && tsx scripts/prerender-home.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",

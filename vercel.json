@@ -10,6 +10,6 @@
   "rewrites": [
     { "source": "/sitemap-news.xml", "destination": "/api/sitemap-news" },
     { "source": "/news/:id(\\d+)", "destination": "/api/news-og?id=:id" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/app.html" }
   ]
 }
