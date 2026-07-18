@@ -21,8 +21,8 @@ function DiscordIcon() {
   );
 }
 
-// Topページに表示するニュースサムネの件数
-const TOP_NEWS_COUNT = 4;
+// Topページに表示するニュースサムネの件数（PC2カラムの左右バランス調整で2件）
+const TOP_NEWS_COUNT = 2;
 // 各掲示板で表示するトレンドスレッドの件数
 const TREND_PER_BOARD = 3;
 
