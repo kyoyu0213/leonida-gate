@@ -53,8 +53,16 @@ export default function Home() {
     selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
-  // 体験記：オリジナル一次情報を「見本市」としてトップに全4本、新しい順で並べる。
-  const latestFieldNotes = [...fieldNotes].sort((a, b) => b.date.localeCompare(a.date));
+  // 体験記：カテゴリごとに最新2本ずつ（開発日記2＋訪問記2＝計4本）をトップに、新しい順で並べる。
+  // 記事本数が増えても 2×2 のカード枠が崩れないよう、カテゴリ単位で上限をかける。
+  const latestFieldNotes = (['dev-diary', 'visit-note'] as const)
+    .flatMap((cat) =>
+      fieldNotes
+        .filter((n) => n.category === cat)
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .slice(0, 2),
+    )
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   // 発売まで（2026-11-19）の残り日数
   const releaseDays = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00').getTime() - Date.now()) / 86400000));

@@ -296,6 +296,195 @@ This article is a record of the GTA6 FEED operator actually building a FiveM ser
 };
 
 // ---------------------------------------------------------------------------
+//  #3 サーバー開発日記
+// ---------------------------------------------------------------------------
+const devDiary3: FieldNote = {
+  slug: 'server-dev-diary-3',
+  category: 'dev-diary',
+  title:
+    '【FiveM開発日記 #3】しばらく止まっていた開発を再開。まずは環境と自作リソースが無事に動くかを"現状確認"した',
+  titleEn:
+    'FiveM Dev Diary #3: Restarting Development After a Pause — First, a "Status Check" That the Environment and My Own Resources Still Work',
+  date: '2026-06-13',
+  excerpt:
+    '開発日記#3。体調を崩して止めていたFiveMサーバー開発を再開。まずは開発環境（txAdmin・VS Code・Claude Code）と、#2までに作った自作リソース（simple_character・simple_respawn 等）が無事に動くかを現状確認し、DEVLOG.mdを新設した。',
+  excerptEn:
+    'Dev Diary #3. I restarted FiveM server development after a health-related pause. First I did a status check that the environment (txAdmin, VS Code, Claude Code) and the resources I built through #2 (simple_character, simple_respawn, etc.) still work, and I set up a new DEVLOG.md.',
+  image: '/images/taikenki/serverkaihatu/3/hero.png',
+  icon: '📓',
+  seoTitle:
+    '【FiveM開発日記 #3】止まっていた開発を再開し、環境と自作リソースを現状確認｜GTA6 FEED',
+  seoDesc:
+    'FiveM開発日記#3。体調不良で止まっていたサーバー開発を再開し、まずは開発環境（FiveMサーバー・txAdmin・VS Code・Claude Code）と、#2までに作った自作リソース（vMenu・fixed_spawn・simple_character・simple_respawn・route68house）が無事に残って動くかを現状確認。vMenuの保存済みキャラ警告への判断や、再開の保険としてDEVLOG.mdを新設した記録。',
+  seoTitleEn:
+    'FiveM Dev Diary #3: Restarting a Paused Build and Checking the Environment and My Own Resources | GTA6 FEED',
+  seoDescEn:
+    'FiveM Dev Diary #3. After a health-related pause, I restarted server development and did a status check that the environment (FiveM server, txAdmin, VS Code, Claude Code) and the resources I built through #2 (vMenu, fixed_spawn, simple_character, simple_respawn, route68house) survived and still work — plus my call on vMenu’s saved-character warning, and setting up a new DEVLOG.md as insurance for restarting.',
+  body: `![夕暮れのダウンタウン（レジオンスクエア付近）に立つ、見た目を固定した自作キャラクター](/images/taikenki/serverkaihatu/3/hero.png)
+
+前回の更新からしばらく間が空いてしまった。体調を崩していたこともあって、FiveMサーバーの開発は一時的にストップしていた。今日はようやく体調も戻ってきたので、久しぶりに開発を再開することにした。
+
+とはいえ、しばらく触っていなかったので「そもそもちゃんと動くんだっけ？」という不安が正直あった。なので今回は新しい機能をガンガン作るというより、まずは開発環境と、これまでに作ったものが無事に残っていて動くかを確認するところからスタートした。
+
+## 開発環境の確認
+
+まずは土台が問題なく動くかどうか。順番に立ち上げていった。
+
+- FiveMサーバーを起動
+- txAdmin の起動を確認
+- VS Code を起動
+- Claude Code へ再ログイン
+- 以前のプロジェクトがそのまま残っていることを確認
+
+久しぶりでも、この辺りは特に詰まることなくすんなり立ち上がった。環境が壊れていたり、設定が飛んでいたりすると再開のハードルが一気に上がるので、ここが無事だったのは大きい。
+
+## resources フォルダの確認
+
+次に、これまで作成・導入してきたリソースがちゃんと残っているかを確認。resources フォルダを開くと、前回までに入れたものがそのまま残っていた。
+
+- vMenu
+- fixed_spawn
+- simple_character
+- simple_respawn
+- route68house
+
+#2 までで作ってきた自作リソースと、導入したメニュー系がひと通り揃っている。ここが残っていれば、続きから進められる。
+
+## 動作確認
+
+フォルダに残っているだけでは意味がないので、実際にサーバーへ接続して一通り動かしてみた。
+
+### simple_character
+
+![/charmenu で開いた simple_character の編集メニュー。Ped Model・Face・Hair・Torso などの項目と「SAVE & CLOSE」が並ぶ](/images/taikenki/serverkaihatu/3/charmenu.png)
+
+- /charmenu が正常に開くことを確認
+- キャラクター編集 → 保存 → 終了 まで問題なく動作
+
+自作のキャラクター保存機能が、しばらく放置していてもきちんと動いてくれた。
+
+### simple_respawn
+
+![路上で死亡し、リスポーン待ちになった自作キャラクター](/images/taikenki/serverkaihatu/3/death.png)
+
+- 死亡後、その場で復活することを確認
+- リスポーン機能が正常に動作
+
+こちらも問題なし。#2 で「毎回あらぬ場所に飛ばされる」問題を直したときの延長線上にある機能だが、狙いどおりの挙動を維持していた。
+
+![復活直後の画面。左下にvMenu由来の「保存済みキャラクターが未設定」という警告と「IcyToad5630 died.」が表示されている](/images/taikenki/serverkaihatu/3/respawn.png)
+
+なお、動作確認中に vMenu 側から「保存済みキャラクター」に関する警告が表示された。ただ、現在は vMenu のキャラクター保存ではなく自作の simple_character を使っているため、この警告は影響なしと判断した。機能がバッティングしているわけではなく、単に使っていない側が反応しているだけ、という理解でいる。
+
+## 開発ログ（DEVLOG.md）を作成
+
+再開にあたって、プロジェクトルートに DEVLOG.md を新しく作成した。
+
+![VS Code の Claude Code に「DEVLOG.md を新規作成」と指示し、24行のDEVLOG.mdが生成された画面](/images/taikenki/serverkaihatu/3/devlog.png)
+
+これまでは頭の中と、この開発日記だけで進捗を管理していたが、今回みたいに間が空くと「どこまでやったんだっけ」を思い出すのに時間がかかる。今後は開発内容や確認事項をその場でログに残しながら進めていくことにした。次に再開するときの自分を助けるための保険のようなものだ。
+
+## 次回やること
+
+- route68house の動作確認
+- 自作リソースのコード整理
+- 次に追加する機能の検討
+
+## 今日の感想
+
+今日は新しい機能を作った日というより、「開発を再開した日」だった。
+
+しばらく触っていなかったぶん少し不安もあったが、環境は問題なく動作していたし、自作リソースもちゃんと生きていた。まずは土台がしっかり残っていることを確認できたので、次回からは安心して開発を進められそうだ。
+
+止まっていたものを再び動かすのは、地味だけど大事な一歩。ここから、また少しずつ進めていく。
+
+---
+
+この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年6月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
+  bodyEn: `![My own character, with a fixed appearance, standing in downtown (near Legion Square) at dusk](/images/taikenki/serverkaihatu/3/hero.png)
+
+Quite a bit of time has passed since my last update. Partly because I'd fallen ill, development on the FiveM server had temporarily come to a stop. Today my health has finally recovered, so I decided to restart development after a long break.
+
+That said, since I hadn't touched it in a while, I honestly had the worry of "does it even still work properly?" So this time, rather than aggressively building new features, I started by confirming that the development environment and the things I'd made so far were still safely there and still worked.
+
+## Checking the Development Environment
+
+First, whether the foundation runs without issue. I started things up one at a time.
+
+- Launch the FiveM server
+- Confirm txAdmin starts up
+- Launch VS Code
+- Log back in to Claude Code
+- Confirm my earlier project is still there as-is
+
+Even after a while, this part came up smoothly without getting stuck anywhere. If the environment is broken or the settings have been wiped, the hurdle to restarting jumps all at once, so it was a big deal that this part was safe.
+
+## Checking the resources Folder
+
+Next, I checked that the resources I'd created and installed so far were still there. When I opened the resources folder, everything I'd put in up to last time was still there as-is.
+
+- vMenu
+- fixed_spawn
+- simple_character
+- simple_respawn
+- route68house
+
+The resources I'd built through #2 and the menu-type tools I'd installed were all present. As long as this part survives, I can continue from where I left off.
+
+## Verifying It Works
+
+Since just having them sit in the folder is meaningless, I actually connected to the server and ran through everything.
+
+### simple_character
+
+![The simple_character edit menu opened with /charmenu — items like Ped Model, Face, Hair, and Torso, with "SAVE & CLOSE" listed](/images/taikenki/serverkaihatu/3/charmenu.png)
+
+- Confirmed /charmenu opens correctly
+- Character edit → save → exit all worked without issue
+
+My own character-saving feature worked properly even after being left alone for a while.
+
+### simple_respawn
+
+![My own character down on the road, waiting to respawn](/images/taikenki/serverkaihatu/3/death.png)
+
+- Confirmed that after death, I revive on the spot
+- The respawn feature works correctly
+
+This one was fine too. It's a feature that's an extension of when I fixed the "thrown to a random place every time" problem in #2, and it maintained the intended behavior.
+
+![The screen right after reviving. At the bottom-left, a vMenu warning that "no saved character is set" and "IcyToad5630 died." are shown](/images/taikenki/serverkaihatu/3/respawn.png)
+
+By the way, during the verification a warning about "saved characters" appeared from the vMenu side. However, since I'm currently using my own simple_character rather than vMenu's character saving, I judged this warning to have no impact. My understanding is that it's not that the features are conflicting — it's simply that the side I'm not using is reacting.
+
+## Creating a Development Log (DEVLOG.md)
+
+As part of restarting, I newly created a DEVLOG.md in the project root.
+
+![The Claude Code screen in VS Code after instructing it to "create a new DEVLOG.md," generating a 24-line DEVLOG.md](/images/taikenki/serverkaihatu/3/devlog.png)
+
+Until now I'd managed progress only in my head and in this dev diary, but when a gap opens up like this time, it takes a while to remember "how far did I get?" From now on I decided to proceed while leaving a log of the development content and things I've checked, right on the spot. It's like insurance to help future me when I restart next time.
+
+## What to Do Next Time
+
+- Verify route68house works
+- Tidy up the code of my own resources
+- Consider the next feature to add
+
+## Thoughts for Today
+
+Today was less a day of building a new feature and more "the day I restarted development."
+
+Since I hadn't touched it in a while there was a bit of anxiety, but the environment worked without issue, and my own resources were still alive and well. Now that I've confirmed the foundation is firmly intact, I should be able to proceed with development at ease from next time.
+
+Getting something that had stopped moving again is a plain but important step. From here, I'll keep moving forward little by little.
+
+---
+
+This article is a record of the GTA6 FEED operator actually building a FiveM server on his own PC. The technical information is written after confirming the environment and each tool's offering as of June 2026, but the specifications and behavior vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
+};
+
+// ---------------------------------------------------------------------------
 //  訪問記 #1 HeliosCity
 // ---------------------------------------------------------------------------
 const heliosCity: FieldNote = {
@@ -907,7 +1096,7 @@ This article was independently reported and recorded by GTA6 FEED and has no rel
 };
 
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
-export const fieldNotes: FieldNote[] = [devDiary2, devDiary1, refloriaTown, heliosCity];
+export const fieldNotes: FieldNote[] = [devDiary3, devDiary2, devDiary1, refloriaTown, heliosCity];
 
 /** slug から体験記を解決（SSR/CSR 共通）。 */
 export function getFieldNoteBySlug(slug?: string): FieldNote | undefined {
