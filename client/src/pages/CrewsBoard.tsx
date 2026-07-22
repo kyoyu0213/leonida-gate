@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import CrewCard from '@/components/CrewCard';
 import { toast } from 'sonner';
-import { listPublishedCrews, createCrew, CREW_GENRES, type Crew } from '@/lib/crews';
+import { listPublishedCrews, createCrew, CREW_GENRES, CREW_PLATFORMS, type Crew } from '@/lib/crews';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -33,6 +33,7 @@ export default function CrewsBoard() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
+  const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
 
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
@@ -59,13 +60,14 @@ export default function CrewsBoard() {
 
   const filtered = crews.filter((c) => {
     const matchesGenre = selectedGenre === 'all' || c.genre === selectedGenre;
+    const matchesPlatform = selectedPlatform === 'all' || c.platform === selectedPlatform;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       !q ||
       c.title.toLowerCase().includes(q) ||
       c.crew_name.toLowerCase().includes(q) ||
       c.body.toLowerCase().includes(q);
-    return matchesGenre && matchesSearch;
+    return matchesGenre && matchesPlatform && matchesSearch;
   });
 
   const handleFormChange = (
@@ -80,6 +82,10 @@ export default function CrewsBoard() {
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!form.crew_name.trim() || !form.title.trim() || !form.body.trim()) {
       toast.error(tr('cr.toast.req'));
+      return;
+    }
+    if (!form.platform) {
+      toast.error(tr('cr.toast.platformReq'));
       return;
     }
     setSubmitting(true);
@@ -108,6 +114,7 @@ export default function CrewsBoard() {
   };
 
   const genreTabs = [{ id: 'all', labelKey: 'cr.genre.all' }, ...CREW_GENRES];
+  const platformTabs = [{ id: 'all', labelKey: 'cr.pf.all' }, ...CREW_PLATFORMS];
 
   return (
     <div className="vice-page vice-noise">
@@ -176,8 +183,13 @@ export default function CrewsBoard() {
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.platform')}</label>
-                  <input name="platform" value={form.platform} onChange={handleFormChange} placeholder={tr('cr.ph.platform')} maxLength={40} className={inputClass} />
+                  <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.platform')} <span className="text-[#22d3ee]">*</span></label>
+                  <select name="platform" value={form.platform} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
+                    <option value="" className="bg-[#15091c]">{tr('cr.pf.select')}</option>
+                    {CREW_PLATFORMS.map((p) => (
+                      <option key={p.id} value={p.id} className="bg-[#15091c]">{tr(p.labelKey)}</option>
+                    ))}
+                  </select>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.size')}</label>
@@ -226,25 +238,52 @@ export default function CrewsBoard() {
           </div>
         </div>
 
-        {/* Filter tabs */}
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1.5">
-          {genreTabs.map((g) => {
-            const active = selectedGenre === g.id;
-            return (
-              <button
-                key={g.id}
-                onClick={() => setSelectedGenre(g.id)}
-                className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
-                style={{
-                  border: `1px solid ${active ? '#ff8a3d' : 'rgba(255,255,255,.14)'}`,
-                  background: active ? 'rgba(255,138,61,.13)' : 'rgba(255,255,255,.05)',
-                  color: active ? '#fff' : 'rgba(244,238,248,.65)',
-                }}
-              >
-                {tr(g.labelKey)}
-              </button>
-            );
-          })}
+        {/* Filter: プラットフォーム（クロスプレイ非対応のため最重要の絞り込み軸） */}
+        <div className="mt-5">
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-[#a78bfa] mb-2">{tr('cr.filterByPlatform')}</div>
+          <div className="flex gap-2 overflow-x-auto pb-1.5">
+            {platformTabs.map((p) => {
+              const active = selectedPlatform === p.id;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedPlatform(p.id)}
+                  className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#a78bfa' : 'rgba(255,255,255,.14)'}`,
+                    background: active ? 'rgba(167,139,250,.16)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
+                  }}
+                >
+                  {tr(p.labelKey)}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Filter: ジャンル */}
+        <div className="mt-4">
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-[#ff8a3d] mb-2">{tr('cr.filterByGenre')}</div>
+          <div className="flex gap-2 overflow-x-auto pb-1.5">
+            {genreTabs.map((g) => {
+              const active = selectedGenre === g.id;
+              return (
+                <button
+                  key={g.id}
+                  onClick={() => setSelectedGenre(g.id)}
+                  className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#ff8a3d' : 'rgba(255,255,255,.14)'}`,
+                    background: active ? 'rgba(255,138,61,.13)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
+                  }}
+                >
+                  {tr(g.labelKey)}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-5 text-white/50 text-sm font-mono">
@@ -265,7 +304,7 @@ export default function CrewsBoard() {
           ) : filtered.length > 0 ? (
             <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(308px,1fr))' }}>
               {filtered.map((c) => (
-                <CrewCard key={c.id} crew={c} onGenreClick={setSelectedGenre} />
+                <CrewCard key={c.id} crew={c} onGenreClick={setSelectedGenre} onPlatformClick={setSelectedPlatform} />
               ))}
             </div>
           ) : (
@@ -275,7 +314,7 @@ export default function CrewsBoard() {
               <button
                 onClick={() => {
                   if (crews.length === 0) setShowForm(true);
-                  else { setSearchQuery(''); setSelectedGenre('all'); }
+                  else { setSearchQuery(''); setSelectedGenre('all'); setSelectedPlatform('all'); }
                 }}
                 className="text-white font-extrabold px-6 py-3 rounded-full inline-flex items-center gap-1.5"
                 style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95)' }}

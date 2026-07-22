@@ -35,6 +35,23 @@ export const CREW_GENRES = [
   { id: 'other', labelKey: 'cr.genre.other' },
 ];
 
+// プラットフォーム（platform 列に保存）。GTAオンラインはクロスプレイ非対応のため、
+// クルー探しでも最重要の絞り込み軸。フレンド募集と同じ選択肢。
+export const CREW_PLATFORMS = [
+  { id: 'ps5', labelKey: 'cr.pf.ps5' },
+  { id: 'ps4', labelKey: 'cr.pf.ps4' },
+  { id: 'xbox_series', labelKey: 'cr.pf.xboxSeries' },
+  { id: 'xbox_one', labelKey: 'cr.pf.xboxOne' },
+  { id: 'pc_enhanced', labelKey: 'cr.pf.pcEnhanced' },
+  { id: 'pc_legacy', labelKey: 'cr.pf.pcLegacy' },
+];
+
+/** platform の表示ラベルキー。未知（旧・自由入力値）は null（呼び出し側で生値にフォールバック）。 */
+export function crewPlatformLabelKey(id: string | null): string | null {
+  if (!id) return null;
+  return CREW_PLATFORMS.find((x) => x.id === id)?.labelKey ?? null;
+}
+
 /** 公開中のクルー募集を新しい順に取得。 */
 export async function listPublishedCrews(limit?: number) {
   let query = supabase

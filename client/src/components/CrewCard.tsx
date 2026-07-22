@@ -1,21 +1,26 @@
 import { Copy, ExternalLink, Shield, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Crew } from '@/lib/crews';
-import { CREW_GENRES } from '@/lib/crews';
+import { CREW_GENRES, crewPlatformLabelKey } from '@/lib/crews';
 import { useT } from '@/lib/i18n';
 
 interface CrewCardProps {
   crew: Crew;
-  /** カテゴリバッジのクリック（一覧の絞り込み用） */
+  /** ジャンルバッジのクリック（一覧の絞り込み用） */
   onGenreClick?: (id: string) => void;
+  /** プラットフォームバッジのクリック（一覧の絞り込み用） */
+  onPlatformClick?: (id: string) => void;
 }
 
 const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 
 /** クルー募集のカード（/board/crews）。1募集=1カード。 */
-export default function CrewCard({ crew, onGenreClick }: CrewCardProps) {
+export default function CrewCard({ crew, onGenreClick, onPlatformClick }: CrewCardProps) {
   const tr = useT();
   const genreLabel = CREW_GENRES.find((g) => g.id === crew.genre);
+  const platformLabelKey = crewPlatformLabelKey(crew.platform);
+  // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
+  const platformText = platformLabelKey ? tr(platformLabelKey) : crew.platform;
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -23,7 +28,6 @@ export default function CrewCard({ crew, onGenreClick }: CrewCardProps) {
   };
 
   const meta: Array<[string, string | null]> = [
-    [tr('cr.platform'), crew.platform],
     [tr('cr.size'), crew.size],
     [tr('cr.requirements'), crew.requirements],
     [tr('cr.activeTime'), crew.active_time],
@@ -37,7 +41,16 @@ export default function CrewCard({ crew, onGenreClick }: CrewCardProps) {
           <Shield size={20} />
         </span>
         <div className="min-w-0">
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
+          <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+            {platformText && (
+              <button
+                type="button"
+                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(crew.platform!) : undefined}
+                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10 ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:bg-[#a78bfa]/20' : ''}`}
+              >
+                {platformText}
+              </button>
+            )}
             {genreLabel && (
               <button
                 type="button"

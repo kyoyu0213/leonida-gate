@@ -4,7 +4,7 @@ import { ArrowLeft, Loader2, Copy, ExternalLink, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import ThreadReplies from '@/components/ThreadReplies';
-import { getCrew, CREW_GENRES, type Crew } from '@/lib/crews';
+import { getCrew, CREW_GENRES, crewPlatformLabelKey, type Crew } from '@/lib/crews';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
@@ -41,6 +41,8 @@ export default function CrewDetail() {
   }, [id]);
 
   const genreLabel = crew ? CREW_GENRES.find((g) => g.id === crew.genre) : undefined;
+  const platformLabelKey = crew ? crewPlatformLabelKey(crew.platform) : null;
+  const platformText = crew ? (platformLabelKey ? tr(platformLabelKey) : crew.platform) : null;
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -49,7 +51,6 @@ export default function CrewDetail() {
 
   const meta: Array<[string, string | null | undefined]> = crew
     ? [
-        [tr('cr.platform'), crew.platform],
         [tr('cr.size'), crew.size],
         [tr('cr.requirements'), crew.requirements],
         [tr('cr.activeTime'), crew.active_time],
@@ -90,7 +91,12 @@ export default function CrewDetail() {
                   <Shield size={22} />
                 </span>
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                  <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                    {platformText && (
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10">
+                        {platformText}
+                      </span>
+                    )}
                     {genreLabel && (
                       <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#ff8a3d] border border-[#ff8a3d]/50 bg-[#ff8a3d]/10">
                         {tr(genreLabel.labelKey)}
