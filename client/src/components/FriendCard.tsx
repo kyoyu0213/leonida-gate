@@ -1,21 +1,26 @@
 import { Copy, ExternalLink, Users, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Friend } from '@/lib/friends';
-import { FRIEND_PLAY_STYLES } from '@/lib/friends';
+import { friendStyleLabelKey, friendPlatformLabelKey } from '@/lib/friends';
 import { useT } from '@/lib/i18n';
 
 interface FriendCardProps {
   friend: Friend;
-  /** カテゴリバッジのクリック（一覧の絞り込み用） */
+  /** 目的バッジのクリック（一覧の絞り込み用） */
   onStyleClick?: (id: string) => void;
+  /** プラットフォームバッジのクリック（一覧の絞り込み用） */
+  onPlatformClick?: (id: string) => void;
 }
 
 const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 
 /** フレンド募集のカード（/board/friends）。1募集=1カード。 */
-export default function FriendCard({ friend, onStyleClick }: FriendCardProps) {
+export default function FriendCard({ friend, onStyleClick, onPlatformClick }: FriendCardProps) {
   const tr = useT();
-  const styleLabel = FRIEND_PLAY_STYLES.find((s) => s.id === friend.play_style);
+  const styleLabelKey = friendStyleLabelKey(friend.play_style);
+  const platformLabelKey = friendPlatformLabelKey(friend.platform);
+  // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
+  const platformText = platformLabelKey ? tr(platformLabelKey) : friend.platform;
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -23,7 +28,6 @@ export default function FriendCard({ friend, onStyleClick }: FriendCardProps) {
   };
 
   const meta: Array<[string, string | null]> = [
-    [tr('fr.platform'), friend.platform],
     [tr('fr.voiceChat'), friend.voice_chat],
     [tr('fr.activeTime'), friend.active_time],
     [tr('fr.ageRange'), friend.age_range],
@@ -37,15 +41,26 @@ export default function FriendCard({ friend, onStyleClick }: FriendCardProps) {
           <Users size={20} />
         </span>
         <div className="min-w-0">
-          {styleLabel && (
-            <button
-              type="button"
-              onClick={onStyleClick ? () => onStyleClick(styleLabel.id) : undefined}
-              className={`inline-block px-2.5 py-0.5 mb-1 rounded-full text-[11px] font-bold text-[#22d3ee] border border-[#22d3ee]/50 bg-[#22d3ee]/10 ${onStyleClick ? 'cursor-pointer hover:bg-[#22d3ee]/20' : ''}`}
-            >
-              {tr(styleLabel.labelKey)}
-            </button>
-          )}
+          <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+            {platformText && (
+              <button
+                type="button"
+                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(friend.platform!) : undefined}
+                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10 ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:bg-[#a78bfa]/20' : ''}`}
+              >
+                {platformText}
+              </button>
+            )}
+            {styleLabelKey && (
+              <button
+                type="button"
+                onClick={onStyleClick && friend.play_style ? () => onStyleClick(friend.play_style!) : undefined}
+                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#22d3ee] border border-[#22d3ee]/50 bg-[#22d3ee]/10 ${onStyleClick ? 'cursor-pointer hover:bg-[#22d3ee]/20' : ''}`}
+              >
+                {tr(styleLabelKey)}
+              </button>
+            )}
+          </div>
           <h3 className="text-lg font-black text-[#f4eef8] leading-snug m-0 break-words">{friend.title}</h3>
         </div>
       </div>

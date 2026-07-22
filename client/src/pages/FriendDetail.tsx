@@ -4,7 +4,7 @@ import { ArrowLeft, Loader2, Copy, ExternalLink, Users } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import ThreadReplies from '@/components/ThreadReplies';
-import { getFriend, FRIEND_PLAY_STYLES, type Friend } from '@/lib/friends';
+import { getFriend, friendStyleLabelKey, friendPlatformLabelKey, type Friend } from '@/lib/friends';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
@@ -41,9 +41,9 @@ export default function FriendDetail() {
     });
   }, [id]);
 
-  const styleLabel = friend
-    ? FRIEND_PLAY_STYLES.find((s) => s.id === friend.play_style)
-    : undefined;
+  const styleLabelKey = friend ? friendStyleLabelKey(friend.play_style) : null;
+  const platformLabelKey = friend ? friendPlatformLabelKey(friend.platform) : null;
+  const platformText = friend ? (platformLabelKey ? tr(platformLabelKey) : friend.platform) : null;
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -52,7 +52,6 @@ export default function FriendDetail() {
 
   const meta: Array<[string, string | null | undefined]> = friend
     ? [
-        [tr('fr.platform'), friend.platform],
         [tr('fr.voiceChat'), friend.voice_chat],
         [tr('fr.activeTime'), friend.active_time],
         [tr('fr.ageRange'), friend.age_range],
@@ -93,11 +92,18 @@ export default function FriendDetail() {
                   <Users size={22} />
                 </span>
                 <div className="min-w-0">
-                  {styleLabel && (
-                    <span className="inline-block px-2.5 py-0.5 mb-1 rounded-full text-[11px] font-bold text-[#22d3ee] border border-[#22d3ee]/50 bg-[#22d3ee]/10">
-                      {tr(styleLabel.labelKey)}
-                    </span>
-                  )}
+                  <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                    {platformText && (
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10">
+                        {platformText}
+                      </span>
+                    )}
+                    {styleLabelKey && (
+                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#22d3ee] border border-[#22d3ee]/50 bg-[#22d3ee]/10">
+                        {tr(styleLabelKey)}
+                      </span>
+                    )}
+                  </div>
                   <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">
                     {friend.title}
                   </h1>

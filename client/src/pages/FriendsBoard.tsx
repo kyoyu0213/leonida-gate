@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import FriendCard from '@/components/FriendCard';
 import { toast } from 'sonner';
-import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, type Friend } from '@/lib/friends';
+import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, type Friend } from '@/lib/friends';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -32,6 +32,7 @@ export default function FriendsBoard() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState<string>('all');
+  const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
 
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
@@ -58,12 +59,13 @@ export default function FriendsBoard() {
 
   const filtered = friends.filter((f) => {
     const matchesStyle = selectedStyle === 'all' || f.play_style === selectedStyle;
+    const matchesPlatform = selectedPlatform === 'all' || f.platform === selectedPlatform;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       !q ||
       f.title.toLowerCase().includes(q) ||
       f.body.toLowerCase().includes(q);
-    return matchesStyle && matchesSearch;
+    return matchesStyle && matchesPlatform && matchesSearch;
   });
 
   const handleFormChange = (
@@ -78,6 +80,10 @@ export default function FriendsBoard() {
     if (hp) return; // ハニーポット＝ボット。静かに無視。
     if (!form.title.trim() || !form.body.trim()) {
       toast.error(tr('fr.toast.titleBodyReq'));
+      return;
+    }
+    if (!form.platform) {
+      toast.error(tr('fr.toast.platformReq'));
       return;
     }
     setSubmitting(true);
@@ -105,6 +111,7 @@ export default function FriendsBoard() {
   };
 
   const styleTabs = [{ id: 'all', labelKey: 'fr.style.all' }, ...FRIEND_PLAY_STYLES];
+  const platformTabs = [{ id: 'all', labelKey: 'fr.pf.all' }, ...FRIEND_PLATFORMS];
 
   return (
     <div className="vice-page vice-noise">
@@ -159,16 +166,21 @@ export default function FriendsBoard() {
               </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.platform')} <span className="text-[#f472b6]">*</span></label>
+                  <select name="platform" value={form.platform} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
+                    <option value="" className="bg-[#15091c]">{tr('fr.pf.select')}</option>
+                    {FRIEND_PLATFORMS.map((p) => (
+                      <option key={p.id} value={p.id} className="bg-[#15091c]">{tr(p.labelKey)}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.playStyle')}</label>
                   <select name="play_style" value={form.play_style} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
                     {FRIEND_PLAY_STYLES.map((s) => (
                       <option key={s.id} value={s.id} className="bg-[#15091c]">{tr(s.labelKey)}</option>
                     ))}
                   </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.platform')}</label>
-                  <input name="platform" value={form.platform} onChange={handleFormChange} placeholder={tr('fr.ph.platform')} maxLength={40} className={inputClass} />
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.voiceChat')}</label>
@@ -217,25 +229,52 @@ export default function FriendsBoard() {
           </div>
         </div>
 
-        {/* Filter tabs */}
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1.5">
-          {styleTabs.map((s) => {
-            const active = selectedStyle === s.id;
-            return (
-              <button
-                key={s.id}
-                onClick={() => setSelectedStyle(s.id)}
-                className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
-                style={{
-                  border: `1px solid ${active ? '#22d3ee' : 'rgba(255,255,255,.14)'}`,
-                  background: active ? 'rgba(34,211,238,.13)' : 'rgba(255,255,255,.05)',
-                  color: active ? '#fff' : 'rgba(244,238,248,.65)',
-                }}
-              >
-                {tr(s.labelKey)}
-              </button>
-            );
-          })}
+        {/* Filter: プラットフォーム（クロスプレイ非対応のため最重要の絞り込み軸） */}
+        <div className="mt-5">
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-[#a78bfa] mb-2">{tr('fr.filterByPlatform')}</div>
+          <div className="flex gap-2 overflow-x-auto pb-1.5">
+            {platformTabs.map((p) => {
+              const active = selectedPlatform === p.id;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedPlatform(p.id)}
+                  className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#a78bfa' : 'rgba(255,255,255,.14)'}`,
+                    background: active ? 'rgba(167,139,250,.16)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
+                  }}
+                >
+                  {tr(p.labelKey)}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Filter: 目的・プレイ内容 */}
+        <div className="mt-4">
+          <div className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-[#22d3ee] mb-2">{tr('fr.filterByStyle')}</div>
+          <div className="flex gap-2 overflow-x-auto pb-1.5">
+            {styleTabs.map((s) => {
+              const active = selectedStyle === s.id;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => setSelectedStyle(s.id)}
+                  className="flex-none px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
+                  style={{
+                    border: `1px solid ${active ? '#22d3ee' : 'rgba(255,255,255,.14)'}`,
+                    background: active ? 'rgba(34,211,238,.13)' : 'rgba(255,255,255,.05)',
+                    color: active ? '#fff' : 'rgba(244,238,248,.65)',
+                  }}
+                >
+                  {tr(s.labelKey)}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-5 text-white/50 text-sm font-mono">
@@ -256,7 +295,7 @@ export default function FriendsBoard() {
           ) : filtered.length > 0 ? (
             <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(308px,1fr))' }}>
               {filtered.map((f) => (
-                <FriendCard key={f.id} friend={f} onStyleClick={setSelectedStyle} />
+                <FriendCard key={f.id} friend={f} onStyleClick={setSelectedStyle} onPlatformClick={setSelectedPlatform} />
               ))}
             </div>
           ) : (
@@ -266,7 +305,7 @@ export default function FriendsBoard() {
               <button
                 onClick={() => {
                   if (friends.length === 0) setShowForm(true);
-                  else { setSearchQuery(''); setSelectedStyle('all'); }
+                  else { setSearchQuery(''); setSelectedStyle('all'); setSelectedPlatform('all'); }
                 }}
                 className="font-extrabold px-6 py-3 rounded-full inline-flex items-center gap-1.5"
                 style={{ background: 'linear-gradient(95deg,#22d3ee,#a78bfa)', color: '#0b0714' }}
