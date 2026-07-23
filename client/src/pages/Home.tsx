@@ -64,6 +64,10 @@ export default function Home() {
     )
     .sort((a, b) => b.date.localeCompare(a.date));
 
+  // 「すべて見る」ボタンに出す各カテゴリの総本数。
+  const visitNoteCount = fieldNotes.filter((n) => n.category === 'visit-note').length;
+  const devDiaryCount = fieldNotes.filter((n) => n.category === 'dev-diary').length;
+
   // 発売まで（2026-11-19）の残り日数
   const releaseDays = Math.max(0, Math.ceil((new Date('2026-11-19T00:00:00').getTime() - Date.now()) / 86400000));
 
@@ -506,6 +510,46 @@ export default function Home() {
                         {lang === 'en' ? 'Read more →' : 'くわしく見る →'}
                       </span>
                     </div>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* 体験記の「すべて見る」導線（訪問記／開発日記の一覧へ）。バッジと同じカテゴリ色で色分け。 */}
+            <div className="mt-7 flex flex-wrap gap-3">
+              {(
+                [
+                  {
+                    key: 'visit-note' as const,
+                    path: '/fivem-gtarp/field-notes/visit-note',
+                    count: visitNoteCount,
+                    ja: 'サーバー訪問記をすべて見る',
+                    en: 'View all visit notes',
+                  },
+                  {
+                    key: 'dev-diary' as const,
+                    path: '/fivem-gtarp/field-notes/dev-diary',
+                    count: devDiaryCount,
+                    ja: '開発日記をすべて見る',
+                    en: 'View all dev diaries',
+                  },
+                ]
+              ).map((b) => {
+                const color = FIELD_NOTE_CATEGORY_CONFIG[b.key].color;
+                return (
+                  <a
+                    key={b.key}
+                    href={`${lang === 'en' ? '/en' : ''}${b.path}`}
+                    className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full transition-colors hover:bg-white/10"
+                    style={{
+                      background: 'rgba(255,255,255,.04)',
+                      border: `1px solid ${color}66`,
+                      color,
+                    }}
+                  >
+                    {lang === 'ja'
+                      ? `${b.ja}（全${b.count}件）→`
+                      : `${b.en} (${b.count}) →`}
                   </a>
                 );
               })}
