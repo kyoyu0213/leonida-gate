@@ -113,6 +113,16 @@ export default function FriendsBoard() {
   const styleTabs = [{ id: 'all', labelKey: 'fr.style.all' }, ...FRIEND_PLAY_STYLES];
   const platformTabs = [{ id: 'all', labelKey: 'fr.pf.all' }, ...FRIEND_PLATFORMS];
 
+  // 連絡先欄の入力例は、選んだプラットフォームに合わせて変える（PSN ID / ゲーマータグ / Rockstar ID）。
+  const contactPlaceholder =
+    form.platform === 'ps5' || form.platform === 'ps4'
+      ? tr('fr.ph.contact.psn')
+      : form.platform === 'xbox_series' || form.platform === 'xbox_one'
+        ? tr('fr.ph.contact.xbox')
+        : form.platform === 'pc_enhanced' || form.platform === 'pc_legacy'
+          ? tr('fr.ph.contact.pc')
+          : tr('fr.ph.contact.default');
+
   return (
     <div className="vice-page vice-noise">
       <Header />
@@ -175,6 +185,10 @@ export default function FriendsBoard() {
                   </select>
                 </div>
                 <div>
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.contact')}</label>
+                  <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={inputClass} />
+                </div>
+                <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.playStyle')}</label>
                   <select name="play_style" value={form.play_style} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
                     {FRIEND_PLAY_STYLES.map((s) => (
@@ -193,10 +207,6 @@ export default function FriendsBoard() {
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.ageRange')}</label>
                   <input name="age_range" value={form.age_range} onChange={handleFormChange} placeholder={tr('fr.ph.ageRange')} maxLength={30} className={inputClass} />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.contact')}</label>
-                  <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={tr('fr.ph.contact')} maxLength={120} className={inputClass} />
                 </div>
               </div>
               <div>
