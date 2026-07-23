@@ -1,6 +1,7 @@
 import { ArrowRight, Calendar } from 'lucide-react';
 import { useRoute } from 'wouter';
 import Header from '@/components/Header';
+import FieldNoteTabs from '@/components/FieldNoteTabs';
 import { useSeo } from '@/hooks/useSeo';
 import { useLang } from '@/lib/i18n';
 import {
@@ -89,6 +90,9 @@ export default function FieldNotesList() {
           <span className="opacity-50">/</span>
           <span className="text-white/60">{isEn ? cat.en : cat.ja}</span>
         </nav>
+
+        {/* 開発日記 ⇄ サーバー訪問記 の切り替え（掲示板の RecruitTabs と同じ操作感） */}
+        <FieldNoteTabs active={category} />
 
         {/* Hero */}
         <span className="text-xs font-extrabold tracking-[0.25em] uppercase" style={{ color: cat.color }}>
