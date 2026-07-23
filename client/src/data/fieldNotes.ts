@@ -1095,8 +1095,304 @@ Sources & References
 This article was independently reported and recorded by GTA6 FEED and has no relationship with the Refloria Town operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
 };
 
+// ---------------------------------------------------------------------------
+//  訪問記 #3 Lien City
+// ---------------------------------------------------------------------------
+const lienCity: FieldNote = {
+  slug: 'lien-city',
+  category: 'visit-note',
+  title: 'Lien Cityとは？同接326人・初期資金1000万円の日本語RPサーバーを訪問',
+  titleEn:
+    'What Is Lien City? A Visit to a Japanese RP Server with 326 Concurrent Players and 10M Starting Funds',
+  date: '2026-07-20',
+  excerpt:
+    '日本語FiveMロールプレイサーバー「Lien City」をGTA6 FEEDが取材。同接326人、ホワイトリスト制、初期資金1000万円と車両600万円の関係、石掘りの全工程と収支、死亡ペナルティなど観測できた事実を記録。',
+  excerptEn:
+    'GTA6 FEED visits Lien City, a Japanese FiveM roleplay server — 326 concurrent players, a whitelist system, 10M starting funds against a 6M car, the full stone-mining pipeline and its returns, and death penalties, recorded as observed.',
+  image: '/images/taikenki/serverhoumon/Liencity/insyokuten.png',
+  icon: '📍',
+  seoTitle: 'Lien Cityとは？同接326人・初期資金1000万円の日本語RPサーバーを訪問｜GTA6 FEED',
+  seoDesc:
+    '日本語FiveMロールプレイサーバー「Lien City（リアンシティ）」をGTA6 FEEDが取材。ホワイトリスト制、同接326人、市役所ジョブ、初期資金1000万円と600万円の車両購入、iFakによる自己止血と市外死亡150万円のペナルティ、石掘り（採掘・石洗い・砂金採り・宝石加工）の全工程と5時間30分で1000万円という収支を記録。',
+  seoTitleEn:
+    'What Is Lien City? A Japanese RP FiveM Server with 326 Concurrent Players and 10M Starting Funds | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's report on Lien City, a Japanese FiveM roleplay server — a whitelist system, 326 concurrent players, city hall jobs, 10M starting funds against a 6M car purchase, self-treatment with an iFak and a 1.5M penalty for dying outside the city, plus the full stone-mining pipeline (mining, washing, gold panning, gem processing) yielding 10M in 5.5 hours.",
+  body: `![夕暮れのLien City。バンブーの柱と2階テラスを備えた飲食店「Johnny's Bar」が通り沿いに建つ](/images/taikenki/serverhoumon/Liencity/insyokuten.png)
+
+Lien City（リアンシティ）は、日本語のFiveMロールプレイサーバーである。ホワイトリスト制を採用し、カジュアルなGTARPを掲げる。GTA6 FEEDが取材し、観測できた事実を記録する。以下、確認した確定情報と、確認できていない未確認項目を分けて記す。
+
+## 基本情報
+
+- 接続方法：公式Discordでホワイトリスト申請を行って参加する
+- 同時接続数：326人（2026年7月20日 22時時点・観測値）。ただし観測日は3連休かつ夏休み期間にあたる
+- サーバー再起動：深夜2時と朝8時に再起動を確認。他の時間帯は未確認
+- サーバー告知では、犯罪コンテンツ30種とホワイトジョブ多数が挙げられている
+
+![Lien Cityの全体マップ。右側にアラモ湖アウトフィッターズ・各種釣具店／魚市場・本署・ガレージ・Bank・Barber・Clothing Store・Recycle Centerなどのランドマーク一覧（1/49）が並ぶ](/images/taikenki/serverhoumon/Liencity/map.png)
+
+## 街の雰囲気
+
+服飾の選択肢が多く、プレイヤーの服装にばらつきが見られた。
+
+![服装のカスタマイズ画面。スカーフ・チェーン、ジャケット（15/2036）、シャツ（14/1044）、ボディアーマー、バッグ・パラシュート、腕・手、脚、靴、デカールなど部位ごとに多数のDrawableを選択できる](/images/taikenki/serverhoumon/Liencity/kyarameikugamen.png)
+
+税金制度が導入されている。詳細な税率や徴収の仕組みは取材時点では確認していない。
+
+## 経済・職業
+
+市役所のジョブとして、ごみ収集、タクシー、ホットドッグを確認した。このほか窓清掃、狩猟、石掘り、木こりがMapで確認できた。
+
+![市役所の求人センター。ゴミ収集員・タクシー運転手・ホットドッグ屋台の3職種が並び、それぞれ「この職に応募する」と表示されている](/images/taikenki/serverhoumon/Liencity/siyakusyojob.png)
+
+飲食店は4店舗、たばこ屋を1店舗確認した。メカニックは3か所。車両ディーラーは普通車と高級車が分かれており、航空機ディーラーも存在する。
+
+![夕暮れの車両ディーラー「Premium Deluxe Motorsport」の外観](/images/taikenki/serverhoumon/Liencity/dealer2.png)
+
+![コンビニの商品一覧。ハンバーガー ¥100,000、飲料水 ¥100,000、無線機 ¥380、FITBIT ¥320、SKATEBOARD ¥50,000、ブームボックス ¥30,000、衣装バッグ、タバコが並ぶ](/images/taikenki/serverhoumon/Liencity/konbinidekaerumono.png)
+
+## 初期資金と最初の動き
+
+初心者案内はDiscordの専用チャンネルから申請する方式になっている。
+
+参加直後にまず案内されるのが銀行口座の開設で、口座には初期資金として1000万円が入っている。この資金で普通車ディーラーから車両を購入する流れになる。
+
+![銀行「OKOK BANKING」の設定画面。口座番号の変更（手数料¥200・口座番号は「OK」で始まる・最大10文字）と暗証番号の変更（手数料¥200・4文字・数字のみ）が並ぶ](/images/taikenki/serverhoumon/Liencity/ginkoukouza.png)
+
+取材では、ディーラーに勧められた車両を600万円で購入した。
+
+![普通車ディーラーの購入画面。SUV HABANERO 6,000,000¥ に対し「SUV Habanero を 6,000,000¥ で購入しますか？」の確認ダイアログが表示されている](/images/taikenki/serverhoumon/Liencity/dealer.png)
+
+初期資金1000万円に対して車両が600万円という比率になるため、最初の車選びが以降の資金繰りを左右する構造になっている。
+
+## 治安構造
+
+警察は深夜1時30分頃、EMS（救急）は深夜3時30分頃に稼働していることを確認した。EMSのほかに個人医も存在する。
+
+![救助要請の画面表示。「EMS 1名 / 個人医 3名」「[R]…… 個人医へ救助信号（長押し）」「EMSへ送信済み（再送 04分05秒）」と表示されている](/images/taikenki/serverhoumon/Liencity/EMSwoyobu.png)
+
+取材中、車両で落下して負傷し、出血によりダウンする事態が発生した。ダウン時にはシステムメッセージが表示され、iFak（応急処置キット）を所持していれば自力で止血できる旨が示された。負傷には出血の概念があり、対応するアイテムを携行していれば自己処置が可能な仕様になっている。
+
+死亡時にはペナルティとして費用が発生する。市外で死亡した場合、150万円が徴収された。初期資金が1000万円であることを踏まえると、序盤の1回の死亡が資金に与える影響は小さくない。
+
+犯罪行為については、サーバー再起動の前後15分間が禁止時間として設定されている。これ以外の時間帯における制限は取材時点では確認していない。
+
+## 犯罪・ギャング
+
+ギャングの数、応募方法・加入条件については、取材時点では確認していない。
+
+## クラフト・経済基盤
+
+リサイクルセンター（リサセン）が存在する。武器クラフトの仕組みも存在するが、詳細な手順は未確認である。車パーツ製作やメカニックへの素材供給については確認していない。
+
+買い取り制度は機能している。ただし取材中、現在は買い取り価格が低く抑えられているという話を住人から聞いた。これは伝聞であり、相場の実態は未確認である。
+
+## 実際に石掘りを体験
+
+住人から石掘りが収入源になるという話を聞き、実際に試した。取材時、街では石掘りに従事するプレイヤーが多数見られた。
+
+![渓谷の川で作業する複数のプレイヤー。5017番地付近の砂金採りポイント](/images/taikenki/serverhoumon/Liencity/sakintori.png)
+
+石掘りは複数の工程に分かれており、それぞれ場所が異なる。
+
+- 石掘り：3054番地の下あたり
+- 石洗い：5000番地の上、および7352番地の上
+- 砂金採り：5017番地
+- 宝石加工：9306番地
+
+![夜の採石場（Davis Quartz、3054番地付近）。岩壁沿いに重機が停まっている](/images/taikenki/serverhoumon/Liencity/saisekijyo.png)
+
+![坑内でドリルを使って採掘しているところ。画面下に「採掘中…」の進行バーが表示されている](/images/taikenki/serverhoumon/Liencity/mainingu.png)
+
+![採掘の結果、「添加 2X STONE」として石を入手した表示](/images/taikenki/serverhoumon/Liencity/isigahoreta.png)
+
+作業の特徴は、各工程がまとめて処理できる点にある。採取した石は一括で洗浄できる。砂金採りも宝石加工も同様にまとめて処理できる。
+
+![水辺で「石を洗う（この水辺の範囲内）」を実行しているところ。画面下に「洗石中… x20」の進行バーが表示されている（7352番地付近）](/images/taikenki/serverhoumon/Liencity/isiarai.png)
+
+![「一括処理の個数」ダイアログ。個数（最大20）のスライダーが20に設定されている](/images/taikenki/serverhoumon/Liencity/matometetoreru.png)
+
+![川で砂金採りをする2人のプレイヤー。画面下に「砂金採り中… x20」の進行バーが表示されている（5017番地）](/images/taikenki/serverhoumon/Liencity/sakinori2.png)
+
+なお、砂金採りを終えた時点でインベントリを確認すると石が残っており、所持重量を圧迫していた。このため別地点で再度洗浄する必要が生じた。
+
+![インベントリの中身。UNCUT DIAMOND 44x、UNCUT EMERALD 25x、UNCUT SAPPHIRE 66x、UNCUT RUBY 79x、SILVER ORE 50x、GOLD ORE 41x、GOLD INGOT、EMERALD 28x、ガラス、ドリルビットなどが並ぶ](/images/taikenki/serverhoumon/Liencity/jewel.png)
+
+工程を一巡させ、指輪の製作に至るまでに5時間30分を要した。
+
+![「DANGER HIGH TEMPERATURE AREA」の看板が立つ溶鉱炉エリア。複数のプレイヤーが作業している（9306番地付近）](/images/taikenki/serverhoumon/Liencity/youkouro.png)
+
+![宝石加工の工房。複数のプレイヤーが作業台に並び、画面下に「加工中 Emerald Ring (Silver) x20」の進行バーが表示されている](/images/taikenki/serverhoumon/Liencity/housekikakou.png)
+
+完成した指輪を質屋に持ち込んだところ、買い取り対象となったのはダイヤモンドリングのみだった。ダイヤモンドリング以外の指輪は、加工に時間を要したものの売却先が見つからなかった。
+
+![質屋の買い取り画面。「Diamond Ring 売却価格 $200000」のみが表示されている](/images/taikenki/serverhoumon/Liencity/sitiya.png)
+
+ダイヤモンドリングは50個を売却し、1000万円となった。
+
+![質屋のメニュー（アイテムを売る／アイテムを溶解）。画面右上の所持金が ¥10074975 と表示されている](/images/taikenki/serverhoumon/Liencity/sitiya2.png)
+
+作業時間5時間30分に対する収入が1000万円という計算になるが、これは売却できなかった指輪の加工時間を含んだ数字である。ダイヤモンドリングに絞って加工した場合の効率は、取材では確認していない。
+
+## 六法・ルールの特徴
+
+六法（ルールブック）で確認できた規定として、サーバー再起動の前後15分間における犯罪行為の禁止がある。その他の規定については取材時点では確認していない。
+
+## 状態マーカー
+
+稼働中（2026年7月時点）
+
+---
+
+出典・参考
+
+- Lien City 公式Discord・サーバー告知
+- GTA6 FEEDによる取材時の観測（2026年7月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、Lien City運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は取材時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![Lien City at dusk. The restaurant "Johnny's Bar," with bamboo columns and a second-floor terrace, stands along the street](/images/taikenki/serverhoumon/Liencity/insyokuten.png)
+
+Lien City is a Japanese-language FiveM roleplay server. It uses a whitelist system and sets out a casual GTARP direction. GTA6 FEED reported on it and records the facts we were able to observe. Below, we separate the confirmed information we verified from the items we could not confirm.
+
+## Basic Information
+
+- How to join: apply for the whitelist on the official Discord to participate
+- Concurrent players: 326 (observed at 22:00 on July 20, 2026). Note that the observation day fell on a three-day weekend and within the summer holiday period
+- Server restarts: we confirmed restarts at 2 a.m. and 8 a.m. Other time slots are unconfirmed
+- The server's announcements list 30 kinds of crime content and numerous white-collar jobs
+
+![The full map of Lien City. On the right is a landmark list (1/49) including Alamo Lake Outfitters, various tackle shops and fish markets, the main police station, garages, Bank, Barber, Clothing Store, and Recycle Center](/images/taikenki/serverhoumon/Liencity/map.png)
+
+## The Feel of the City
+
+There are many clothing options, and variation was visible in players' outfits.
+
+![The clothing customization screen. Numerous drawables can be selected per body part — scarf/chain, jacket (15/2036), shirt (14/1044), body armor, bag/parachute, arms/hands, legs, shoes, and decals](/images/taikenki/serverhoumon/Liencity/kyarameikugamen.png)
+
+A tax system is in place. The detailed tax rates and collection mechanism we did not confirm at the time of our visit.
+
+## Economy & Jobs
+
+As City Hall jobs, we confirmed garbage collection, taxi, and hot dog. Beyond these, window cleaning, hunting, stone mining, and lumberjacking could be confirmed on the map.
+
+![The job center at City Hall. Three roles are listed — garbage collector, taxi driver, and hot dog stand — each showing "apply for this job"](/images/taikenki/serverhoumon/Liencity/siyakusyojob.png)
+
+We confirmed 4 restaurants and 1 tobacco shop. There are 3 mechanics. The vehicle dealers are split between standard cars and luxury cars, and an aircraft dealer also exists.
+
+![The exterior of the vehicle dealer "Premium Deluxe Motorsport" at dusk](/images/taikenki/serverhoumon/Liencity/dealer2.png)
+
+![The convenience store's product list. Hamburger ¥100,000, drinking water ¥100,000, radio ¥380, FITBIT ¥320, SKATEBOARD ¥50,000, boombox ¥30,000, clothing bag, and cigarettes](/images/taikenki/serverhoumon/Liencity/konbinidekaerumono.png)
+
+## Starting Funds and the First Moves
+
+Beginner guidance is applied for from a dedicated channel on Discord.
+
+The first thing you are guided through right after joining is opening a bank account, which comes with 10 million yen as starting funds. The flow is then to buy a vehicle from the standard car dealer with these funds.
+
+![The settings screen of the bank "OKOK BANKING." Changing the account number (¥200 fee, account numbers start with "OK," max 10 characters) and changing the PIN (¥200 fee, 4 characters, digits only)](/images/taikenki/serverhoumon/Liencity/ginkoukouza.png)
+
+During our visit, I bought the vehicle recommended by the dealer for 6 million yen.
+
+![The purchase screen at the standard car dealer. Against the SUV HABANERO at 6,000,000¥, a confirmation dialog asks "Purchase the SUV Habanero for 6,000,000¥?"](/images/taikenki/serverhoumon/Liencity/dealer.png)
+
+Because the ratio works out to a 6-million-yen vehicle against 10 million yen in starting funds, the structure is such that your first car choice governs your cash flow from then on.
+
+## Public-Safety Structure
+
+We confirmed that the police were active around 1:30 a.m. and EMS (emergency medical) around 3:30 a.m. Besides EMS, private doctors also exist.
+
+![The rescue-request display. It shows "EMS: 1 / private doctors: 3," "[R]…… rescue signal to a private doctor (hold)," and "Sent to EMS (resend in 04:05)"](/images/taikenki/serverhoumon/Liencity/EMSwoyobu.png)
+
+During our visit, I fell with a vehicle, was injured, and went down from bleeding. When downed, a system message appeared indicating that if you carry an iFak (first-aid kit) you can stop the bleeding yourself. Injuries have a bleeding concept, and the design allows self-treatment as long as you carry the corresponding item.
+
+Dying incurs a cost as a penalty. When I died outside the city, 1.5 million yen was collected. Given that starting funds are 10 million yen, the impact of a single early death on your finances is not small.
+
+As for criminal acts, the 15 minutes before and after a server restart are set as prohibited time. Any restriction outside these hours we did not confirm at the time of our visit.
+
+## Crime & Gangs
+
+The number of gangs, and the application methods and conditions for joining, we did not confirm at the time of our visit.
+
+## Crafting & Economic Base
+
+A recycling center ("risasen") exists. A weapon-crafting system also exists, but the detailed procedure is unconfirmed. Car-parts production and supplying materials to mechanics we did not confirm.
+
+The buyback system functions. However, during our visit we heard from a resident that buyback prices are currently kept low. This is hearsay, and the actual state of the market is unconfirmed.
+
+## Actually Trying Stone Mining
+
+After hearing from a resident that stone mining is a source of income, I actually tried it. At the time of our visit, many players around the city were seen engaged in stone mining.
+
+![Several players working in a canyon river. The gold-panning point near address 5017](/images/taikenki/serverhoumon/Liencity/sakintori.png)
+
+Stone mining is divided into several stages, each in a different location.
+
+- Stone mining: around below address 3054
+- Stone washing: above address 5000, and above address 7352
+- Gold panning: address 5017
+- Gem processing: address 9306
+
+![The quarry at night (Davis Quartz, near address 3054). Heavy machinery is parked along the rock face](/images/taikenki/serverhoumon/Liencity/saisekijyo.png)
+
+![Mining with a drill inside the pit. A "mining…" progress bar is shown at the bottom of the screen](/images/taikenki/serverhoumon/Liencity/mainingu.png)
+
+![The result of mining: a display showing stone obtained as "added 2X STONE"](/images/taikenki/serverhoumon/Liencity/isigahoreta.png)
+
+The characteristic of the work is that each stage can be processed in bulk. Mined stones can be washed all at once. Gold panning and gem processing can likewise be processed in bulk.
+
+![Executing "wash stones (within this waterside area)" at the water's edge. A "washing stones… x20" progress bar is shown at the bottom of the screen (near address 7352)](/images/taikenki/serverhoumon/Liencity/isiarai.png)
+
+![The "bulk processing quantity" dialog. The quantity slider (max 20) is set to 20](/images/taikenki/serverhoumon/Liencity/matometetoreru.png)
+
+![Two players panning for gold in the river. A "panning for gold… x20" progress bar is shown at the bottom of the screen (address 5017)](/images/taikenki/serverhoumon/Liencity/sakinori2.png)
+
+Note that when I checked my inventory after finishing gold panning, stones remained and were weighing down my carry capacity. Because of this, I had to wash them again at a different location.
+
+![The contents of the inventory. UNCUT DIAMOND 44x, UNCUT EMERALD 25x, UNCUT SAPPHIRE 66x, UNCUT RUBY 79x, SILVER ORE 50x, GOLD ORE 41x, GOLD INGOT, EMERALD 28x, glass, drill bits, and more](/images/taikenki/serverhoumon/Liencity/jewel.png)
+
+Running the pipeline through one full cycle, it took 5 hours and 30 minutes to reach the production of rings.
+
+![The smelting-furnace area with a "DANGER HIGH TEMPERATURE AREA" sign. Several players are at work (near address 9306)](/images/taikenki/serverhoumon/Liencity/youkouro.png)
+
+![The gem-processing workshop. Several players line up at the workbenches, and a "processing Emerald Ring (Silver) x20" progress bar is shown at the bottom of the screen](/images/taikenki/serverhoumon/Liencity/housekikakou.png)
+
+When I brought the finished rings to the pawn shop, the only ones eligible for buyback were diamond rings. Rings other than diamond rings, despite taking time to process, had no buyer to be found.
+
+![The pawn shop's buyback screen. Only "Diamond Ring, sale price $200000" is displayed](/images/taikenki/serverhoumon/Liencity/sitiya.png)
+
+I sold 50 diamond rings, which came to 10 million yen.
+
+![The pawn shop menu (sell items / melt down items). The cash on hand at the top right shows ¥10074975](/images/taikenki/serverhoumon/Liencity/sitiya2.png)
+
+This works out to 10 million yen of income for 5 hours and 30 minutes of work, but that figure includes the processing time for rings that could not be sold. The efficiency if you focused on diamond rings alone, we did not confirm during our visit.
+
+## Rulebook Features
+
+As a provision we could confirm in the rulebook, there is the prohibition of criminal acts for the 15 minutes before and after a server restart. Other provisions we did not confirm at the time of our visit.
+
+## Status Marker
+
+Active (as of July 2026)
+
+---
+
+Sources & References
+
+- Lien City official Discord and server announcements
+- GTA6 FEED's observations during the visit (July 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the Lien City operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
-export const fieldNotes: FieldNote[] = [devDiary3, devDiary2, devDiary1, refloriaTown, heliosCity];
+export const fieldNotes: FieldNote[] = [
+  devDiary3,
+  devDiary2,
+  devDiary1,
+  lienCity,
+  refloriaTown,
+  heliosCity,
+];
 
 /** slug から体験記を解決（SSR/CSR 共通）。 */
 export function getFieldNoteBySlug(slug?: string): FieldNote | undefined {
