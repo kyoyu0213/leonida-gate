@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, NotebookPen, MapPinned } from 'lucide-react';
+import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { useSeo } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
-import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 
 interface Card {
   titleKey: string;
@@ -28,17 +28,6 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.fivem.title', descKey: 'fg.card.fivem.desc', href: '/fivem-gtarp/what-is-fivem', icon: Server, accent: '#22d3ee' },
       { titleKey: 'fg.card.gtarp.title', descKey: 'fg.card.gtarp.desc', href: '/fivem-gtarp/what-is-gtarp', icon: Users, accent: '#a78bfa' },
       { titleKey: 'fg.card.diff.title', descKey: 'fg.card.diff.desc', href: '/fivem-gtarp/fivem-vs-gtarp', icon: GitCompare, accent: '#ff8a3d' },
-    ],
-  },
-  {
-    // オリジナル一次情報（体験記）をハブ上位＝基本の直後に昇格。カードは render 側で
-    // 個別4記事への直リンク（言語対応）としてデータ駆動描画する。ここの cards は
-    // 「一覧への導線」を併存させるための予備であり、実描画では個別記事を主にする。
-    labelKey: 'fg.group.fieldnotes',
-    accent: '#fb923c',
-    cards: [
-      { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
-      { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
     ],
   },
   {
@@ -89,6 +78,17 @@ const GROUPS: CardGroup[] = [
       { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
     ],
   },
+  {
+    // オリジナル一次情報（体験記）。ヘッダー・トップにも導線があるため、ハブでは最下部に置く。
+    // カードは render 側で「各カテゴリの最新1本」だけをデータ駆動で描画し、記事が増えても伸びない。
+    // ここの cards は一覧への導線として保持（実描画では最新記事＋一覧リンクを出す）。
+    labelKey: 'fg.group.fieldnotes',
+    accent: '#fb923c',
+    cards: [
+      { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
+      { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
+    ],
+  },
 ];
 
 // カテゴリ絞り込みチップ。'all' + 各グループ。チップのラベルは短縮版（fg.tab.*）。
@@ -109,8 +109,16 @@ export default function FivemGtarp() {
 
   const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);
 
-  // 体験記は個別4記事を新しい順で、言語対応の直リンクとして描画する（データ駆動）。
-  const notesSorted = [...fieldNotes].sort((a, b) => b.date.localeCompare(a.date));
+  // 体験記は各カテゴリの最新1本だけを出す（開発日記1＋訪問記1＝計2枚）。
+  // 記事が増えても枚数が固定されるので、ハブページが伸び続けない。
+  const latestNotes = (['dev-diary', 'visit-note'] as const)
+    .map((c) =>
+      fieldNotes
+        .filter((n) => n.category === c)
+        .sort((a, b) => b.date.localeCompare(a.date))[0],
+    )
+    .filter(Boolean);
+
   const langPrefix = lang === 'en' ? '/en' : '';
 
   return (
@@ -169,9 +177,9 @@ export default function FivemGtarp() {
 
               {g.labelKey === 'fg.group.fieldnotes' ? (
                 <>
-                  {/* 体験記＝オリジナル一次情報。個別4記事へ言語対応で直リンク（1ホップ）。 */}
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {notesSorted.map((note) => {
+                  {/* 各カテゴリの最新1本へ言語対応で直リンク（1ホップ）。枚数固定なので伸びない。 */}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {latestNotes.map((note) => {
                       const cat = FIELD_NOTE_CATEGORY_CONFIG[note.category];
                       return (
                         <a
