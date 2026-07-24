@@ -105,6 +105,187 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 38,
+    title:
+      "GTA6のパッケージ版、国内でも予約開始——中身はディスクではなくDLコード、通常版9,800円",
+    displayTitle:
+      "GTA6のパッケージ版、国内でも予約開始\n中身はディスクではなくDLコード、通常版9,800円",
+    description:
+      "『GTA6』のパッケージ版が7月24日から国内でも予約開始。ただし箱の中身はダウンロードコードのみで、ディスクは同梱されない「コードインボックス」仕様。通常版9,800円(税込)、配送は11月12日、プレイ開始は11月19日。ディスク版が後から出る見込みはなく、内容と購入前に押さえておきたい点をまとめた。",
+    icon: "📦",
+    image: "/images/news/package-preorder/eyecatch.png",
+    category: "release",
+    date: "2026-07-24",
+    publishedAt: "2026-07-24 16:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.amazon.co.jp/dp/B0H9XJ3V8K",
+    relatedArticles: [37, 19, 28],
+    aiSummary: [
+      "『GTA6』のパッケージ版が7月24日から国内でも予約受付を開始した。ただし箱に入っているのはダウンロードコードのみで、ディスクは同梱されない「コードインボックス」仕様。価格は通常版9,800円・アルティメット版12,280円(いずれも税込)で、デジタル版と同額となる。配送は11月12日、プレイ開始は11月19日。",
+      "重要なのは、待ってもディスク版は出ないという点。The Hollywood Reporterの報道で、GTA6のディスク生産計画は発売時にも以降にも存在しないことが判明している。パッケージとして手元に残したいなら、今回のコードインボックス版が唯一の選択肢になる。",
+      "コードは日本のPlayStationアカウント専用で、発売日から170日で失効する。中古売却や貸与はできない。物として持つこだわりがなければデジタル版と中身は同じ。予約は公式・正規店に限り、便乗詐欺に注意したい。",
+    ],
+    fullContent: `# GTA6のパッケージ版、国内でも予約開始——中身はディスクではなくDLコード、通常版9,800円
+
+『グランド・セフト・オートVI(GTA6)』のパッケージ版について、7月24日から国内でも予約の受付が始まった。ただし箱の中に入っているのはダウンロードコードだけで、ディスクは同梱されない「コードインボックス」仕様となる。価格は通常版が9,800円(税込)。GTA6 FEEDが、内容と購入前に押さえておきたい点をまとめた。
+
+本記事は2026年7月24日時点の情報にもとづく。
+
+---
+
+## 予約の概要
+
+国内で予約が始まったパッケージ版の要点は次のとおり。
+
+- 仕様:コードインボックス。箱にはダウンロードコードのみが封入され、ディスクは入っていない。
+- 価格:通常版9,800円(税込)、アルティメット・エディション12,280円(税込)。デジタル版と同額となる。
+- 配送日:2026年11月12日。プレイ開始日は11月19日。
+- 対応機種:PS5、Xbox Series X|S。CERO区分はZ(18才以上のみ対象)で、18歳未満は購入できない。
+- 取扱店:Amazon.co.jp、ヨドバシ.com、セブンネットショッピング、楽天市場の各ショップなどで受付が始まっている。
+
+![ヨドバシ.comのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ゴールドポイント980ポイント(10%還元)、配送日2026年11月12日〜／プレイ開始日11月19日、返品不可と表示されている](/images/news/package-preorder/yodobashi.png)
+
+*ヨドバシ.comの商品ページ。9,800円(税込)・ゴールドポイント10%還元で、発売日にお届け(返品不可)と案内されている*
+
+主な予約ページは次のとおり。
+
+- Amazon.co.jp(PS5版 コードインボックス):https://www.amazon.co.jp/dp/B0H9XJ3V8K
+- ヨドバシ.com:https://www.yodobashi.com/product/100000001010003749/
+
+どちらも価格は9,800円(税込)、送料無料で共通している。違いはポイント還元で、記事執筆時点ではヨドバシ.comがゴールドポイント10%還元(980ポイント相当)、Amazonが1%(98ポイント)となっている。Amazonは「予約商品の価格保証」の対象で、配送予定日は11月12日、ヨドバシ.comは発売日の到着を案内している(返品不可)。実質的な負担や届く日で選ぶなら、この差は確認しておきたい。
+
+![Amazon.co.jpのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ポイント98pt(1%)、無料配送11月12日木曜日にお届け、「予約商品の価格保証」対象と表示されている](/images/news/package-preorder/amazon.png)
+
+*Amazon.co.jpの商品ページ。9,800円(税込)・ポイント1%で、無料配送は11月12日、「予約商品の価格保証」の対象*
+
+コードは11月12日開始のプリロードに対応しており、事前にダウンロードを済ませておける。つまり、手元に届く物としてはコードの入った箱だが、遊び始めるまでの流れはデジタル版とほぼ変わらない。
+
+なお、デジタル版はすでにPlayStation StoreとMicrosoft Storeで予約できる。
+
+---
+
+## ディスク版を待つ、という選択肢はない
+
+購入を迷っている人にとって、ここが最も重要な判断材料になる。
+
+一時期、「12月に本物のディスク入り版が出るのではないか」という情報が広まったが、その後The Hollywood Reporterの報道により否定された。同紙の情報筋によれば、GTA6のディスクを生産する計画は発売時にも以降にも存在しない。つまり、待っていればディスク版が出る、という前提で予約を見送っても、その版が登場する見込みは現時点でない。
+
+したがって、パッケージという形で手元に置きたい場合、選べるのは今回のコードインボックス版になる。
+
+---
+
+## 買う前に知っておきたいこと
+
+コードインボックスは、従来のパッケージ版と同じ感覚で扱えない部分がある。
+
+- 中古として売ったり、友人に貸したりはできない。コードは一度アカウントに登録すると、そのアカウントに紐づくためだ。
+- 封入されるコードは、日本で登録されたPlayStationアカウントを持つ人だけが使用できる。海外アカウントで遊ぶつもりの場合は注意したい。
+- コードには有効期限がある。PS5版の商品情報によれば、発行日である発売日(2026年11月19日)から170日後に失効する。買ったまま何年も寝かせておく、という扱いはできない。
+- 実質的にはデジタル版と同じものを、箱という形で受け取る買い方になる。棚に並べたい、贈り物にしたい、店頭のポイントやセールを使いたい、といった動機がなければ、デジタル版で予約しても得られる体験は変わらない。
+- 一方で、店舗独自の特典やポイント還元、値引きが付く場合があり、価格や在庫は店ごとに異なる。予約前に各店の表示を確認しておきたい。
+
+なお、エディションを問わず11月20日までに予約・購入すると、特典の「ヴィンテージ・バイスシティパック」が付与される。パッケージ版では初回購入分の封入特典として扱われ、数量に限りがあるとされている。
+
+---
+
+## 予約は正規のルートで
+
+GTA6の予約開始以降、その人気に便乗した詐欺が世界的に増えている。セキュリティ企業のカスペルスキーは、公式サイトや大手ストアそっくりに作られた偽の予約ページが多言語で確認されていると警告している。日本語話者も例外ではない。
+
+予約は、Rockstar公式サイト、PlayStation Store、Microsoft(Xbox)ストア、そして本記事で挙げたAmazon.co.jpやヨドバシ.comといった正規の販売店を使うのが安全だ。検索結果や交流サイトのリンクから飛ぶ場合は、URLの綴りが正規のものと一致しているかを確認したい。前金や暗号資産での支払いを求めるサイト、「今だけ」「残りわずか」と急かすページには応じないほうがよい。
+
+---
+
+## まとめ
+
+国内でもパッケージ版の予約が始まったが、中身はディスクではなくダウンロードコードで、通常版の価格はデジタル版と同じ9,800円。配送は11月12日、遊べるのは11月19日からとなる。ディスク版が後から出る見込みはないため、箱という形で残したい人は今回のコードインボックス版が唯一の選択肢になる。逆に、物として持つことにこだわりがなければ、デジタル版で予約しても中身は変わらない。選ぶ際は、店舗ごとのポイント還元と到着日、そしてコードが日本のPlayStationアカウント専用で、発売日から170日という有効期限がある点を押さえておきたい。`,
+    titleEn:
+      "GTA6 Physical Edition Now Up for Pre-Order in Japan — Inside Is a Download Code, Not a Disc; Standard Edition ¥9,800",
+    displayTitleEn:
+      "GTA6 Physical Edition Now Up for Pre-Order in Japan\nInside Is a Download Code, Not a Disc; Standard Edition ¥9,800",
+    descriptionEn:
+      "The physical edition of GTA6 opened for pre-order in Japan on July 24. But the box contains only a download code — no disc — in a “code-in-a-box” format. The standard edition is ¥9,800 (incl. tax), shipping on November 12, playable from November 19. There is no disc version coming later, so here's what's inside and what to check before you buy.",
+    aiSummaryEn: [
+      "The physical edition of GTA6 opened for pre-order in Japan on July 24. But the box holds only a download code — no disc — in a \"code-in-a-box\" format. The standard edition is ¥9,800 and the Ultimate Edition ¥12,280 (both incl. tax), the same as the digital versions. Shipping is November 12, and play begins November 19.",
+      "The key point: waiting will not get you a disc version. The Hollywood Reporter has reported that there is no plan to produce GTA6 discs at launch or afterward. If you want it as a physical package, this code-in-a-box edition is the only option.",
+      "The code is only usable with a Japan-registered PlayStation account and expires 170 days after release day. It cannot be resold used or lent out. If you don't care about owning a physical object, the digital version has the same contents. Pre-order only through official and legitimate stores, and beware of scams riding on the hype.",
+    ],
+    fullContentEn: `# GTA6 Physical Edition Now Up for Pre-Order in Japan — Inside Is a Download Code, Not a Disc; Standard Edition ¥9,800
+
+Pre-orders for the physical edition of *Grand Theft Auto VI (GTA6)* opened in Japan on July 24. However, all that's inside the box is a download code — no disc is included, in a "code-in-a-box" format. The standard edition is priced at ¥9,800 (incl. tax). GTA6 FEED has summarized what's inside and the points worth knowing before you buy.
+
+This article is based on information as of July 24, 2026.
+
+---
+
+## Pre-Order Overview
+
+Here are the key points of the physical edition now on pre-order in Japan.
+
+- Format: code-in-a-box. The box contains only a download code; no disc is included.
+- Price: standard edition ¥9,800 (incl. tax), Ultimate Edition ¥12,280 (incl. tax). The same as the digital versions.
+- Shipping date: November 12, 2026. Play start date: November 19.
+- Platforms: PS5 and Xbox Series X|S. The CERO rating is Z (18 and over only), so those under 18 cannot buy it.
+- Retailers: pre-orders have opened at Amazon.co.jp, Yodobashi.com, Seven Net Shopping, Rakuten Ichiba shops, and others.
+
+![The Yodobashi.com product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 980 Gold Points (10% back), shipping from November 12, 2026, a play start date of November 19, and "no returns"](/images/news/package-preorder/yodobashi.png)
+
+*The Yodobashi.com product page. At ¥9,800 (incl. tax) with 10% Gold Point rewards, it lists delivery on release day (no returns)*
+
+The main pre-order pages are as follows.
+
+- Amazon.co.jp (PS5, code-in-a-box): https://www.amazon.co.jp/dp/B0H9XJ3V8K
+- Yodobashi.com: https://www.yodobashi.com/product/100000001010003749/
+
+Both are ¥9,800 (incl. tax) with free shipping. The difference is in reward points: at the time of writing, Yodobashi.com offers 10% Gold Points (worth 980 points) and Amazon 1% (98 points). Amazon's listing is covered by its "pre-order price guarantee," with an estimated delivery of November 12, while Yodobashi.com states delivery on release day (no returns). If you're choosing by your real out-of-pocket cost or by when it arrives, this difference is worth checking.
+
+![The Amazon.co.jp product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 98 points (1%), free delivery on Thursday, November 12, and that it is covered by the "pre-order price guarantee"](/images/news/package-preorder/amazon.png)
+
+*The Amazon.co.jp product page. At ¥9,800 (incl. tax) with 1% points, free delivery is November 12, and it is covered by the "pre-order price guarantee"*
+
+The code supports the preload that begins on November 12, so you can finish downloading in advance. In other words, while the physical item you receive is a box with a code inside, the flow up to actually starting to play is essentially the same as the digital version.
+
+Note that the digital version is already available for pre-order on the PlayStation Store and the Microsoft Store.
+
+---
+
+## There Is No "Wait for a Disc Version" Option
+
+For anyone on the fence about buying, this is the single most important factor in the decision.
+
+For a while, word spread that "a real disc-included version might come out in December," but this was later denied by reporting from The Hollywood Reporter. According to the paper's sources, there is no plan to produce GTA6 discs, either at launch or afterward. In other words, even if you hold off on pre-ordering on the assumption that a disc version will appear if you wait, there is currently no prospect of such a version being released.
+
+Therefore, if you want it in hand as a physical package, the option available to you is this code-in-a-box edition.
+
+---
+
+## What to Know Before You Buy
+
+There are aspects in which code-in-a-box cannot be handled the same way as a traditional physical edition.
+
+- You cannot sell it used or lend it to a friend. That's because once the code is registered to an account, it becomes tied to that account.
+- The enclosed code can only be used by someone with a PlayStation account registered in Japan. Take care if you intend to play on an overseas account.
+- The code has an expiration date. According to the PS5 version's product information, it expires 170 days after the issue date, which is the release day (November 19, 2026). You can't buy it and leave it sitting for years.
+- In practice, this is a way of receiving the same thing as the digital version, in the form of a box. Unless you have a motive like wanting to line it up on a shelf, give it as a gift, or use in-store points or sales, pre-ordering the digital version gets you the same experience.
+- On the other hand, stores may attach their own bonuses, point rewards, or discounts, and price and stock differ by store. It's worth checking each store's listing before you pre-order.
+
+Note that, regardless of edition, if you pre-order or purchase by November 20, you receive the "Vintage Vice City Pack" bonus. For the physical edition, it is treated as an enclosed bonus for the initial print run, and is said to be limited in quantity.
+
+---
+
+## Pre-Order Through Legitimate Channels
+
+Since GTA6 pre-orders opened, scams riding on the game's popularity have increased worldwide. Security firm Kaspersky has warned that fake pre-order pages built to look just like the official site or major stores have been confirmed in multiple languages. Japanese speakers are no exception.
+
+The safe approach is to pre-order through legitimate sellers: the official Rockstar site, the PlayStation Store, the Microsoft (Xbox) store, and retailers like the Amazon.co.jp and Yodobashi.com listed in this article. If you arrive via a link from search results or social media, check that the spelling of the URL matches the legitimate one. It's best not to engage with sites that demand upfront payment or cryptocurrency, or pages that rush you with "today only" or "almost sold out."
+
+---
+
+## Summary
+
+Pre-orders for the physical edition have opened in Japan too, but the contents are a download code rather than a disc, and the standard edition's price is the same ¥9,800 as the digital version. Shipping is November 12, and it becomes playable from November 19. Since there is no prospect of a disc version coming out later, this code-in-a-box edition is the only choice for those who want to keep it in physical form. Conversely, if you don't care about owning a physical object, the contents are the same even if you pre-order the digital version. When choosing, keep in mind the per-store point rewards and arrival dates, and the fact that the code is exclusive to a Japanese PlayStation account and has a 170-day expiration from release day.`,
+  },
+  {
     id: 37,
     title:
       "GTA6の予約詐欺・偽ベータに注意——公式そっくりの偽サイトが世界で拡散、カスペルスキーが警告",
