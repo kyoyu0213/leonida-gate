@@ -222,6 +222,21 @@ export default function Home() {
               >
                 {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
               </a>
+              <a
+                href="/board/friends"
+                className="font-extrabold text-white"
+                style={{
+                  fontSize: 'clamp(13px,1.6vw,14.5px)',
+                  padding: '13px 24px',
+                  borderRadius: 999,
+                  background: 'rgba(34,211,238,.14)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(34,211,238,.55)',
+                }}
+              >
+                {lang === 'ja' ? 'フレンド募集' : 'Find friends'}
+              </a>
               {siteLinks.discord && (
                 <a
                   href={siteLinks.discord}
@@ -322,6 +337,14 @@ export default function Home() {
                       {line}
                     </p>
                   ))}
+                <a
+                  href="/board/friends"
+                  className="inline-flex items-center gap-1.5 font-black"
+                  style={{ fontSize: 16, lineHeight: 1.9, marginTop: 2, color: '#22d3ee', letterSpacing: '.03em' }}
+                >
+                  {lang === 'ja' ? 'GTAオンライン フレンドコミュニティー' : 'GTA Online Friends'}
+                  <span aria-hidden="true">→</span>
+                </a>
               </div>
               <div className="flex flex-col items-start gap-2.5" style={{ marginTop: 16 }}>
                 <a
