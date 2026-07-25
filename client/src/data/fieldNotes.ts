@@ -485,6 +485,239 @@ This article is a record of the GTA6 FEED operator actually building a FiveM ser
 };
 
 // ---------------------------------------------------------------------------
+//  #4 サーバー開発日記
+// ---------------------------------------------------------------------------
+const devDiary4: FieldNote = {
+  slug: 'server-dev-diary-4',
+  category: 'dev-diary',
+  title:
+    '【FiveM開発日記 #4】古いMLO「route68house」を今の環境で動くよう修正し、開発用のテレポート機能も自作した',
+  titleEn:
+    'FiveM Dev Diary #4: Fixing an Old MLO, "route68house," to Run in Today’s Environment — and Building My Own Teleport Tool for Development',
+  date: '2026-06-19',
+  excerpt:
+    '開発日記#4。導入したまま放置していたMLOリソース route68house を調査し、旧形式の __resource.lua を fxmanifest.lua へ移行して server.cfg に登録。起動には成功したが建物は表示されず、原因の切り分けまでを記録した。あわせて開発効率を上げるため /tp コマンド（simple_teleport）を自作した。',
+  excerptEn:
+    'Dev Diary #4. I investigated route68house, an MLO resource I had installed and then left alone, migrated its old __resource.lua to fxmanifest.lua, and registered it in server.cfg. It started up fine, but the building never appeared — so I recorded how I narrowed down the cause. I also built my own /tp command (simple_teleport) to speed up development.',
+  image: '/images/taikenki/serverkaihatu/4/hero.png',
+  icon: '📓',
+  seoTitle:
+    '【FiveM開発日記 #4】古いMLO「route68house」を修正し、開発用テレポート機能を自作｜GTA6 FEED',
+  seoDesc:
+    'FiveM開発日記#4。放置していたMLOリソース route68house の中身を調査し、旧マニフェスト形式の __resource.lua を現行の fxmanifest.lua へ移行、server.cfg へ登録して起動確認までを実施。さらに開発効率を上げるため、車両ごと移動できる自作テレポートコマンド simple_teleport（/tp x y z）を新規作成。MLO本体が表示されない問題の原因切り分けまでを記録した一次記録。',
+  seoTitleEn:
+    'FiveM Dev Diary #4: Fixing an Old MLO and Building My Own Teleport Tool | GTA6 FEED',
+  seoDescEn:
+    'FiveM Dev Diary #4. I investigated route68house, an MLO resource left untouched in my resources folder, migrated its legacy __resource.lua to the current fxmanifest.lua, registered it in server.cfg, and confirmed it starts. I also built simple_teleport (/tp x y z), my own teleport command that moves your vehicle with you, to speed up development — and recorded how I narrowed down why the MLO itself never rendered.',
+  body: `![夕暮れのグランド・セノーラ砂漠の丘に立つ自作キャラクター。周囲には木と地面だけが広がっている](/images/taikenki/serverkaihatu/4/hero.png)
+
+前回は開発環境と自作リソースの現状確認までを終えた。今日はその続きとして、「次回やること」に挙げていた route68house の動作確認を中心に、MLO（マップ内装）まわりと開発環境の改善を進めた。
+
+## route68house の調査
+
+まずは、以前導入したまま放置していた route68house リソースの中身を調べるところから。開けてみると、いくつか気になる点が見つかった。
+
+- 古い __resource.lua（旧マニフェスト形式）を使用していた
+- server.cfg に登録されておらず、そもそも一度も起動されていなかった
+- マップ本体は rbh.ymap のみで構成されていた
+
+さらに、README やライセンス情報は含まれておらず、かなり古い配布物であることも分かった。「フォルダには入っているけど、実は一度も動いていなかった」というのが実態だった。
+
+## マニフェストの更新
+
+まずは現在の FiveM 環境で読み込めるようにするところから。旧形式の __resource.lua を、現行の fxmanifest.lua へ書き換えた。
+
+そのうえで server.cfg にリソースを登録。
+
+\`\`\`cfg
+ensure route68house
+\`\`\`
+
+txAdmin のコンソールから読み込みを実行する。
+
+\`\`\`
+refresh
+ensure route68house
+\`\`\`
+
+すると、
+
+\`\`\`
+Started resource route68house
+\`\`\`
+
+と表示され、リソース自体は正常に起動することを確認できた。まずは「読み込める状態」までは持ってこられた。
+
+![txAdminのコンソールで refresh と ensure route68house を実行し、「Started resource route68house」と表示された画面](/images/taikenki/serverkaihatu/4/route68house-start.png)
+
+## 開発用テレポート機能を追加
+
+MLO の確認をするには、まずその座標まで移動しないと話にならない。毎回歩いたり車で向かうのは非効率なので、開発効率を上げるために新しく simple_teleport を自作した。
+
+![ゲーム内で開いた vMenu の MAIN MENU。Online Players、Player Related Options、Vehicle Related Options などの項目が並ぶ](/images/taikenki/serverkaihatu/4/vmenu.png)
+
+構成はこんな感じ。
+
+- /tp x y z で任意の座標へ移動
+- 車両ごとテレポート（乗っている車も一緒に飛ぶ）
+- 不正な入力時のエラーメッセージ表示
+- README 付き
+
+こちらも server.cfg に登録し、読み込みを実行。
+
+\`\`\`
+refresh
+ensure simple_teleport
+\`\`\`
+
+![txAdminのコンソールで ensure simple_teleport を実行し、「Started resource simple_teleport」と表示された画面](/images/taikenki/serverkaihatu/4/simple-teleport-start.png)
+
+正常に読み込まれたことを確認し、ゲーム内でも /tp が動作してヘルプメッセージが表示されることまでチェックできた。今後 MLO や NPC、ショップなどを配置していくうえで、この移動手段があるとないとでは作業効率がまったく違う。地味だが効いてくる機能だと思う。
+
+![ゲーム内チャットに /tp と入力したときのヘルプ表示。「/tp [x] [y] [z] 指定した座標へテレポートします」と表示されている](/images/taikenki/serverkaihatu/4/tp-help.png)
+
+## route68house の動作確認
+
+準備が整ったので、いよいよ本題。調査で判明した座標へ、新しく作った /tp コマンドで飛んでみた。
+
+……が、目的地に建物は表示されず、地形だけが広がっていた。
+
+![テレポート先の丘の斜面。建物は表示されておらず、倒れ込んだ自作キャラクターと草地・岩肌だけが見える](/images/taikenki/serverkaihatu/4/route68house-empty.png)
+
+リソース自体は正常に起動している（Started resource も出ている）ので、起動の問題ではなさそうだ。原因として考えられるのは、
+
+- 配布データそのものの不足
+- 依存プロップ（建物を構成するオブジェクト）の欠如
+
+あたり。かなり古い配布物で README もない、という調査結果とも符合する。ここで深追いすると時間を溶かしそうなので、今回は一旦保留とした。
+
+## 今日の学び
+
+今日は新しいゲーム要素を追加した、というよりも、「リソースの調査 → 修正 → 読み込み → 動作確認」 という、FiveM 開発で基本になる一連の流れをひと通り経験できた日だった。
+
+結果として MLO 本体は表示できなかったが、「起動しているのに表示されない」という状況から原因を切り分けていく過程そのものが、今後トラブルに当たったときの糧になりそうだ。加えて、開発用のテレポート機能を用意できたことで、これから MLO や NPC、ショップを配置していく作業の効率も大きく上がるはず。
+
+## 今日の進捗
+
+- route68house の構成を調査
+- __resource.lua から fxmanifest.lua へ移行
+- server.cfg へ登録
+- リソースの起動確認
+- simple_teleport を新規作成
+- /tp コマンドの動作確認
+- MLO の表示確認と、原因の切り分け
+
+次回は、今回の古い MLO にはこだわらず、FiveM 向けにきちんと整備された別の MLO やリソースを導入しながら、サーバーを少しずつ充実させていきたい。
+
+---
+
+この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年6月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
+  bodyEn: `![My own character standing on a hill in the Grand Senora Desert at dusk, with nothing around but trees and bare ground](/images/taikenki/serverkaihatu/4/hero.png)
+
+Last time I finished with a status check of the development environment and my own resources. Today, continuing from there, I focused on verifying route68house — which I'd listed under "what to do next time" — and moved forward on the MLO (map interior) side of things along with improvements to my development environment.
+
+## Investigating route68house
+
+I started by looking inside the route68house resource, which I'd installed a while back and then left alone. Opening it up, I found several things that bothered me.
+
+- It used an old __resource.lua (the legacy manifest format)
+- It wasn't registered in server.cfg, so it had never once been started
+- The map itself consisted of nothing but rbh.ymap
+
+On top of that, no README or license information was included, so I could tell it was a fairly old distribution. The reality was: "it's sitting in the folder, but it had actually never run."
+
+## Updating the Manifest
+
+First, getting it to a state where the current FiveM environment can load it. I rewrote the legacy __resource.lua into the current fxmanifest.lua.
+
+On top of that, I registered the resource in server.cfg.
+
+\`\`\`cfg
+ensure route68house
+\`\`\`
+
+Then I ran the load from the txAdmin console.
+
+\`\`\`
+refresh
+ensure route68house
+\`\`\`
+
+And then,
+
+\`\`\`
+Started resource route68house
+\`\`\`
+
+was displayed, and I could confirm that the resource itself starts correctly. At least I'd gotten it to a "can be loaded" state.
+
+![The txAdmin console after running refresh and ensure route68house, showing "Started resource route68house"](/images/taikenki/serverkaihatu/4/route68house-start.png)
+
+## Adding a Teleport Feature for Development
+
+To check an MLO, you first have to get to its coordinates — otherwise there's nothing to talk about. Walking or driving there every time is inefficient, so to raise my development efficiency I built a new resource of my own, simple_teleport.
+
+![The vMenu MAIN MENU opened in game, listing items like Online Players, Player Related Options, and Vehicle Related Options](/images/taikenki/serverkaihatu/4/vmenu.png)
+
+The setup looks like this.
+
+- Move to any coordinates with /tp x y z
+- Teleport with your vehicle (the car you're in comes along)
+- Error messages on invalid input
+- Comes with a README
+
+I registered this in server.cfg as well and ran the load.
+
+\`\`\`
+refresh
+ensure simple_teleport
+\`\`\`
+
+![The txAdmin console after running ensure simple_teleport, showing "Started resource simple_teleport"](/images/taikenki/serverkaihatu/4/simple-teleport-start.png)
+
+I confirmed it loaded correctly, and I was able to check in game that /tp works and shows its help message. As I go on placing MLOs, NPCs, shops and so on, having this way of getting around versus not having it makes a completely different difference to how efficiently the work goes. It's a plain feature, but I think it's one that pays off.
+
+![The help shown in the in-game chat when typing /tp: "/tp [x] [y] [z] teleports you to the specified coordinates"](/images/taikenki/serverkaihatu/4/tp-help.png)
+
+## Verifying route68house
+
+With the preparation done, finally the main event. I used the newly built /tp command to fly to the coordinates I'd found during the investigation.
+
+...But no building appeared at the destination — just terrain stretching out.
+
+![The hillside at the teleport destination. No building is rendered — only my own character collapsed on the slope, grass, and bare rock](/images/taikenki/serverkaihatu/4/route68house-empty.png)
+
+The resource itself starts correctly (the "Started resource" line does show up), so it doesn't seem to be a startup problem. The possible causes I can think of are,
+
+- Missing data in the distribution itself
+- Absence of dependency props (the objects that make up the building)
+
+somewhere around there. That also lines up with the investigation finding that it's a fairly old distribution with no README. Chasing this further felt like it would melt away my time, so for now I put it on hold.
+
+## What I Learned Today
+
+Today wasn't so much a day of adding a new game element — it was a day where I got to experience the whole basic flow of FiveM development: **investigate the resource → fix it → load it → verify it works.**
+
+The MLO itself didn't render in the end, but the very process of narrowing down the cause from a situation of "it's running, yet nothing shows" feels like it'll be nourishment the next time I run into trouble. On top of that, now that I have a teleport feature for development, the efficiency of placing MLOs, NPCs, and shops from here on should go up a lot.
+
+## Today's Progress
+
+- Investigated the structure of route68house
+- Migrated from __resource.lua to fxmanifest.lua
+- Registered it in server.cfg
+- Confirmed the resource starts
+- Newly created simple_teleport
+- Verified the /tp command works
+- Checked whether the MLO renders, and narrowed down the cause
+
+Next time, rather than fixating on this old MLO, I want to install other MLOs and resources that are properly maintained for FiveM, and gradually build the server up.
+
+---
+
+This article is a record of the GTA6 FEED operator actually building a FiveM server on their own PC. The technical information is written after confirming the environment and each tool's offering as of June 2026, but the specifications and behavior vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
+};
+
+// ---------------------------------------------------------------------------
 //  訪問記 #1 HeliosCity
 // ---------------------------------------------------------------------------
 const heliosCity: FieldNote = {
@@ -1386,6 +1619,7 @@ This article was independently reported and recorded by GTA6 FEED and has no rel
 
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
+  devDiary4,
   devDiary3,
   devDiary2,
   devDiary1,
