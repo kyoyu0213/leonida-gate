@@ -50,8 +50,11 @@
 //     ※ 1〜3 は必ずセットで行うこと。片方だけだと sitemap に載るのに 302 される、
 //       といった不整合になる。
 // ============================================================================
+//     27 だけは理由が別：俳優の顔写真など第三者の権利物を扱っており、
+//        キャスト candidates を推測する内容のため、権利面のリスクを避けて下げている。
+//        戻す場合は画像・記述の見直しが前提（発売後に自動で戻す対象ではない）。
 export const HIDDEN_NEWS_IDS: readonly number[] = [
-  3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25,
+  3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 27,
 ];
 
 const HIDDEN_SET = new Set<number>(HIDDEN_NEWS_IDS);
@@ -1557,7 +1560,7 @@ This article is a summary organized by GTA6 FEED based on Rockstar Games' offici
     publishedAt: "2026-07-01 18:00",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [29, 28, 27],
+    relatedArticles: [29, 28, 34],
     aiSummary: [
       "2026年6月25日にGTA6の予約が始まったが、対象はPS5とXbox Series X|Sのみ。PC版はストアページ・システム要件・発売時期のいずれも未発表で、「出ない」のではなく「まだ何も発表されていない」状態だ。",
       "Rockstarはコンソール先行が一貫方針で、過去作のPC版はGTA4が約8か月、GTA5が約18か月、RDR2が約13か月遅れて登場した。前例に従えば、GTA6のPC版は2027年後半〜2028年ごろが現実的とみられている。",
@@ -1744,7 +1747,7 @@ That GTA6 launches on November 19, 2026 for PS5 and Xbox Series X|S, that pre-or
     publishedAt: "2026-07-01 10:00",
     source: "Rockstar Games 公式Discord",
     sourceUrl: "https://discord.gg/rockstargames",
-    relatedArticles: [28, 27, 26],
+    relatedArticles: [28, 26, 31],
     aiSummary: [
       "GTA Onlineで、RockstarアカウントとDiscordを連携すると、バーガンディ色の「Rockstar Varsity Crewneck」を無料で受け取れる。期間は6月11日〜7月1日で、本記事公開時点では締め切り当日にあたる。",
       "受け取りは公式Rockstar Games Discordの「#discord-rewards」チャンネルで「/claim」を実行し、Reward→RockstarCrewneckを選ぶ。報酬は最大72時間以内にワードローブのTops→Special Tops→Unlocksへ追加される。",
@@ -1865,7 +1868,7 @@ With GTA6 pre-orders making big waves, GTA Online continues to roll out weekly u
     publishedAt: "2026-06-30 22:00",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [27, 26, 19],
+    relatedArticles: [26, 19, 32],
     aiSummary: [
       "GTA6で現在用意されているのはStandard(79.99ドル)とUltimate(99.99ドル)の2種類のみで、コレクターズエディション(CE)はRockstarから一切発表されていない。「いずれ後から出る」という見方の根拠はリークと過去作の前例だ。",
       "CEの存在を示唆するのはFNAC(ポルトガル)のSKUリーク(最上位€199.99)、YouTuber Ricfazeresの「CEは存在する」という証言、最大6エディション説など。いずれも公式未確認で、プレースホルダの可能性も指摘されている。",
@@ -2235,7 +2238,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
     publishedAt: "2026-06-28 03:33",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [32, 30, 27],
+    relatedArticles: [32, 30, 34],
     aiSummary: [
       "6月24日に多数の新スクリーンショットが公開され、トレーラー2との比較で「劣化したのでは」という声がSNSで拡大。中心はジェイソンのセーフハウス周辺の比較で、草木・フェンス・色味・影の違いが指摘されている。",
       "一方で「劣化と断じるのは早い」という反論も同程度に多い。最大の理由は撮影条件(時間帯・天候・アングル・ポーズ)の違いで、演出されたトレーラーと通常のゲーム内画像を直接並べれば差が出るのは当然という見方が強い。",
