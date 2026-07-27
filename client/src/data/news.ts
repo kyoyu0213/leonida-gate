@@ -59,6 +59,20 @@ const HIDDEN_SET = new Set<number>(HIDDEN_NEWS_IDS);
 /** その記事IDが非表示対象か。 */
 export const isHiddenNewsId = (id: number | string): boolean => HIDDEN_SET.has(Number(id));
 
+/**
+ * 他の記事へ 301 で恒久統合した記事ID（vercel.json の redirects と対応）。
+ *   17 → 19（GTA6の予約開始・エディション情報を id19 に一本化）
+ * 一覧・関連記事・検索に出すと「クリックすると別記事へ飛ぶカード」になり、
+ * 生HTMLに 301 を踏む内部リンクが残ってしまうため、表示経路からは外す。
+ * 非表示（HIDDEN_NEWS_IDS）とは別概念：こちらは恒久統合なので発売後も戻さない。
+ */
+export const REDIRECTED_NEWS_IDS: readonly number[] = [17];
+
+const REDIRECTED_SET = new Set<number>(REDIRECTED_NEWS_IDS);
+
+/** その記事IDが他記事へ301統合済みか。 */
+export const isRedirectedNewsId = (id: number | string): boolean => REDIRECTED_SET.has(Number(id));
+
 export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
 
 export interface NewsArticle {
@@ -7416,7 +7430,9 @@ GTA6の舞台はフロリダ州をモデルにしたレオニダ州で、ベイ�
  * 一覧・トップ・検索・関連記事など、利用者に見せる経路はすべてこちらを使う。
  * newsArticles（全件）は prerender-og と管理画面だけが参照する。
  */
-export const visibleNewsArticles: NewsArticle[] = newsArticles.filter((a) => !isHiddenNewsId(a.id));
+export const visibleNewsArticles: NewsArticle[] = newsArticles.filter(
+  (a) => !isHiddenNewsId(a.id) && !isRedirectedNewsId(a.id),
+);
 
 export const newsByDate: NewsArticle[] = [...visibleNewsArticles].sort(
   (a, b) => b.date.localeCompare(a.date) || b.id - a.id

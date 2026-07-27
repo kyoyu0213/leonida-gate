@@ -36,13 +36,10 @@ const PRERENDERED_OUTSIDE_TABLES = new Set(['/']);
 // --- 既知の差分（明示的に許容するもの） --------------------------------------
 // ここに入れたパスは「sitemap に載るがプリレンダされない」状態を承知で許容する。
 // 放置ではなく、判断が保留中であることの記録として使う。理由を必ず書くこと。
-const KNOWN_GAPS = new Map([
-  [
-    '/news',
-    'news記事群の残す/非公開の方針が保留中。方針確定時に JA_ONLY_ROUTES へ追加するか、' +
-      'STATIC_ROUTES から外すこと（どちらでもこの許容リストから削除する）。',
-  ],
-]);
+//
+// ※ /news はここに入れていた（news方針の保留中）が、記事18本の一時非表示で方針が
+//   確定したため JA_ONLY_ROUTES へ追加して解消済み。現在は空。
+const KNOWN_GAPS = new Map([]);
 
 const errors = [];
 const warnings = [];

@@ -37,6 +37,7 @@ import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
 import BoardThreadList from '@/pages/BoardThreadList';
+import NewsList from '@/pages/NewsList';
 import FriendsBoard from '@/pages/FriendsBoard';
 import CrewsBoard from '@/pages/CrewsBoard';
 import ServerBoard from '@/pages/ServerBoard';
@@ -78,6 +79,12 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
 // これまで共通 index.html シェル（canonical=ホーム／既定title／空 #root）のまま配信され、
 // Google にホームの重複として正規化されていた。各ルートを本文＋自己参照 canonical で生成する。
 const JA_ONLY_ROUTES: Record<string, ComponentType> = {
+  // news一覧。記事カードは newsByDate（HIDDEN_NEWS_IDS 除外済み）を同期的に読むため、
+  // renderToString で残した記事のカード一覧まで描画できる。
+  // ここに無かった頃は catch-all の app.html（＝#root 空・canonical がトップ・noindex）で
+  // 配信され、sitemap に priority 0.9 で登録しているのに noindex という矛盾になっていた。
+  // /en/news は掲示板・servers と同じ扱いで英語版を作らない（canonical は日本語版へ集約）。
+  '/news': NewsList,
   '/board': BoardThreadList,
   '/board/gta6': BoardThreadList,
   '/board/gtarp': BoardThreadList,

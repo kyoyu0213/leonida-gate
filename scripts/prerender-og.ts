@@ -10,7 +10,13 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { newsArticles, isHiddenNewsId, HIDDEN_NEWS_IDS } from '../client/src/data/news';
+import {
+  newsArticles,
+  isHiddenNewsId,
+  isRedirectedNewsId,
+  HIDDEN_NEWS_IDS,
+  REDIRECTED_NEWS_IDS,
+} from '../client/src/data/news';
 import { injectSsrBody } from './lib/inject-ssr-body';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -168,6 +174,9 @@ for (const article of newsArticles) {
   // URL は vercel.json が /fivem-gtarp へ 302 する。記事データ自体は残っているので、
   // HIDDEN_NEWS_IDS から id を消して再ビルドすればそのまま復活する。
   if (isHiddenNewsId(article.id)) continue;
+  // 301統合済みの記事（id17→19）も生成しない。URL は必ずリダイレクトされるため、
+  // 生成しても配信されない死んだファイルになる。
+  if (isRedirectedNewsId(article.id)) continue;
   // 日本語版（/news/<id>）と英語版（/en/news/<id>）の両方を生成。
   for (const lang of ['ja', 'en'] as const) {
     const html = buildHtml(article, lang);
@@ -180,8 +189,9 @@ for (const article of newsArticles) {
 console.log(
   `[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html` +
     (HIDDEN_NEWS_IDS.length
-      ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}）`
-      : ''),
+      ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}`
+      : '（') +
+    (REDIRECTED_NEWS_IDS.length ? ` / 301統合: id ${REDIRECTED_NEWS_IDS.join(', ')}）` : '）'),
 );
 if (bodyFailures.length) {
   console.warn(
