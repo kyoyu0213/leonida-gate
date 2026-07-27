@@ -8,6 +8,7 @@ import { listPublishedCrews, createCrew, CREW_GENRES, CREW_PLATFORMS, type Crew 
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
 
 const emptyForm = {
   crew_name: '',
@@ -324,6 +325,9 @@ export default function CrewsBoard() {
             </div>
           )}
         </div>
+
+        {/* 募集カードはクライアント取得のため、生HTMLに実コンテンツを残すのはこのブロック。 */}
+        <BoardGuide guideKey="crews" />
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>

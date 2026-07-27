@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
+import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT } from '@/lib/i18n';
 import './imageTools.css';
 
@@ -280,6 +282,8 @@ export default function ImageMaskTool() {
             </p>
           </div>
         </div>
+        {/* ツール本体はブラウザ内で動くUIのため、生HTMLに実コンテンツを残すのはこのブロック。 */}
+        <BoardGuide content={TOOL_GUIDES['image-mask']} />
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>

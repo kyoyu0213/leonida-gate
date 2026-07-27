@@ -24,6 +24,8 @@ import { isLoggedIn, subscribeAdmin, adminCreateThread } from '@/lib/admin';
 import { submitServerApplication } from '@/lib/applications';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
+import { type BoardGuideKey } from '@/data/boardGuides';
 
 const COOLDOWN_KEY = 'board_last_post';
 
@@ -564,6 +566,10 @@ export default function BoardThreadList() {
             </button>
           </div>
         )}
+
+        {/* 板の解説（静的）。スレッド一覧はクライアント取得のため、生HTMLに実コンテンツを
+            残すのはこのブロック。一覧の下に置き、利用者の導線は妨げない。 */}
+        <BoardGuide guideKey={slug as BoardGuideKey} />
       </main>
     </div>
   );

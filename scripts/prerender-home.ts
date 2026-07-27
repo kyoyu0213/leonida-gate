@@ -5,8 +5,9 @@
 //  （載せると index.html＝シェルを上書きしてしまう）、この専用ステップで扱う。
 //
 //  手順（ビルドスクリプトで prerender-og / prerender-routes の「後」に実行すること）：
-//   1) pristine な dist/public/index.html を dist/public/app.html にコピー
-//      （catch-all `/(.*) → /app.html` が返す空シェル。内容は従来の index.html と同一）
+//   1) pristine な dist/public/index.html を dist/public/app.html へ書き出す
+//      （catch-all `/(.*) → /app.html` が返す空シェル）。このとき app.html にだけ
+//      <meta name="robots" content="noindex"> を焼く。→ 下の NOTE 参照
 //   2) ホーム本文＋head を焼いて
 //        - ja → dist/public/index.html      （`/` はこれをFS配信）
 //        - en → dist/public/en/index.html   （`/en` はこれをFS配信・catch-allより優先）
@@ -15,7 +16,7 @@
 //  ※ prerender-og / prerender-routes は起動時に index.html を TEMPLATE として読むだけで
 //    上書きはしないため、この時点の index.html はまだ pristine。順序が要。
 // ============================================================================
-import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
@@ -68,7 +69,24 @@ const mod = (await import(
 )) as unknown as ServerEntry;
 
 // 1) pristine シェルを app.html として退避（catch-all の宛先）。ホーム焼き込みの前に行う。
-copyFileSync(INDEX_PATH, APP_PATH);
+//
+// NOTE: app.html にだけ noindex を焼く理由
+//   Vercel はファイルシステムを先に見るため、プリレンダ済みのページ
+//   （dist/public/index.html＝ホーム、news/<id>/、fivem-gtarp/**、board/**、servers/ …）は
+//   それぞれ独立したファイルとして配信され、app.html を経由しない。
+//   app.html に到達するのは catch-all `/(.*) → /app.html` だけ、すなわち
+//   「プリレンダされず #root が空のまま返るURL」＝
+//     /search・/thread/<id>・/board/friends/<id>・/board/crews/<id>・/en/board 等の
+//     CSR専用ルート、存在しない全URL（/news/99999・/404・タイポURL）、/app.html 自身。
+//   境界がちょうど「空シェルで返るページ全体」と一致するので、ここ1箇所で一括 noindex にできる。
+//
+//   副作用（対応済み）: api/news-og.js が DB記事のOGP配信でこの app.html を取得して使うため、
+//   記事が実在するときは同ハンドラ側で noindex を除去している（記事を noindex にしないため）。
+const ROBOTS_META = '<meta name="robots" content="noindex" />';
+if (!TEMPLATE.includes('</head>')) {
+  throw new Error('[prerender-home] index.html に </head> が見つからない（テンプレート想定外）');
+}
+writeFileSync(APP_PATH, TEMPLATE.replace('</head>', `    ${ROBOTS_META}\n  </head>`), 'utf8');
 
 // 2) ホームを ja/en で焼く。
 //    route は '/'（ja）と '/en'（en）。canonical は route 由来の自己参照、hreflang も付与。

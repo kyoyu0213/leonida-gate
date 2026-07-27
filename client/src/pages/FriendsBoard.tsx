@@ -8,6 +8,7 @@ import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORM
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
 
 const emptyForm = {
   title: '',
@@ -325,6 +326,9 @@ export default function FriendsBoard() {
             </div>
           )}
         </div>
+
+        {/* 募集カードはクライアント取得のため、生HTMLに実コンテンツを残すのはこのブロック。 */}
+        <BoardGuide guideKey="friends" />
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>

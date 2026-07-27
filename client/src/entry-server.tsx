@@ -33,6 +33,8 @@ import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
 import About from '@/pages/About';
+import Contact from '@/pages/Contact';
+import Terms from '@/pages/Terms';
 import BoardThreadList from '@/pages/BoardThreadList';
 import FriendsBoard from '@/pages/FriendsBoard';
 import CrewsBoard from '@/pages/CrewsBoard';
@@ -63,6 +65,12 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools/image-resize': ImageResizeTool,
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
   '/about': About,
+  // /contact・/terms は sitemap と routes.ts の LOCALIZED_STATIC_PATHS には載っていたのに
+  // ここに無く、日英4URLとも空シェル（#root 空・canonical がトップ吸われ）で配信されていた。
+  // AdSense はお問い合わせ／ポリシーページの存在を確認するため、白紙配信は致命的だった。
+  // 3表の同期は scripts/check-route-tables.mjs が prebuild で検証する。
+  '/contact': Contact,
+  '/terms': Terms,
 };
 
 // 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。

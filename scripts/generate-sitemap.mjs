@@ -8,47 +8,16 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const ORIGIN = 'https://gta6-feed.com';
 
-// --- 固定ページ（手動メンテ） -------------------------------------------------
-const STATIC_ROUTES = [
-  { path: '/', priority: '1.0', changefreq: 'daily' },
-  { path: '/news', priority: '0.9', changefreq: 'daily' },
-  { path: '/servers', priority: '0.8', changefreq: 'daily' },
-  { path: '/board', priority: '0.8', changefreq: 'daily' },
-  { path: '/board/gta6', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/gtarp', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/gtarp-servers', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/streamer-servers', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/fivem-dev', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/friends', priority: '0.7', changefreq: 'daily' },
-  { path: '/board/crews', priority: '0.7', changefreq: 'daily' },
-  { path: '/fivem-gtarp', priority: '0.8', changefreq: 'weekly' },
-  { path: '/fivem-gtarp/what-is-fivem', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/what-is-gtarp', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/fivem-vs-gtarp', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/server-guide', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/server-setup', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/field-notes/dev-diary', priority: '0.7', changefreq: 'weekly' },
-  { path: '/fivem-gtarp/field-notes/visit-note', priority: '0.6', changefreq: 'weekly' },
-  { path: '/fivem-gtarp/how-to-install', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/history', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/glossary', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/faq', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/commands', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/streamer-server-history', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/observer-guide', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/first-day-guide', priority: '0.7', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/tools', priority: '0.6', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/tools/image-resize', priority: '0.6', changefreq: 'monthly' },
-  { path: '/fivem-gtarp/tools/image-mask', priority: '0.6', changefreq: 'monthly' },
-  { path: '/about', priority: '0.5', changefreq: 'yearly' },
-  { path: '/contact', priority: '0.4', changefreq: 'yearly' },
-  { path: '/terms', priority: '0.3', changefreq: 'yearly' },
-];
+// --- 固定ページ ---------------------------------------------------------------
+// STATIC_ROUTES は scripts/lib/static-routes.mjs へ切り出し済み（単一の正）。
+// scripts/check-route-tables.mjs が prebuild で「sitemap に載るがプリレンダされない」
+// ルートを検出するために同じ配列を参照する。
 
 // --- ニュース記事（news.ts から id と日付を抽出） -----------------------------
 function extractArticles() {
@@ -105,9 +74,8 @@ const EXCLUDE_IDS = new Set(['17', '29']);
 const articles = extractArticles().filter((a) => !EXCLUDE_IDS.has(String(a.id)));
 const fieldNotes = extractFieldNotes();
 
-// 日英の対がある（=/en/ 版を持つ）静的ルートか。client/src/lib/routes.ts と一致させる。
-const isLocalized = (p) =>
-  p.startsWith('/fivem-gtarp') || p === '/about' || p === '/contact' || p === '/terms';
+// 日英の対がある（=/en/ 版を持つ）静的ルートかの判定は static-routes.mjs 側に集約。
+const isLocalized = isLocalizedStaticPath;
 
 const entries = [
   // 日本語：固定ページ

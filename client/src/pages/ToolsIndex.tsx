@@ -1,6 +1,8 @@
 import Header from '@/components/Header';
 import { ImageDown, EyeOff, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
+import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT } from '@/lib/i18n';
 
 // 便利ツール一覧。FiveM/GTARPページ下部の「便利ツール」セクションと同じ2カードを並べる軽い一覧。
@@ -72,6 +74,8 @@ export default function ToolsIndex() {
             );
           })}
         </div>
+        {/* ツール本体はブラウザ内で動くUIのため、生HTMLに実コンテンツを残すのはこのブロック。 */}
+        <BoardGuide content={TOOL_GUIDES['tools']} />
       </main>
 
       <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>

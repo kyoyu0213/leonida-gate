@@ -48,6 +48,11 @@ export default async function handler(req, res) {
   let title = 'GTA6 FEED';
   let desc = 'GTA6・FiveM RPの最新情報';
   let image = DEFAULT_IMAGE;
+  // 記事が実在したか。app.html は「空シェルで返る全URL」を一括 noindex にするため
+  // <meta name="robots" content="noindex"> を焼いてある（scripts/prerender-home.ts）。
+  // 実在する記事ページはインデックスさせたいので、found のときだけ noindex を剥がす。
+  // 見つからないID（/news/99999 等）は noindex のままにして、ソフト404が拾われるのを防ぐ。
+  let found = false;
   if (Number.isFinite(id) && id >= ID_OFFSET) {
     const dbId = id - ID_OFFSET;
     try {
@@ -57,6 +62,7 @@ export default async function handler(req, res) {
       });
       const rows = await r.json();
       if (Array.isArray(rows) && rows[0]) {
+        found = true;
         if (rows[0].title) title = rows[0].title;
         if (rows[0].description) desc = rows[0].description;
         if (rows[0].eyecatch_url) image = rows[0].eyecatch_url;
@@ -86,11 +92,20 @@ export default async function handler(req, res) {
     html = html
       .replace(/\n\s*<meta property="og:[^>]*>/g, '')
       .replace(/\n\s*<meta name="twitter:[^>]*>/g, '')
+      // app.html 由来の canonical（トップ指定）を除去してから自己参照 canonical を足す。
+      // 除去しないと canonical が2本になり、どちらが採用されるか不定になる。
+      .replace(/\n?\s*<link rel="canonical"[^>]*>/g, '')
       .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(fullTitle)}</title>`)
       .replace('</head>', `    ${meta}\n  </head>`);
+    // 実在する記事だけ noindex を剥がす（app.html の一括 noindex を打ち消す）。
+    if (found) {
+      html = html.replace(/\n?\s*<meta name="robots"[^>]*>/g, '');
+    }
   } else {
-    // index.html を取れなかった場合の最小フォールバック（クローラ向けメタのみ）。
-    html = `<!doctype html><html lang="ja"><head><meta charset="utf-8" /><title>${esc(fullTitle)}</title>\n    ${meta}\n  </head><body></body></html>`;
+    // app.html を取れなかった場合の最小フォールバック（クローラ向けメタのみ）。
+    // 本文が無いので、記事が見つからなかったときは noindex を明示する。
+    const robots = found ? '' : `\n    <meta name="robots" content="noindex" />`;
+    html = `<!doctype html><html lang="ja"><head><meta charset="utf-8" /><title>${esc(fullTitle)}</title>\n    ${meta}${robots}\n  </head><body></body></html>`;
   }
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');

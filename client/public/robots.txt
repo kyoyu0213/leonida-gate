@@ -1,6 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+# サイト内検索の結果ページ（Google のガイドラインで非インデックス推奨）
+Disallow: /search
+Disallow: /en/search
+# catch-all が返す空シェルそのもの（実体は全CSRルートのシェル。直接クロールさせない）
+Disallow: /app.html
 
 Sitemap: https://gta6-feed.com/sitemap.xml
 Sitemap: https://gta6-feed.com/sitemap-news.xml
