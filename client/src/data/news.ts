@@ -22,6 +22,43 @@
 //     編集する必要はありません。
 // ============================================================================
 
+// ============================================================================
+//  非表示にする記事ID（削除ではなく一時的に配信から外す）
+// ----------------------------------------------------------------------------
+//  ▼ これは何か
+//     ここに id を入れた記事は、記事データ・本文・画像を残したまま、
+//     サイト上のあらゆる経路から外れる：
+//       - ビルド        … prerender-og が /news/<id> の静的HTMLを生成しない
+//       - sitemap       … scripts/generate-sitemap.mjs が除外（EXCLUDE_IDS と連動）
+//       - 一覧・トップ  … newsByDate から外れる（Home / NewsList）
+//       - 記事ページ    … getArticleById が undefined を返す
+//       - 関連記事      … 残す記事の relatedArticles からも自動で消える
+//       - 検索          … Search が visibleNewsArticles を見る
+//       - URL           … vercel.json が /news/<id> を /fivem-gtarp へ 302（一時）
+//
+//  ▼ なぜ非表示にしているか（2026-07-27）
+//     AdSense の「有用性の低いコンテンツ」判定を3回受けたため、GTA6発売前の
+//     リーク・考察系の記事を一時的に配信から外し、GTARP系（掲示板・体験記・
+//     FiveMガイド）と検証済みの公式情報で審査を通す方針。
+//
+//  ▼ 元に戻すには（GTA6発売＝2026年11月以降を想定）
+//     1. この配列から戻したい id を消す（配列を空にすれば全記事が復活）
+//     2. scripts/generate-sitemap.mjs の EXCLUDE_IDS から同じ id を消す
+//        （17・29 は別理由の除外なので残すこと）
+//     3. vercel.json の「news 一時非表示」ブロックの 302 リダイレクトを消す
+//     4. id18 の本文から削除した id6・id14 への誘導文を戻す場合は git 履歴を参照
+//     ※ 1〜3 は必ずセットで行うこと。片方だけだと sitemap に載るのに 302 される、
+//       といった不整合になる。
+// ============================================================================
+export const HIDDEN_NEWS_IDS: readonly number[] = [
+  3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25,
+];
+
+const HIDDEN_SET = new Set<number>(HIDDEN_NEWS_IDS);
+
+/** その記事IDが非表示対象か。 */
+export const isHiddenNewsId = (id: number | string): boolean => HIDDEN_SET.has(Number(id));
+
 export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
 
 export interface NewsArticle {
@@ -300,7 +337,7 @@ Pre-orders for the physical edition have opened in Japan too, but the contents a
     publishedAt: "2026-07-10 22:30",
     source: "GTA6 FEED 編集部",
     sourceUrl: "https://www.kaspersky.com/",
-    relatedArticles: [19, 28, 25],
+    relatedArticles: [19, 28, 35],
     aiSummary: [
       "GTA6の予約が始まった6月25日以降、その人気に便乗したサイバー詐欺が世界で急増している。セキュリティ企業カスペルスキーが警告を発しており、偽ページは多言語で作られているため、日本語話者も標的になりうる。",
       "主な手口は三つ。Rockstar公式や正規小売そっくりの偽予約サイトでカード情報や金銭をだまし取るもの、「ベータ版」「早期アクセス」「リーク版」を装ってマルウェアを配布するもの、そしてゲーム名に似せたトークンで暗号資産を狙うものだ。「残りわずか」などと焦らせるのが共通の特徴。",
@@ -953,7 +990,7 @@ This article was compiled and organized by GTA6 FEED based on Ziwen Xu's own pos
     publishedAt: "2026-07-05 15:08",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [32, 30, 20],
+    relatedArticles: [32, 30, 1],
     aiSummary: [
       "予約は始まったのに第3弾トレーラーはまだ来ていない。公式発表はないが、Take-TwoのZelnick CEOの「マーケティングを夏に開始・SNS中心」という発言と過去のパターンから、7月中旬〜下旬、FIFA World Cup決勝(7月19日)の前後が最有力の窓とみられる。ただし時期はあくまで推測だ。",
       "6月24〜25日に価格・エディション・予約開始・60枚超の新スクリーンショットが一気に公開されたが、映像トレーラーは伴わなかった。発売日は11月19日で変更なし。別候補として7月21日や、決算前後にあたる7月28日・8月4日も挙がる。",
@@ -1814,7 +1851,7 @@ With GTA6 pre-orders making big waves, GTA Online continues to roll out weekly u
     publishedAt: "2026-06-30 22:00",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [27, 26, 25],
+    relatedArticles: [27, 26, 19],
     aiSummary: [
       "GTA6で現在用意されているのはStandard(79.99ドル)とUltimate(99.99ドル)の2種類のみで、コレクターズエディション(CE)はRockstarから一切発表されていない。「いずれ後から出る」という見方の根拠はリークと過去作の前例だ。",
       "CEの存在を示唆するのはFNAC(ポルトガル)のSKUリーク(最上位€199.99)、YouTuber Ricfazeresの「CEは存在する」という証言、最大6エディション説など。いずれも公式未確認で、プレースホルダの可能性も指摘されている。",
@@ -2019,7 +2056,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and a CE has not been of
     publishedAt: "2026-06-29 23:45",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [26, 25, 24],
+    relatedArticles: [26, 28, 30],
     aiSummary: [
       "GTA6の主人公ルシアとジェイソンの「中の人」について、ファンの間ではルシア役にManni L. Perez、ジェイソン役にDylan Rourkeという名前が本命のように語られている。だがRockstarはキャストを一切公表していない。",
       "Manni L. PerezはGTA OnlineのDiamond Casinoでディーラー役を演じた事実があり、声や容姿の類似とあわせて有力視される。一方ジェイソン側の推測はルシアほど固まっておらず、過去にはTroy Baker説も浮上して本人に否定された。",
@@ -2184,7 +2221,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
     publishedAt: "2026-06-28 03:33",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [25, 24, 23],
+    relatedArticles: [32, 30, 27],
     aiSummary: [
       "6月24日に多数の新スクリーンショットが公開され、トレーラー2との比較で「劣化したのでは」という声がSNSで拡大。中心はジェイソンのセーフハウス周辺の比較で、草木・フェンス・色味・影の違いが指摘されている。",
       "一方で「劣化と断じるのは早い」という反論も同程度に多い。最大の理由は撮影条件(時間帯・天候・アングル・ポーズ)の違いで、演出されたトレーラーと通常のゲーム内画像を直接並べれば差が出るのは当然という見方が強い。",
@@ -3931,7 +3968,7 @@ Ultimate Editionの特典は、一度にまとめて付与されるのではな�
     date: "2026-06-24",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [17, 1, 5],
+    relatedArticles: [19, 1, 33],
     aiSummary: [
       "ロールプレイ文化はGTA6時代も続く見込みだが、土台が現行のFiveMのままか、公式新基盤（噂のROME）へ移るかは未確定。",
       "確定：NoPixelがRockstarと公式提携、FiveMはRockstar傘下で過去最大規模、競合のalt:V／RAGE:MPは終了へ（FiveMへ一本化）。",
@@ -4109,8 +4146,6 @@ As a point of caution, GTA6 is unreleased at the time of writing. Caution is nee
 
 *Note: This article is based on public information, various media reports, and statements by involved parties as of June 24, 2026. Project ROME, RP support in GTA6 Online, the proportion of enterable buildings, and the like are unconfirmed at the time of writing and need to be treated separately from confirmed information. We will update the content as soon as there are new official announcements.*
 
-The design side of GTA6 Online itself (economy, anti-cheat, monetization balance) is explored in "[What Changes in GTA6's New Online?](/en/news/6)", and the outlook for when it launches in "[When Does GTA6 Online Begin?](/en/news/14)".
-
 For a look at how this RP culture actually plays out on a live server, see our visit note "[What Is Refloria Town? A Japanese RP Server with 216 Concurrent Players, Gang Wars, and a Territory System](/en/fivem-gtarp/field-notes/visit-note/refloria-town)", a concrete example with gang wars and a territory system.`,
     fullContent: `# GTA6のロールプレイはどうなるのか——公式化・一本化が進むRP文化の現在地と行方
 
@@ -4275,9 +4310,7 @@ RP的な遊びへの需要が確かに存在し、Rockstarがそれを取り込�
 
 *注記：本記事は2026年6月24日時点の公開情報・各メディア報道・当事者の声明等にもとづく。Project ROME、GTA6 OnlineのRP対応、入れる建物の割合などは本記事執筆時点で未確認であり、確定情報とは切り分けて扱う必要がある。新たな公式発表があり次第、内容を更新する。*
 
-GTA6オンラインそのものの設計面（経済・チート対策・課金バランスなど）は「[GTA6の新オンラインは何が変わる？](/news/6)」で、開始時期の見通しは「[GTA6のオンラインはいつ始まる？](/news/14)」で、それぞれ掘り下げている。
-
-また、こうしたRP文化が実際のサーバーでどう機能しているかは、日本語FiveM RPサーバーの訪問記「[Refloria Townとは？同接216人・ギャング抗争とテリトリー制を備えた日本語RPサーバー](/fivem-gtarp/field-notes/visit-note/refloria-town)」で、ギャング抗争やテリトリー制の実例として見ることができる。`,
+こうしたRP文化が実際のサーバーでどう機能しているかは、日本語FiveM RPサーバーの訪問記「[Refloria Townとは？同接216人・ギャング抗争とテリトリー制を備えた日本語RPサーバー](/fivem-gtarp/field-notes/visit-note/refloria-town)」で、ギャング抗争やテリトリー制の実例として見ることができる。`,
   },
   {
     id: 17,
@@ -4436,7 +4469,7 @@ Rockstar Gamesは2026年6月18日、グランド・セフト・オートVI（GTA
     date: "2026-06-18",
     source: "Rockstar Games Newswire",
     sourceUrl: "https://www.rockstargames.com/newswire",
-    relatedArticles: [14, 6, 2],
+    relatedArticles: [36, 31, 2],
     aiSummary: [
       "期間限定の報酬プログラム「Fine Art Collector」が6月18日から7月13日まで開催されている。",
       "達成条件で3ティアに分かれ、現金は合計で最大GTA$150万、無料車両や衣装も入手できる。",
@@ -5312,7 +5345,7 @@ GTA6のSwitch2版をめぐる状況を整理すると、こうなる。
     date: "2026-06-18",
     source: "Rockstar Games Official",
     sourceUrl: "https://www.rockstargames.com",
-    relatedArticles: [2, 19, 8],
+    relatedArticles: [33, 2, 19],
     youtubeId: "ooZ1n4Fh7Ks",
     aiSummary: [
       "GTA6のトレーラーは現時点で2本、第1弾が2023年12月、第2弾が2025年5月6日に公開された。",
@@ -5506,7 +5539,7 @@ GTA6は2026年11月19日に、PS5とXbox Series X|S向けに発売予定だ。PC
     date: "2026-06-19",
     source: "Rockstar Games Official",
     sourceUrl: "https://www.rockstargames.com",
-    relatedArticles: [1, 19, 12],
+    relatedArticles: [33, 1, 19],
     aiSummary: [
       "GTA6の発売日は2026年11月19日で確定、対応はPS5とXbox Series X|S。",
       "二度の延期を経たが、6月25日の予約開始と業績見通しへの組み込みで日付の確度は最も高い。",
@@ -7378,10 +7411,27 @@ GTA6の舞台はフロリダ州をモデルにしたレオニダ州で、ベイ�
 ];
 
 // 日付の新しい順（一覧・トップの表示用）。同日は id の大きい方を先に。
-export const newsByDate: NewsArticle[] = [...newsArticles].sort(
+/**
+ * 公開中の記事だけを集めたもの（HIDDEN_NEWS_IDS を除外）。
+ * 一覧・トップ・検索・関連記事など、利用者に見せる経路はすべてこちらを使う。
+ * newsArticles（全件）は prerender-og と管理画面だけが参照する。
+ */
+export const visibleNewsArticles: NewsArticle[] = newsArticles.filter((a) => !isHiddenNewsId(a.id));
+
+export const newsByDate: NewsArticle[] = [...visibleNewsArticles].sort(
   (a, b) => b.date.localeCompare(a.date) || b.id - a.id
 );
 
-// id から記事を引くヘルパー（詳細ページで使用）
+// id から記事を引くヘルパー（詳細ページで使用）。
+// 非表示記事は undefined を返す＝記事ページが出ず、残す記事の relatedArticles からも
+// 自動的に落ちる（NewsDetail 側が .filter(Boolean) している）。
 export const getArticleById = (id: number | string): NewsArticle | undefined =>
+  visibleNewsArticles.find((a) => a.id === Number(id));
+
+/**
+ * 非表示記事も含めて id から引く（管理画面専用）。
+ * 非表示記事に付いたコメントの通報も管理画面から処理できるようにするため、
+ * 表示用の getArticleById とは別に用意している。公開ページでは使わないこと。
+ */
+export const getAnyArticleById = (id: number | string): NewsArticle | undefined =>
   newsArticles.find((a) => a.id === Number(id));

@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { newsArticles } from '../client/src/data/news';
+import { newsArticles, isHiddenNewsId, HIDDEN_NEWS_IDS } from '../client/src/data/news';
 import { injectSsrBody } from './lib/inject-ssr-body';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -164,6 +164,10 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
 
 let count = 0;
 for (const article of newsArticles) {
+  // 非表示記事（data/news.ts の HIDDEN_NEWS_IDS）は静的HTMLを生成しない。
+  // URL は vercel.json が /fivem-gtarp へ 302 する。記事データ自体は残っているので、
+  // HIDDEN_NEWS_IDS から id を消して再ビルドすればそのまま復活する。
+  if (isHiddenNewsId(article.id)) continue;
   // 日本語版（/news/<id>）と英語版（/en/news/<id>）の両方を生成。
   for (const lang of ['ja', 'en'] as const) {
     const html = buildHtml(article, lang);
@@ -173,7 +177,12 @@ for (const article of newsArticles) {
     count++;
   }
 }
-console.log(`[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html`);
+console.log(
+  `[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html` +
+    (HIDDEN_NEWS_IDS.length
+      ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}）`
+      : ''),
+);
 if (bodyFailures.length) {
   console.warn(
     `[prerender] WARN: 本文SSRが入らなかったルート: ${bodyFailures.join(', ')} ` +

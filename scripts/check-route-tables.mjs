@@ -171,6 +171,85 @@ if (notInSitemap.length) {
   );
 }
 
+// ============================================================================
+//  検査E（fail）：一時的に非表示にした news 記事の3点整合
+//    1. client/src/data/news.ts の HIDDEN_NEWS_IDS   … 表示・プリレンダから外す
+//    2. scripts/generate-sitemap.mjs                  … sitemap から除外（1 を自動で読む）
+//    3. vercel.json の 302 リダイレクト                … URL を /fivem-gtarp へ逃がす
+//  3つがズレると「sitemap には載るのに 302 される」「一覧から消えたのに URL は生きていて
+//  空シェルが返る」といった不整合になる。復帰時（発売後）に消し忘れる事故も防ぐ。
+// ============================================================================
+const newsSrc = readFileSync(resolve(ROOT, 'client/src/data/news.ts'), 'utf8');
+const hiddenBlock = newsSrc.match(/export const HIDDEN_NEWS_IDS:\s*readonly number\[\]\s*=\s*\[([\s\S]*?)\]/);
+if (!hiddenBlock) {
+  errors.push(
+    'news.ts の HIDDEN_NEWS_IDS を解析できなかった（宣言の書式が変わった可能性）。' +
+      'check-route-tables.mjs と generate-sitemap.mjs の両方の解析を直すこと。',
+  );
+} else {
+  const hiddenIds = [...hiddenBlock[1].matchAll(/\d+/g)].map((m) => m[0]).sort((a, b) => a - b);
+
+  const vercel = JSON.parse(readFileSync(resolve(ROOT, 'vercel.json'), 'utf8'));
+  const redirectIds = { ja: [], en: [] };
+  for (const r of vercel.redirects ?? []) {
+    const m = String(r.source).match(/^(\/en)?\/news\/:id\(([^)]*)\)$/);
+    if (!m) continue;
+    const ids = m[2].split('|').map((s) => s.trim()).sort((a, b) => a - b);
+    redirectIds[m[1] ? 'en' : 'ja'] = { ids, status: r.statusCode };
+  }
+
+  for (const lang of ['ja', 'en']) {
+    const entry = redirectIds[lang];
+    if (!entry) {
+      if (hiddenIds.length) {
+        errors.push(
+          `vercel.json に ${lang === 'en' ? '/en' : ''}/news/:id(...) の一時非表示リダイレクトが無い。` +
+            `非表示 ${hiddenIds.length} 件の URL が空シェルのまま残る。`,
+        );
+      }
+      continue;
+    }
+    const missing = hiddenIds.filter((id) => !entry.ids.includes(id));
+    const extra = entry.ids.filter((id) => !hiddenIds.includes(id));
+    if (missing.length) {
+      errors.push(
+        `非表示なのに vercel.json の ${lang} リダイレクトに無い記事ID: ${missing.join(', ')}` +
+          ' → 一覧からは消えるが URL が生き残り、空シェルが返る。',
+      );
+    }
+    if (extra.length) {
+      errors.push(
+        `vercel.json の ${lang} リダイレクトにあるが HIDDEN_NEWS_IDS に無い記事ID: ${extra.join(', ')}` +
+          ' → 公開中の記事が意図せずリダイレクトされる。',
+      );
+    }
+    if (hiddenIds.length && entry.status !== 302) {
+      warnings.push(
+        `${lang} の一時非表示リダイレクトが ${entry.status} になっている。` +
+          '発売後に戻す前提なので 302（一時）が正しい。',
+      );
+    }
+  }
+
+  // 301統合済み・noindex 済みの記事を二重に非表示リストへ入れると、
+  // 301 → 302 のリダイレクトチェーンや意図の重複になるため弾く。
+  for (const [id, why] of [
+    ['17', 'id19 へ 301 統合済み（vercel.json）。302 と重なるとリダイレクトチェーンになる'],
+    ['29', 'noindex,follow 済み（prerender-og の NOINDEX_IDS）'],
+  ]) {
+    if (hiddenIds.includes(id)) {
+      errors.push(`id${id} は HIDDEN_NEWS_IDS に入れないこと — ${why}。`);
+    }
+  }
+
+  if (hiddenIds.length) {
+    warnings.push(
+      `[一時非表示] news 記事 ${hiddenIds.length} 件を配信から外している（id ${hiddenIds.join(', ')}）。` +
+        'GTA6発売後に戻す手順は client/src/data/news.ts の HIDDEN_NEWS_IDS のコメントを参照。',
+    );
+  }
+}
+
 // --- 結果 --------------------------------------------------------------------
 for (const w of warnings) console.warn(`[check-routes] WARN: ${w}`);
 

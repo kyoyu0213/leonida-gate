@@ -62,7 +62,7 @@ import {
 import { imagePublicUrl } from '@/lib/images';
 import { REPORT_REASONS, formatPostDate } from '@/lib/board';
 import { getBoard, BOARDS } from '@/lib/boards';
-import { getArticleById } from '@/data/news';
+import { getAnyArticleById } from '@/data/news';
 import { NewsEditor } from './AdminNews';
 
 const reasonLabel = (value: string) =>
@@ -1710,7 +1710,7 @@ function NewsCommentsPanel() {
   return (
     <div className="flex flex-col gap-3">
       {rows.map((c) => {
-        const article = getArticleById(c.article_id);
+        const article = getAnyArticleById(c.article_id);
         const busy = busyId === c.id;
         return (
           <div key={c.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">

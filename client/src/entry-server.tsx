@@ -29,6 +29,7 @@ import FieldNotesList from '@/pages/FieldNotesList';
 import FieldNoteDetail from '@/pages/FieldNoteDetail';
 import FivemInstallGuide from '@/pages/FivemInstallGuide';
 import { fieldNotes } from '@/data/fieldNotes';
+import { isHiddenNewsId } from '@/data/news';
 import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
@@ -94,7 +95,7 @@ const ROUTES: Record<string, ComponentType> = { ...LOCALIZED_ROUTES, ...JA_ONLY_
 // news記事は動的ルート（/news/<数字>）。ROUTES の静的キーには載せず、パターンで判定する。
 // 本文は NewsDetail が getArticleById で同期解決するため renderToString で本文まで描画できる。
 // プリレンダ対象IDの列挙は行わない（scripts/prerender-og.ts が newsArticles を回して render を呼ぶ）。
-const NEWS_PATH_RE = /^\/news\/\d+$/;
+const NEWS_PATH_RE = /^\/news\/(\d+)$/;
 
 // 体験記の記事も動的ルート（/fivem-gtarp/field-notes/<category>/<slug>）。data/fieldNotes.ts
 // から列挙し、日英ペアで prerender-routes.ts の localized 経路（hreflang付き）に載せる。
@@ -123,10 +124,14 @@ export interface RenderResult {
 export function render(url: string): RenderResult | null {
   // '/en'（末尾スラッシュ無し）も ja パス '/' に写す。
   const jaPath = url === '/en' ? '/' : url.startsWith('/en/') ? url.slice(3) : url;
+  // 非表示記事（HIDDEN_NEWS_IDS）は本文を描画しない。呼ばれても null を返して
+  // 「静的HTMLが生成されない」状態を保つ（URL は vercel.json が 302 する）。
+  const newsMatch = NEWS_PATH_RE.exec(jaPath);
+  if (newsMatch && isHiddenNewsId(newsMatch[1])) return null;
   const Comp =
     (jaPath === '/' ? Home : undefined) ??
     ROUTES[jaPath] ??
-    (NEWS_PATH_RE.test(jaPath) ? NewsDetail : undefined) ??
+    (newsMatch ? NewsDetail : undefined) ??
     (FIELD_NOTE_PATH_RE.test(jaPath) ? FieldNoteDetail : undefined);
   if (!Comp) return null;
   const html = renderToString(

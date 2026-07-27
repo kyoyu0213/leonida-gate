@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useSearch } from 'wouter';
 import { Search as SearchIcon, Loader2, Newspaper, MessageSquare } from 'lucide-react';
 import Header from '@/components/Header';
-import { newsArticles, CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
+import { visibleNewsArticles, CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
 import { searchPosts, searchThreads, formatPostDate } from '@/lib/board';
 import { getBoard, boardColor } from '@/lib/boards';
 import { logSearch } from '@/lib/searchLog';
@@ -79,7 +79,7 @@ export default function SearchPage() {
       const lower = q.toLowerCase();
       const newsHits = boardOnly
         ? []
-        : newsArticles.filter(
+        : visibleNewsArticles.filter(
             (a) =>
               a.title.toLowerCase().includes(lower) ||
               a.description.toLowerCase().includes(lower) ||
