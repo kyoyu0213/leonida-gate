@@ -499,6 +499,65 @@ export const BOARD_GUIDES: Record<BoardGuideKey, { ja: BoardGuideContent; en: Bo
 //  表示は掲示板と同じ components/BoardGuide.tsx（content プロパティで直接渡す）。
 // ============================================================================
 
+// ============================================================================
+//  固定ページの解説（お問い合わせ等）。
+//  /contact はフォーム主体でテキストが少なかった（466字）。窓口としての用途・返信の
+//  目安・非公式サイトである旨を静的に添える。表示は components/BoardGuide.tsx。
+// ============================================================================
+
+export type PageGuideKey = 'contact';
+
+export const PAGE_GUIDES: Record<PageGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {
+  contact: {
+    ja: {
+      lead: 'お問い合わせフォームから、GTA6 FEED編集部へご連絡いただけます。',
+      sections: [
+        {
+          heading: 'このフォームの用途',
+          body: [
+            'このフォームは、FiveM/GTARPサーバーの掲載に関するご依頼や、掲示板への投稿の削除・修正のご依頼などの窓口として設けている。そのほかのご連絡も受け付けている。',
+          ],
+        },
+        {
+          heading: '返信について',
+          body: [
+            'いただいたお問い合わせには、通常2〜3日以内に返信する。内容によっては返信までにさらに時間をいただく場合がある。返信は、フォームにご記入いただいた連絡先宛てに行うため、入力内容に誤りがないかご確認のうえ送信してほしい。',
+          ],
+        },
+        {
+          heading: 'お問い合わせ前にご確認ください',
+          body: [
+            'なお、当サイトはRockstar GamesおよびTake-Two Interactiveとは一切関係のない、非公式のファンサイトである。ゲーム本体やアカウントに関するお問い合わせには対応できないため、それらは各公式サポートへ問い合わせてほしい。',
+          ],
+        },
+      ],
+    },
+    en: {
+      lead: 'Use the contact form to reach the GTA6 FEED editorial team.',
+      sections: [
+        {
+          heading: 'What this form is for',
+          body: [
+            'This form exists as the point of contact for requests to list a FiveM/GTARP server, and for requests to remove or correct a board post. Other enquiries are welcome as well.',
+          ],
+        },
+        {
+          heading: 'About replies',
+          body: [
+            'We normally reply within two to three days. Depending on the enquiry, a reply may take longer. Replies go to the contact details you enter on the form, so please check them for mistakes before sending.',
+          ],
+        },
+        {
+          heading: 'Before you get in touch',
+          body: [
+            'This site is an unofficial fan site with no connection to Rockstar Games or Take-Two Interactive. We cannot help with enquiries about the game itself or about your account — please contact the relevant official support for those.',
+          ],
+        },
+      ],
+    },
+  },
+};
+
 export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask';
 
 export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {

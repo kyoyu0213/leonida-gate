@@ -7,6 +7,8 @@ import { uploadRawImages } from '@/lib/images';
 import { getAnonId } from '@/lib/board';
 import { useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import BoardGuide from '@/components/BoardGuide';
+import { PAGE_GUIDES } from '@/data/boardGuides';
 
 export default function Contact() {
   const t = useT();
@@ -171,6 +173,10 @@ export default function Contact() {
             </button>
           </form>
         </div>
+
+        {/* 窓口としての案内（静的）。フォーム主体でテキストが少ないため、
+            生HTMLに実コンテンツを残すのはこのブロック。 */}
+        <BoardGuide content={PAGE_GUIDES.contact} />
 
         <div className="mt-10">
           <a href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
