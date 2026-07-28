@@ -14,24 +14,24 @@ import {
   newsArticles,
   isHiddenNewsId,
   isRedirectedNewsId,
+  isNoindexNewsId,
   HIDDEN_NEWS_IDS,
   REDIRECTED_NEWS_IDS,
 } from '../client/src/data/news';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { ORIGIN, SITE_NAME, DEFAULT_IMAGE, toAbs } from './lib/site';
+import { articleNode, breadcrumbNode, homeCrumb, injectLd } from './lib/jsonld';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const ORIGIN = 'https://gta6-feed.com';
-const DEFAULT_IMAGE = '/images/news/Official_Cover_Art_landscape.webp';
-const SITE_NAME = 'GTA6 FEED';
 
 const TEMPLATE = readFileSync(resolve(ROOT, 'dist/public/index.html'), 'utf8');
 
-// noindex 対象の記事ID（本文・URLは残しつつ検索インデックスからのみ外す）。
+// noindex 対象の記事ID（本文・URLは残しつつ検索インデックスからのみ外す）は
+// client/src/data/news.ts の NOINDEX_NEWS_IDS に集約した（isNoindexNewsId）。
 // ここに入れた記事は <head> に <meta name="robots" content="noindex,follow"> を
 // 焼き込む（日英とも）。CSR側(useSeo)は robots メタに触れないため実行時も保持される。
-// 併せて generate-sitemap.mjs 側でも sitemap から除外すること。
-const NOINDEX_IDS = new Set<number>([29]);
+// sitemap 側の除外も同じ定義（news.ts）を読むので、片方だけズレることはない。
 
 // SSRバンドル（dist/server/entry-server.js）の render() で記事本文を生HTML化する。
 // このスクリプトは <head>（title/canonical/OG/JSON-LD）の所有者であり続け、本文だけを
@@ -50,8 +50,6 @@ const bodyFailures: string[] = [];
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-const toAbs = (p: string) => (/^https?:\/\//i.test(p) ? p : ORIGIN + (p.startsWith('/') ? p : `/${p}`));
 
 // 置換パターンが1つも見つからなかったキーを集約し、ビルド最後に WARN する。
 // （テンプレートの <head> フォーマット変更で silent に既定値が残る事故を検知するため）
@@ -82,7 +80,9 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   const aDesc = isEn && article.descriptionEn ? article.descriptionEn : article.description;
 
   const title = `${aTitle} | ${SITE_NAME}`;
-  const desc = (aDesc || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+  // meta description は 160字で切る。JSON-LD には切らない説明を使う。
+  const descFull = (aDesc || '').replace(/\s+/g, ' ').trim();
+  const desc = descFull.slice(0, 160);
   const base = `/news/${article.id}`;
   const url = `${ORIGIN}${isEn ? '/en' : ''}${base}`;
   const jaUrl = `${ORIGIN}${base}`;
@@ -98,7 +98,7 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   // canonical（各言語版は自言語URLを自己参照）
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
   // robots: noindex 対象のみ <head> に焼き込む（本文・canonical は残す）。
-  if (NOINDEX_IDS.has(article.id)) {
+  if (isNoindexNewsId(article.id)) {
     html = html.replace('</head>', `    <meta name="robots" content="noindex,follow" />\n  </head>`);
   }
   // meta 各種
@@ -120,36 +120,29 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   ].join('\n    ');
   html = html.replace('</head>', `    ${alt}\n  </head>`);
 
-  // JSON-LD（NewsArticle + パンくず）。"<" はエスケープして </script> 破壊を防ぐ。
-  const crumbHome = isEn ? 'Home' : 'ホーム';
-  const crumbNews = isEn ? 'News' : '最新情報';
-  const ld = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'NewsArticle',
-        inLanguage: isEn ? 'en' : 'ja',
+  // JSON-LD（NewsArticle + パンくず）。組み立ては scripts/lib/jsonld.ts に集約している
+  // （プリレンダ3スクリプトで publisher・絶対URLの扱いを1本にするため）。
+  html = injectLd(
+    html,
+    [
+      articleNode({
+        type: 'NewsArticle',
+        url,
         headline: aTitle,
-        description: desc,
-        image: [image],
+        description: descFull,
+        image,
         datePublished: published,
         dateModified: published,
-        author: { '@type': 'Organization', name: SITE_NAME },
-        publisher: { '@type': 'Organization', name: SITE_NAME },
-        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: crumbHome, item: `${ORIGIN}${isEn ? '/en' : '/'}` },
-          { '@type': 'ListItem', position: 2, name: crumbNews, item: `${ORIGIN}${isEn ? '/en' : ''}/news` },
-          { '@type': 'ListItem', position: 3, name: aTitle, item: url },
-        ],
-      },
+        lang,
+      }),
+      breadcrumbNode([
+        homeCrumb(lang),
+        { name: isEn ? 'News' : '最新情報', url: `${ORIGIN}${isEn ? '/en' : ''}/news` },
+        { name: aTitle, url },
+      ]),
     ],
-  };
-  const ldScript = `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`;
-  html = html.replace('</head>', `${ldScript}</head>`);
+    'prerender-og',
+  );
 
   // 本文を #root へ焼き込む（head はここまでで確定済み。body だけ足す）。
   // SSRで例外が出ても head は残したままビルドを止めない（本文はCSRにフォールバック）。

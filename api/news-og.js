@@ -53,10 +53,12 @@ export default async function handler(req, res) {
   // 実在する記事ページはインデックスさせたいので、found のときだけ noindex を剥がす。
   // 見つからないID（/news/99999 等）は noindex のままにして、ソフト404が拾われるのを防ぐ。
   let found = false;
+  let published = '';
+  let modified = '';
   if (Number.isFinite(id) && id >= ID_OFFSET) {
     const dbId = id - ID_OFFSET;
     try {
-      const u = `${SUPABASE_URL}/rest/v1/news_posts?id=eq.${dbId}&published=eq.true&select=title,description,eyecatch_url`;
+      const u = `${SUPABASE_URL}/rest/v1/news_posts?id=eq.${dbId}&published=eq.true&select=title,description,eyecatch_url,published_at,updated_at`;
       const r = await fetch(u, {
         headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
       });
@@ -66,6 +68,8 @@ export default async function handler(req, res) {
         if (rows[0].title) title = rows[0].title;
         if (rows[0].description) desc = rows[0].description;
         if (rows[0].eyecatch_url) image = rows[0].eyecatch_url;
+        published = rows[0].published_at || '';
+        modified = rows[0].updated_at || published;
       }
     } catch {
       /* keep defaults */
@@ -88,6 +92,48 @@ export default async function handler(req, res) {
     `<link rel="canonical" href="${esc(url)}" />`,
   ].join('\n    ');
 
+  // JSON-LD（NewsArticle + パンくず）。実在する記事のときだけ出す。
+  // 静的記事は scripts/lib/jsonld.ts が組み立てるが、この関数は Vercel の
+  // サーバーレス関数として単体でバンドルされる（scripts/ を import できない）ため、
+  // 同じ形をここで組み立てる。片方だけ形を変えないこと。
+  let ldScript = '';
+  if (found) {
+    const publisher = {
+      '@type': 'Organization',
+      name: 'GTA6 FEED',
+      url: SITE,
+      logo: { '@type': 'ImageObject', url: `${SITE}/images/gta6feed-logo.webp` },
+    };
+    const ld = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'NewsArticle',
+          inLanguage: 'ja',
+          headline: title,
+          description: desc,
+          image: [image],
+          ...(published ? { datePublished: published } : {}),
+          ...(modified ? { dateModified: modified } : {}),
+          author: publisher,
+          publisher,
+          url,
+          mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+          isPartOf: { '@type': 'WebSite', name: 'GTA6 FEED', url: SITE },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'ホーム', item: `${SITE}/` },
+            { '@type': 'ListItem', position: 2, name: '最新情報', item: `${SITE}/news` },
+            { '@type': 'ListItem', position: 3, name: title, item: url },
+          ],
+        },
+      ],
+    };
+    ldScript = `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`;
+  }
+
   if (html) {
     html = html
       .replace(/\n\s*<meta property="og:[^>]*>/g, '')
@@ -96,7 +142,7 @@ export default async function handler(req, res) {
       // 除去しないと canonical が2本になり、どちらが採用されるか不定になる。
       .replace(/\n?\s*<link rel="canonical"[^>]*>/g, '')
       .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(fullTitle)}</title>`)
-      .replace('</head>', `    ${meta}\n  </head>`);
+      .replace('</head>', `    ${meta}\n    ${ldScript}\n  </head>`);
     // 実在する記事だけ noindex を剥がす（app.html の一括 noindex を打ち消す）。
     if (found) {
       html = html.replace(/\n?\s*<meta name="robots"[^>]*>/g, '');
@@ -105,7 +151,7 @@ export default async function handler(req, res) {
     // app.html を取れなかった場合の最小フォールバック（クローラ向けメタのみ）。
     // 本文が無いので、記事が見つからなかったときは noindex を明示する。
     const robots = found ? '' : `\n    <meta name="robots" content="noindex" />`;
-    html = `<!doctype html><html lang="ja"><head><meta charset="utf-8" /><title>${esc(fullTitle)}</title>\n    ${meta}${robots}\n  </head><body></body></html>`;
+    html = `<!doctype html><html lang="ja"><head><meta charset="utf-8" /><title>${esc(fullTitle)}</title>\n    ${meta}${robots}\n    ${ldScript}\n  </head><body></body></html>`;
   }
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');

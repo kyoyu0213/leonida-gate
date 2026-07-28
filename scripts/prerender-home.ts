@@ -20,11 +20,15 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { ORIGIN, DEFAULT_IMAGE, toAbs } from './lib/site';
+import { webSiteNode, organizationNode, collectionNode, injectLd } from './lib/jsonld';
+import { indexableNewsArticles } from '../client/src/data/news';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const ORIGIN = 'https://gta6-feed.com';
-const DEFAULT_IMAGE = '/images/news/Official_Cover_Art_landscape.webp';
+
+/** ホームの ItemList に載せる最新記事の件数（トップの記事セクションと同じ趣旨）。 */
+const HOME_ITEMLIST_MAX = 12;
 
 const INDEX_PATH = resolve(ROOT, 'dist/public/index.html');
 const APP_PATH = resolve(ROOT, 'dist/public/app.html');
@@ -34,7 +38,6 @@ const TEMPLATE = readFileSync(INDEX_PATH, 'utf8');
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const toAbs = (p: string) => (/^https?:\/\//i.test(p) ? p : ORIGIN + (p.startsWith('/') ? p : `/${p}`));
 
 const missedReplacements = new Set<string>();
 function replaceTracked(html: string, re: RegExp, replacement: string, label: string): string {
@@ -105,7 +108,9 @@ for (const { route, out } of targets) {
   }
   const { html: body, seo } = result;
   const title = seo?.title || 'GTA6 FEED';
-  const desc = (seo?.description || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+  // meta description は 160字で切る。JSON-LD には切らない説明を使う。
+  const descFull = (seo?.description || '').replace(/\s+/g, ' ').trim();
+  const desc = descFull.slice(0, 160);
   // canonical/og:url は自己参照：ja→ORIGIN + '/'、en→ORIGIN + '/en'
   const selfUrl = route === '/' ? `${ORIGIN}/` : `${ORIGIN}/en`;
   const image = toAbs(seo?.image || DEFAULT_IMAGE);
@@ -132,6 +137,29 @@ for (const { route, out } of targets) {
     `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
   ].join('\n    ');
   html = html.replace('</head>', `    ${alt}\n  </head>`);
+
+  // JSON-LD：サイト全体（WebSite / Organization）＋トップが並べる最新記事の ItemList。
+  // 記事ページ・一覧ページ側の JSON-LD は prerender-og / prerender-routes が焼く。
+  const lang = route === '/en' ? 'en' : 'ja';
+  const isEn = lang === 'en';
+  const latest = indexableNewsArticles.slice(0, HOME_ITEMLIST_MAX);
+  html = injectLd(
+    html,
+    [
+      webSiteNode(lang),
+      organizationNode(),
+      collectionNode({
+        url: selfUrl,
+        name: title,
+        description: descFull,
+        lang,
+        // トップの記事カードは日本語記事へ（英語表示でも記事URLは /en/news/<id>）。
+        itemUrls: latest.map((a) => `${ORIGIN}${isEn ? '/en' : ''}/news/${a.id}`),
+        itemNames: latest.map((a) => (isEn && a.titleEn ? a.titleEn : a.title)),
+      }),
+    ],
+    'prerender-home',
+  );
 
   html = injectSsrBody(html, body, 'prerender-home');
 
