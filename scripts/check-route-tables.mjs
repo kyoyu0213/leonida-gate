@@ -23,6 +23,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
+import { readNewsIdLists } from './lib/news-visibility.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -179,15 +180,11 @@ if (notInSitemap.length) {
 //  3つがズレると「sitemap には載るのに 302 される」「一覧から消えたのに URL は生きていて
 //  空シェルが返る」といった不整合になる。復帰時（発売後）に消し忘れる事故も防ぐ。
 // ============================================================================
-const newsSrc = readFileSync(resolve(ROOT, 'client/src/data/news.ts'), 'utf8');
-const hiddenBlock = newsSrc.match(/export const HIDDEN_NEWS_IDS:\s*readonly number\[\]\s*=\s*\[([\s\S]*?)\]/);
-if (!hiddenBlock) {
-  errors.push(
-    'news.ts の HIDDEN_NEWS_IDS を解析できなかった（宣言の書式が変わった可能性）。' +
-      'check-route-tables.mjs と generate-sitemap.mjs の両方の解析を直すこと。',
-  );
-} else {
-  const hiddenIds = [...hiddenBlock[1].matchAll(/\d+/g)].map((m) => m[0]).sort((a, b) => a - b);
+// 3配列（HIDDEN / REDIRECTED / NOINDEX）の読み出しは scripts/lib/news-visibility.mjs に集約。
+// 解析できなければ throw されるので、チェックが黙って素通りすることはない。
+{
+  const newsIds = readNewsIdLists();
+  const hiddenIds = [...newsIds.hidden].sort((a, b) => a - b);
 
   const vercel = JSON.parse(readFileSync(resolve(ROOT, 'vercel.json'), 'utf8'));
   const redirectIds = { ja: [], en: [] };
@@ -233,12 +230,19 @@ if (!hiddenBlock) {
 
   // 301統合済み・noindex 済みの記事を二重に非表示リストへ入れると、
   // 301 → 302 のリダイレクトチェーンや意図の重複になるため弾く。
-  for (const [id, why] of [
-    ['17', 'id19 へ 301 統合済み（vercel.json）。302 と重なるとリダイレクトチェーンになる'],
-    ['29', 'noindex,follow 済み（prerender-og の NOINDEX_IDS）'],
-  ]) {
+  // 対象IDは news.ts の REDIRECTED_NEWS_IDS / NOINDEX_NEWS_IDS から読む（手書きしない）。
+  for (const id of newsIds.redirected) {
     if (hiddenIds.includes(id)) {
-      errors.push(`id${id} は HIDDEN_NEWS_IDS に入れないこと — ${why}。`);
+      errors.push(
+        `id${id} は HIDDEN_NEWS_IDS に入れないこと — 301統合済み（vercel.json）。302 と重なるとリダイレクトチェーンになる。`,
+      );
+    }
+  }
+  for (const id of newsIds.noindex) {
+    if (hiddenIds.includes(id)) {
+      errors.push(
+        `id${id} は HIDDEN_NEWS_IDS に入れないこと — noindex,follow 済み（news.ts の NOINDEX_NEWS_IDS）。`,
+      );
     }
   }
 
@@ -248,6 +252,33 @@ if (!hiddenBlock) {
         'GTA6発売後に戻す手順は client/src/data/news.ts の HIDDEN_NEWS_IDS のコメントを参照。',
     );
   }
+}
+
+// ============================================================================
+//  検査F（fail）：robots.txt の Disallow と sitemap の食い違い
+//  「robots で弾いているのに sitemap には載っている」URL は、クロールできないのに
+//  インデックスを要求している矛盾になる（Search Console の「robots.txt によりブロック
+//  されましたが、インデックスに登録しました」の原因）。
+//  sitemap.xml はこのチェックの後に生成されるため、生成元の STATIC_ROUTES を検査する。
+// ============================================================================
+const robotsSrc = readFileSync(resolve(ROOT, 'client/public/robots.txt'), 'utf8');
+const disallows = [...robotsSrc.matchAll(/^\s*Disallow:\s*(\S+)\s*$/gim)].map((m) => m[1]);
+if (!disallows.length) {
+  warnings.push('robots.txt に Disallow が1件も無い（書式変更でこの検査が無効化された可能性）。');
+}
+/** robots の Disallow プレフィックス規則で path がブロックされるか（* は使っていない前提）。 */
+const isDisallowed = (path) => disallows.some((d) => d !== '/' && path.startsWith(d));
+const blockedButInSitemap = [];
+for (const { path } of STATIC_ROUTES) {
+  const urls = [path, ...(isLocalizedStaticPath(path) ? [`/en${path === '/' ? '' : path}`] : [])];
+  for (const u of urls) if (isDisallowed(u)) blockedButInSitemap.push(u);
+}
+if (blockedButInSitemap.length) {
+  errors.push(
+    `robots.txt で Disallow なのに sitemap に載るURL: ${blockedButInSitemap.join(', ')}\n` +
+      '    → クロールできないURLのインデックスを要求する矛盾になります。\n' +
+      '    → robots.txt の Disallow か static-routes.mjs の STATIC_ROUTES のどちらかを直してください。',
+  );
 }
 
 // --- 結果 --------------------------------------------------------------------

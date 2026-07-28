@@ -9,6 +9,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
+import { readNewsIdLists, isIndexableNewsId } from './lib/news-visibility.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -67,30 +68,14 @@ function extractFieldNotes() {
 }
 
 // sitemap から除外する記事ID。
-//  17: id19 へ 301 統合（vercel.json redirects）
-//  29: noindex,follow（prerender-og.ts の NOINDEX_IDS）
-//  それ以外: 一時的に非表示にしている記事（client/src/data/news.ts の HIDDEN_NEWS_IDS）。
-//    ここは news.ts をテキストとして読んで自動同期する。片方だけ直して
-//    「sitemap には載るのに 302 される」不整合が起きるのを防ぐため。
-const MERGED_OR_NOINDEX_IDS = ['17', '29'];
+// 判定は client/src/data/news.ts の isIndexableNewsId() が正で、
+// ここは scripts/lib/news-visibility.mjs 経由で同じ3配列
+//  （HIDDEN_NEWS_IDS / REDIRECTED_NEWS_IDS / NOINDEX_NEWS_IDS）を読む。
+// 以前はこのファイルに ['17','29'] という手書きの別リストがあり、news.ts と
+// 二重管理になっていた（片方だけ直すと「sitemap には載るのに 302 される」不整合）。
+const newsIds = readNewsIdLists();
 
-function readHiddenNewsIds() {
-  const src = readFileSync(resolve(ROOT, 'client/src/data/news.ts'), 'utf8');
-  const m = src.match(/export const HIDDEN_NEWS_IDS:\s*readonly number\[\]\s*=\s*\[([\s\S]*?)\]/);
-  if (!m) {
-    // 宣言の書式が変わるとチェックが黙って素通りするため、ビルドを止める。
-    throw new Error(
-      '[sitemap] news.ts の HIDDEN_NEWS_IDS を解析できませんでした。' +
-        'generate-sitemap.mjs の readHiddenNewsIds() を宣言の書式に合わせて直してください。',
-    );
-  }
-  return [...m[1].matchAll(/\d+/g)].map((x) => x[0]);
-}
-
-const hiddenIds = readHiddenNewsIds();
-const EXCLUDE_IDS = new Set([...MERGED_OR_NOINDEX_IDS, ...hiddenIds]);
-
-const articles = extractArticles().filter((a) => !EXCLUDE_IDS.has(String(a.id)));
+const articles = extractArticles().filter((a) => isIndexableNewsId(a.id, newsIds));
 const fieldNotes = extractFieldNotes();
 
 // 日英の対がある（=/en/ 版を持つ）静的ルートかの判定は static-routes.mjs 側に集約。
@@ -139,5 +124,6 @@ const out = resolve(ROOT, 'client/public/sitemap.xml');
 writeFileSync(out, xml, 'utf8');
 console.log(
   `[sitemap] ${STATIC_ROUTES.length} static + ${articles.length} articles + ${fieldNotes.length} field-notes → client/public/sitemap.xml` +
-    `（記事除外 ${EXCLUDE_IDS.size}件: 統合/noindex ${MERGED_OR_NOINDEX_IDS.join(',')} / 非表示 ${hiddenIds.join(',')}）`,
+    `（記事除外 ${newsIds.excluded.size}件: 非表示 ${newsIds.hidden.join(',')} / ` +
+    `301統合 ${newsIds.redirected.join(',')} / noindex ${newsIds.noindex.join(',')}）`,
 );
