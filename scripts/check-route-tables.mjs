@@ -30,7 +30,8 @@ const ROOT = resolve(__dirname, '..');
 // --- 表以外の経路でプリレンダされるルート ------------------------------------
 // '/' は prerender-home.ts が dist/public/index.html と /en/index.html に焼く
 // （ROUTE_PATHS に入れると catch-all シェル兼テンプレートを上書きしてしまうため、
-//   意図的に表から外してある）。
+//   意図的に表から外してある）。日本語版・英語版の両方がここで生成されるので、
+//   検査A（日本語版）・検査B（英語版）の両方でスキップ対象になる。
 const PRERENDERED_OUTSIDE_TABLES = new Set(['/']);
 
 // --- 既知の差分（明示的に許容するもの） --------------------------------------
@@ -125,6 +126,8 @@ if (gaps.length) {
 const enGaps = [];
 for (const { path } of STATIC_ROUTES) {
   if (!isLocalizedStaticPath(path)) continue;
+  // '/' の英語版（/en）は prerender-home.ts が本文ごと焼くため LOCALIZED_ROUTES に無くてよい。
+  if (PRERENDERED_OUTSIDE_TABLES.has(path)) continue;
   if (localizedSet.has(path)) continue;
   if (KNOWN_GAPS.has(path)) continue;
   enGaps.push(path);

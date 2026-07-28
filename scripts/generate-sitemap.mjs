@@ -102,8 +102,14 @@ const entries = [
     urlEntry({ loc: `${ORIGIN}${r.path}`, priority: r.priority, changefreq: r.changefreq }),
   ),
   // 英語：日英の対がある固定ページのみ /en/ を追加
+  // ホーム（path='/'）だけは素朴に連結すると /en/ になり、canonical・hreflang が
+  // 出す /en（末尾スラッシュ無し）と別URLになってしまうため、ここで落とす。
   ...STATIC_ROUTES.filter((r) => isLocalized(r.path)).map((r) =>
-    urlEntry({ loc: `${ORIGIN}/en${r.path}`, priority: r.priority, changefreq: r.changefreq }),
+    urlEntry({
+      loc: `${ORIGIN}/en${r.path === '/' ? '' : r.path}`,
+      priority: r.priority,
+      changefreq: r.changefreq,
+    }),
   ),
   // 日本語：記事
   ...articles.map((a) =>

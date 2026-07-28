@@ -50,6 +50,11 @@ export const STATIC_ROUTES = [
  * 日英の対がある（=/en/ 版を sitemap に出す）固定ページか。
  * client/src/lib/routes.ts の LOCALIZED_STATIC_PATHS と一致していること。
  * （一致は scripts/check-route-tables.mjs が検証する）
+ *
+ * 例外は '/'（ホーム）。routes.ts の表には載せていない——Home.tsx が useSeo へ
+ * localized: true を直接渡して hreflang を出しており、表を経由しないため——が、
+ * /en は prerender-home.ts が本文ごと焼いていて実在する。表に無いことを理由に
+ * sitemap から漏れていたので、ここだけ明示的に対に含める。
  */
 export const isLocalizedStaticPath = (p) =>
-  p.startsWith('/fivem-gtarp') || p === '/about' || p === '/contact' || p === '/terms';
+  p === '/' || p.startsWith('/fivem-gtarp') || p === '/about' || p === '/contact' || p === '/terms';
