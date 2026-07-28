@@ -718,6 +718,171 @@ This article is a record of the GTA6 FEED operator actually building a FiveM ser
 };
 
 // ---------------------------------------------------------------------------
+//  #5 サーバー開発日記
+// ---------------------------------------------------------------------------
+const devDiary5: FieldNote = {
+  slug: 'server-dev-diary-5',
+  category: 'dev-diary',
+  title:
+    '【FiveM開発日記 #5】自作ツール simple_teleport を強化。/coords と /back を追加して、「自分専用の開発ツールを育てる」感覚になってきた',
+  titleEn:
+    'FiveM Dev Diary #5: Upgrading My Own Tool, simple_teleport — Adding /coords and /back, It Started to Feel Like Raising a Dev Tool Made Just for Me',
+  date: '2026-06-23',
+  excerpt:
+    '開発日記#5。前回自作したテレポート用リソース simple_teleport を強化し、現在位置の座標と向きを表示する /coords と、直前の位置へ戻れる（往復もできる）/back を追加。NPCやショップを配置するための下ごしらえとして、ゲーム内で動作確認まで行った記録。',
+  excerptEn:
+    'Dev Diary #5. I upgraded simple_teleport, the teleport resource I built last time, adding /coords to show my current coordinates and heading, and /back to return to where I was (and hop back and forth). A record of the groundwork for placing NPCs and shops, verified in game.',
+  image: '/images/taikenki/serverkaihatu/5/hero.webp',
+  icon: '📓',
+  seoTitle:
+    '【FiveM開発日記 #5】simple_teleport に /coords と /back を追加した｜GTA6 FEED',
+  seoDesc:
+    'FiveM開発日記#5。自作のテレポート用リソース simple_teleport を強化し、現在位置の X・Y・Z・Heading を表示する /coords と、直前の位置へ戻れて往復もできる /back を追加。NPCやショップの配置に向けた下ごしらえとして、txAdmin でのリソース再読み込みからゲーム内での動作確認までを記録した一次記録。次回は座標を Lua の vector4() 形式で取得する /copycoords を予定。',
+  seoTitleEn:
+    'FiveM Dev Diary #5: Adding /coords and /back to simple_teleport | GTA6 FEED',
+  seoDescEn:
+    'FiveM Dev Diary #5. I upgraded my own teleport resource, simple_teleport, adding /coords to print the current X, Y, Z and Heading, and /back to return to the previous position — and back again, as many times as you like. A first-hand record of the groundwork for placing NPCs and shops, from reloading the resource in txAdmin to verifying everything in game. Next up: /copycoords, which will output coordinates in Lua vector4() form.',
+  body: `![「CANYON VIEW」の案内板が立つ展望スポットに立つ自作キャラクター。ピクニックテーブルと岩肌の斜面が広がっている](/images/taikenki/serverkaihatu/5/hero.webp)
+
+前回、開発用のテレポート機能 simple_teleport を自作した。今日はそれをさらに強化して、NPC やショップを配置していくための下ごしらえを進めた。地味だが、こういう足まわりが整うほど後の作業がラクになる。
+
+## /coords コマンドを追加
+
+![ゲーム内チャットに /coords と入力したときのヘルプ表示。「/coords 現在位置の座標と向きを表示します」と表示されている](/images/taikenki/serverkaihatu/5/coords-help.webp)
+
+まず、いま自分が立っている場所の座標をその場で確認できる /coords を追加した。取得できるのは、
+
+- X 座標
+- Y 座標
+- Z 座標
+- Heading（向き）
+
+の4つ。これで NPC やショップ、ガレージなどを配置するときに、「ここに置きたい」と思った地点の座標をすぐ拾えるようになった。配置作業では座標取得が毎回必要になるので、ここが手軽になるだけで効率がかなり変わる。
+
+![/coords の実行結果。チャット欄に「simple_teleport: X: -428.78 / Y: 1596.80 / Z: 356.33 / Heading: 0.00」と表示されている](/images/taikenki/serverkaihatu/5/coords-output.webp)
+
+## /back コマンドを追加
+
+次に、/tp で移動したあとに元の場所へ戻れる /back を実装した。
+
+\`\`\`
+/back
+\`\`\`
+
+![ゲーム内チャットに /back と入力したときのヘルプ表示。「/back 直前にいた位置へ戻ります」と表示されている](/images/taikenki/serverkaihatu/5/back-help.webp)
+
+さらに、戻ったあとにもう一度 /back を実行すると、今度は移動先へ戻る。つまり、元の場所と移動先を何度でも往復できる。MLO やマップを確認するときに「行って、戻って、また確認して」を繰り返せるので、地味に便利な機能になった。
+
+![一度も /tp していない状態で /back を実行したときの表示。「戻れる位置がありません。先に /tp で移動してください。」というメッセージが出ている](/images/taikenki/serverkaihatu/5/back-no-history.webp)
+
+## 動作確認
+
+今回追加した機能は、すべてゲーム内で実際に確認した。
+
+![txAdminのコンソールで restart simple_teleport を実行し、「Started resource simple_teleport」と表示された画面](/images/taikenki/serverkaihatu/5/simple-teleport-restart.webp)
+
+- /coords で現在位置と向きを取得
+- /tp で指定座標へ移動
+- /back で元の場所へ復帰
+- 再度 /back で移動先へ戻る
+
+![レジオンスクエアで /tp 790.0 2548.0 72.6 と入力しているところ。チャット上部には /coords の結果「X: 194.34 / Y: -935.33 / Z: 30.69 / Heading: 144.00」が残っている](/images/taikenki/serverkaihatu/5/tp-input.webp)
+
+![テレポート後の画面。指定した座標の丘に移動し、「テレポートしました: 790.00, 2548.00, 72.60」と表示されている](/images/taikenki/serverkaihatu/5/tp-done.webp)
+
+![/back でレジオンスクエアに戻った画面。「テレポートしました: 194.34, -935.33, 30.69」と表示されている](/images/taikenki/serverkaihatu/5/back-returned.webp)
+
+![もう一度 /back を実行して移動先の丘へ戻った画面。3回分のテレポート履歴がチャットに並んでいる](/images/taikenki/serverkaihatu/5/back-again.webp)
+
+この一連の流れが、想定どおり正常に動作することを確認できた。
+
+## 今回感じたこと
+
+最初のうちは「AI にコードを書いてもらう」という感覚だったが、最近は少しずつ、自分専用の開発ツールを育てている感覚になってきた。
+
+実際にゲーム内で動きを確かめながら機能を足していくのは想像以上に楽しくて、小さな改善でも開発効率が確実に上がっているのを実感している。大きな機能を一気に作るより、こうして「あったら便利」を一つずつ積み上げていくほうが、自分には合っているのかもしれない。
+
+## 次回やること
+
+次は /copycoords を追加する予定。
+
+現在位置を Lua の vector4() 形式で取得できるようにして、NPC やショップの配置時にそのままコードへ貼り付けられるようにするのが目標。/coords で「確認する」ところまではできたので、次は「そのままコードに使える」ところまで持っていきたい。
+
+---
+
+この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年6月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
+  bodyEn: `![My own character standing at a "CANYON VIEW" lookout, with picnic tables and a rocky slope spread out around them](/images/taikenki/serverkaihatu/5/hero.webp)
+
+Last time I built my own teleport feature for development, simple_teleport. Today I strengthened it further and made progress on the groundwork for placing NPCs and shops. It's plain work, but the more this kind of footing is in place, the easier everything afterwards gets.
+
+## Adding the /coords Command
+
+![The help shown in the in-game chat when typing /coords: "/coords displays the coordinates and heading of your current position"](/images/taikenki/serverkaihatu/5/coords-help.webp)
+
+First, I added /coords, which lets me check the coordinates of wherever I'm standing right on the spot. What it gives me is,
+
+- The X coordinate
+- The Y coordinate
+- The Z coordinate
+- The heading (which way I'm facing)
+
+— those four. With this, when I go to place NPCs, shops, garages and so on, I can immediately grab the coordinates of the spot where I think "I want to put it here." Placement work needs coordinates every single time, so just making this part easy changes the efficiency quite a lot.
+
+![The result of running /coords. The chat shows "simple_teleport: X: -428.78 / Y: 1596.80 / Z: 356.33 / Heading: 0.00"](/images/taikenki/serverkaihatu/5/coords-output.webp)
+
+## Adding the /back Command
+
+Next, I implemented /back, which returns me to where I was after moving with /tp.
+
+\`\`\`
+/back
+\`\`\`
+
+![The help shown in the in-game chat when typing /back: "/back returns you to the position you were at just before"](/images/taikenki/serverkaihatu/5/back-help.webp)
+
+On top of that, if I run /back once more after returning, this time it takes me back to the destination. In other words, I can go back and forth between the original spot and the destination as many times as I like. When checking an MLO or the map, I can repeat "go there, come back, check again," so it turned out to be a quietly convenient feature.
+
+![What shows up when running /back without having used /tp even once: the message "There is no position to return to. Move with /tp first."](/images/taikenki/serverkaihatu/5/back-no-history.webp)
+
+## Verifying It Works
+
+Everything I added this time, I checked for real inside the game.
+
+![The txAdmin console after running restart simple_teleport, showing "Started resource simple_teleport"](/images/taikenki/serverkaihatu/5/simple-teleport-restart.webp)
+
+- Get the current position and heading with /coords
+- Move to the specified coordinates with /tp
+- Return to the original spot with /back
+- Go back to the destination with /back again
+
+![Typing /tp 790.0 2548.0 72.6 at Legion Square. At the top of the chat, the earlier /coords result — "X: 194.34 / Y: -935.33 / Z: 30.69 / Heading: 144.00" — is still shown](/images/taikenki/serverkaihatu/5/tp-input.webp)
+
+![The screen after teleporting. I've moved to the hill at the specified coordinates, with "Teleported: 790.00, 2548.00, 72.60" displayed](/images/taikenki/serverkaihatu/5/tp-done.webp)
+
+![Back at Legion Square via /back, with "Teleported: 194.34, -935.33, 30.69" displayed](/images/taikenki/serverkaihatu/5/back-returned.webp)
+
+![Running /back once more to return to the hill at the destination. Three teleports' worth of history lines up in the chat](/images/taikenki/serverkaihatu/5/back-again.webp)
+
+I was able to confirm that this whole flow works correctly, exactly as intended.
+
+## What I Felt This Time
+
+At the start it felt like "having the AI write code for me," but lately, little by little, it's started to feel like I'm raising a development tool made just for me.
+
+Adding features while actually checking how they move in game is more fun than I expected, and I can really feel that even small improvements are steadily raising my development efficiency. Rather than building a big feature all at once, stacking up "it'd be handy to have this" one at a time like this might suit me better.
+
+## What I'll Do Next Time
+
+Next I plan to add /copycoords.
+
+The goal is to be able to get the current position in Lua's vector4() form, so I can paste it straight into code when placing NPCs and shops. I've gotten as far as "checking" with /coords, so next I want to carry it to "usable in code as-is."
+
+---
+
+This article is a record of the GTA6 FEED operator actually building a FiveM server on their own PC. The technical information is written after confirming the environment and each tool's offering as of June 2026, but the specifications and behavior vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
+};
+
+// ---------------------------------------------------------------------------
 //  訪問記 #1 HeliosCity
 // ---------------------------------------------------------------------------
 const heliosCity: FieldNote = {
@@ -1619,6 +1784,7 @@ This article was independently reported and recorded by GTA6 FEED and has no rel
 
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
+  devDiary5,
   devDiary4,
   devDiary3,
   devDiary2,
