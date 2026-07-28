@@ -3,10 +3,14 @@ import { Calendar, Tag, Sparkles, ChevronDown, ChevronUp, Link2 } from 'lucide-r
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { useSeo } from '@/hooks/useSeo';
+import { useSeo, SITE_ORIGIN } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
 
 // NewsDetail と同じく、自サイトのオリジンを渡して相対パス画像/リンクを許可する。
+// SSR（プリレンダ）では window が無く origin を取れないため、本番オリジンを既定にする。
+// これが無いと rehype-harden が本文中の /images/... や内部リンクを解決できずブロックし、
+// prerender 生HTMLから <img>・<a> が丸ごと落ちる（CSRハイドレーション後にしか出ない）。
+// 体験記・解説記事の画像とaltがクローラーに見えなくなるため、undefined にはしないこと。
 const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plugin]) => {
   if (key === 'harden' && Array.isArray(plugin)) {
     return [
@@ -15,7 +19,7 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
         allowedImagePrefixes: ['*'],
         allowedLinkPrefixes: ['*'],
         allowDataImages: true,
-        defaultOrigin: typeof window !== 'undefined' ? window.location.origin : undefined,
+        defaultOrigin: typeof window !== 'undefined' ? window.location.origin : SITE_ORIGIN,
       },
     ];
   }
