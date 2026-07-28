@@ -30,6 +30,8 @@ export default function Home() {
   const t = useT();
   const lang = useLang();
   useSeo(t('seo.home.title'), t('seo.home.desc'), { url: '/', localized: true });
+  // 絞り込みの初期値は必ず 'all'。プリレンダされる生HTML（= dist/public/index.html）は
+  // この状態なので、記事カードの <a> が全件DOMに出る（NewsList.tsx 冒頭の規約と同じ）。
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const [servers, setServers] = useState<FivemServer[]>([]);
   const [trends, setTrends] = useState<{ board: BoardConfig; threads: BoardThread[] }[]>([]);
