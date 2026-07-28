@@ -282,30 +282,36 @@ export default function NewsDetail() {
             </Streamdown>
           </div>
 
-          {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール） */}
+          {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール）。
+              ArticleLayout と同じく、まとめ本文は常に DOM へ出して開閉は hidden 属性で行う。
+              条件レンダリングだと閉じている初期状態＝プリレンダ時に DOM へ出ず、
+              クローラーがまとめを読めない（JS実行後にしか現れない）ため。 */}
           {summary && summary.length > 0 && (
             <div id="ai-summary" className="mb-10 scroll-mt-24">
               <button
                 onClick={() => setSummaryOpen((o) => !o)}
                 aria-expanded={summaryOpen}
+                aria-controls="ai-summary-body"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
               >
                 {summaryOpen ? t('sum.close') : t('sum.open')}
                 {summaryOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
-              {summaryOpen && (
-                <div className="mt-3 rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/[0.06] p-5">
-                  <ul className="m-0 list-none p-0 space-y-2.5">
-                    {summary.map((line, i) => (
-                      <li key={i} className="flex gap-2.5 text-[14px] text-white/85 leading-relaxed">
-                        <span className="text-[#22d3ee] font-bold flex-none">{i + 1}.</span>
-                        <span>{line}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-[11px] text-white/35 mt-3 mb-0">{t('sum.note')}</p>
-                </div>
-              )}
+              <div
+                id="ai-summary-body"
+                hidden={!summaryOpen}
+                className="mt-3 rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/[0.06] p-5"
+              >
+                <ul className="m-0 list-none p-0 space-y-2.5">
+                  {summary.map((line, i) => (
+                    <li key={i} className="flex gap-2.5 text-[14px] text-white/85 leading-relaxed">
+                      <span className="text-[#22d3ee] font-bold flex-none">{i + 1}.</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[11px] text-white/35 mt-3 mb-0">{t('sum.note')}</p>
+              </div>
             </div>
           )}
 
