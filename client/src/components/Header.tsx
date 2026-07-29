@@ -121,7 +121,11 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile nav */}
+      {/* Mobile nav
+          ここは {menuOpen && …} で DOM から出し入れしてよい唯一の例外：同じ NAV のリンクを
+          上の Desktop nav が常時DOMに出しており（CSSの hidden md:flex で見た目だけ切替）、
+          プリレンダHTMLからナビのリンクが消えることはないため。
+          新しいリンクをモバイル側だけに足さないこと（生HTMLから漏れる）。 */}
       {menuOpen && (
         <nav className="md:hidden border-t border-white/10" style={{ background: 'rgba(11,7,20,.96)' }}>
           <div className="max-w-[1320px] mx-auto px-4 py-4 flex flex-col gap-4">

@@ -3,6 +3,9 @@ import { FIELD_NOTE_CATEGORY_CONFIG, type FieldNoteCategory } from '@/data/field
 
 // 体験記（開発日記／サーバー訪問記）のタブ帯。RecruitTabs と同じ見せ方に揃えている。
 // 色は FIELD_NOTE_CATEGORY_CONFIG を参照するので、カードのバッジと必ず一致する。
+//
+// タブは state ではなく実URLへの <a>（＝各カテゴリが独立したプリレンダ済みページ）にすること。
+// state で中身を差し替えると、非アクティブ側の記事リンクがプリレンダHTMLから丸ごと消える。
 const TABS: { id: FieldNoteCategory; href: string }[] = [
   { id: 'dev-diary', href: '/fivem-gtarp/field-notes/dev-diary' },
   { id: 'visit-note', href: '/fivem-gtarp/field-notes/visit-note' },

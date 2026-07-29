@@ -13,18 +13,27 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { ORIGIN, DEFAULT_IMAGE, toAbs, stripSiteName } from './lib/site';
+import {
+  articleNode,
+  breadcrumbNode,
+  collectionNode,
+  webPageNode,
+  homeCrumb,
+  injectLd,
+  type CrumbInput,
+  type Lang,
+} from './lib/jsonld';
+import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '../client/src/data/fieldNotes';
+import { indexableNewsArticles } from '../client/src/data/news';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
-const ORIGIN = 'https://gta6-feed.com';
-const DEFAULT_IMAGE = '/images/news/Official_Cover_Art_landscape.webp';
 
 const TEMPLATE = readFileSync(resolve(ROOT, 'dist/public/index.html'), 'utf8');
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-const toAbs = (p: string) => (/^https?:\/\//i.test(p) ? p : ORIGIN + (p.startsWith('/') ? p : `/${p}`));
 
 // 置換パターンが1つも見つからなかったキーを集約し、ビルド最後に WARN する。
 // （テンプレートの <head> フォーマット変更で silent に既定値が残る事故を検知するため）
@@ -69,6 +78,181 @@ const mod = (await import(
   pathToFileURL(resolve(ROOT, 'dist/server/entry-server.js')).href
 )) as unknown as ServerEntry;
 
+// ============================================================================
+//  JSON-LD（構造化データ）
+// ----------------------------------------------------------------------------
+//  プリレンダ時に生HTMLへ焼く（クライアントからは挿入しない）。ルートの種類で出し分ける：
+//    記事（体験記）        … BlogPosting + BreadcrumbList
+//    一覧（体験記カテゴリ・news・ハブ） … CollectionPage(+ItemList) + BreadcrumbList
+//    解説記事（/fivem-gtarp 配下） … Article + BreadcrumbList
+//    固定ページ・ツール・掲示板   … WebPage/AboutPage/ContactPage/CollectionPage + BreadcrumbList
+//  URL・画像はすべて site.ts の ORIGIN 基準の絶対URL（相対パスを混ぜない）。
+// ============================================================================
+const FIELD_NOTE_DETAIL_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)\/([a-z0-9-]+)$/;
+const FIELD_NOTE_LIST_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)$/;
+
+/** /news の ItemList に載せる件数（一覧の先頭から。全件だとLDが肥大するため）。 */
+const NEWS_ITEMLIST_MAX = 30;
+
+/** ハブ（/fivem-gtarp）が束ねる下位ページのURL一覧。ROUTE_PATHS から導出する（別表を作らない）。
+ *  体験記の個別記事は各カテゴリ一覧（/field-notes/<cat>）の ItemList 側で列挙するため除く。 */
+function hubItemUrls(routePaths: string[], prefix: string): string[] {
+  return routePaths
+    .filter(
+      (p) =>
+        p.startsWith('/fivem-gtarp/') && !p.startsWith('/en/') && !FIELD_NOTE_DETAIL_RE.test(p),
+    )
+    .map((p) => `${ORIGIN}${prefix}${p}`);
+}
+
+interface LdContext {
+  route: string;
+  jaPath: string;
+  lang: Lang;
+  /** 言語プレフィックス（'' | '/en'）。 */
+  prefix: string;
+  url: string;
+  title: string;
+  desc: string;
+  image: string;
+  routePaths: string[];
+}
+
+function fivemHubCrumb(prefix: string): CrumbInput {
+  return { name: 'FiveM / GTARP', url: `${ORIGIN}${prefix}/fivem-gtarp` };
+}
+
+function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
+  const { jaPath, lang, prefix, url, desc, image } = ctx;
+  const isEn = lang === 'en';
+  const name = stripSiteName(ctx.title);
+  const home = homeCrumb(lang);
+  const self: CrumbInput = { name, url };
+
+  // 体験記の記事
+  const detail = FIELD_NOTE_DETAIL_RE.exec(jaPath);
+  if (detail) {
+    const [, category, slug] = detail;
+    const note = fieldNotes.find((n) => n.slug === slug && n.category === category);
+    const cat = FIELD_NOTE_CATEGORY_CONFIG[category as keyof typeof FIELD_NOTE_CATEGORY_CONFIG];
+    const published = note ? `${note.date}T09:00:00+09:00` : undefined;
+    return [
+      articleNode({
+        type: 'BlogPosting',
+        url,
+        headline: note ? (isEn ? note.titleEn : note.title) : name,
+        description: desc,
+        image: note?.image ?? image,
+        datePublished: published,
+        lang,
+      }),
+      breadcrumbNode([
+        home,
+        fivemHubCrumb(prefix),
+        { name: isEn ? cat.en : cat.ja, url: `${ORIGIN}${prefix}/fivem-gtarp/field-notes/${category}` },
+        self,
+      ]),
+    ];
+  }
+
+  // 体験記のカテゴリ別一覧
+  const list = FIELD_NOTE_LIST_RE.exec(jaPath);
+  if (list) {
+    const category = list[1];
+    const items = fieldNotes
+      .filter((n) => n.category === category)
+      .sort((a, b) => b.date.localeCompare(a.date));
+    return [
+      collectionNode({
+        url,
+        name,
+        description: desc,
+        lang,
+        itemUrls: items.map((n) => `${ORIGIN}${prefix}/fivem-gtarp/field-notes/${n.category}/${n.slug}`),
+        itemNames: items.map((n) => (isEn ? n.titleEn : n.title)),
+      }),
+      breadcrumbNode([home, fivemHubCrumb(prefix), self]),
+    ];
+  }
+
+  // news 一覧（日本語のみ。英語版は作っていない）
+  if (jaPath === '/news') {
+    const items = indexableNewsArticles.slice(0, NEWS_ITEMLIST_MAX);
+    return [
+      collectionNode({
+        url,
+        name,
+        description: desc,
+        lang,
+        itemUrls: items.map((a) => `${ORIGIN}${prefix}/news/${a.id}`),
+        itemNames: items.map((a) => (isEn && a.titleEn ? a.titleEn : a.title)),
+      }),
+      breadcrumbNode([home, self]),
+    ];
+  }
+
+  // FiveM / GTARP ハブ
+  if (jaPath === '/fivem-gtarp') {
+    return [
+      collectionNode({
+        url,
+        name,
+        description: desc,
+        lang,
+        itemUrls: hubItemUrls(ctx.routePaths, prefix),
+      }),
+      breadcrumbNode([home, self]),
+    ];
+  }
+
+  // ツール（記事ではないので Article にしない）
+  if (jaPath.startsWith('/fivem-gtarp/tools')) {
+    const crumbs =
+      jaPath === '/fivem-gtarp/tools'
+        ? [home, fivemHubCrumb(prefix), self]
+        : [
+            home,
+            fivemHubCrumb(prefix),
+            { name: isEn ? 'Tools' : 'ツール', url: `${ORIGIN}${prefix}/fivem-gtarp/tools` },
+            self,
+          ];
+    return [
+      webPageNode({ type: 'WebPage', url, name, description: desc, lang }),
+      breadcrumbNode(crumbs),
+    ];
+  }
+
+  // /fivem-gtarp 配下の解説記事
+  if (jaPath.startsWith('/fivem-gtarp/')) {
+    return [
+      // NOTE: datePublished は出さない。これらは公開日を保持していない常設ガイドで、
+      //       ビルド時に確かな日付が取れないため（推測日を焼くより省略する）。
+      articleNode({ type: 'Article', url, headline: name, description: desc, image, lang }),
+      breadcrumbNode([home, fivemHubCrumb(prefix), self]),
+    ];
+  }
+
+  // 掲示板・サーバー募集（中身は実行時にDBから引くため ItemList は付けない）
+  if (jaPath === '/servers' || jaPath === '/board' || jaPath.startsWith('/board/')) {
+    const crumbs =
+      jaPath === '/board' || jaPath === '/servers'
+        ? [home, self]
+        : [home, { name: isEn ? 'Boards' : '掲示板', url: `${ORIGIN}${prefix}/board` }, self];
+    return [
+      collectionNode({ url, name, description: desc, lang, itemUrls: [] }),
+      breadcrumbNode(crumbs),
+    ];
+  }
+
+  // 固定ページ（/about・/contact・/terms）
+  const pageType: 'AboutPage' | 'ContactPage' | 'WebPage' =
+    jaPath === '/about' ? 'AboutPage' : jaPath === '/contact' ? 'ContactPage' : 'WebPage';
+  return [
+    webPageNode({ type: pageType, url, name, description: desc, lang }),
+    breadcrumbNode([home, self]),
+  ];
+}
+
 let count = 0;
 const skipped: string[] = [];
 
@@ -80,7 +264,10 @@ for (const route of mod.ROUTE_PATHS) {
   }
   const { html: body, seo } = out;
   const title = seo?.title || 'GTA6 FEED';
-  const desc = (seo?.description || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+  // meta description は 160字で切るが、JSON-LD には切らない説明を渡す
+  // （語の途中で切れた説明が構造化データに残るのを避ける）。
+  const descFull = (seo?.description || '').replace(/\s+/g, ' ').trim();
+  const desc = descFull.slice(0, 160);
   const url = `${ORIGIN}${route}`;
   const image = toAbs(seo?.image || DEFAULT_IMAGE);
 
@@ -110,6 +297,25 @@ for (const route of mod.ROUTE_PATHS) {
     ].join('\n    ');
     html = html.replace('</head>', `    ${alt}\n  </head>`);
   }
+
+  // JSON-LD（構造化データ）を <head> へ焼く。ルート種別で出し分ける（buildLdNodes）。
+  const isEn = route.startsWith('/en/') || route === '/en';
+  const jaPath = route === '/en' ? '/' : isEn ? route.slice(3) : route;
+  html = injectLd(
+    html,
+    buildLdNodes({
+      route,
+      jaPath,
+      lang: isEn ? 'en' : 'ja',
+      prefix: isEn ? '/en' : '',
+      url,
+      title,
+      desc: descFull,
+      image,
+      routePaths: mod.ROUTE_PATHS,
+    }),
+    'prerender-routes',
+  );
 
   // #root に本文を焼き込む（クライアントの createRoot がマウント時に置き換える）。
   html = injectSsrBody(html, body, 'prerender-routes');

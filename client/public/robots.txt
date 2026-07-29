@@ -1,11 +1,28 @@
 User-agent: *
 Allow: /
+
+# ---------------------------------------------------------------------------
+#  クロール対象から外す経路。
+#  方針：ここに入れるのは「恒久的に読ませる意味が無く、かつ検索結果に一度も
+#  出したくない」URLだけにする。
+#  空シェル（#root 空）で返る CSR ルート（/thread/<id>・/board/friends/<id>・
+#  /board/crews/<id> など）は、ここでは弾かずに app.html の
+#  <meta name="robots" content="noindex"> に任せている。Disallow にすると
+#  Google が noindex を読めなくなり、内部リンクだけを根拠に「URLのみ」で
+#  インデックスされうるため、noindex を読ませたほうが確実に消える。
+#  （どちらも sitemap には載せていないので整合は取れている。robots と sitemap の
+#    食い違いは scripts/check-route-tables.mjs の検査F が prebuild で検出する）
+# ---------------------------------------------------------------------------
 Disallow: /admin/
 # サイト内検索の結果ページ（Google のガイドラインで非インデックス推奨）
 Disallow: /search
 Disallow: /en/search
 # catch-all が返す空シェルそのもの（実体は全CSRルートのシェル。直接クロールさせない）
 Disallow: /app.html
+# APIエンドポイント（JSON・OG画像生成。ページではないのでクロール不要）
+# ※ /sitemap-news.xml は vercel.json の rewrite で /api/sitemap-news を指すが、
+#   クローラが見るURLは /sitemap-news.xml なのでこの Disallow の対象外。
+Disallow: /api/
 
 Sitemap: https://gta6-feed.com/sitemap.xml
 Sitemap: https://gta6-feed.com/sitemap-news.xml

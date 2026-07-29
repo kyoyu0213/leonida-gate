@@ -76,6 +76,37 @@ const REDIRECTED_SET = new Set<number>(REDIRECTED_NEWS_IDS);
 /** その記事IDが他記事へ301統合済みか。 */
 export const isRedirectedNewsId = (id: number | string): boolean => REDIRECTED_SET.has(Number(id));
 
+/**
+ * 本文は残したまま検索インデックスからだけ外す記事ID。
+ *   29: 内容が薄く、検索から入っても得るものが無いと判断（本文は残す）
+ * prerender-og.ts が <meta name="robots" content="noindex,follow"> を焼き、
+ * generate-sitemap.mjs は sitemap から外す。どちらもこの配列を正とする。
+ */
+export const NOINDEX_NEWS_IDS: readonly number[] = [29];
+
+const NOINDEX_SET = new Set<number>(NOINDEX_NEWS_IDS);
+
+/** その記事IDが noindex 対象か。 */
+export const isNoindexNewsId = (id: number | string): boolean => NOINDEX_SET.has(Number(id));
+
+/**
+ * その記事を「検索対象にするか」の単一判定。
+ * ----------------------------------------------------------------------------
+ * 除外理由はここまでに3種類ある：
+ *   - 一時的に非表示（HIDDEN_NEWS_IDS）        … 発売後に戻す
+ *   - 他記事へ301統合済み（REDIRECTED_NEWS_IDS）… 恒久
+ *   - noindex 指定（NOINDEX_NEWS_IDS）          … URL・本文は残すが検索から外す
+ * 消費者（sitemap・プリレンダ・一覧・関連記事・検索）は個別のフラグを見ず、
+ * 必ずこの関数を通すこと。理由が増えてもここ1箇所を直せば全経路へ波及する。
+ *
+ * ※ node 実行のビルドスクリプト（.mjs）は TypeScript を import できないため、
+ *   scripts/lib/news-visibility.mjs が同じ3つの配列を news.ts から読み取って
+ *   同じ判定を再現する。判定を増やすときは両方を直すこと（不一致は
+ *   scripts/check-route-tables.mjs が検出する）。
+ */
+export const isIndexableNewsId = (id: number | string): boolean =>
+  !isHiddenNewsId(id) && !isRedirectedNewsId(id) && !isNoindexNewsId(id);
+
 export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
 
 export interface NewsArticle {
@@ -7439,6 +7470,16 @@ export const visibleNewsArticles: NewsArticle[] = newsArticles.filter(
 
 export const newsByDate: NewsArticle[] = [...visibleNewsArticles].sort(
   (a, b) => b.date.localeCompare(a.date) || b.id - a.id
+);
+
+/**
+ * 検索インデックス対象の記事（sitemap・一覧の JSON-LD ItemList が使う）。
+ * visibleNewsArticles との違いは noindex 記事（NOINDEX_NEWS_IDS）を含まないこと：
+ * noindex は「サイト内には出すが検索には出さない」なので、サイト内の一覧
+ * （visibleNewsArticles）には残り、検索向けの列挙（ここ）からは外れる。
+ */
+export const indexableNewsArticles: NewsArticle[] = newsByDate.filter((a) =>
+  isIndexableNewsId(a.id),
 );
 
 // id から記事を引くヘルパー（詳細ページで使用）。

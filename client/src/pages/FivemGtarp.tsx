@@ -105,6 +105,9 @@ export default function FivemGtarp() {
   const t = useT();
   const lang = useLang();
   useSeo(t('fg.seo.title'), t('fg.seo.desc'), { localized: true });
+  // 絞り込みの初期値は必ず 'all'。プリレンダされる生HTMLはこの状態なので、
+  // ハブから各解説記事への <a> が1本残らずDOMに出る（NewsList.tsx 冒頭の規約と同じ）。
+  // 初期状態で一部を隠すUIにするときは、DOMから外さず hidden / display で切り替えること。
   const [selected, setSelected] = useState<string>('all');
 
   const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);
