@@ -41,6 +41,7 @@ import NewsList from '@/pages/NewsList';
 import FriendsBoard from '@/pages/FriendsBoard';
 import CrewsBoard from '@/pages/CrewsBoard';
 import ServerBoard from '@/pages/ServerBoard';
+import RecruitIndex from '@/pages/RecruitIndex';
 import NewsDetail from '@/pages/NewsDetail';
 import Home from '@/pages/Home';
 
@@ -93,6 +94,7 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   '/board/fivem-dev': BoardThreadList,
   '/board/friends': FriendsBoard,
   '/board/crews': CrewsBoard,
+  '/recruit': RecruitIndex,
   '/servers': ServerBoard,
 };
 

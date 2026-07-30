@@ -8,7 +8,7 @@ import { useT } from '@/lib/i18n';
 const NAV = [
   { key: 'nav.home', href: '/', match: (l: string) => l === '/' },
   { key: 'nav.news', href: '/news', match: (l: string) => l.startsWith('/news') },
-  { key: 'nav.servers', href: '/servers', match: isRecruitPath },
+  { key: 'nav.servers', href: '/recruit', match: isRecruitPath },
   { key: 'nav.board', href: '/board', match: isThreadBoardPath },
   {
     key: 'nav.fivemgtarp',

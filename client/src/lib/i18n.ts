@@ -362,6 +362,14 @@ const JA: Dict = {
   'board.fivem-dev': 'FiveM開発者交流',
   'board.friends': 'フレンド募集',
   'board.crews': 'クルー募集',
+  'recruit.index': '募集トップ',
+  'recruit.hub.title': '募集掲示板',
+  'recruit.hub.lead':
+    'FiveMサーバー・フレンド・クルーの3種類の募集をまとめた掲示板トップ。目的に合わせて選んでください。',
+  'recruit.hub.servers.desc': '日本のFiveM/GTARPサーバーを探す・掲載する掲示板。鯖選びや仲間集めに。',
+  'recruit.hub.friends.desc': 'GTA6/GTAオンラインで一緒に遊ぶフレンドを探す掲示板。',
+  'recruit.hub.crews.desc': 'クルー・チームのメンバーを募集する掲示板。',
+  'recruit.hub.view': '見る',
   // 募集掲示板グループのタブ名（/servers はカード式の募集板。スレッド式 board.gtarp-servers とは別物）
   'recruit.servers': 'FiveMサーバー募集',
   // フレンド募集（/board/friends）
@@ -897,6 +905,14 @@ const EN: Dict = {
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
   'board.friends': 'Find Friends',
+  'recruit.index': 'Recruit Top',
+  'recruit.hub.title': 'Recruitment Boards',
+  'recruit.hub.lead':
+    'The hub for all three recruitment boards — FiveM servers, friends, and crews. Pick the one that fits your goal.',
+  'recruit.hub.servers.desc': 'Find or list Japanese FiveM/GTARP servers — for choosing a server or gathering members.',
+  'recruit.hub.friends.desc': 'Find friends to play GTA6 / GTA Online with.',
+  'recruit.hub.crews.desc': 'Recruit members for your crew or team.',
+  'recruit.hub.view': 'View',
   'board.crews': 'Find a Crew',
   'recruit.servers': 'FiveM Servers',
   // Find Friends (/board/friends)

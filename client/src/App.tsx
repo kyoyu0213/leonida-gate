@@ -12,6 +12,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 // 各ページは遅延読み込み（コード分割）。記事ページ用の重いライブラリ（Markdown
 // レンダラ等）をトップの本体JSから切り離し、初回表示を軽くする。
 const Home = lazy(() => import("./pages/Home"));
+const RecruitIndex = lazy(() => import("./pages/RecruitIndex"));
 const ServerBoard = lazy(() => import("./pages/ServerBoard"));
 const NewsList = lazy(() => import("./pages/NewsList"));
 const NewsDetail = lazy(() => import("./pages/NewsDetail"));
@@ -57,6 +58,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/recruit" component={RecruitIndex} />
       <Route path="/servers" component={ServerBoard} />
       <Route path="/news" component={NewsList} />
       <Route path="/news/:id" component={NewsDetail} />
@@ -95,6 +97,7 @@ function Router() {
           用意するが、hreflang は張らず canonical は日本語版に集約する（重複インデックスを避ける）。 */}
       <Route path="/en" component={Home} />
       <Route path="/en/news" component={NewsList} />
+      <Route path="/en/recruit" component={RecruitIndex} />
       <Route path="/en/servers" component={ServerBoard} />
       <Route path="/en/board" component={BoardThreadList} />
       <Route path="/en/board/friends" component={FriendsBoard} />

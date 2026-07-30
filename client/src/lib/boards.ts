@@ -54,7 +54,7 @@ export const getBoard = (slug?: string): BoardConfig | undefined =>
 
 // ナビのグループ判定。カード式の募集板は /board 配下にもあるため、
 // パスの前方一致だけでは「掲示板」と「募集掲示板」を区別できない。
-const RECRUIT_ROOTS = ['/servers', '/board/friends', '/board/crews'];
+const RECRUIT_ROOTS = ['/recruit', '/servers', '/board/friends', '/board/crews'];
 
 /** 「募集掲示板」グループ（/servers・/board/friends・/board/crews とその詳細ページ）か。 */
 export const isRecruitPath = (loc: string): boolean =>

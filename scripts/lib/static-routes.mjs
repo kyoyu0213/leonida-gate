@@ -13,6 +13,7 @@
 export const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/news', priority: '0.9', changefreq: 'daily' },
+  { path: '/recruit', priority: '0.8', changefreq: 'daily' },
   { path: '/servers', priority: '0.8', changefreq: 'daily' },
   { path: '/board', priority: '0.8', changefreq: 'daily' },
   { path: '/board/gta6', priority: '0.7', changefreq: 'daily' },
