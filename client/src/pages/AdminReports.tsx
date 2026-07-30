@@ -1988,7 +1988,7 @@ export default function AdminReports() {
     contacts: 'お問い合わせ',
     applications: '掲載申請',
     servers: 'サーバー募集',
-    recruit: '募集掲示板',
+    recruit: '募集板',
     news: '記事コメント',
     blocks: 'ブロック',
   } as const;
