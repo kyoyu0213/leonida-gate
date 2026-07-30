@@ -138,6 +138,33 @@ export default function FivemGtarp() {
           {t('fg.lead')}
         </p>
 
+        {/* 目的から探す（意図ベースの大きな入口）。白枠パネルで独立させて目立たせる。 */}
+        <div className="mt-8 rounded-2xl border border-white/60 bg-white/[0.04] p-4 sm:p-5">
+          <div className="flex items-center gap-2 mb-3">
+            <Compass size={16} className="text-[#22d3ee]" />
+            <span className="text-[13px] font-extrabold tracking-wide text-white/85">目的から探す</span>
+            <span className="text-[12px] text-white/40">やりたいことを選ぶ</span>
+          </div>
+          <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
+            {[
+              { label: 'FiveMを始めたい', group: 'fg.group.basics', color: '#22d3ee' },
+              { label: '遊びで困った', group: 'fg.group.play', color: '#3de0a0' },
+              { label: '配信を楽しむ', group: 'fg.group.watch', color: '#a78bfa' },
+              { label: 'サーバーを作る', group: 'fg.group.dev', color: '#ff8a3d' },
+            ].map((b) => (
+              <button
+                key={b.group}
+                onClick={() => setSelected(b.group)}
+                className="flex items-center gap-2.5 px-5 py-4 rounded-2xl text-[14px] font-extrabold text-white transition-all hover:-translate-y-0.5"
+                style={{ background: `${b.color}18`, border: `1px solid ${b.color}55`, boxShadow: `0 0 20px ${b.color}22` }}
+              >
+                <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: b.color, boxShadow: `0 0 8px ${b.color}` }} />
+                {b.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* カテゴリ絞り込みチップ（newsの一覧と同じ操作感）。カードが増えたため用途で絞れるように。 */}
         <div className="flex gap-2 overflow-x-auto pb-1.5 mt-8">
           {TABS.map((tab) => {
@@ -244,42 +271,32 @@ export default function FivemGtarp() {
                   </div>
                 </>
               ) : (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-2.5 sm:grid-cols-2">
                   {g.cards.map((c) => {
                     const Icon = c.icon;
                     return (
                       <a
                         key={c.href}
                         href={c.href}
-                        className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
+                        className="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 transition-all hover:-translate-y-0.5"
                         onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
                         onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
                       >
-                        <div className="flex items-center gap-3 mb-2.5">
-                          <span
-                            className="w-10 h-10 flex-none rounded-xl flex items-center justify-center"
-                            style={{
-                              background: `${c.accent}1f`,
-                              border: `1px solid ${c.accent}55`,
-                              color: c.accent,
-                              boxShadow: `0 0 18px ${c.accent}33`,
-                            }}
-                          >
-                            <Icon size={20} />
-                          </span>
-                          <h3 className="text-[15px] font-extrabold text-white m-0">{t(c.titleKey)}</h3>
-                        </div>
-                        <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
                         <span
-                          className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
-                          style={{ color: c.accent }}
+                          className="w-9 h-9 flex-none rounded-lg flex items-center justify-center"
+                          style={{ background: `${c.accent}1f`, border: `1px solid ${c.accent}55`, color: c.accent }}
                         >
-                          {t('fg.learnMore')}
-                          <ArrowRight
-                            size={14}
-                            className="transition-transform group-hover:translate-x-1"
-                          />
+                          <Icon size={17} />
                         </span>
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-[13.5px] font-extrabold text-white m-0 leading-tight">{t(c.titleKey)}</h3>
+                          <p className="text-[11.5px] text-white/50 leading-snug m-0 mt-0.5 line-clamp-1">{t(c.descKey)}</p>
+                        </div>
+                        <ArrowRight
+                          size={15}
+                          className="flex-none transition-transform group-hover:translate-x-1"
+                          style={{ color: c.accent }}
+                        />
                       </a>
                     );
                   })}
