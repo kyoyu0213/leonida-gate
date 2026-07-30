@@ -41,20 +41,20 @@ export default function RecruitIndex() {
           {t('recruit.hub.lead')}
         </p>
 
-        {/* 3カテゴリのカード */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        {/* 3カテゴリのカード（縦並びのリスト。アイコン左・テキスト右の横型カード） */}
+        <div className="mt-8 flex flex-col gap-3">
           {CATS.map((c) => {
             const Icon = c.icon;
             return (
               <a
                 key={c.href}
                 href={`${langPrefix}${c.href}`}
-                className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
+                className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 sm:p-5 transition-all hover:-translate-y-0.5"
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.color}99`)}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
               >
                 <span
-                  className="w-11 h-11 flex-none rounded-xl flex items-center justify-center mb-3"
+                  className="w-11 h-11 flex-none rounded-xl flex items-center justify-center"
                   style={{
                     background: `${c.color}1f`,
                     border: `1px solid ${c.color}55`,
@@ -64,15 +64,15 @@ export default function RecruitIndex() {
                 >
                   <Icon size={22} />
                 </span>
-                <h2 className="text-[16px] font-extrabold text-white m-0 mb-1.5">{t(c.titleKey)}</h2>
-                <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0">{t(c.descKey)}</p>
-                <span
-                  className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-[16px] font-extrabold text-white m-0 mb-1">{t(c.titleKey)}</h2>
+                  <p className="text-[13px] text-white/60 leading-relaxed m-0 line-clamp-2">{t(c.descKey)}</p>
+                </div>
+                <ArrowRight
+                  size={18}
+                  className="flex-none transition-transform group-hover:translate-x-1"
                   style={{ color: c.color }}
-                >
-                  {t('recruit.hub.view')}
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </span>
+                />
               </a>
             );
           })}
