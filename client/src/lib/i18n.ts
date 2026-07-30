@@ -375,7 +375,7 @@ const JA: Dict = {
   'recruit.hub.crews.desc': 'クルー・チームのメンバーを募集する掲示板。',
   'recruit.hub.view': '見る',
   // 募集板グループのタブ名（/servers はカード式の募集板。スレッド式 board.gtarp-servers とは別物）
-  'recruit.servers': 'FiveMサーバー募集',
+  'recruit.servers': 'FiveMサーバー 住民募集',
   // フレンド募集（/board/friends）
   'fr.heading': 'フレンド募集板',
   'fr.lead': 'GTA6/GTAオンラインで一緒に遊ぶフレンドを探そう。プレイスタイルや活動時間で相手を見つけて、気軽に募集できます。どなたでも掲載できます。',
