@@ -148,7 +148,7 @@ export default function FivemGtarp() {
           <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
             {[
               { label: 'FiveMを始めたい', group: 'fg.group.basics', color: '#22d3ee' },
-              { label: '遊びで困った', group: 'fg.group.play', color: '#3de0a0' },
+              { label: '遊び方を知りたい', group: 'fg.group.play', color: '#3de0a0' },
               { label: '配信を楽しむ', group: 'fg.group.watch', color: '#a78bfa' },
               { label: 'サーバーを作る', group: 'fg.group.dev', color: '#ff8a3d' },
             ].map((b) => (
