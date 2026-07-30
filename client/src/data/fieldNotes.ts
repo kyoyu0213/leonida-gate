@@ -1782,6 +1782,279 @@ Sources & References
 This article was independently reported and recorded by GTA6 FEED and has no relationship with the Lien City operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
 };
 
+// ---------------------------------------------------------------------------
+//  訪問記 #4 Stella City
+// ---------------------------------------------------------------------------
+const stellaCity: FieldNote = {
+  slug: 'stella-city',
+  category: 'visit-note',
+  title: 'Stella Cityとは？2026年7月24日オープンの日本語RPサーバーを訪問',
+  titleEn:
+    'What Is Stella City? A Visit to the Japanese RP Server That Opened on July 24, 2026',
+  date: '2026-07-27',
+  excerpt:
+    '2026年7月24日にオープンした日本語FiveMロールプレイサーバー「Stella City」をGTA6 FEEDが取材。同接81人、市役所の7職種、初期スポーンからレンタカーまでの流れ、再起動前後の犯罪禁止時間、独自のトラックジョブ体験など観測できた事実を記録。',
+  excerptEn:
+    'GTA6 FEED visits Stella City, a Japanese FiveM roleplay server that opened on July 24, 2026 — 81 concurrent players, seven city hall jobs, the flow from first spawn to a rental car, crime bans around restarts, and a hands-on run of its original trucking job, recorded as observed.',
+  image: '/images/taikenki/serverhoumon/Stellacity/loading.webp',
+  icon: '📍',
+  seoTitle: 'Stella Cityとは？2026年7月24日オープンの日本語RPサーバーを訪問｜GTA6 FEED',
+  seoDesc:
+    '日本語FiveMロールプレイサーバー「Stella City（ステラシティ）」をGTA6 FEEDが取材。2026年7月24日オープン、同接81人、1日4回の再起動、市役所ジョブ7種と作業系ジョブ、ロスサントス国際空港スタートからレンタカー購入までの流れ、再起動前後の犯罪禁止時間、強盗コンテンツの規模別分類、独自のトラックジョブを実際に体験した記録まで。',
+  seoTitleEn:
+    'What Is Stella City? A Japanese RP FiveM Server That Opened on July 24, 2026 | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's report on Stella City, a Japanese FiveM roleplay server that opened on July 24, 2026 — 81 concurrent players, four daily restarts, seven city hall jobs plus labor jobs, the flow from spawning at Los Santos International Airport to renting a car, crime bans before and after restarts, heists sorted by scale, and a hands-on run of its original trucking job.",
+  body: `![Stella Cityのロード画面。夜の街を窓辺から眺める猫のイラストに、ネオン調の筆記体で「Stella City」のロゴが重なっている](/images/taikenki/serverhoumon/Stellacity/loading.webp)
+
+Stella City（ステラシティ）は、2026年7月24日にオープンした日本語のFiveMロールプレイサーバーである。市民ロールもギャングロールも受け入れる方針を掲げる。GTA6 FEEDが取材し、観測できた事実を記録する。以下、確認した確定情報と、確認できていない未確認項目を分けて記す。
+
+## 基本情報
+
+- 接続方法：公式Discord経由で参加する
+- 同時接続数：81人（2026年7月27日 0時時点・観測値）。観測日は平日深夜にあたる
+- サーバー再起動：2時／8時／14時／19時の1日4回
+
+参加者は入国時にルール画面が表示される。ルールでは、全員がRP中であるという前提で行動すること、Stella Cityの世界観に合わない行動は処罰対象になり得ること、トラブル回避のためボディカメラ（OBS・インスタントリプレイ・Medalなど）の使用を推奨すること、補填申請はクリップを添えてチケットで行うことが案内されている。
+
+![ロスサントス国際空港の到着ロビー前に表示されたRules画面。「Stella Cityへようこそ！」に続き、みんなが楽しめるRPを心がける／街の中では参加者全員がRP中だと思って行動する／Stella Cityに合っていない行動は処罰の対象になることがある／トラブル回避のためボディカメラ（OBS、インスタントリプレイ、Medalなど）の使用を推奨／補填申請はクリップを添えてチケットを発行、の5項目が並ぶ](/images/taikenki/serverhoumon/Stellacity/rules.webp)
+
+## 街の雰囲気
+
+景色の作り込みが細かく、街並みが美しい。夕日の眺めも印象的だった。街には多数のプレイヤーがおり、市街地で他プレイヤーと遭遇する頻度が高い。
+
+![タタヴィアム山地から見た夕暮れのロスサントス。逆光のなかにダウンタウンの高層ビル群が並び、手前の斜面と街灯りが広がる](/images/taikenki/serverhoumon/Stellacity/yuuyake.webp)
+
+マップのランドマーク一覧には110件が登録されている。
+
+![マップ画面。右側にBarbershop、Bennys Warehouse、BINCO、City Services、Dealership: Aircraft Dealer／Boat Dealer／Luxury Autos／PDdealer／Platinum Deluxe Motorsport、Driving School、Fantastic Plaza、Hands Free Carwash、Ink shop、Integrity Way、Masks、MinerBoss、Morningwood Blvd といったランドマーク一覧（1/110）が並ぶ](/images/taikenki/serverhoumon/Stellacity/map.webp)
+
+## 経済・職業
+
+市役所のジョブセンターでは、以下の7種を確認した。
+
+- タクシー
+- 記者
+- ホットドッグ屋台
+- ゴミ収集
+- レッカー
+- 運送（トラック）
+- バス運転手
+
+![市役所のJob Center画面。Taxi、News Reporter、Hot Dog Stand、Garbage Collector、Tow Truck、Trucker、Bus Driverの7職種に、それぞれ「Apply for this job」と表示されている](/images/taikenki/serverhoumon/Stellacity/jobcenter.webp)
+
+このほか、塗装、窓清掃、庭師、木こり、清掃員、漁師、納屋清掃、自動販売機、農業、通信技術士、電気工事士、狩猟、石掘りといった作業系のジョブが存在する。このうち自動販売機のジョブは、開始時にソロとマルチプレイヤーを選択する方式になっていたが、取材では操作方法が分からず、着手には至らなかった。
+
+![ラ・メサのイノセンス大通り沿い、「BE WARNED SECURITY CAMERAS ARE OPERATING IN THIS AREA!」の看板が掛かる建物の前に、バインダーを持って立つ自動販売機ジョブのNPC](/images/taikenki/serverhoumon/Stellacity/jihanki-npc.webp)
+
+![自動販売機ジョブの開始ダイアログ。「自動販売機」の見出しの下に「どのように を始めますか?」と表示され、「ソロ」「マルチプレイヤー」の2つのボタンが並ぶ](/images/taikenki/serverhoumon/Stellacity/jihanki-solo.webp)
+
+![建物脇の通路に置かれた「PAY STATION」の機械。手前に段ボール箱が積まれ、奥にNPCが立っている](/images/taikenki/serverhoumon/Stellacity/paystation.webp)
+
+飲食店は3店舗、ストレス回復店は4店舗、たばこ屋を確認した。このほか温泉、スーパーが存在する。メカニックは1か所を確認した。
+
+車両ディーラーは普通車、高級車、航空機、ボートが分かれて存在する。
+
+## 初期スポーンと最初の動き
+
+初期スポーン地点はロスサントス国際空港である。到着ロビーの演出があり、まずキャラクターの新規登録画面で姓・名・性別・生年月日・身長・国籍を入力する。名前は後からコマンドで変更できる。
+
+![NEW CHARACTERの新規登録画面。FIRSTNAME・LASTNAME・GENDER（MALE）・BIRTHDATE（YYYY/MM/DD）・HEIGHT [CM]・NATIONALITY の入力欄と、「CREATE NEW CHARACTER」ボタンが並ぶ](/images/taikenki/serverhoumon/Stellacity/newcharacter.webp)
+
+続いてキャラメイクに移る。キャラメイクを終えると、空港近くのNPCに話しかけてレンタカーを借りる流れになる。レンタカーはPREMIUM AUTO MARKETで、車・バイク・自転車のカテゴリから選ぶ。取材時の車のラインナップと価格は、Glendale2とAsboが各$100、Asea $120、Hardy $180、Sultan RS $250、Blista $900だった。購入画面には車両料金とは別に税金の項目があり、合計金額に加算される仕様になっている。
+
+![ロスサントス国際空港のニュー・エンパイア・ウェイを赤いセダンで走行中の画面。中央に「/nameで変更できます」と表示されている](/images/taikenki/serverhoumon/Stellacity/kuukou.webp)
+
+![PREMIUM AUTO MARKETのレンタカー画面。車カテゴリにSultan RS $250、Asea $120、Hardy $180、Glendale 2 $100、Asbo $100、Blista $900の6台が並び、右側に車両料金・税金・合計の内訳が表示されている](/images/taikenki/serverhoumon/Stellacity/rentacar.webp)
+
+初心者案内を受けたい場合は、Discordの初心者案内チャンネルから申請する。
+
+## 治安構造
+
+警察とEMS（救急）は稼働していることを確認した。
+
+犯罪行為については、再起動の30分前および再起動後15分以内は、車両窃盗を含むすべての犯罪の受注・開始が禁止されている。再起動が1日4回設定されているため、この禁止時間はそれぞれの再起動に対応して発生する。
+
+## 犯罪・ギャング
+
+ギャングが存在することは確認したが、詳細は未確認である。公開されている情報として、ギャングの人数は最低5人から15人が上限で、組織はボス・アンダーボス・構成員で構成される。
+
+強盗コンテンツは規模別に分類されている。確認できた範囲では、大型としてパシフィック（銀行）、ボブキャット、客船、パレト、絵画、中型として高級車強盗、列車、武器強盗、パージ強盗、準中型として現金輸送、宝石、フリーカ、小型としてコンビニ強盗、ATM、住宅強盗が挙げられる。
+
+## クラフト・経済基盤
+
+リサイクルセンター（リサセン）が9241番地に存在する。武器クラフトの仕組みや、車パーツ製作・メカニックへの素材供給、買い取り制度の実態については、取材時点では確認していない。
+
+## 実際にトラックジョブを体験
+
+作業系ジョブのうち、トラックによる配送を試した。この配送は、Stella Cityが独自に用意したオリジナルのジョブである。
+
+受注にあたっては、まず配送用のトラックを購入する必要がある。取材時は手持ちの現金が足りず受注できなかったため、一度銀行で現金を引き出してから購入した。また、警察などの職業ロールに就いている状態では受注できず、市民ロールに切り替えることで受注が可能になった。
+
+![ターミナルのバッカニア・ウェイに停まる配送用トラック。奥にクレーンとコンテナが並び、トラックの先に青い三角のマーカーが表示されている](/images/taikenki/serverhoumon/Stellacity/truck-uketori.webp)
+
+ジョブの手順はDiscordのチュートリアルに記載されている。受注地点でNPCに話しかけて開始し、案内に従って配送先へ向かう。配送先では黄色の三角矢印付近でEキーを押すことで配送が完了する。配送が完了すると、受注地点に戻って業務を終える。
+
+![コンテナを積んだトラックでサイプレス・フラットの高架道路を走行中の画面。奥にダウンタウンの高層ビル群が見える](/images/taikenki/serverhoumon/Stellacity/truck-haisou.webp)
+
+![夜のベスプッチ・ビーチ沿いの駐車場に停まるトラック。画面下に「トラックをガレージに戻す」と表示されている](/images/taikenki/serverhoumon/Stellacity/truck-modosu.webp)
+
+![ターミナルの倉庫前に停めたトラック。画面下に「トラックをガレージに戻す」「[E] でトラックを格納」と表示されている](/images/taikenki/serverhoumon/Stellacity/truck-kakuno.webp)
+
+取材では、配送の途中でサーバー再起動をまたいだ。再起動後にゲームへ戻ると購入したトラックが失われており、街まで徒歩で戻ることになった。再起動をまたぐ作業では、進行中の状態が保持されない場合がある点に留意が必要である。
+
+## キャラメイク・初心者案内
+
+キャラメイクはRCOREを採用している。新規登録で姓・名・性別・生年月日・身長・国籍を設定した後、顔の遺伝、髪型、肌荒れ、ひげ、眉毛、年齢、メイク、チーク、肌質、日焼け跡、リップ、ほくろ・そばかすなどを調整する。上半身・下半身の衣装も同じ画面で設定できる。
+
+![RCOREのキャラメイク画面。左側にPed選択・遺伝・顔の特徴・髪型・肌荒れ・ひげ・眉毛・年齢・メイク・チーク・肌質・日焼け跡・リップ・ほくろ・そばかすの項目が並び、上部にキャラクター／上半身／下半身のタブがある](/images/taikenki/serverhoumon/Stellacity/kyarameiku.webp)
+
+初心者案内はDiscordの専用チャンネルから申請する方式になっている。
+
+## その他
+
+カジノが存在し、スロット、インサイドトラック、テーブルゲームのエリアが確認できた。ルーレットは取材時点では未実装だった。
+
+![カジノの内部。中央にダイヤをかたどった発光オブジェが置かれ、周囲にスロット機が並ぶ。左奥に「INSIDE TRACK」、右奥に「TABLE GAMES」の入口が見える](/images/taikenki/serverhoumon/Stellacity/casino.webp)
+
+## 状態マーカー
+
+稼働中（2026年7月時点）
+
+---
+
+出典・参考
+
+- Stella City 公式Discord・サーバー内ルール表示
+- GTA6 FEEDによる取材時の観測（2026年7月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、Stella City運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は取材時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![Stella City's loading screen: an illustration of a cat looking out a window over a night city, with the "Stella City" logo in neon-style script](/images/taikenki/serverhoumon/Stellacity/loading.webp)
+
+Stella City is a Japanese-language FiveM roleplay server that opened on July 24, 2026. It states a policy of accepting both civilian roles and gang roles. GTA6 FEED reported on it and records the facts we were able to observe. Below, we separate the confirmed information we verified from the items we could not confirm.
+
+## Basic Information
+
+- How to join: you enter through the official Discord
+- Concurrent players: 81 (observed at midnight on July 27, 2026). The observation fell on a weekday late at night
+- Server restarts: four times a day, at 02:00, 08:00, 14:00, and 19:00
+
+Players are shown a rules screen when they enter the city. The rules state that everyone should act on the premise that all participants are in RP, that behavior judged not to fit Stella City's setting can be subject to punishment, that using a body camera (OBS, instant replay, Medal, and the like) is recommended to avoid trouble, and that compensation requests should be filed as a ticket with a clip attached.
+
+![The Rules screen shown in front of the arrivals lobby at Los Santos International Airport. After "Welcome to Stella City!" come five items: aim for RP everyone can enjoy; in the city, act as if every participant is in RP; behavior judged not to fit Stella City may be subject to punishment; using a body camera (OBS, instant replay, Medal, etc.) is recommended to avoid trouble; and file compensation requests as a ticket with a clip attached](/images/taikenki/serverhoumon/Stellacity/rules.webp)
+
+## Atmosphere of the City
+
+The scenery is finely detailed and the cityscape is beautiful, and the view of the sunset was striking too. There were many players in the city, and the frequency of running into other players in the urban area was high.
+
+![Los Santos at dusk seen from the Tataviam Mountains. The downtown high-rises stand backlit against the sun, with the slope and city lights spreading out in front](/images/taikenki/serverhoumon/Stellacity/yuuyake.webp)
+
+The map's landmark list has 110 entries registered.
+
+![The map screen. On the right is a landmark list (1/110) with entries such as Barbershop, Bennys Warehouse, BINCO, City Services, Dealership: Aircraft Dealer / Boat Dealer / Luxury Autos / PDdealer / Platinum Deluxe Motorsport, Driving School, Fantastic Plaza, Hands Free Carwash, Ink shop, Integrity Way, Masks, MinerBoss, and Morningwood Blvd](/images/taikenki/serverhoumon/Stellacity/map.webp)
+
+## Economy and Jobs
+
+At the city hall job center, we confirmed the following seven:
+
+- Taxi
+- News reporter
+- Hot dog stand
+- Garbage collection
+- Tow truck
+- Trucking (delivery)
+- Bus driver
+
+![The city hall Job Center screen. Seven jobs — Taxi, News Reporter, Hot Dog Stand, Garbage Collector, Tow Truck, Trucker, and Bus Driver — each show "Apply for this job"](/images/taikenki/serverhoumon/Stellacity/jobcenter.webp)
+
+Besides these, there are labor-type jobs such as painting, window cleaning, gardening, lumberjacking, street cleaning, fishing, barn cleaning, vending machines, farming, telecom technician, electrician, hunting, and stone mining. Of these, the vending machine job used a system where you choose between solo and multiplayer at the start, but during our visit we could not work out the controls and did not get as far as starting it.
+
+![The vending machine job's NPC standing with a clipboard in front of a building on Innocence Boulevard in La Mesa, under a sign reading "BE WARNED SECURITY CAMERAS ARE OPERATING IN THIS AREA!"](/images/taikenki/serverhoumon/Stellacity/jihanki-npc.webp)
+
+![The vending machine job's start dialog. Under the heading "Vending Machine," it asks how you want to begin, with two buttons: "Solo" and "Multiplayer"](/images/taikenki/serverhoumon/Stellacity/jihanki-solo.webp)
+
+![A "PAY STATION" machine placed in the walkway beside a building, with cardboard boxes stacked in front and an NPC standing behind it](/images/taikenki/serverhoumon/Stellacity/paystation.webp)
+
+We confirmed three restaurants, four stress-recovery shops, and a tobacco shop. Besides these, there is a hot spring and a supermarket. We confirmed one mechanic.
+
+Vehicle dealerships exist separately for standard cars, luxury cars, aircraft, and boats.
+
+## First Spawn and the Opening Moves
+
+The initial spawn point is Los Santos International Airport. There is an arrivals-lobby presentation, and you first enter your family name, given name, gender, date of birth, height, and nationality on the new character registration screen. The name can be changed later with a command.
+
+![The NEW CHARACTER registration screen, with fields for FIRSTNAME, LASTNAME, GENDER (MALE), BIRTHDATE (YYYY/MM/DD), HEIGHT [CM], and NATIONALITY, plus a "CREATE NEW CHARACTER" button](/images/taikenki/serverhoumon/Stellacity/newcharacter.webp)
+
+Next you move on to character creation. Once you finish it, the flow is to talk to an NPC near the airport and rent a car. Rentals are handled at PREMIUM AUTO MARKET, where you choose from the car, motorcycle, and bicycle categories. The car lineup and prices at the time of our visit were: Glendale 2 and Asbo at $100 each, Asea at $120, Hardy at $180, Sultan RS at $250, and Blista at $900. The purchase screen has a tax line separate from the vehicle fee, which is added to the total.
+
+![Driving a red sedan along New Empire Way at Los Santos International Airport, with a message in the center reading that the name can be changed with /name](/images/taikenki/serverhoumon/Stellacity/kuukou.webp)
+
+![The PREMIUM AUTO MARKET rental screen. The car category lists six vehicles — Sultan RS $250, Asea $120, Hardy $180, Glendale 2 $100, Asbo $100, and Blista $900 — with a breakdown of vehicle fee, tax, and total on the right](/images/taikenki/serverhoumon/Stellacity/rentacar.webp)
+
+If you want a beginner's orientation, you apply through the beginner guidance channel on Discord.
+
+## Public Safety Structure
+
+We confirmed that police and EMS are active.
+
+As for criminal activity, taking on or starting any crime — including vehicle theft — is prohibited during the 30 minutes before a restart and the 15 minutes after one. Because restarts are set for four times a day, this prohibited window occurs around each of them.
+
+## Crime and Gangs
+
+We confirmed that gangs exist, but the details are unconfirmed. According to publicly available information, gang size runs from a minimum of 5 to a maximum of 15 members, and an organization consists of a boss, an underboss, and members.
+
+Heist content is classified by scale. Within what we could confirm, the large category includes Pacific (bank), Bobcat, the cruise ship, Paleto, and paintings; the medium category includes luxury car theft, the train, weapons robbery, and the purge heist; the semi-medium category includes cash transport, jewelry, and Fleeca; and the small category includes convenience store robbery, ATMs, and house robbery.
+
+## Crafting and Economic Foundations
+
+There is a recycling center at address 9241. As for how weapon crafting works, car parts manufacturing and material supply to mechanics, and how the buyback system actually operates, we did not confirm these at the time of our visit.
+
+## Trying the Trucking Job
+
+Among the labor-type jobs, we tried delivery by truck. This delivery job is an original one prepared by Stella City itself.
+
+To take on a job, you first need to buy a delivery truck. At the time of our visit we could not take on a job because we did not have enough cash on hand, so we withdrew cash at a bank first and then bought one. Also, you cannot take on a job while holding an occupational role such as police; switching to the civilian role made it possible.
+
+![A delivery truck parked on Buccaneer Way at the terminal, with cranes and containers behind it and a blue triangular marker displayed ahead of the truck](/images/taikenki/serverhoumon/Stellacity/truck-uketori.webp)
+
+The job's procedure is written up in a tutorial on Discord. You start by talking to an NPC at the pickup point and head to the delivery destination as directed. At the destination, pressing the E key near the yellow triangular arrow completes the delivery. Once the delivery is complete, you return to the pickup point and finish the shift.
+
+![Driving a truck loaded with a container along the elevated road in Cypress Flats, with the downtown high-rises visible in the distance](/images/taikenki/serverhoumon/Stellacity/truck-haisou.webp)
+
+![The truck parked in a lot along Vespucci Beach at night, with "Return the truck to the garage" displayed at the bottom of the screen](/images/taikenki/serverhoumon/Stellacity/truck-modosu.webp)
+
+![The truck parked in front of a warehouse at the terminal, with "Return the truck to the garage" and "[E] to store the truck" displayed at the bottom of the screen](/images/taikenki/serverhoumon/Stellacity/truck-kakuno.webp)
+
+During our visit, a server restart happened in the middle of a delivery. When we returned to the game after the restart, the truck we had bought was gone, and we ended up walking back to the city. It is worth keeping in mind that for work that spans a restart, in-progress state may not be preserved.
+
+## Character Creation and Beginner Guidance
+
+Character creation uses RCORE. After setting family name, given name, gender, date of birth, height, and nationality at registration, you adjust facial heritage, hairstyle, skin blemishes, facial hair, eyebrows, age, makeup, blush, skin texture, sun damage, lips, moles and freckles, and more. Upper-body and lower-body outfits can be set on the same screen.
+
+![RCORE's character creation screen. Down the left are Ped selection, heritage, facial features, hairstyle, skin blemishes, facial hair, eyebrows, age, makeup, blush, skin texture, sun damage, lips, and moles/freckles, with character / upper body / lower body tabs across the top](/images/taikenki/serverhoumon/Stellacity/kyarameiku.webp)
+
+Beginner guidance is applied for through a dedicated channel on Discord.
+
+## Other
+
+There is a casino, and we could confirm areas for slots, inside track, and table games. Roulette was not implemented at the time of our visit.
+
+![The interior of the casino. A glowing diamond-shaped object sits in the center, surrounded by slot machines, with the "INSIDE TRACK" entrance at the back left and "TABLE GAMES" at the back right](/images/taikenki/serverhoumon/Stellacity/casino.webp)
+
+## Status Marker
+
+Active (as of July 2026)
+
+---
+
+Sources and references
+
+- Stella City official Discord and the in-server rules display
+- GTA6 FEED's observations during the visit (July 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the Stella City operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
   devDiary5,
@@ -1789,6 +2062,7 @@ export const fieldNotes: FieldNote[] = [
   devDiary3,
   devDiary2,
   devDiary1,
+  stellaCity,
   lienCity,
   refloriaTown,
   heliosCity,
