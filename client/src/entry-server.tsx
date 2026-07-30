@@ -37,6 +37,7 @@ import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
 import BoardThreadList from '@/pages/BoardThreadList';
+import BoardIndex from '@/pages/BoardIndex';
 import NewsList from '@/pages/NewsList';
 import FriendsBoard from '@/pages/FriendsBoard';
 import CrewsBoard from '@/pages/CrewsBoard';
@@ -86,7 +87,7 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   // 配信され、sitemap に priority 0.9 で登録しているのに noindex という矛盾になっていた。
   // /en/news は掲示板・servers と同じ扱いで英語版を作らない（canonical は日本語版へ集約）。
   '/news': NewsList,
-  '/board': BoardThreadList,
+  '/board': BoardIndex,
   '/board/gta6': BoardThreadList,
   '/board/gtarp': BoardThreadList,
   '/board/gtarp-servers': BoardThreadList,

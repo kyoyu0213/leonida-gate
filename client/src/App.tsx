@@ -16,6 +16,7 @@ const RecruitIndex = lazy(() => import("./pages/RecruitIndex"));
 const ServerBoard = lazy(() => import("./pages/ServerBoard"));
 const NewsList = lazy(() => import("./pages/NewsList"));
 const NewsDetail = lazy(() => import("./pages/NewsDetail"));
+const BoardIndex = lazy(() => import("./pages/BoardIndex"));
 const BoardThreadList = lazy(() => import("./pages/BoardThreadList"));
 const BoardThread = lazy(() => import("./pages/BoardThread"));
 const FriendsBoard = lazy(() => import("./pages/FriendsBoard"));
@@ -62,7 +63,7 @@ function Router() {
       <Route path="/servers" component={ServerBoard} />
       <Route path="/news" component={NewsList} />
       <Route path="/news/:id" component={NewsDetail} />
-      <Route path="/board" component={BoardThreadList} />
+      <Route path="/board" component={BoardIndex} />
       {/* フレンド募集・クルー募集（カード型・自由投稿）。/board/:slug より前に置く。 */}
       <Route path="/board/friends" component={FriendsBoard} />
       <Route path="/board/friends/:id" component={FriendDetail} />
@@ -99,7 +100,7 @@ function Router() {
       <Route path="/en/news" component={NewsList} />
       <Route path="/en/recruit" component={RecruitIndex} />
       <Route path="/en/servers" component={ServerBoard} />
-      <Route path="/en/board" component={BoardThreadList} />
+      <Route path="/en/board" component={BoardIndex} />
       <Route path="/en/board/friends" component={FriendsBoard} />
       <Route path="/en/board/friends/:id" component={FriendDetail} />
       <Route path="/en/board/crews" component={CrewsBoard} />

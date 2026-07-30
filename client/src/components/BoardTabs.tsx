@@ -16,11 +16,15 @@ interface BoardTabsProps {
 
 export default function BoardTabs({ active }: BoardTabsProps) {
   const tr = useT();
-  const tabs: TabItem[] = BOARDS.map((b) => ({
-    slug: b.slug,
-    href: `/board/${b.slug}`,
-    accent: b.accent,
-  }));
+  const tabs: TabItem[] = [
+    // 先頭に「掲示板トップ」（まとめ）へ戻るタブ。ラベルは board.index。
+    { slug: 'index', href: '/board', accent: 'purple' },
+    ...BOARDS.map((b) => ({
+      slug: b.slug,
+      href: `/board/${b.slug}`,
+      accent: b.accent,
+    })),
+  ];
 
   // 横スクロールはさせず、収まらない分は折り返す（タブが増えても2行程度に収まる）。
   return (
