@@ -197,7 +197,7 @@ export default function FivemInstallGuide() {
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Server size={14} /> FiveMサーバー募集板
+          <Server size={14} /> FiveMサーバー 住民募集板
         </a>
         <a
           href="/board/gtarp"

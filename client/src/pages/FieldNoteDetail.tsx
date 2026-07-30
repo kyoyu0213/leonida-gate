@@ -82,7 +82,7 @@ export default function FieldNoteDetail() {
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Megaphone size={14} /> {isEn ? 'Server board' : 'FiveMサーバー募集板'}
+          <Megaphone size={14} /> {isEn ? 'Server board' : 'FiveMサーバー 住民募集板'}
         </a>
         <a
           href="/fivem-gtarp/how-to-install"

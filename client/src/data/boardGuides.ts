@@ -436,7 +436,7 @@ export const BOARD_GUIDES: Record<BoardGuideKey, { ja: BoardGuideContent; en: Bo
   // --------------------------------------------------------------------------
   servers: {
     ja: {
-      lead: 'FiveMサーバー募集板は、日本語で遊べるFiveM RPサーバーを探したり、自分のサーバーを掲載したりするための一覧です。RP・レース・サバイバルなど、ジャンルで絞り込めます。',
+      lead: 'FiveMサーバー 住民募集板は、日本語で遊べるFiveM RPサーバーを探したり、自分のサーバーを掲載したりするための一覧です。RP・レース・サバイバルなど、ジャンルで絞り込めます。',
       sections: [
         {
           heading: 'サーバーを探す場合',
