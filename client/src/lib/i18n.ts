@@ -360,8 +360,8 @@ const JA: Dict = {
   'board.gtarp': 'ロールプレイ情報交換',
   'board.gta6': 'GTA6情報交換',
   'board.fivem-dev': 'FiveM開発者交流',
-  'board.friends': 'フレンド募集',
-  'board.crews': 'クルー募集',
+  'board.friends': 'フレンド募集(GTA5)',
+  'board.crews': 'クルー募集(GTA5)',
   'recruit.index': '募集トップ',
   'recruit.hub.title': '募集掲示板',
   'recruit.hub.lead':
@@ -904,7 +904,7 @@ const EN: Dict = {
   'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
-  'board.friends': 'Find Friends',
+  'board.friends': 'Find Friends (GTA5)',
   'recruit.index': 'Recruit Top',
   'recruit.hub.title': 'Recruitment Boards',
   'recruit.hub.lead':
@@ -913,7 +913,7 @@ const EN: Dict = {
   'recruit.hub.friends.desc': 'Find friends to play GTA6 / GTA Online with.',
   'recruit.hub.crews.desc': 'Recruit members for your crew or team.',
   'recruit.hub.view': 'View',
-  'board.crews': 'Find a Crew',
+  'board.crews': 'Find a Crew (GTA5)',
   'recruit.servers': 'FiveM Servers',
   // Find Friends (/board/friends)
   'fr.heading': 'Find Friends Board',
