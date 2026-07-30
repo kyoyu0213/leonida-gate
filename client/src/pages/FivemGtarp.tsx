@@ -155,11 +155,11 @@ export default function FivemGtarp() {
               <button
                 key={b.group}
                 onClick={() => setSelected(b.group)}
-                className="flex items-center gap-2.5 px-5 py-4 rounded-2xl text-[14px] font-extrabold text-white transition-all hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-3.5 py-3.5 rounded-2xl text-[13px] sm:text-[13.5px] font-extrabold text-white transition-all hover:-translate-y-0.5"
                 style={{ background: `${b.color}18`, border: `1px solid ${b.color}55`, boxShadow: `0 0 20px ${b.color}22` }}
               >
-                <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: b.color, boxShadow: `0 0 8px ${b.color}` }} />
-                {b.label}
+                <span className="w-2 h-2 rounded-full flex-none" style={{ background: b.color, boxShadow: `0 0 8px ${b.color}` }} />
+                <span className="text-left leading-tight whitespace-nowrap">{b.label}</span>
               </button>
             ))}
           </div>

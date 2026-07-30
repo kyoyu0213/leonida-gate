@@ -14,7 +14,7 @@ const TABS: Tab[] = [
   { key: 'tab.home', href: '/', icon: Home, match: (l) => l === '/' },
   { key: 'tab.news', href: '/news', icon: Newspaper, match: (l) => l.startsWith('/news') },
   { key: 'tab.board', href: '/board', icon: MessageSquare, match: isThreadBoardPath },
-  { key: 'tab.servers', href: '/servers', icon: Server, match: isRecruitPath },
+  { key: 'tab.servers', href: '/recruit', icon: Server, match: isRecruitPath },
   { key: 'tab.fivemgtarp', href: '/fivem-gtarp', icon: Gamepad2, match: (l) => l.startsWith('/fivem-gtarp') },
 ];
 
