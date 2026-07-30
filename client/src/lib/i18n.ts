@@ -360,13 +360,13 @@ const JA: Dict = {
   'board.gtarp': 'ロールプレイ情報交換',
   'board.gta6': 'GTA6情報交換',
   'board.fivem-dev': 'FiveM開発者交流',
-  'board.index': '掲示板トップ',
+  'board.index': 'すべて',
   'board.hub.title': '掲示板',
   'board.hub.lead':
     'GTA6情報交換・ロールプレイ交流・FiveMサーバー・配信者サーバー・開発者交流など、目的別のスレッド掲示板。ジャンルを選んで参加しよう。',
   'board.friends': 'フレンド募集(GTA5)',
   'board.crews': 'クルー募集(GTA5)',
-  'recruit.index': '募集トップ',
+  'recruit.index': 'すべて',
   'recruit.hub.title': '募集掲示板',
   'recruit.hub.lead':
     'FiveMサーバー・フレンド・クルーの3種類の募集をまとめた掲示板トップ。目的に合わせて選んでください。',
@@ -909,7 +909,7 @@ const EN: Dict = {
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
   'board.friends': 'Find Friends (GTA5)',
-  'recruit.index': 'Recruit Top',
+  'recruit.index': 'All',
   'recruit.hub.title': 'Recruitment Boards',
   'recruit.hub.lead':
     'The hub for all three recruitment boards — FiveM servers, friends, and crews. Pick the one that fits your goal.',
@@ -1047,7 +1047,7 @@ const EN: Dict = {
   'cr.notFound': 'Listing not found',
   'board.gta6': 'GTA6 Info',
   'board.fivem-dev': 'FiveM Developers',
-  'board.index': 'Board Top',
+  'board.index': 'All',
   'board.hub.title': 'Boards',
   'board.hub.lead':
     'Thread boards by topic — GTA6 info, roleplay chat, FiveM servers, streamer servers, and developers. Pick a category to join in.',
