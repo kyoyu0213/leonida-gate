@@ -4,11 +4,23 @@ import { ArrowLeft, Loader2, Copy, ExternalLink, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import ThreadReplies from '@/components/ThreadReplies';
-import { getCrew, deleteOwnCrew, CREW_GENRES, crewPlatformLabelKey, type Crew } from '@/lib/crews';
+import {
+  getCrew,
+  deleteOwnCrew,
+  updateOwnCrew,
+  CREW_GENRES,
+  CREW_PLATFORMS,
+  crewPlatformLabelKey,
+  type Crew,
+} from '@/lib/crews';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
 const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
+
+// 編集フォームの入力欄（削除フォームの入力欄と同じ見た目に合わせる）
+const editInput =
+  'w-full bg-white/[0.05] border border-white/15 rounded-lg px-3 py-2 text-[#f4eef8] text-sm focus:outline-none focus:border-[#ff8a3d]/60';
 
 export default function CrewDetail() {
   const tr = useT();
@@ -73,6 +85,94 @@ export default function CrewDetail() {
       toast.success(lang === 'ja' ? '募集を削除しました。' : 'Your post was deleted.');
       window.location.href = '/board/crews';
     }
+  };
+
+  // 本人による編集（認可は削除と同じ：削除キー or 同一ブラウザ anon_id）。
+  const [editOpen, setEditOpen] = useState(false);
+  const [editKey, setEditKey] = useState('');
+  const [editBusy, setEditBusy] = useState(false);
+  const [editForm, setEditForm] = useState({
+    author_name: '',
+    crew_name: '',
+    title: '',
+    platform: '',
+    genre: '',
+    size: '',
+    requirements: '',
+    active_time: '',
+    contact: '',
+    body: '',
+  });
+
+  // 現在の値を初期値にして編集フォームを開く。
+  const openEdit = () => {
+    if (!crew) return;
+    setEditForm({
+      author_name: crew.author_name ?? '',
+      crew_name: crew.crew_name,
+      title: crew.title,
+      platform: crew.platform ?? '',
+      genre: crew.genre ?? '',
+      size: crew.size ?? '',
+      requirements: crew.requirements ?? '',
+      active_time: crew.active_time ?? '',
+      contact: crew.contact ?? '',
+      body: crew.body,
+    });
+    setEditOpen(true);
+  };
+
+  const handleEditChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+    setEditForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleEdit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!crew) return;
+    if (!editForm.crew_name.trim() || !editForm.title.trim() || !editForm.body.trim()) {
+      toast.error(tr('cr.toast.req'));
+      return;
+    }
+    if (!editForm.platform) {
+      toast.error(tr('cr.toast.platformReq'));
+      return;
+    }
+    setEditBusy(true);
+    const { error } = await updateOwnCrew(
+      crew.id,
+      {
+        crew_name: editForm.crew_name.trim(),
+        title: editForm.title.trim(),
+        platform: editForm.platform.trim() || null,
+        genre: editForm.genre || null,
+        size: editForm.size.trim() || null,
+        requirements: editForm.requirements.trim() || null,
+        active_time: editForm.active_time.trim() || null,
+        body: editForm.body.trim(),
+        contact: editForm.contact.trim() || null,
+        author_name: editForm.author_name.trim() || null,
+      },
+      editKey.trim() || null,
+    );
+    setEditBusy(false);
+    if (error) {
+      // 禁止ワードだけは理由が分かるように出し分ける（それ以外は認可失敗の案内）。
+      toast.error(
+        error.message?.includes('banned word')
+          ? lang === 'ja'
+            ? '禁止ワードが含まれているため保存できません。'
+            : 'Could not save: it contains a banned word.'
+          : lang === 'ja'
+            ? '保存できませんでした。削除キーが違うか、この端末では権限がありません。'
+            : 'Could not save. Wrong key, or not permitted on this device.',
+      );
+      return;
+    }
+    toast.success(lang === 'ja' ? '募集を更新しました。' : 'Your post was updated.');
+    window.location.reload();
   };
 
   const meta: Array<[string, string | null | undefined]> = crew
@@ -179,17 +279,127 @@ export default function CrewDetail() {
                 ))}
             </div>
 
-            {/* 本人による削除（削除キー or 同一ブラウザ）。できない人向けに依頼リンクも残す。 */}
+            {/* 本人による編集・削除（削除キー or 同一ブラウザ）。できない人向けに依頼リンクも残す。 */}
             {crew.status !== 'closed' && (
               <div className="mb-6 -mt-2 px-1">
-                {!delOpen ? (
-                  <button
-                    type="button"
-                    onClick={() => setDelOpen(true)}
-                    className="text-[12px] text-white/45 hover:text-[#ff8a3d] underline underline-offset-2 transition-colors"
-                  >
-                    {lang === 'ja' ? '自分の投稿を削除する' : 'Delete my post'}
-                  </button>
+                {editOpen ? (
+                  <form onSubmit={handleEdit} className="rounded-xl border border-white/12 bg-white/[0.03] p-4 max-w-[560px] space-y-3">
+                    <p className="text-[13px] font-bold text-[#ff8a3d]">
+                      {lang === 'ja' ? '募集を編集する' : 'Edit your post'}
+                    </p>
+                    <div>
+                      <label className="block text-[12px] font-bold text-white/60 mb-1">{lang === 'ja' ? '名前（任意）' : 'Name (optional)'}</label>
+                      <input name="author_name" value={editForm.author_name} onChange={handleEditChange} placeholder={lang === 'ja' ? '未入力なら「名無しさん」' : 'Defaults to “名無しさん”'} maxLength={40} className={editInput} />
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.crewName')}</label>
+                        <input name="crew_name" value={editForm.crew_name} onChange={handleEditChange} maxLength={80} className={editInput} />
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.genre')}</label>
+                        <select name="genre" value={editForm.genre} onChange={handleEditChange} className={`${editInput} h-[38px]`}>
+                          {/* 旧データでジャンル未設定の場合に、表示と値がずれないようにする */}
+                          <option value="" className="bg-[#15091c]">{lang === 'ja' ? '未設定' : 'Not set'}</option>
+                          {CREW_GENRES.map((g) => (
+                            <option key={g.id} value={g.id} className="bg-[#15091c]">{tr(g.labelKey)}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.title')}</label>
+                      <input name="title" value={editForm.title} onChange={handleEditChange} maxLength={80} className={editInput} />
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.platform')}</label>
+                        <select name="platform" value={editForm.platform} onChange={handleEditChange} className={`${editInput} h-[38px]`}>
+                          <option value="" className="bg-[#15091c]">{tr('cr.pf.select')}</option>
+                          {CREW_PLATFORMS.map((p) => (
+                            <option key={p.id} value={p.id} className="bg-[#15091c]">{tr(p.labelKey)}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.size')}</label>
+                        <input name="size" value={editForm.size} onChange={handleEditChange} maxLength={40} className={editInput} />
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.requirements')}</label>
+                        <input name="requirements" value={editForm.requirements} onChange={handleEditChange} maxLength={120} className={editInput} />
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.activeTime')}</label>
+                        <input name="active_time" value={editForm.active_time} onChange={handleEditChange} maxLength={40} className={editInput} />
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.contact')}</label>
+                        <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={editInput} />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('cr.body')}</label>
+                      <textarea name="body" value={editForm.body} onChange={handleEditChange} rows={5} maxLength={2000} className={editInput} />
+                    </div>
+                    <div>
+                      <label className="block text-[12px] font-bold text-white/60 mb-1">{lang === 'ja' ? '削除キー' : 'Delete key'}</label>
+                      <input
+                        type="text"
+                        value={editKey}
+                        onChange={(e) => setEditKey(e.target.value)}
+                        placeholder={lang === 'ja' ? '投稿時に設定した削除キー' : 'The key you set when posting'}
+                        maxLength={60}
+                        className={editInput}
+                      />
+                      <p className="text-[11px] text-white/40 mt-1.5">
+                        {lang === 'ja'
+                          ? '※ 投稿時に削除キーを設定した場合は必須です（同じ端末・ブラウザなら空欄でOK）。'
+                          : '※ Required if you set a key when posting (leave blank if using the same device/browser).'}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        type="submit"
+                        disabled={editBusy}
+                        className="inline-flex items-center gap-1.5 text-[#0b0714] font-bold text-[13px] px-4 h-9 rounded-lg transition disabled:opacity-60"
+                        style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95)' }}
+                      >
+                        {editBusy ? (lang === 'ja' ? '保存中…' : 'Saving…') : lang === 'ja' ? '保存する' : 'Save'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditOpen(false)}
+                        className="text-[12px] text-white/50 hover:text-white px-2 h-9"
+                      >
+                        {lang === 'ja' ? 'キャンセル' : 'Cancel'}
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-white/40">
+                      {lang === 'ja' ? '※ キーを忘れた場合は ' : '※ Forgot your key? '}
+                      <a href={`/contact?ref=crews/${crew.id}`} className="underline hover:text-[#ff8a3d]">
+                        {lang === 'ja' ? '編集・削除を依頼' : 'request an edit'}
+                      </a>
+                      {lang === 'ja' ? ' からご連絡ください。' : ''}
+                    </p>
+                  </form>
+                ) : !delOpen ? (
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={openEdit}
+                      className="text-[12px] text-white/45 hover:text-[#ff8a3d] underline underline-offset-2 transition-colors"
+                    >
+                      {lang === 'ja' ? '自分の投稿を編集する' : 'Edit my post'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setDelOpen(true)}
+                      className="text-[12px] text-white/45 hover:text-[#ff8a3d] underline underline-offset-2 transition-colors"
+                    >
+                      {lang === 'ja' ? '自分の投稿を削除する' : 'Delete my post'}
+                    </button>
+                  </div>
                 ) : (
                   <div className="rounded-xl border border-white/12 bg-white/[0.03] p-4 max-w-[460px]">
                     <p className="text-[12px] text-white/60 mb-2">
