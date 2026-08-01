@@ -325,7 +325,7 @@ export default function ThreadReplies({ threadId, startNumber = 1 }: ThreadRepli
 
       {/* sticky reply box */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-50"
+        className="fixed bottom-0 left-0 right-0 z-[60]"
         style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)' }}
       >
         <div

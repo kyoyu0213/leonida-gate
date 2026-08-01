@@ -64,6 +64,18 @@ export const isRecruitPath = (loc: string): boolean =>
 export const isThreadBoardPath = (loc: string): boolean =>
   !isRecruitPath(loc) && (loc === '/board' || loc.startsWith('/board/') || loc.startsWith('/thread'));
 
+/** 返信ボックス（画面下部に fixed 表示）が出る詳細ページか。
+ *  スマホ下部タブバーと重なり入力できない問題の対策で、この判定時はタブバーを隠す。
+ *  対象：スレッド詳細 /thread/:id、フレンド募集詳細 /board/friends/:id、クルー募集詳細 /board/crews/:id。 */
+export const isReplyDetailPath = (loc: string): boolean => {
+  const p = loc.startsWith('/en/') ? loc.slice(3) : loc === '/en' ? '/' : loc;
+  return (
+    p.startsWith('/thread') ||
+    p.startsWith('/board/friends/') ||
+    p.startsWith('/board/crews/')
+  );
+};
+
 // 管理者判定・申請制スレの作成はサーバー側で認可する（client/src/lib/admin.ts）。
 // 合言葉はクライアント／バンドルに一切置かない。
 

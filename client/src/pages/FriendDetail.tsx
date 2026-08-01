@@ -145,6 +145,16 @@ export default function FriendDetail() {
                 ))}
             </div>
 
+            {/* 本人による編集・削除は未実装のため、依頼導線（お問い合わせへ誘導） */}
+            <div className="mb-6 -mt-2 px-1">
+              <a
+                href={`/contact?ref=friends/${friend.id}`}
+                className="text-[12px] text-white/45 hover:text-[#22d3ee] underline underline-offset-2 transition-colors"
+              >
+                {lang === 'en' ? 'Request an edit or deletion of this post' : 'この募集の編集・削除を依頼する'}
+              </a>
+            </div>
+
             {/* replies (post #1 は本文の複製なので #2 以降を表示) */}
             <h2 className="text-sm font-extrabold text-white/70 mb-1 px-1">
               {lang === 'en' ? 'Replies' : '返信'}

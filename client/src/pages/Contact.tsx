@@ -13,7 +13,13 @@ import { PAGE_GUIDES } from '@/data/boardGuides';
 export default function Contact() {
   const t = useT();
   useSeo(t('seo.contact.title'), t('seo.contact.desc'), { localized: true });
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  // 募集掲示板の「編集・削除を依頼」から来た場合、対象IDを本文に前入力する。
+  const editDelRef =
+    typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('ref') : null;
+  const initialMessage = editDelRef
+    ? `【募集の編集・削除の依頼】\n対象: ${editDelRef}\n\n（ご希望の内容・理由をご記入ください）\n`
+    : '';
+  const [formData, setFormData] = useState({ name: '', email: '', message: initialMessage });
   const [files, setFiles] = useState<File[]>([]);
   const [sending, setSending] = useState(false);
   // ハニーポット（人間には見えない・ボット対策）

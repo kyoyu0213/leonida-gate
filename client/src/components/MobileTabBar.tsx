@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter';
 import { Home, Newspaper, MessageSquare, Server, Gamepad2 } from 'lucide-react';
-import { isRecruitPath, isThreadBoardPath } from '@/lib/boards';
+import { isRecruitPath, isThreadBoardPath, isReplyDetailPath } from '@/lib/boards';
 import { useT } from '@/lib/i18n';
 
 interface Tab {
@@ -23,9 +23,9 @@ export default function MobileTabBar() {
   const t = useT();
   const [location] = useLocation();
 
-  // スレッド詳細では下部に返信ボックスが固定表示されるため、タブバーを隠す。
-  // （両方が fixed bottom-0 になり、入力欄がタブバーに被って書き込めない問題の対策）
-  if (location.startsWith('/thread')) return null;
+  // 返信ボックス（fixed bottom-0）が出る詳細ページ（スレッド／フレンド募集／クルー募集）では、
+  // タブバーと重なって入力欄がタップできなくなるため、タブバーを隠す。
+  if (isReplyDetailPath(location)) return null;
 
   return (
     <nav

@@ -3,7 +3,7 @@ import { Copy, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import type { FivemServer } from '@/lib/supabase';
 import { imagePublicUrl } from '@/lib/images';
-import { useT } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
 
 interface ServerCardProps {
   server: FivemServer;
@@ -16,6 +16,7 @@ interface ServerCardProps {
  */
 export default function ServerCard({ server, onTagClick }: ServerCardProps) {
   const t = useT();
+  const lang = useLang();
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success(t('srv.card.copied'));
@@ -45,6 +46,10 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
 
       {/* Description */}
       <p className="text-gray-400 text-sm mb-4 whitespace-pre-wrap flex-grow">{server.description}</p>
+      {/* 返信機能なし。連絡は各サーバーのDiscordで、と明示する。 */}
+      <p className="text-[12px] text-cyan-300/80 mb-4 -mt-2">
+        {lang === 'en' ? 'To get in touch, join each server\u2019s Discord.' : '連絡・やりとりは各サーバーのDiscordでお願いします。'}
+      </p>
 
       {/* Server Info */}
       <div className="space-y-2 mb-4 text-sm">
