@@ -62,6 +62,9 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
             )}
           </div>
           <h3 className="text-lg font-black text-[#f4eef8] leading-snug m-0 break-words">{friend.title}</h3>
+          {friend.author_name && (
+            <p className="text-[11px] text-white/40 mt-0.5 truncate">{friend.author_name}</p>
+          )}
         </div>
       </div>
 

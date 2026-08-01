@@ -4,7 +4,7 @@ import { ArrowLeft, Loader2, Copy, ExternalLink, Shield } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import ThreadReplies from '@/components/ThreadReplies';
-import { getCrew, CREW_GENRES, crewPlatformLabelKey, type Crew } from '@/lib/crews';
+import { getCrew, deleteOwnCrew, CREW_GENRES, crewPlatformLabelKey, type Crew } from '@/lib/crews';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
@@ -49,6 +49,32 @@ export default function CrewDetail() {
     toast.success(tr('cr.card.copied'));
   };
 
+  // 本人による削除（削除キー or 同一ブラウザ anon_id）。
+  const [delOpen, setDelOpen] = useState(false);
+  const [delKey, setDelKey] = useState('');
+  const [delBusy, setDelBusy] = useState(false);
+  const handleDelete = async () => {
+    if (!crew) return;
+    setDelBusy(true);
+    const { data, error } = await deleteOwnCrew(crew.id, delKey.trim() || null);
+    setDelBusy(false);
+    if (error) {
+      toast.error(
+        lang === 'ja'
+          ? '削除できませんでした。削除キーが違うか、この端末では権限がありません。'
+          : 'Could not delete. Wrong key, or not permitted on this device.',
+      );
+      return;
+    }
+    if (data === 'closed') {
+      toast.success(lang === 'ja' ? '返信があるため「募集終了」にしました。' : 'Marked as closed (it has replies).');
+      window.location.reload();
+    } else {
+      toast.success(lang === 'ja' ? '募集を削除しました。' : 'Your post was deleted.');
+      window.location.href = '/board/crews';
+    }
+  };
+
   const meta: Array<[string, string | null | undefined]> = crew
     ? [
         [tr('cr.size'), crew.size],
@@ -81,6 +107,14 @@ export default function CrewDetail() {
               <ArrowLeft size={15} /> {tr('cr.backToList')}
             </a>
 
+            {crew.status === 'closed' && (
+              <div className="mb-5 rounded-xl border border-white/15 bg-white/[0.05] px-4 py-3 text-[13px] text-white/70">
+                {lang === 'ja'
+                  ? 'この募集は終了しました（募集主が締め切り）。返信の閲覧のみできます。'
+                  : 'This post is closed by the author. Replies are read-only.'}
+              </div>
+            )}
+
             {/* card header */}
             <div className="rounded-2xl border border-[#ff8a3d]/25 bg-gradient-to-br from-[#ff8a3d]/[0.06] to-[#ff2d95]/[0.06] p-6 mb-6">
               <div className="flex items-start gap-3 mb-4">
@@ -107,7 +141,7 @@ export default function CrewDetail() {
                   <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">
                     {crew.title}
                   </h1>
-                  <p className="text-[12px] text-white/40 mt-1 font-mono">{crew.created_at.slice(0, 10)}</p>
+                  <p className="text-[12px] text-white/40 mt-1 font-mono">{(crew.author_name || '名無しさん')}・{crew.created_at.slice(0, 10)}</p>
                 </div>
               </div>
 
@@ -145,15 +179,62 @@ export default function CrewDetail() {
                 ))}
             </div>
 
-            {/* 本人による編集・削除は未実装のため、依頼導線（お問い合わせへ誘導） */}
-            <div className="mb-6 -mt-2 px-1">
-              <a
-                href={`/contact?ref=crews/${crew.id}`}
-                className="text-[12px] text-white/45 hover:text-[#ff8a3d] underline underline-offset-2 transition-colors"
-              >
-                {lang === 'en' ? 'Request an edit or deletion of this post' : 'この募集の編集・削除を依頼する'}
-              </a>
-            </div>
+            {/* 本人による削除（削除キー or 同一ブラウザ）。できない人向けに依頼リンクも残す。 */}
+            {crew.status !== 'closed' && (
+              <div className="mb-6 -mt-2 px-1">
+                {!delOpen ? (
+                  <button
+                    type="button"
+                    onClick={() => setDelOpen(true)}
+                    className="text-[12px] text-white/45 hover:text-[#ff8a3d] underline underline-offset-2 transition-colors"
+                  >
+                    {lang === 'ja' ? '自分の投稿を削除する' : 'Delete my post'}
+                  </button>
+                ) : (
+                  <div className="rounded-xl border border-white/12 bg-white/[0.03] p-4 max-w-[460px]">
+                    <p className="text-[12px] text-white/60 mb-2">
+                      {lang === 'ja'
+                        ? '投稿時に削除キーを設定した場合は入力してください（同じ端末・ブラウザなら空欄でOK）。'
+                        : 'Enter your delete key (leave blank if using the same device/browser).'}
+                    </p>
+                    <input
+                      type="text"
+                      value={delKey}
+                      onChange={(e) => setDelKey(e.target.value)}
+                      placeholder={lang === 'ja' ? '削除キー' : 'Delete key'}
+                      maxLength={60}
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-lg px-3 py-2 text-[#f4eef8] text-sm mb-3 focus:outline-none focus:border-[#ff8a3d]/60"
+                    />
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <button
+                        type="button"
+                        onClick={handleDelete}
+                        disabled={delBusy}
+                        className="inline-flex items-center gap-1.5 bg-[#ff2d95]/90 hover:bg-[#ff2d95] text-white font-bold text-[13px] px-4 h-9 rounded-lg transition disabled:opacity-60"
+                      >
+                        {delBusy ? (lang === 'ja' ? '処理中…' : 'Working…') : lang === 'ja' ? '削除する' : 'Delete'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setDelOpen(false)}
+                        className="text-[12px] text-white/50 hover:text-white px-2 h-9"
+                      >
+                        {lang === 'ja' ? 'キャンセル' : 'Cancel'}
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-white/40 mt-3">
+                      {lang === 'ja'
+                        ? '※ 返信が付いている募集は、完全削除ではなく「募集終了」になります。キーを忘れた場合は '
+                        : '※ Posts with replies become “closed” instead of deleted. Forgot your key? '}
+                      <a href={`/contact?ref=crews/${crew.id}`} className="underline hover:text-[#ff8a3d]">
+                        {lang === 'ja' ? '編集・削除を依頼' : 'request removal'}
+                      </a>
+                      {lang === 'ja' ? ' からご連絡ください。' : ''}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* replies (post #1 は本文の複製なので #2 以降を表示) */}
             <h2 className="text-sm font-extrabold text-white/70 mb-1 px-1">

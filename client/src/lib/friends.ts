@@ -15,14 +15,16 @@ export interface Friend {
   age_range: string | null;
   body: string;
   contact: string | null;
+  author_name: string | null;
   thread_id: string | null;
-  status: string;
+  status: string; // 'published' | 'closed'（募集終了）
   created_at: string;
 }
 
 // 匿名に許可された公開列だけを明示指定する（select('*') は列権限で拒否されるため）。
+// delete_key_hash は非公開（GRANT していない）ので含めない。
 const PUBLIC_COLS =
-  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,thread_id,status,created_at';
+  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,author_name,thread_id,status,created_at';
 
 // 目的・プレイ内容（play_style 列に保存）。「何をして遊ぶか」の軸。
 // プラットフォーム軸（下）と組み合わせて絞り込む。id は DB 保存値、ラベルは i18n キー。
@@ -79,13 +81,13 @@ export async function listPublishedFriends(limit?: number) {
   return query;
 }
 
-/** 1件取得（公開中のみ）。詳細ページ用。 */
+/** 1件取得（公開＝published／募集終了＝closed）。詳細ページ用。 */
 export async function getFriend(id: string) {
   return supabase
     .from('friends')
     .select(PUBLIC_COLS)
     .eq('id', id)
-    .eq('status', 'published')
+    .in('status', ['published', 'closed'])
     .maybeSingle();
 }
 
@@ -99,6 +101,8 @@ export async function createFriend(f: {
   age_range: string | null;
   body: string;
   contact: string | null;
+  author_name?: string | null; // 掲示板フォーム更新前でも動くよう任意
+  delete_key?: string | null;
   hp: string; // ハニーポット（人間は空）
 }) {
   return supabase.rpc('create_friend', {
@@ -112,5 +116,49 @@ export async function createFriend(f: {
     p_contact: f.contact,
     p_anon_id: getAnonId(),
     p_hp: f.hp,
+    p_author_name: f.author_name ?? null,
+    p_delete_key: f.delete_key ?? null,
+  });
+}
+
+/** 本人による削除（削除キー or 同一ブラウザ anon_id で認可）。
+ *  返信ありは 'closed'（募集終了）、返信なしは 'deleted'（完全削除）を返す。 */
+export async function deleteOwnFriend(id: string, deleteKey: string | null) {
+  return supabase.rpc('delete_own_friend', {
+    p_id: id,
+    p_delete_key: deleteKey,
+    p_anon_id: getAnonId(),
+  });
+}
+
+/** 本人による編集（認可は削除と同じ）。 */
+export async function updateOwnFriend(
+  id: string,
+  f: {
+    title: string;
+    platform: string | null;
+    play_style: string | null;
+    voice_chat: string | null;
+    active_time: string | null;
+    age_range: string | null;
+    body: string;
+    contact: string | null;
+    author_name: string | null;
+  },
+  deleteKey: string | null,
+) {
+  return supabase.rpc('update_own_friend', {
+    p_id: id,
+    p_title: f.title,
+    p_platform: f.platform,
+    p_play_style: f.play_style,
+    p_voice_chat: f.voice_chat,
+    p_active_time: f.active_time,
+    p_age_range: f.age_range,
+    p_body: f.body,
+    p_contact: f.contact,
+    p_author_name: f.author_name,
+    p_delete_key: deleteKey,
+    p_anon_id: getAnonId(),
   });
 }

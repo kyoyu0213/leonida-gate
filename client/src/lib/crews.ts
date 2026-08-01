@@ -16,14 +16,16 @@ export interface Crew {
   active_time: string | null;
   body: string;
   contact: string | null;
+  author_name: string | null;
   thread_id: string | null;
-  status: string;
+  status: string; // 'published' | 'closed'（募集終了）
   created_at: string;
 }
 
 // 匿名に許可された公開列だけを明示指定する（select('*') は列権限で拒否されるため）。
+// delete_key_hash は非公開（GRANT していない）ので含めない。
 const PUBLIC_COLS =
-  'id,crew_name,title,platform,genre,size,requirements,active_time,body,contact,thread_id,status,created_at';
+  'id,crew_name,title,platform,genre,size,requirements,active_time,body,contact,author_name,thread_id,status,created_at';
 
 // カテゴリ内フィルタ（genre）。id は DB 保存値、ラベルは i18n キー。
 export const CREW_GENRES = [
@@ -63,13 +65,13 @@ export async function listPublishedCrews(limit?: number) {
   return query;
 }
 
-/** 1件取得（公開中のみ）。詳細ページ用。 */
+/** 1件取得（公開＝published／募集終了＝closed）。詳細ページ用。 */
 export async function getCrew(id: string) {
   return supabase
     .from('crews')
     .select(PUBLIC_COLS)
     .eq('id', id)
-    .eq('status', 'published')
+    .in('status', ['published', 'closed'])
     .maybeSingle();
 }
 
@@ -84,6 +86,8 @@ export async function createCrew(c: {
   active_time: string | null;
   body: string;
   contact: string | null;
+  author_name?: string | null; // 掲示板フォーム更新前でも動くよう任意
+  delete_key?: string | null;
   hp: string; // ハニーポット（人間は空）
 }) {
   return supabase.rpc('create_crew', {
@@ -98,5 +102,51 @@ export async function createCrew(c: {
     p_contact: c.contact,
     p_anon_id: getAnonId(),
     p_hp: c.hp,
+    p_author_name: c.author_name ?? null,
+    p_delete_key: c.delete_key ?? null,
+  });
+}
+
+/** 本人による削除（削除キー or 同一ブラウザ anon_id で認可）。
+ *  返信ありは 'closed'（募集終了）、返信なしは 'deleted'（完全削除）を返す。 */
+export async function deleteOwnCrew(id: string, deleteKey: string | null) {
+  return supabase.rpc('delete_own_crew', {
+    p_id: id,
+    p_delete_key: deleteKey,
+    p_anon_id: getAnonId(),
+  });
+}
+
+/** 本人による編集（認可は削除と同じ）。 */
+export async function updateOwnCrew(
+  id: string,
+  c: {
+    crew_name: string;
+    title: string;
+    platform: string | null;
+    genre: string | null;
+    size: string | null;
+    requirements: string | null;
+    active_time: string | null;
+    body: string;
+    contact: string | null;
+    author_name: string | null;
+  },
+  deleteKey: string | null,
+) {
+  return supabase.rpc('update_own_crew', {
+    p_id: id,
+    p_crew_name: c.crew_name,
+    p_title: c.title,
+    p_platform: c.platform,
+    p_genre: c.genre,
+    p_size: c.size,
+    p_requirements: c.requirements,
+    p_active_time: c.active_time,
+    p_body: c.body,
+    p_contact: c.contact,
+    p_author_name: c.author_name,
+    p_delete_key: deleteKey,
+    p_anon_id: getAnonId(),
   });
 }

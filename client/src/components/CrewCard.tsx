@@ -63,6 +63,9 @@ export default function CrewCard({ crew, onGenreClick, onPlatformClick }: CrewCa
             <span className="text-[12px] font-bold text-white/60 truncate">{crew.crew_name}</span>
           </div>
           <h3 className="text-lg font-black text-[#f4eef8] leading-snug m-0 break-words">{crew.title}</h3>
+          {crew.author_name && (
+            <p className="text-[11px] text-white/40 mt-0.5 truncate">{crew.author_name}</p>
+          )}
         </div>
       </div>
 

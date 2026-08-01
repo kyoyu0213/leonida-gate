@@ -13,6 +13,8 @@ import BoardGuide from '@/components/BoardGuide';
 const emptyForm = {
   crew_name: '',
   title: '',
+  author_name: '',
+  delete_key: '',
   genre: 'RP',
   platform: '',
   size: '',
@@ -100,6 +102,8 @@ export default function CrewsBoard() {
       active_time: form.active_time.trim() || null,
       body: form.body.trim(),
       contact: form.contact.trim() || null,
+      author_name: form.author_name.trim() || null,
+      delete_key: form.delete_key.trim() || null,
       hp,
     });
     setSubmitting(false);
@@ -182,6 +186,10 @@ export default function CrewsBoard() {
                 <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.title')}</label>
                 <input name="title" value={form.title} onChange={handleFormChange} placeholder={tr('cr.ph.title')} maxLength={80} className={inputClass} />
               </div>
+              <div>
+                <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{lang === 'ja' ? '名前（任意）' : 'Name (optional)'}</label>
+                <input name="author_name" value={form.author_name} onChange={handleFormChange} placeholder={lang === 'ja' ? '未入力なら「名無しさん」' : 'Defaults to “名無しさん”'} maxLength={40} className={inputClass} />
+              </div>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.platform')} <span className="text-[#22d3ee]">*</span></label>
@@ -212,6 +220,11 @@ export default function CrewsBoard() {
               <div>
                 <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{tr('cr.body')}</label>
                 <textarea name="body" value={form.body} onChange={handleFormChange} placeholder={tr('cr.ph.body')} rows={4} maxLength={2000} className={inputClass} />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-[#ff8a3d] mb-2">{lang === 'ja' ? '削除キー（任意）' : 'Delete key (optional)'}</label>
+                <input name="delete_key" value={form.delete_key} onChange={handleFormChange} placeholder={lang === 'ja' ? '後で自分で編集・削除する時に使う合言葉' : 'A passphrase to edit/delete your post later'} maxLength={60} className={inputClass} />
+                <p className="text-[11px] text-white/40 mt-1.5">{lang === 'ja' ? '※ 設定しておくと、スマホ↔PCなど別の端末からでも自分で編集・削除できます。忘れないようにメモしてください。' : '※ With a key you can edit/delete your post from any device. Keep it somewhere safe.'}</p>
               </div>
               <p className="text-xs text-white/40">{tr('cr.required')}</p>
               <button
