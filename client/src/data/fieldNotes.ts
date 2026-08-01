@@ -2055,6 +2055,318 @@ Sources and references
 This article was independently reported and recorded by GTA6 FEED and has no relationship with the Stella City operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
 };
 
+const altf4RpJapan: FieldNote = {
+  slug: 'altf4-rp-japan',
+  category: 'visit-note',
+  title: 'ALTF4 RP Japanとは？海外発・独自システムを備えた日本語RPサーバーを訪問',
+  titleEn:
+    'What Is ALTF4 RP Japan? A Visit to a Japanese RP Server With Overseas Roots and Original Systems',
+  date: '2026-08-02',
+  excerpt:
+    '2026年7月31日にオープンした日本語FiveMロールプレイサーバー「ALTF4 RP Japan」をGTA6 FEEDが取材。同接42人、自宅の一室から始まる初期スポーンと9段階のチュートリアル、ジョブごとのスキルツリー、6段階に分かれた強盗など観測できた事実を記録。',
+  excerptEn:
+    'GTA6 FEED visits ALTF4 RP Japan, a Japanese FiveM roleplay server that opened on July 31, 2026 — 42 concurrent players, a first spawn inside your own apartment followed by a nine-step tutorial, per-job skill trees, and heists split across six levels, recorded as observed.',
+  image: '/images/taikenki/serverhoumon/ALTF4/loading.webp',
+  icon: '📍',
+  seoTitle: 'ALTF4 RP Japanとは？海外発・独自システムを備えた日本語RPサーバーを訪問｜GTA6 FEED',
+  seoDesc:
+    '日本語FiveMロールプレイサーバー「ALTF4 RP Japan」をGTA6 FEEDが取材。2026年7月31日オープン、同接42人（接続枠150人）、自宅の一室から始まる初期スポーンと9段階チュートリアル、スマホのJobアプリから受注する11種のジョブとスキルツリー、レベル1〜6に分かれた強盗と必要人数、ゴミあさりで集まる素材と武器パーツクラフト、実際に試した養蜂の器具価格まで。',
+  seoTitleEn:
+    'What Is ALTF4 RP Japan? A Japanese RP FiveM Server With Overseas Roots | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's report on ALTF4 RP Japan, a Japanese FiveM roleplay server that opened on July 31, 2026 — 42 concurrent players against a 150-slot cap, a first spawn inside your own apartment plus a nine-step tutorial, eleven jobs taken from a smartphone Job app with skill trees, heists graded from level 1 to 6 with required crew sizes, materials gathered from street trash, weapon parts crafting, and the beekeeping equipment prices we saw first-hand.",
+  body: `![ALTF4のロード画面。暗い背景に「ALT」の文字と青からピンクへグラデーションするネオン調の「4」を組み合わせたロゴ、その下に「// roleplay //」の文字、右下に「Loading game (59%)」の表示](/images/taikenki/serverhoumon/ALTF4/loading.webp)
+
+ALTF4 RP Japanは、2026年7月31日にオープンした日本語のFiveMロールプレイサーバーである。海外で運営されてきたサーバーの日本語対応版として上陸したもので、スキルツリーやチュートリアルなど、独自のシステムを複数備える。GTA6 FEEDが取材し、観測できた事実を記録する。以下、確認した確定情報と、確認できていない未確認項目を分けて記す。
+
+## 基本情報
+
+- コンセプト：海外発の大規模FiveM RPサーバーの日本語対応版。サーバー告知によれば、Discordメンバー2万人超を抱え、海外で長年運営されてきたとされる
+- 接続方法：公式Discord経由で参加する。参加申請はないが、接続にはSteamの起動が必須となっている
+- 同時接続数：42人（2026年7月31日 23時時点・観測値）。観測日はオープン初日にあたり、入れない人も少なくなかった。接続枠は150人だが、独自システムが多くデータのダウンロードに時間がかかるため、回線速度やPCのスペックによっては接続までに時間を要する場合がある。なお、著名な配信者が同サーバーのアンバサダーに名を連ねており、今後参加者が増えていく可能性が高い
+
+![サーバー一覧に表示されたALTF4のカード。「ALTF4 ▶日本初上陸の海外大型鯖 ▶7/31オープン ▶初心者歓迎」の見出しの下に「Discordメンバー2万人超の海外大型サーバーが日本上陸。7/31(金)22:00オープン。本格的なロールプレイ、活発なビジネス、独自開発のギャング＆ジョブシステム、オリジナル衣装、1000台以上の車両。」の説明が並び、左下に接続数42/150と日本国旗、下部にConnect／Upvoteのボタンが表示されている](/images/taikenki/serverhoumon/ALTF4/server-list.webp)
+
+## 街の雰囲気
+
+マップのランドマーク一覧には、市街地で114件、パレト方面を含む広域で142件が登録されている。マップ北側には島が存在する。
+
+![市街地のマップ画面。番地が振られた区画の上にジョブや店舗のアイコンが散らばり、右側にALTF4カスタムズ、ALTF4航空、VIP理髪店、VIP衣料品店、ウォーカーロジスティクス、オフロード車両レンタル、カジノ、ガソリンLTD、ゴミ収集、ゴルフといったランドマーク一覧（1/114）が並ぶ](/images/taikenki/serverhoumon/ALTF4/map-city.webp)
+
+![パレト方面まで引いた広域マップ。左上に本土から離れた緑の島が浮かび、右下のランドマーク一覧のカウンターは1/142と表示されている](/images/taikenki/serverhoumon/ALTF4/map-paleto.webp)
+
+病院の建物が大きく、外観からも識別しやすい。
+
+![アルタ・ストリートに面した大きな病院の建物。手前の車道に赤い小型車が停まり、左のチュートリアル表示は「生き延びよう／病院を訪れる 5/9」で残り68m](/images/taikenki/serverhoumon/ALTF4/hospital.webp)
+
+他プレイヤーの位置がマップ上に表示される仕様になっている。牛やピューマといった動物も配置されている。
+
+![チリアド山ふもとの農場、砂利道を歩く白黒の牛。奥に果樹の列と木の柵、右手にトタン張りの納屋とゴミ箱が見える](/images/taikenki/serverhoumon/ALTF4/cow.webp)
+
+## 経済・職業
+
+ジョブはスマートフォンの「Job」アプリから受注する。確認できたジョブは、Logistics（運送）、養蜂、狩猟、電気技師、Mining（採掘）、ゴミ収集、釣り、木こり、トラック、Pressure Washing（高圧洗浄）、庭師である。
+
+各ジョブには習熟度（スキルツリー）が設定されている。たとえば養蜂は「見習い養蜂家」から始まり、経験値を積むと「徒弟」に昇格し、蜂蜜・蜜蝋の売却報酬倍率が上がるなどの効果がある。
+
+![スマートフォンのJobアプリで開いた養蜂のページ。「自然／養蜂 野外で蜂の巣箱を管理し、蜂蜜と蜜蝋を生産する。」の説明の下に習熟度「見習い養蜂家 0%」（0 xp・徒弟まであと200 xp）が表示され、レベル欄に見習い養蜂家 0 exp と 徒弟 200 exp（+1% 蜂蜜・蜜蝋の売却報酬倍率）が並ぶ](/images/taikenki/serverhoumon/ALTF4/job-skilltree-beekeeping.webp)
+
+![スキルツリー画面。上部に「市民 サバイバル、クラフト、コミュニティ支援」と「犯罪者 裏社会の活動と犯罪組織」のタブがあり、下に5列のスキルノードが縦につながる。右側は「フォーカス なし」「スキル情報 ノードをクリックして詳細を確認」の表示](/images/taikenki/serverhoumon/ALTF4/skilltree.webp)
+
+飲食店については、有人の店舗は取材時には見つけられなかった。ただしバーガーショットで食料を購入できる。
+
+![プロスペリティ・ストリートに面したバーガーショットの店舗。赤い屋根とWELCOMEの看板が見え、左のチュートリアル表示は「補給しよう／Burger Shotで食べ物を入手する 8/9」で残り18m](/images/taikenki/serverhoumon/ALTF4/burgershot.webp)
+
+## 初期スポーンと最初の動き
+
+このサーバーは初期スポーンの形式が特徴的である。参加すると、あらかじめ所有している自宅の一室からスタートし、その場で部屋のカスタマイズができる。部屋を出てエレベーターでロビーに降り、建物の外に出るとレンタカーのNPCがいる。
+
+![自宅アパートの内部。左に「ALTF4へようこそ 1/9 我が家にしよう／ワードローブとストレージコンテナを設置する」と、①アパートで家具設置メニューを開く ②収納ボックス（隠し場所）を設置する ③ワードローブを設置する（服装の着替え）の手順が表示されている](/images/taikenki/serverhoumon/ALTF4/apartment-tutorial.webp)
+
+![自宅の一室から見た夜景。床から天井までの窓の向こうにロスサントスの街灯りと高速道路の明かりが広がる](/images/taikenki/serverhoumon/ALTF4/apartment-night-view.webp)
+
+![部屋に立つ作成直後のキャラクター。画面下に「新しい目標・2/9 移動を始めよう 移動手段が必要です。最寄りのレンタル場所へ行って車両を借りましょう。／最初の車両をレンタルする ＋100 XP」の通知が出ている](/images/taikenki/serverhoumon/ALTF4/tutorial-rental.webp)
+
+![部屋の出口の扉。壁にキーパッドが取り付けられ、左のチュートリアル表示は「移動を始めよう／最初の車両をレンタルする 2/9」で残り96m・GPS設定済み](/images/taikenki/serverhoumon/ALTF4/apartment-door.webp)
+
+![建物の外、カレー・アベニュー沿いの歩道に紫色の円で示されて立つレンタカーのNPC。左のチュートリアル表示は「移動を始めよう／最初の車両をレンタルする 2/9」で残り5m](/images/taikenki/serverhoumon/ALTF4/rental-npc.webp)
+
+進行は9段階のチュートリアルに沿って進む。各ステップはGPSで誘導され、順に「最初の車両をレンタルする」「病院を訪れる」「バーガーショットで食料を入手する」などをこなしていく。レンタカーを借りた後、市役所で開始資金を受け取る流れになっている。チュートリアルがあるため、初回でも迷わず進められる構成になっている。
+
+![ESCキーで開くゲームメニュー。ホーム／ガイド／ストア／ランキング／情報のタブが並び、クイックアクセスに空港周辺のマップと「マップを開く」ボタン、右側のアクション欄に設定・HUDをカスタマイズ・切断が表示されている。左には「移動を始めよう／最初の車両をレンタルする」のチュートリアル表示が残っている](/images/taikenki/serverhoumon/ALTF4/esc-menu.webp)
+
+![ロックフォード方面の市役所の建物。ヤシの木が並ぶ白い庁舎の前で、左のチュートリアル表示は「資金を受け取る／市役所を訪れる 3/9」で残り47m](/images/taikenki/serverhoumon/ALTF4/cityhall.webp)
+
+![市役所の執務室。中央に「目標達成 資金を受け取る ＋100 XP ＋$1,000 市民助成金」の演出が表示され、右側に「$30000 銀行スタート時の所持金 を受け取りました」の通知、手前のデスクには「[E] 開始金額をリクエスト」「市民カードをリクエスト」の選択肢が出ている](/images/taikenki/serverhoumon/ALTF4/starting-funds.webp)
+
+![初期のインベントリ画面。クラシックフォン、現金5825、フレッシュミートカードの3枠だけが埋まり、残りは空き枠になっている](/images/taikenki/serverhoumon/ALTF4/starting-inventory.webp)
+
+![インベントリで選択したチョコレートの箱の詳細。「チョコレートの箱。気分を良くするために使う（空腹度・喉の渇きを最大まで回復し、アーマーを100にする）。」の説明に、重量0.5kg、有効期限29dが並ぶ](/images/taikenki/serverhoumon/ALTF4/chocolate-box.webp)
+
+チュートリアルは \`/skiptutorial\` でスキップできるが、スキップすると達成報酬を受け取れない。
+
+レンタカーの料金は、取材時点でPanto $175、Pigalle $200、Mesa $250（いずれも1日あたり）だった。
+
+![「車のレンタル」メニュー。Panto $175 1日あたり、Pigalle $200 1日あたり、Mesa $250 1日あたりの3台が縦に並ぶ](/images/taikenki/serverhoumon/ALTF4/rental-price.webp)
+
+## 治安構造
+
+警察とEMS（救急）は稼働していることを確認した。
+
+犯罪行為については、サーバー再起動（RR）の前後30分以内に強盗を開始することはできない。
+
+## 犯罪・ギャング
+
+強盗は6段階のレベルに分かれており、それぞれ必要人数が定められている。確認できた範囲は以下のとおり。
+
+- レベル1：店舗強盗（2人）、住宅強盗（2人）、ATM（2人）、車両窃盗／ブースティング（4人）
+- レベル2：バンジェリコ（4人）、Fleeca銀行（6人）、列車強盗（6人）
+- レベル3：アーティファクト（8人）、サンディ銀行（8人）、Rocks In Socks（4人）
+- レベル4：パシフィック銀行（8人）、ヒューマンラボ（8人）
+- レベル5：Bobcat施設（10人）、カヨ・ペリコ強盗（12人）、ユニオン強盗（12人）、アンダーグラウンド強盗（12人）
+- レベル6：カジノ強盗（16人）
+
+ギャングについては、名簿（ロスター）の上限が25人と定められている。公開されているルールでは、シティでの活動においてガンプレイ（撃ち合い）よりロールプレイを重視することが求められている。
+
+## クラフト・経済基盤
+
+リサイクルセンターは存在しないが、街中のゴミ箱をあさることで素材を入手できる。取得できる素材には乾燥大麻の袋、空の袋、Broken bottle、ウィードシードなどがあり、一部は警察による押収対象となる有効期限付きのアイテムだった。
+
+![パレト・ベイの広場で、緑の大型ゴミ箱に上半身を突っ込んでいるキャラクター。画面下に「ゴミ箱を探しています…」の進行バーと残り6.7秒の表示が出ている](/images/taikenki/serverhoumon/ALTF4/trash-search.webp)
+
+![ゴミ箱から得た素材が並ぶインベントリ。乾燥大麻の袋4個、空の袋、Broken bottle、ウィードシード3個などが表示され、乾燥大麻の袋の詳細に「警察による押収対象」「有効期限 19d」と記されている](/images/taikenki/serverhoumon/ALTF4/trash-items.webp)
+
+武器クラフトには基本武器パーツクラフトと上級武器パーツクラフトの区分がある。
+
+なお、武器を奪う（ロブする）と、その武器は分解されてパーツのみが残る仕様になっている。これは仲間の武器を奪った場合も同様で、運営から不具合ではなく仕様であると明示されている。
+
+車パーツ製作やメカニックへの素材供給、買い取り制度の実態については、取材時点では確認していない。
+
+## 実際に養蜂を試す
+
+ジョブのうち、養蜂を試した。養蜂はマウント・チリアド方面の養蜂家NPCに話しかけて開始する。まず器具を購入する必要があり、取材時点の価格は巣箱$2000、養蜂の巣$2250、チモール（巣箱の感染症治療薬）$250、燻煙器$1500だった。
+
+![木造の小屋の前に立つ、サスペンダー姿の養蜂家NPC。画面中央に「[E] Talk to Beekeeper」の操作表示が出ている](/images/taikenki/serverhoumon/ALTF4/beekeeper-npc.webp)
+
+![養蜂家NPCの対話メニュー。「Beekeeper」の見出しの下に「Purchase Tools/Objects（養蜂に必要な道具と設備を買う）」と「Sell Items（蜂蜜や蜜蝋などの養蜂製品を売る）」の2項目が並ぶ](/images/taikenki/serverhoumon/ALTF4/beekeeper-menu.webp)
+
+![Purchase Beekeeping Equipmentの購入画面。Buy Bee House – $2000（働き蜂と女王蜂を集める巣箱）、Buy Bee Hive – $2250（蜂蜜と蜜蝋の生産を始める巣）、Buy Thymol – $250（巣の感染症の治療薬）、Buy Bee Smoker – $1500（採蜜前に蜂を落ち着かせる燻煙器）とReturn to Main Menuが並ぶ](/images/taikenki/serverhoumon/ALTF4/beekeeping-shop.webp)
+
+![器具購入後のインベントリ。クラシックフォン、現金17775、フレッシュミートカード、Citizen Card、チョコレートの箱に加えて、養蜂箱、蜂の巣、チモール、Bee Smokerが並んでいる](/images/taikenki/serverhoumon/ALTF4/beekeeping-inventory.webp)
+
+ただし取材では、器具を購入した後の進め方が分からず、着手には至らなかった。初訪問で独自ジョブに取り組む場合、他サーバーでも経験のあるジョブから始めた方が入りやすい可能性がある。
+
+## キャラメイク・初心者案内
+
+キャラメイクは独自のシステムを採用しており、初回はこの画面から開始する。前述のとおり自宅の一室からスタートし、チュートリアルに沿って進める形になっている。
+
+![キャラクター選択画面。屋上ラウンジを背景にキャラクターが立ち、右上にスロット追加の＋ボタンと左右の切り替え矢印、右側にラジアルメニューF1／エモートF3／車両操作F6／スキルツリーF7／インベントリTAB／電話M／ラジオMB5／ボイスNのキー一覧が並ぶ](/images/taikenki/serverhoumon/ALTF4/character-select.webp)
+
+![「Create Character - Slot 1」の登録ダイアログ。Personal Details（First Name／Last Name）、Birth Information（Month／Day／Year）、Character Information（Nationality: Japanese／Gender: Male・Female／Pronouns）の入力欄と、CancelとCreate Characterのボタンが並ぶ](/images/taikenki/serverhoumon/ALTF4/character-create.webp)
+
+## その他
+
+カジノが存在する。マップのランドマーク一覧にもカジノが登録されている。
+
+## 状態マーカー
+
+稼働中（2026年7月時点）
+
+---
+
+出典・参考
+
+- ALTF4 RP Japan 公式Discord・サーバー告知・サーバー内ルール表示
+- GTA6 FEEDによる取材時の観測（2026年7月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、ALTF4 RP Japan運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は取材時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![ALTF4's loading screen: on a dark background, the word "ALT" next to a neon "4" that fades from blue to pink, with "// roleplay //" beneath it and "Loading game (59%)" in the lower right](/images/taikenki/serverhoumon/ALTF4/loading.webp)
+
+ALTF4 RP Japan is a Japanese-language FiveM roleplay server that opened on July 31, 2026. It arrived as the Japanese-language version of a server that has been operated overseas, and it carries several original systems such as skill trees and a tutorial. GTA6 FEED reported on it and records the facts we were able to observe. Below, we separate the confirmed information we verified from the items we could not confirm.
+
+## Basic Information
+
+- Concept: the Japanese-language version of a large overseas FiveM RP server. According to the server's own announcement, it has more than 20,000 Discord members and has been running overseas for years
+- How to join: you enter through the official Discord. There is no application to join, but Steam must be running in order to connect
+- Concurrent players: 42 (observed at 23:00 on July 31, 2026). The observation fell on opening day, and quite a few people were unable to get in. The slot cap is 150, but because there are many original systems the data download takes time, so depending on connection speed and PC specs it can take a while to get in. A well-known streamer is also listed as an ambassador for the server, so the player count is likely to grow
+
+![ALTF4's card in the server list. Under the heading "ALTF4 ▶ the first overseas mega-server to land in Japan ▶ opens 7/31 ▶ beginners welcome" is a description saying a large overseas server with more than 20,000 Discord members is landing in Japan, opening 22:00 Friday July 31, with serious roleplay, active businesses, in-house gang and job systems, original clothing, and over 1,000 vehicles. The player count 42/150 and a Japanese flag sit at the lower left, with Connect and Upvote buttons below](/images/taikenki/serverhoumon/ALTF4/server-list.webp)
+
+## Atmosphere of the City
+
+The map's landmark list has 114 entries registered for the urban area, and 142 for the wider area including Paleto. There is an island on the north side of the map.
+
+![The city map screen. Job and shop icons are scattered over numbered blocks, and the right side lists landmarks (1/114) such as ALTF4 Customs, ALTF4 Aviation, VIP Barbershop, VIP Clothing Store, Walker Logistics, Off-road Vehicle Rental, Casino, Gasolin LTD, Garbage Collection, and Golf](/images/taikenki/serverhoumon/ALTF4/map-city.webp)
+
+![The map zoomed out to the Paleto area. A green island sits detached from the mainland at the upper left, and the landmark counter at the lower right reads 1/142](/images/taikenki/serverhoumon/ALTF4/map-paleto.webp)
+
+The hospital building is large and easy to identify from the outside.
+
+![The large hospital building facing Alta Street, with a small red car parked on the road in front. The tutorial display on the left reads "Survive / Visit the hospital, 5/9," with 68 m to go](/images/taikenki/serverhoumon/ALTF4/hospital.webp)
+
+Other players' positions are shown on the map. Animals such as cows and cougars are also placed around the world.
+
+![A black-and-white cow walking along a gravel track at a farm below Mount Chiliad, with a row of fruit trees and a wooden fence behind it and a corrugated barn and dumpster to the right](/images/taikenki/serverhoumon/ALTF4/cow.webp)
+
+## Economy and Jobs
+
+Jobs are taken from the "Job" app on the smartphone. The jobs we could confirm are Logistics, beekeeping, hunting, electrician, Mining, garbage collection, fishing, lumberjacking, trucking, Pressure Washing, and gardening.
+
+Each job has a proficiency track (a skill tree). Beekeeping, for example, starts at "Apprentice Beekeeper," and as you accumulate experience you are promoted to "Journeyman," which raises the payout multiplier on honey and wax sales, among other effects.
+
+![The beekeeping page opened in the smartphone's Job app. Under the description "Nature / Beekeeping — manage bee hives outdoors and produce honey and wax," the proficiency reads "Apprentice Beekeeper 0%" (0 xp, 200 xp to Journeyman), and the level list shows Apprentice Beekeeper at 0 exp and Journeyman at 200 exp with "+1% honey and wax sale payout multiplier"](/images/taikenki/serverhoumon/ALTF4/job-skilltree-beekeeping.webp)
+
+![The skill tree screen. Tabs across the top read "Civilian — survival, crafting, community support" and "Criminal — underworld activity and criminal organizations," with five columns of skill nodes chained vertically below. The right panel shows "Focus: none" and "Skill info: click a node to see details"](/images/taikenki/serverhoumon/ALTF4/skilltree.webp)
+
+As for restaurants, we could not find a player-staffed shop during our visit. Food can, however, be bought at Burger Shot.
+
+![The Burger Shot outlet facing Prosperity Street, with its red roof and WELCOME sign. The tutorial display on the left reads "Resupply / Get food at Burger Shot, 8/9," with 18 m to go](/images/taikenki/serverhoumon/ALTF4/burgershot.webp)
+
+## First Spawn and the Opening Moves
+
+This server's first-spawn format is distinctive. When you join, you start inside a room of a home you already own, and you can customize the room right there. You leave the room, take the elevator down to the lobby, and outside the building there is a rental car NPC.
+
+![The interior of the player's apartment. On the left, "Welcome to ALTF4, 1/9 — Make it your home / Set up a wardrobe and a storage container" is shown, followed by the steps: (1) open the furniture placement menu in the apartment, (2) place a storage box (stash), (3) place a wardrobe (for changing clothes)](/images/taikenki/serverhoumon/ALTF4/apartment-tutorial.webp)
+
+![The night view from a room in the player's home. Beyond the floor-to-ceiling windows, the lights of Los Santos and its freeways spread out](/images/taikenki/serverhoumon/ALTF4/apartment-night-view.webp)
+
+![The freshly created character standing in the room. A notification at the bottom of the screen reads "New objective · 2/9 — Get moving. You need transport; head to the nearest rental point and rent a vehicle. / Rent your first vehicle, +100 XP"](/images/taikenki/serverhoumon/ALTF4/tutorial-rental.webp)
+
+![The door out of the room, with a keypad mounted on the wall. The tutorial display on the left reads "Get moving / Rent your first vehicle, 2/9," 96 m away, GPS set](/images/taikenki/serverhoumon/ALTF4/apartment-door.webp)
+
+![The rental car NPC standing outside the building on the sidewalk along Carre Avenue, marked by a purple cylinder. The tutorial display on the left reads "Get moving / Rent your first vehicle, 2/9," with 5 m to go](/images/taikenki/serverhoumon/ALTF4/rental-npc.webp)
+
+Progression follows a nine-step tutorial. Each step is guided by GPS, and in order you work through things like "rent your first vehicle," "visit the hospital," and "get food at Burger Shot." After renting a car, the flow takes you to city hall to receive your starting funds. Because the tutorial is there, even a first-time player can get through without getting lost.
+
+![The game menu opened with the ESC key. Tabs for Home, Guide, Store, Rankings, and Info run across the top, with a map of the airport area and an "Open map" button under quick access, and Settings, Customize HUD, and Disconnect in the actions panel on the right. The "Get moving / Rent your first vehicle" tutorial display is still visible on the left](/images/taikenki/serverhoumon/ALTF4/esc-menu.webp)
+
+![The city hall building over toward Rockford, a white civic building fronted by palm trees. The tutorial display on the left reads "Receive funds / Visit city hall, 3/9," with 47 m to go](/images/taikenki/serverhoumon/ALTF4/cityhall.webp)
+
+![An office inside city hall. A "Objective complete — Receive funds, +100 XP, +$1,000 citizen grant" flourish is displayed in the center, a notification on the right says $30,000 has been received as the bank starting balance, and on the desk in front are the options "[E] Request starting funds" and "Request citizen card"](/images/taikenki/serverhoumon/ALTF4/starting-funds.webp)
+
+![The starting inventory screen. Only three slots are filled — a classic phone, $5,825 in cash, and a Fresh Meat card — with the rest empty](/images/taikenki/serverhoumon/ALTF4/starting-inventory.webp)
+
+![The detail view of a box of chocolates selected in the inventory. The description reads that it is used to lift your mood (restoring hunger and thirst to full and setting armor to 100), alongside a weight of 0.5 kg and an expiry of 29d](/images/taikenki/serverhoumon/ALTF4/chocolate-box.webp)
+
+The tutorial can be skipped with \`/skiptutorial\`, but skipping it means you do not receive the completion rewards.
+
+Rental car prices at the time of our visit were Panto $175, Pigalle $200, and Mesa $250, all per day.
+
+![The "Car Rental" menu, listing three vehicles vertically: Panto at $175 per day, Pigalle at $200 per day, and Mesa at $250 per day](/images/taikenki/serverhoumon/ALTF4/rental-price.webp)
+
+## Public Safety Structure
+
+We confirmed that police and EMS are active.
+
+As for criminal activity, a heist cannot be started within 30 minutes before or after a server restart (RR).
+
+## Crime and Gangs
+
+Heists are split across six levels, each with a defined number of players required. Within what we could confirm:
+
+- Level 1: store robbery (2), house robbery (2), ATM (2), vehicle theft / boosting (4)
+- Level 2: Vangelico (4), Fleeca bank (6), train heist (6)
+- Level 3: Artifact (8), Sandy bank (8), Rocks In Socks (4)
+- Level 4: Pacific bank (8), Humane Labs (8)
+- Level 5: Bobcat facility (10), Cayo Perico heist (12), Union heist (12), underground heist (12)
+- Level 6: casino heist (16)
+
+For gangs, the roster cap is set at 25 members. The published rules require that activity in the city put roleplay ahead of gunplay.
+
+## Crafting and Economic Foundations
+
+There is no recycling center, but you can obtain materials by digging through trash cans around the city. Materials we obtained included bags of dried cannabis, empty bags, broken bottles, and weed seeds, and some of them were items with an expiry date that are subject to police confiscation.
+
+![The character leaning head-first into a green dumpster in a lot in Paleto Bay. A progress bar at the bottom of the screen reads "Searching the trash can…" with 6.7 seconds remaining](/images/taikenki/serverhoumon/ALTF4/trash-search.webp)
+
+![The inventory holding materials pulled from the trash: four bags of dried cannabis, an empty bag, a broken bottle, three weed seeds, and more. The detail panel for the bag of dried cannabis notes that it is subject to police confiscation and has an expiry of 19d](/images/taikenki/serverhoumon/ALTF4/trash-items.webp)
+
+Weapon crafting is divided into basic weapon parts crafting and advanced weapon parts crafting.
+
+Note also that when you rob a weapon off someone, the weapon is broken down and only parts remain. The same applies when you take a weapon from a teammate, and the operators have stated explicitly that this is intended behavior, not a bug.
+
+As for car parts manufacturing, material supply to mechanics, and how the buyback system actually operates, we did not confirm these at the time of our visit.
+
+## Trying Beekeeping
+
+Among the jobs, we tried beekeeping. It starts by talking to a beekeeper NPC over toward Mount Chiliad. You first have to buy equipment; prices at the time of our visit were a bee house at $2,000, a bee hive at $2,250, thymol (a treatment for hive infections) at $250, and a bee smoker at $1,500.
+
+![The beekeeper NPC in suspenders standing in front of a wooden shed, with the prompt "[E] Talk to Beekeeper" in the center of the screen](/images/taikenki/serverhoumon/ALTF4/beekeeper-npc.webp)
+
+![The beekeeper's dialog menu. Under the "Beekeeper" heading are two entries: "Purchase Tools/Objects — buy essential tools and objects for beekeeping" and "Sell Items — sell your beekeeping products like honey and wax"](/images/taikenki/serverhoumon/ALTF4/beekeeper-menu.webp)
+
+![The Purchase Beekeeping Equipment screen, listing Buy Bee House – $2000 (a bee house to collect workers and queens), Buy Bee Hive – $2250 (to start producing honey and wax), Buy Thymol – $250 (a treatment for hive infections), and Buy Bee Smoker – $1500 (calms bees before harvesting), plus Return to Main Menu](/images/taikenki/serverhoumon/ALTF4/beekeeping-shop.webp)
+
+![The inventory after buying the equipment. Alongside the classic phone, $17,775 in cash, the Fresh Meat card, a Citizen Card, and a box of chocolates sit a bee house, a bee hive, thymol, and a Bee Smoker](/images/taikenki/serverhoumon/ALTF4/beekeeping-inventory.webp)
+
+During our visit, however, we could not work out how to proceed after buying the equipment and never got the job started. If you are taking on an original job on a first visit, starting from a job you already have experience with on other servers may be an easier way in.
+
+## Character Creation and Beginner Guidance
+
+Character creation uses an original system, and on your first time you start from this screen. As described above, you then start inside a room of your own home and proceed along the tutorial.
+
+![The character selection screen. A character stands against a rooftop lounge, with a slot-adding + button and left/right switch arrows at the upper right, and a key list on the right: radial menu F1, emotes F3, vehicle controls F6, skill tree F7, inventory TAB, phone M, radio MB5, voice N](/images/taikenki/serverhoumon/ALTF4/character-select.webp)
+
+![The "Create Character - Slot 1" registration dialog, with fields for Personal Details (First Name / Last Name), Birth Information (Month / Day / Year), and Character Information (Nationality: Japanese / Gender: Male, Female / Pronouns), plus Cancel and Create Character buttons](/images/taikenki/serverhoumon/ALTF4/character-create.webp)
+
+## Other
+
+There is a casino. It is also registered in the map's landmark list.
+
+## Status Marker
+
+Active (as of July 2026)
+
+---
+
+Sources and references
+
+- ALTF4 RP Japan official Discord, the server announcement, and the in-server rules display
+- GTA6 FEED's observations during the visit (July 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the ALTF4 RP Japan operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
   devDiary5,
@@ -2062,6 +2374,7 @@ export const fieldNotes: FieldNote[] = [
   devDiary3,
   devDiary2,
   devDiary1,
+  altf4RpJapan,
   stellaCity,
   lienCity,
   refloriaTown,
