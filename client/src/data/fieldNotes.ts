@@ -883,6 +883,299 @@ This article is a record of the GTA6 FEED operator actually building a FiveM ser
 };
 
 // ---------------------------------------------------------------------------
+//  #6 サーバー開発日記
+// ---------------------------------------------------------------------------
+const devDiary6: FieldNote = {
+  slug: 'server-dev-diary-6',
+  category: 'dev-diary',
+  title:
+    '【FiveM開発日記 #6】開発中に毎日使えるテレポートツール simple_teleport が完成。当初予定の機能がすべて揃った',
+  titleEn:
+    'FiveM Dev Diary #6: simple_teleport, a Teleport Tool I Can Use Every Day While Developing, Is Done — Every Feature I Originally Planned Is In',
+  date: '2026-06-27',
+  excerpt:
+    '開発日記#6。simple_teleport に、座標を vector4 / vector3 / raw の3形式で取り出せる /copycoords と、マップのウェイポイントへ安全に飛べる /tpm を追加。当初予定していた5コマンドがすべて揃い、v1.4.0 でひとまず完成となった記録。',
+  excerptEn:
+    'Dev Diary #6. I added /copycoords, which pulls coordinates out in three formats (vector4 / vector3 / raw), and /tpm, which teleports safely to a map waypoint. All five commands I originally planned are now in place, and at v1.4.0 the resource is done for now.',
+  image: '/images/taikenki/serverkaihatu/6/hero.webp',
+  icon: '📓',
+  seoTitle:
+    '【FiveM開発日記 #6】simple_teleport が完成｜/copycoords と /tpm を追加 - GTA6 FEED',
+  seoDesc:
+    'FiveM開発日記#6。自作テレポートリソース simple_teleport に、現在位置を vector4 / vector3 / raw の3形式で取り出せる /copycoords と、マップに置いたウェイポイントへ飛べる /tpm を追加。/tpm は高度1000m付近から地面を探索し、コリジョンの読み込みを待ってから降ろす安全重視の実装にした。v1.4.0 で当初予定の5コマンド（/tp・/coords・/back・/copycoords・/tpm）がすべて揃い、ひとまず完成。「一つのリソースに一つの役割」という設計の気づきまで含めた一次記録。',
+  seoTitleEn:
+    'FiveM Dev Diary #6: simple_teleport Is Complete — Adding /copycoords and /tpm | GTA6 FEED',
+  seoDescEn:
+    'FiveM Dev Diary #6. I added /copycoords, which pulls the current position out in three formats (vector4 / vector3 / raw), and /tpm, which teleports to a waypoint placed on the map, to my own teleport resource simple_teleport. /tpm searches for the ground from around 1000m up and waits for collision to load before setting you down — a safety-first implementation. At v1.4.0 all five commands I originally planned (/tp, /coords, /back, /copycoords, /tpm) are in, so it is done for now. A first-hand record, including what I learned about giving one resource one job.',
+  body: `![レジオンスクエアの赤いモニュメントの上に立つ自作キャラクター。背後にはヤシの木と高層ビルが並んでいる](/images/taikenki/serverkaihatu/6/hero.webp)
+
+今日は simple_teleport の完成を目標に開発を進めた。前回までに /tp、/coords、/back を実装していたので、残るは仕上げ。今回は最後の目玉機能 /tpm（Waypoint Teleport）と、予告していた /copycoords を追加した。
+
+## 今日実装した機能
+
+### /copycoords
+
+現在位置を、開発でそのまま使いやすい形式で取得できるコマンドを実装した。対応形式は3つ。
+
+- vector4
+- vector3
+- raw
+
+![txAdminのコンソールで restart simple_teleport を実行し、「Started resource simple_teleport」と表示された画面](/images/taikenki/serverkaihatu/6/copycoords-restart.webp)
+
+![レジオンスクエアでチャットに /copycoords と入力したところ。ヘルプに「/copycoords [format] 現在位置を貼り付け用の書式で表示します」と表示されている](/images/taikenki/serverkaihatu/6/copycoords-help.webp)
+
+出力はこんな形になる。
+
+- \`vector4(195.17, -934.17, 30.69, 19.25)\`
+- \`vector3(195.17, -934.17, 30.69)\`
+- \`195.17, -934.17, 30.69, 19.25\`
+
+![引数なしで /copycoords を実行した結果。「simple_teleport: vector4(195.17, -934.17, 30.69, 19.25)」と表示されている](/images/taikenki/serverkaihatu/6/copycoords-vector4.webp)
+
+![チャットに /copycoords vector3 と入力したところ。ヘルプに「省略時は vector4。vector3 / raw も指定できます」と表示されている](/images/taikenki/serverkaihatu/6/copycoords-vector3-input.webp)
+
+![/copycoords vector3 の実行結果。「simple_teleport: vector3(195.17, -934.17, 30.69)」が追加で表示されている](/images/taikenki/serverkaihatu/6/copycoords-vector3.webp)
+
+![チャットに /copycoords raw と入力したところ](/images/taikenki/serverkaihatu/6/copycoords-raw-input.webp)
+
+![/copycoords raw の実行結果。「simple_teleport: 195.17, -934.17, 30.69, 19.25」がカッコなしの生の値で表示されている](/images/taikenki/serverkaihatu/6/copycoords-raw.webp)
+
+NPC配置やショップ、Marker、Garage など、開発中に座標を取得したい場面でそのままコードへ貼り付けられる。/coords が「確認する」ためのものだったのに対し、/copycoords は「そのままコードに使える」ところまで踏み込んだ形だ。
+
+### /tpm
+
+今回いちばん大きな機能追加。マップに置いたウェイポイントへ瞬間移動できるコマンドを実装した。
+
+![txAdminのコンソールで /tpm 実装後に restart simple_teleport を実行し、「Started resource simple_teleport」と表示された画面](/images/taikenki/serverkaihatu/6/tpm-restart.webp)
+
+![チャットに /tpm と入力したところ。ヘルプに「/tpm マップに設定したウェイポイントへテレポートします」と表示されている](/images/taikenki/serverkaihatu/6/tpm-help.webp)
+
+実装した中身はこう。
+
+- ウェイポイント未設定時のエラー表示
+- 高度1000m付近から地面を安全に探索
+- 衝突（コリジョン）の読み込み待ち
+- 地面が見つからなければ水面を探索
+- 最後まで見つからなければ移動をキャンセル
+- 車両運転中は車ごと移動
+- /back に対応
+
+一般的な「高高度へ飛ばしてそのまま落下させる」方式ではなく、地面をきちんと探してから降ろす、安全性重視の実装にした。落下ダメージやマップ外への落下を避けられるので、開発中に何度も飛ぶ用途にはこちらのほうが安心して使える。
+
+## 動作確認
+
+今回はかなり細かくテストした。
+
+/copycoords は、
+
+- ✅ vector4
+- ✅ vector3
+- ✅ raw
+- ✅ 不正な引数を渡したときのエラーメッセージ
+
+すべて正常に動作。
+
+![チャットに /copycoords test と入力し、存在しない書式をわざと指定しているところ](/images/taikenki/serverkaihatu/6/copycoords-invalid-input.webp)
+
+![不正な引数を渡したときのエラー表示。「simple_teleport: 書式が不正です: test」「使い方: /copycoords [vector3|raw]」と出ている](/images/taikenki/serverkaihatu/6/copycoords-invalid-error.webp)
+
+![レジオンスクエアのチャット欄に vector4・vector3・raw・エラー・/coords の結果がすべて並んでいる状態](/images/taikenki/serverkaihatu/6/copycoords-history.webp)
+
+/tpm は、まずウェイポイント未設定の状態で実行し、エラーメッセージが出ることを確認。続いてマップ上にウェイポイントを置いて実行すると、無事テレポート成功。
+
+![ウェイポイント未設定のまま /tpm を実行したときの表示。「simple_teleport: マップにウェイポイントを設定してください。」と出ている](/images/taikenki/serverkaihatu/6/tpm-no-waypoint.webp)
+
+![ポーズメニューのマップ画面。メイズバンク・アリーナの上にウェイポイントを置き、「行き先マーカー（1113m）」と表示されている](/images/taikenki/serverkaihatu/6/tpm-waypoint-map.webp)
+
+![ウェイポイントを設定した状態で、あらためてチャットに /tpm と入力しているところ](/images/taikenki/serverkaihatu/6/tpm-input.webp)
+
+試しにアリーナの屋根へウェイポイントを置いてみたところ、そのまま屋根の上へテレポートした。最初は不具合かと思ったが、これは FiveM の地面判定では屋根も「Ground」として扱われるためで、正常な挙動とのことだった。最後に /back で元の場所へ戻れることも確認できた。
+
+![メイズバンク・アリーナの屋根の上にテレポートした画面。「simple_teleport: ウェイポイントへテレポートしました。」と表示されている](/images/taikenki/serverkaihatu/6/tpm-arena-roof.webp)
+
+![アリーナの屋根の上でチャットに /back と入力しているところ。ヘルプに「直前にいた位置へ戻ります」と表示されている](/images/taikenki/serverkaihatu/6/tpm-back-input.webp)
+
+![/back でレジオンスクエアへ戻った画面。「simple_teleport: テレポートしました: 195.17, -934.18, 30.68」と表示されている](/images/taikenki/serverkaihatu/6/tpm-back-returned.webp)
+
+## 現在の機能一覧
+
+simple_teleport v1.4.0
+
+- /tp
+- /coords
+- /back
+- /copycoords
+- /tpm
+
+当初予定していた機能をすべて実装し、ひとまず「完成」と言える状態になった。
+
+## 今日学んだこと
+
+一番印象に残ったのは、「機能を増やすこと」と「良い設計」は別物だということ。
+
+当初は /copycoords npc、/copycoords marker、/copycoords ox_target のような派生コマンドも追加しようと考えていた。でも、それらは明らかに開発者向けの機能で、simple_teleport という「テレポートツール」の役割からは少しはみ出してしまう。
+
+そこで今回は、このリソースを「シンプルで誰でも使えるテレポートツール」として完成させることにした。一つのリソースには一つの役割を持たせる。そのほうが使う人にとって分かりやすいし、今後のメンテナンスもしやすい。機能を足せるからといって全部を一つに詰め込むのが正解ではない、というのは今日の大きな気づきだった。
+
+## 余談：ここまで続けてこられた理由
+
+ところで、この開発日記がこうしてコツコツ続いているのには理由がある。実は以前、AI（ChatGPT）に「長時間ぶっ続けだと、どうしても嫌になってしまう」と正直に伝えたことがあった。すると、それ以降は1回あたり30分〜1時間くらいで区切りがつくように、手順を細かく分けて丁寧に教えてくれるようになった。
+
+おかげで毎回「今日はここまで」と気持ちよく終われるようになり、結果的に長続きしている。大きく一気に進めるより、こうして小さく区切って積み上げていくほうが、自分には合っているのだと思う。今日の「一つのリソースに一つの役割」という気づきとも、どこか通じるものがある気がする。
+
+## 次回予告
+
+次回からは、新しいリソース simple_devtools の開発を始める予定。
+
+これは FiveM 開発者向けのツールとして、
+
+- NPC配置支援
+- ox_target 用コード生成
+- PolyZone 用コード生成
+- 各種設定コードの自動生成
+
+といった、開発効率を上げる便利機能をまとめたリソースに育てていきたい。simple_teleport を「誰でも使えるシンプルなツール」として切り出せたからこそ、開発者向けの機能は次のリソースに集約できる。simple_teleport の完成をひと区切りに、次はより実践的な「開発支援ツール」の制作へ挑戦する。
+
+---
+
+この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年6月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
+  bodyEn: `![My own character standing on top of the red monument at Legion Square, with palm trees and high-rises lined up behind them](/images/taikenki/serverkaihatu/6/hero.webp)
+
+Today I pushed development forward with the goal of finishing simple_teleport. I had already implemented /tp, /coords and /back last time, so what was left was the finishing touches. This time I added the last headline feature, /tpm (Waypoint Teleport), along with /copycoords, which I had announced earlier.
+
+## What I Implemented Today
+
+### /copycoords
+
+I implemented a command that gets the current position in a form that is easy to use directly in development. It supports three formats.
+
+- vector4
+- vector3
+- raw
+
+![The txAdmin console after running restart simple_teleport, showing "Started resource simple_teleport"](/images/taikenki/serverkaihatu/6/copycoords-restart.webp)
+
+![Typing /copycoords into the chat at Legion Square. The help shows "/copycoords [format] — displays your current position in a paste-ready format"](/images/taikenki/serverkaihatu/6/copycoords-help.webp)
+
+The output comes out like this.
+
+- \`vector4(195.17, -934.17, 30.69, 19.25)\`
+- \`vector3(195.17, -934.17, 30.69)\`
+- \`195.17, -934.17, 30.69, 19.25\`
+
+![The result of running /copycoords with no argument: "simple_teleport: vector4(195.17, -934.17, 30.69, 19.25)"](/images/taikenki/serverkaihatu/6/copycoords-vector4.webp)
+
+![Typing /copycoords vector3 into the chat. The help notes that vector4 is used when the argument is omitted, and that vector3 / raw can also be specified](/images/taikenki/serverkaihatu/6/copycoords-vector3-input.webp)
+
+![The result of /copycoords vector3, with "simple_teleport: vector3(195.17, -934.17, 30.69)" added below](/images/taikenki/serverkaihatu/6/copycoords-vector3.webp)
+
+![Typing /copycoords raw into the chat](/images/taikenki/serverkaihatu/6/copycoords-raw-input.webp)
+
+![The result of /copycoords raw: "simple_teleport: 195.17, -934.17, 30.69, 19.25", the bare values with no wrapper](/images/taikenki/serverkaihatu/6/copycoords-raw.webp)
+
+Placing NPCs, shops, markers, garages — any time during development when I want to grab coordinates, I can paste them straight into code. Where /coords was for "checking," /copycoords steps further, all the way to "usable in code as-is."
+
+### /tpm
+
+The biggest addition this time. I implemented a command that teleports me to a waypoint placed on the map.
+
+![The txAdmin console after implementing /tpm and running restart simple_teleport, showing "Started resource simple_teleport"](/images/taikenki/serverkaihatu/6/tpm-restart.webp)
+
+![Typing /tpm into the chat. The help shows "/tpm — teleports you to the waypoint set on the map"](/images/taikenki/serverkaihatu/6/tpm-help.webp)
+
+Here's what's inside it.
+
+- An error message when no waypoint is set
+- Searching safely for the ground from around 1000m up
+- Waiting for collision to load
+- Searching for a water surface if no ground is found
+- Cancelling the move if nothing is found in the end
+- Moving the vehicle with me when I'm driving
+- Support for /back
+
+Rather than the common approach of flinging you up to a high altitude and letting you fall from there, I went with a safety-first implementation that properly looks for the ground before setting you down. It avoids fall damage and dropping off the edge of the map, so for jumping around over and over during development, this version is the one I can use with peace of mind.
+
+## Verifying It Works
+
+I tested this one in quite a bit of detail.
+
+For /copycoords,
+
+- ✅ vector4
+- ✅ vector3
+- ✅ raw
+- ✅ The error message when passing an invalid argument
+
+— all of it worked correctly.
+
+![Typing /copycoords test into the chat, deliberately specifying a format that doesn't exist](/images/taikenki/serverkaihatu/6/copycoords-invalid-input.webp)
+
+![The error shown when passing an invalid argument: "simple_teleport: invalid format: test" and "Usage: /copycoords [vector3|raw]"](/images/taikenki/serverkaihatu/6/copycoords-invalid-error.webp)
+
+![The chat at Legion Square with the vector4, vector3, raw, error and /coords results all lined up](/images/taikenki/serverkaihatu/6/copycoords-history.webp)
+
+For /tpm, I first ran it with no waypoint set and confirmed that the error message appears. Then I placed a waypoint on the map and ran it, and the teleport succeeded without trouble.
+
+![Running /tpm with no waypoint set: "simple_teleport: Please set a waypoint on the map."](/images/taikenki/serverkaihatu/6/tpm-no-waypoint.webp)
+
+![The pause menu map screen. A waypoint is placed on top of the Maze Bank Arena, showing "Destination marker (1113m)"](/images/taikenki/serverkaihatu/6/tpm-waypoint-map.webp)
+
+![Typing /tpm into the chat again, this time with the waypoint set](/images/taikenki/serverkaihatu/6/tpm-input.webp)
+
+As a test I put a waypoint on the arena roof, and it teleported me right up onto the roof. At first I thought it was a bug, but this is because FiveM's ground detection treats a roof as "Ground" too — apparently it's correct behavior. Finally, I confirmed that /back takes me back to where I started.
+
+![The screen after teleporting onto the roof of the Maze Bank Arena, with "simple_teleport: Teleported to the waypoint." displayed](/images/taikenki/serverkaihatu/6/tpm-arena-roof.webp)
+
+![Typing /back into the chat on the arena roof. The help shows "returns you to the position you were at just before"](/images/taikenki/serverkaihatu/6/tpm-back-input.webp)
+
+![Back at Legion Square via /back, with "simple_teleport: Teleported: 195.17, -934.18, 30.68" displayed](/images/taikenki/serverkaihatu/6/tpm-back-returned.webp)
+
+## The Current Feature List
+
+simple_teleport v1.4.0
+
+- /tp
+- /coords
+- /back
+- /copycoords
+- /tpm
+
+I've implemented every feature I originally planned, so for now it's reached a state I can call "complete."
+
+## What I Learned Today
+
+What stuck with me most is that "adding features" and "good design" are two different things.
+
+At first I was also thinking of adding derived commands like /copycoords npc, /copycoords marker and /copycoords ox_target. But those are clearly developer-facing features, and they stick out a little from the role of simple_teleport as a "teleport tool."
+
+So this time I decided to finish this resource as "a simple teleport tool anyone can use." Give one resource one job. That's easier for the people using it to understand, and easier to maintain going forward. Just because you can add a feature doesn't mean cramming everything into one thing is the right answer — that was my big realization today.
+
+## An Aside: Why I've Been Able to Keep This Up
+
+By the way, there's a reason this dev diary keeps chugging along like this. A while back I honestly told the AI (ChatGPT) that "if I go at it nonstop for hours, I inevitably start to hate it." From then on, it began breaking the steps down finely and walking me through them so that each session wraps up in about 30 minutes to an hour.
+
+Thanks to that, I can now finish each time feeling good about saying "that's it for today," and as a result it has lasted. Rather than pushing through in one big go, stacking things up in small chunks like this suits me better, I think. It feels like it connects somewhere to today's realization about giving one resource one job.
+
+## Coming Up Next Time
+
+From next time, I plan to start developing a new resource, simple_devtools.
+
+As a tool for FiveM developers, this would cover things like,
+
+- Help with placing NPCs
+- Code generation for ox_target
+- Code generation for PolyZone
+- Automatic generation of various config snippets
+
+— convenient features that raise development efficiency, all gathered into one resource I want to grow. Precisely because I could carve simple_teleport out as "a simple tool anyone can use," the developer-facing features can be concentrated in the next resource. With simple_teleport finished as one milestone, next I'm taking on building a more practical "development support tool."
+
+---
+
+This article is a record of the GTA6 FEED operator actually building a FiveM server on their own PC. The technical information is written after confirming the environment and each tool's offering as of June 2026, but the specifications and behavior vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
+};
+
+// ---------------------------------------------------------------------------
 //  訪問記 #1 HeliosCity
 // ---------------------------------------------------------------------------
 const heliosCity: FieldNote = {
@@ -2369,6 +2662,7 @@ This article was independently reported and recorded by GTA6 FEED and has no rel
 
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
+  devDiary6,
   devDiary5,
   devDiary4,
   devDiary3,
