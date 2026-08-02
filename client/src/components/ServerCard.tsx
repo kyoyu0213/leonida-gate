@@ -3,6 +3,7 @@ import { Copy, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 import type { FivemServer } from '@/lib/supabase';
 import { imagePublicUrl } from '@/lib/images';
+import { formatPostDate } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 
 interface ServerCardProps {
@@ -80,7 +81,7 @@ export default function ServerCard({ server, onTagClick }: ServerCardProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-gray-400 font-mono">{t('srv.card.registered')}</span>
-          <span className="text-gray-400 text-xs font-mono">{server.created_at.slice(0, 10)}</span>
+          <span className="text-gray-400 text-xs font-mono">{formatPostDate(server.created_at)}</span>
         </div>
       </div>
 

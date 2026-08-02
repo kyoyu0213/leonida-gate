@@ -6,6 +6,7 @@ import {
   friendPlatformLabelKey,
   friendContactKindLabelKey,
 } from '@/lib/friends';
+import { formatPostDate } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 
 interface FriendCardProps {
@@ -121,7 +122,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
         ) : (
           <span className="flex-1 text-[12px] text-white/35">{tr('fr.card.noContact')}</span>
         )}
-        <span className="flex-none text-[11px] text-white/35 font-mono">{friend.created_at.slice(0, 10)}</span>
+        <span className="flex-none text-[11px] text-white/35 font-mono">{formatPostDate(friend.created_at)}</span>
       </div>
 
       {/* 詳細・返信への導線 */}

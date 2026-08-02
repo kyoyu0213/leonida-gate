@@ -2,6 +2,7 @@ import { Copy, ExternalLink, Shield, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Crew } from '@/lib/crews';
 import { CREW_GENRES, crewPlatformLabelKey } from '@/lib/crews';
+import { formatPostDate } from '@/lib/board';
 import { useT } from '@/lib/i18n';
 
 interface CrewCardProps {
@@ -108,7 +109,7 @@ export default function CrewCard({ crew, onGenreClick, onPlatformClick }: CrewCa
         ) : (
           <span className="flex-1 text-[12px] text-white/35">{tr('cr.card.noContact')}</span>
         )}
-        <span className="flex-none text-[11px] text-white/35 font-mono">{crew.created_at.slice(0, 10)}</span>
+        <span className="flex-none text-[11px] text-white/35 font-mono">{formatPostDate(crew.created_at)}</span>
       </div>
 
       {/* 詳細・返信への導線 */}

@@ -13,6 +13,7 @@ import {
   crewPlatformLabelKey,
   type Crew,
 } from '@/lib/crews';
+import { formatPostDate } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
@@ -241,7 +242,7 @@ export default function CrewDetail() {
                   <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">
                     {crew.title}
                   </h1>
-                  <p className="text-[12px] text-white/40 mt-1 font-mono">{(crew.author_name || '名無しさん')}・{crew.created_at.slice(0, 10)}</p>
+                  <p className="text-[12px] text-white/40 mt-1 font-mono">{(crew.author_name || '名無しさん')}・{formatPostDate(crew.created_at)}</p>
                 </div>
               </div>
 
