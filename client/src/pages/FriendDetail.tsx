@@ -10,6 +10,7 @@ import {
   updateOwnFriend,
   friendStyleLabelKey,
   friendPlatformLabelKey,
+  friendContactKindLabelKey,
   FRIEND_PLAY_STYLES,
   FRIEND_PLATFORMS,
   type Friend,
@@ -57,6 +58,13 @@ export default function FriendDetail() {
   const styleLabelKey = friend ? friendStyleLabelKey(friend.play_style) : null;
   const platformLabelKey = friend ? friendPlatformLabelKey(friend.platform) : null;
   const platformText = friend ? (platformLabelKey ? tr(platformLabelKey) : friend.platform) : null;
+  // 連絡先が何のIDかは投稿者以外に分からないため、種別（PSN ID / Discord など）を添えて表示する。
+  const contactKindKey = friend ? friendContactKindLabelKey(friend.contact, friend.platform) : null;
+  const contactKindText = contactKindKey
+    ? lang === 'ja'
+      ? `（${tr(contactKindKey)}）`
+      : ` (${tr(contactKindKey)})`
+    : '';
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -265,6 +273,7 @@ export default function FriendDetail() {
                     className="inline-flex items-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] px-4 h-9 rounded-lg transition"
                   >
                     <ExternalLink size={14} /> {tr('fr.card.contact')}
+                    {contactKindText}
                   </button>
                 ) : (
                   <button
@@ -272,7 +281,8 @@ export default function FriendDetail() {
                     className="inline-flex items-center gap-1.5 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] px-4 h-9 rounded-lg transition"
                     title={friend.contact}
                   >
-                    <Copy size={14} /> {tr('fr.card.contact')}: {friend.contact}
+                    <Copy size={14} /> {tr('fr.card.contact')}
+                    {contactKindText}: {friend.contact}
                   </button>
                 ))}
             </div>
@@ -328,6 +338,7 @@ export default function FriendDetail() {
                       <div>
                         <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('fr.contact')}</label>
                         <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={editInput} />
+                        <p className="text-[11px] text-white/40 mt-1 leading-relaxed">{tr('fr.hint.contact')}</p>
                       </div>
                     </div>
                     <div>

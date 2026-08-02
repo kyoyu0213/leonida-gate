@@ -196,6 +196,7 @@ export default function FriendsBoard() {
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.contact')}</label>
                   <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={inputClass} />
+                  <p className="text-[11px] text-white/45 mt-1.5 leading-relaxed">{tr('fr.hint.contact')}</p>
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.playStyle')}</label>

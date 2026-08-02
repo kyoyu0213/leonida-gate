@@ -1,8 +1,12 @@
 import { Copy, ExternalLink, Users, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Friend } from '@/lib/friends';
-import { friendStyleLabelKey, friendPlatformLabelKey } from '@/lib/friends';
-import { useT } from '@/lib/i18n';
+import {
+  friendStyleLabelKey,
+  friendPlatformLabelKey,
+  friendContactKindLabelKey,
+} from '@/lib/friends';
+import { useT, useLang } from '@/lib/i18n';
 
 interface FriendCardProps {
   friend: Friend;
@@ -17,10 +21,18 @@ const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 /** フレンド募集のカード（/board/friends）。1募集=1カード。 */
 export default function FriendCard({ friend, onStyleClick, onPlatformClick }: FriendCardProps) {
   const tr = useT();
+  const lang = useLang();
   const styleLabelKey = friendStyleLabelKey(friend.play_style);
   const platformLabelKey = friendPlatformLabelKey(friend.platform);
   // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
   const platformText = platformLabelKey ? tr(platformLabelKey) : friend.platform;
+  // 「連絡先」だけでは何のIDか分からないので、種別（PSN ID / Discord など）を添える。
+  const contactKindKey = friendContactKindLabelKey(friend.contact, friend.platform);
+  const contactKindText = contactKindKey
+    ? lang === 'ja'
+      ? `（${tr(contactKindKey)}）`
+      : ` (${tr(contactKindKey)})`
+    : '';
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -94,6 +106,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
               className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] h-9 rounded-lg transition"
             >
               <ExternalLink size={14} /> {tr('fr.card.contact')}
+              {contactKindText}
             </button>
           ) : (
             <button
@@ -102,6 +115,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
               title={friend.contact}
             >
               <Copy size={14} /> {tr('fr.card.contact')}
+              {contactKindText}
             </button>
           )
         ) : (

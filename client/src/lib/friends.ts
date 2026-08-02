@@ -70,6 +70,39 @@ export function friendPlatformLabelKey(id: string | null): string | null {
   return FRIEND_PLATFORMS.find((x) => x.id === id)?.labelKey ?? null;
 }
 
+/**
+ * 連絡先が「何のID」なのかを示すラベルキー。
+ * 「連絡先: lf2manyoriginals」だけでは、投稿者以外にはPSN IDなのかDiscordなのか判別できない。
+ * そこで、値の見た目（招待リンク／Discord）を優先し、それ以外はプラットフォームから種別を補う。
+ * 値が「Discord: xxx」のように自分で種別を書いている場合は null（二重表示を避ける）。
+ */
+export function friendContactKindLabelKey(
+  contact: string | null,
+  platform: string | null,
+): string | null {
+  const v = (contact ?? '').trim();
+  if (!v) return null;
+  if (/^https?:\/\//i.test(v)) {
+    return /discord\.(gg|com)/i.test(v) ? 'fr.ck.discordLink' : 'fr.ck.link';
+  }
+  if (/discord/i.test(v)) return 'fr.ck.discord';
+  // 「PSN: xxx」「ゲームID：xxx」など、投稿者自身が種別を書いている場合はそのまま出す。
+  if (/^[^\s:：]{1,24}[:：]\s*\S/.test(v)) return null;
+  switch (platform) {
+    case 'ps5':
+    case 'ps4':
+      return 'fr.ck.psn';
+    case 'xbox_series':
+    case 'xbox_one':
+      return 'fr.ck.xbox';
+    case 'pc_enhanced':
+    case 'pc_legacy':
+      return 'fr.ck.rockstar';
+    default:
+      return 'fr.ck.gameId';
+  }
+}
+
 /** 公開中のフレンド募集を新しい順に取得。limit でプレビュー件数を絞れる。 */
 export async function listPublishedFriends(limit?: number) {
   let query = supabase
