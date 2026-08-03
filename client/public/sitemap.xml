@@ -514,6 +514,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/fivem-gtarp/field-notes/dev-diary/server-dev-diary-7</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/fivem-gtarp/field-notes/visit-note/helios-city</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -576,6 +582,12 @@
   <url>
     <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/dev-diary/server-dev-diary-6</loc>
     <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gta6-feed.com/en/fivem-gtarp/field-notes/dev-diary/server-dev-diary-7</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

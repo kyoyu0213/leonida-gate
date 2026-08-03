@@ -1176,6 +1176,200 @@ This article is a record of the GTA6 FEED operator actually building a FiveM ser
 };
 
 // ---------------------------------------------------------------------------
+//  #7 サーバー開発日記
+// ---------------------------------------------------------------------------
+const devDiary7: FieldNote = {
+  slug: 'server-dev-diary-7',
+  category: 'dev-diary',
+  title: '【FiveM開発日記 #7】GitHubデビュー。初の公開リソース Simple Teleport をリリースした',
+  titleEn:
+    'FiveM Dev Diary #7: My GitHub Debut — Releasing Simple Teleport, My First Public Resource',
+  date: '2026-07-01',
+  excerpt:
+    '開発日記#7。完成した simple_teleport を GitHub で初公開した記録。リポジトリ作成から git init / add / commit、Release v1.4.0 の作成、MIT License の追加（空ファイルを作ってしまうミス込み）まで、オープンソース開発者としての第一歩をひととおり。',
+  excerptEn:
+    'Dev Diary #7. A record of publishing the finished simple_teleport on GitHub for the first time. From creating the repository and running git init / add / commit, to cutting Release v1.4.0 and adding an MIT License (including the slip of committing an empty file) — a first step as an open source developer.',
+  image: '/images/taikenki/serverkaihatu/7/hero.webp',
+  icon: '📓',
+  seoTitle:
+    '【FiveM開発日記 #7】GitHubデビュー｜初の公開リソース Simple Teleport をリリース - GTA6 FEED',
+  seoDesc:
+    'FiveM開発日記#7。自作のテレポート用リソース simple_teleport を GitHub で初公開した一次記録。リポジトリの作成、git init / git add / git commit といった基本操作、README・client.lua・server.lua・config.lua・fxmanifest.lua のコミット、GitHub Release v1.4.0 の作成（機能一覧と導入手順つき）、MIT License の追加まで。空のライセンスファイルを作ってしまった失敗と、その修正も含めて記録した。',
+  seoTitleEn:
+    'FiveM Dev Diary #7: My GitHub Debut — Releasing Simple Teleport | GTA6 FEED',
+  seoDescEn:
+    'FiveM Dev Diary #7. A first-hand record of publishing my own teleport resource, simple_teleport, on GitHub for the first time. Creating the repository, the basics of git init / git add / git commit, committing README, client.lua, server.lua, config.lua and fxmanifest.lua, cutting GitHub Release v1.4.0 with a feature list and install steps, and adding an MIT License — including the mistake of committing an empty license file and how it was fixed.',
+  body: `![デスクに並んだモニターのイメージ図。左に開発中のコード、右にGTAの街とテレポートを表す光のリングが描かれている](/images/taikenki/serverkaihatu/7/hero.webp)
+
+今日は開発というより、「作ったものを公開する」までの流れを一通り経験した一日だった。前回 simple_teleport を v1.4.0 として完成させたので、今回はそれを世界に向けて公開するところまで進めた。
+
+## GitHub アカウントの準備
+
+これまではローカルだけで管理していたリソースを公開するため、まず GitHub の使い方を学ぶところからスタート。初めてリポジトリを作成し、git init → git add → git commit といった Git の基本操作も一つずつ確認した。
+
+![GitHubで simple_teleport リポジトリを作成した直後のクイックセットアップ画面。git init・git add・git commit・git push のコマンド例が並んでいる](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
+
+コマンドの意味を理解しながら進めたので、「なんとなく動いた」ではなく「何をしているか分かって動かせた」感覚があったのは良かった。
+
+## Simple Teleport を GitHub で公開
+
+現在開発している simple_teleport を、GitHub へ初公開した。コミットしたのは次のファイル。
+
+- README.md
+- client.lua
+- server.lua
+- config.lua
+- fxmanifest.lua
+
+![PowerShellで simple_teleport フォルダを dir した結果。client.lua・config.lua・fxmanifest.lua・README.md・server.lua の5ファイルが並んでいる](/images/taikenki/serverkaihatu/7/resource-files.webp)
+
+![git status の結果。「No commits yet」の下に、README.md・client.lua・config.lua・fxmanifest.lua・server.lua が new file としてステージされている](/images/taikenki/serverkaihatu/7/git-status.webp)
+
+初めて自分の書いたコードを世界へ公開した瞬間だった。フォルダの中身をただ置くだけでなく、他の人が見て分かるように整えたうえで公開できたのは、我ながら一歩前進だと思う。
+
+![公開後の simple_teleport リポジトリ。5つのファイルがすべて「Initial release v1.4.0」でコミットされ、下にREADMEが表示されている](/images/taikenki/serverkaihatu/7/github-repo-published.webp)
+
+## GitHub Release v1.4.0 を作成
+
+続いて、GitHub の Release 機能も初めて使ってみた。Simple Teleport v1.4.0 としてリリースを作成し、機能一覧（/tp /coords /back /copycoords /tpm）や導入方法（resources に入れて server.cfg に \`ensure simple_teleport\` を追記）も記載した。
+
+![リポジトリのReleases欄。「No releases published」と表示され、「Create a new release」のリンクだけがある状態](/images/taikenki/serverkaihatu/7/releases-empty.webp)
+
+![新規リリースの作成画面。タグ v1.4.0、タイトル「Simple Teleport v1.4.0」、リリースノートに /tp・/coords・/back・/copycoords・/tpm の機能一覧を書いている](/images/taikenki/serverkaihatu/7/release-draft-features.webp)
+
+![リリースノートの続き。Requirements と Installation に、resources へ入れて server.cfg に ensure simple_teleport を追記する手順を書いている](/images/taikenki/serverkaihatu/7/release-draft-install.webp)
+
+「ただコードを置く」だけでなく、配布物として見やすい形を意識したのがポイント。リリースノートに機能と使い方がまとまっていると、初めて見る人でも導入までの流れが分かりやすい。
+
+![公開されたリリースページ。「Simple Teleport v1.4.0」に Latest バッジが付き、Features・Requirements が箇条書きで表示されている](/images/taikenki/serverkaihatu/7/release-published.webp)
+
+## MIT License を追加
+
+ライセンスについても勉強した。せっかく公開するなら、他の開発者が安心して使える形にしておきたかったからだ。
+
+![GitHubの「ファイルを追加」メニューを開いたところ。「新しいファイルを作成する」「ファイルをアップロードする」が並んでいる](/images/taikenki/serverkaihatu/7/add-file-menu.webp)
+
+最初はうっかり空ファイルを作ってしまうミスもあったが、最終的に MIT License を正しく追加できた。
+
+![LICENSE ファイルの編集画面。中身が空のまま「Enter file contents here」と表示されている](/images/taikenki/serverkaihatu/7/license-empty-editor.webp)
+
+![コミットのダイアログ。コミットメッセージに「Create LICENSE」と入力し、main ブランチへ直接コミットしようとしている](/images/taikenki/serverkaihatu/7/license-commit-dialog.webp)
+
+![コミット後のLICENSEファイル。「0 lines (0 loc) · 1 Byte」と表示され、中身が空のままコミットされてしまったことが分かる](/images/taikenki/serverkaihatu/7/license-empty-committed.webp)
+
+![MIT License の本文を貼り付けたLICENSEファイルの編集画面。「MIT License / Copyright (c) 2026 kyoyu0213」から始まる全文が入っている](/images/taikenki/serverkaihatu/7/license-mit.webp)
+
+これで「使っていいのか分からない」という状態ではなく、誰でも自由に利用・改変できるリポジトリになった。ライセンスが明記されているかどうかは、配布物としての信頼感にけっこう効いてくる部分だと思う。
+
+## 次の開発予定も決定
+
+simple_teleport は一旦 v1.4.0 として公開したが、まだ伸ばせる余地がある。次に進めたいのはこのあたり。
+
+- 屋根の判定改善（前回、アリーナの屋根が「Ground」判定されてそこへ着地した挙動をより自然にしたい）
+- 開発者向けの便利機能の追加
+- v1.5.0 のリリース
+- デモ動画（約30秒）の作成
+
+動画も GitHub に載せて、「実際にどう動くのか」がひと目で分かるリソースを目指したい。文字の説明だけより、短い動画が一本あるだけで伝わり方がまるで違うはずだ。
+
+## 今日の感想
+
+これまでは「コードを書くこと」が中心だったが、今日は GitHub で公開し、リリースを作り、ライセンスを設定するという、オープンソース開発者としての第一歩を踏み出せた一日だった。
+
+まずは公開リソース第1号を無事にリリースできたこと、それが今日いちばんの成果だった。
+
+今回作成したリソースはこちら。 [https://github.com/kyoyu0213/simple_teleport](https://github.com/kyoyu0213/simple_teleport)
+
+---
+
+この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年7月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
+  bodyEn: `![An illustration of monitors on a desk — code under development on the left, and the GTA city with a ring of light representing teleportation on the right](/images/taikenki/serverkaihatu/7/hero.webp)
+
+Today was less about development and more about experiencing the whole flow up to "publishing what I made." Last time I finished simple_teleport as v1.4.0, so this time I took it all the way to releasing it to the world.
+
+## Getting a GitHub Account Ready
+
+To publish a resource I had been managing only locally, I started by learning how to use GitHub. I created a repository for the first time, and checked the basic Git operations — git init → git add → git commit — one at a time.
+
+![The quick setup screen right after creating the simple_teleport repository on GitHub, listing example commands for git init, git add, git commit and git push](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
+
+Because I went through it while understanding what each command meant, it felt less like "it somehow worked" and more like "I knew what I was doing while running it" — and that was good.
+
+## Publishing Simple Teleport on GitHub
+
+I published simple_teleport, the resource I'm currently developing, on GitHub for the first time. Here's what I committed.
+
+- README.md
+- client.lua
+- server.lua
+- config.lua
+- fxmanifest.lua
+
+![The result of running dir on the simple_teleport folder in PowerShell, showing the five files: client.lua, config.lua, fxmanifest.lua, README.md and server.lua](/images/taikenki/serverkaihatu/7/resource-files.webp)
+
+![The output of git status. Under "No commits yet", README.md, client.lua, config.lua, fxmanifest.lua and server.lua are staged as new files](/images/taikenki/serverkaihatu/7/git-status.webp)
+
+It was the moment I published code I'd written myself to the world for the first time. Rather than just dumping the contents of a folder, I got to publish it after tidying it up so other people could make sense of it — a step forward, if I do say so myself.
+
+![The simple_teleport repository after publishing. All five files are committed with "Initial release v1.4.0", with the README rendered below](/images/taikenki/serverkaihatu/7/github-repo-published.webp)
+
+## Creating GitHub Release v1.4.0
+
+Next, I tried GitHub's Release feature for the first time too. I created a release as Simple Teleport v1.4.0, and wrote up the feature list (/tp, /coords, /back, /copycoords, /tpm) along with how to install it (drop it in resources and add \`ensure simple_teleport\` to server.cfg).
+
+![The repository's Releases section, showing "No releases published" with only a "Create a new release" link](/images/taikenki/serverkaihatu/7/releases-empty.webp)
+
+![The new release screen. Tag v1.4.0, title "Simple Teleport v1.4.0", and release notes listing the /tp, /coords, /back, /copycoords and /tpm features](/images/taikenki/serverkaihatu/7/release-draft-features.webp)
+
+![The rest of the release notes. Requirements and Installation describe placing it in resources and adding ensure simple_teleport to server.cfg](/images/taikenki/serverkaihatu/7/release-draft-install.webp)
+
+The point was to be conscious of making it easy to read as a distributable, not just "putting the code somewhere." When the release notes gather the features and the usage in one place, even someone seeing it for the first time can follow the path to installing it.
+
+![The published release page. "Simple Teleport v1.4.0" carries the Latest badge, with Features and Requirements shown as bullet lists](/images/taikenki/serverkaihatu/7/release-published.webp)
+
+## Adding an MIT License
+
+I studied up on licenses too. If I'm going to publish it anyway, I wanted it in a form other developers could use with confidence.
+
+![Opening GitHub's "Add file" menu, showing "Create new file" and "Upload files"](/images/taikenki/serverkaihatu/7/add-file-menu.webp)
+
+At first I slipped up and created an empty file, but in the end I managed to add the MIT License properly.
+
+![The LICENSE file editor with the contents still empty, showing "Enter file contents here"](/images/taikenki/serverkaihatu/7/license-empty-editor.webp)
+
+![The commit dialog, with "Create LICENSE" entered as the commit message and a direct commit to the main branch selected](/images/taikenki/serverkaihatu/7/license-commit-dialog.webp)
+
+![The LICENSE file after committing. It shows "0 lines (0 loc) · 1 Byte", making it clear the file was committed while still empty](/images/taikenki/serverkaihatu/7/license-empty-committed.webp)
+
+![The LICENSE file editor with the full MIT License text pasted in, starting from "MIT License / Copyright (c) 2026 kyoyu0213"](/images/taikenki/serverkaihatu/7/license-mit.webp)
+
+With that, instead of being in a "not sure whether I'm allowed to use this" state, it became a repository anyone is free to use and modify. Whether a license is clearly stated makes a real difference to how trustworthy something feels as a distributable, I think.
+
+## The Next Development Plan Is Set
+
+I've published simple_teleport as v1.4.0 for now, but there's still room to grow it. Here's what I want to move on to next.
+
+- Improving the roof detection (last time, the arena roof was treated as "Ground" and I landed on it — I want to make that behavior more natural)
+- Adding more convenient features for developers
+- Releasing v1.5.0
+- Making a demo video (about 30 seconds)
+
+I want to put the video on GitHub too, aiming for a resource where you can see at a glance "how it actually works." A single short video should get the point across completely differently from text explanations alone.
+
+## How Today Felt
+
+Up to now the center of gravity has been "writing code," but today was the day I took my first step as an open source developer — publishing on GitHub, cutting a release, and setting a license.
+
+Getting public resource number one released without trouble — that was today's biggest result.
+
+Here's the resource I made this time. [https://github.com/kyoyu0213/simple_teleport](https://github.com/kyoyu0213/simple_teleport)
+
+---
+
+This article is a record of the GTA6 FEED operator actually building a FiveM server on their own PC. The technical information is written after confirming the environment and each tool's offering as of July 2026, but the specifications and behavior vary by environment and may change going forward. FiveM and GTA are trademarks of their respective rights holders (Cfx.re / Rockstar Games), and this site is not affiliated with those companies.`,
+};
+
+// ---------------------------------------------------------------------------
 //  訪問記 #1 HeliosCity
 // ---------------------------------------------------------------------------
 const heliosCity: FieldNote = {
@@ -2662,6 +2856,7 @@ This article was independently reported and recorded by GTA6 FEED and has no rel
 
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
+  devDiary7,
   devDiary6,
   devDiary5,
   devDiary4,
