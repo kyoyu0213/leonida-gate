@@ -1207,7 +1207,7 @@ const devDiary7: FieldNote = {
 
 これまではローカルだけで管理していたリソースを公開するため、まず GitHub の使い方を学ぶところからスタート。初めてリポジトリを作成し、git init → git add → git commit といった Git の基本操作も一つずつ確認した。
 
-![GitHubで simple_teleport リポジトリを作成した直後のクイックセットアップ画面。git init・git add・git commit・git push のコマンド例が並んでいる](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
+![GitHubで simple_teleport リポジトリを作成した直後のクイックセットアップ画面。git init・git add・git commit・git push のコマンド例が並んでいる（リポジトリのURLは伏せている）](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
 
 コマンドの意味を理解しながら進めたので、「なんとなく動いた」ではなく「何をしているか分かって動かせた」感覚があったのは良かった。
 
@@ -1257,7 +1257,7 @@ const devDiary7: FieldNote = {
 
 ![コミット後のLICENSEファイル。「0 lines (0 loc) · 1 Byte」と表示され、中身が空のままコミットされてしまったことが分かる](/images/taikenki/serverkaihatu/7/license-empty-committed.webp)
 
-![MIT License の本文を貼り付けたLICENSEファイルの編集画面。「MIT License / Copyright (c) 2026 kyoyu0213」から始まる全文が入っている](/images/taikenki/serverkaihatu/7/license-mit.webp)
+![MIT License の本文を貼り付けたLICENSEファイルの編集画面。「MIT License」から許諾条項・免責条項まで全文が入っている（著作権表示の氏名は伏せている）](/images/taikenki/serverkaihatu/7/license-mit.webp)
 
 これで「使っていいのか分からない」という状態ではなく、誰でも自由に利用・改変できるリポジトリになった。ライセンスが明記されているかどうかは、配布物としての信頼感にけっこう効いてくる部分だと思う。
 
@@ -1278,8 +1278,6 @@ simple_teleport は一旦 v1.4.0 として公開したが、まだ伸ばせる�
 
 まずは公開リソース第1号を無事にリリースできたこと、それが今日いちばんの成果だった。
 
-今回作成したリソースはこちら。 [https://github.com/kyoyu0213/simple_teleport](https://github.com/kyoyu0213/simple_teleport)
-
 ---
 
 この記事はGTA6 FEED運営者が、自分のPCで実際にFiveMサーバーを構築している記録である。技術的な情報は2026年7月時点の環境と各ツールの提供内容を確認して記載しているが、仕様や挙動は環境によって異なり、今後変わる可能性がある。FiveMおよびGTAは、それぞれの権利者（Cfx.re / Rockstar Games）の商標であり、本サイトは各社と提携関係にない。`,
@@ -1291,7 +1289,7 @@ Today was less about development and more about experiencing the whole flow up t
 
 To publish a resource I had been managing only locally, I started by learning how to use GitHub. I created a repository for the first time, and checked the basic Git operations — git init → git add → git commit — one at a time.
 
-![The quick setup screen right after creating the simple_teleport repository on GitHub, listing example commands for git init, git add, git commit and git push](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
+![The quick setup screen right after creating the simple_teleport repository on GitHub, listing example commands for git init, git add, git commit and git push (the repository URL is masked)](/images/taikenki/serverkaihatu/7/github-new-repo.webp)
 
 Because I went through it while understanding what each command meant, it felt less like "it somehow worked" and more like "I knew what I was doing while running it" — and that was good.
 
@@ -1341,7 +1339,7 @@ At first I slipped up and created an empty file, but in the end I managed to add
 
 ![The LICENSE file after committing. It shows "0 lines (0 loc) · 1 Byte", making it clear the file was committed while still empty](/images/taikenki/serverkaihatu/7/license-empty-committed.webp)
 
-![The LICENSE file editor with the full MIT License text pasted in, starting from "MIT License / Copyright (c) 2026 kyoyu0213"](/images/taikenki/serverkaihatu/7/license-mit.webp)
+![The LICENSE file editor with the full MIT License text pasted in, from the opening "MIT License" through the permission and warranty clauses (the name in the copyright line is masked)](/images/taikenki/serverkaihatu/7/license-mit.webp)
 
 With that, instead of being in a "not sure whether I'm allowed to use this" state, it became a repository anyone is free to use and modify. Whether a license is clearly stated makes a real difference to how trustworthy something feels as a distributable, I think.
 
@@ -1361,8 +1359,6 @@ I want to put the video on GitHub too, aiming for a resource where you can see a
 Up to now the center of gravity has been "writing code," but today was the day I took my first step as an open source developer — publishing on GitHub, cutting a release, and setting a license.
 
 Getting public resource number one released without trouble — that was today's biggest result.
-
-Here's the resource I made this time. [https://github.com/kyoyu0213/simple_teleport](https://github.com/kyoyu0213/simple_teleport)
 
 ---
 
