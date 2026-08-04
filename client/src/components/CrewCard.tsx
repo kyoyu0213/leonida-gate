@@ -1,7 +1,7 @@
 import { Copy, ExternalLink, Shield, MessageSquare } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Crew } from '@/lib/crews';
-import { CREW_GENRES, crewPlatformLabelKey } from '@/lib/crews';
+import { CREW_GENRES, crewPlatformLabelKey, crewPlatformCanonical } from '@/lib/crews';
 import { formatPostDate } from '@/lib/board';
 import { useT } from '@/lib/i18n';
 
@@ -46,7 +46,7 @@ export default function CrewCard({ crew, onGenreClick, onPlatformClick }: CrewCa
             {platformText && (
               <button
                 type="button"
-                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(crew.platform!) : undefined}
+                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(crewPlatformCanonical(crew.platform)!) : undefined}
                 className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10 ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:bg-[#a78bfa]/20' : ''}`}
               >
                 {platformText}

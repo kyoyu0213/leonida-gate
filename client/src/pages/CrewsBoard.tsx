@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import CrewCard from '@/components/CrewCard';
 import { toast } from 'sonner';
-import { listPublishedCrews, createCrew, CREW_GENRES, CREW_PLATFORMS, type Crew } from '@/lib/crews';
+import { listPublishedCrews, createCrew, CREW_GENRES, CREW_PLATFORMS, crewPlatformCanonical, type Crew } from '@/lib/crews';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -63,7 +63,8 @@ export default function CrewsBoard() {
 
   const filtered = crews.filter((c) => {
     const matchesGenre = selectedGenre === 'all' || c.genre === selectedGenre;
-    const matchesPlatform = selectedPlatform === 'all' || c.platform === selectedPlatform;
+    // 旧PC値(pc_enhanced/pc_legacy)も 'pc' として一致させる。
+    const matchesPlatform = selectedPlatform === 'all' || crewPlatformCanonical(c.platform) === selectedPlatform;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       !q ||
