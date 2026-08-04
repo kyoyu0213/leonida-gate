@@ -13,6 +13,7 @@ import {
   friendPlatformLabelKey,
   friendPlatformAccent,
   friendContactKindLabelKey,
+  friendContactDisplay,
   friendGenderLabelKey,
   FRIEND_PLAY_STYLES,
   FRIEND_PLATFORMS,
@@ -68,8 +69,7 @@ export default function FriendDetail() {
   const contactKindKey = friend ? friendContactKindLabelKey(friend.contact, friend.platform) : null;
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
-  // 連絡先はアイコン＋IDを直接表示（URLは http(s):// と www. を省く）。
-  const contactDisplay = (friend?.contact ?? '').replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  const contactDisplay = friendContactDisplay(friend?.contact ?? null);
   const genderLabelKey = friend ? friendGenderLabelKey(friend.gender) : null;
 
   const copy = (text: string) => {

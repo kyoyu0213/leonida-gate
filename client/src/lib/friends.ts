@@ -133,6 +133,19 @@ export function friendContactKindLabelKey(
   }
 }
 
+/**
+ * 連絡先ボタンに出す表示用テキスト。先頭のブランドアイコンで種別が分かるので、
+ * IDだけを見せる：URLは http(s):// と www. を省き、IDは先頭の「種別:」プレフィックス
+ * （例: 「discord:xxx」「PSN：xxx」）を省く。
+ */
+export function friendContactDisplay(contact: string | null): string {
+  const v = (contact ?? '').trim();
+  if (!v) return '';
+  if (/^https?:\/\//i.test(v)) return v.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  // 「discord:」「PSN：」など、値の先頭に自分で書いた種別ラベルを除去（半角/全角コロン対応）。
+  return v.replace(/^[^\s:：]{1,24}[:：]\s*/, '');
+}
+
 /** 公開中のフレンド募集を新しい順に取得。limit でプレビュー件数を絞れる。 */
 export async function listPublishedFriends(limit?: number) {
   let query = supabase

@@ -6,6 +6,7 @@ import {
   friendPlatformLabelKey,
   friendPlatformAccent,
   friendContactKindLabelKey,
+  friendContactDisplay,
   friendGenderLabelKey,
 } from '@/lib/friends';
 import ContactBrandIcon, { contactKindFromKey, CONTACT_BRAND_COLOR } from '@/components/ContactBrandIcon';
@@ -34,8 +35,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
   const contactKindKey = friendContactKindLabelKey(friend.contact, friend.platform);
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
-  // 表示用：URLは http(s):// と www. を省いて見やすくする（IDはそのまま）。
-  const contactDisplay = (friend.contact ?? '').replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  const contactDisplay = friendContactDisplay(friend.contact);
   const genderLabelKey = friendGenderLabelKey(friend.gender);
 
   const copy = (text: string) => {
