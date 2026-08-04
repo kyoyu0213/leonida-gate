@@ -14,9 +14,9 @@ interface TabItem {
 
 const TABS: TabItem[] = [
   { id: 'index', labelKey: 'recruit.index', href: '/recruit', accent: 'purple' },
-  { id: 'servers', labelKey: 'recruit.servers', href: '/servers', accent: 'pink' },
   { id: 'friends', labelKey: 'board.friends', href: '/board/friends', accent: 'cyan' },
   { id: 'crews', labelKey: 'board.crews', href: '/board/crews', accent: 'orange' },
+  { id: 'servers', labelKey: 'recruit.servers', href: '/servers', accent: 'pink' },
 ];
 
 interface RecruitTabsProps {

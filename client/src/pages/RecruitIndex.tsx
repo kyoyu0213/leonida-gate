@@ -15,9 +15,9 @@ interface Cat {
 }
 
 const CATS: Cat[] = [
-  { titleKey: 'recruit.servers', descKey: 'recruit.hub.servers.desc', href: '/servers', icon: Server, color: '#ff2d95' },
   { titleKey: 'board.friends', descKey: 'recruit.hub.friends.desc', href: '/board/friends', icon: Users, color: '#22d3ee' },
   { titleKey: 'board.crews', descKey: 'recruit.hub.crews.desc', href: '/board/crews', icon: Shield, color: '#ff8a3d' },
+  { titleKey: 'recruit.servers', descKey: 'recruit.hub.servers.desc', href: '/servers', icon: Server, color: '#ff2d95' },
 ];
 
 export default function RecruitIndex() {
