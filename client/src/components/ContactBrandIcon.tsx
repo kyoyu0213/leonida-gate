@@ -55,9 +55,16 @@ export default function ContactBrandIcon({ kind, size = 15, className }: Props) 
           <path d="M4.102 21.033A11.947 11.947 0 0 0 12 24a11.96 11.96 0 0 0 7.902-2.967c1.877-1.912-4.316-8.709-7.902-11.417-3.582 2.708-9.779 9.505-7.898 11.417zm11.16-14.406c2.5 2.961 7.484 10.313 6.076 12.912A11.95 11.95 0 0 0 24 12.004a11.94 11.94 0 0 0-3.57-8.536s-.027-.02-.082-.045c-.062-.025-.148-.059-.269-.059-.62 0-1.951.699-4.805 3.266zM3.316 3.464C1.353 5.541 0 8.62 0 12.004c0 2.446.735 4.717 1.984 6.62-1.394-2.6 3.568-9.943 6.075-12.911-2.859-2.535-4.202-3.209-4.881-3.209-.058 0-.11.003-.157.008zM12 3.101c1.32 0 3.045.712 4.293 1.583C15.028 3.32 13.531 2.5 12 2.5c-1.531 0-3.028.82-4.293 2.184C8.955 3.813 10.68 3.101 12 3.101z" />
         </svg>
       );
+    case 'rockstar':
+      // Rockstar / Social Club の「R★」マーク。太字のRに右上の星を重ねる。
+      return (
+        <svg {...common} fill="currentColor">
+          <text x="1.5" y="20" fontSize="22" fontWeight="900" fontFamily="Arial, Helvetica, sans-serif">R</text>
+          <polygon points="18.5,1.5 19.44,4.206 22.304,4.264 20.022,5.994 20.851,8.736 18.5,7.1 16.149,8.736 16.978,5.994 14.696,4.264 17.56,4.206" />
+        </svg>
+      );
     case 'link':
       return <Link2 size={size} className={className} aria-hidden />;
-    case 'rockstar':
     case 'gameId':
     default:
       return <Gamepad2 size={size} className={className} aria-hidden />;
