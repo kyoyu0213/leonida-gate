@@ -66,13 +66,10 @@ export default function FriendDetail() {
   const pfAccent = friendPlatformAccent(friend?.platform ?? null);
   // 連絡先が何のIDかは投稿者以外に分からないため、種別（PSN ID / Discord など）を添えて表示する。
   const contactKindKey = friend ? friendContactKindLabelKey(friend.contact, friend.platform) : null;
-  const contactKindText = contactKindKey
-    ? lang === 'ja'
-      ? `（${tr(contactKindKey)}）`
-      : ` (${tr(contactKindKey)})`
-    : '';
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
+  // 連絡先はアイコン＋IDを直接表示（URLは http(s):// と www. を省く）。
+  const contactDisplay = (friend?.contact ?? '').replace(/^https?:\/\//i, '').replace(/^www\./i, '');
   const genderLabelKey = friend ? friendGenderLabelKey(friend.gender) : null;
 
   const copy = (text: string) => {
@@ -292,24 +289,24 @@ export default function FriendDetail() {
                 (isUrl(friend.contact) ? (
                   <button
                     onClick={() => window.open(friend.contact!, '_blank', 'noopener')}
-                    className="inline-flex items-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] px-4 h-9 rounded-lg transition"
+                    className="inline-flex items-center gap-1.5 max-w-full bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] px-4 h-9 rounded-lg transition"
+                    title={friend.contact}
                   >
-                    <ContactBrandIcon kind={contactKind} size={15} /> {tr('fr.card.contact')}
-                    {contactKindText}
-                    <ExternalLink size={13} className="opacity-70" />
+                    <ContactBrandIcon kind={contactKind} size={15} className="flex-none" />
+                    <span className="truncate">{contactDisplay}</span>
+                    <ExternalLink size={13} className="opacity-70 flex-none" />
                   </button>
                 ) : (
                   <button
                     onClick={() => copy(friend.contact!)}
-                    className="inline-flex items-center gap-1.5 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] px-4 h-9 rounded-lg transition"
+                    className="inline-flex items-center gap-1.5 max-w-full bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] px-4 h-9 rounded-lg transition"
                     title={friend.contact}
                   >
                     <span className="flex-none inline-flex" style={{ color: brandColor }}>
                       <ContactBrandIcon kind={contactKind} size={15} />
                     </span>
-                    {tr('fr.card.contact')}
-                    {contactKindText}: {friend.contact}
-                    <Copy size={12} className="opacity-50" />
+                    <span className="truncate">{contactDisplay}</span>
+                    <Copy size={12} className="opacity-50 flex-none" />
                   </button>
                 ))}
             </div>

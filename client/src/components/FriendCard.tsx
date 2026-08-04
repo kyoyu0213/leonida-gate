@@ -10,7 +10,7 @@ import {
 } from '@/lib/friends';
 import ContactBrandIcon, { contactKindFromKey, CONTACT_BRAND_COLOR } from '@/components/ContactBrandIcon';
 import { formatPostDate } from '@/lib/board';
-import { useT, useLang } from '@/lib/i18n';
+import { useT } from '@/lib/i18n';
 
 interface FriendCardProps {
   friend: Friend;
@@ -25,21 +25,17 @@ const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 /** フレンド募集のカード（/board/friends）。1募集=1カード。 */
 export default function FriendCard({ friend, onStyleClick, onPlatformClick }: FriendCardProps) {
   const tr = useT();
-  const lang = useLang();
   const styleLabelKey = friendStyleLabelKey(friend.play_style);
   const platformLabelKey = friendPlatformLabelKey(friend.platform);
   // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
   const platformText = platformLabelKey ? tr(platformLabelKey) : friend.platform;
   const pfAccent = friendPlatformAccent(friend.platform);
-  // 「連絡先」だけでは何のIDか分からないので、種別（PSN ID / Discord など）を添える。
+  // 連絡先は種別アイコン＋IDを直接表示する（先頭のアイコンで何のIDかが分かるので種別テキストは不要）。
   const contactKindKey = friendContactKindLabelKey(friend.contact, friend.platform);
-  const contactKindText = contactKindKey
-    ? lang === 'ja'
-      ? `（${tr(contactKindKey)}）`
-      : ` (${tr(contactKindKey)})`
-    : '';
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
+  // 表示用：URLは http(s):// と www. を省いて見やすくする（IDはそのまま）。
+  const contactDisplay = (friend.contact ?? '').replace(/^https?:\/\//i, '').replace(/^www\./i, '');
   const genderLabelKey = friendGenderLabelKey(friend.gender);
 
   const copy = (text: string) => {
@@ -115,24 +111,24 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
           isUrl(friend.contact) ? (
             <button
               onClick={() => window.open(friend.contact!, '_blank', 'noopener')}
-              className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] h-9 rounded-lg transition"
+              className="flex-1 min-w-0 inline-flex items-center gap-1.5 px-3 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] h-9 rounded-lg transition"
+              title={friend.contact}
             >
-              <ContactBrandIcon kind={contactKind} size={15} /> {tr('fr.card.contact')}
-              {contactKindText}
-              <ExternalLink size={13} className="opacity-70" />
+              <ContactBrandIcon kind={contactKind} size={15} className="flex-none" />
+              <span className="truncate flex-1 text-left">{contactDisplay}</span>
+              <ExternalLink size={13} className="opacity-70 flex-none" />
             </button>
           ) : (
             <button
               onClick={() => copy(friend.contact!)}
-              className="flex-1 inline-flex items-center justify-center gap-1.5 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] h-9 rounded-lg transition"
+              className="flex-1 min-w-0 inline-flex items-center gap-1.5 px-3 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] h-9 rounded-lg transition"
               title={friend.contact}
             >
               <span className="flex-none inline-flex" style={{ color: brandColor }}>
                 <ContactBrandIcon kind={contactKind} size={15} />
               </span>
-              {tr('fr.card.contact')}
-              {contactKindText}
-              <Copy size={12} className="opacity-50" />
+              <span className="truncate flex-1 text-left">{contactDisplay}</span>
+              <Copy size={12} className="opacity-50 flex-none" />
             </button>
           )
         ) : (
