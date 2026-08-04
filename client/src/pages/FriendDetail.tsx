@@ -378,14 +378,14 @@ export default function FriendDetail() {
                       </div>
                       <div>
                         <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('fr.contact')}</label>
-                        <div className="flex gap-2">
-                          <select name="contact_kind" value={editForm.contact_kind} onChange={handleEditChange} className={`${editInput} h-[38px] w-[42%] flex-none`}>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          <select name="contact_kind" value={editForm.contact_kind} onChange={handleEditChange} className={`${editInput} h-[38px] sm:w-[46%] sm:flex-none`}>
                             <option value="" className="bg-[#15091c]">{tr('fr.ckopt.auto')}</option>
                             {FRIEND_CONTACT_KINDS.map((c) => (
                               <option key={c.id} value={c.id} className="bg-[#15091c]">{tr(c.labelKey)}</option>
                             ))}
                           </select>
-                          <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={editInput} />
+                          <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={`${editInput} sm:flex-1 sm:min-w-0`} />
                         </div>
                         <p className="text-[11px] text-white/40 mt-1 leading-relaxed">{tr('fr.hint.contact')}</p>
                       </div>

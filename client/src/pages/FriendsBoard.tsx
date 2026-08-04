@@ -199,14 +199,14 @@ export default function FriendsBoard() {
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.contact')}</label>
-                  <div className="flex gap-2">
-                    <select name="contact_kind" value={form.contact_kind} onChange={handleFormChange} className={`${inputClass} h-[46px] w-[42%] flex-none`}>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <select name="contact_kind" value={form.contact_kind} onChange={handleFormChange} className={`${inputClass} h-[46px] sm:w-[46%] sm:flex-none`}>
                       <option value="" className="bg-[#15091c]">{tr('fr.ckopt.auto')}</option>
                       {FRIEND_CONTACT_KINDS.map((c) => (
                         <option key={c.id} value={c.id} className="bg-[#15091c]">{tr(c.labelKey)}</option>
                       ))}
                     </select>
-                    <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={inputClass} />
+                    <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={`${inputClass} sm:flex-1 sm:min-w-0`} />
                   </div>
                   <p className="text-[11px] text-white/45 mt-1.5 leading-relaxed">{tr('fr.hint.contact')}</p>
                 </div>
