@@ -11,6 +11,7 @@ import {
   updateOwnFriend,
   friendStyleLabelKey,
   friendPlatformLabelKey,
+  friendPlatformAccent,
   friendContactKindLabelKey,
   friendGenderLabelKey,
   FRIEND_PLAY_STYLES,
@@ -62,6 +63,7 @@ export default function FriendDetail() {
   const styleLabelKey = friend ? friendStyleLabelKey(friend.play_style) : null;
   const platformLabelKey = friend ? friendPlatformLabelKey(friend.platform) : null;
   const platformText = friend ? (platformLabelKey ? tr(platformLabelKey) : friend.platform) : null;
+  const pfAccent = friendPlatformAccent(friend?.platform ?? null);
   // 連絡先が何のIDかは投稿者以外に分からないため、種別（PSN ID / Discord など）を添えて表示する。
   const contactKindKey = friend ? friendContactKindLabelKey(friend.contact, friend.platform) : null;
   const contactKindText = contactKindKey
@@ -245,7 +247,10 @@ export default function FriendDetail() {
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
                     {platformText && (
-                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10">
+                      <span
+                        className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold border"
+                        style={{ color: pfAccent, borderColor: `${pfAccent}80`, background: `${pfAccent}1a` }}
+                      >
                         {platformText}
                       </span>
                     )}

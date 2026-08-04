@@ -84,6 +84,22 @@ export function friendPlatformLabelKey(id: string | null): string | null {
   return FRIEND_PLATFORMS.find((x) => x.id === id)?.labelKey ?? null;
 }
 
+/** プラットフォーム別バッジ色。PS=紫 / Xbox=緑 / PC=オレンジ（未知は紫）。 */
+export function friendPlatformAccent(id: string | null): string {
+  switch (id) {
+    case 'xbox_series':
+    case 'xbox_one':
+      return '#34d399'; // 緑
+    case 'pc_enhanced':
+    case 'pc_legacy':
+      return '#ff8a3d'; // オレンジ
+    case 'ps5':
+    case 'ps4':
+    default:
+      return '#a78bfa'; // 紫（現状維持・未知も紫）
+  }
+}
+
 /**
  * 連絡先が「何のID」なのかを示すラベルキー。
  * 「連絡先: lf2manyoriginals」だけでは、投稿者以外にはPSN IDなのかDiscordなのか判別できない。

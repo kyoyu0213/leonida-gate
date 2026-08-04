@@ -4,6 +4,7 @@ import type { Friend } from '@/lib/friends';
 import {
   friendStyleLabelKey,
   friendPlatformLabelKey,
+  friendPlatformAccent,
   friendContactKindLabelKey,
   friendGenderLabelKey,
 } from '@/lib/friends';
@@ -29,6 +30,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
   const platformLabelKey = friendPlatformLabelKey(friend.platform);
   // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
   const platformText = platformLabelKey ? tr(platformLabelKey) : friend.platform;
+  const pfAccent = friendPlatformAccent(friend.platform);
   // 「連絡先」だけでは何のIDか分からないので、種別（PSN ID / Discord など）を添える。
   const contactKindKey = friendContactKindLabelKey(friend.contact, friend.platform);
   const contactKindText = contactKindKey
@@ -65,7 +67,8 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
               <button
                 type="button"
                 onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(friend.platform!) : undefined}
-                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold text-[#c4b5fd] border border-[#a78bfa]/50 bg-[#a78bfa]/10 ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:bg-[#a78bfa]/20' : ''}`}
+                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold border transition ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:brightness-125' : ''}`}
+                style={{ color: pfAccent, borderColor: `${pfAccent}80`, background: `${pfAccent}1a` }}
               >
                 {platformText}
               </button>
