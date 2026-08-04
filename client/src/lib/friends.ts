@@ -74,7 +74,6 @@ export const FRIEND_CONTACT_KINDS = [
   { id: 'psn', labelKey: 'fr.ck.psn' },
   { id: 'xbox', labelKey: 'fr.ck.xbox' },
   { id: 'rockstar', labelKey: 'fr.ckopt.rockstar' }, // Rockstar ID（ゲーム内フレンド）
-  { id: 'link', labelKey: 'fr.ck.link' },
 ];
 
 // 過去データ（旧カテゴリ）も表示を壊さないためのラベル探索。
