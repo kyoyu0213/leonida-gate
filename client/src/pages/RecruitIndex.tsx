@@ -65,7 +65,7 @@ export default function RecruitIndex() {
                   <Icon size={22} />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-[16px] font-extrabold text-white m-0 mb-1">{t(c.titleKey)}</h2>
+                  <h2 className="text-[16px] font-extrabold text-white m-0 mb-1 jp-head">{t(c.titleKey)}</h2>
                   <p className="text-[13px] text-white/60 leading-relaxed m-0 line-clamp-2">{t(c.descKey)}</p>
                 </div>
                 <ArrowRight
