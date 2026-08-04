@@ -17,6 +17,24 @@
   }
 }
 
+/* 見出しの改行対策（特にスマホ）。「FiveMサーバー 住民募集板」のような英字＋日本語の
+   混在見出しが単語の途中で改行されないよう、日本語の連なりを1語として扱い、スペース等の
+   自然な区切りで折り返す。1語だけで幅に収まらない場合のみ、どこでも折って横あふれを防ぐ。 */
+h1,
+h2,
+h3 {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 記事本文などで使う wrap-anywhere（長いURL等を途中で折り返す）。この Tailwind 環境では
+   ユーティリティが無効で算出値が normal のままだったため、明示的に定義してスマホでの
+   横あふれ（長いURLがはみ出して画面が横スクロールする）を防ぐ。 */
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
