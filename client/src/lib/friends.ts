@@ -21,6 +21,7 @@ export interface Friend {
   thread_id: string | null;
   status: string; // 'published' | 'closed'（募集終了）
   created_at: string;
+  reply_count?: number; // 一覧取得時に board_threads.post_count から補完（本文複製の #1 を除いた返信数）
 }
 
 // 匿名に許可された公開列だけを明示指定する（select('*') は列権限で拒否されるため）。
@@ -158,7 +159,9 @@ export function friendContactDisplay(contact: string | null): string {
   return v.replace(/^[^\s:：]{1,24}[:：]\s*/, '');
 }
 
-/** 公開中のフレンド募集を新しい順に取得。limit でプレビュー件数を絞れる。 */
+/** 公開中のフレンド募集を新しい順に取得。limit でプレビュー件数を絞れる。
+ *  各募集の返信数（reply_count）を board_threads.post_count から補完する
+ *  （post #1 は本文の複製なので、返信数 = post_count - 1）。 */
 export async function listPublishedFriends(limit?: number) {
   let query = supabase
     .from('friends')
@@ -166,7 +169,23 @@ export async function listPublishedFriends(limit?: number) {
     .eq('status', 'published')
     .order('created_at', { ascending: false });
   if (limit) query = query.limit(limit);
-  return query;
+  const res = await query;
+  if (res.error || !res.data) return res;
+
+  const rows = res.data as Friend[];
+  const threadIds = rows.map((f) => f.thread_id).filter((v): v is string => !!v);
+  if (threadIds.length) {
+    const { data: threads } = await supabase
+      .from('board_threads')
+      .select('id, post_count')
+      .in('id', threadIds);
+    const counts = new Map((threads ?? []).map((t) => [t.id as string, t.post_count as number]));
+    for (const f of rows) {
+      const pc = f.thread_id ? counts.get(f.thread_id) : undefined;
+      f.reply_count = typeof pc === 'number' ? Math.max(0, pc - 1) : 0;
+    }
+  }
+  return res;
 }
 
 /** 1件取得（公開＝published／募集終了＝closed）。詳細ページ用。 */

@@ -462,6 +462,7 @@ const JA: Dict = {
   // 返信（共有）
   'rep.empty': 'まだ返信がありません。最初の返信を書き込もう。',
   'rep.viewDetail': '詳細・返信を見る',
+  'rep.viewReplies': '返信を見る',
   // クルー募集（/board/crews）
   'cr.heading': 'クルー募集板',
   'cr.lead': 'GTA6/GTAオンラインのクルー・チームのメンバーを募集しよう。ジャンルや活動時間、参加条件を添えて掲載できます。どなたでも掲載できます。',
@@ -1020,6 +1021,7 @@ const EN: Dict = {
   'fr.notFound': 'Listing not found',
   'rep.empty': 'No replies yet. Be the first to reply.',
   'rep.viewDetail': 'View & reply',
+  'rep.viewReplies': 'View replies',
   // Find a Crew (/board/crews)
   'cr.heading': 'Find a Crew Board',
   'cr.lead': 'Recruit members for your GTA6 / GTA Online crew or team. Post with genre, active hours and requirements. Anyone can post.',

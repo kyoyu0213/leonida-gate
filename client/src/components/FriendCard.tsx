@@ -11,7 +11,7 @@ import {
 } from '@/lib/friends';
 import ContactBrandIcon, { contactKindFromKey, CONTACT_BRAND_COLOR } from '@/components/ContactBrandIcon';
 import { formatPostDate } from '@/lib/board';
-import { useT } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
 
 interface FriendCardProps {
   friend: Friend;
@@ -26,6 +26,7 @@ const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 /** フレンド募集のカード（/board/friends）。1募集=1カード。 */
 export default function FriendCard({ friend, onStyleClick, onPlatformClick }: FriendCardProps) {
   const tr = useT();
+  const lang = useLang();
   const styleLabelKey = friendStyleLabelKey(friend.play_style);
   const platformLabelKey = friendPlatformLabelKey(friend.platform);
   // 既知のIDはラベル、旧・自由入力値は生値をそのまま表示。
@@ -145,7 +146,8 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
         href={`/board/friends/${friend.id}`}
         className="mt-2.5 inline-flex items-center justify-center gap-1.5 text-[12px] font-bold text-[#22d3ee] hover:text-white transition-colors"
       >
-        <MessageSquare size={13} /> {tr('rep.viewDetail')}
+        <MessageSquare size={13} /> {tr('rep.viewReplies')}
+        {friend.reply_count ? (lang === 'ja' ? `（${friend.reply_count}件）` : ` (${friend.reply_count})`) : ''}
       </a>
     </div>
   );
