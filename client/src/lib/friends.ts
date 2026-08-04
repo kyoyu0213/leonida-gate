@@ -47,11 +47,22 @@ export const FRIEND_PLAY_STYLES = [
 export const FRIEND_PLATFORMS = [
   { id: 'ps5', labelKey: 'fr.pf.ps5' },
   { id: 'ps4', labelKey: 'fr.pf.ps4' },
+  { id: 'pc', labelKey: 'fr.pf.pc' },
   { id: 'xbox_series', labelKey: 'fr.pf.xboxSeries' },
   { id: 'xbox_one', labelKey: 'fr.pf.xboxOne' },
-  { id: 'pc_enhanced', labelKey: 'fr.pf.pcEnhanced' },
-  { id: 'pc_legacy', labelKey: 'fr.pf.pcLegacy' },
 ];
+
+// 旧データ（PCをエンハンスト/レガシーで分けていた頃）を 'pc' に正規化するための対応。
+const LEGACY_PLATFORM_LABELS: Record<string, string> = {
+  pc_enhanced: 'fr.pf.pc',
+  pc_legacy: 'fr.pf.pc',
+};
+
+/** 旧PC値(pc_enhanced/pc_legacy)を新しい 'pc' に正規化する（表示・絞り込みの一致用）。 */
+export function friendPlatformCanonical(id: string | null): string | null {
+  if (id === 'pc_enhanced' || id === 'pc_legacy') return 'pc';
+  return id;
+}
 
 // 性別（gender 列に保存）。任意項目で、未指定は非表示。id は DB 保存値、ラベルは i18n キー。
 export const FRIEND_GENDERS = [
@@ -93,7 +104,7 @@ export function friendStyleLabelKey(id: string | null): string | null {
 /** platform の表示ラベルキー。未知（旧・自由入力値）は null（呼び出し側で生値にフォールバック）。 */
 export function friendPlatformLabelKey(id: string | null): string | null {
   if (!id) return null;
-  return FRIEND_PLATFORMS.find((x) => x.id === id)?.labelKey ?? null;
+  return FRIEND_PLATFORMS.find((x) => x.id === id)?.labelKey ?? LEGACY_PLATFORM_LABELS[id] ?? null;
 }
 
 /** プラットフォーム別バッジ色。PS=紫 / Xbox=緑 / PC=オレンジ（未知は紫）。 */
@@ -102,6 +113,7 @@ export function friendPlatformAccent(id: string | null): string {
     case 'xbox_series':
     case 'xbox_one':
       return '#34d399'; // 緑
+    case 'pc':
     case 'pc_enhanced':
     case 'pc_legacy':
       return '#ff8a3d'; // オレンジ
@@ -137,6 +149,7 @@ export function friendContactKindLabelKey(
     case 'xbox_series':
     case 'xbox_one':
       return 'fr.ck.xbox';
+    case 'pc':
     case 'pc_enhanced':
     case 'pc_legacy':
       return 'fr.ck.rockstar';

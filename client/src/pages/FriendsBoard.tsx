@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import FriendCard from '@/components/FriendCard';
 import { toast } from 'sonner';
-import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, FRIEND_GENDERS, FRIEND_CONTACT_KINDS, type Friend } from '@/lib/friends';
+import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, FRIEND_GENDERS, FRIEND_CONTACT_KINDS, friendPlatformCanonical, type Friend } from '@/lib/friends';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -64,7 +64,8 @@ export default function FriendsBoard() {
 
   const filtered = friends.filter((f) => {
     const matchesStyle = selectedStyle === 'all' || f.play_style === selectedStyle;
-    const matchesPlatform = selectedPlatform === 'all' || f.platform === selectedPlatform;
+    // 旧PC値(pc_enhanced/pc_legacy)も 'pc' として一致させる。
+    const matchesPlatform = selectedPlatform === 'all' || friendPlatformCanonical(f.platform) === selectedPlatform;
     const q = searchQuery.toLowerCase();
     const matchesSearch =
       !q ||
@@ -128,7 +129,7 @@ export default function FriendsBoard() {
       ? tr('fr.ph.contact.psn')
       : form.platform === 'xbox_series' || form.platform === 'xbox_one'
         ? tr('fr.ph.contact.xbox')
-        : form.platform === 'pc_enhanced' || form.platform === 'pc_legacy'
+        : form.platform === 'pc' || form.platform === 'pc_enhanced' || form.platform === 'pc_legacy'
           ? tr('fr.ph.contact.pc')
           : tr('fr.ph.contact.default');
 

@@ -5,6 +5,7 @@ import {
   friendStyleLabelKey,
   friendPlatformLabelKey,
   friendPlatformAccent,
+  friendPlatformCanonical,
   friendContactKindLabelKey,
   friendContactDisplay,
   friendGenderLabelKey,
@@ -66,7 +67,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
             {platformText && (
               <button
                 type="button"
-                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(friend.platform!) : undefined}
+                onClick={onPlatformClick && platformLabelKey ? () => onPlatformClick(friendPlatformCanonical(friend.platform)!) : undefined}
                 className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold border transition ${onPlatformClick && platformLabelKey ? 'cursor-pointer hover:brightness-125' : ''}`}
                 style={{ color: pfAccent, borderColor: `${pfAccent}80`, background: `${pfAccent}1a` }}
               >
