@@ -56,11 +56,27 @@ export default function ContactBrandIcon({ kind, size = 15, className }: Props) 
         </svg>
       );
     case 'rockstar':
-      // Rockstar / Social Club の「R★」マーク。太字のRに右上の星を重ねる。
+      // Rockstar / Social Club の公式ロゴ調バッジ（オレンジ角丸＋黒いR＋白い星）。
       return (
-        <svg {...common} fill="currentColor">
-          <text x="1.5" y="20" fontSize="22" fontWeight="900" fontFamily="Arial, Helvetica, sans-serif">R</text>
-          <polygon points="18.5,1.5 19.44,4.206 22.304,4.264 20.022,5.994 20.851,8.736 18.5,7.1 16.149,8.736 16.978,5.994 14.696,4.264 17.56,4.206" />
+        <svg {...common}>
+          <rect x="1" y="1" width="22" height="22" rx="5.5" fill="#F5A623" />
+          <text
+            x="4.2"
+            y="17.7"
+            fontFamily="'Arial Black', 'Arial', sans-serif"
+            fontWeight="900"
+            fontSize="17"
+            fill="#0a0a0a"
+          >
+            R
+          </text>
+          <polygon
+            points="16.5,11.3 17.764,14.761 21.446,14.893 18.545,17.164 19.557,20.707 16.5,18.65 13.443,20.707 14.455,17.164 11.554,14.893 15.236,14.761"
+            fill="#ffffff"
+            stroke="#0a0a0a"
+            strokeWidth="0.9"
+            strokeLinejoin="round"
+          />
         </svg>
       );
     case 'link':
