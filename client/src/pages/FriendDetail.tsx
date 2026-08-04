@@ -18,6 +18,7 @@ import {
   FRIEND_PLAY_STYLES,
   FRIEND_PLATFORMS,
   FRIEND_GENDERS,
+  FRIEND_CONTACT_KINDS,
   type Friend,
 } from '@/lib/friends';
 import { formatPostDate } from '@/lib/board';
@@ -65,8 +66,12 @@ export default function FriendDetail() {
   const platformLabelKey = friend ? friendPlatformLabelKey(friend.platform) : null;
   const platformText = friend ? (platformLabelKey ? tr(platformLabelKey) : friend.platform) : null;
   const pfAccent = friendPlatformAccent(friend?.platform ?? null);
-  // 連絡先が何のIDかは投稿者以外に分からないため、種別（PSN ID / Discord など）を添えて表示する。
-  const contactKindKey = friend ? friendContactKindLabelKey(friend.contact, friend.platform) : null;
+  // 投稿者が種類を明示（contact_kind）していればそれを優先、無ければ値＋プラットフォームから自動判定。
+  const contactKindKey = friend?.contact_kind
+    ? `fr.ck.${friend.contact_kind}`
+    : friend
+      ? friendContactKindLabelKey(friend.contact, friend.platform)
+      : null;
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
   const contactDisplay = friendContactDisplay(friend?.contact ?? null);
@@ -117,6 +122,7 @@ export default function FriendDetail() {
     active_time: '',
     age_range: '',
     contact: '',
+    contact_kind: '',
     body: '',
   });
 
@@ -133,6 +139,7 @@ export default function FriendDetail() {
       active_time: friend.active_time ?? '',
       age_range: friend.age_range ?? '',
       contact: friend.contact ?? '',
+      contact_kind: friend.contact_kind ?? '',
       body: friend.body,
     });
     setEditOpen(true);
@@ -170,6 +177,7 @@ export default function FriendDetail() {
         contact: editForm.contact.trim() || null,
         author_name: editForm.author_name.trim() || null,
         gender: editForm.gender || null,
+        contact_kind: editForm.contact_kind || null,
       },
       editKey.trim() || null,
     );
@@ -370,7 +378,15 @@ export default function FriendDetail() {
                       </div>
                       <div>
                         <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('fr.contact')}</label>
-                        <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={editInput} />
+                        <div className="flex gap-2">
+                          <select name="contact_kind" value={editForm.contact_kind} onChange={handleEditChange} className={`${editInput} h-[38px] w-[42%] flex-none`}>
+                            <option value="" className="bg-[#15091c]">{tr('fr.ckopt.auto')}</option>
+                            {FRIEND_CONTACT_KINDS.map((c) => (
+                              <option key={c.id} value={c.id} className="bg-[#15091c]">{tr(c.labelKey)}</option>
+                            ))}
+                          </select>
+                          <input name="contact" value={editForm.contact} onChange={handleEditChange} maxLength={120} className={editInput} />
+                        </div>
                         <p className="text-[11px] text-white/40 mt-1 leading-relaxed">{tr('fr.hint.contact')}</p>
                       </div>
                     </div>

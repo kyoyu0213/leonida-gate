@@ -32,7 +32,10 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
   const platformText = platformLabelKey ? tr(platformLabelKey) : friend.platform;
   const pfAccent = friendPlatformAccent(friend.platform);
   // 連絡先は種別アイコン＋IDを直接表示する（先頭のアイコンで何のIDかが分かるので種別テキストは不要）。
-  const contactKindKey = friendContactKindLabelKey(friend.contact, friend.platform);
+  // 投稿者が種類を明示（contact_kind）していればそれを優先、無ければ値＋プラットフォームから自動判定。
+  const contactKindKey = friend.contact_kind
+    ? `fr.ck.${friend.contact_kind}`
+    : friendContactKindLabelKey(friend.contact, friend.platform);
   const contactKind = contactKindFromKey(contactKindKey);
   const brandColor = CONTACT_BRAND_COLOR[contactKind];
   const contactDisplay = friendContactDisplay(friend.contact);

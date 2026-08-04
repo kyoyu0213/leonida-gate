@@ -17,6 +17,7 @@ export interface Friend {
   contact: string | null;
   author_name: string | null;
   gender: string | null; // 'male' | 'female' | 'other' | null（任意）
+  contact_kind: string | null; // 'discord'|'psn'|'xbox'|'rockstar'|'link'|null（null=自動判定）
   thread_id: string | null;
   status: string; // 'published' | 'closed'（募集終了）
   created_at: string;
@@ -25,7 +26,7 @@ export interface Friend {
 // 匿名に許可された公開列だけを明示指定する（select('*') は列権限で拒否されるため）。
 // delete_key_hash は非公開（GRANT していない）ので含めない。
 const PUBLIC_COLS =
-  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,author_name,gender,thread_id,status,created_at';
+  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,author_name,gender,contact_kind,thread_id,status,created_at';
 
 // 目的・プレイ内容（play_style 列に保存）。「何をして遊ぶか」の軸。
 // プラットフォーム軸（下）と組み合わせて絞り込む。id は DB 保存値、ラベルは i18n キー。
@@ -63,6 +64,17 @@ export function friendGenderLabelKey(id: string | null): string | null {
   if (!id) return null;
   return FRIEND_GENDERS.find((x) => x.id === id)?.labelKey ?? null;
 }
+
+// 連絡先の種類（contact_kind 列に保存）。投稿者が明示的に選ぶ。
+// 未選択（null）は従来どおりプラットフォーム＋値から自動判定する。
+// id は DB 保存値 兼 ContactBrandIcon の kind、ラベルは i18n キー。
+export const FRIEND_CONTACT_KINDS = [
+  { id: 'discord', labelKey: 'fr.ck.discord' },
+  { id: 'psn', labelKey: 'fr.ck.psn' },
+  { id: 'xbox', labelKey: 'fr.ck.xbox' },
+  { id: 'rockstar', labelKey: 'fr.ckopt.rockstar' }, // Rockstar ID（ゲーム内フレンド）
+  { id: 'link', labelKey: 'fr.ck.link' },
+];
 
 // 過去データ（旧カテゴリ）も表示を壊さないためのラベル探索。
 const LEGACY_STYLE_LABELS: Record<string, string> = {
@@ -179,6 +191,7 @@ export async function createFriend(f: {
   contact: string | null;
   author_name?: string | null; // 掲示板フォーム更新前でも動くよう任意
   gender?: string | null;
+  contact_kind?: string | null;
   delete_key?: string | null;
   hp: string; // ハニーポット（人間は空）
 }) {
@@ -196,6 +209,7 @@ export async function createFriend(f: {
     p_author_name: f.author_name ?? null,
     p_delete_key: f.delete_key ?? null,
     p_gender: f.gender ?? null,
+    p_contact_kind: f.contact_kind ?? null,
   });
 }
 
@@ -223,6 +237,7 @@ export async function updateOwnFriend(
     contact: string | null;
     author_name: string | null;
     gender: string | null;
+    contact_kind: string | null;
   },
   deleteKey: string | null,
 ) {
@@ -240,5 +255,6 @@ export async function updateOwnFriend(
     p_delete_key: deleteKey,
     p_anon_id: getAnonId(),
     p_gender: f.gender,
+    p_contact_kind: f.contact_kind,
   });
 }

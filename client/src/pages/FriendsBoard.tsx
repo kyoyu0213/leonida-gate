@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import FriendCard from '@/components/FriendCard';
 import { toast } from 'sonner';
-import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, FRIEND_GENDERS, type Friend } from '@/lib/friends';
+import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, FRIEND_GENDERS, FRIEND_CONTACT_KINDS, type Friend } from '@/lib/friends';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -22,6 +22,7 @@ const emptyForm = {
   age_range: '',
   body: '',
   contact: '',
+  contact_kind: '',
 };
 
 const inputClass =
@@ -102,6 +103,7 @@ export default function FriendsBoard() {
       contact: form.contact.trim() || null,
       author_name: form.author_name.trim() || null,
       gender: form.gender || null,
+      contact_kind: form.contact_kind || null,
       delete_key: form.delete_key.trim() || null,
       hp,
     });
@@ -197,7 +199,15 @@ export default function FriendsBoard() {
                 </div>
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.contact')}</label>
-                  <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={inputClass} />
+                  <div className="flex gap-2">
+                    <select name="contact_kind" value={form.contact_kind} onChange={handleFormChange} className={`${inputClass} h-[46px] w-[42%] flex-none`}>
+                      <option value="" className="bg-[#15091c]">{tr('fr.ckopt.auto')}</option>
+                      {FRIEND_CONTACT_KINDS.map((c) => (
+                        <option key={c.id} value={c.id} className="bg-[#15091c]">{tr(c.labelKey)}</option>
+                      ))}
+                    </select>
+                    <input name="contact" value={form.contact} onChange={handleFormChange} placeholder={contactPlaceholder} maxLength={120} className={inputClass} />
+                  </div>
                   <p className="text-[11px] text-white/45 mt-1.5 leading-relaxed">{tr('fr.hint.contact')}</p>
                 </div>
                 <div>

@@ -410,11 +410,14 @@ const JA: Dict = {
   'fr.ph.contact.xbox': 'Xbox ゲーマータグ / Discord など',
   'fr.ph.contact.pc': 'Rockstar ID（ソーシャルクラブ）/ Discord など',
   'fr.hint.contact':
-    '選んだプラットフォームに合わせて「PSN ID」などの種別を自動で表示します。Discordなど別の連絡先なら「Discord: 名前」のように書いてください。',
+    '左で連絡先の種類を選び、右にIDを入力してください（アイコンで種類が表示されます）。「自動」のままなら、選んだプラットフォームから種類を判定します。',
   // 連絡先が何のIDかを示す種別ラベル（friendContactKindLabelKey が返す）
   'fr.ck.psn': 'PSN ID',
   'fr.ck.xbox': 'Xbox ゲーマータグ',
   'fr.ck.rockstar': 'Rockstar ID',
+  // 連絡先の種類プルダウン用（自動＋ゲーム内フレンド）
+  'fr.ckopt.auto': '自動（プラットフォーム準拠）',
+  'fr.ckopt.rockstar': 'Rockstar ID（ゲーム内）',
   'fr.ck.discord': 'Discord',
   'fr.ck.discordLink': 'Discord招待リンク',
   'fr.ck.link': 'リンク',
@@ -968,10 +971,12 @@ const EN: Dict = {
   'fr.ph.contact.xbox': 'Xbox gamertag / Discord, etc.',
   'fr.ph.contact.pc': 'Rockstar ID (Social Club) / Discord, etc.',
   'fr.hint.contact':
-    'The type (e.g. “PSN ID”) is shown automatically based on the platform you pick. For anything else, write it like “Discord: yourname”.',
+    'Pick the contact type on the left and enter the ID on the right (the icon shows the type). Leave it on “Auto” to detect the type from your platform.',
   'fr.ck.psn': 'PSN Online ID',
   'fr.ck.xbox': 'Xbox gamertag',
   'fr.ck.rockstar': 'Rockstar ID',
+  'fr.ckopt.auto': 'Auto (by platform)',
+  'fr.ckopt.rockstar': 'Rockstar ID (in-game)',
   'fr.ck.discord': 'Discord',
   'fr.ck.discordLink': 'Discord invite',
   'fr.ck.link': 'Link',
