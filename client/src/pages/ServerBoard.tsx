@@ -160,7 +160,8 @@ export default function ServerBoard() {
             <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">
               FiveM Server Recruit
             </span>
-            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">{tr('srv.heading')}</h1>
+            {/* break-keep: 「住民募集板」など日本語を途中で改行させず、スペース位置で折り返す */}
+            <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2 break-keep">{tr('srv.heading')}</h1>
             <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
               {tr('srv.lead')}
             </p>
