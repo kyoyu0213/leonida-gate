@@ -16,6 +16,7 @@ export interface Friend {
   body: string;
   contact: string | null;
   author_name: string | null;
+  gender: string | null; // 'male' | 'female' | 'other' | null（任意）
   thread_id: string | null;
   status: string; // 'published' | 'closed'（募集終了）
   created_at: string;
@@ -24,7 +25,7 @@ export interface Friend {
 // 匿名に許可された公開列だけを明示指定する（select('*') は列権限で拒否されるため）。
 // delete_key_hash は非公開（GRANT していない）ので含めない。
 const PUBLIC_COLS =
-  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,author_name,thread_id,status,created_at';
+  'id,title,platform,play_style,voice_chat,active_time,age_range,body,contact,author_name,gender,thread_id,status,created_at';
 
 // 目的・プレイ内容（play_style 列に保存）。「何をして遊ぶか」の軸。
 // プラットフォーム軸（下）と組み合わせて絞り込む。id は DB 保存値、ラベルは i18n キー。
@@ -49,6 +50,19 @@ export const FRIEND_PLATFORMS = [
   { id: 'pc_enhanced', labelKey: 'fr.pf.pcEnhanced' },
   { id: 'pc_legacy', labelKey: 'fr.pf.pcLegacy' },
 ];
+
+// 性別（gender 列に保存）。任意項目で、未指定は非表示。id は DB 保存値、ラベルは i18n キー。
+export const FRIEND_GENDERS = [
+  { id: 'male', labelKey: 'fr.gender.male' },
+  { id: 'female', labelKey: 'fr.gender.female' },
+  { id: 'other', labelKey: 'fr.gender.other' },
+];
+
+/** gender の表示ラベルキー。未指定・未知は null。 */
+export function friendGenderLabelKey(id: string | null): string | null {
+  if (!id) return null;
+  return FRIEND_GENDERS.find((x) => x.id === id)?.labelKey ?? null;
+}
 
 // 過去データ（旧カテゴリ）も表示を壊さないためのラベル探索。
 const LEGACY_STYLE_LABELS: Record<string, string> = {
@@ -135,6 +149,7 @@ export async function createFriend(f: {
   body: string;
   contact: string | null;
   author_name?: string | null; // 掲示板フォーム更新前でも動くよう任意
+  gender?: string | null;
   delete_key?: string | null;
   hp: string; // ハニーポット（人間は空）
 }) {
@@ -151,6 +166,7 @@ export async function createFriend(f: {
     p_hp: f.hp,
     p_author_name: f.author_name ?? null,
     p_delete_key: f.delete_key ?? null,
+    p_gender: f.gender ?? null,
   });
 }
 
@@ -177,6 +193,7 @@ export async function updateOwnFriend(
     body: string;
     contact: string | null;
     author_name: string | null;
+    gender: string | null;
   },
   deleteKey: string | null,
 ) {
@@ -193,5 +210,6 @@ export async function updateOwnFriend(
     p_author_name: f.author_name,
     p_delete_key: deleteKey,
     p_anon_id: getAnonId(),
+    p_gender: f.gender,
   });
 }

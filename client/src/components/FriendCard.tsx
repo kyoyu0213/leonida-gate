@@ -1,11 +1,13 @@
-import { Copy, ExternalLink, Users, MessageSquare } from 'lucide-react';
+import { Copy, ExternalLink, Users, MessageSquare, UserRound } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Friend } from '@/lib/friends';
 import {
   friendStyleLabelKey,
   friendPlatformLabelKey,
   friendContactKindLabelKey,
+  friendGenderLabelKey,
 } from '@/lib/friends';
+import ContactBrandIcon, { contactKindFromKey, CONTACT_BRAND_COLOR } from '@/components/ContactBrandIcon';
 import { formatPostDate } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 
@@ -34,6 +36,9 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
       ? `（${tr(contactKindKey)}）`
       : ` (${tr(contactKindKey)})`
     : '';
+  const contactKind = contactKindFromKey(contactKindKey);
+  const brandColor = CONTACT_BRAND_COLOR[contactKind];
+  const genderLabelKey = friendGenderLabelKey(friend.gender);
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -41,6 +46,7 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
   };
 
   const meta: Array<[string, string | null]> = [
+    [tr('fr.gender'), genderLabelKey ? tr(genderLabelKey) : null],
     [tr('fr.voiceChat'), friend.voice_chat],
     [tr('fr.activeTime'), friend.active_time],
     [tr('fr.ageRange'), friend.age_range],
@@ -75,9 +81,11 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
             )}
           </div>
           <h3 className="text-lg font-black text-[#f4eef8] leading-snug m-0 break-words">{friend.title}</h3>
-          {friend.author_name && (
-            <p className="text-[11px] text-white/40 mt-0.5 truncate">{friend.author_name}</p>
-          )}
+          {/* 名前（ハンドルネーム）は誰の募集か分かる重要情報なので、アイコン付きで目立たせる。 */}
+          <div className="inline-flex items-center gap-1.5 mt-1.5 max-w-full px-2 py-0.5 rounded-md bg-[#22d3ee]/10 border border-[#22d3ee]/25">
+            <UserRound size={12} strokeWidth={2.5} className="text-[#22d3ee] flex-none" />
+            <span className="text-[12.5px] font-bold text-[#f4eef8] truncate">{friend.author_name || '名無しさん'}</span>
+          </div>
         </div>
       </div>
 
@@ -106,8 +114,9 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
               onClick={() => window.open(friend.contact!, '_blank', 'noopener')}
               className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] h-9 rounded-lg transition"
             >
-              <ExternalLink size={14} /> {tr('fr.card.contact')}
+              <ContactBrandIcon kind={contactKind} size={15} /> {tr('fr.card.contact')}
               {contactKindText}
+              <ExternalLink size={13} className="opacity-70" />
             </button>
           ) : (
             <button
@@ -115,8 +124,12 @@ export default function FriendCard({ friend, onStyleClick, onPlatformClick }: Fr
               className="flex-1 inline-flex items-center justify-center gap-1.5 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] h-9 rounded-lg transition"
               title={friend.contact}
             >
-              <Copy size={14} /> {tr('fr.card.contact')}
+              <span className="flex-none inline-flex" style={{ color: brandColor }}>
+                <ContactBrandIcon kind={contactKind} size={15} />
+              </span>
+              {tr('fr.card.contact')}
               {contactKindText}
+              <Copy size={12} className="opacity-50" />
             </button>
           )
         ) : (

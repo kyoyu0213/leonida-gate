@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import RecruitTabs from '@/components/RecruitTabs';
 import FriendCard from '@/components/FriendCard';
 import { toast } from 'sonner';
-import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, type Friend } from '@/lib/friends';
+import { listPublishedFriends, createFriend, FRIEND_PLAY_STYLES, FRIEND_PLATFORMS, FRIEND_GENDERS, type Friend } from '@/lib/friends';
 import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -16,6 +16,7 @@ const emptyForm = {
   delete_key: '',
   play_style: 'casual',
   platform: '',
+  gender: '',
   voice_chat: '',
   active_time: '',
   age_range: '',
@@ -100,6 +101,7 @@ export default function FriendsBoard() {
       body: form.body.trim(),
       contact: form.contact.trim() || null,
       author_name: form.author_name.trim() || null,
+      gender: form.gender || null,
       delete_key: form.delete_key.trim() || null,
       hp,
     });
@@ -217,6 +219,15 @@ export default function FriendsBoard() {
                 <div>
                   <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.ageRange')}</label>
                   <input name="age_range" value={form.age_range} onChange={handleFormChange} placeholder={tr('fr.ph.ageRange')} maxLength={30} className={inputClass} />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-[#22d3ee] mb-2">{tr('fr.gender')}</label>
+                  <select name="gender" value={form.gender} onChange={handleFormChange} className={`${inputClass} h-[46px]`}>
+                    <option value="" className="bg-[#15091c]">{tr('fr.gender.select')}</option>
+                    {FRIEND_GENDERS.map((g) => (
+                      <option key={g.id} value={g.id} className="bg-[#15091c]">{tr(g.labelKey)}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <div>

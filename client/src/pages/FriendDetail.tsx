@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRoute } from 'wouter';
-import { ArrowLeft, Loader2, Copy, ExternalLink, Users } from 'lucide-react';
+import { ArrowLeft, Loader2, Copy, ExternalLink, Users, UserRound } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import ThreadReplies from '@/components/ThreadReplies';
+import ContactBrandIcon, { contactKindFromKey, CONTACT_BRAND_COLOR } from '@/components/ContactBrandIcon';
 import {
   getFriend,
   deleteOwnFriend,
@@ -11,8 +12,10 @@ import {
   friendStyleLabelKey,
   friendPlatformLabelKey,
   friendContactKindLabelKey,
+  friendGenderLabelKey,
   FRIEND_PLAY_STYLES,
   FRIEND_PLATFORMS,
+  FRIEND_GENDERS,
   type Friend,
 } from '@/lib/friends';
 import { formatPostDate } from '@/lib/board';
@@ -66,6 +69,9 @@ export default function FriendDetail() {
       ? `（${tr(contactKindKey)}）`
       : ` (${tr(contactKindKey)})`
     : '';
+  const contactKind = contactKindFromKey(contactKindKey);
+  const brandColor = CONTACT_BRAND_COLOR[contactKind];
+  const genderLabelKey = friend ? friendGenderLabelKey(friend.gender) : null;
 
   const copy = (text: string) => {
     navigator.clipboard.writeText(text);
@@ -107,6 +113,7 @@ export default function FriendDetail() {
     title: '',
     platform: '',
     play_style: '',
+    gender: '',
     voice_chat: '',
     active_time: '',
     age_range: '',
@@ -122,6 +129,7 @@ export default function FriendDetail() {
       title: friend.title,
       platform: friend.platform ?? '',
       play_style: friend.play_style ?? '',
+      gender: friend.gender ?? '',
       voice_chat: friend.voice_chat ?? '',
       active_time: friend.active_time ?? '',
       age_range: friend.age_range ?? '',
@@ -162,6 +170,7 @@ export default function FriendDetail() {
         body: editForm.body.trim(),
         contact: editForm.contact.trim() || null,
         author_name: editForm.author_name.trim() || null,
+        gender: editForm.gender || null,
       },
       editKey.trim() || null,
     );
@@ -185,6 +194,7 @@ export default function FriendDetail() {
 
   const meta: Array<[string, string | null | undefined]> = friend
     ? [
+        [tr('fr.gender'), genderLabelKey ? tr(genderLabelKey) : null],
         [tr('fr.voiceChat'), friend.voice_chat],
         [tr('fr.activeTime'), friend.active_time],
         [tr('fr.ageRange'), friend.age_range],
@@ -248,7 +258,13 @@ export default function FriendDetail() {
                   <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">
                     {friend.title}
                   </h1>
-                  <p className="text-[12px] text-white/40 mt-1 font-mono">{(friend.author_name || '名無しさん')}・{formatPostDate(friend.created_at)}</p>
+                  <div className="flex items-center gap-2 mt-2 flex-wrap">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#22d3ee]/10 border border-[#22d3ee]/25">
+                      <UserRound size={13} strokeWidth={2.5} className="text-[#22d3ee]" />
+                      <span className="text-[13px] font-bold text-[#f4eef8]">{friend.author_name || '名無しさん'}</span>
+                    </span>
+                    <span className="text-[12px] text-white/40 font-mono">{formatPostDate(friend.created_at)}</span>
+                  </div>
                 </div>
               </div>
 
@@ -273,8 +289,9 @@ export default function FriendDetail() {
                     onClick={() => window.open(friend.contact!, '_blank', 'noopener')}
                     className="inline-flex items-center gap-1.5 bg-[#5865F2] hover:brightness-110 text-white font-bold text-[13px] px-4 h-9 rounded-lg transition"
                   >
-                    <ExternalLink size={14} /> {tr('fr.card.contact')}
+                    <ContactBrandIcon kind={contactKind} size={15} /> {tr('fr.card.contact')}
                     {contactKindText}
+                    <ExternalLink size={13} className="opacity-70" />
                   </button>
                 ) : (
                   <button
@@ -282,8 +299,12 @@ export default function FriendDetail() {
                     className="inline-flex items-center gap-1.5 bg-white/[0.06] border border-white/15 hover:bg-white/10 text-[#f4eef8] font-bold text-[13px] px-4 h-9 rounded-lg transition"
                     title={friend.contact}
                   >
-                    <Copy size={14} /> {tr('fr.card.contact')}
+                    <span className="flex-none inline-flex" style={{ color: brandColor }}>
+                      <ContactBrandIcon kind={contactKind} size={15} />
+                    </span>
+                    {tr('fr.card.contact')}
                     {contactKindText}: {friend.contact}
+                    <Copy size={12} className="opacity-50" />
                   </button>
                 ))}
             </div>
@@ -321,6 +342,15 @@ export default function FriendDetail() {
                           <option value="" className="bg-[#15091c]">{lang === 'ja' ? '未設定' : 'Not set'}</option>
                           {FRIEND_PLAY_STYLES.map((s) => (
                             <option key={s.id} value={s.id} className="bg-[#15091c]">{tr(s.labelKey)}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-[12px] font-bold text-white/60 mb-1">{tr('fr.gender')}</label>
+                        <select name="gender" value={editForm.gender} onChange={handleEditChange} className={`${editInput} h-[38px]`}>
+                          <option value="" className="bg-[#15091c]">{tr('fr.gender.select')}</option>
+                          {FRIEND_GENDERS.map((g) => (
+                            <option key={g.id} value={g.id} className="bg-[#15091c]">{tr(g.labelKey)}</option>
                           ))}
                         </select>
                       </div>
