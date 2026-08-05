@@ -58,7 +58,7 @@ const JA: Dict = {
   'tab.servers': '募集板',
   'tab.fivemgtarp': 'FiveM',
   'header.search': '記事・掲示板を検索…',
-  'hero.tagline': 'GTA6総合情報｜RPサーバー掲示板｜コミュニティ',
+  'hero.tagline': 'GTA6総合情報｜FiveMサーバー掲示板｜コミュニティ',
   'home.latest': '最新情報',
   'home.trending': 'トレンドのスレッド',
   'home.noThreads': 'まだスレッドがありません',
