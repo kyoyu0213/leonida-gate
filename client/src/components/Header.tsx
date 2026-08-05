@@ -51,7 +51,7 @@ export default function Header() {
         {/* Logo */}
         <a href="/" className="flex items-center flex-none cursor-pointer">
           <img
-            src="/images/logo-header.webp"
+            src="/images/gta6feed-logo.webp"
             alt="GTA6 FEED"
             className="h-9 sm:h-10 w-auto select-none"
             draggable={false}
