@@ -341,10 +341,10 @@ export default function Home() {
                   ))}
                 <a
                   href="/board/friends"
-                  className="inline-flex items-center gap-1.5 font-black"
+                  className="inline-flex items-center gap-1.5 font-black jp-head"
                   style={{ fontSize: 16, lineHeight: 1.9, marginTop: 2, color: '#22d3ee', letterSpacing: '.03em' }}
                 >
-                  {lang === 'ja' ? 'GTAオンライン フレンドコミュニティー' : 'GTA Online Friends'}
+                  {lang === 'ja' ? 'GTAオンライン フレンドコミュニティ' : 'GTA Online Friends'}
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
