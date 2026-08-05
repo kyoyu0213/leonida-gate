@@ -49,15 +49,13 @@ export default function Header() {
     >
       <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 flex-none cursor-pointer">
-          <span
-            className="w-[13px] h-[13px] rounded-full flex-none"
-            style={{
-              background: 'radial-gradient(circle,#fff 0%,#ff8a3d 40%,#ff2d95 80%)',
-              boxShadow: '0 0 12px #ff2d95, 0 0 26px rgba(255,45,149,.6)',
-            }}
+        <a href="/" className="flex items-center flex-none cursor-pointer">
+          <img
+            src="/images/gta6feed-logo.webp"
+            alt="GTA6 FEED"
+            className="h-9 sm:h-10 w-auto select-none"
+            draggable={false}
           />
-          <span className="vice-display vice-grad text-2xl tracking-[0.5px]">GTA6&nbsp;FEED</span>
         </a>
 
         {/* Desktop nav */}
