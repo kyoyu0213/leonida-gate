@@ -9,8 +9,10 @@ import { useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { PAGE_GUIDES } from '@/data/boardGuides';
+import { useLocalHref } from '@/components/LocalLink';
 
 export default function Contact() {
+  const L = useLocalHref();
   const t = useT();
   useSeo(t('seo.contact.title'), t('seo.contact.desc'), { localized: true });
   // 募集掲示板の「編集・削除を依頼」から来た場合、対象IDを本文に前入力する。
@@ -185,7 +187,7 @@ export default function Contact() {
         <BoardGuide content={PAGE_GUIDES.contact} />
 
         <div className="mt-10">
-          <a href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
+          <a href={L('/')} className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
             {t('ct.backHome')}
           </a>
         </div>

@@ -1,6 +1,7 @@
 import { MessageSquare } from 'lucide-react';
 import { CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
 import { useT, useLang } from '@/lib/i18n';
+import { useLocalHref } from '@/components/LocalLink';
 
 // ニュースカードのサムネ用サンセットグラデ（カードごとに巡回）
 const THUMB_GRADIENTS = [
@@ -41,6 +42,7 @@ interface NewsCardProps {
  * VICE HUB スタイルのニュースカード。トップページと記事一覧(/news)で共用。
  */
 export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsCardProps) {
+  const L = useLocalHref();
   const t = useT();
   const lang = useLang();
   const color = CATEGORY_CONFIG[article.category].vice;
@@ -48,7 +50,7 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
 
   return (
     <a
-      href={`/news/${article.id}`}
+      href={L(`/news/${article.id}`)}
       className="group flex flex-col h-full rounded-2xl overflow-hidden border border-black/10 hover:-translate-y-[3px] transition-all shadow-sm hover:shadow-md"
       style={{ background: '#ffffff' }}
     >

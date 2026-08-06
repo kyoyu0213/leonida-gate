@@ -9,6 +9,7 @@ import { getArticleById, formatArticleDate } from '@/data/news';
 import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import { useLocalHref } from '@/components/LocalLink';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）や相対リンク（/news/...）を解決できずブロックしてしまう。
@@ -98,6 +99,7 @@ function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
 const articleComponents = { img: ArticleMedia } as never;
 
 export default function NewsDetail() {
+  const L = useLocalHref();
   // 日本語 /news/:id と英語 /en/news/:id の両方にマッチさせる（言語は useLang が URL から判定）。
   const [matchJa, paramsJa] = useRoute('/news/:id');
   const [matchEn, paramsEn] = useRoute('/en/news/:id');
@@ -147,7 +149,7 @@ export default function NewsDetail() {
         <Header />
         <div className="container py-20 text-center">
           <p className="text-gray-400 font-mono mb-4">{lang === 'ja' ? '記事が見つかりません' : 'Article not found'}</p>
-          <a href="/" className="text-cyan-400 hover:text-cyan-300 font-mono">
+          <a href={L('/')} className="text-cyan-400 hover:text-cyan-300 font-mono">
             {lang === 'ja' ? 'ホームに戻る' : 'Back to home'}
           </a>
         </div>
@@ -186,9 +188,9 @@ export default function NewsDetail() {
         <div>
           {/* パンくず（内部リンク・SEO） */}
           <nav className="flex items-center gap-1.5 text-[12px] text-gray-400 font-mono mb-5" aria-label="パンくず">
-            <a href="/" className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? 'ホーム' : 'Home'}</a>
+            <a href={L('/')} className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? 'ホーム' : 'Home'}</a>
             <span className="opacity-50">/</span>
-            <a href="/news" className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? '最新情報' : 'News'}</a>
+            <a href={L('/news')} className="hover:text-cyan-300 transition-colors">{lang === 'ja' ? '最新情報' : 'News'}</a>
             <span className="opacity-50">/</span>
             <span className="text-gray-500 truncate max-w-[55vw] sm:max-w-[420px]">{title}</span>
           </nav>
@@ -364,7 +366,7 @@ export default function NewsDetail() {
               {relatedArticles.map((related) => (
                 <a
                   key={related.id}
-                  href={`/news/${related.id}`}
+                  href={L(`/news/${related.id}`)}
                   className="group border border-cyan-500/30 rounded-lg p-4 bg-background/50 hover:border-cyan-500/60 hover:bg-cyan-500/10 transition-all duration-300"
                 >
                   <div className="flex items-start gap-2 mb-2">

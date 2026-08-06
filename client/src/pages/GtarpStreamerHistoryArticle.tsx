@@ -1,5 +1,7 @@
 import { Users, BookOpen, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = '日本のGTARP配信者サーバー史｜ストグラ・VCR GTA・にじGTA・ホロGTAの流れを年表で整理';
 
@@ -217,6 +219,7 @@ This article is a commentary by GTA6 FEED and has no relationship whatsoever wit
 This article is an explanatory piece researched and organized by GTA6 FEED based on various publicly available information, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive, or with the operators of the various projects and servers. The event information and operating structure of streamer servers change over time, and discrepancies can be seen in information on social media and roundup sites. For the latest and accurate information, please check official announcements such as each project's official X (formerly Twitter) or Discord.`;
 
 export default function GtarpStreamerHistoryArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="日本のGTARP配信者サーバー史｜ストグラ・VCR GTA・にじGTA・ホロGTAの年表｜GTA6 FEED"
@@ -241,24 +244,24 @@ export default function GtarpStreamerHistoryArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Users size={14} /> GTARPとは？
-        </a>
-        <a
+          <Users size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/glossary"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <BookOpen size={14} /> GTARP用語辞典
-        </a>
-        <a
+          <BookOpen size={14} /> {t('chip.glossary')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で語る
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardTalk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

@@ -1,5 +1,7 @@
 import { Server, Users, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMサーバーの選び方ガイド｜初心者が失敗しないためのチェックポイント';
 
@@ -168,6 +170,7 @@ That said, with the arrival of GTA6 ahead, the environment surrounding FiveM is 
 This article organizes general perspectives for choosing a FiveM server in a beginner-friendly way. A server's specifications, rules, job composition, payment system, operating status, and participation conditions differ from server to server and also change depending on the period. Because specific server names and operating statuses are fluid, please be sure to check each server's official information (official site, Discord, and so on) when participating. FiveM is a community-made platform premised on the PC version of GTA5, and a legitimately purchased GTA5 is required. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
 
 export default function FivemServerGuide() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMサーバーの選び方ガイド｜初心者向けチェックポイント｜GTA6 FEED"
@@ -191,30 +194,30 @@ export default function FivemServerGuide() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Server size={14} /> FiveMサーバー 住民募集板
-        </a>
-        <a
+          <Server size={14} /> {t('chip.servers')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-fivem"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          FiveMとは？
-        </a>
-        <a
+          {t('chip.whatIsFivem')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Users size={14} /> GTARPとは？
-        </a>
-        <a
+          <Users size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板
-        </a>
+          <MessageSquare size={14} /> {t('chip.board')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

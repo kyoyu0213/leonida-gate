@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import ArticleLayout from '@/components/ArticleLayout';
 import { getFieldNoteBySlug } from '@/data/fieldNotes';
 import { useLang } from '@/lib/i18n';
+import { useLocalHref } from '@/components/LocalLink';
 
 /**
  * 体験記の記事ページ（/fivem-gtarp/field-notes/:slug、/en/... も）。
@@ -11,6 +12,7 @@ import { useLang } from '@/lib/i18n';
  * データ駆動なので data/fieldNotes.ts にエントリを足すだけで新記事が増える。
  */
 export default function FieldNoteDetail() {
+  const L = useLocalHref();
   const [matchJa, paramsJa] = useRoute('/fivem-gtarp/field-notes/:category/:slug');
   const [matchEn, paramsEn] = useRoute('/en/fivem-gtarp/field-notes/:category/:slug');
   const match = matchJa || matchEn;
@@ -73,19 +75,19 @@ export default function FieldNoteDetail() {
           <NotebookPen size={14} /> {listLabel}
         </a>
         <a
-          href="/fivem-gtarp/server-setup"
+          href={L('/fivem-gtarp/server-setup')}
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
           <Wrench size={14} /> {isEn ? 'How to set up a FiveM server' : 'FiveMサーバーの立て方'}
         </a>
         <a
-          href="/servers"
+          href={L('/servers')}
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
           <Megaphone size={14} /> {isEn ? 'Server board' : 'FiveMサーバー 住民募集板'}
         </a>
         <a
-          href="/fivem-gtarp/how-to-install"
+          href={L('/fivem-gtarp/how-to-install')}
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
           <Server size={14} /> {isEn ? 'How to install FiveM' : 'FiveMの導入方法'}

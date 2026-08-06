@@ -1,5 +1,7 @@
 import { Tv, Users, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'GTARP観測者向けガイド｜ストグラの「観測者」とは？見方・楽しみ方・マナーを解説';
 
@@ -151,6 +153,7 @@ Among the content of this article, the term observer, separating the character f
 This article is an explanatory piece researched and organized by GTA6 FEED based on various publicly available information, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive, or with the operators of the various projects and servers. Viewing etiquette and prohibitions differ by server and project and may change over time. For the latest and accurate information, please check official announcements such as each observed project's official X (formerly Twitter), Discord, or official site.`;
 
 export default function GtarpObserverGuideArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="GTARP観測者向けガイド｜ストグラの「観測者」とは？見方・マナーを解説｜GTA6 FEED"
@@ -175,24 +178,24 @@ export default function GtarpObserverGuideArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/streamer-server-history"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Tv size={14} /> 配信者サーバー史
-        </a>
-        <a
+          <Tv size={14} /> {t('chip.streamerHistory')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Users size={14} /> GTARPとは？
-        </a>
-        <a
+          <Users size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/board/streamer-servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> 配信者サーバー掲示板
-        </a>
+          <MessageSquare size={14} /> {t('chip.streamerBoard')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

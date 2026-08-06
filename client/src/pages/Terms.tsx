@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import { useLocalHref } from '@/components/LocalLink';
 
 type Block = { p: string } | { ul: string[] } | { contact: true };
 interface Section {
@@ -201,6 +202,7 @@ const EN: TermsContent = {
 };
 
 export default function Terms() {
+  const L = useLocalHref();
   const lang = useLang();
   const t = useT();
   useSeo(t('seo.terms.title'), t('seo.terms.desc'), { localized: true });
@@ -246,7 +248,7 @@ export default function Terms() {
                 return (
                   <p key={i} className={p}>
                     {c.contactPrefix}
-                    <a href="/contact" className="text-[#22d3ee] underline hover:text-white transition-colors">
+                    <a href={L('/contact')} className="text-[#22d3ee] underline hover:text-white transition-colors">
                       {c.contactLink}
                     </a>
                     {c.contactSuffix}
@@ -258,7 +260,7 @@ export default function Terms() {
         </div>
 
         <div className="mt-12">
-          <a href="/" className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
+          <a href={L('/')} className="inline-flex items-center gap-2 text-[#22d3ee] hover:text-white transition-colors font-bold text-sm">
             {c.back}
           </a>
         </div>

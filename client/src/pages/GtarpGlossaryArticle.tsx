@@ -1,5 +1,7 @@
 import { Users, Server, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'GTARP用語辞典｜RDM・VDM・メタ・六法の意味を初心者向けに解説';
 
@@ -424,6 +426,7 @@ Incidentally, English-speaking RP servers also use terms like Fail RP, Fear RP, 
 This article is an explanatory piece researched and organized by GTA6 FEED based on various publicly available information, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive, or with the operators of the various servers and projects mentioned. The definitions and operation of terms differ by server and community and may change over time. For the latest and accurate rules, please check the official information of each server you join.`;
 
 export default function GtarpGlossaryArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="GTARP用語辞典｜RDM・VDM・メタ・六法の意味を初心者向けに解説｜GTA6 FEED"
@@ -448,24 +451,24 @@ export default function GtarpGlossaryArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Users size={14} /> GTARPとは？
-        </a>
-        <a
+          <Users size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-fivem"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Server size={14} /> FiveMとは？
-        </a>
-        <a
+          <Server size={14} /> {t('chip.whatIsFivem')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で語る
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardTalk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

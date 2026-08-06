@@ -1,5 +1,7 @@
 import { MessageSquare, Server, GitCompare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMの歴史とは？2014年の誕生からRockstar傘下入りまでの全年表';
 
@@ -236,6 +238,7 @@ What belongs to the realm of speculation is the specific form of roleplay suppor
 This article is an explanatory piece researched and organized by GTA6 FEED based on various publicly available information, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive. The contents include, in addition to confirmed information that has been announced, descriptions based on overseas media reporting, community records, and unconfirmed information. Figures such as player counts vary depending on the measurement method and the point in time. For the latest and accurate information, please check the official announcements from Cfx.re and Rockstar Games. Also, please be sufficiently wary of false articles claiming to have "actually played" and of unofficial fake pre-order sites.`;
 
 export default function FivemHistoryArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMの歴史とは？｜2014年の誕生からRockstar傘下入りまでの全年表｜GTA6 FEED"
@@ -260,24 +263,24 @@ export default function FivemHistoryArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/what-is-fivem"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Server size={14} /> FiveMとは？
-        </a>
-        <a
+          <Server size={14} /> {t('chip.whatIsFivem')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/fivem-vs-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <GitCompare size={14} /> FiveMとGTARPの違い
-        </a>
-        <a
+          <GitCompare size={14} /> {t('chip.fivemVsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で語る
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardTalk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

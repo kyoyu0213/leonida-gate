@@ -4,6 +4,7 @@ import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT } from '@/lib/i18n';
+import { useLocalHref } from '@/components/LocalLink';
 
 // 便利ツール一覧。FiveM/GTARPページ下部の「便利ツール」セクションと同じ2カードを並べる軽い一覧。
 // カードの体裁は FivemGtarp.tsx のものを踏襲している。
@@ -13,6 +14,7 @@ const CARDS = [
 ];
 
 export default function ToolsIndex() {
+  const L = useLocalHref();
   const t = useT();
   useSeo(t('tools.index.seo.title'), t('tools.index.seo.desc'), { localized: true });
 
@@ -22,7 +24,7 @@ export default function ToolsIndex() {
 
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <a
-          href="/fivem-gtarp"
+          href={L('/fivem-gtarp')}
           className="inline-flex items-center gap-1.5 text-[12.5px] font-bold text-white/50 hover:text-white transition-colors"
         >
           <ChevronLeft size={15} />
@@ -43,7 +45,7 @@ export default function ToolsIndex() {
             return (
               <a
                 key={c.href}
-                href={c.href}
+                href={L(c.href)}
                 className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}

@@ -4,7 +4,8 @@ import { toast } from 'sonner';
 import Header from '@/components/Header';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { useSeo, SITE_ORIGIN } from '@/hooks/useSeo';
-import { useT, useLang } from '@/lib/i18n';
+import { useT, useLang, type Lang } from '@/lib/i18n';
+import { localizedHref } from '@/components/LocalLink';
 
 // NewsDetail と同じく、自サイトのオリジンを渡して相対パス画像/リンクを許可する。
 // SSR（プリレンダ）では window が無く origin を取れないため、本番オリジンを既定にする。
@@ -25,6 +26,21 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
   }
   return plugin;
 }) as never;
+
+/**
+ * 本文（Markdown）内のサイト内リンクを、表示言語に合わせて解決する。
+ *
+ * 英語本文（bodyEn）の中に `[FiveM Command Dictionary](/fivem-gtarp/commands)` のように
+ * 日本語URLが直書きされており、英語ページから日本語ページへ逆流していた（2026-08-06 の監査）。
+ * 本文の文章には手を入れず、描画時にリンク先だけを解決する。
+ *
+ * localizedHref() が「英語版が実在するパスか」を判定するので、
+ * 画像（/images/...）や英語版の無いページ（/servers・/board/...）はそのまま残る。
+ */
+function localizeMarkdownLinks(md: string, lang: Lang): string {
+  if (lang === 'ja') return md;
+  return md.replace(/\]\((\/[^)\s]*)\)/g, (m, path) => `](${localizedHref(path, lang)})`);
+}
 
 // 本文を「@youtube:動画ID」だけの行で分割し、動画埋め込み部分と Markdown 部分に分ける。
 type BodyPart = { type: 'md'; text: string } | { type: 'youtube'; id: string };
@@ -93,7 +109,7 @@ export default function ArticleLayout({
   const isEn = lang === 'en';
   // EN表示時は英語版を使い、無ければ日本語にフォールバック。
   const effTitle = isEn && titleEn ? titleEn : title;
-  const effBody = isEn && bodyEn ? bodyEn : body;
+  const effBody = localizeMarkdownLinks(isEn && bodyEn ? bodyEn : body, lang);
   const effSummary = isEn && aiSummaryEn ? aiSummaryEn : aiSummary;
   const effSource = source ?? t('article.editorial');
   useSeo(isEn && seoTitleEn ? seoTitleEn : seoTitle, isEn && seoDescEn ? seoDescEn : seoDesc, {

@@ -1,5 +1,7 @@
 import { Server, Megaphone, Compass } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE =
   'FiveMサーバーの立て方──完全初心者がローカルテストサーバーを起動するまでの8ステップ';
@@ -434,6 +436,7 @@ Main references:
 This article is a fan explanation and has no relationship whatsoever with Rockstar Games, Take-Two Interactive, or Cfx.re.`;
 
 export default function FivemServerSetupArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMサーバーの立て方｜初心者が8ステップでローカルテストサーバーを起動｜GTA6 FEED"
@@ -448,24 +451,24 @@ export default function FivemServerSetupArticle() {
       bodyEn={BODY_EN}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Megaphone size={14} /> FiveMサーバー 住民募集板
-        </a>
-        <a
+          <Megaphone size={14} /> {t('chip.servers')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/server-guide"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Compass size={14} /> サーバーの選び方
-        </a>
-        <a
+          <Compass size={14} /> {t('chip.serverGuideShort')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/how-to-install"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Server size={14} /> FiveMの導入方法
-        </a>
+          <Server size={14} /> {t('chip.install')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

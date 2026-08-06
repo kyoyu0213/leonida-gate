@@ -1,5 +1,7 @@
 import { Terminal, Server, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveM・GTARP よくある質問（FAQ）｜初心者がつまずくトラブルと操作まとめ';
 
@@ -230,6 +232,7 @@ These commands differ by server in name and availability (for example, on some s
 This article is an explanatory piece organized by GTA6 FEED based on various publicly available information and actual operation, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive, or with the operators of the various servers. The settings, controls, and commands introduced here may differ depending on the server, the version, and the installed scripts, and may change over time. For the latest and accurate information, please check the official information of each server you join.`;
 
 export default function FivemFaqArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveM・GTARP よくある質問（FAQ）｜初心者のトラブル・操作まとめ｜GTA6 FEED"
@@ -254,24 +257,24 @@ export default function FivemFaqArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/commands"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Terminal size={14} /> FiveMコマンド辞典
-        </a>
-        <a
+          <Terminal size={14} /> {t('chip.commands')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/how-to-install"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Server size={14} /> FiveMの導入方法
-        </a>
-        <a
+          <Server size={14} /> {t('chip.install')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で聞く
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardAsk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

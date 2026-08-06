@@ -1,5 +1,7 @@
 import { MessageSquare, Server, Newspaper } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'GTARPとは？GTA5で“もう一つの人生”を演じる遊び方をわかりやすく解説';
 
@@ -150,6 +152,7 @@ At first there will be much to be confused about, but the terms and local rules 
 Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S), and the start timing of "Sutogura" (June 2024) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "GTARP in the GTA6 Era" are GTA6 FEED's considerations based on current information. The details of the job composition and rules differ from server to server, and server names, operating structures, and event status may change, so please check each server's official information when participating. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
 
 export default function GtarpArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="GTARPとは？｜GTA5で“もう一つの人生”を演じる遊び方を解説｜GTA6 FEED"
@@ -173,24 +176,24 @@ export default function GtarpArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で語る
-        </a>
-        <a
+          <MessageSquare size={14} /> {t('chip.boardTalk')}
+        </LocalLink>
+        <LocalLink
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Server size={14} /> FiveMサーバー 住民募集板
-        </a>
-        <a
+          <Server size={14} /> {t('chip.servers')}
+        </LocalLink>
+        <LocalLink
           href="/news/18"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Newspaper size={14} /> GTA6のRPはどうなる？
-        </a>
+          <Newspaper size={14} /> {t('chip.gta6rp')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

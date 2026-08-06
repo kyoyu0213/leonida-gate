@@ -4,6 +4,7 @@ import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, B
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { useSeo } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
+import { useLocalHref } from '@/components/LocalLink';
 
 interface Card {
   titleKey: string;
@@ -102,6 +103,7 @@ const TABS = [
 ];
 
 export default function FivemGtarp() {
+  const L = useLocalHref();
   const t = useT();
   const lang = useLang();
   useSeo(t('fg.seo.title'), t('fg.seo.desc'), { localized: true });
@@ -277,7 +279,7 @@ export default function FivemGtarp() {
                     return (
                       <a
                         key={c.href}
-                        href={c.href}
+                        href={L(c.href)}
                         className="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 transition-all hover:-translate-y-0.5"
                         onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
                         onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}

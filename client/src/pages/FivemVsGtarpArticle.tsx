@@ -1,5 +1,7 @@
 import { MessageSquare, Server, Users } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMとGTARPの違いとは？「土台」と「遊び方」をわかりやすく整理';
 
@@ -124,6 +126,7 @@ FiveM is "the foundation for playing," and GTARP is "the way of playing that tak
 Of the contents of this article, the phased shutdown of alt:V (started February 2026), the announcement of RAGE:MP's shutdown (May 25, 2026, public server list ending June 1, complete shutdown scheduled for August 31), the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions in the section "What Will Happen to This Relationship in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change with future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
 
 export default function FivemVsGtarpArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMとGTARPの違いとは？｜「土台」と「遊び方」を整理｜GTA6 FEED"
@@ -147,30 +150,30 @@ export default function FivemVsGtarpArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/what-is-fivem"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          FiveMとは？
-        </a>
-        <a
+          {t('chip.whatIsFivem')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Users size={14} /> GTARPとは？
-        </a>
-        <a
+          <Users size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Server size={14} /> FiveMサーバー 住民募集板
-        </a>
-        <a
+          <Server size={14} /> {t('chip.servers')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板
-        </a>
+          <MessageSquare size={14} /> {t('chip.board')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

@@ -1,5 +1,7 @@
 import { BookOpen, Download, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'GTARP初日の動き方ガイド｜FiveMサーバー参加初日にやること・初心者の立ち回り';
 
@@ -139,6 +141,7 @@ The main sources referenced in creating this article: the GRVL official site (Fi
 This article is a commentary by GTA6 FEED and has no relationship whatsoever with Rockstar Games, Take-Two Interactive, or the operators of the various servers. Because controls, rules, and commands may change depending on the server or MOD specifications, please be sure to check each server's official rules before joining.`;
 
 export default function GtarpFirstDayGuideArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="GTARP初日の動き方ガイド｜FiveMサーバー参加初日にやること・初心者の立ち回り｜GTA6 FEED"
@@ -163,24 +166,24 @@ export default function GtarpFirstDayGuideArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/how-to-install"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Download size={14} /> FiveMの導入方法
-        </a>
-        <a
+          <Download size={14} /> {t('chip.install')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/glossary"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <BookOpen size={14} /> GTARP用語辞典
-        </a>
-        <a
+          <BookOpen size={14} /> {t('chip.glossary')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で聞く
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardAsk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

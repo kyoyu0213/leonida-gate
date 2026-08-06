@@ -1,5 +1,7 @@
 import { Server, Users, MessageSquare, Compass } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMの導入方法｜GTA5でカスタムサーバーを遊ぶための手順を解説';
 
@@ -158,6 +160,7 @@ Once installation is done, all that is left is to choose a server and become a r
 This article organizes the general installation steps for FiveM in a beginner-friendly way. FiveM is a community-made platform premised on the PC version of GTA5 (Legacy Edition), and a legitimately purchased GTA5 is required. Because the support status for GTA5 Enhanced Edition, the client's specifications, and the details of the on-screen display and steps may change with updates, please check the latest information on the FiveM official site (fivem.net) and the official documentation when installing. Always download only from the official site, and do not use unofficial distributions. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
 
 export default function FivemInstallGuide() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMの導入方法｜GTA5でカスタムサーバーを遊ぶ手順を解説｜GTA6 FEED"
@@ -181,30 +184,30 @@ export default function FivemInstallGuide() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/server-guide"
           className="inline-flex items-center gap-2 px-4 h-10 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Compass size={14} /> サーバーの選び方ガイド
-        </a>
-        <a
+          <Compass size={14} /> {t('chip.serverGuide')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-fivem"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          FiveMとは？
-        </a>
-        <a
+          {t('chip.whatIsFivem')}
+        </LocalLink>
+        <LocalLink
           href="/servers"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Server size={14} /> FiveMサーバー 住民募集板
-        </a>
-        <a
+          <Server size={14} /> {t('chip.servers')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板
-        </a>
+          <MessageSquare size={14} /> {t('chip.board')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

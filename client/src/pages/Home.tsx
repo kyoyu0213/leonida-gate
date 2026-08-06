@@ -11,6 +11,7 @@ import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { type FivemServer } from '@/lib/supabase';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import { useLocalHref } from '@/components/LocalLink';
 
 // Discord ロゴ（lucide に無いため簡易インラインSVG）
 function DiscordIcon() {
@@ -27,6 +28,7 @@ const TOP_NEWS_COUNT = 2;
 const TREND_PER_BOARD = 3;
 
 export default function Home() {
+  const L = useLocalHref();
   const t = useT();
   const lang = useLang();
   useSeo(t('seo.home.title'), t('seo.home.desc'), { url: '/', localized: true });
@@ -182,7 +184,7 @@ export default function Home() {
 
             <div className="flex gap-2.5 flex-wrap" style={{ marginTop: 'clamp(18px,2.6vw,24px)' }}>
               <a
-                href="/news"
+                href={L('/news')}
                 className="font-extrabold text-white"
                 style={{
                   fontSize: 'clamp(13px,1.6vw,14.5px)',
@@ -195,7 +197,7 @@ export default function Home() {
                 {lang === 'ja' ? '最新情報を見る →' : 'View latest →'}
               </a>
               <a
-                href="/board"
+                href={L('/board')}
                 className="font-extrabold text-white"
                 style={{
                   fontSize: 'clamp(13px,1.6vw,14.5px)',
@@ -210,7 +212,7 @@ export default function Home() {
                 {lang === 'ja' ? '掲示板を見る' : 'Board'}
               </a>
               <a
-                href="/servers"
+                href={L('/servers')}
                 className="font-extrabold text-white"
                 style={{
                   fontSize: 'clamp(13px,1.6vw,14.5px)',
@@ -225,7 +227,7 @@ export default function Home() {
                 {lang === 'ja' ? 'サーバーを探す' : 'Find servers'}
               </a>
               <a
-                href="/board/friends"
+                href={L('/board/friends')}
                 className="font-extrabold text-white"
                 style={{
                   fontSize: 'clamp(13px,1.6vw,14.5px)',
@@ -340,7 +342,7 @@ export default function Home() {
                     </p>
                   ))}
                 <a
-                  href="/board/friends"
+                  href={L('/board/friends')}
                   className="inline-flex items-center gap-1.5 font-black jp-head"
                   style={{ fontSize: 16, lineHeight: 1.9, marginTop: 2, color: '#22d3ee', letterSpacing: '.03em' }}
                 >
@@ -350,7 +352,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-start gap-2.5" style={{ marginTop: 16 }}>
                 <a
-                  href="/news"
+                  href={L('/news')}
                   className="font-extrabold text-white"
                   style={{
                     fontSize: 14.5,
@@ -364,7 +366,7 @@ export default function Home() {
                 </a>
                 <div className="flex gap-2.5">
                   <a
-                    href="/board"
+                    href={L('/board')}
                     className="font-extrabold text-white"
                     style={{
                       fontSize: 14.5,
@@ -379,7 +381,7 @@ export default function Home() {
                     {lang === 'ja' ? '掲示板を見る' : 'Board'}
                   </a>
                   <a
-                    href="/servers"
+                    href={L('/servers')}
                     className="font-extrabold text-white"
                     style={{
                       fontSize: 14.5,
@@ -468,7 +470,7 @@ export default function Home() {
 
             <div className="mt-7">
               <a
-                href="/news"
+                href={L('/news')}
                 className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-sm font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
                 {lang === 'ja'
@@ -656,7 +658,7 @@ export default function Home() {
                   <div key={board.slug} className="mt-6 first:mt-5">
                     {/* カテゴリー見出し＝その掲示板一覧へのリンク */}
                     <a
-                      href={`/board/${board.slug}`}
+                      href={L(`/board/${board.slug}`)}
                       className="group flex items-center gap-2 pb-2 mb-2.5 border-b hover:opacity-90 transition-opacity"
                       style={{ borderColor: `${c}40` }}
                     >
@@ -683,7 +685,7 @@ export default function Home() {
                         {threads.map((t, i) => (
                           <a
                             key={t.id}
-                            href={`/thread/${t.id}`}
+                            href={L(`/thread/${t.id}`)}
                             className="flex gap-3 items-start rounded-xl px-3 py-2.5 bg-white/[0.03] hover:bg-white/[0.08] transition-colors"
                           >
                             <span
@@ -713,7 +715,7 @@ export default function Home() {
               {/* 掲示板を見るボタン */}
               <div className="mt-6 pt-4 border-t border-white/[0.07] flex justify-center">
                 <a
-                  href="/board"
+                  href={L('/board')}
                   className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-[12.5px] font-bold text-[#22d3ee] border border-[#22d3ee]/40 hover:bg-[#22d3ee]/10 hover:border-[#22d3ee]/70 transition-colors"
                 >
                   {t('home.viewBoard')}
@@ -737,7 +739,7 @@ export default function Home() {
                 servers.map((s) => (
                   <a
                     key={s.id}
-                    href="/servers"
+                    href={L('/servers')}
                     className="flex items-center gap-2.5 py-2.5 border-t border-white/10 hover:opacity-80 transition-opacity"
                   >
                     <span
@@ -754,7 +756,7 @@ export default function Home() {
                 </p>
               )}
               <a
-                href="/servers"
+                href={L('/servers')}
                 className="block text-center w-full mt-3 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-[13px] font-extrabold py-2.5 rounded-[11px] hover:bg-white/10 transition-colors"
               >
                 {t('home.viewRecruit')}

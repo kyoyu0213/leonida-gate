@@ -1,5 +1,7 @@
 import { HelpCircle, Server, MessageSquare } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMコマンド辞典｜GTARPでよく使うチャットコマンド一覧';
 
@@ -162,6 +164,7 @@ Although not commands, you can also set key assignments from the F8 console.
 This article is an explanatory piece organized by GTA6 FEED based on various publicly available information and actual operation, and it has no relationship whatsoever with Rockstar Games or Take-Two Interactive, or with the operators of the various servers. The commands and settings introduced here may differ depending on the server, the version, and the installed scripts, and may change over time. For the latest and accurate information, please check the official information of each server you join.`;
 
 export default function FivemCommandsArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMコマンド辞典｜GTARPでよく使うチャットコマンド一覧｜GTA6 FEED"
@@ -186,24 +189,24 @@ export default function FivemCommandsArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/fivem-gtarp/faq"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <HelpCircle size={14} /> よくある質問（FAQ）
-        </a>
-        <a
+          <HelpCircle size={14} /> {t('chip.faq')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          <Server size={14} /> GTARPとは？
-        </a>
-        <a
+          <Server size={14} /> {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で聞く
-        </a>
+          <MessageSquare size={14} /> {t('chip.boardAsk')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );

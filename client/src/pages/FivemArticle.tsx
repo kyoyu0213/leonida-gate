@@ -1,5 +1,7 @@
 import { MessageSquare, Newspaper } from 'lucide-react';
 import ArticleLayout from '@/components/ArticleLayout';
+import LocalLink from '@/components/LocalLink';
+import { useT } from '@/lib/i18n';
 
 const TITLE = 'FiveMとは？GTA5で人気のロールプレイ・MODサーバーをわかりやすく解説';
 
@@ -154,6 +156,7 @@ Finally, there is PC performance. RP servers that load many custom assets tend t
 Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are confirmed information that could be verified through multiple independent sources. On the other hand, the specific form of FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "Will FiveM Culture Continue in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change due to future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
 
 export default function FivemArticle() {
+  const t = useT();
   return (
     <ArticleLayout
       seoTitle="FiveMとは？｜GTA5で人気のロールプレイ・MODサーバーを解説｜GTA6 FEED"
@@ -177,24 +180,24 @@ export default function FivemArticle() {
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
-        <a
+        <LocalLink
           href="/board/gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <MessageSquare size={14} /> GTARP掲示板で語る
-        </a>
-        <a
+          <MessageSquare size={14} /> {t('chip.boardTalk')}
+        </LocalLink>
+        <LocalLink
           href="/fivem-gtarp/what-is-gtarp"
           className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
         >
-          GTARPとは？
-        </a>
-        <a
+          {t('chip.whatIsGtarp')}
+        </LocalLink>
+        <LocalLink
           href="/news/18"
           className="inline-flex items-center gap-2 px-4 h-10 bg-pink-600 hover:bg-pink-500 text-white font-mono text-sm rounded transition-colors"
         >
-          <Newspaper size={14} /> GTA6のRPはどうなる？
-        </a>
+          <Newspaper size={14} /> {t('chip.gta6rp')}
+        </LocalLink>
       </div>
     </ArticleLayout>
   );
