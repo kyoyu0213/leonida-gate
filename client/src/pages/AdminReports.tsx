@@ -1338,18 +1338,16 @@ function identityHue(key: string): number {
   return h % 360;
 }
 
-/** 識別チップ（色＋識別子＋件数）。クリックでその人物だけに絞り込む。
- *  ラベル(改名)があれば primary にラベル、sub に元のIPを小さく添える。 */
+/** 識別チップ（色＋IP/識別子＋件数）。クリックでその人物だけに絞り込む。
+ *  ラベル(改名)は別チップとして横に並べる（IPと混ざらないように）。 */
 function IdentityChip({
   primary,
-  sub,
   keyStr,
   count,
   active,
   onClick,
 }: {
   primary: string;
-  sub?: string | null;
   keyStr: string | null;
   count: number;
   active: boolean;
@@ -1372,7 +1370,6 @@ function IdentityChip({
     >
       <span className="w-2 h-2 rounded-full flex-none" style={{ background: color }} />
       {primary}
-      {sub && <span className="opacity-55 font-normal">{sub}</span>}
       {count > 1 && <span className="opacity-80">（{count}件）</span>}
     </button>
   );
@@ -1421,16 +1418,26 @@ function useIdentityFilter<T extends IdRow>(rows: T[], domPrefix: string) {
     const k = idKeyOf(r);
     // ラベル(改名)はIP単位。IPがある行だけラベル表示＋改名可能。
     const label = r.ip ? ipLabels?.labels.get(r.ip) ?? null : null;
+    const hue = k ? identityHue(k) : 0;
+    const color = k ? `hsl(${hue} 75% 70%)` : 'rgba(255,255,255,.4)';
     return (
-      <span className="inline-flex items-center gap-1">
+      <span className="inline-flex items-center gap-1.5">
         <IdentityChip
-          primary={label ?? idLabelOf(r)}
-          sub={label ? idLabelOf(r) : null}
+          primary={idLabelOf(r)}
           keyStr={k}
           count={k ? (counts.get(k) ?? 1) : 1}
           active={!!k && focus === k}
           onClick={() => toggle(r)}
         />
+        {/* ラベル(改名)はIPと分離した別チップ（IPランキングと同じ見た目・同じ色） */}
+        {label && (
+          <span
+            className="text-[11px] font-bold px-1.5 py-0.5 rounded flex-none"
+            style={{ color, border: `1px solid ${color}`, background: `hsl(${hue} 75% 70% / 0.15)` }}
+          >
+            {label}
+          </span>
+        )}
         {r.ip && ipLabels && (
           <button
             type="button"
