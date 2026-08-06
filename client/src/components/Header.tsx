@@ -70,24 +70,21 @@ export default function Header() {
           />
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-2 lg:gap-3 flex-none">
+        {/* Desktop nav（それぞれを四角いボタンにして区切りを付ける） */}
+        <nav className="hidden md:flex items-center gap-1.5 flex-none">
           {NAV.map((item) => {
             const active = item.match(logicalPath);
             return (
               <a
                 key={item.href}
                 href={navHref(item)}
-                className="relative px-1 py-1.5 text-[14px] font-bold whitespace-nowrap tracking-wide transition-colors"
-                style={{ color: active ? '#fff' : '#bdb2d0' }}
+                className={`px-2.5 py-1.5 rounded-lg text-[13px] font-bold whitespace-nowrap border transition-colors ${
+                  active
+                    ? 'text-white border-[#ff2d95]/50 bg-[#ff2d95]/15'
+                    : 'text-[#bdb2d0] border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white hover:border-white/25'
+                }`}
               >
                 {t(item.key)}
-                {active && (
-                  <span
-                    className="absolute left-1 right-1 -bottom-[21px] h-0.5 rounded-full"
-                    style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95)' }}
-                  />
-                )}
               </a>
             );
           })}
