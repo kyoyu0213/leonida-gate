@@ -373,7 +373,7 @@ const JA: Dict = {
   'cat.speculation': '考察・リーク',
   'cat.event': 'イベント',
   // 掲示板名（slug 別）
-  'board.gta-online': 'GTAオンライン',
+  'board.gta-online': 'GTA5オンライン',
   'board.gtarp-servers': 'FiveMサーバー',
   'board.streamer-servers': '配信者サーバー',
   'board.gtarp': 'ロールプレイ情報交換',
@@ -382,7 +382,7 @@ const JA: Dict = {
   'board.index': 'すべて',
   'board.hub.title': '掲示板',
   'board.hub.lead':
-    'GTA6情報交換・ロールプレイ交流・FiveMサーバー・配信者サーバー・開発者交流など、目的別のスレッド掲示板。ジャンルを選んで参加しよう。',
+    'GTA5オンライン・GTA6情報交換・ロールプレイ交流・FiveMサーバー・配信者サーバー・開発者交流など、目的別のスレッド掲示板。ジャンルを選んで参加しよう。',
   'board.friends': 'フレンド募集板 【GTA5】',
   'board.crews': 'クルー募集板 【GTA5】',
   'recruit.index': 'すべて',
@@ -962,7 +962,7 @@ const EN: Dict = {
   'cat.update': 'Updates',
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',
-  'board.gta-online': 'GTA Online',
+  'board.gta-online': 'GTA5 Online',
   'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
@@ -1127,7 +1127,7 @@ const EN: Dict = {
   'board.index': 'All',
   'board.hub.title': 'Boards',
   'board.hub.lead':
-    'Thread boards by topic — GTA6 info, roleplay chat, FiveM servers, streamer servers, and developers. Pick a category to join in.',
+    'Thread boards by topic — GTA5 Online, GTA6 info, roleplay chat, FiveM servers, streamer servers, and developers. Pick a category to join in.',
   // Board (/board, /thread, report)
   'brd.eyebrow': 'Community Board',
   'brd.title': 'Board',

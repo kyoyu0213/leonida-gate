@@ -15,8 +15,8 @@ export interface BoardConfig {
 export const BOARDS: BoardConfig[] = [
   {
     slug: 'gta-online',
-    title: 'GTAオンライン掲示板',
-    description: 'GTAオンライン（GTA5オンライン）の金策・強盗・カジノ・車・雑談を語る場所',
+    title: 'GTA5オンライン掲示板',
+    description: 'GTA5オンラインの金策・強盗・カジノ・車・雑談を語る場所',
     accent: 'yellow',
   },
   {
