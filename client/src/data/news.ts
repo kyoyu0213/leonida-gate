@@ -190,6 +190,135 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 39,
+    title:
+      "【公式発表】GTA6の新映像「An Extended Look」8月27日にNetflixで独占先行公開——YouTube・公式サイトは6時間後",
+    displayTitle:
+      "【公式発表】GTA6の新映像「An Extended Look」8月27日にNetflixで独占先行公開\nYouTube・公式サイトは6時間後",
+    description:
+      "Rockstarが8月6日、GTA6の新映像「An Extended Look」を8月27日にNetflixで独占先行公開すると発表。Netflixとのこの種の提携はシリーズ初となる。公開は米東部時間8月27日午後3時(日本時間28日午前4時)にNetflixで始まり、6時間後に公式YouTubeとGTA6公式サイトでも配信される。発売日は11月19日で変更なし。",
+    icon: "🎬",
+    image: "/images/news/netflix-extended-look/eyecatch.png",
+    category: "release",
+    date: "2026-08-07",
+    publishedAt: "2026-08-07 02:30",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://www.rockstargames.com/newswire",
+    relatedArticles: [33, 38, 19],
+    aiSummary: [
+      "Rockstarは2026年8月6日、GTA6の新映像「Grand Theft Auto VI: An Extended Look」を8月27日にNetflixで独占先行公開すると発表した。Netflixとこの種の提携を結ぶのはシリーズ初となる。",
+      "公開はまずNetflixで米東部時間8月27日午後3時(日本時間28日午前4時)に始まり、その6時間後に公式YouTubeチャンネルとGTA6公式サイトでも配信される。Netflix会員は一般公開より6時間早く見られるが、未加入でも同日中に視聴できる。",
+      "発売日は2026年11月19日で変更はない。ファンの間では「トレーラー3」に相当する新映像と受け止められているが、Rockstar自身は「トレーラー」ではなく「An Extended Look」という名称を用いている。映像の具体的な内容は公開当日に判明する。",
+    ],
+    fullContent: `# 【公式発表】GTA6の新映像「An Extended Look」8月27日にNetflixで独占先行公開——YouTube・公式サイトは6時間後
+
+Rockstar Gamesは2026年8月6日、グランド・セフト・オートVI(GTA6)の新たな映像「Grand Theft Auto VI: An Extended Look」を、8月27日にNetflixで独占先行公開すると発表した。Netflixとこの種の提携を結ぶのはシリーズ初となる。公開はまずNetflixで米東部時間の8月27日午後3時に始まり、その6時間後に公式YouTubeチャンネルとGTA6公式サイトでも配信される。発売日は2026年11月19日で変更はない。
+
+本記事は2026年8月7日時点の情報にもとづく。
+
+---
+
+## いつ・どこで見られるか
+
+公開のスケジュールは配信先によって時間が異なる。日本時間(JST)に換算すると次のようになる。
+
+- Netflix(独占先行):8月27日 午後3時(米東部時間)＝日本時間8月28日 午前4時。視聴先は netflix.com/VI。
+- 公式YouTubeチャンネル・GTA6公式サイト:8月27日 午後9時(米東部時間)＝日本時間8月28日 午前10時。
+
+つまりNetflixの会員は、YouTubeや公式サイトでの一般公開より6時間早く映像を見られることになる。Netflixに加入していない場合でも、同日中に公式YouTubeなどで視聴が可能である。
+
+---
+
+## 「An Extended Look」とは
+
+今回公開されるのは、GTA6の内容をこれまでより詳しく紹介する新映像とされる。Rockstarはこの映像を「An Extended Look(拡張された特別映像)」と名付けており、これまでに公開されたトレーラーに続く、ゲームのより踏み込んだ内容を示すものと位置づけられている。
+
+注目すべきは、これがNetflixとの初の提携によって届けられる点である。Netflixでノンフィクションシリーズを統括するブランドン・リーグ氏は、GTA6をめぐる期待と熱狂は前例のないものだとしたうえで、その物語の次章をNetflixの会員に先行して届けられることを歓迎するとコメントしている。同社はこの提携を、あらゆる媒体の意欲的な作品を大きな観客に届けるという自社の方向性を反映したものと説明している。
+
+なお、この映像はファンの間で「第3弾トレーラー」に相当する新映像と受け止められているが、Rockstar自身は「トレーラー」ではなく「An Extended Look」という名称を用いている点は区別しておきたい。
+
+---
+
+## 背景と現状
+
+GTA6は、前作GTA5の発売から13年を経ての新作にあたる。Netflixが独自番組の制作に本格的に乗り出したのもGTA5と同じ時期であり、両者の提携は、媒体を越えたコンテンツ展開の一例として紹介されている。
+
+GTA6の予約購入は、すでに6月25日に開始されている。発売は2026年11月19日で、対象プラットフォームはPlayStation 5とXbox Series X|S。PC版については現時点で発売時期が発表されていない。
+
+公式のあらすじは、不利な状況に置かれてきたジェイソンとルシアが、ある「簡単な仕事」の失敗をきっかけに、レオニダ州全体に広がる犯罪の陰謀に巻き込まれ、生き延びるために互いに頼り合うことになる、という筋書きを示している。「An Extended Look」では、この物語や舞台となるバイスシティの姿が、これまでより詳しく描かれると見られる。
+
+---
+
+## まとめ
+
+Rockstarが公式に明らかにしたのは、「GTA6の新映像『An Extended Look』を8月27日にNetflixで独占先行公開すること」「同日、6時間後に公式YouTubeとGTA6サイトでも公開すること」「発売日は11月19日で変わらないこと」である。
+
+Netflixとの初の提携という形式そのものが今回の特徴であり、シリーズの映像公開が単なるトレーラー配信を超えたイベントとして扱われつつあることを示している。映像の具体的な中身は公開当日に判明する。公開後、内容が明らかになり次第あらためて整理する。
+
+---
+
+注記:本記事は2026年8月7日時点のRockstar GamesおよびNetflixの公式発表にもとづく。公開日時は告知時点のもので、変更される可能性がある。日本時間は米東部夏時間(UTC−4)を基準に換算した目安である。映像の具体的な内容は公開後に確認・更新する。`,
+    titleEn:
+      "Official: GTA6's New Video \"An Extended Look\" Premieres Exclusively on Netflix on August 27 — YouTube and the Official Site Six Hours Later",
+    displayTitleEn:
+      "Official: GTA6's New Video \"An Extended Look\" Premieres Exclusively on Netflix on August 27\nYouTube and the Official Site Six Hours Later",
+    descriptionEn:
+      "On August 6, Rockstar announced that a new GTA6 video, \"An Extended Look,\" will premiere exclusively on Netflix on August 27. It is the series' first partnership of this kind with Netflix. It goes live on Netflix at 3 p.m. ET on August 27, with the official YouTube channel and the GTA6 site following six hours later. The release date remains November 19.",
+    aiSummaryEn: [
+      "On August 6, 2026, Rockstar announced that a new GTA6 video, \"Grand Theft Auto VI: An Extended Look,\" will premiere exclusively on Netflix on August 27. It is the first partnership of this kind between the series and Netflix.",
+      "It goes live first on Netflix at 3 p.m. ET on August 27, with the official YouTube channel and the GTA6 site following six hours later. Netflix members see it six hours ahead of the general release, but non-subscribers can still watch it the same day.",
+      "The release date remains November 19, 2026. Fans have received it as the equivalent of a \"third trailer,\" but Rockstar itself uses the name \"An Extended Look\" rather than \"trailer.\" What the video actually contains will be known on the day it goes live.",
+    ],
+    fullContentEn: `# Official: GTA6's New Video "An Extended Look" Premieres Exclusively on Netflix on August 27 — YouTube and the Official Site Six Hours Later
+
+On August 6, 2026, Rockstar Games announced that a new *Grand Theft Auto VI (GTA6)* video, "Grand Theft Auto VI: An Extended Look," will premiere exclusively on Netflix on August 27. It is the series' first partnership of this kind with Netflix. It goes live first on Netflix at 3 p.m. Eastern Time on August 27, and six hours after that it will also be distributed on the official YouTube channel and the GTA6 official site. The release date remains November 19, 2026, unchanged.
+
+This article is based on information as of August 7, 2026.
+
+---
+
+## When and Where You Can Watch
+
+The schedule differs depending on where you watch.
+
+- Netflix (exclusive early premiere): August 27 at 3 p.m. ET. Watch at netflix.com/VI.
+- Official YouTube channel and the GTA6 official site: August 27 at 9 p.m. ET.
+
+In other words, Netflix members get to see the video six hours ahead of the general release on YouTube and the official site. Even without a Netflix subscription, you can watch it the same day on the official YouTube channel and elsewhere.
+
+---
+
+## What "An Extended Look" Is
+
+What's being released is described as a new video that introduces the contents of GTA6 in more detail than before. Rockstar has named it "An Extended Look," positioning it as a follow-up to the trailers released so far that goes deeper into the game itself.
+
+What stands out is that it is being delivered through a first-ever partnership with Netflix. Brandon Riegg, who oversees nonfiction series at Netflix, commented that the anticipation and excitement around GTA6 is unprecedented, and that the company welcomes the chance to bring the next chapter of its story to Netflix members first. Netflix has described the partnership as reflecting its direction of bringing ambitious work in every medium to a large audience.
+
+It's worth noting that while fans have received this as the equivalent of a "third trailer," Rockstar itself uses the name "An Extended Look" rather than "trailer" — a distinction worth keeping in mind.
+
+---
+
+## Background and Current Status
+
+GTA6 arrives 13 years after the release of its predecessor, GTA5. Netflix began producing its own original programming in earnest around the same period as GTA5, and the partnership between the two has been presented as an example of content reaching across media.
+
+Pre-orders for GTA6 opened on June 25. The release date is November 19, 2026, on PlayStation 5 and Xbox Series X|S. No release window has been announced for the PC version at this point.
+
+The official synopsis describes Jason and Lucia, who have long been dealt a bad hand, getting pulled into a criminal conspiracy spreading across the state of Leonida after one "easy score" goes wrong, leaving them to rely on each other to survive. "An Extended Look" is expected to show this story and the setting of Vice City in more detail than before.
+
+---
+
+## Summary
+
+What Rockstar has officially revealed is this: the new GTA6 video "An Extended Look" premieres exclusively on Netflix on August 27; the same day, six hours later, it also goes live on the official YouTube channel and the GTA6 site; and the release date remains November 19.
+
+The format itself — a first-ever partnership with Netflix — is what characterizes this announcement, and it shows that video releases for the series are increasingly being treated as events rather than simple trailer drops. What the video actually contains will be known on the day. We will revisit it once the contents are clear.
+
+---
+
+Note: This article is based on official announcements from Rockstar Games and Netflix as of August 7, 2026. The premiere date and time are as announced and are subject to change. Japan times are approximate conversions based on U.S. Eastern Daylight Time (UTC−4). The specific contents of the video will be confirmed and updated after it goes live.`,
+  },
+  {
     id: 38,
     title:
       "GTA6のパッケージ版、国内でも予約開始——中身はディスクではなくDLコード、通常版9,800円",
