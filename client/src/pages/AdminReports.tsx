@@ -1260,6 +1260,60 @@ function RecruitPanel() {
   );
 }
 
+// 投稿ログの「同一人物」識別。IPを最優先キーにし、無ければ匿名Cookie(anon_id)。
+function postIdentityKey(p: AdminPostRow): string | null {
+  if (p.ip) return `ip:${p.ip}`;
+  if (p.anon_id) return `anon:${p.anon_id}`;
+  return null;
+}
+function postIdentityLabel(p: AdminPostRow): string {
+  if (p.ip) return p.ip;
+  if (p.anon_id) return `cookie:${p.anon_id.slice(0, 8)}`;
+  return '不明';
+}
+// キー文字列から決定的に色相を算出（＝同一人物は必ず同じ色になる）。
+function identityHue(key: string): number {
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return h % 360;
+}
+
+/** 投稿ログ各行の識別チップ（色＋IP＋同一人物の件数）。クリックでその人物だけに絞り込む。 */
+function IdentityChip({
+  p,
+  count,
+  active,
+  onClick,
+}: {
+  p: AdminPostRow;
+  count: number;
+  active: boolean;
+  onClick: () => void;
+}) {
+  const key = postIdentityKey(p);
+  const label = postIdentityLabel(p);
+  const hue = key ? identityHue(key) : 0;
+  const color = key ? `hsl(${hue} 75% 70%)` : 'rgba(255,255,255,.4)';
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={!key}
+      title={key ? '同じ人物（IP/Cookie）の投稿だけに絞り込む' : '識別情報なし'}
+      className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[11px] transition-all hover:brightness-125"
+      style={{
+        color,
+        border: `1px solid ${key ? `hsl(${hue} 75% 70% / ${active ? 1 : 0.5})` : 'rgba(255,255,255,.2)'}`,
+        background: key ? `hsl(${hue} 75% 70% / ${active ? 0.28 : 0.12})` : 'transparent',
+      }}
+    >
+      <span className="w-2 h-2 rounded-full flex-none" style={{ background: color }} />
+      {label}
+      {count > 1 && <span className="opacity-80">×{count}</span>}
+    </button>
+  );
+}
+
 function PostsPanel() {
   const [rows, setRows] = useState<AdminPostRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1270,9 +1324,12 @@ function PostsPanel() {
   // 「もっと見る」で古い投稿を遡れるか／読み込み中か
   const [hasMore, setHasMore] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
+  // 識別チップで「同一人物」に絞り込み中のキー（null＝絞り込みなし）。
+  const [focus, setFocus] = useState<string | null>(null);
 
   const load = async () => {
     setLoading(true);
+    setFocus(null);
     const { data, error } = await listAdminPosts(board || undefined, 0);
     if (error) toast.error(error);
     setRows(data);
@@ -1313,6 +1370,14 @@ function PostsPanel() {
   const filterSel =
     'bg-white/[0.05] border border-white/12 rounded-lg px-3 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
 
+  // 読み込み済みの投稿から、識別キーごとの件数を集計（同一人物の投稿数）。
+  const idCounts = new Map<string, number>();
+  for (const r of rows) {
+    const k = postIdentityKey(r);
+    if (k) idCounts.set(k, (idCounts.get(k) ?? 0) + 1);
+  }
+  const visibleRows = focus ? rows.filter((r) => postIdentityKey(r) === focus) : rows;
+
   return (
     <div className="flex flex-col gap-4">
       {/* 板で絞り込み（すべての板＝新着横断／個別＝その板の新着のみ） */}
@@ -1328,6 +1393,20 @@ function PostsPanel() {
         </select>
       </div>
 
+      {/* 同一人物で絞り込み中のバナー（識別チップのクリックで発動） */}
+      {focus && (
+        <div className="flex items-center gap-2 flex-wrap rounded-lg border border-[#a78bfa]/40 bg-[#a78bfa]/10 px-3 py-2 text-[12px]">
+          <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: `hsl(${identityHue(focus)} 75% 70%)` }} />
+          <span className="text-white/60">同一人物で絞り込み中:</span>
+          <span className="font-mono text-white">{focus.replace(/^ip:|^anon:/, '')}</span>
+          <span className="text-white/50">{visibleRows.length}件（読み込み済みから）</span>
+          <span className="text-white/35">※さらに古い投稿は「もっと見る」で追加読込。全期間は「IP検索」タブで。</span>
+          <button onClick={() => setFocus(null)} className="ml-auto font-bold text-[#c4b5fd] hover:text-white">
+            解除
+          </button>
+        </div>
+      )}
+
       {loading ? (
         <div className="text-center py-16 text-white/50">
           <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
@@ -1336,15 +1415,22 @@ function PostsPanel() {
         <div className="text-center py-16 text-white/50">投稿がありません</div>
       ) : (
         <div className="flex flex-col gap-3">
-          {rows.map((p) => {
+          {visibleRows.map((p) => {
         const board = getBoard(p.board);
         const busy = busyId === p.id;
+        const idKey = postIdentityKey(p);
         return (
           <div key={p.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
               <span className="text-white/55">{board?.title.replace('掲示板', '') ?? p.board}</span>
               <span className="text-white/30">#{p.post_number}</span>
               <span className="font-bold text-white">{p.name}</span>
+              <IdentityChip
+                p={p}
+                count={idKey ? (idCounts.get(idKey) ?? 1) : 1}
+                active={!!idKey && focus === idKey}
+                onClick={() => idKey && setFocus((cur) => (cur === idKey ? null : idKey))}
+              />
               {p.report_count > 0 && <span className="vice-num text-[#ff2d95]">通報 {p.report_count}</span>}
               {p.hidden && <span className="text-white/40">（非表示中）</span>}
               <span className="ml-auto text-white/40">{formatPostDate(p.created_at)}</span>
