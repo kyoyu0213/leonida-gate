@@ -9,6 +9,7 @@ import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
+import { seedFriends } from '@/lib/ssrSeed';
 
 const emptyForm = {
   title: '',
@@ -33,8 +34,30 @@ export default function FriendsBoard() {
   const lang = useLang();
   useSeo(tr('seo.friends.title'), tr('seo.friends.desc'), { url: '/board/friends' });
 
-  const [friends, setFriends] = useState<Friend[]>([]);
-  const [loading, setLoading] = useState(true);
+  // ビルド時プリレンダ用の初期値。連絡先（contact / contact_kind）と author_name は
+  // seed に存在しないので null 固定＝静的HTMLには一切出ない。
+  // ブラウザでは seed が空なので従来どおり [] 始まり＝挙動は変わらない。
+  const seededFriends: Friend[] = seedFriends().map((f) => ({
+    id: f.id,
+    title: f.title,
+    platform: f.platform,
+    play_style: f.play_style,
+    voice_chat: null,
+    active_time: f.active_time,
+    age_range: null,
+    body: f.excerpt,
+    contact: null,
+    author_name: null,
+    gender: null,
+    contact_kind: null,
+    thread_id: null,
+    status: 'published',
+    created_at: f.created_at,
+    reply_count: f.reply_count,
+  }));
+
+  const [friends, setFriends] = useState<Friend[]>(seededFriends);
+  const [loading, setLoading] = useState(seededFriends.length === 0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStyle, setSelectedStyle] = useState<string>('all');
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');

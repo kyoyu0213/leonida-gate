@@ -11,6 +11,7 @@ import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
+import { seedServers } from '@/lib/ssrSeed';
 
 const SERVER_TYPES = [
   { id: 'all', label: 'すべて' },
@@ -37,8 +38,25 @@ export default function ServerBoard() {
   const tr = useT();
   const lang = useLang();
   useSeo(tr('seo.servers.title'), tr('seo.servers.desc'), { url: '/servers' });
-  const [servers, setServers] = useState<FivemServer[]>([]);
-  const [loading, setLoading] = useState(true);
+  // ビルド時プリレンダ用の初期値。接続情報（connect_info）と Discord URL は
+  // seed に存在しないので null 固定＝静的HTMLには一切出ない。
+  // ブラウザでは seed が空なので従来どおり [] 始まり。
+  const seededServers: FivemServer[] = seedServers().map((s) => ({
+    id: s.id,
+    name: s.name,
+    description: s.excerpt,
+    type: s.type,
+    connect_info: null,
+    discord_url: null,
+    language: s.language,
+    tags: s.tags ?? [],
+    approved: true,
+    created_at: s.created_at,
+    icon: null,
+  }));
+
+  const [servers, setServers] = useState<FivemServer[]>(seededServers);
+  const [loading, setLoading] = useState(seededServers.length === 0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);

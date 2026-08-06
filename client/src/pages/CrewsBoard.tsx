@@ -9,6 +9,7 @@ import { boardErrorMessage } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
+import { seedCrews } from '@/lib/ssrSeed';
 
 const emptyForm = {
   crew_name: '',
@@ -32,8 +33,27 @@ export default function CrewsBoard() {
   const lang = useLang();
   useSeo(tr('seo.crews.title'), tr('seo.crews.desc'), { url: '/board/crews' });
 
-  const [crews, setCrews] = useState<Crew[]>([]);
-  const [loading, setLoading] = useState(true);
+  // ビルド時プリレンダ用の初期値。連絡先（contact）と author_name は seed に存在しないので
+  // null 固定＝静的HTMLには一切出ない。ブラウザでは seed が空なので従来どおり [] 始まり。
+  const seededCrews: Crew[] = seedCrews().map((c) => ({
+    id: c.id,
+    crew_name: c.crew_name,
+    title: c.title,
+    platform: c.platform,
+    genre: c.genre,
+    size: null,
+    requirements: null,
+    active_time: null,
+    body: c.excerpt,
+    contact: null,
+    author_name: null,
+    thread_id: null,
+    status: 'published',
+    created_at: c.created_at,
+  }));
+
+  const [crews, setCrews] = useState<Crew[]>(seededCrews);
+  const [loading, setLoading] = useState(seededCrews.length === 0);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');

@@ -26,6 +26,7 @@ import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { type BoardGuideKey } from '@/data/boardGuides';
+import { seedThreads } from '@/lib/ssrSeed';
 
 const COOLDOWN_KEY = 'board_last_post';
 
@@ -72,8 +73,11 @@ export default function BoardThreadList() {
     { url: `/board/${slug}` },
   );
 
-  const [threads, setThreads] = useState<BoardThread[]>([]);
-  const [loading, setLoading] = useState(true);
+  // ビルド時プリレンダでは seed から初期値を入れ、renderToString でスレ一覧まで描画する。
+  // ブラウザでは seed が常に空なので [] 始まり＝従来どおり useEffect で取得する。
+  const seeded = seedThreads(slug ?? '');
+  const [threads, setThreads] = useState<BoardThread[]>(seeded as BoardThread[]);
+  const [loading, setLoading] = useState(seeded.length === 0);
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState('');
   const [name, setName] = useState('');
