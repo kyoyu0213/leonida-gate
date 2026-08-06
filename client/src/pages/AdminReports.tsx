@@ -537,6 +537,7 @@ function ContactsPanel() {
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const idf = useIdentityFilter(rows, 'contact');
 
   const load = async () => {
     setLoading(true);
@@ -577,10 +578,11 @@ function ContactsPanel() {
 
   return (
     <div className="flex flex-col gap-3">
-      {rows.map((c) => {
+      {idf.banner}
+      {idf.visibleRows.map((c) => {
         const busy = busyId === c.id;
         return (
-          <div key={c.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+          <div key={c.id} id={idf.rowId(c)} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
               <Mail size={13} className="text-[#22d3ee]" />
               <span className="font-bold text-white">{c.name || '（名前なし）'}</span>
@@ -591,6 +593,7 @@ function ContactsPanel() {
               ) : (
                 <span className="text-white/35">（メール未記入）</span>
               )}
+              {idf.renderChip(c)}
               <span className="ml-auto text-white/40">{formatPostDate(c.created_at)}</span>
             </div>
             <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
@@ -675,6 +678,7 @@ function ApplicationsPanel() {
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const idf = useIdentityFilter(rows, 'appl');
 
   const load = async () => {
     setLoading(true);
@@ -731,11 +735,13 @@ function ApplicationsPanel() {
 
   return (
     <div className="flex flex-col gap-3">
-      {rows.map((a) => {
+      {idf.banner}
+      {idf.visibleRows.map((a) => {
         const busy = busyId === a.id;
         return (
           <div
             key={a.id}
+            id={idf.rowId(a)}
             className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4"
             style={{ borderColor: a.approved ? undefined : 'rgba(255,45,149,.35)' }}
           >
@@ -754,6 +760,7 @@ function ApplicationsPanel() {
               </span>
               <span className="font-bold text-white text-[14px]">{a.server_name}</span>
               {a.applicant && <span className="text-white/45">申請者: {a.applicant}</span>}
+              {idf.renderChip(a)}
               <span className="ml-auto text-white/40">{formatPostDate(a.created_at)}</span>
             </div>
             <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
@@ -842,6 +849,7 @@ function ServersPanel() {
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const idf = useIdentityFilter(rows, 'srv');
 
   const load = async () => {
     setLoading(true);
@@ -884,10 +892,11 @@ function ServersPanel() {
 
   return (
     <div className="flex flex-col gap-3">
-      {rows.map((s) => {
+      {idf.banner}
+      {idf.visibleRows.map((s) => {
         const busy = busyId === s.id;
         return (
-          <div key={s.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+          <div key={s.id} id={idf.rowId(s)} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
               {s.icon && (
                 <img src={imagePublicUrl(s.icon)} alt="" className="w-7 h-7 rounded object-cover border border-white/15 flex-none" loading="lazy" />
@@ -895,6 +904,7 @@ function ServersPanel() {
               <span className="font-extrabold rounded px-2 py-0.5 text-[#22d3ee] border border-[#22d3ee]/40">{s.type || 'RP'}</span>
               <span className="font-bold text-white text-[14px]">{s.name}</span>
               {s.language && <span className="text-white/45">{s.language}</span>}
+              {idf.renderChip(s)}
               <span className="ml-auto text-white/40">{formatPostDate(s.created_at)}</span>
             </div>
             <p className="text-sm text-white/85 whitespace-pre-wrap break-words bg-black/20 rounded-lg p-3 m-0">
@@ -1073,6 +1083,7 @@ function RecruitPanel() {
 
   const accent = kind === 'friends' ? '#22d3ee' : '#ff8a3d';
   const from = kind === 'friends' ? 'フレンド募集から' : 'クルー募集から';
+  const idf = useIdentityFilter(rows, 'recruit');
 
   return (
     <div>
@@ -1101,6 +1112,8 @@ function RecruitPanel() {
         })}
       </div>
 
+      {idf.banner}
+
       {loading ? (
         <div className="text-center py-16 text-white/50">
           <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
@@ -1109,12 +1122,13 @@ function RecruitPanel() {
         <div className="text-center py-16 text-white/50">掲載中の募集はありません</div>
       ) : (
         <div className="flex flex-col gap-3">
-          {rows.map((r) => {
+          {idf.visibleRows.map((r) => {
             const busy = busyId === r.id;
             const hidden = r.status !== 'published';
             return (
               <div
                 key={r.id}
+                id={idf.rowId(r)}
                 className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4"
                 style={{ borderColor: hidden ? 'rgba(255,255,255,.06)' : undefined, opacity: hidden ? 0.75 : 1 }}
               >
@@ -1135,6 +1149,7 @@ function RecruitPanel() {
                   )}
                   {r.sub && <span className="text-white/55 font-bold">{r.sub}</span>}
                   <span className="font-bold text-white text-[14px]">{r.title}</span>
+                  {idf.renderChip(r)}
                   <span className="ml-auto text-white/40">{formatPostDate(r.created_at)}</span>
                 </div>
 
@@ -1260,15 +1275,20 @@ function RecruitPanel() {
   );
 }
 
-// 投稿ログの「同一人物」識別。IPを最優先キーにし、無ければ匿名Cookie(anon_id)。
-function postIdentityKey(p: AdminPostRow): string | null {
-  if (p.ip) return `ip:${p.ip}`;
-  if (p.anon_id) return `anon:${p.anon_id}`;
+// ── 「同一人物」識別（IP / サブネット / 匿名Cookie）: 管理画面の各ログで共通利用 ──
+type IdRow = { id: string; ip?: string | null; ip_subnet?: string | null; anon_id?: string | null };
+
+// 同一人物の識別キー。IP（完全一致）を最優先、無ければサブネット、無ければ匿名Cookie。
+function idKeyOf(r: IdRow): string | null {
+  if (r.ip) return `ip:${r.ip}`;
+  if (r.ip_subnet) return `sub:${r.ip_subnet}`;
+  if (r.anon_id) return `anon:${r.anon_id}`;
   return null;
 }
-function postIdentityLabel(p: AdminPostRow): string {
-  if (p.ip) return p.ip;
-  if (p.anon_id) return `cookie:${p.anon_id.slice(0, 8)}`;
+function idLabelOf(r: IdRow): string {
+  if (r.ip) return r.ip;
+  if (r.ip_subnet) return r.ip_subnet;
+  if (r.anon_id) return `cookie:${r.anon_id.slice(0, 8)}`;
   return '不明';
 }
 // キー文字列から決定的に色相を算出（＝同一人物は必ず同じ色になる）。
@@ -1278,33 +1298,33 @@ function identityHue(key: string): number {
   return h % 360;
 }
 
-/** 投稿ログ各行の識別チップ（色＋IP＋同一人物の件数）。クリックでその人物だけに絞り込む。 */
+/** 識別チップ（色＋IP/識別子＋同一人物の件数）。クリックでその人物だけに絞り込む。 */
 function IdentityChip({
-  p,
+  label,
+  keyStr,
   count,
   active,
   onClick,
 }: {
-  p: AdminPostRow;
+  label: string;
+  keyStr: string | null;
   count: number;
   active: boolean;
   onClick: () => void;
 }) {
-  const key = postIdentityKey(p);
-  const label = postIdentityLabel(p);
-  const hue = key ? identityHue(key) : 0;
-  const color = key ? `hsl(${hue} 75% 70%)` : 'rgba(255,255,255,.4)';
+  const hue = keyStr ? identityHue(keyStr) : 0;
+  const color = keyStr ? `hsl(${hue} 75% 70%)` : 'rgba(255,255,255,.4)';
   return (
     <button
       type="button"
       onClick={onClick}
-      disabled={!key}
-      title={key ? '同じ人物（IP/Cookie）の投稿だけに絞り込む' : '識別情報なし'}
+      disabled={!keyStr}
+      title={keyStr ? '同じ人物（IP/Cookie）の書き込みだけに絞り込む' : '識別情報なし'}
       className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[11px] transition-all hover:brightness-125"
       style={{
         color,
-        border: `1px solid ${key ? `hsl(${hue} 75% 70% / ${active ? 1 : 0.5})` : 'rgba(255,255,255,.2)'}`,
-        background: key ? `hsl(${hue} 75% 70% / ${active ? 0.28 : 0.12})` : 'transparent',
+        border: `1px solid ${keyStr ? `hsl(${hue} 75% 70% / ${active ? 1 : 0.5})` : 'rgba(255,255,255,.2)'}`,
+        background: keyStr ? `hsl(${hue} 75% 70% / ${active ? 0.28 : 0.12})` : 'transparent',
       }}
     >
       <span className="w-2 h-2 rounded-full flex-none" style={{ background: color }} />
@@ -1312,6 +1332,72 @@ function IdentityChip({
       {count > 1 && <span className="opacity-80">（{count}件）</span>}
     </button>
   );
+}
+
+/**
+ * 各ログ一覧に「同一人物で絞り込み」を付与する共通フック。
+ * renderChip(r) を行ヘッダーに、banner を一覧上部に置き、行 <div> に id={rowId(r)} を付ける。
+ * visibleRows を map すれば絞り込みが反映される。解除時は押した行へスクロールで戻す。
+ */
+function useIdentityFilter<T extends IdRow>(rows: T[], domPrefix: string) {
+  const [focus, setFocus] = useState<string | null>(null);
+  const anchor = useRef<string | null>(null);
+
+  // トグルで focus が変わったら、押した行を画面中央へ戻す（一番上に飛ばない）。
+  useEffect(() => {
+    const id = anchor.current;
+    if (!id) return;
+    anchor.current = null;
+    requestAnimationFrame(() => {
+      document.getElementById(`${domPrefix}-${id}`)?.scrollIntoView({ block: 'center' });
+    });
+  }, [focus]);
+
+  // 一覧が入れ替わって絞り込み中のキーが消えたら自動で解除。
+  useEffect(() => {
+    if (focus && !rows.some((r) => idKeyOf(r) === focus)) setFocus(null);
+  }, [rows, focus]);
+
+  const counts = new Map<string, number>();
+  for (const r of rows) {
+    const k = idKeyOf(r);
+    if (k) counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  const visibleRows = focus ? rows.filter((r) => idKeyOf(r) === focus) : rows;
+
+  const toggle = (r: T) => {
+    const k = idKeyOf(r);
+    if (!k) return;
+    anchor.current = r.id;
+    setFocus((cur) => (cur === k ? null : k));
+  };
+
+  const renderChip = (r: T) => {
+    const k = idKeyOf(r);
+    return (
+      <IdentityChip
+        label={idLabelOf(r)}
+        keyStr={k}
+        count={k ? (counts.get(k) ?? 1) : 1}
+        active={!!k && focus === k}
+        onClick={() => toggle(r)}
+      />
+    );
+  };
+
+  const banner = focus ? (
+    <div className="flex items-center gap-2 flex-wrap rounded-lg border border-[#a78bfa]/40 bg-[#a78bfa]/10 px-3 py-2 text-[12px]">
+      <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: `hsl(${identityHue(focus)} 75% 70%)` }} />
+      <span className="text-white/60">同一人物で絞り込み中:</span>
+      <span className="font-mono text-white">{focus.replace(/^ip:|^sub:|^anon:/, '')}</span>
+      <span className="text-white/50">{visibleRows.length}件（読み込み済みから）</span>
+      <button onClick={() => setFocus(null)} className="ml-auto font-bold text-[#c4b5fd] hover:text-white">
+        解除
+      </button>
+    </div>
+  ) : null;
+
+  return { visibleRows, banner, renderChip, rowId: (r: T) => `${domPrefix}-${r.id}`, focus };
 }
 
 function PostsPanel() {
@@ -1324,31 +1410,11 @@ function PostsPanel() {
   // 「もっと見る」で古い投稿を遡れるか／読み込み中か
   const [hasMore, setHasMore] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
-  // 識別チップで「同一人物」に絞り込み中のキー（null＝絞り込みなし）。
-  const [focus, setFocus] = useState<string | null>(null);
-  // 絞り込みのON/OFFで一覧の高さが変わり、クリックした投稿を見失う（先頭に戻る）のを防ぐ。
-  // チップを押した投稿IDを覚えておき、再描画後にその投稿を画面内へスクロールで戻す。
-  const anchorPostId = useRef<string | null>(null);
-
-  // チップのトグルで focus が変わったら、押した投稿を視界に戻す（スクロール位置を維持）。
-  useEffect(() => {
-    const id = anchorPostId.current;
-    if (!id) return;
-    anchorPostId.current = null;
-    // 再描画（DOM反映）後にスクロール。
-    requestAnimationFrame(() => {
-      document.getElementById(`plog-${id}`)?.scrollIntoView({ block: 'center' });
-    });
-  }, [focus]);
-
-  const toggleFocus = (postId: string, key: string) => {
-    anchorPostId.current = postId;
-    setFocus((cur) => (cur === key ? null : key));
-  };
+  // 「同一人物で絞り込み」（IP/Cookie）は共通フックに委譲。
+  const idf = useIdentityFilter(rows, 'plog');
 
   const load = async () => {
     setLoading(true);
-    setFocus(null);
     const { data, error } = await listAdminPosts(board || undefined, 0);
     if (error) toast.error(error);
     setRows(data);
@@ -1389,14 +1455,6 @@ function PostsPanel() {
   const filterSel =
     'bg-white/[0.05] border border-white/12 rounded-lg px-3 py-2 text-[#f4eef8] text-[13px] outline-none focus:border-[#a78bfa]/60';
 
-  // 読み込み済みの投稿から、識別キーごとの件数を集計（同一人物の投稿数）。
-  const idCounts = new Map<string, number>();
-  for (const r of rows) {
-    const k = postIdentityKey(r);
-    if (k) idCounts.set(k, (idCounts.get(k) ?? 0) + 1);
-  }
-  const visibleRows = focus ? rows.filter((r) => postIdentityKey(r) === focus) : rows;
-
   return (
     <div className="flex flex-col gap-4">
       {/* 板で絞り込み（すべての板＝新着横断／個別＝その板の新着のみ） */}
@@ -1412,19 +1470,7 @@ function PostsPanel() {
         </select>
       </div>
 
-      {/* 同一人物で絞り込み中のバナー（識別チップのクリックで発動） */}
-      {focus && (
-        <div className="flex items-center gap-2 flex-wrap rounded-lg border border-[#a78bfa]/40 bg-[#a78bfa]/10 px-3 py-2 text-[12px]">
-          <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: `hsl(${identityHue(focus)} 75% 70%)` }} />
-          <span className="text-white/60">同一人物で絞り込み中:</span>
-          <span className="font-mono text-white">{focus.replace(/^ip:|^anon:/, '')}</span>
-          <span className="text-white/50">{visibleRows.length}件（読み込み済みから）</span>
-          <span className="text-white/35">※さらに古い投稿は「もっと見る」で追加読込。全期間は「IP検索」タブで。</span>
-          <button onClick={() => setFocus(null)} className="ml-auto font-bold text-[#c4b5fd] hover:text-white">
-            解除
-          </button>
-        </div>
-      )}
+      {idf.banner}
 
       {loading ? (
         <div className="text-center py-16 text-white/50">
@@ -1434,22 +1480,16 @@ function PostsPanel() {
         <div className="text-center py-16 text-white/50">投稿がありません</div>
       ) : (
         <div className="flex flex-col gap-3">
-          {visibleRows.map((p) => {
+          {idf.visibleRows.map((p) => {
         const board = getBoard(p.board);
         const busy = busyId === p.id;
-        const idKey = postIdentityKey(p);
         return (
-          <div key={p.id} id={`plog-${p.id}`} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+          <div key={p.id} id={idf.rowId(p)} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
               <span className="text-white/55">{board?.title.replace('掲示板', '') ?? p.board}</span>
               <span className="text-white/30">#{p.post_number}</span>
               <span className="font-bold text-white">{p.name}</span>
-              <IdentityChip
-                p={p}
-                count={idKey ? (idCounts.get(idKey) ?? 1) : 1}
-                active={!!idKey && focus === idKey}
-                onClick={() => idKey && toggleFocus(p.id, idKey)}
-              />
+              {idf.renderChip(p)}
               {p.report_count > 0 && <span className="vice-num text-[#ff2d95]">通報 {p.report_count}</span>}
               {p.hidden && <span className="text-white/40">（非表示中）</span>}
               <span className="ml-auto text-white/40">{formatPostDate(p.created_at)}</span>
@@ -1775,6 +1815,7 @@ function NewsCommentsPanel() {
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const idf = useIdentityFilter(rows, 'ncmt');
 
   const load = async () => {
     setLoading(true);
@@ -1814,14 +1855,15 @@ function NewsCommentsPanel() {
 
   return (
     <div className="flex flex-col gap-3">
-      {rows.map((c) => {
+      {idf.banner}
+      {idf.visibleRows.map((c) => {
         const article = getAnyArticleById(c.article_id);
         const busy = busyId === c.id;
         return (
-          <div key={c.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+          <div key={c.id} id={idf.rowId(c)} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 mb-1.5 text-[12px] flex-wrap">
               <span className="font-bold text-white">{c.name}</span>
-              {c.ip && <span className="text-white/35">{c.ip}</span>}
+              {idf.renderChip(c)}
               {c.hidden && <span className="text-white/40">（非表示中）</span>}
               <span className="ml-auto text-white/40">{formatPostDate(c.created_at)}</span>
             </div>
