@@ -37,6 +37,7 @@ import {
   ADMIN_POSTS_PAGE,
   searchAdminPosts,
   adminIpRanking,
+  adminSetIpLabel,
   type IpRankRow,
   listBlocks,
   addBlock,
@@ -2157,6 +2158,20 @@ function IpRankingPanel() {
     }
   };
 
+  // 管理者がこのIPに識別ラベル（改名）を付ける／消す。空欄で削除。
+  const rename = async (r: IpRankRow) => {
+    const input = window.prompt(`「${r.ip}」の管理用ラベル（空欄で削除）`, r.label ?? '');
+    if (input === null) return; // キャンセル
+    const label = input.trim() || null;
+    const { error } = await adminSetIpLabel(r.ip, label);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(label ? `ラベルを「${label}」に設定しました` : 'ラベルを削除しました');
+    setRows((prev) => prev.map((x) => (x.ip === r.ip ? { ...x, label } : x)));
+  };
+
   if (loading) {
     return (
       <div className="text-center py-16 text-white/50">
@@ -2195,15 +2210,32 @@ function IpRankingPanel() {
         const open = expanded === r.ip;
         return (
           <div key={r.ip} className="rounded-xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
-            <button
+            <div
               onClick={() => toggle(r.ip)}
-              className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-white/[0.04] transition-colors"
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-white/[0.04] transition-colors cursor-pointer"
             >
               <span className="w-6 text-right vice-num text-white/40 flex-none">{i + 1}</span>
               <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: color, boxShadow: `0 0 8px ${color}` }} />
               <span className="font-mono text-[13px] flex-none" style={{ color }}>{r.ip}</span>
-              {r.sample_name && <span className="text-[12px] text-white/45 truncate">{r.sample_name}</span>}
-              <span className="ml-auto flex items-center gap-3 flex-none">
+              {r.label && (
+                <span
+                  className="text-[12px] font-bold px-1.5 py-0.5 rounded flex-none"
+                  style={{ color: '#facc15', border: '1px solid #facc1566', background: '#facc1520' }}
+                >
+                  {r.label}
+                </span>
+              )}
+              {r.sample_name && <span className="text-[12px] text-white/40 truncate">{r.sample_name}</span>}
+              <span className="ml-auto flex items-center gap-2.5 flex-none">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    rename(r);
+                  }}
+                  className="text-[11px] font-bold text-white/45 hover:text-white border border-white/15 rounded px-2 py-0.5"
+                >
+                  改名
+                </button>
                 <span className="text-[11px] text-white/35">{r.thread_count}スレ</span>
                 <span className="vice-num text-[15px] text-white">
                   {r.post_count}
@@ -2211,7 +2243,7 @@ function IpRankingPanel() {
                 </span>
                 <Info size={13} className={`text-white/40 transition-transform ${open ? 'rotate-90' : ''}`} />
               </span>
-            </button>
+            </div>
             {/* 件数バー（1位を100%とした相対量） */}
             <div className="h-1 bg-white/[0.04]">
               <div style={{ width: `${pct}%`, background: color, height: '100%' }} />

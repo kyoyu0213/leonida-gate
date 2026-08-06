@@ -227,6 +227,21 @@ export interface IpRankRow {
   first_at: string;
   last_at: string;
   sample_name: string | null;
+  label: string | null; // 管理者がつけた識別ラベル（改名）
+}
+
+/** IP に管理用ラベル（改名）を設定／削除（label を null/空にすると削除）。 */
+export async function adminSetIpLabel(ip: string, label: string | null): Promise<{ error?: string }> {
+  const { error } = await supabase.rpc('admin_set_ip_label', {
+    p_token: adminToken,
+    p_ip: ip,
+    p_label: label,
+  });
+  if (error) {
+    handleAuthError(error.message);
+    return { error: adminErrorMessage(error.message) };
+  }
+  return {};
 }
 
 /** 掲示板・募集板の全書き込みを IP 単位で集計し、件数の多い順に取得。 */
