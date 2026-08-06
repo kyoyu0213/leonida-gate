@@ -36,6 +36,8 @@ import {
   listAdminPosts,
   ADMIN_POSTS_PAGE,
   searchAdminPosts,
+  adminIpRanking,
+  type IpRankRow,
   listBlocks,
   addBlock,
   removeBlock,
@@ -2118,10 +2120,143 @@ function SearchLogsPanel() {
   );
 }
 
+// IPランキング：掲示板・募集板の書き込みを IP 別に集計し、件数の多い順に表示。
+// 行クリックでそのIPの最近の投稿を展開表示（アクティブ／コアなユーザーの識別用）。
+function IpRankingPanel() {
+  const [rows, setRows] = useState<IpRankRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [postsByIp, setPostsByIp] = useState<Record<string, AdminPostRow[]>>({});
+  const [loadingIp, setLoadingIp] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const { data, error } = await adminIpRanking(200);
+      if (error) setErr(error);
+      else {
+        setRows(data);
+        setErr(null);
+      }
+      setLoading(false);
+    })();
+  }, []);
+
+  const toggle = async (ip: string) => {
+    if (expanded === ip) {
+      setExpanded(null);
+      return;
+    }
+    setExpanded(ip);
+    if (!postsByIp[ip]) {
+      setLoadingIp(ip);
+      const { data } = await searchAdminPosts({ ip });
+      setPostsByIp((prev) => ({ ...prev, [ip]: data }));
+      setLoadingIp(null);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="text-center py-16 text-white/50">
+        <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+      </div>
+    );
+  }
+  if (err) {
+    return (
+      <div className="rounded-2xl border border-[#ff2d95]/30 bg-[#ff2d95]/[0.06] p-5 text-[13px] leading-relaxed">
+        <p className="font-bold text-[#ff8fc0] mb-1">IPランキングの取得に失敗しました。</p>
+        <p className="text-white/60 mb-2 font-mono">{err}</p>
+        <p className="text-white/45">
+          ※ 初回はDBに集計関数の登録が必要です。<span className="font-mono text-white/70">supabase/admin_ip_ranking.sql</span>{' '}
+          を Supabase の SQL Editor で実行してください。
+        </p>
+      </div>
+    );
+  }
+  if (rows.length === 0) {
+    return <div className="text-center py-16 text-white/50">集計対象の書き込みがありません</div>;
+  }
+
+  const max = rows[0]?.post_count || 1;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="text-[12px] text-white/50">
+        掲示板・募集板の全書き込みを IP 別に集計（件数の多い順・上位{rows.length}）。行をクリックすると、そのIPの最近の投稿を表示します。
+      </p>
+      {rows.map((r, i) => {
+        const key = `ip:${r.ip}`;
+        const hue = identityHue(key);
+        const color = `hsl(${hue} 75% 70%)`;
+        const pct = Math.max(4, Math.round((r.post_count / max) * 100));
+        const open = expanded === r.ip;
+        return (
+          <div key={r.ip} className="rounded-xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
+            <button
+              onClick={() => toggle(r.ip)}
+              className="w-full flex items-center gap-3 px-3 py-2.5 text-left hover:bg-white/[0.04] transition-colors"
+            >
+              <span className="w-6 text-right vice-num text-white/40 flex-none">{i + 1}</span>
+              <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: color, boxShadow: `0 0 8px ${color}` }} />
+              <span className="font-mono text-[13px] flex-none" style={{ color }}>{r.ip}</span>
+              {r.sample_name && <span className="text-[12px] text-white/45 truncate">{r.sample_name}</span>}
+              <span className="ml-auto flex items-center gap-3 flex-none">
+                <span className="text-[11px] text-white/35">{r.thread_count}スレ</span>
+                <span className="vice-num text-[15px] text-white">
+                  {r.post_count}
+                  <span className="text-[11px] text-white/50"> 件</span>
+                </span>
+                <Info size={13} className={`text-white/40 transition-transform ${open ? 'rotate-90' : ''}`} />
+              </span>
+            </button>
+            {/* 件数バー（1位を100%とした相対量） */}
+            <div className="h-1 bg-white/[0.04]">
+              <div style={{ width: `${pct}%`, background: color, height: '100%' }} />
+            </div>
+            {open && (
+              <div className="px-3 py-2.5 border-t border-white/10 text-[12px]">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-white/45 mb-2">
+                  <span>サブネット: <span className="font-mono text-white/70">{r.ip_subnet ?? '—'}</span></span>
+                  <span>初回: {formatPostDate(r.first_at)}</span>
+                  <span>最終: {formatPostDate(r.last_at)}</span>
+                </div>
+                {loadingIp === r.ip ? (
+                  <div className="text-white/40 py-2">
+                    <Loader2 size={13} className="inline animate-spin" /> 投稿を取得中…
+                  </div>
+                ) : postsByIp[r.ip]?.length ? (
+                  <div className="flex flex-col gap-1.5">
+                    {postsByIp[r.ip].slice(0, 20).map((p) => (
+                      <div key={p.id} className="rounded-lg bg-black/20 px-2.5 py-1.5">
+                        <div className="text-white/40 text-[11px] mb-0.5">
+                          {getBoard(p.board)?.title.replace('掲示板', '') ?? p.board} #{p.post_number}・{formatPostDate(p.created_at)}
+                        </div>
+                        <div className="text-white/80 whitespace-pre-wrap break-words line-clamp-2">{p.body}</div>
+                      </div>
+                    ))}
+                    {postsByIp[r.ip].length > 20 && (
+                      <div className="text-white/35 text-[11px]">最近の20件を表示（全{postsByIp[r.ip].length}件のうち）。全期間は「IP検索」タブで。</div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-white/40 py-1">投稿が見つかりませんでした</div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'recruit' | 'news' | 'blocks'
+    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'ipranking' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'recruit' | 'news' | 'blocks'
   >('newspost');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
@@ -2130,6 +2265,7 @@ export default function AdminReports() {
     posts: '投稿ログ',
     threads: 'スレッド',
     search: 'IP検索',
+    ipranking: 'IPランキング',
     searchlog: '検索ログ',
     images: '画像承認',
     contacts: 'お問い合わせ',
@@ -2162,7 +2298,7 @@ export default function AdminReports() {
         {authed ? (
           <>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'blocks'] as const).map((t) => (
+              {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'ipranking', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -2187,6 +2323,8 @@ export default function AdminReports() {
               <ThreadsPanel />
             ) : tab === 'search' ? (
               <SearchPanel />
+            ) : tab === 'ipranking' ? (
+              <IpRankingPanel />
             ) : tab === 'searchlog' ? (
               <SearchLogsPanel />
             ) : tab === 'images' ? (

@@ -217,6 +217,37 @@ export async function searchAdminPosts(opts: {
   return { data: (data as AdminPostRow[]) ?? [] };
 }
 
+// ---- IPランキング（書き込み件数の多い順） ---------------------------------
+
+export interface IpRankRow {
+  ip: string;
+  ip_subnet: string | null;
+  post_count: number;
+  thread_count: number;
+  first_at: string;
+  last_at: string;
+  sample_name: string | null;
+}
+
+/** 掲示板・募集板の全書き込みを IP 単位で集計し、件数の多い順に取得。 */
+export async function adminIpRanking(limit = 100): Promise<{ data: IpRankRow[]; error?: string }> {
+  const { data, error } = await supabase.rpc('admin_ip_ranking', {
+    p_token: adminToken,
+    p_limit: limit,
+  });
+  if (error) {
+    handleAuthError(error.message);
+    return { data: [], error: adminErrorMessage(error.message) };
+  }
+  // bigint は文字列で返ることがあるため数値へ寄せる。
+  const rows = (data as IpRankRow[] | null)?.map((r) => ({
+    ...r,
+    post_count: Number(r.post_count),
+    thread_count: Number(r.thread_count),
+  }));
+  return { data: rows ?? [] };
+}
+
 // ---- 自動ブロック（IP / サブネット / Cookie） -----------------------------
 
 export interface BlockRow {
