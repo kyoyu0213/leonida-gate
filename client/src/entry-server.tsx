@@ -75,18 +75,20 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   // 3表の同期は scripts/check-route-tables.mjs が prebuild で検証する。
   '/contact': Contact,
   '/terms': Terms,
+  // news一覧。記事カードは newsByDate（HIDDEN_NEWS_IDS 除外済み）を同期的に読むため、
+  // renderToString で残った記事のカード一覧まで描画できる。
+  //
+  // ※ 以前はここではなく JA_ONLY_ROUTES にあり、「/en/news は作らない（canonical は
+  //   日本語版へ集約）」という方針だった。2026-08-06 の監査で、英語記事16本への一覧導線が
+  //   どこにも無く、/en/news/<id> がリンクグラフ上 orphan（GSC「検出-インデックス未登録」の
+  //   主塊）になっていることが判明したため方針を変更し、日英対に昇格させた。
+  '/news': NewsList,
 };
 
 // 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。
 // これまで共通 index.html シェル（canonical=ホーム／既定title／空 #root）のまま配信され、
 // Google にホームの重複として正規化されていた。各ルートを本文＋自己参照 canonical で生成する。
 const JA_ONLY_ROUTES: Record<string, ComponentType> = {
-  // news一覧。記事カードは newsByDate（HIDDEN_NEWS_IDS 除外済み）を同期的に読むため、
-  // renderToString で残した記事のカード一覧まで描画できる。
-  // ここに無かった頃は catch-all の app.html（＝#root 空・canonical がトップ・noindex）で
-  // 配信され、sitemap に priority 0.9 で登録しているのに noindex という矛盾になっていた。
-  // /en/news は掲示板・servers と同じ扱いで英語版を作らない（canonical は日本語版へ集約）。
-  '/news': NewsList,
   '/board': BoardIndex,
   '/board/gta6': BoardThreadList,
   '/board/gtarp': BoardThreadList,

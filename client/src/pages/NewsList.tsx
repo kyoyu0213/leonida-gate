@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import NewsCard from '@/components/NewsCard';
-import { CATEGORIES, CATEGORY_CONFIG, type NewsCategory } from '@/data/news';
+import { CATEGORIES, CATEGORY_CONFIG, isNoindexNewsId, type NewsCategory } from '@/data/news';
 import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
-import { useT, useLang } from '@/lib/i18n';
+import { useT, useLang, pathForLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 
 /**
@@ -20,13 +20,22 @@ import { useSeo } from '@/hooks/useSeo';
 export default function NewsList() {
   const t = useT();
   const lang = useLang();
-  useSeo(t('seo.news.title'), t('seo.news.desc'), { url: '/news' });
+  // canonical は自言語URL（/news ↔ /en/news）。localized:true で hreflang の対を出す。
+  useSeo(t('seo.news.title'), t('seo.news.desc'), {
+    url: pathForLang('/news', lang),
+    localized: true,
+  });
   const [selectedCat, setSelectedCat] = useState<NewsCategory | 'all'>('all');
   const { articles: allNews } = useMergedNews();
   const commentCounts = useNewsCommentCounts();
 
+  // 英語版一覧（/en/news）からは noindex 記事（NOINDEX_NEWS_IDS）を外す。
+  // /en/news は今回新設した入口で、noindex のURLへ新たな導線を作らないため。
+  // 日本語側（/news）は既存の導線を変えないので従来どおり全件出す。
+  const listed = lang === 'en' ? allNews.filter((n) => !isNoindexNewsId(n.id)) : allNews;
+
   const filtered =
-    selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat);
+    selectedCat === 'all' ? listed : listed.filter((n) => n.category === selectedCat);
 
   return (
     <div className="vice-page vice-noise">
@@ -40,7 +49,7 @@ export default function NewsList() {
           <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
             {lang === 'ja'
               ? `GTA6の公式情報・考察・リークを日本語でお届け。全${allNews.length}件の記事を掲載中。`
-              : `Official news, analysis, and leaks on GTA6. ${allNews.length} articles published.`}
+              : `Official news, analysis, and leaks on GTA6. ${listed.length} articles published.`}
           </p>
         </div>
 

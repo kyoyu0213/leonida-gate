@@ -9,6 +9,9 @@ import { isHiddenNewsId } from '@/data/news';
 
 /** 日英の対がある静的ルート（日本語側の論理パス）。 */
 export const LOCALIZED_STATIC_PATHS: string[] = [
+  // news一覧。英語記事への一覧導線が無く /en/news/<id> が orphan だったため、
+  // 2026-08-06 の監査を受けて日英対に昇格させた（entry-server.tsx の '/news' も参照）。
+  '/news',
   '/fivem-gtarp',
   '/fivem-gtarp/what-is-fivem',
   '/fivem-gtarp/what-is-gtarp',

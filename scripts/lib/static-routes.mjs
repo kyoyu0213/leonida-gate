@@ -58,4 +58,9 @@ export const STATIC_ROUTES = [
  * sitemap から漏れていたので、ここだけ明示的に対に含める。
  */
 export const isLocalizedStaticPath = (p) =>
-  p === '/' || p.startsWith('/fivem-gtarp') || p === '/about' || p === '/contact' || p === '/terms';
+  p === '/' ||
+  p === '/news' ||
+  p.startsWith('/fivem-gtarp') ||
+  p === '/about' ||
+  p === '/contact' ||
+  p === '/terms';

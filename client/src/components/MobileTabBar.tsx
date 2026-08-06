@@ -14,7 +14,7 @@ interface Tab {
 
 const TABS: Tab[] = [
   { key: 'tab.home', href: '/', localized: true, icon: Home, match: (l) => l === '/' },
-  { key: 'tab.news', href: '/news', localized: false, icon: Newspaper, match: (l) => l.startsWith('/news') },
+  { key: 'tab.news', href: '/news', localized: true, icon: Newspaper, match: (l) => l.startsWith('/news') },
   { key: 'tab.board', href: '/board', localized: false, icon: MessageSquare, match: isThreadBoardPath },
   { key: 'tab.servers', href: '/recruit', localized: false, icon: Server, match: isRecruitPath },
   { key: 'tab.fivemgtarp', href: '/fivem-gtarp', localized: true, icon: Gamepad2, match: (l) => l.startsWith('/fivem-gtarp') },

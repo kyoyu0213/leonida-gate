@@ -11,7 +11,7 @@ import { useT, useLang, pathForLang, stripLangPrefix } from '@/lib/i18n';
 // /en 配下がリンクグラフ上 orphan になっていた（2026-08-06 の監査で判明）。
 const NAV = [
   { key: 'nav.home', href: '/', localized: true, match: (l: string) => l === '/' },
-  { key: 'nav.news', href: '/news', localized: false, match: (l: string) => l.startsWith('/news') },
+  { key: 'nav.news', href: '/news', localized: true, match: (l: string) => l.startsWith('/news') },
   { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
   { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
   {
