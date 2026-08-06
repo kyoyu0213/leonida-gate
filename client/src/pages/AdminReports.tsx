@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban, Search } from 'lucide-react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban, Search, Pencil } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import {
@@ -38,6 +38,7 @@ import {
   searchAdminPosts,
   adminIpRanking,
   adminSetIpLabel,
+  adminListIpLabels,
   type IpRankRow,
   listBlocks,
   addBlock,
@@ -1278,6 +1279,42 @@ function RecruitPanel() {
   );
 }
 
+// ── IPラベル（改名）を管理画面全体で共有するコンテキスト ──
+// どのタブで改名しても、同じIPの表示が全タブで揃う（DBに保存＋この Map で共有）。
+const IpLabelsCtx = createContext<{
+  labels: Map<string, string>;
+  rename: (ip: string) => void;
+} | null>(null);
+
+function IpLabelsProvider({ children }: { children: ReactNode }) {
+  const [labels, setLabels] = useState<Map<string, string>>(new Map());
+  useEffect(() => {
+    // ラベル一覧RPC未適用でもクラッシュしないよう、エラーは握りつぶして空のまま。
+    adminListIpLabels().then(({ data }) => setLabels(new Map(data.map((l) => [l.ip, l.label]))));
+  }, []);
+  const setLabel = async (ip: string, label: string | null) => {
+    const { error } = await adminSetIpLabel(ip, label);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    setLabels((prev) => {
+      const m = new Map(prev);
+      if (label) m.set(ip, label);
+      else m.delete(ip);
+      return m;
+    });
+    toast.success(label ? `ラベルを「${label}」に設定しました` : 'ラベルを削除しました');
+  };
+  const rename = (ip: string) => {
+    const cur = labels.get(ip) ?? '';
+    const input = window.prompt(`「${ip}」の管理用ラベル（空欄で削除）`, cur);
+    if (input === null) return; // キャンセル
+    setLabel(ip, input.trim() || null);
+  };
+  return <IpLabelsCtx.Provider value={{ labels, rename }}>{children}</IpLabelsCtx.Provider>;
+}
+
 // ── 「同一人物」識別（IP / サブネット / 匿名Cookie）: 管理画面の各ログで共通利用 ──
 type IdRow = { id: string; ip?: string | null; ip_subnet?: string | null; anon_id?: string | null };
 
@@ -1301,15 +1338,18 @@ function identityHue(key: string): number {
   return h % 360;
 }
 
-/** 識別チップ（色＋IP/識別子＋同一人物の件数）。クリックでその人物だけに絞り込む。 */
+/** 識別チップ（色＋識別子＋件数）。クリックでその人物だけに絞り込む。
+ *  ラベル(改名)があれば primary にラベル、sub に元のIPを小さく添える。 */
 function IdentityChip({
-  label,
+  primary,
+  sub,
   keyStr,
   count,
   active,
   onClick,
 }: {
-  label: string;
+  primary: string;
+  sub?: string | null;
   keyStr: string | null;
   count: number;
   active: boolean;
@@ -1331,7 +1371,8 @@ function IdentityChip({
       }}
     >
       <span className="w-2 h-2 rounded-full flex-none" style={{ background: color }} />
-      {label}
+      {primary}
+      {sub && <span className="opacity-55 font-normal">{sub}</span>}
       {count > 1 && <span className="opacity-80">（{count}件）</span>}
     </button>
   );
@@ -1345,6 +1386,7 @@ function IdentityChip({
 function useIdentityFilter<T extends IdRow>(rows: T[], domPrefix: string) {
   const [focus, setFocus] = useState<string | null>(null);
   const anchor = useRef<string | null>(null);
+  const ipLabels = useContext(IpLabelsCtx);
 
   // トグルで focus が変わったら、押した行を画面中央へ戻す（一番上に飛ばない）。
   useEffect(() => {
@@ -1377,14 +1419,32 @@ function useIdentityFilter<T extends IdRow>(rows: T[], domPrefix: string) {
 
   const renderChip = (r: T) => {
     const k = idKeyOf(r);
+    // ラベル(改名)はIP単位。IPがある行だけラベル表示＋改名可能。
+    const label = r.ip ? ipLabels?.labels.get(r.ip) ?? null : null;
     return (
-      <IdentityChip
-        label={idLabelOf(r)}
-        keyStr={k}
-        count={k ? (counts.get(k) ?? 1) : 1}
-        active={!!k && focus === k}
-        onClick={() => toggle(r)}
-      />
+      <span className="inline-flex items-center gap-1">
+        <IdentityChip
+          primary={label ?? idLabelOf(r)}
+          sub={label ? idLabelOf(r) : null}
+          keyStr={k}
+          count={k ? (counts.get(k) ?? 1) : 1}
+          active={!!k && focus === k}
+          onClick={() => toggle(r)}
+        />
+        {r.ip && ipLabels && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              ipLabels.rename(r.ip!);
+            }}
+            title="このIPに管理用ラベルを付ける（改名）"
+            className="text-white/30 hover:text-white p-0.5 flex-none"
+          >
+            <Pencil size={11} />
+          </button>
+        )}
+      </span>
     );
   };
 
@@ -2130,6 +2190,8 @@ function IpRankingPanel() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [postsByIp, setPostsByIp] = useState<Record<string, AdminPostRow[]>>({});
   const [loadingIp, setLoadingIp] = useState<string | null>(null);
+  // ラベル(改名)は全タブ共有のコンテキストで管理（ここで改名しても他タブに反映）。
+  const ipLabels = useContext(IpLabelsCtx);
 
   useEffect(() => {
     (async () => {
@@ -2156,20 +2218,6 @@ function IpRankingPanel() {
       setPostsByIp((prev) => ({ ...prev, [ip]: data }));
       setLoadingIp(null);
     }
-  };
-
-  // 管理者がこのIPに識別ラベル（改名）を付ける／消す。空欄で削除。
-  const rename = async (r: IpRankRow) => {
-    const input = window.prompt(`「${r.ip}」の管理用ラベル（空欄で削除）`, r.label ?? '');
-    if (input === null) return; // キャンセル
-    const label = input.trim() || null;
-    const { error } = await adminSetIpLabel(r.ip, label);
-    if (error) {
-      toast.error(error);
-      return;
-    }
-    toast.success(label ? `ラベルを「${label}」に設定しました` : 'ラベルを削除しました');
-    setRows((prev) => prev.map((x) => (x.ip === r.ip ? { ...x, label } : x)));
   };
 
   if (loading) {
@@ -2208,6 +2256,7 @@ function IpRankingPanel() {
         const color = `hsl(${hue} 75% 70%)`;
         const pct = Math.max(4, Math.round((r.post_count / max) * 100));
         const open = expanded === r.ip;
+        const label = ipLabels?.labels.get(r.ip) ?? r.label;
         return (
           <div key={r.ip} className="rounded-xl border border-white/[0.08] bg-white/[0.04] overflow-hidden">
             <div
@@ -2217,12 +2266,12 @@ function IpRankingPanel() {
               <span className="w-6 text-right vice-num text-white/40 flex-none">{i + 1}</span>
               <span className="w-2.5 h-2.5 rounded-full flex-none" style={{ background: color, boxShadow: `0 0 8px ${color}` }} />
               <span className="font-mono text-[13px] flex-none" style={{ color }}>{r.ip}</span>
-              {r.label && (
+              {label && (
                 <span
                   className="text-[12px] font-bold px-1.5 py-0.5 rounded flex-none"
-                  style={{ color: '#facc15', border: '1px solid #facc1566', background: '#facc1520' }}
+                  style={{ color, border: `1px solid ${color}`, background: `hsl(${hue} 75% 70% / 0.15)` }}
                 >
-                  {r.label}
+                  {label}
                 </span>
               )}
               {r.sample_name && <span className="text-[12px] text-white/40 truncate">{r.sample_name}</span>}
@@ -2230,7 +2279,7 @@ function IpRankingPanel() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    rename(r);
+                    ipLabels?.rename(r.ip);
                   }}
                   className="text-[11px] font-bold text-white/45 hover:text-white border border-white/15 rounded px-2 py-0.5"
                 >
@@ -2328,7 +2377,7 @@ export default function AdminReports() {
         </div>
 
         {authed ? (
-          <>
+          <IpLabelsProvider>
             <div className="flex gap-2 mb-5 flex-wrap">
               {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'ipranking', 'blocks'] as const).map((t) => (
                 <button
@@ -2374,7 +2423,7 @@ export default function AdminReports() {
             ) : (
               <BlocksPanel />
             )}
-          </>
+          </IpLabelsProvider>
         ) : (
           <LoginGate />
         )}
