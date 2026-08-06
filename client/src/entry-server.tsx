@@ -123,6 +123,12 @@ export const ROUTE_PATHS = [
   ...FIELD_NOTE_PATHS.map((p) => `/en${p}`),
 ];
 
+// 掲示板・募集板の投稿をプリレンダに焼き込むための初期データ注入口。
+// scripts/prerender-routes.ts が render() を回す前に、全ページぶんを1回だけセットする。
+// （ルートごとにセット→クリアはしない。詳細は client/src/lib/ssrSeed.ts のコメント）
+export { setSsrSeed } from '@/lib/ssrSeed';
+export type { SsrSeed } from '@/lib/ssrSeed';
+
 export interface RenderResult {
   html: string;
   seo: CollectedSeo | null;

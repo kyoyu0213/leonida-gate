@@ -26,6 +26,7 @@ import {
 } from './lib/jsonld';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '../client/src/data/fieldNotes';
 import { indexableNewsArticles } from '../client/src/data/news';
+import { buildBoardSeed } from './lib/board-seed.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -72,11 +73,21 @@ interface RenderResult {
 interface ServerEntry {
   render: (url: string) => RenderResult | null;
   ROUTE_PATHS: string[];
+  setSsrSeed: (seed: unknown) => void;
 }
 
 const mod = (await import(
   pathToFileURL(resolve(ROOT, 'dist/server/entry-server.js')).href
 )) as unknown as ServerEntry;
+
+// 掲示板・募集板の投稿をビルド時に取得して SSR へ渡す。
+// 全ページぶんをキー付きで1回だけセットする（ルートごとのセット/クリアはしない）ため、
+// 下の render ループで前のルートのデータを引きずることが構造的に起きない。
+// 取得に失敗しても throw しない設計なので、Supabase 断でもビルドは止まらない。
+const { seed: boardSeed, total: seedTotal, warnings: seedWarnings } = await buildBoardSeed();
+seedWarnings.forEach((w) => console.warn(w));
+mod.setSsrSeed(boardSeed);
+console.log(`[board-seed] 投稿 ${seedTotal} 件をプリレンダへ注入`);
 
 // ============================================================================
 //  JSON-LD（構造化データ）
