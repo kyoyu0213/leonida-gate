@@ -90,6 +90,7 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
 // Google にホームの重複として正規化されていた。各ルートを本文＋自己参照 canonical で生成する。
 const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   '/board': BoardIndex,
+  '/board/gta-online': BoardThreadList,
   '/board/gta6': BoardThreadList,
   '/board/gtarp': BoardThreadList,
   '/board/gtarp-servers': BoardThreadList,

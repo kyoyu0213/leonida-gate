@@ -26,7 +26,7 @@ const SUPABASE_KEY =
   'sb_publishable_56-mcQqzWE-afZce8zFb7Q_qhGAclS3';
 
 /** スレッド式の板（BoardThreadList が描画する5板）。friends / crews は専用ページで扱う。 */
-export const THREAD_BOARDS = ['gta6', 'gtarp', 'gtarp-servers', 'streamer-servers', 'fivem-dev'];
+export const THREAD_BOARDS = ['gta-online', 'gta6', 'gtarp', 'gtarp-servers', 'streamer-servers', 'fivem-dev'];
 
 /** 各ページに焼く最大件数。クライアントは board系100件・募集系は全件だが、
  *  静的HTMLはクローラー向けのスナップショットなので30件で打ち切る。 */

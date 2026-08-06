@@ -1,7 +1,7 @@
 // 掲示板の一覧設定。ここに足すだけで掲示板を増やせる。
 // slug は URL（/board/:slug）とDBの board 列に使う。
 
-export type Accent = 'lime' | 'cyan' | 'purple' | 'pink' | 'orange';
+export type Accent = 'lime' | 'cyan' | 'purple' | 'pink' | 'orange' | 'yellow';
 
 export interface BoardConfig {
   slug: string;
@@ -13,6 +13,12 @@ export interface BoardConfig {
 }
 
 export const BOARDS: BoardConfig[] = [
+  {
+    slug: 'gta-online',
+    title: 'GTAオンライン掲示板',
+    description: 'GTAオンライン（GTA5オンライン）の金策・強盗・カジノ・車・雑談を語る場所',
+    accent: 'yellow',
+  },
   {
     slug: 'gtarp-servers',
     title: 'FiveMサーバー掲示板',
@@ -89,7 +95,9 @@ export const boardColor = (accent?: Accent): string =>
         ? '#ff2d95'
         : accent === 'orange'
           ? '#ff8a3d'
-          : '#3de0a0';
+          : accent === 'yellow'
+            ? '#facc15'
+            : '#3de0a0';
 
 // 配色（旧サイバーパンクデザイン用に残置）
 interface AccentStyle {
@@ -104,6 +112,16 @@ interface AccentStyle {
 }
 
 export const ACCENTS: Record<Accent, AccentStyle> = {
+  yellow: {
+    text: 'text-yellow-400',
+    badge: 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400',
+    gradient: 'from-yellow-400 via-orange-400 to-pink-500',
+    button: 'bg-yellow-500 hover:bg-yellow-400 text-black',
+    border: 'border-yellow-500/30',
+    borderHover: 'hover:border-yellow-500/70 hover:bg-yellow-500/5',
+    bgSoft: 'bg-yellow-500/5',
+    inputBorder: 'border-yellow-500/40',
+  },
   lime: {
     text: 'text-lime-400',
     badge: 'border-lime-500/50 bg-lime-500/10 text-lime-400',

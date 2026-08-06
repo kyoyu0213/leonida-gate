@@ -16,6 +16,7 @@ export const STATIC_ROUTES = [
   { path: '/recruit', priority: '0.8', changefreq: 'daily' },
   { path: '/servers', priority: '0.8', changefreq: 'daily' },
   { path: '/board', priority: '0.8', changefreq: 'daily' },
+  { path: '/board/gta-online', priority: '0.7', changefreq: 'daily' },
   { path: '/board/gta6', priority: '0.7', changefreq: 'daily' },
   { path: '/board/gtarp', priority: '0.7', changefreq: 'daily' },
   { path: '/board/gtarp-servers', priority: '0.7', changefreq: 'daily' },

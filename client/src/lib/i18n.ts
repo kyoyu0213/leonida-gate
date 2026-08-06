@@ -373,6 +373,7 @@ const JA: Dict = {
   'cat.speculation': '考察・リーク',
   'cat.event': 'イベント',
   // 掲示板名（slug 別）
+  'board.gta-online': 'GTAオンライン',
   'board.gtarp-servers': 'FiveMサーバー',
   'board.streamer-servers': '配信者サーバー',
   'board.gtarp': 'ロールプレイ情報交換',
@@ -961,6 +962,7 @@ const EN: Dict = {
   'cat.update': 'Updates',
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',
+  'board.gta-online': 'GTA Online',
   'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
   'board.gtarp': 'Roleplay Info',
