@@ -3,25 +3,31 @@ import { useLocation } from 'wouter';
 import { Search, Menu, X } from 'lucide-react';
 import LangToggle from '@/components/LangToggle';
 import { isRecruitPath, isThreadBoardPath } from '@/lib/boards';
-import { useT } from '@/lib/i18n';
+import { useT, useLang, pathForLang, stripLangPrefix } from '@/lib/i18n';
 
+// href は日本語側の論理パス。localized:true の項目だけ、英語ページでは /en 版へ向ける。
+// localized:false（掲示板・募集板）は英語版が存在しないため、英語ページでも ja へ送る。
+// ここが ja 固定だったせいで、英語ページ51本のナビが全部 ja を指し、
+// /en 配下がリンクグラフ上 orphan になっていた（2026-08-06 の監査で判明）。
 const NAV = [
-  { key: 'nav.home', href: '/', match: (l: string) => l === '/' },
-  { key: 'nav.news', href: '/news', match: (l: string) => l.startsWith('/news') },
-  { key: 'nav.servers', href: '/recruit', match: isRecruitPath },
-  { key: 'nav.board', href: '/board', match: isThreadBoardPath },
+  { key: 'nav.home', href: '/', localized: true, match: (l: string) => l === '/' },
+  { key: 'nav.news', href: '/news', localized: false, match: (l: string) => l.startsWith('/news') },
+  { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
+  { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
   {
     key: 'nav.fivemgtarp',
     href: '/fivem-gtarp',
+    localized: true,
     // 体験記は別項目で扱うため、ハブ側の active 判定からは field-notes 配下を除外。
     match: (l: string) => l.startsWith('/fivem-gtarp') && !l.startsWith('/fivem-gtarp/field-notes'),
   },
   {
     key: 'nav.fieldnotes',
     href: '/fivem-gtarp/field-notes/dev-diary',
+    localized: true,
     match: (l: string) => l.startsWith('/fivem-gtarp/field-notes'),
   },
-  { key: 'nav.contact', href: '/contact', match: (l: string) => l.startsWith('/contact') },
+  { key: 'nav.contact', href: '/contact', localized: true, match: (l: string) => l.startsWith('/contact') },
 ];
 
 export default function Header() {
@@ -29,6 +35,12 @@ export default function Header() {
   const [query, setQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
+  const lang = useLang();
+  // active 判定は言語プレフィックスを外した論理パスで行う（/en/fivem-gtarp も一致させる）。
+  const logicalPath = stripLangPrefix(location);
+  /** ナビ項目の実リンク先。localized な項目のみ現在の言語へ寄せる。 */
+  const navHref = (item: (typeof NAV)[number]) =>
+    item.localized ? pathForLang(item.href, lang) : item.href;
 
   const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +61,7 @@ export default function Header() {
     >
       <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-6">
         {/* Logo */}
-        <a href="/" className="flex items-center flex-none cursor-pointer">
+        <a href={pathForLang('/', lang)} className="flex items-center flex-none cursor-pointer">
           <img
             src="/images/gta6feed-logo.webp"
             alt="GTA6 FEED"
@@ -61,11 +73,11 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-2 lg:gap-3 flex-none">
           {NAV.map((item) => {
-            const active = item.match(location);
+            const active = item.match(logicalPath);
             return (
               <a
                 key={item.href}
-                href={item.href}
+                href={navHref(item)}
                 className="relative px-1 py-1.5 text-[14px] font-bold whitespace-nowrap tracking-wide transition-colors"
                 style={{ color: active ? '#fff' : '#bdb2d0' }}
               >
@@ -147,7 +159,7 @@ export default function Header() {
             {NAV.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={navHref(item)}
                 onClick={() => setMenuOpen(false)}
                 className="text-[15px] font-bold text-[#cfc6e0] hover:text-white transition-colors"
               >
