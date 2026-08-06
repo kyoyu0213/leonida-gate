@@ -19,7 +19,6 @@
   ],
   "crons": [
     {
-      "comment": "掲示板の投稿をHTMLへ焼き直すための定期再ビルド（1日1回・毎日18:00 UTC = 翌3:00 JST）。実体は api/rebuild.js が deploy hook を叩く。",
       "path": "/api/rebuild",
       "schedule": "0 18 * * *"
     }
