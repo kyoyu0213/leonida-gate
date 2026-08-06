@@ -83,6 +83,18 @@ export function useSeo(title: string, description?: string, options?: SeoOptions
   useEffect(() => {
     const restore: Array<() => void> = [];
 
+    // <html lang>：プリレンダ済みHTMLは正しい lang で配信されるが、CSR遷移では
+    // 初期ロード時の値が残ってしまう（/en → / と辿ると lang="en" のまま等）。
+    // 現在のURLから引き直して同期する。
+    const prevLang = document.documentElement.lang;
+    const nextLang = window.location.pathname.startsWith('/en/') || window.location.pathname === '/en' ? 'en' : 'ja';
+    if (prevLang !== nextLang) {
+      document.documentElement.lang = nextLang;
+      restore.push(() => {
+        document.documentElement.lang = prevLang;
+      });
+    }
+
     // <title>
     const prevTitle = document.title;
     document.title = title;

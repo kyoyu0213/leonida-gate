@@ -115,7 +115,13 @@ for (const { route, out } of targets) {
   const selfUrl = route === '/' ? `${ORIGIN}/` : `${ORIGIN}/en`;
   const image = toAbs(seo?.image || DEFAULT_IMAGE);
 
+  // 言語（'/en'＝英語）。<html lang> と JSON-LD の inLanguage の両方で使う。
+  const lang = route === '/en' ? 'en' : 'ja';
+  const isEn = lang === 'en';
+
   let html = TEMPLATE;
+  // <html lang>：テンプレート（client/index.html）は ja 固定なので、英語版は en へ差し替える。
+  html = replaceTracked(html, /(<html\s+lang=")[^"]*(")/, `$1${lang}$2`, 'html[lang]');
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${selfUrl}$2`, 'canonical');
   html = setMeta(html, 'description', desc);
@@ -140,8 +146,7 @@ for (const { route, out } of targets) {
 
   // JSON-LD：サイト全体（WebSite / Organization）＋トップが並べる最新記事の ItemList。
   // 記事ページ・一覧ページ側の JSON-LD は prerender-og / prerender-routes が焼く。
-  const lang = route === '/en' ? 'en' : 'ja';
-  const isEn = lang === 'en';
+  // lang / isEn は <html lang> の差し替えで先に算出済み。
   const latest = indexableNewsArticles.slice(0, HOME_ITEMLIST_MAX);
   html = injectLd(
     html,

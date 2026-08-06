@@ -93,6 +93,8 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
     : `${article.date}T09:00:00+09:00`;
 
   let html = TEMPLATE;
+  // <html lang>：テンプレート（client/index.html）は ja 固定なので、英語版は en へ差し替える。
+  html = replaceTracked(html, /(<html\s+lang=")[^"]*(")/, `$1${lang}$2`, 'html[lang]');
   // <title>
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   // canonical（各言語版は自言語URLを自己参照）

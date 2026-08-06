@@ -271,7 +271,15 @@ for (const route of mod.ROUTE_PATHS) {
   const url = `${ORIGIN}${route}`;
   const image = toAbs(seo?.image || DEFAULT_IMAGE);
 
+  // 言語（/en 配下＝英語）。<html lang> と JSON-LD の inLanguage の両方で使う。
+  const isEn = route.startsWith('/en/') || route === '/en';
+  const jaPath = route === '/en' ? '/' : isEn ? route.slice(3) : route;
+
   let html = TEMPLATE;
+  // <html lang>：テンプレート（client/index.html）は ja 固定なので、英語版は en へ差し替える。
+  // これを入れるまで /en 配下の全ページが lang="ja" のまま配信され、
+  // hreflang="en"・JSON-LD の inLanguage:"en" と三者で矛盾していた。
+  html = replaceTracked(html, /(<html\s+lang=")[^"]*(")/, `$1${isEn ? 'en' : 'ja'}$2`, 'html[lang]');
   // <head>：title / canonical / 各メタを当該ルートの値へ差し替え
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
@@ -299,8 +307,7 @@ for (const route of mod.ROUTE_PATHS) {
   }
 
   // JSON-LD（構造化データ）を <head> へ焼く。ルート種別で出し分ける（buildLdNodes）。
-  const isEn = route.startsWith('/en/') || route === '/en';
-  const jaPath = route === '/en' ? '/' : isEn ? route.slice(3) : route;
+  // isEn / jaPath は <html lang> の差し替えで先に算出済み。
   html = injectLd(
     html,
     buildLdNodes({
