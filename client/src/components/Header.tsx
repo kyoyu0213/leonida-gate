@@ -78,11 +78,16 @@ export default function Header() {
               <a
                 key={item.href}
                 href={navHref(item)}
-                className={`px-2.5 py-1.5 rounded-lg text-[13px] font-bold whitespace-nowrap border transition-colors ${
+                className={`px-3.5 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-all ${
                   active
-                    ? 'text-white border-[#ff2d95]/50 bg-[#ff2d95]/15'
-                    : 'text-[#bdb2d0] border-white/10 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white hover:border-white/25'
+                    ? 'text-white'
+                    : 'text-[#cfc6e0] bg-white/[0.05] hover:bg-white/[0.12] hover:text-white'
                 }`}
+                style={
+                  active
+                    ? { background: 'linear-gradient(95deg,#ff8a3d,#ff2d95)', boxShadow: '0 2px 14px rgba(255,45,149,.35)' }
+                    : undefined
+                }
               >
                 {t(item.key)}
               </a>
