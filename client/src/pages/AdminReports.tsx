@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban, Search } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
@@ -1309,7 +1309,7 @@ function IdentityChip({
     >
       <span className="w-2 h-2 rounded-full flex-none" style={{ background: color }} />
       {label}
-      {count > 1 && <span className="opacity-80">×{count}</span>}
+      {count > 1 && <span className="opacity-80">（{count}件）</span>}
     </button>
   );
 }
@@ -1326,6 +1326,25 @@ function PostsPanel() {
   const [loadingMore, setLoadingMore] = useState(false);
   // 識別チップで「同一人物」に絞り込み中のキー（null＝絞り込みなし）。
   const [focus, setFocus] = useState<string | null>(null);
+  // 絞り込みのON/OFFで一覧の高さが変わり、クリックした投稿を見失う（先頭に戻る）のを防ぐ。
+  // チップを押した投稿IDを覚えておき、再描画後にその投稿を画面内へスクロールで戻す。
+  const anchorPostId = useRef<string | null>(null);
+
+  // チップのトグルで focus が変わったら、押した投稿を視界に戻す（スクロール位置を維持）。
+  useEffect(() => {
+    const id = anchorPostId.current;
+    if (!id) return;
+    anchorPostId.current = null;
+    // 再描画（DOM反映）後にスクロール。
+    requestAnimationFrame(() => {
+      document.getElementById(`plog-${id}`)?.scrollIntoView({ block: 'center' });
+    });
+  }, [focus]);
+
+  const toggleFocus = (postId: string, key: string) => {
+    anchorPostId.current = postId;
+    setFocus((cur) => (cur === key ? null : key));
+  };
 
   const load = async () => {
     setLoading(true);
@@ -1420,7 +1439,7 @@ function PostsPanel() {
         const busy = busyId === p.id;
         const idKey = postIdentityKey(p);
         return (
-          <div key={p.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
+          <div key={p.id} id={`plog-${p.id}`} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4">
             <div className="flex items-center gap-2 flex-wrap mb-1.5 text-[12px]">
               <span className="text-white/55">{board?.title.replace('掲示板', '') ?? p.board}</span>
               <span className="text-white/30">#{p.post_number}</span>
@@ -1429,7 +1448,7 @@ function PostsPanel() {
                 p={p}
                 count={idKey ? (idCounts.get(idKey) ?? 1) : 1}
                 active={!!idKey && focus === idKey}
-                onClick={() => idKey && setFocus((cur) => (cur === idKey ? null : idKey))}
+                onClick={() => idKey && toggleFocus(p.id, idKey)}
               />
               {p.report_count > 0 && <span className="vice-num text-[#ff2d95]">通報 {p.report_count}</span>}
               {p.hidden && <span className="text-white/40">（非表示中）</span>}
