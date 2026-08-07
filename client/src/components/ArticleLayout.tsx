@@ -110,6 +110,33 @@ export default function ArticleLayout({
   // EN表示時は英語版を使い、無ければ日本語にフォールバック。
   const effTitle = isEn && titleEn ? titleEn : title;
   const effBody = localizeMarkdownLinks(isEn && bodyEn ? bodyEn : body, lang);
+
+  // 本文（Markdown）の画像に読み込み属性を付ける。
+  // これまで components を渡していなかったため属性が一切付かず、体験記・解説記事は
+  // 本文画像が全部 eager だった（訪問記は1ページ20枚・37MB を一斉に読み込んでいた）。
+  //
+  // ただし先頭の1枚は LCP 要素（Lighthouse の LCP element が article-body の
+  // 最初の img を指していた）なので lazy にしてはいけない。ここだけ eager のまま
+  // fetchpriority="high" を付け、2枚目以降を lazy にする。
+  // カウンタはレンダーごとに作り直すので、ページを跨いで持ち越さない。
+  const imgIndex = { n: 0 };
+  const bodyComponents = {
+    img: ({ src, alt }: { src?: string; alt?: string }) => {
+      const isFirst = imgIndex.n++ === 0;
+      return (
+        <span className="group relative my-4 inline-block" data-streamdown="image-wrapper">
+          <img
+            src={src}
+            alt={alt}
+            className="max-w-full rounded-lg"
+            data-streamdown="image"
+            decoding="async"
+            {...(isFirst ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const })}
+          />
+        </span>
+      );
+    },
+  } as never;
   const effSummary = isEn && aiSummaryEn ? aiSummaryEn : aiSummary;
   const effSource = source ?? t('article.editorial');
   useSeo(isEn && seoTitleEn ? seoTitleEn : seoTitle, isEn && seoDescEn ? seoDescEn : seoDesc, {
@@ -181,7 +208,12 @@ export default function ArticleLayout({
                   />
                 </div>
               ) : (
-                <Streamdown key={i} parseIncompleteMarkdown={false} rehypePlugins={articleRehypePlugins}>
+                <Streamdown
+                  key={i}
+                  parseIncompleteMarkdown={false}
+                  rehypePlugins={articleRehypePlugins}
+                  components={bodyComponents}
+                >
                   {part.text}
                 </Streamdown>
               ),

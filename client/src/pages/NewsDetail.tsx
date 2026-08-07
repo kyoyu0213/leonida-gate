@@ -91,7 +91,7 @@ function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
   }
   return (
     <span className="group relative my-4 inline-block" data-streamdown="image-wrapper">
-      <img alt={alt} className="max-w-full rounded-lg" data-streamdown="image" src={src} loading="lazy" />
+      <img alt={alt} className="max-w-full rounded-lg" data-streamdown="image" src={src} loading="lazy" decoding="async" />
     </span>
   );
 }
@@ -253,10 +253,13 @@ export default function NewsDetail() {
           {/* アイキャッチ画像（記事に image がある場合のみ。メタ情報のあと・本文の前に表示） */}
           {article.image && (
             <div className="article-hero rounded-xl overflow-hidden border border-cyan-500/25">
+              {/* 記事のアイキャッチ。ページ最上部の可視画像＝LCP要素なので
+                  lazy は付けない（付けると発見が遅れて LCP が悪化する）。 */}
               <img
                 src={article.image}
                 alt={article.title}
-                loading="lazy"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full block"
               />
             </div>

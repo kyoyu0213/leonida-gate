@@ -92,6 +92,8 @@ export default function Home() {
           <img
             src="/images/news/Official_Cover_Art_landscape.webp"
             alt="Grand Theft Auto VI"
+            fetchPriority="high"
+            decoding="async"
             className="home-hero-cover hidden sm:block absolute right-0 top-0 h-full select-none pointer-events-none"
             style={{
               width: '72%',
@@ -269,6 +271,8 @@ export default function Home() {
               <img
                 src="/images/hero-mobile.webp"
                 alt="Grand Theft Auto VI"
+                fetchPriority="high"
+                decoding="async"
                 className="block w-full h-auto select-none"
               />
               {/* 上：ロゴを立たせる暗転 */}
