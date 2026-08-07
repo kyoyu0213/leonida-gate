@@ -9,11 +9,12 @@
     "check:routes": "node scripts/check-route-tables.mjs",
     "prebuild": "node scripts/check-route-tables.mjs && node scripts/generate-sitemap.mjs",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir",
-    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir && tsx scripts/prerender-og.ts && tsx scripts/prerender-routes.ts && tsx scripts/prerender-home.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir && tsx scripts/prerender-og.ts && tsx scripts/prerender-routes.ts && tsx scripts/prerender-home.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && node scripts/check-image-refs.mjs",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check:images": "node scripts/check-image-refs.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
