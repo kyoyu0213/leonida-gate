@@ -17,15 +17,15 @@ FiveMはプレイを続けるとキャッシュが溜まり、動作が重くな
 
 FiveMのアイコンを右クリックし、「詳細」から「ファイルの場所を開く」を選ぶ。Windowsの検索画面で「FiveM」と検索しても、この項目は表示される。
 
-![FiveMアイコンから「ファイルの場所を開く」で表示されるフォルダ。「FiveM Application Data」を開く](/images/FAQ/filenobasyo.png)
+![FiveMアイコンから「ファイルの場所を開く」で表示されるフォルダ。「FiveM Application Data」を開く](/images/FAQ/filenobasyo.webp)
 
 次に「FiveM Application Data」を開き、その中の「data」フォルダに入る。
 
-![FiveM Application Data の中にある「data」フォルダ](/images/FAQ/datafolder.png)
+![FiveM Application Data の中にある「data」フォルダ](/images/FAQ/datafolder.webp)
 
 dataフォルダ内にある「cache」「server-cache」「server-cache-priv」の3つを削除する。dataフォルダからこの3つが消えていれば成功である。
 
-![data フォルダ内の「cache」「server-cache」「server-cache-priv」を削除する](/images/FAQ/cache.png)
+![data フォルダ内の「cache」「server-cache」「server-cache-priv」を削除する](/images/FAQ/cache.webp)
 
 削除してもアカウントやゲーム本体には影響しない。再接続時に必要なデータは改めて読み込まれる。
 
@@ -33,7 +33,7 @@ dataフォルダ内にある「cache」「server-cache」「server-cache-priv」
 
 グラフィック設定の「Extended Texture Budget」を最大まで上げると改善することが多い。設定場所は、Escキーからオプション（OPTIONS）を開き、「グラフィックス」の項目内にある。テクスチャの読み込みに割り当てる容量が増えるため、街の表示が安定しやすくなる。
 
-![OPTIONS＞グラフィックス内の「Extended Texture Budget」を最大まで上げる](/images/FAQ/ExtendedTextureBudget.png)
+![OPTIONS＞グラフィックス内の「Extended Texture Budget」を最大まで上げる](/images/FAQ/ExtendedTextureBudget.webp)
 
 ### 周りの人の声が聞こえない
 
@@ -43,19 +43,19 @@ dataフォルダ内にある「cache」「server-cache」「server-cache-priv」
 
 GTA5の仕様で、ウィンドウからフォーカスが外れると音が止まる設定が有効になっていることがある。オプションの「オーディオ」内にある「フォーカスの喪失時にオーディオをポーズ」をオフにすると、別のウィンドウでDiscordの六法などを開いている間も、ボイスチャットやゲーム内の音が聞こえるようになる。
 
-![OPTIONS＞オーディオ内の「フォーカスの喪失時にオーディオをポーズ」をオフにする](/images/FAQ/focusnosousitujiniaudiowopause.png)
+![OPTIONS＞オーディオ内の「フォーカスの喪失時にオーディオをポーズ」をオフにする](/images/FAQ/focusnosousitujiniaudiowopause.webp)
 
 ### FiveMのメニュー画面の音楽を消したい
 
 設定（Settings）の「Interface」内にある、メインメニューのバックグラウンド音楽に関するチェックを外すと、メニュー画面の音楽をオフにできる。
 
-![Settings＞Interface の「Main Menu Audio」のチェックを外す](/images/FAQ/interface.png)
+![Settings＞Interface の「Main Menu Audio」のチェックを外す](/images/FAQ/interface.webp)
 
 ### インベントリを触っていると勝手に殴ってしまう
 
 インベントリ操作中に殴るモーションが出てしまう場合、マウス入力方式が原因のことがある。Escキーからオプション（OPTIONS）を開き、「キーボード/マウス」の「マウス入力方法」を「Raw Input」に変更すると改善する。
 
-![OPTIONS＞キーボード/マウスの「マウス入力方法」を「Raw Input」に変更する](/images/FAQ/RawInput.png)
+![OPTIONS＞キーボード/マウスの「マウス入力方法」を「Raw Input」に変更する](/images/FAQ/RawInput.webp)
 
 ## 操作・キー設定系
 
@@ -131,15 +131,15 @@ As you keep playing FiveM, the cache builds up and performance can become heavy.
 
 Right-click the FiveM icon and choose "Open file location" from "More." You can also bring this up by searching "FiveM" in the Windows search screen.
 
-![The folder shown via "Open file location" from the FiveM icon. Open "FiveM Application Data"](/images/FAQ/filenobasyo.png)
+![The folder shown via "Open file location" from the FiveM icon. Open "FiveM Application Data"](/images/FAQ/filenobasyo.webp)
 
 Next, open "FiveM Application Data" and go into the "data" folder inside it.
 
-![The "data" folder inside FiveM Application Data](/images/FAQ/datafolder.png)
+![The "data" folder inside FiveM Application Data](/images/FAQ/datafolder.webp)
 
 Delete the three folders "cache," "server-cache," and "server-cache-priv" inside the data folder. If these three are gone from the data folder, you have succeeded.
 
-![Delete "cache," "server-cache," and "server-cache-priv" inside the data folder](/images/FAQ/cache.png)
+![Delete "cache," "server-cache," and "server-cache-priv" inside the data folder](/images/FAQ/cache.webp)
 
 Deleting them does not affect your account or the base game. The data needed when you reconnect will be loaded again.
 
@@ -147,7 +147,7 @@ Deleting them does not affect your account or the base game. The data needed whe
 
 Raising the graphics setting "Extended Texture Budget" to the maximum often improves it. To find the setting, press the Esc key to open OPTIONS, and it is within the "Graphics" item. Because more capacity is allocated to loading textures, the city's rendering tends to become more stable.
 
-![Raise "Extended Texture Budget" in OPTIONS > Graphics to the maximum](/images/FAQ/ExtendedTextureBudget.png)
+![Raise "Extended Texture Budget" in OPTIONS > Graphics to the maximum](/images/FAQ/ExtendedTextureBudget.webp)
 
 ### I cannot hear the voices of people around me
 
@@ -157,19 +157,19 @@ Voice chat may be disabled. Press the Esc key to open OPTIONS, and in the "Voice
 
 Due to a GTA5 specification, a setting that stops the sound when the window loses focus may be enabled. If you turn off "Pause audio on focus loss" within "Audio" in the options, you will be able to hear voice chat and in-game sound even while you have Discord rules and the like open in another window.
 
-![Turn off "Pause audio on focus loss" in OPTIONS > Audio](/images/FAQ/focusnosousitujiniaudiowopause.png)
+![Turn off "Pause audio on focus loss" in OPTIONS > Audio](/images/FAQ/focusnosousitujiniaudiowopause.webp)
 
 ### I want to turn off the music on the FiveM menu screen
 
 In Settings, within "Interface," unchecking the option related to the main menu's background music turns off the music on the menu screen.
 
-![Uncheck "Main Menu Audio" in Settings > Interface](/images/FAQ/interface.png)
+![Uncheck "Main Menu Audio" in Settings > Interface](/images/FAQ/interface.webp)
 
 ### I keep punching by accident while handling the inventory
 
 If a punching motion comes out while you are operating the inventory, the mouse input method may be the cause. Press the Esc key to open OPTIONS, and changing "Mouse input method" in "Keyboard/Mouse" to "Raw Input" improves it.
 
-![Change "Mouse input method" in OPTIONS > Keyboard/Mouse to "Raw Input"](/images/FAQ/RawInput.png)
+![Change "Mouse input method" in OPTIONS > Keyboard/Mouse to "Raw Input"](/images/FAQ/RawInput.webp)
 
 ## Controls / Key Settings
 

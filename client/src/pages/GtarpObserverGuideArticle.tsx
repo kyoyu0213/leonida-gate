@@ -9,7 +9,7 @@ const BODY = `ストグラやVCR GTA、にじGTA、ホロGTAといった配信�
 
 なお、ここで紹介するマナーの多くは、ストグラ公式が観測者に向けて示しているものをもとにしている。サーバーごとに細かなお願いは異なるため、最終的には観測する各企画の公式アナウンスが優先される。
 
-![配信を通じて街の出来事を見守る「観測者」（イメージ）](/images/haisinsyaserver/kansokusya.png)
+![配信を通じて街の出来事を見守る「観測者」（イメージ）](/images/haisinsyaserver/kansokusya.webp)
 
 ## 「観測者」とは
 
@@ -84,7 +84,7 @@ const BODY_EN = `Streamer servers like Stgra, VCR GTA, Niji GTA, and Holo GTA ca
 
 Note that much of the etiquette introduced here is based on what Stgra's official side presents to observers. Because the detailed requests differ by server, in the end the official announcements of each project you observe take priority.
 
-![A "kansokusha" watching over the city's events through a stream (image)](/images/haisinsyaserver/kansokusya.png)
+![A "kansokusha" watching over the city's events through a stream (image)](/images/haisinsyaserver/kansokusya.webp)
 
 ## What Is a "Kansokusha (Observer)"
 

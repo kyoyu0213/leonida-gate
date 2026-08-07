@@ -9,13 +9,13 @@ const BODY = `観測者として配信を見るうちに、自分も街の住人
 
 この記事は、FiveMの導入が済み、参加したいサーバーの承認（参加申請やホワイトリスト登録）が完了している段階を前提としている。導入やサーバーの選び方については、別記事を参照してほしい。なお、ここで紹介する操作やルールはあくまで一般的な例であり、細部はサーバーごとに大きく異なる。最終的には、参加する各サーバーの公式ルールが優先される。
 
-![GTARPサーバーに参加し、街の住人として立つ初日のイメージ](/images/syoniti/syoniti.png)
+![GTARPサーバーに参加し、街の住人として立つ初日のイメージ](/images/syoniti/syoniti.webp)
 
 ## まず最優先で読むもの ―― 六法（ルールブック）
 
 街に入る前に、何よりも先にやるべきことが一つある。そのサーバーの公式ルール、いわゆる六法（ルールブック）を読むことである。
 
-![そのサーバーの公式ルール「六法（ルールブック）」を最優先で読む](/images/syoniti/rule.png)
+![そのサーバーの公式ルール「六法（ルールブック）」を最優先で読む](/images/syoniti/rule.webp)
 
 GTARPでは、知らなかったでは済まされない禁止行為がいくつもあり、ルールを読まないまま参加すると、悪気なく違反してBAN（追放）される危険がある。RDMやVDM、メタ、パワープレイといった基本の禁止行為に加え、そのサーバー独自の細かい決まりもある。用語の意味がわからない場合は、[GTARP用語辞典](/fivem-gtarp/glossary)で確認しておくとよい。読むのは大変だが、ここを飛ばすと初日でつまずく可能性が高い。
 
@@ -35,7 +35,7 @@ GTARPでは、知らなかったでは済まされない禁止行為がいくつ
 
 準備が整い、初めて街に降り立つことを、日本のGTARPでは「初起床」と表現することがある。初日は、焦らないことが一番のコツである。
 
-![GTARP初日の動き方の流れ（イメージ）](/images/syoniti/syonitinougokikata.png)
+![GTARP初日の動き方の流れ（イメージ）](/images/syoniti/syonitinougokikata.webp)
 
 最初にやるべきは、いきなり事件を起こすことではなく、街を歩いて雰囲気をつかむことである。どこに何があるのか、人々がどんなふうに過ごしているのかを眺めるだけでも、街の空気がわかってくる。
 
@@ -78,13 +78,13 @@ const BODY_EN = `Many people, after watching streams as observers, come to want 
 
 This article assumes a stage where you have finished installing FiveM and completed the approval (an application or whitelist registration) for the server you want to join. For installation and how to choose a server, please refer to the separate articles. Note that the controls and rules introduced here are strictly general examples, and the details differ greatly by server. In the end, the official rules of each server you join take priority.
 
-![An image of standing as a resident of the city on your first day after joining a GTARP server](/images/syoniti/syoniti.png)
+![An image of standing as a resident of the city on your first day after joining a GTARP server](/images/syoniti/syoniti.webp)
 
 ## What to Read First, Above All — The Roppou (Rulebook)
 
 Before entering the city, there is one thing you should do before anything else: read that server's official rules, the so-called roppou (rulebook).
 
-![Read the server's official rules, the "roppou (rulebook)," as the top priority](/images/syoniti/rule.png)
+![Read the server's official rules, the "roppou (rulebook)," as the top priority](/images/syoniti/rule.webp)
 
 In GTARP, there are many prohibited acts where "I didn't know" is no excuse, and if you join without reading the rules, there is a danger of violating them without ill intent and being banned (expelled). In addition to basic prohibited acts like RDM, VDM, meta, and power play, there are also detailed rules unique to that server. If you do not understand the meaning of a term, it is good to check the [GTARP Glossary](/fivem-gtarp/glossary). It is a lot to read, but if you skip this, there is a high chance you will stumble on the first day.
 
@@ -104,7 +104,7 @@ Note that "outdated" may be displayed at the top right when you select a server,
 
 In Japan's GTARP, descending into the city for the first time after your preparation is ready is sometimes expressed as "first waking (hatsu-kishou)." On the first day, not rushing is the biggest tip.
 
-![The flow of how to act on your first day in GTARP (image)](/images/syoniti/syonitinougokikata.png)
+![The flow of how to act on your first day in GTARP (image)](/images/syoniti/syonitinougokikata.webp)
 
 The first thing to do is not to suddenly cause an incident, but to walk around the city and grasp the atmosphere. Just by looking at where things are and how people spend their time, you come to understand the city's mood.
 

@@ -9,7 +9,7 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 なお、配信者サーバーは開始・終了・休止の日程が告知ベースで動くことが多く、まとめサイトやSNSでは日付の食い違いも見られる。この記事では確認できた範囲の情報を扱い、不確実な点はその旨を明記する。最新の開催情報は、各企画の公式X（旧Twitter）やDiscordで確認してほしい。
 
-![警察・ギャング・救急などが入り乱れるGTARPの街並み（イメージ）](/images/haisinsyaserver/38.png)
+![警察・ギャング・救急などが入り乱れるGTARPの街並み（イメージ）](/images/haisinsyaserver/38.webp)
 
 ## 早わかり年表
 
@@ -44,7 +44,7 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 日本のGTARP配信の大きな起点となったのが、しょぼすけ氏が立ち上げた常設企画である。2022年8月28日に「ストリーマーグラセフ」として運営を開始し、2023年4月17日にサーバー名を「ストリートグラフィティ ロールプレイ」へ変更した。この略称がストグラとして定着している。
 
-![ストグラ（ストリートグラフィティ ロールプレイ）のロゴ](/images/haisinsyaserver/231228_sutogura_logo.png)
+![ストグラ（ストリートグラフィティ ロールプレイ）のロゴ](/images/haisinsyaserver/231228_sutogura_logo.webp)
 
 参加者はGTA5の舞台である架空都市ロスサントスの住人として設定を作り、一人のキャラクターとしてその街で生活していく。サーバーが常設されているため、参加者はいつでも、もう一つの世界で暮らしているかのような体験を続けられる点が特徴である。視聴者は「観測者」と呼ばれ、配信を通じて街の出来事を見守る文化が育っていった。
 
@@ -56,7 +56,7 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 2023年7月、VAULTROOMとCrazy Raccoonが主催する期間限定イベント「VCR GTA」の第1回が開催された。数週間程度の期間を区切って特設サーバーを開き、多数のストリーマー・VTuberが集結する形式である。常設型のストグラのように長期にわたって一人のキャラクターの人生を積み重ねる形式というよりは、イベント性・交流性の強い祭り型の企画として受け止められている。
 
-![VCR GTA](/images/haisinsyaserver/VCRGTA.jpg)
+![VCR GTA](/images/haisinsyaserver/VCRGTA.webp)
 
 この第1回VCR GTAは、日本のGTARPシーン全体を大きく押し上げた。VCR GTAの開催はGTARPという遊び方そのものの認知を広げ、常設型のストグラにも関心が向かう流れをつくったとみられる。VCR GTAの実施にあたっては、ストグラを運営するしょぼすけ氏がシステムやルールの調整に協力するなど、別企画でありながら人的なつながりも深い。
 
@@ -82,7 +82,7 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 近年は、VCR GTAの系譜にあたる配信者向けサーバー企画が定着している。Crazy Raccoon（CR）が主催し、VAULTROOMが協力する招待制サーバー「MadTown（マッドタウン）」は、2025年6月にβ版（6月1日〜29日）、同年10月に新シーズン（10月1日から約1か月）が開催された。短期集中だった従来のVCRと異なり、ロールプレイの強制度を下げ、1か月ほどかけて「のんびり生活を楽しむ」カジュアル寄りのコンセプトが特徴とされる。
 
-![MadTown](/images/haisinsyaserver/MADTOWN.jpg)
+![MadTown](/images/haisinsyaserver/MADTOWN.webp)
 
 @youtube:AItx5aWgM4k
 
@@ -117,7 +117,7 @@ const BODY_EN = `Ahead of the GTA6 era, Japan's GTARP (GTA Roleplay) has expande
 
 Note that streamer servers often have their start, end, and hiatus dates move on an announcement basis, and date discrepancies can be seen on roundup sites and social media. This article deals with information within the range that could be confirmed, and clearly notes uncertain points. For the latest event information, please check the official X (formerly Twitter) or Discord of each project.
 
-![A GTARP cityscape with police, gangs, EMS, and more all mixed together (image)](/images/haisinsyaserver/38.png)
+![A GTARP cityscape with police, gangs, EMS, and more all mixed together (image)](/images/haisinsyaserver/38.webp)
 
 ## Quick-Reference Timeline
 
@@ -152,7 +152,7 @@ Organizing the main projects by form gives the following.
 
 The major starting point of Japan's GTARP streaming was the permanent project launched by Shobosuke. It began operating as "Streamer Grand Theft" on August 28, 2022, and the server name was changed to "Street Graffiti Roleplay" on April 17, 2023. This abbreviation has taken hold as Stgra.
 
-![The logo of Stgra (Street Graffiti Roleplay)](/images/haisinsyaserver/231228_sutogura_logo.png)
+![The logo of Stgra (Street Graffiti Roleplay)](/images/haisinsyaserver/231228_sutogura_logo.webp)
 
 Participants create a profile as a resident of the fictional city of Los Santos, the setting of GTA5, and live in that city as a single character. Because the server is permanent, it is characterized by allowing participants to continue, at any time, an experience as if they were living in another world. Viewers are called "kansokusha (observers)," and a culture of watching over the city's events through streams grew.
 
@@ -164,7 +164,7 @@ In October 2022, not long after the start, there is a record of Nijisanji's Haji
 
 In July 2023, the first "VCR GTA," a limited-time event hosted by VAULTROOM and Crazy Raccoon, was held. It is a format that opens a special server for a set period of a few weeks, with many streamers and VTubers gathering. Rather than a format like the permanent Stgra, where one accumulates a single character's life over the long term, it is received as a festival-type project with strong event and social qualities.
 
-![VCR GTA](/images/haisinsyaserver/VCRGTA.jpg)
+![VCR GTA](/images/haisinsyaserver/VCRGTA.webp)
 
 This first VCR GTA greatly boosted Japan's GTARP scene as a whole. The holding of VCR GTA broadened recognition of GTARP as a way of playing itself, and it appears to have created a flow of interest toward the permanent Stgra as well. In carrying out VCR GTA, Shobosuke, who operates Stgra, cooperated on system and rule adjustments, so although they are separate projects, the personal connections run deep.
 
@@ -190,7 +190,7 @@ From December 2 to 12 of the same year, "VCR GTA3" was held. Over 180 streamers,
 
 In recent years, streamer-oriented server projects in the VCR GTA lineage have become established. "MadTown," an invitation-only server hosted by Crazy Raccoon (CR) with cooperation from VAULTROOM, held a beta version in June 2025 (June 1–29) and a new season in October of the same year (about one month from October 1). Unlike the previous, short-and-intense VCR, it is characterized by a more casual concept of lowering the degree of RP enforcement and "leisurely enjoying life" over about a month.
 
-![MadTown](/images/haisinsyaserver/MADTOWN.jpg)
+![MadTown](/images/haisinsyaserver/MADTOWN.webp)
 
 @youtube:AItx5aWgM4k
 

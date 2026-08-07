@@ -198,7 +198,7 @@ export const newsArticles: NewsArticle[] = [
     description:
       "Rockstarが8月6日、GTA6の新映像「An Extended Look」を8月27日にNetflixで独占先行公開すると発表。Netflixとのこの種の提携はシリーズ初となる。公開は米東部時間8月27日午後3時(日本時間28日午前4時)にNetflixで始まり、6時間後に公式YouTubeとGTA6公式サイトでも配信される。発売日は11月19日で変更なし。",
     icon: "🎬",
-    image: "/images/news/netflix-extended-look/eyecatch.png",
+    image: "/images/news/netflix-extended-look/eyecatch.webp",
     category: "release",
     date: "2026-08-07",
     publishedAt: "2026-08-07 02:30",
@@ -327,7 +327,7 @@ Note: This article is based on official announcements from Rockstar Games and Ne
     description:
       "『GTA6』のパッケージ版が7月24日から国内でも予約開始。ただし箱の中身はダウンロードコードのみで、ディスクは同梱されない「コードインボックス」仕様。通常版9,800円(税込)、配送は11月12日、プレイ開始は11月19日。ディスク版が後から出る見込みはなく、内容と購入前に押さえておきたい点をまとめた。",
     icon: "📦",
-    image: "/images/news/package-preorder/eyecatch.png",
+    image: "/images/news/package-preorder/eyecatch.webp",
     category: "release",
     date: "2026-07-24",
     publishedAt: "2026-07-24 16:00",
@@ -357,7 +357,7 @@ Note: This article is based on official announcements from Rockstar Games and Ne
 - 対応機種:PS5、Xbox Series X|S。CERO区分はZ(18才以上のみ対象)で、18歳未満は購入できない。
 - 取扱店:Amazon.co.jp、ヨドバシ.com、セブンネットショッピング、楽天市場の各ショップなどで受付が始まっている。
 
-![ヨドバシ.comのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ゴールドポイント980ポイント(10%還元)、配送日2026年11月12日〜／プレイ開始日11月19日、返品不可と表示されている](/images/news/package-preorder/yodobashi.png)
+![ヨドバシ.comのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ゴールドポイント980ポイント(10%還元)、配送日2026年11月12日〜／プレイ開始日11月19日、返品不可と表示されている](/images/news/package-preorder/yodobashi.webp)
 
 *ヨドバシ.comの商品ページ。9,800円(税込)・ゴールドポイント10%還元で、発売日にお届け(返品不可)と案内されている*
 
@@ -368,7 +368,7 @@ Note: This article is based on official announcements from Rockstar Games and Ne
 
 どちらも価格は9,800円(税込)、送料無料で共通している。違いはポイント還元で、記事執筆時点ではヨドバシ.comがゴールドポイント10%還元(980ポイント相当)、Amazonが1%(98ポイント)となっている。Amazonは「予約商品の価格保証」の対象で、配送予定日は11月12日、ヨドバシ.comは発売日の到着を案内している(返品不可)。実質的な負担や届く日で選ぶなら、この差は確認しておきたい。
 
-![Amazon.co.jpのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ポイント98pt(1%)、無料配送11月12日木曜日にお届け、「予約商品の価格保証」対象と表示されている](/images/news/package-preorder/amazon.png)
+![Amazon.co.jpのGTA6(PS5・コードインボックス版)商品ページ。価格9,800円(税込)、ポイント98pt(1%)、無料配送11月12日木曜日にお届け、「予約商品の価格保証」対象と表示されている](/images/news/package-preorder/amazon.webp)
 
 *Amazon.co.jpの商品ページ。9,800円(税込)・ポイント1%で、無料配送は11月12日、「予約商品の価格保証」の対象*
 
@@ -442,7 +442,7 @@ Here are the key points of the physical edition now on pre-order in Japan.
 - Platforms: PS5 and Xbox Series X|S. The CERO rating is Z (18 and over only), so those under 18 cannot buy it.
 - Retailers: pre-orders have opened at Amazon.co.jp, Yodobashi.com, Seven Net Shopping, Rakuten Ichiba shops, and others.
 
-![The Yodobashi.com product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 980 Gold Points (10% back), shipping from November 12, 2026, a play start date of November 19, and "no returns"](/images/news/package-preorder/yodobashi.png)
+![The Yodobashi.com product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 980 Gold Points (10% back), shipping from November 12, 2026, a play start date of November 19, and "no returns"](/images/news/package-preorder/yodobashi.webp)
 
 *The Yodobashi.com product page. At ¥9,800 (incl. tax) with 10% Gold Point rewards, it lists delivery on release day (no returns)*
 
@@ -453,7 +453,7 @@ The main pre-order pages are as follows.
 
 Both are ¥9,800 (incl. tax) with free shipping. The difference is in reward points: at the time of writing, Yodobashi.com offers 10% Gold Points (worth 980 points) and Amazon 1% (98 points). Amazon's listing is covered by its "pre-order price guarantee," with an estimated delivery of November 12, while Yodobashi.com states delivery on release day (no returns). If you're choosing by your real out-of-pocket cost or by when it arrives, this difference is worth checking.
 
-![The Amazon.co.jp product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 98 points (1%), free delivery on Thursday, November 12, and that it is covered by the "pre-order price guarantee"](/images/news/package-preorder/amazon.png)
+![The Amazon.co.jp product page for GTA6 (PS5, code-in-a-box edition). It shows the price of ¥9,800 (incl. tax), 98 points (1%), free delivery on Thursday, November 12, and that it is covered by the "pre-order price guarantee"](/images/news/package-preorder/amazon.webp)
 
 *The Amazon.co.jp product page. At ¥9,800 (incl. tax) with 1% points, free delivery is November 12, and it is covered by the "pre-order price guarantee"*
 
@@ -508,7 +508,7 @@ Pre-orders for the physical edition have opened in Japan too, but the contents a
     description:
       "GTA6の予約開始(6月25日)以降、その人気に便乗したサイバー詐欺が世界で急増している。公式そっくりの偽予約サイトや、「ベータ版」を装うマルウェア配布が、個人情報やカード情報、アカウントを狙う。詐欺サイトは多言語で作られており、日本のユーザーも標的になりうる。手口と対策を整理した。",
     icon: "⚠️",
-    image: "/images/news/sagisaito/eyecatch.png",
+    image: "/images/news/sagisaito/eyecatch.webp",
     category: "topic",
     date: "2026-07-10",
     publishedAt: "2026-07-10 22:30",
@@ -673,7 +673,7 @@ The principle to remember is simple. There is no public beta or early access for
     description:
       "Rockstarが、GTA Onlineの新強盗「The Kortz Center Heist」を7月14日に配信すると発表。舞台は美術館Kortz Center。完全新規の大型強盗はCayo Perico以来およそ6年ぶりで、GTA6発売前・最後級の大型アップデートとみられる。内容と準備の要点をまとめた。",
     icon: "🖼️",
-    image: "/images/news/gta_online_kortz_center_heist_article/ff97a2a5a3c452c1049a75eae778870674ff0e48.jpg",
+    image: "/images/news/gta_online_kortz_center_heist_article/ff97a2a5a3c452c1049a75eae778870674ff0e48.webp",
     category: "update",
     date: "2026-07-10",
     publishedAt: "2026-07-10 12:00",
@@ -697,7 +697,7 @@ Rockstarは、GTA Onlineの新しい強盗(heist)ミッション「The Kortz Cen
 
 配信は7月14日、対応は全機種(PS5・PS4・Xbox Series X|S・Xbox One・PC)。狙うのは、Pacific Bluffsの丘に建つ美術館Kortz Centerだ。2013年からマップに存在しながら中に入れなかった名所で、GTA5のストーリー終盤で緊迫した対峙が起きた場所でもある。そこに眠る名画を盗み出す、多段階の強盗となる。
 
-![美術館Kortz Centerから戦利品を持って逃走する強盗団。追跡するヘリと警察をかわして逃げ切る](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.jpg)
+![美術館Kortz Centerから戦利品を持って逃走する強盗団。追跡するヘリと警察をかわして逃げ切る](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.webp)
 
 流れは、施設を下見し、侵入の方法を選び、潜入し、戦利品を持って逃げる、というもの。これはCayo PericoやDiamond Casinoの強盗と同じ構造で、いずれもGTA Onlineで最も繰り返し遊ばれてきた人気コンテンツだ。ソロでも、最大4人のクルーでも挑める。仲間が多いほど多くの戦利品を持ち出しやすくなる一方、ソロは難度が上がるが一人当たりの取り分は大きくなる(このあたりもCayo Pericoと同様だ)。
 
@@ -707,13 +707,13 @@ Rockstarは、GTA Onlineの新しい強盗(heist)ミッション「The Kortz Cen
 
 リーダーとしてこの強盗を主催するには、マンション物件と、新たに追加されるArt Studio拡張が必要になる。
 
-![Art Studioに住み込む贋作師。盗んだ本物とすり替えるための偽物(フォージェリ)を制作する](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.jpg)
+![Art Studioに住み込む贋作師。盗んだ本物とすり替えるための偽物(フォージェリ)を制作する](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
 
 Art Studioには贋作師が住み込み、盗んだ本物とすり替えるための偽物(フォージェリ)を制作する。ここは計画の拠点も兼ね、準備を進めるほど装備や技術がストックされ、フィナーレではその中からロードアウトを組める。強盗中は、Rafが偵察や重要な情報を共有する連絡役となり、マンションのAIアシスタントも役に立つ。
 
 盗み出した主目標の絵画は、故買屋Mr. Faberの顧客に売って現金化するか、あるいは自分のマンションに飾って所有するかを選べる。さらに、盗める絵画は毎週3枚が新たに入れ替わり、繰り返し遊ぶ動機になる。
 
-![盗める絵画の一例。盗んだ本物は故買屋に売って現金化するか、自分のマンションに飾って所有できる](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.jpg)
+![盗める絵画の一例。盗んだ本物は故買屋に売って現金化するか、自分のマンションに飾って所有できる](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
 
 ---
 
@@ -721,7 +721,7 @@ Art Studioには贋作師が住み込み、盗んだ本物とすり替えるた�
 
 アップデートでは新しい車両も追加される。目玉のGrotti Veleno GTは、GTA+会員なら7月14日からVinewood Car Clubのショールームで無料で受け取れる。一般販売はその1週間後で、会員は先行して入手できる形だ。このほかにも新しいスーパーカーや、Drift、Hao's Special Worksに対応した車両が加わる。あわせて、Rockstar Mission Creatorのアップデートなども予定されている。
 
-![目玉の新車Grotti Veleno GT。GTA+会員は7月14日から無料で入手でき、一般販売は1週間後](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.jpg)
+![目玉の新車Grotti Veleno GT。GTA+会員は7月14日から無料で入手でき、一般販売は1週間後](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
 
 ---
 
@@ -774,7 +774,7 @@ This article is based on information as of July 10, 2026.
 
 It releases July 14 on all platforms (PS5, PS4, Xbox Series X|S, Xbox One, PC). The target is the Kortz Center, a museum perched on the hills of Pacific Bluffs. It’s a landmark that has existed on the map since 2013 but was never enterable, and it’s also where a tense standoff took place near the end of GTA5’s story. This is a multi-stage heist to steal the masterpieces held inside.
 
-![The crew flees the Kortz Center museum with the loot, shaking off pursuing helicopters and police](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.jpg)
+![The crew flees the Kortz Center museum with the loot, shaking off pursuing helicopters and police](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.webp)
 
 The flow is: scope out the facility, choose your method of entry, infiltrate, and escape with the loot. This is the same structure as the Cayo Perico and Diamond Casino heists — both among the most-replayed, most-popular content in GTA Online. You can take it on solo or with a crew of up to four. The more teammates, the easier it is to carry out more loot; solo is harder but the per-person cut is larger (this, too, mirrors Cayo Perico).
 
@@ -784,13 +784,13 @@ The flow is: scope out the facility, choose your method of entry, infiltrate, an
 
 To host this heist as the leader, you’ll need a mansion property and the newly added Art Studio expansion.
 
-![The forger who lives in the Art Studio, making the fakes (forgeries) used to swap out the stolen originals](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.jpg)
+![The forger who lives in the Art Studio, making the fakes (forgeries) used to swap out the stolen originals](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
 
 A forger lives in the Art Studio, producing the fakes (forgeries) used to swap for the stolen originals. It doubles as your planning hub: the more prep you do, the more equipment and skills are stocked, and at the finale you assemble your loadout from them. During the heist, Raf acts as your contact, sharing recon and key intel, and the mansion’s AI assistant also helps.
 
 The primary target painting you steal can be cashed out by selling it to the fence Mr. Faber’s clients, or you can keep it and hang it in your own mansion. On top of that, the paintings available to steal rotate — three new ones each week — giving you a reason to replay.
 
-![An example of a stealable painting. Stolen originals can be sold to a fence for cash or kept and displayed in your mansion](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.jpg)
+![An example of a stealable painting. Stolen originals can be sold to a fence for cash or kept and displayed in your mansion](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
 
 ---
 
@@ -798,7 +798,7 @@ The primary target painting you steal can be cashed out by selling it to the fen
 
 The update also adds new vehicles. The headliner, the Grotti Veleno GT, can be claimed for free at the Vinewood Car Club showroom from July 14 if you’re a GTA+ member. General sale is a week later, so members get it early. Beyond that, new supercars and vehicles compatible with Drift and Hao’s Special Works are added, along with a planned update to the Rockstar Mission Creator and more.
 
-![The headline new car, the Grotti Veleno GT. GTA+ members can claim it free from July 14, with general sale a week later](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.jpg)
+![The headline new car, the Grotti Veleno GT. GTA+ members can claim it free from July 14, with general sale a week later](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
 
 ---
 
@@ -841,7 +841,7 @@ The preparation program leading up to this heist, Fine Art Collector, was covere
     description:
       "Ultimate Editionを紹介するRockstar公式スクリーンショットに、「Buy more useless shit(もっと無駄なものを買え)」と書かれた小さなステッカーが写り込んでいるとファンが発見。100ドルの上位版を売る当のRockstarによる自虐に見える、と海外コミュニティで拡散している。",
     icon: "🏷️",
-    image: "/images/news/ULTIMATE_EDITION_STOCK_305_04.jpg",
+    image: "/images/news/ULTIMATE_EDITION_STOCK_305_04.webp",
     category: "topic",
     date: "2026-07-08",
     publishedAt: "2026-07-08 21:10",
@@ -865,13 +865,13 @@ GTA6の公式プロモ画像に、皮肉の効いた一文が仕込まれてい�
 
 問題の一枚は、Rockstar公式サイトでUltimate Editionの特典を紹介するために公開されたスクリーンショットだ。舞台はUltimate Edition限定の服屋Stock 305で、女性キャラクター(ルシア)がカウンターにもたれて立っている。そのカウンターに貼られたバーコード風のステッカーに、小さな文字で「Buy more useless shit」と書かれている。ぱっと見では気づきにくいが、拡大するとはっきり読める。
 
-![カウンター左下のバーコード風ステッカーに「BUY MORE USELESS SHIT」の文字が読める](/images/news/HMeWeMxXkAA58wI.jpg)
+![カウンター左下のバーコード風ステッカーに「BUY MORE USELESS SHIT」の文字が読める](/images/news/HMeWeMxXkAA58wI.webp)
 
-![ステッカーを拡大したところ。バーコードの下に「BUY MORE USELESS SHIT」とはっきり書かれている](/images/news/ULTIMATE_EDITION_STOCK_305_04up.jpg)
+![ステッカーを拡大したところ。バーコードの下に「BUY MORE USELESS SHIT」とはっきり書かれている](/images/news/ULTIMATE_EDITION_STOCK_305_04up.webp)
 
 重要なのは、これがファンの加工ではなく、Rockstarのサイトにそのまま載っている本物のプロモ画像に含まれている点だ。ファンアカウントのGTA 6 Countdownなどが投稿したことをきっかけに、SNSで一気に広まった。
 
-![発見を広めたファンアカウント「GTA 6 Countdown」の投稿。34万件超の表示を集めた](/images/news/buy-more-useless-shit-post.png)
+![発見を広めたファンアカウント「GTA 6 Countdown」の投稿。34万件超の表示を集めた](/images/news/buy-more-useless-shit-post.webp)
 
 ---
 
@@ -932,13 +932,13 @@ This article is based on information as of July 6, 2026.
 
 The image in question is a screenshot published on Rockstar's official site to showcase the Ultimate Edition's bonuses. The setting is Stock 305, the Ultimate Edition-exclusive clothing store, where the female protagonist (Lucia) stands leaning against a counter. On that counter is a barcode-style sticker, and in tiny lettering it reads: “Buy more useless shit.” It's hard to catch at a glance, but zoom in and it's clearly legible.
 
-![On the sticker at the lower-left of the counter, the words “BUY MORE USELESS SHIT” are legible](/images/news/HMeWeMxXkAA58wI.jpg)
+![On the sticker at the lower-left of the counter, the words “BUY MORE USELESS SHIT” are legible](/images/news/HMeWeMxXkAA58wI.webp)
 
-![A close-up of the sticker: below the barcode, “BUY MORE USELESS SHIT” is clearly written](/images/news/ULTIMATE_EDITION_STOCK_305_04up.jpg)
+![A close-up of the sticker: below the barcode, “BUY MORE USELESS SHIT” is clearly written](/images/news/ULTIMATE_EDITION_STOCK_305_04up.webp)
 
 What matters is that this isn't a fan edit — it's in the genuine promo image as posted on Rockstar's own site. Posts from fan accounts such as GTA 6 Countdown set it off, and it swept across social media.
 
-![The post from fan account “GTA 6 Countdown” that spread the discovery, drawing over 340,000 views](/images/news/buy-more-useless-shit-post.png)
+![The post from fan account “GTA 6 Countdown” that spread the discovery, drawing over 340,000 views](/images/news/buy-more-useless-shit-post.webp)
 
 ---
 
@@ -986,7 +986,7 @@ As a matter of fact, all we have is this: a sticker reading “Buy more useless 
     description:
       "GTA6の発売を待ちきれず、25歳のAI起業家Ziwen XuがAIエージェント(主にClaude)を回す「vibe coding」でGTA6風ゲーム「GT-Caliber」を6月10日から開発中。目標は本物(11月19日発売)より先に出すこと。無謀だが、その過程が「AIの現在地」を映す公開実験として話題だ。",
     icon: "🤖",
-    image: "/images/news/Ziwen.png",
+    image: "/images/news/Ziwen.webp",
     category: "topic",
     date: "2026-07-06",
     publishedAt: "2026-07-06 18:46",
@@ -1161,7 +1161,7 @@ This article was compiled and organized by GTA6 FEED based on Ziwen Xu's own pos
     description:
       "予約は始まったのに第3弾トレーラーはまだ来ていない。公式発表はないが、Take-TwoのCEO発言と過去のパターンから、7月中旬〜下旬、FIFA World Cup決勝(7月19日)の前後が最有力の窓とみられる。ただし時期は推測で、Rockstarは予告なく映像を落とす会社だ。根拠と留意点を整理した。",
     icon: "🎬",
-    image: "/images/news/toreira3haitukurunoka/Vice_City_01.332891cf.jpg",
+    image: "/images/news/toreira3haitukurunoka/Vice_City_01.332891cf.webp",
     category: "speculation",
     date: "2026-07-05",
     publishedAt: "2026-07-05 15:08",
@@ -1189,7 +1189,7 @@ Take-TwoのZelnick CEOは、GTA6のマーケティングを「夏に」開始す
 
 ただし、そのタイミングで映像トレーラーは出なかった。7月上旬の現時点でも、第3弾トレーラーは未発表のままだ。なお発売日は2026年11月19日(PS5・Xbox Series X|S)で変わっていない。
 
-![6月24〜25日に公開された新スクリーンショットの一つ(GTA6のULTIMATE EDITIONイメージより)。映像トレーラーは伴わなかった](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.jpg)
+![6月24〜25日に公開された新スクリーンショットの一つ(GTA6のULTIMATE EDITIONイメージより)。映像トレーラーは伴わなかった](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.webp)
 
 ---
 
@@ -1203,7 +1203,7 @@ World Cupは6月11日から7月19日まで開催され、この期間は世界�
 
 もっとも、正直な留保も必要だ。Rockstarは予告ゼロで、どの火曜に落としてもおかしくない。予想を裏切るのがこのスタジオのスタイルであり、実際、多くのファンが期待した予約開始日(6月25日)にもトレーラーは来なかった。日付の予想はこれまで何度も外れている。
 
-![GTA6のULTIMATE EDITIONイメージより。トレーラー3の時期はCEO発言と過去の傾向にもとづく予想で、Rockstarは予告なく動く](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.jpg)
+![GTA6のULTIMATE EDITIONイメージより。トレーラー3の時期はCEO発言と過去の傾向にもとづく予想で、Rockstarは予告なく動く](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.webp)
 
 ---
 
@@ -1213,7 +1213,7 @@ World Cupは6月11日から7月19日まで開催され、この期間は世界�
 
 小売ページ由来の未確認リークで語られてきた要素(ゲーム内のSNS機能、SNS経由の秘密ミッション、NPCの高度なAIなど)が、もし本物であれば、次のトレーラーで裏づけられるかもしれない。ただしこれらはあくまで未確認の情報で、GTA6 FEEDでは別途詳しく整理している。GTA Onlineとの連携や、オンラインモードがどうなるのかも注目点だが、いずれも公式には発表されていない。
 
-![GTA6のULTIMATE EDITIONイメージより。第3弾では運転やミッションなど、実際のゲームプレイが見られると期待されている](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.jpg)
+![GTA6のULTIMATE EDITIONイメージより。第3弾では運転やミッションなど、実際のゲームプレイが見られると期待されている](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.webp)
 
 ---
 
@@ -1237,7 +1237,7 @@ World Cupは6月11日から7月19日まで開催され、この期間は世界�
 
 注意点として、トレーラー3の時期・内容はRockstarから何も発表されておらず、ここで示したのはCEO発言と過去の傾向にもとづく予想である。これまでも日付の予想は当たっておらず(予約開始時にトレーラーは来なかった)、Rockstarは予告なく動く。確実な情報は、Rockstarの公式チャンネルとNewswireで確認するのが望ましい。
 
-![GTA6のULTIMATE EDITIONイメージより。確実な情報はRockstarの公式チャンネルとNewswireで確認したい](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.jpg)
+![GTA6のULTIMATE EDITIONイメージより。確実な情報はRockstarの公式チャンネルとNewswireで確認したい](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.webp)
 
 ---
 
@@ -1271,7 +1271,7 @@ Take-Two CEO Zelnick said GTA6's marketing would begin “in the summer,” addi
 
 However, no video trailer came at that timing. Even now in early July, Trailer 3 remains unannounced. Note that the release date is unchanged at November 19, 2026 (PS5 and Xbox Series X|S).
 
-![One of the new screenshots released on June 24–25 (from GTA6's ULTIMATE EDITION imagery). No video trailer accompanied it](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.jpg)
+![One of the new screenshots released on June 24–25 (from GTA6's ULTIMATE EDITION imagery). No video trailer accompanied it](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_ELECTRIC_FANG_03.webp)
 
 ---
 
@@ -1285,7 +1285,7 @@ Other candidate dates have been raised too. July 21, the Tuesday of the week aft
 
 Still, an honest reservation is needed. Rockstar gives zero warning, and it wouldn't be surprising on any given Tuesday. Defying expectations is this studio's style — and indeed, no trailer came even on the pre-order start date (June 25) that many fans had hoped for. Date predictions have missed many times before.
 
-![From GTA6's ULTIMATE EDITION imagery. Trailer 3's timing is a projection based on CEO comments and past tendencies, and Rockstar moves without warning](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.jpg)
+![From GTA6's ULTIMATE EDITION imagery. Trailer 3's timing is a projection based on CEO comments and past tendencies, and Rockstar moves without warning](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_SAFEHOUSE_VEHICLES_02.webp)
 
 ---
 
@@ -1295,7 +1295,7 @@ Speculation is flying about the content, too. Trailers 1 and 2 were cinematic-ce
 
 Elements that have been discussed in unconfirmed leaks originating from retailer pages (in-game social-media features, secret missions via social media, advanced NPC AI, and so on), if real, might be substantiated in the next trailer. However, these are strictly unconfirmed, and GTA6 FEED covers them in detail separately. Ties to GTA Online and what the online mode will look like are also points of interest, but none of it has been officially announced.
 
-![From GTA6's ULTIMATE EDITION imagery. Trailer 3 is expected to show actual gameplay such as driving and missions](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.jpg)
+![From GTA6's ULTIMATE EDITION imagery. Trailer 3 is expected to show actual gameplay such as driving and missions](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_VAPID_GANADO_RETRO_BUILD_01.webp)
 
 ---
 
@@ -1319,7 +1319,7 @@ Fan reactions are full of anticipation, too.
 
 As a caveat, nothing about Trailer 3's timing or content has been announced by Rockstar; what's presented here is a projection based on CEO comments and past tendencies. Date predictions haven't panned out before (no trailer came at pre-order start), and Rockstar moves without warning. For reliable information, it's best to check Rockstar's official channels and the Newswire.
 
-![From GTA6's ULTIMATE EDITION imagery. For reliable information, check Rockstar's official channels and the Newswire](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.jpg)
+![From GTA6's ULTIMATE EDITION imagery. For reliable information, check Rockstar's official channels and the Newswire](/images/news/toreira3haitukurunoka/ULTIMATE_EDITION_HAWK_AND_LITTLE_MORGAN_REVOLVERS_02.webp)
 
 ---
 
@@ -1336,7 +1336,7 @@ For a recap of what the first two trailers showed and where the "June 25" theory
     description:
       "PS5 ProならGTA6を60fpsで——との期待に、Digital Foundryが慎重論。ボトルネックはGPUではなくCPUにあり、最上位機でも30fps、よくて40fpsが濃厚だと分析する。ただし公式情報ではなく専門家の推測だ。根拠・反論・確定情報を切り分けて整理した。",
     icon: "🎮",
-    image: "/images/news/60fps/ULTIMATE_EDITION_02.jpg",
+    image: "/images/news/60fps/ULTIMATE_EDITION_02.webp",
     category: "speculation",
     date: "2026-07-04",
     publishedAt: "2026-07-04 10:00",
@@ -1366,7 +1366,7 @@ PS5 Proを買えばGTA6を60fpsで遊べる——そんな期待に、技術分�
 
 つまり、現時点でGTA6のフレームレートは公式には何も決まっておらず、以下は専門家の分析にもとづく予想である。
 
-![GTA6のULTIMATE EDITIONイメージより。フレームレートの仕様は、未発売の現時点でRockstarから公式には示されていない](/images/news/60fps/ULTIMATE_EDITION_GROTTI_CHEETAH_01.jpg)
+![GTA6のULTIMATE EDITIONイメージより。フレームレートの仕様は、未発売の現時点でRockstarから公式には示されていない](/images/news/60fps/ULTIMATE_EDITION_GROTTI_CHEETAH_01.webp)
 
 ---
 
@@ -1380,7 +1380,7 @@ DFのWilliam Juddは、最近のトレーラーや予約時のスクリーンシ
 
 ただしDF自身、これは現時点での推測であり外れる可能性もあると断っている。もし外れれば、GTA6はRockstarとして初めて、発売時からコンソールで60fpsを狙うオープンワールド作品になる、とも述べている。
 
-![陸・海・空を高速で移動でき、車両ごとに重い物理演算が必要になる——こうした負荷が従来からコンソールを30fpsに縛ってきた、とDFは説明する](/images/news/60fps/ULTIMATE_EDITION_SQUALO_03.jpg)
+![陸・海・空を高速で移動でき、車両ごとに重い物理演算が必要になる——こうした負荷が従来からコンソールを30fpsに縛ってきた、とDFは説明する](/images/news/60fps/ULTIMATE_EDITION_SQUALO_03.webp)
 
 ---
 
@@ -1394,7 +1394,7 @@ DFのWilliam Juddは、最近のトレーラーや予約時のスクリーンシ
 
 また、GTA5のように発売後のパッチで60fpsが追加される前例はある。ただしRockstarは発売初週の完成度を重視する傾向があり、発売時点は30fpsを覚悟しておくのが現実的だ。
 
-![GTA6のULTIMATE EDITIONイメージより。小売のFAQに現れた「Performance/60fps」の記載は、DFによれば決定的な証拠とは言えない](/images/news/60fps/ULTIMATE_EDITION_ONE_EYED_WILLIE_03.jpg)
+![GTA6のULTIMATE EDITIONイメージより。小売のFAQに現れた「Performance/60fps」の記載は、DFによれば決定的な証拠とは言えない](/images/news/60fps/ULTIMATE_EDITION_ONE_EYED_WILLIE_03.webp)
 
 ---
 
@@ -1463,7 +1463,7 @@ When it comes to frame rate, what's officially known is very little.
 
 In other words, nothing about GTA6's frame rate is officially decided at this point, and what follows is a projection based on expert analysis.
 
-![From GTA6's ULTIMATE EDITION imagery. As of now, pre-release, Rockstar has not officially stated the frame-rate specs](/images/news/60fps/ULTIMATE_EDITION_GROTTI_CHEETAH_01.jpg)
+![From GTA6's ULTIMATE EDITION imagery. As of now, pre-release, Rockstar has not officially stated the frame-rate specs](/images/news/60fps/ULTIMATE_EDITION_GROTTI_CHEETAH_01.webp)
 
 ---
 
@@ -1477,7 +1477,7 @@ The problem is that this situation doesn't change much even on PS5 Pro. While th
 
 That said, DF itself cautions that this is speculation for now and could be wrong. If it is wrong, DF adds, GTA6 would become the first Rockstar open-world game to target 60fps on consoles right from launch.
 
-![You can move at high speed across land, sea, and air, with heavy per-vehicle physics required — this kind of load, DF explains, has traditionally chained consoles to 30fps](/images/news/60fps/ULTIMATE_EDITION_SQUALO_03.jpg)
+![You can move at high speed across land, sea, and air, with heavy per-vehicle physics required — this kind of load, DF explains, has traditionally chained consoles to 30fps](/images/news/60fps/ULTIMATE_EDITION_SQUALO_03.webp)
 
 ---
 
@@ -1491,7 +1491,7 @@ But DF is skeptical of this sort of retail leak. Many PS5 titles list these two 
 
 There is also precedent, as with GTA5, for 60fps being added via a post-launch patch. However, Rockstar tends to prioritize launch-week polish, so it's realistic to brace for 30fps at release.
 
-![From GTA6's ULTIMATE EDITION imagery. The “Performance/60fps” listing that appeared in the retailer FAQ is, per DF, not decisive evidence](/images/news/60fps/ULTIMATE_EDITION_ONE_EYED_WILLIE_03.jpg)
+![From GTA6's ULTIMATE EDITION imagery. The “Performance/60fps” listing that appeared in the retailer FAQ is, per DF, not decisive evidence](/images/news/60fps/ULTIMATE_EDITION_ONE_EYED_WILLIE_03.webp)
 
 ---
 
@@ -1541,7 +1541,7 @@ This article was compiled and organized by GTA6 FEED based on Digital Foundry's 
     description:
       "GTA Onlineで独立記念日イベントが7月2日に開幕。通常100万GTA$超のLago Zancudoバンカーが無料でもらえるほか、Rockstarが「過去最大」と称する大規模セールも実施中。多くは7月13日まで。内容と押さえどころをまとめた。",
     icon: "🎆",
-    image: "/images/news/IndependenceDay/GTAO.png",
+    image: "/images/news/IndependenceDay/GTAO.webp",
     category: "event",
     date: "2026-07-03",
     publishedAt: "2026-07-03 09:00",
@@ -1570,7 +1570,7 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 - 花火ランチャー(Gun Van)とマスケット(Ammu-Nation)が無料。ログインすると独立記念日仕様のバケットハットも受け取れる。
 - Business Battlesでは、ビールハット各種やStatue of Happiness Tシャツといった期間限定のコスメティックが手に入る。
 
-![Gun Vanで無料になる花火ランチャー。独立記念日らしく夜空を彩れる](/images/news/IndependenceDay/hanabirancya.jpg)
+![Gun Vanで無料になる花火ランチャー。独立記念日らしく夜空を彩れる](/images/news/IndependenceDay/hanabirancya.webp)
 
 ---
 
@@ -1582,7 +1582,7 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 - スタントレースの報酬が3倍(トリプル)。Running Back(Remix)なども登場する。
 - ウィークリーチャレンジは、7月2日〜8日はバンカーリサーチミッションを3回完了でGTA$10万とBlue Jock Cranley Jumpsuit。9日〜13日はレースに2回勝利で同じ報酬が得られる。
 
-![報酬3倍となるスタントレース。トリプルのGTA$・RPボーナスで一気に稼げる](/images/news/IndependenceDay/stuntlace.jpg)
+![報酬3倍となるスタントレース。トリプルのGTA$・RPボーナスで一気に稼げる](/images/news/IndependenceDay/stuntlace.webp)
 
 ---
 
@@ -1590,7 +1590,7 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 
 あわせて、独立記念日にあわせた特別版のCommunity Seriesも実施されている。ラリーレース、西部劇風の早撃ち(クイックドロー)対決、マスケット銃のデスマッチなど、コミュニティが手がけたミッション・モードが対象で、これらをプレイするとGTA$とRPが2倍になる。こちらも期間は7月13日まで。無料バンカーやセールと同じ期間に走っているため、資金稼ぎのついでに普段と違うモードで遊ぶ動機にもなる。
 
-![独立記念日仕様のCommunity Series。ラリーレースやクイックドロー対決などコミュニティ製モードでGTA$・RPが2倍になる](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.jpg)
+![独立記念日仕様のCommunity Series。ラリーレースやクイックドロー対決などコミュニティ製モードでGTA$・RPが2倍になる](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.webp)
 
 ---
 
@@ -1600,7 +1600,7 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 
 GTA+会員には、さらに追加の特典がある。限定の独立記念日衣類、無料のOcelot Stromberg、Chameleon Paints、そしてMansion(豪邸)の200万GTA$割引などが用意されている。
 
-![「過去最大」とうたわれるセール。航空機や特殊車両など広範囲が大幅値引きされている](/images/news/IndependenceDay/GTAO2.png)
+![「過去最大」とうたわれるセール。航空機や特殊車両など広範囲が大幅値引きされている](/images/news/IndependenceDay/GTAO2.webp)
 
 ---
 
@@ -1610,7 +1610,7 @@ GTA+会員には、さらに追加の特典がある。限定の独立記念日�
 
 ただし一点だけ補足すると、すでにChumashやFarmhouseのバンカーを持っている場合は、無理に乗り換える必要はない。この2か所は配送ルートが短く、売却ミッションの効率で有利とされる。Lago Zancudoは立地の関係で一部の売却に時間がかかるため、優先度で言えば中位だ。とはいえ「無料でもらえる100万超の物件」であることは変わらないので、未所持なら取り逃さないよう、期限の7月13日までに受け取っておきたい。
 
-![ガンランニング関連ミッションもボーナス対象。バンカーは受動収入やMk II武器のリサーチなど、長期ビジネスの土台になる](/images/news/IndependenceDay/bankerbonus.jpg)
+![ガンランニング関連ミッションもボーナス対象。バンカーは受動収入やMk II武器のリサーチなど、長期ビジネスの土台になる](/images/news/IndependenceDay/bankerbonus.webp)
 
 ---
 
@@ -1651,7 +1651,7 @@ This event is especially generous with items you can receive for free.
 - A firework launcher (Gun Van) and a musket (Ammu-Nation) are free. Log in and you'll also receive an Independence Day–themed bucket hat.
 - In Business Battles, you can obtain limited-time cosmetics such as various beer hats and a Statue of Happiness T-shirt.
 
-![The firework launcher, free from the Gun Van. Light up the night sky in true Independence Day fashion](/images/news/IndependenceDay/hanabirancya.jpg)
+![The firework launcher, free from the Gun Van. Light up the night sky in true Independence Day fashion](/images/news/IndependenceDay/hanabirancya.webp)
 
 ---
 
@@ -1663,7 +1663,7 @@ There are also plenty of money-making opportunities. It's a good week to stockpi
 - Stunt Races pay triple rewards. Modes such as Running Back (Remix) are featured.
 - For weekly challenges: from July 2–8, complete three Bunker Research missions for GTA$100K and the Blue Jock Cranley Jumpsuit. From the 9th–13th, win two races for the same reward.
 
-![Stunt Races, paying triple rewards. Triple GTA$ and RP bonuses let you earn fast](/images/news/IndependenceDay/stuntlace.jpg)
+![Stunt Races, paying triple rewards. Triple GTA$ and RP bonuses let you earn fast](/images/news/IndependenceDay/stuntlace.webp)
 
 ---
 
@@ -1671,7 +1671,7 @@ There are also plenty of money-making opportunities. It's a good week to stockpi
 
 A special Independence Day–themed Community Series is also running. It features community-made missions and modes — rally races, Western-style quick-draw duels, musket deathmatches, and more — and playing these earns double GTA$ and RP. This too runs through July 13. Since it overlaps with the free bunker and the sale, it's also a reason to enjoy some out-of-the-ordinary modes while you're earning cash.
 
-![The Independence Day Community Series. Community-made modes like rally races and quick-draw duels earn double GTA$ and RP](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.jpg)
+![The Independence Day Community Series. Community-made modes like rally races and quick-draw duels earn double GTA$ and RP](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.webp)
 
 ---
 
@@ -1681,7 +1681,7 @@ The scale of the sale is large too. A wide range — aircraft, special and weapo
 
 GTA+ members get further perks. Exclusive Independence Day clothing, a free Ocelot Stromberg, Chameleon Paints, and GTA$2M off a Mansion are among the offerings.
 
-![The sale billed as the “biggest ever.” A wide range including aircraft and special vehicles is heavily discounted](/images/news/IndependenceDay/GTAO2.png)
+![The sale billed as the “biggest ever.” A wide range including aircraft and special vehicles is heavily discounted](/images/news/IndependenceDay/GTAO2.webp)
 
 ---
 
@@ -1691,7 +1691,7 @@ To get straight to the point: if you don't own a bunker yet, you should claim th
 
 One caveat, though: if you already own the Chumash or Farmhouse bunker, there's no need to force a switch. These two have short delivery routes and are considered advantageous for sell-mission efficiency. Because of its location, Lago Zancudo takes longer for some sell missions, so in terms of priority it sits in the middle. That said, it remains “a GTA$1M-plus property you can get for free,” so if you don't own one, make sure to claim it before the July 13 deadline.
 
-![Gunrunning-related missions are also eligible for bonuses. A bunker forms the foundation of long-term businesses like passive income and Mk II weapon research](/images/news/IndependenceDay/bankerbonus.jpg)
+![Gunrunning-related missions are also eligible for bonuses. A bunker forms the foundation of long-term businesses like passive income and Mk II weapon research](/images/news/IndependenceDay/bankerbonus.webp)
 
 ---
 
@@ -1714,7 +1714,7 @@ This article is a summary organized by GTA6 FEED based on Rockstar Games' offici
     description:
       "2026年6月25日に予約が始まったGTA6だが、対象はPS5とXbox Series X|Sのみ。PC版はストアページも要件も時期も未発表だ。発表されない理由と、過去作から読む現実的な発売時期を、確認できる事実と考察に分けて整理する。",
     icon: "🖥️",
-    image: "/images/news/ULTIMATE_EDITION_01.jpg",
+    image: "/images/news/ULTIMATE_EDITION_01.webp",
     category: "topic",
     date: "2026-07-01",
     publishedAt: "2026-07-01 18:00",
@@ -1762,7 +1762,7 @@ Rockstar がコンソールを先行させ、PC版を後から出すのは、今
 
 言い換えれば、PC版の遅れは「PC が軽視されているから」ではなく、「PC の価値を最大化するタイミングを計っているから」という読み方ができる。
 
-![ヴァイスシティの街並みを背にしたルシアとジェイソン。こうした風景を最高の解像度とフレームレートで味わえるPC版が来るのは、まだ先になりそうだ](/images/news/ULTIMATE_EDITION_02.jpg)
+![ヴァイスシティの街並みを背にしたルシアとジェイソン。こうした風景を最高の解像度とフレームレートで味わえるPC版が来るのは、まだ先になりそうだ](/images/news/ULTIMATE_EDITION_02.webp)
 
 ## どのプラットフォームで来るのか
 
@@ -1850,7 +1850,7 @@ There are a few views considered likely. One is piracy and cheat countermeasures
 
 Put differently, the PC version's delay can be read not as “because PC is treated lightly,” but as “because they're timing it to maximize PC's value.”
 
-![Lucia and Jason against the Vice City skyline. A PC version that lets you savor scenes like this at the highest resolution and frame rate looks to be still some way off](/images/news/ULTIMATE_EDITION_02.jpg)
+![Lucia and Jason against the Vice City skyline. A PC version that lets you savor scenes like this at the highest resolution and frame rate looks to be still some way off](/images/news/ULTIMATE_EDITION_02.webp)
 
 ## On Which Platform Will It Come
 
@@ -1901,7 +1901,7 @@ That GTA6 launches on November 19, 2026 for PS5 and Xbox Series X|S, that pre-or
     description:
       "RockstarアカウントとDiscordを連携すると、バーガンディ色の「Rockstar Varsity Crewneck」をGTA Onlineで無料で受け取れる。受け取りは7月1日まで。RockstarはこれをもってDiscord連携特典の配布を終了すると案内しており、最後の機会となる。",
     icon: "👕",
-    image: "/images/news/17e36ec78dc74d11dca7bc7a7c15294b510ee1843e92ed0477e8c59aaa538151.png",
+    image: "/images/news/17e36ec78dc74d11dca7bc7a7c15294b510ee1843e92ed0477e8c59aaa538151.webp",
     category: "event",
     date: "2026-07-01",
     publishedAt: "2026-07-01 10:00",
@@ -2022,7 +2022,7 @@ With GTA6 pre-orders making big waves, GTA Online continues to roll out weekly u
     description:
       "予約が始まったGTA6だが、用意されているのはStandardとUltimateの2種類だけ。フィギュアやグッズを詰めたコレクターズエディション(CE)は未発表だ。根拠になっているリークと過去作の前例を、確定情報・リーク・推測に分けて整理する。",
     icon: "📦",
-    image: "/images/news/collectorsedition/GTAVSpecialEditionofficial.png",
+    image: "/images/news/collectorsedition/GTAVSpecialEditionofficial.webp",
     category: "topic",
     date: "2026-06-30",
     publishedAt: "2026-06-30 22:00",
@@ -2082,16 +2082,16 @@ Ricfazeresの証言。ポルトガルで実績のあるYouTuberのRicfazeresが�
 
 CEが出るという見方の最大の根拠は、Rockstarがこれまで繰り返し豪華版を出してきた実績だ。いずれも公式発表に基づく事実である。
 
-![GTA IV Special Edition(2008年)。アートブック、サウンドトラックCD、鍵付きのロックボックスなどを同梱した豪華版](/images/news/collectorsedition/GTAIVSpecialEdition.png)
+![GTA IV Special Edition(2008年)。アートブック、サウンドトラックCD、鍵付きのロックボックスなどを同梱した豪華版](/images/news/collectorsedition/GTAIVSpecialEdition.webp)
 
 - GTA IV Special Edition(2008年):2008年当時で約90ドル(英国で約70ポンド)。アートブック、サウンドトラックCD、鍵付きのロックボックス、Rockstarのキーチェーン、限定ダッフルバッグなどを同梱。
 
-![GTA V Special Edition。限定アートのスティールブックやブループリントマップ、ゲーム内特典を含む](/images/news/collectorsedition/GTAVSpecialEdition.png)
+![GTA V Special Edition。限定アートのスティールブックやブループリントマップ、ゲーム内特典を含む](/images/news/collectorsedition/GTAVSpecialEdition.webp)
 
 - GTA V Special Edition(79.99ドル):マイケル・トレバー・フランクリンの限定アートを使ったスティールブック、ロスサントスとブレイン群のブループリントマップ、ゲーム内特典(特殊能力ゲージが25%速く溜まるブースト、スタント飛行、追加の衣装・タトゥー・武器など)。
 - GTA V Collector's Edition(149.99ドル):Special Editionの全内容に加え、鍵付きのセキュリティバッグ(お金袋)、New EraのGTA Vスナップバックキャップ、Collector's限定の車両(Hotknife、Carbon RSなど)と専用ガレージ。
 
-![RDR2 Collector's Box(2018年)。ゲーム本体を含まない、世界観に沿った金属製の箱とグッズのセット](/images/news/collectorsedition/RDR2CollectorsBox.png)
+![RDR2 Collector's Box(2018年)。ゲーム本体を含まない、世界観に沿った金属製の箱とグッズのセット](/images/news/collectorsedition/RDR2CollectorsBox.webp)
 
 - RDR2 Collector's Box(2018年):ゲーム本体を含まない、世界観に沿った金属製の箱とグッズ(チャレンジコイン、バンダナ、トレジャーマップ、ピンバッジ、トランプなど)。
 
@@ -2179,16 +2179,16 @@ Contents. Predicted items include a steelbook, an art book, a map of Vice City, 
 
 The biggest basis for the view that a CE will come is Rockstar's track record of repeatedly releasing deluxe editions. All of these are facts based on official announcements.
 
-![GTA IV Special Edition (2008). A deluxe edition bundling an art book, a soundtrack CD, a lockable lockbox, and more](/images/news/collectorsedition/GTAIVSpecialEdition.png)
+![GTA IV Special Edition (2008). A deluxe edition bundling an art book, a soundtrack CD, a lockable lockbox, and more](/images/news/collectorsedition/GTAIVSpecialEdition.webp)
 
 - GTA IV Special Edition (2008): around $90 at the time (about £70 in the UK). Bundled an art book, a soundtrack CD, a lockable lockbox, a Rockstar keychain, a limited duffel bag, and more.
 
-![GTA V Special Edition. Includes a limited-art steelbook, a blueprint map, and in-game bonuses](/images/news/collectorsedition/GTAVSpecialEdition.png)
+![GTA V Special Edition. Includes a limited-art steelbook, a blueprint map, and in-game bonuses](/images/news/collectorsedition/GTAVSpecialEdition.webp)
 
 - GTA V Special Edition ($79.99): a steelbook using limited art of Michael, Trevor, and Franklin; a blueprint map of Los Santos and Blaine County; in-game bonuses (a boost that fills the special-ability meter 25% faster, stunt flying, additional outfits, tattoos, and weapons, etc.).
 - GTA V Collector's Edition ($149.99): everything in the Special Edition plus a lockable security bag (money bag), a New Era GTA V snapback cap, Collector's-exclusive vehicles (Hotknife, Carbon RS, etc.) and a dedicated garage.
 
-![RDR2 Collector's Box (2018). A set of a metal box and merch fitting the world, not including the game itself](/images/news/collectorsedition/RDR2CollectorsBox.png)
+![RDR2 Collector's Box (2018). A set of a metal box and merch fitting the world, not including the game itself](/images/news/collectorsedition/RDR2CollectorsBox.webp)
 
 - RDR2 Collector's Box (2018): not including the base game, a metal box and merch fitting the world (a challenge coin, a bandana, a treasure map, a pin badge, playing cards, etc.).
 
@@ -2227,7 +2227,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and a CE has not been of
     description:
       "ルシア役にManni L. Perez、ジェイソン役にDylan Rourke——ファンの間では本命のように語られているが、Rockstarはキャストを一切公表しておらず、いずれも未確認の推測にとどまる。何が事実で何が憶測なのかを切り分けて整理する。",
     icon: "🎭",
-    image: "/images/news/lusiahadarenanoka/luciaeyecatch.png",
+    image: "/images/news/lusiahadarenanoka/luciaeyecatch.webp",
     category: "topic",
     date: "2026-06-29",
     publishedAt: "2026-06-29 23:45",
@@ -2261,11 +2261,11 @@ GTA6の二人の主人公、ルシアとジェイソンの「中の人」は誰�
 
 ルシア役として名前が広まった主なきっかけは、トレーラーに登場するルシアと、声や容姿が似ているという比較だった。
 
-![トレーラーのルシアとManni L. Perezを並べた比較。声や容姿が似ているという指摘が、配役の噂が広まる主なきっかけになった](/images/news/lusiahadarenanoka/luciahikaku1.png)
+![トレーラーのルシアとManni L. Perezを並べた比較。声や容姿が似ているという指摘が、配役の噂が広まる主なきっかけになった](/images/news/lusiahadarenanoka/luciahikaku1.webp)
 
 これに加えて、検証できる状況証拠として挙げられるのが、Rockstarとの過去の接点だ。Manni L. PerezはGTA OnlineのDiamond Casino関連のアップデートで、カジノのディーラー役の一人として声を担当している。この事実が判明したことで、ルシア役ではないかという見方が一段と強まった。また、インタビューでGTAについて問われた際、本人がNDA(秘密保持契約)を理由に明言を避けたとされる場面も、噂を後押しする材料として語られている。
 
-![ファンが根拠として挙げる容姿の比較。ただし似ているという印象は、配役を証明するものではない](/images/news/lusiahadarenanoka/lucihikaku2.png)
+![ファンが根拠として挙げる容姿の比較。ただし似ているという印象は、配役を証明するものではない](/images/news/lusiahadarenanoka/lucihikaku2.webp)
 
 ただし、これらはいずれも決定的な証拠ではない。声や容姿が似ていることも、過去にRockstar作品に関わったことも、ルシア役であることを証明するものではない。Rockstarも本人も、公式にこの配役を認めていない。
 
@@ -2275,13 +2275,13 @@ GTA6の二人の主人公、ルシアとジェイソンの「中の人」は誰�
 
 ジェイソン役については、Dylan Rourkeという俳優の名前が最もよく挙がる。きっかけは、ゲーム系クリエイターのLegacyKillaDXが2024年に「ジェイソンはDylan Rourke」と主張したことで、トレーラーの声との類似や、モーションキャプチャーの経験があることが根拠とされている。
 
-![トレーラーのジェイソンと、ファンが候補として挙げる俳優を並べた比較画像](/images/news/lusiahadarenanoka/Jason.png)
+![トレーラーのジェイソンと、ファンが候補として挙げる俳優を並べた比較画像](/images/news/lusiahadarenanoka/Jason.webp)
 
 もっとも、ジェイソン側の推測はルシアほど一点に集中しておらず、確度はより低いとみられている。実際、当初はTroy Bakerの声ではないかという説が広まったが、本人が「自分ではない」と否定した経緯がある(別の著名声優Roger Craig Smithも関与を否定している)。ジェイソン役の候補は、これまでにも二転三転してきた。
 
-![ジェイソンの容姿比較。声や見た目の類似が根拠とされるが、候補はこれまでにも二転三転してきた](/images/news/lusiahadarenanoka/jasonhikaku1.png)
+![ジェイソンの容姿比較。声や見た目の類似が根拠とされるが、候補はこれまでにも二転三転してきた](/images/news/lusiahadarenanoka/jasonhikaku1.webp)
 
-![ファンが挙げるジェイソンの比較画像。ルシアほど一点に絞り込まれておらず、確度は低いとみられている](/images/news/lusiahadarenanoka/jasonhikaku2.png)
+![ファンが挙げるジェイソンの比較画像。ルシアほど一点に絞り込まれておらず、確度は低いとみられている](/images/news/lusiahadarenanoka/jasonhikaku2.webp)
 
 ---
 
@@ -2338,11 +2338,11 @@ The name raised most often among fans is the American actor Manni L. Perez. A La
 
 The main trigger for her name spreading as Lucia was a comparison noting that her voice and appearance resemble the Lucia who appears in the trailers.
 
-![A comparison placing the trailer's Lucia next to Manni L. Perez. The claim that the voice and appearance resemble each other was the main trigger for the casting rumor spreading](/images/news/lusiahadarenanoka/luciahikaku1.png)
+![A comparison placing the trailer's Lucia next to Manni L. Perez. The claim that the voice and appearance resemble each other was the main trigger for the casting rumor spreading](/images/news/lusiahadarenanoka/luciahikaku1.webp)
 
 In addition, the verifiable circumstantial evidence cited is a past connection with Rockstar. Manni L. Perez voiced one of the casino dealers in a GTA Online update related to the Diamond Casino. Once this fact came to light, the view that she might be Lucia grew even stronger. There is also a scene, often cited as fuel for the rumor, in which she reportedly avoided commenting when asked about GTA in an interview, citing an NDA (non-disclosure agreement).
 
-![An appearance comparison cited by fans as evidence. But an impression of resemblance does not prove the casting](/images/news/lusiahadarenanoka/lucihikaku2.png)
+![An appearance comparison cited by fans as evidence. But an impression of resemblance does not prove the casting](/images/news/lusiahadarenanoka/lucihikaku2.webp)
 
 However, none of this is decisive evidence. Neither a resemblance in voice and appearance nor past involvement in a Rockstar title proves she is Lucia. Neither Rockstar nor the actor herself has officially confirmed this casting.
 
@@ -2352,13 +2352,13 @@ However, none of this is decisive evidence. Neither a resemblance in voice and a
 
 For Jason, the actor whose name comes up most is Dylan Rourke. The trigger was the gaming creator LegacyKillaDX claiming in 2024 that "Jason is Dylan Rourke," with the resemblance to the trailer's voice and his motion-capture experience cited as grounds.
 
-![A comparison image placing the trailer's Jason next to the actor fans raise as a candidate](/images/news/lusiahadarenanoka/Jason.png)
+![A comparison image placing the trailer's Jason next to the actor fans raise as a candidate](/images/news/lusiahadarenanoka/Jason.webp)
 
 That said, the guess on the Jason side is not concentrated on a single point the way Lucia's is, and is seen as lower in confidence. In fact, a theory that it was Troy Baker's voice spread early on, but he denied it, saying "it's not me" (another well-known voice actor, Roger Craig Smith, has also denied involvement). The candidates for Jason have shifted back and forth several times.
 
-![An appearance comparison for Jason. Vocal and visual resemblance are cited as grounds, but the candidates have shifted back and forth](/images/news/lusiahadarenanoka/jasonhikaku1.png)
+![An appearance comparison for Jason. Vocal and visual resemblance are cited as grounds, but the candidates have shifted back and forth](/images/news/lusiahadarenanoka/jasonhikaku1.webp)
 
-![A Jason comparison image raised by fans. It is not narrowed to a single point the way Lucia's is, and is seen as lower in confidence](/images/news/lusiahadarenanoka/jasonhikaku2.png)
+![A Jason comparison image raised by fans. It is not narrowed to a single point the way Lucia's is, and is seen as lower in confidence](/images/news/lusiahadarenanoka/jasonhikaku2.webp)
 
 ---
 
@@ -2392,7 +2392,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
     description:
       "6月24日の価格発表とともに公開された新スクリーンショットを、トレーラー2と見比べて「画質が落ちた」という声がSNSで拡大。中心はジェイソンのセーフハウスの比較だ。何が事実で、何が主観・推測かを切り分けて整理する。",
     icon: "🖼️",
-    image: "/images/news/graphicdowngrade/eyecatch.png",
+    image: "/images/news/graphicdowngrade/eyecatch.webp",
     category: "topic",
     date: "2026-06-28",
     publishedAt: "2026-06-28 03:33",
@@ -2418,7 +2418,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
 
 6月24日、Rockstarは予約開始と価格の発表にあわせて、アルティメット・エディションの紹介などで多数の新スクリーンショットを公開した。ファンはこれを、1年以上前に公開されたトレーラー2の同じ場所(ジェイソンの海辺のセーフハウス)と並べて比較し始めた。Kotakuが最初に取り上げ、その後TheGamerや各国のメディアが追随して、Reddit・X・GTAフォーラムを中心に比較画像が拡散している。
 
-![SNSで広く拡散した比較画像。2025年のトレーラー2(上)と2026年6月の新スクリーンショット(下)を並べたもの](/images/news/graphicdowngrade/GOLDEN.png)
+![SNSで広く拡散した比較画像。2025年のトレーラー2(上)と2026年6月の新スクリーンショット(下)を並べたもの](/images/news/graphicdowngrade/GOLDEN.webp)
 
 ---
 
@@ -2430,11 +2430,11 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
 - 影の表現が単純になり、車体の下にできる遮蔽影が粗く見える。
 - ジェイソンの髪や髭の質感、建物や水面の反射が、トレーラー時より落ちたように見える。
 
-![ジェイソンの顔のクローズアップ比較。髪や髭の質感が落ちたのではないか、という指摘も挙がっている](/images/news/graphicdowngrade/Jason.png)
+![ジェイソンの顔のクローズアップ比較。髪や髭の質感が落ちたのではないか、という指摘も挙がっている](/images/news/graphicdowngrade/Jason.webp)
 
 こうした比較画像とともに、「明らかに劣化している」「Rockstarはまたこれをやるのか」といった声がSNSで広がっている。
 
-![ジェイソンの家周辺の比較。フェンスや草木、色味の違いが指摘されている(左:トレーラー/右:新スクリーンショット)](/images/news/graphicdowngrade/grass.png)
+![ジェイソンの家周辺の比較。フェンスや草木、色味の違いが指摘されている(左:トレーラー/右:新スクリーンショット)](/images/news/graphicdowngrade/grass.webp)
 
 ---
 
@@ -2444,7 +2444,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
 
 最も多い指摘は、撮影条件の違いだ。トレーラーの該当シーンと新スクリーンショットでは、時間帯・天候・カメラアングル・キャラのポーズが異なる。トレーラーは作品を最高に見せるために作り込まれた映像で、夕方のやわらかい光などドラマチックな条件が選ばれやすい。対して新スクリーンショットは、別の時間帯や角度で撮られた通常のゲーム内画像だ。演出された映像と通常の一枚を直接並べれば、差が出るのはむしろ当然だという見方である。
 
-![6月24日に公開された新スクリーンショットの一枚。通常のゲーム内画像は、最良の条件で作り込まれたトレーラー映像とは撮影条件そのものが異なる](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.jpg)
+![6月24日に公開された新スクリーンショットの一枚。通常のゲーム内画像は、最良の条件で作り込まれたトレーラー映像とは撮影条件そのものが異なる](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.webp)
 
 数年にわたる開発のなかで細部が足し引きされるのも普通のことだ、という指摘もある。Kotakuの書き手は、新しいスクリーンショットのなかには最初のトレーラーより良く見えるものもあると述べ、大規模な劣化は起きていないと結論づけている。フェンスや植生の変化についても、季節を反映するメカニクスや、レオニダの乾季、物語の進行に伴う拠点の変化といった、劣化以外の理由を挙げる声もある。
 
@@ -2462,7 +2462,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
 
 なぜ印象が変わって見えるのか、技術的な背景としていくつかの可能性が語られている。ただし、いずれも外部からの推測であり、特定の技術が削られたと確認できる材料はない点は強調しておきたい。
 
-![草木のセルフシャドウやグローバルイルミネーションの欠如を指摘するReddit上の議論](/images/news/graphicdowngrade/reddit.png)
+![草木のセルフシャドウやグローバルイルミネーションの欠如を指摘するReddit上の議論](/images/news/graphicdowngrade/reddit.webp)
 
 挙げられるのは、照明やグローバルイルミネーションの条件の違い、ブルームや被写界深度、色調補正といったポストプロセスの差、遠景や背景の描き込み(LOD)の設定の違い、そして静止画では柔らかく見えやすいテンポラルアップスケーリングの影響などだ。コンソールで安定したフレームレートを保つために描画の一部を最適化した可能性も指摘されるが、これも確認はできていない。要するに、見え方を左右する変数が多すぎて、スクリーンショット一枚から「劣化」と断定するのは難しい。
 
@@ -2495,7 +2495,7 @@ GTA5(2011〜2013年)でも、早期のトレーラーが映画的だったこと
 
 - グローバルイルミネーション、LOD、アップスケーリングなどの技術的要因。いずれも断定できる材料はない。
 
-![最終的なグラフィックの評価ができるのは、実際にゲームが動く11月19日の発売以降になる](/images/news/graphicdowngrade/Jason_Duval_02.jpg)
+![最終的なグラフィックの評価ができるのは、実際にゲームが動く11月19日の発売以降になる](/images/news/graphicdowngrade/Jason_Duval_02.webp)
 
 注意点として、GTA6は本記事執筆時点で未発売であり、グラフィックの最終的な品質は実際にゲームが動くところを見るまで判断できない。スクリーンショット一枚を切り取って「ダウングレード確定」と断じる情報や、再生数を狙って劣化を煽る動画には注意したい。最終的な評価ができるのは、11月19日の発売以降になる。`,
     titleEn:
@@ -2521,7 +2521,7 @@ This article is based on information as of June 27, 2026.
 
 On June 24, alongside the start of pre-orders and the price announcement, Rockstar released many new screenshots, including for the Ultimate Edition. Fans began lining these up against the same location from Trailer 2, released over a year earlier (Jason's seaside safehouse), and comparing them. Kotaku picked it up first, after which TheGamer and outlets in various countries followed, and comparison images are spreading mainly across Reddit, X, and GTA forums.
 
-![A comparison image that spread widely on social media, placing Trailer 2 from 2025 (top) next to a new screenshot from June 2026 (bottom)](/images/news/graphicdowngrade/GOLDEN.png)
+![A comparison image that spread widely on social media, placing Trailer 2 from 2025 (top) next to a new screenshot from June 2026 (bottom)](/images/news/graphicdowngrade/GOLDEN.webp)
 
 ---
 
@@ -2533,11 +2533,11 @@ What the side suspecting a downgrade raises is broadly the following points.
 - Shadow rendering has become simpler, and the occlusion shadows under car bodies look coarse.
 - The texture of Jason's hair and beard, and the reflections on buildings and water surfaces, look diminished compared to the trailer.
 
-![A close-up comparison of Jason's face. There are also claims that the texture of his hair and beard may have dropped](/images/news/graphicdowngrade/Jason.png)
+![A close-up comparison of Jason's face. There are also claims that the texture of his hair and beard may have dropped](/images/news/graphicdowngrade/Jason.webp)
 
 Alongside these comparison images, voices such as “it's clearly degraded” and “is Rockstar doing this again?” are spreading on social media.
 
-![A comparison around Jason's house. Differences in the fence, foliage, and color tone are being pointed out (left: trailer / right: new screenshot)](/images/news/graphicdowngrade/grass.png)
+![A comparison around Jason's house. Differences in the fence, foliage, and color tone are being pointed out (left: trailer / right: new screenshot)](/images/news/graphicdowngrade/grass.webp)
 
 ---
 
@@ -2547,7 +2547,7 @@ On the other hand, voices saying it's too early to declare this a “downgrade�
 
 The most common point is the difference in shooting conditions. Between the relevant scene in the trailer and the new screenshots, the time of day, weather, camera angle, and character poses differ. A trailer is footage crafted to show the work at its best, and dramatic conditions—such as the soft light of evening—are readily chosen. The new screenshots, by contrast, are ordinary in-game images shot at a different time of day or angle. The view is that when you place staged footage directly next to an ordinary single shot, a gap appearing is, if anything, only to be expected.
 
-![One of the new screenshots released on June 24. An ordinary in-game image differs in its very shooting conditions from trailer footage crafted under the best conditions](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.jpg)
+![One of the new screenshots released on June 24. An ordinary in-game image differs in its very shooting conditions from trailer footage crafted under the best conditions](/images/news/graphicdowngrade/ULTIMATE_EDITION_VICE_CITY_STYLE_03.webp)
 
 There's also the point that adding and subtracting details over years of development is perfectly normal. The Kotaku writer states that some of the new screenshots look better than the first trailer, concluding that no large-scale downgrade has occurred. Regarding the changes to the fence and vegetation as well, some cite reasons other than a downgrade, such as mechanics that reflect the seasons, Leonida's dry season, and changes to the base as the story progresses.
 
@@ -2565,7 +2565,7 @@ The community's voices are split too.
 
 As to why the impression looks changed, several possibilities are discussed as technical background. However, we want to emphasize that all of these are speculation from outside, and there is no material confirming that any specific technology has been cut.
 
-![A discussion on Reddit pointing to the lack of self-shadowing on foliage and degraded global illumination](/images/news/graphicdowngrade/reddit.png)
+![A discussion on Reddit pointing to the lack of self-shadowing on foliage and degraded global illumination](/images/news/graphicdowngrade/reddit.webp)
 
 What gets cited includes differences in lighting and global illumination conditions; differences in post-processing such as bloom, depth of field, and color grading; differences in the settings for distant and background detail (LOD); and the influence of temporal upscaling, which tends to look soft in still images. The possibility that part of the rendering was optimized to maintain a stable frame rate on consoles is also raised, but this too cannot be confirmed. In short, there are too many variables that sway how things look to declare a “downgrade” from a single screenshot.
 
@@ -2598,7 +2598,7 @@ Speculation:
 
 - Technical factors such as global illumination, LOD, and upscaling. There is no material to declare any of them definitively.
 
-![A final verdict on the graphics will only be possible after the November 19 release, once the game is actually running](/images/news/graphicdowngrade/Jason_Duval_02.jpg)
+![A final verdict on the graphics will only be possible after the November 19 release, once the game is actually running](/images/news/graphicdowngrade/Jason_Duval_02.webp)
 
 As a caveat, GTA6 is unreleased at the time of writing, and the final quality of the graphics cannot be judged until you see the game actually running. We should be wary of information that cuts out a single screenshot and declares a “confirmed downgrade,” and of videos that fan the flames of a downgrade to chase view counts. A final evaluation will only be possible after the November 19 release.`,
   },
@@ -2609,7 +2609,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the final quality of
     description:
       "GTA6の物理版は発売時、箱の中身がダウンロードコードのみの「コード・イン・ボックス」。さらに「12月に本物のディスク版が出る」というインサイダー情報も広がる。確定情報とリークを切り分けて整理する。",
     icon: "💿",
-    image: "/images/news/Jason_Lucia_03_With_Logos_landscape.jpg",
+    image: "/images/news/Jason_Lucia_03_With_Logos_landscape.webp",
     category: "speculation",
     date: "2026-06-27",
     publishedAt: "2026-06-27 14:45",
@@ -2651,7 +2651,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the final quality of
 
 これに対し、コミュニティの反応は厳しい。「物理版なのにディスクがないなら、ただの箱だ」「所有している感覚がない」「貸し借りも中古売却もできない」といった声が並ぶ。実際に一部の小売店は、ディスクのないパッケージの取り扱いを見送る姿勢を示している。
 
-![発売時の物理版がディスク非同梱（コード・イン・ボックス）であることは、Rockstar側の案内で確認できる](/images/news/rockstarFAQ.png)
+![発売時の物理版がディスク非同梱（コード・イン・ボックス）であることは、Rockstar側の案内で確認できる](/images/news/rockstarFAQ.webp)
 
 ---
 
@@ -2667,7 +2667,7 @@ As a caveat, GTA6 is unreleased at the time of writing, and the final quality of
 
 ただし、留保も多い。これは単独・匿名の情報源によるもので、文面はポーランド語からの機械翻訳を経ている。Rockstarはこの12月のディスク版について何も認めておらず、そもそもTake-Twoは以前、発売後の物理版の計画自体を否定していた。加えて、Rockstarのサポートが問い合わせに対し「物理版は後日入手可能」と返信した例も伝えられているが、これはサポート側が質問を取り違えた可能性も指摘されており、公式なロードマップの表明とは言いがたい。VGCやGematsu、Vice、Kotaku、RockstarINTELなど複数のメディアが取り上げて広がってはいるものの、現時点では「実績のあるインサイダー発の、信ぴょう性のある噂」という位置づけが妥当だ。
 
-![物理版のディスクをめぐる議論は収まらず、「12月にディスク版が出る」という未確認情報にも注目が集まっている](/images/news/dischoudou.png)
+![物理版のディスクをめぐる議論は収まらず、「12月にディスク版が出る」という未確認情報にも注目が集まっている](/images/news/dischoudou.webp)
 
 コミュニティの受け止めも分かれている。
 
@@ -2743,7 +2743,7 @@ The reason cited for adopting this format is countermeasures against large-scale
 
 In response, the community's reaction is harsh. Voices line up such as “if it's a physical edition with no disc, it's just a box,” “there's no sense of ownership,” and “you can't lend, borrow, or resell it secondhand.” In fact, some retailers have indicated a stance of declining to handle the disc-less package.
 
-![That the launch physical edition ships without a disc (code-in-box) can be confirmed from Rockstar's own notices](/images/news/rockstarFAQ.png)
+![That the launch physical edition ships without a disc (code-in-box) can be confirmed from Rockstar's own notices](/images/news/rockstarFAQ.webp)
 
 ---
 
@@ -2759,7 +2759,7 @@ The reason this information is being received with a certain weight is due to th
 
 However, there are also many reservations. This comes from a single, anonymous source, and the text has gone through machine translation from Polish. Rockstar has acknowledged nothing about this December disc version, and Take-Two had in the first place previously denied the very plan for a post-launch physical edition. In addition, there's a reported example of Rockstar support replying to an inquiry that “the physical edition will be available at a later date,” but it has also been pointed out that support may have misread the question, and it can hardly be called an official roadmap statement. Although multiple outlets such as VGC, Gematsu, Vice, Kotaku, and RockstarINTEL have picked it up and it has spread, at present the appropriate positioning is “a credible rumor originating from an insider with a track record.”
 
-![The debate over the physical edition's disc shows no sign of settling, and the unverified talk of a “December disc version” is drawing attention too](/images/news/dischoudou.png)
+![The debate over the physical edition's disc shows no sign of settling, and the unverified talk of a “December disc version” is drawing attention too](/images/news/dischoudou.webp)
 
 The community's reception is also divided.
 
@@ -2803,7 +2803,7 @@ As a note of caution, GTA6 is unreleased as of the time of writing. The December
     description:
       "予約だけで10億ドル、発売60日で8,500万本、初年度数十億ドル――GTA6の販売予測は桁が大きい。だがその多くはアナリストの推計で、各社の見立ては2倍以上開く。何が公式の確定値で、何が予測かを切り分けて整理する。",
     icon: "📈",
-    image: "/images/news/sijyousaidainohatubai.png",
+    image: "/images/news/sijyousaidainohatubai.webp",
     category: "speculation",
     date: "2026-06-26",
     publishedAt: "2026-06-26 16:40",
@@ -2842,7 +2842,7 @@ However, this $8.0–8.2 billion is a company-wide, full-year figure including m
 
 In gauging the validity of the forecasts, the track record of the previous title, GTA5, is a solid point of comparison. These are facts confirmable as Guinness records and Take-Two disclosures.
 
-![The three protagonists of GTA5. The game became one of the biggest hits in entertainment history](/images/news/530668.jpg)
+![The three protagonists of GTA5. The game became one of the biggest hits in entertainment history](/images/news/530668.webp)
 
 - GTA5 generated about $815.7 million in revenue on its launch day in 2013, selling 11.21 million units. This was the highest sales in history for an entertainment product over 24 hours at the time, reached $1 billion in three days, and set six Guinness World Records.
 - GTA5's cumulative sales have reached about 230 million units, and the GTA series as a whole has sold over 470 million units (Take-Two's FY2026 disclosure).
@@ -2876,7 +2876,7 @@ Behind this concentration of expectations are several concrete factors.
 
 The long waiting period of 13 years since GTA5's release, the large installed base of current-generation consoles in the PS5 and Xbox Series X|S, the recent rise in prices, and the fact that it has become easier to design live-service-style revenue from launch day onward can all be cited. Furthermore, the fact that the trailers are being viewed at record levels, and the moves by competitors to shift the timing of their own titles to avoid GTA6's launch week, also show how the market views the weight of this title. The research firm Ampere Analysis estimates that the two launch delays caused the industry as a whole to lose about $2.7 billion in sales that would otherwise have been earned in the fall of 2025.
 
-![Jason and Lucia, the protagonists of GTA6. Expectations are concentrated on whether it will surpass GTA5's records](/images/news/Jason_and_Lucia_01_With_Logos_landscape.jpg)
+![Jason and Lucia, the protagonists of GTA6. Expectations are concentrated on whether it will surpass GTA5's records](/images/news/Jason_and_Lucia_01_With_Logos_landscape.webp)
 
 ## Cautious Views and Counterarguments (Balance)
 
@@ -2931,7 +2931,7 @@ This article is an independent compilation and analysis by GTA6 FEED, based on T
 
 予測の妥当性を測るうえで、前作GTA5の実績は確かな比較対象になる。これらはギネス記録やTake-Twoの開示として確認できる事実である。
 
-![GTA5の3人の主人公。同作はエンタメ史上最大級のヒットとなった](/images/news/530668.jpg)
+![GTA5の3人の主人公。同作はエンタメ史上最大級のヒットとなった](/images/news/530668.webp)
 
 - GTA5は2013年の発売初日に約8億1,570万ドルの収益を上げ、1,121万本を販売した。これは当時のエンターテインメント製品として24時間で史上最高の売上で、3日で10億ドルに到達し、6つのギネス世界記録を打ち立てた。
 - GTA5の累計販売は約2億3,000万本に達しており、GTAシリーズ全体では4億7,000万本超を売り上げている（Take-Twoの2026会計年度開示）。
@@ -2965,7 +2965,7 @@ GTA6の強気な予測は、いずれも「この記録を超える」という�
 
 GTA5の発売から13年という長い待機期間、PS5とXbox Series X|Sという現行機の普及台数の大きさ、近年の価格上昇、そして発売初日からライブサービス的な収益を設計しやすくなっている点が挙げられる。さらに、トレーラーが記録的に視聴されている事実や、競合各社がGTA6の発売週を避けて自社タイトルの時期をずらしている動きも、市場がこの作品の重さをどう見ているかを示している。調査会社Ampere Analysisは、二度の発売延期によって、本来2025年秋に得られたはずの売上が業界全体で約27億ドル失われたと試算している。
 
-![GTA6の主人公ジェイソンとルシア。GTA5の記録を超えられるかに期待が集まる](/images/news/Jason_and_Lucia_01_With_Logos_landscape.jpg)
+![GTA6の主人公ジェイソンとルシア。GTA5の記録を超えられるかに期待が集まる](/images/news/Jason_and_Lucia_01_With_Logos_landscape.webp)
 
 ## 慎重論・異論（バランス）
 
@@ -3009,7 +3009,7 @@ GTA5の発売から13年という長い待機期間、PS5とXbox Series X|Sと�
     description:
       "6月25日の予約開始に合わせ、ブラジルのAmazon・KaBuMのGTA6商品ページに、他地域では確認できない踏み込んだゲームプレイ記述が掲載され話題に。何が公式情報で、何が小売ページ由来の未確認情報なのかを切り分けて整理する。",
     icon: "🛒",
-    image: "/images/news/AmazonBrazilryuusyutu.png",
+    image: "/images/news/AmazonBrazilryuusyutu.webp",
     category: "speculation",
     date: "2026-06-26",
     publishedAt: "2026-06-26 14:20",
@@ -3061,7 +3061,7 @@ We organize the gameplay elements both pages describe. None of them are official
 
 KaBuM also states that no generative AI is used in the game.
 
-![Jason and Lucia, the two protagonists. Real-time switching during heists is one of the “unconfirmed” descriptions](/images/news/Jason_and_Lucia_Motel_landscape.jpg)
+![Jason and Lucia, the two protagonists. Real-time switching during heists is one of the “unconfirmed” descriptions](/images/news/Jason_and_Lucia_Motel_landscape.webp)
 
 ## Separating the Already-Known from the New
 
@@ -3076,7 +3076,7 @@ Things confirmed or suggested in the official trailers and Rockstar's published 
 
 It must be noted that patents and job postings can serve as grounds for a technical direction, but do not mean implementation is confirmed. In fact, several outlets assess that “the usefulness of the translated descriptions is exaggerated, and most is known information.”
 
-![The Leonida Keys area. The existence of waterside terrain like beaches and swamps is confirmable from official materials](/images/news/Leonida_Keys_01.jpg)
+![The Leonida Keys area. The existence of waterside terrain like beaches and swamps is confirmable from official materials](/images/news/Leonida_Keys_01.webp)
 
 On the other hand, things not officially confirmed and that can be called the detailed expressions unique to these retail pages this time:
 
@@ -3096,7 +3096,7 @@ Around the same time, a map image of the state of Leonida billed as the “Leoni
 
 Care should be taken not to mistake this kind of map image for part of this retail-page leak or for official information. The direction of terrain modeled on Florida is inferred from various sources, but the concrete shape of the map and place names are not confirmed.
 
-![The “Leonida Map Leaked” image spreading on social media. It is a fan-made concept, unrelated to the leak or official info](/images/news/leakmap.png)
+![The “Leonida Map Leaked” image spreading on social media. It is a fan-made concept, unrelated to the leak or official info](/images/news/leakmap.webp)
 
 ## Community Reactions
 
@@ -3169,7 +3169,7 @@ This article is an independent compilation and analysis by GTA6 FEED, based on t
 
 KaBuMはあわせて、ゲーム内に生成AIは使われていないとも記している。
 
-![二人の主人公ジェイソンとルシア。強盗中のリアルタイム切替は「未確認」の記述のひとつ](/images/news/Jason_and_Lucia_Motel_landscape.jpg)
+![二人の主人公ジェイソンとルシア。強盗中のリアルタイム切替は「未確認」の記述のひとつ](/images/news/Jason_and_Lucia_Motel_landscape.webp)
 
 ## 既出と新規の切り分け
 
@@ -3184,7 +3184,7 @@ KaBuMはあわせて、ゲーム内に生成AIは使われていないとも記�
 
 特許や求人情報は技術的な方向性の根拠にはなっても、実装の確定を意味しない点には注意が必要だ。実際、複数のメディアは「英訳された記述の有用性は誇張されており、既知の情報が大半だ」と評価している。
 
-![レオニダ・キーズ周辺。ビーチや沼地といった水辺の地形の存在は公式素材で確認できる](/images/news/Leonida_Keys_01.jpg)
+![レオニダ・キーズ周辺。ビーチや沼地といった水辺の地形の存在は公式素材で確認できる](/images/news/Leonida_Keys_01.webp)
 
 一方、公式には確認されておらず、今回の小売ページ特有の踏み込んだ表現といえるもの:
 
@@ -3204,7 +3204,7 @@ KaBuMはあわせて、ゲーム内に生成AIは使われていないとも記�
 
 この種の地図画像を、今回の小売ページリークの一部や公式情報と取り違えないよう注意したい。フロリダをモチーフにした地形という方向性は各種情報から推測されているが、具体的な地図の形状や地名は確定していない。
 
-![SNSで出回る「Leonida Map Leaked」画像。ファン作成の概念図で、リークとも公式とも無関係](/images/news/leakmap.png)
+![SNSで出回る「Leonida Map Leaked」画像。ファン作成の概念図で、リークとも公式とも無関係](/images/news/leakmap.webp)
 
 ## コミュニティの反応
 

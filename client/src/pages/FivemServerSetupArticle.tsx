@@ -8,7 +8,7 @@ const TITLE =
 
 // 本文は fivem-server-setup-basics.md の内容をそのまま使用（テキストは改変なし）。
 // fivemservertatekata フォルダの画像を各手順に挿入している。
-const BODY = `![FiveMサーバーの立て方](/images/fivemservertatekata/eyecatch.png)
+const BODY = `![FiveMサーバーの立て方](/images/fivemservertatekata/eyecatch.webp)
 
 FiveMは、PC版の『グランド・セフト・オートV（GTA5）』を使って、自分専用のマルチプレイサーバーを構築できる改造フレームワークである。日本国内のGTAロールプレイ（GTARP）人気を支えているのもこのFiveMであり、「自分でもサーバーを立ててみたい」という入口に立つ人は年々増えている。
 
@@ -62,7 +62,7 @@ FiveMは、PC版の『グランド・セフト・オートV（GTA5）』を使�
 
 サーバーの立て方には、\`server.cfg\` を手書きで編集していく「手動方式」と、Web管理パネルのtxAdminに任せる「txAdmin方式」がある。
 
-![txAdmin（Web管理パネル）](/images/fivemservertatekata/txa-logo.png)
+![txAdmin（Web管理パネル）](/images/fivemservertatekata/txa-logo.webp)
 
 確定事実として、現在のFiveMサーバーアーティファクトにはtxAdminが標準で同梱されており、Cfx.re公式もtxAdmin経由のセットアップを案内している。txAdminには「レシピ（Recipe）」という仕組みがあり、初回セットアップ時に基本構成のテンプレートを選ぶだけで、必要なファイル一式（server-data）を自動でダウンロード・配置してくれる。手動方式で初心者が最も詰まりやすい「server-dataを別途入手して正しい場所に置く」工程を、まるごと省略できるのが大きい。
 
@@ -78,7 +78,7 @@ FiveMは、PC版の『グランド・セフト・オートV（GTA5）』を使�
 
 ここから、推奨ビルド（recommended と記載されているもの）のWindows版アーティファクトをダウンロードする。最新版が常に安定とは限らないため、初回は推奨ビルドを選ぶのが無難だ。
 
-![サーバーアーティファクトの配布ページ](/images/fivemservertatekata/artifactdownloadpage.png)
+![サーバーアーティファクトの配布ページ](/images/fivemservertatekata/artifactdownloadpage.webp)
 
 ---
 
@@ -92,7 +92,7 @@ C:\\FXServer\\server
 
 ダウンロードしたアーティファクトを解凍し、その中身を \`C:\\FXServer\\server\` に入れる。\`FXServer.exe\` がこのフォルダ内にある状態になればよい。なお、server-dataフォルダは後ほどtxAdminのレシピが自動で用意するため、この段階で手動作成する必要はない。
 
-![解凍したフォルダ内の FXServer.exe](/images/fivemservertatekata/FXServerexe.png)
+![解凍したフォルダ内の FXServer.exe](/images/fivemservertatekata/FXServerexe.webp)
 
 ---
 
@@ -102,13 +102,13 @@ FiveMサーバーはライセンスキー（サーバー登録キー）がない
 
 ここで一点、注意が必要だ。古い解説記事の多くは、キー発行サイト「Keymaster（keymaster.fivem.net）」で「New Server」を押す手順を案内している。しかし現在、Keymasterの新規キー登録機能は非推奨（Deprecated）となっており、キーの新規発行はCfx.re Portalへ移管されている。Keymaster上で「New server」を開くと、Portalを使うよう促す案内が表示される状態になっている。
 
-![Keymaster（新規キー登録は非推奨）](/images/fivemservertatekata/keymaster.png)
+![Keymaster（新規キー登録は非推奨）](/images/fivemservertatekata/keymaster.webp)
 
 そのため、キーの取得は次のPortalから行う。
 
 - [portal.cfx.re](https://portal.cfx.re/)
 
-![Cfx.re Portal のトップ](/images/fivemservertatekata/Portaltop.png)
+![Cfx.re Portal のトップ](/images/fivemservertatekata/Portaltop.webp)
 
 手順は次のとおり。
 
@@ -117,7 +117,7 @@ FiveMサーバーはライセンスキー（サーバー登録キー）がない
 3. 新規作成（create）を選ぶ
 4. サーバーの表示名（display name）を入力し、Generateを押す
 
-![サーバー登録キーの発行（Generate）](/images/fivemservertatekata/GenerateServerRegistrationKey.png)
+![サーバー登録キーの発行（Generate）](/images/fivemservertatekata/GenerateServerRegistrationKey.webp)
 
 発行されたキーは \`cfxk_\` から始まる長い文字列になる。これはパスワードに準じる機密情報なので、SNSや公開リポジトリに貼らないこと。キーの漏えいが疑われる場合は、Portal上でそのキーを再生成（regenerate）できる。再生成後は、サーバー設定のキーも新しいものへ必ず更新する。
 
@@ -135,7 +135,7 @@ localhost:40120
 
 ブラウザでこのアドレスを開く。コンソールにPIN（暗証番号）が表示されている場合は、それを認証画面に入力する。
 
-![FXServer のコンソール画面](/images/fivemservertatekata/fxserver3.png)
+![FXServer のコンソール画面](/images/fivemservertatekata/fxserver3.webp)
 
 ---
 
@@ -173,7 +173,7 @@ txAdminの初回起動時は、セットアップウィザードが表示され�
 connect localhost
 \`\`\`
 
-![FiveM クライアントの F8 コンソール](/images/fivemservertatekata/FiveMf8console.png)
+![FiveM クライアントの F8 コンソール](/images/fivemservertatekata/FiveMf8console.webp)
 
 \`connect 127.0.0.1\` でもよい。ロード画面を経てゲーム内に入れれば、ローカルテストサーバーの起動は完了である。ここまでたどり着けば、FiveMサーバー構築の基礎は一通り体験できたことになる。
 
@@ -223,7 +223,7 @@ connect localhost
 const TITLE_EN =
   'How to Set Up a FiveM Server: 8 Steps for a Complete Beginner to Launch a Local Test Server';
 
-const BODY_EN = `![How to set up a FiveM server](/images/fivemservertatekata/eyecatch.png)
+const BODY_EN = `![How to set up a FiveM server](/images/fivemservertatekata/eyecatch.webp)
 
 FiveM is a modding framework that lets you build your own multiplayer server using the PC version of "Grand Theft Auto V (GTA5)." It is FiveM that underpins the popularity of GTA roleplay (GTARP) in Japan, and the number of people standing at the entrance thinking "I want to try running a server myself" grows year by year.
 
@@ -277,7 +277,7 @@ At the first stage, an understanding of "the app that launches the game server, 
 
 There are two ways to set up a server: the "manual method" of hand-editing \`server.cfg\`, and the "txAdmin method" of leaving it to the web management panel, txAdmin.
 
-![txAdmin (web management panel)](/images/fivemservertatekata/txa-logo.png)
+![txAdmin (web management panel)](/images/fivemservertatekata/txa-logo.webp)
 
 As a confirmed fact, the current FiveM server artifact comes with txAdmin bundled as standard, and Cfx.re officially recommends setup via txAdmin. txAdmin has a mechanism called a "Recipe": at first-time setup, you simply choose a template for a basic configuration, and it automatically downloads and places the whole set of necessary files (server-data) for you. The big win is that it lets you skip entirely the step where beginners get stuck most in the manual method — "obtaining server-data separately and placing it in the right location."
 
@@ -293,7 +293,7 @@ Obtain the server itself (FXServer). The official distribution page is the follo
 
 From here, download the Windows version of the recommended build (the one marked "recommended"). The latest version is not always the most stable, so choosing the recommended build for your first time is the safe bet.
 
-![The server artifact distribution page](/images/fivemservertatekata/artifactdownloadpage.png)
+![The server artifact distribution page](/images/fivemservertatekata/artifactdownloadpage.webp)
 
 ---
 
@@ -307,7 +307,7 @@ C:\\FXServer\\server
 
 Extract the downloaded artifact and put its contents into \`C:\\FXServer\\server\`. You are fine once \`FXServer.exe\` is inside this folder. Note that the server-data folder will be prepared automatically later by txAdmin's recipe, so there is no need to create it by hand at this stage.
 
-![FXServer.exe inside the extracted folder](/images/fivemservertatekata/FXServerexe.png)
+![FXServer.exe inside the extracted folder](/images/fivemservertatekata/FXServerexe.webp)
 
 ---
 
@@ -317,13 +317,13 @@ A FiveM server will not start without a license key (server registration key). T
 
 One point here requires caution. Many old explanatory articles guide you to press "New Server" on the key-issuing site "Keymaster (keymaster.fivem.net)." However, the new-key registration feature on Keymaster is now deprecated, and issuing new keys has been moved to the Cfx.re Portal. If you open "New server" on Keymaster, you get a notice prompting you to use the Portal.
 
-![Keymaster (new key registration is deprecated)](/images/fivemservertatekata/keymaster.png)
+![Keymaster (new key registration is deprecated)](/images/fivemservertatekata/keymaster.webp)
 
 For that reason, get the key from the following Portal.
 
 - [portal.cfx.re](https://portal.cfx.re/)
 
-![The top of the Cfx.re Portal](/images/fivemservertatekata/Portaltop.png)
+![The top of the Cfx.re Portal](/images/fivemservertatekata/Portaltop.webp)
 
 The procedure is as follows.
 
@@ -332,7 +332,7 @@ The procedure is as follows.
 3. Choose create (new)
 4. Enter the server's display name and press Generate
 
-![Issuing a server registration key (Generate)](/images/fivemservertatekata/GenerateServerRegistrationKey.png)
+![Issuing a server registration key (Generate)](/images/fivemservertatekata/GenerateServerRegistrationKey.webp)
 
 The issued key is a long string beginning with \`cfxk_\`. This is confidential information on par with a password, so do not paste it on social media or public repositories. If you suspect the key has leaked, you can regenerate that key on the Portal. After regenerating, be sure to update the key in your server settings to the new one as well.
 
@@ -350,7 +350,7 @@ localhost:40120
 
 Open this address in a browser. If a PIN (passcode) is shown in the console, enter it on the authentication screen.
 
-![The FXServer console screen](/images/fivemservertatekata/fxserver3.png)
+![The FXServer console screen](/images/fivemservertatekata/fxserver3.webp)
 
 ---
 
@@ -388,7 +388,7 @@ Finally, actually enter your own server from the game side. Launch the FiveM cli
 connect localhost
 \`\`\`
 
-![The FiveM client's F8 console](/images/fivemservertatekata/FiveMf8console.png)
+![The FiveM client's F8 console](/images/fivemservertatekata/FiveMf8console.webp)
 
 \`connect 127.0.0.1\` also works. If you get into the game after the loading screen, launching the local test server is complete. Once you make it this far, you will have experienced the basics of FiveM server building from end to end.
 

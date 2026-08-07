@@ -11,7 +11,7 @@ const BODY = `FiveMは、Grand Theft Auto V（GTA5）を独自のマルチプレ
 
 この記事では、FiveMが2014年に産声を上げてから2026年現在に至るまでの歴史を、年表形式で整理する。あわせて、海外ブログやまとめ記事で繰り返し拡散されている年代の誤りについても、公式発表・主要メディア報道・コミュニティ記録を区別しながら確認していく。
 
-![GTA5のマルチプレイMODとして発展してきたFiveMの歩み](/images/FiveMnorekisi/FiveMnorekisi.png)
+![GTA5のマルチプレイMODとして発展してきたFiveMの歩み](/images/FiveMnorekisi/FiveMnorekisi.webp)
 
 ## 早わかり年表
 
@@ -26,7 +26,7 @@ const BODY = `FiveMは、Grand Theft Auto V（GTA5）を独自のマルチプレ
 | 2023年8月 | RockstarがCfx.reを買収（額非公表）＝Rockstar傘下入り |
 | 2026年 | Cfx Marketplace始動（1月）、alt:V終了（2月）、RAGE:MP終了発表（5月） |
 
-![FiveMの主要な出来事をまとめた年表](/images/FiveMnorekisi/FiveMnenpyou.png)
+![FiveMの主要な出来事をまとめた年表](/images/FiveMnorekisi/FiveMnenpyou.webp)
 
 ## 前史：2014年 ―― CitizenMP／FiveRebornの始動
 
@@ -52,7 +52,7 @@ FiveMの源流は、GTA5がPC向けに発売される前の2014年にさかの�
 
 復帰は匿名（インコグニート）で行われ、最も原型に近かったFiveRebornと合流する形で進められた。この過程でプロジェクトは「FiveM」へと改名され、開発体制としてCitizenFX Collective（CFX）が整えられていく。匿名性を保つための仕組みも導入され、特定の個人に法的責任が集中しない構造が志向された。FiveMという名称と、現在まで続くCfx.reの体制は、この時期に骨格が形づくられている。
 
-![FiveM／RedMを開発するチーム「Cfx.re」のロゴ](/images/FiveMnorekisi/cfx.png)
+![FiveM／RedMを開発するチーム「Cfx.re」のロゴ](/images/FiveMnorekisi/cfx.webp)
 
 ただし、この2015〜2016年の初期経緯は、公式の一次情報というよりも、開発者・コミュニティ側の証言や当時の記録に依存する部分が大きい点には留意が必要である。
 
@@ -76,13 +76,13 @@ RedMはFiveMと同じCfx.reフレームワーク上に構築されており、�
 
 海外メディアの報道によれば、2021年、Cfx.re／FiveMは週末のピークで同時接続25万人に到達したことを発表した。同時期のSteam上のGTA5（GTA Online含む）の同接を上回る数字であり、本体のオンラインモードよりもMODであるFiveMの方が活発という逆転現象が話題となった。GTARPが生み出す物語性の高さが、視聴コンテンツとしての魅力を支えていた。
 
-![警察・市民・ギャングなどを演じるGTARP（ロールプレイ）はTwitchで爆発的に広がった](/images/FiveMnorekisi/GTAon-line.png)
+![警察・市民・ギャングなどを演じるGTARP（ロールプレイ）はTwitchで爆発的に広がった](/images/FiveMnorekisi/GTAon-line.webp)
 
 ## 2023年8月 ―― Rockstar傘下入り＝事実上の公式化
 
 そして2023年8月11日、歴史的な転換が訪れる。Rockstar Gamesは、FiveMとRedMを手がけるCfx.reチームの買収を発表した。買収額は非公表である。
 
-![「Cfx.reがロックスター・ゲームスに参加」と伝えるRockstar Newswireの告知（2023年8月11日）](/images/FiveMnorekisi/newswire.png)
+![「Cfx.reがロックスター・ゲームスに参加」と伝えるRockstar Newswireの告知（2023年8月11日）](/images/FiveMnorekisi/newswire.webp)
 
 海外メディアおよびCrunchbaseの記録によれば、この買収は「完了済み・子会社化」として処理されており、Rockstarは公式サイト上で、Cfx.reがFiveMとRedMのチームであり、正式にRockstar Gamesの一員になったと述べた。あわせて、ロールプレイ・クリエイティブコミュニティが制作するMODを公式に許容する方向へ、自社のMODポリシーを拡張したことも示された。かつてFiveMの開発者をBANし、法的圧力をかけた側が、その同じプロジェクトを傘下に収めるという構図であり、報道の一部でも「かつて自らBANしたモッディングチームを買収した」と表現されている。
 
@@ -102,7 +102,7 @@ FiveMの歴史は、クライアント本体だけでなく、サーバー運営
 
 プレイヤー数の面でも勢いは衰えていない。2026年初頭以降、FiveMはSteam経由での起動分についてもSteamDB上で同時接続が追跡されるようになり、SteamDBによれば2026年4月12日に約21万5千人の最高記録を計上している。計測方法によって数値には幅があるものの、2026年現在も日常的に10万人を超える同時接続を維持しており、GTA5マルチプレイヤー文化の中核であり続けている。なお、FiveMはSteam上で単体販売されているわけではなく、利用には正規のGTA5が引き続き必要である。
 
-![SteamDBの「最もプレイされたゲーム」ランキングでも上位に並ぶFiveM](/images/FiveMnorekisi/steamranking.png)
+![SteamDBの「最もプレイされたゲーム」ランキングでも上位に並ぶFiveM](/images/FiveMnorekisi/steamranking.webp)
 
 技術的な前提として、2026年6月時点では、FiveMが対応するのはGTA5のLegacy Editionのみであり、Enhanced版には対応していない点に注意が必要である。
 
@@ -128,7 +128,7 @@ It began as a single individual's community project, faced bans and legal pressu
 
 This article organizes the history of FiveM, from when it first appeared in 2014 up to the present in 2026, in timeline form. Along the way, regarding the dating errors that are repeatedly spread on overseas blogs and roundup articles, we will check the facts while distinguishing between official announcements, major media reporting, and community records.
 
-![The journey of FiveM, which grew as a multiplayer MOD for GTA5](/images/FiveMnorekisi/FiveMnorekisi.png)
+![The journey of FiveM, which grew as a multiplayer MOD for GTA5](/images/FiveMnorekisi/FiveMnorekisi.webp)
 
 ## Quick-Reference Timeline
 
@@ -143,7 +143,7 @@ This article organizes the history of FiveM, from when it first appeared in 2014
 | August 2023 | Rockstar acquires Cfx.re (amount undisclosed) = coming under Rockstar |
 | 2026 | Cfx Marketplace launches (January), alt:V shuts down (February), RAGE:MP announces shutdown (May) |
 
-![A timeline summarizing the major events of FiveM](/images/FiveMnorekisi/FiveMnenpyou.png)
+![A timeline summarizing the major events of FiveM](/images/FiveMnorekisi/FiveMnenpyou.webp)
 
 ## Prehistory: 2014 — The Start of CitizenMP / FiveReborn
 
@@ -169,7 +169,7 @@ Even after the developer himself withdrew from the public stage, community membe
 
 The return was made anonymously (incognito), proceeding in the form of merging with FiveReborn, which was closest to the original. In this process the project was renamed "FiveM," and the CitizenFX Collective (CFX) was put in place as the development structure. Mechanisms to maintain anonymity were also introduced, aiming for a structure in which legal responsibility would not concentrate on any specific individual. The name FiveM and the Cfx.re structure that continues to this day had their framework shaped during this period.
 
-![The logo of Cfx.re, the team that develops FiveM/RedM](/images/FiveMnorekisi/cfx.png)
+![The logo of Cfx.re, the team that develops FiveM/RedM](/images/FiveMnorekisi/cfx.webp)
 
 That said, it must be noted that this early history of 2015–2016 depends largely on testimony from the developer and community side, and records from the time, rather than on official primary sources.
 
@@ -193,13 +193,13 @@ Against the backdrop of the COVID-19 pandemic around 2020, GTA5 roleplay (GTARP)
 
 According to overseas media reporting, in 2021, Cfx.re/FiveM announced that it had reached 250,000 concurrent players at weekend peaks. This was a figure exceeding the concurrent count of GTA5 (including GTA Online) on Steam during the same period, and the reversal phenomenon—where the MOD FiveM was more active than the base game's online mode—became a topic of conversation. The high narrative quality that GTARP generates supported its appeal as viewing content.
 
-![GTARP (roleplay), where players act as police, civilians, gangs, and more, spread explosively on Twitch](/images/FiveMnorekisi/GTAon-line.png)
+![GTARP (roleplay), where players act as police, civilians, gangs, and more, spread explosively on Twitch](/images/FiveMnorekisi/GTAon-line.webp)
 
 ## August 2023 — Coming Under Rockstar = De Facto Officialization
 
 Then, on August 11, 2023, a historic turning point arrived. Rockstar Games announced the acquisition of the Cfx.re team behind FiveM and RedM. The acquisition amount is undisclosed.
 
-![The Rockstar Newswire announcement reporting that "Cfx.re joins Rockstar Games" (August 11, 2023)](/images/FiveMnorekisi/newswire.png)
+![The Rockstar Newswire announcement reporting that "Cfx.re joins Rockstar Games" (August 11, 2023)](/images/FiveMnorekisi/newswire.webp)
 
 According to overseas media and Crunchbase records, this acquisition was processed as "completed / made a subsidiary," and Rockstar stated on its official site that Cfx.re is the team behind FiveM and RedM and had officially become part of Rockstar Games. Alongside this, it was indicated that the company had expanded its MOD policy in the direction of officially permitting MODs created by the roleplay and creative community. It was a structure in which the side that had once banned FiveM's developers and applied legal pressure took that same project under its wing, and some reporting expressed it as "acquiring the modding team it had once banned itself."
 
@@ -219,7 +219,7 @@ On the other hand, the multiplayer MOD platforms that had been competitors are d
 
 In terms of player numbers, the momentum has not waned either. Since early 2026, concurrent players for FiveM launched via Steam have also come to be tracked on SteamDB, and according to SteamDB, a record high of about 215,000 was recorded on April 12, 2026. While the figures vary depending on the measurement method, as of 2026 it routinely maintains over 100,000 concurrent players and remains at the core of GTA5 multiplayer culture. Note that FiveM is not sold separately on Steam, and a legitimate copy of GTA5 continues to be required to use it.
 
-![FiveM also ranks high on SteamDB's "most played games" chart](/images/FiveMnorekisi/steamranking.png)
+![FiveM also ranks high on SteamDB's "most played games" chart](/images/FiveMnorekisi/steamranking.webp)
 
 As a technical premise, as of June 2026, note that FiveM supports only the Legacy Edition of GTA5 and does not support the Enhanced edition.
 

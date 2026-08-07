@@ -11,7 +11,7 @@ const BODY = `GTARP（GTAロールプレイ）には、独自の用語や略語�
 
 なお、ここで示す定義はGTARP全体で共有される一般的なものだが、細かい扱いはサーバーや国によって異なる。用語をすべて完璧に覚えてから参加する必要はない。基本だけ押さえたら、あとは実際にサーバーに入り、街の人に教えてもらいながら覚えていくのが一番の近道である。最終的には、参加するサーバーのルール（六法）と、その街の住人の案内に従うことが大前提となる。
 
-![GTARPでよく使われる基本用語をまとめたRP用語辞典](/images/RPyougojiten.png)
+![GTARPでよく使われる基本用語をまとめたRP用語辞典](/images/RPyougojiten.webp)
 
 ## 初心者が最初に覚えたい10語
 
@@ -222,7 +222,7 @@ In this article, based on major English-speaking glossaries and the expressions 
 
 Note that the definitions shown here are the general ones shared across GTARP as a whole, but the fine handling differs by server and by country. You do not need to memorize every term perfectly before joining. Once you have the basics down, the fastest route is to actually enter a server and learn while being taught by the people in the city. Ultimately, the basic premise is to follow the rules of the server you join (the "roppou") and the guidance of that city's residents.
 
-![The RP glossary summarizing the basic terms commonly used in GTARP](/images/RPyougojiten.png)
+![The RP glossary summarizing the basic terms commonly used in GTARP](/images/RPyougojiten.webp)
 
 ## The 10 Words Beginners Should Learn First
 
