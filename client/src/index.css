@@ -1,12 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Google Fonts: Space Mono (見出し), Roboto (本文), Roboto Mono (コード) */
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
-/* VICE HUB テーマ用: Anton(特大見出し) / Noto Sans JP(本文) / Archivo(数字) */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&family=Archivo:wght@700;900&display=swap');
-/* ヒーロー小見出し用のテック/ゲーミング書体 */
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap');
+/* Google Fonts は client/index.html の <link> で読む。
+   ここに @import url(...) を3本書いていたが、Tailwind の @import 展開より後ろに
+   置かれるためバンドラに落とされており、ビルド後のCSSには1本も残っていなかった
+   （2026-08-08 の計測で確認。fonts.googleapis.com の出現数が0）。
+   実際に効いていたのは index.html の <link> だけなので、誤解を招く記述を削除する。
+   なお3本目で読んでいた Chakra Petch は font-family の指定箇所が無く、完全に未使用だった。 */
 
 @custom-variant dark (&:is(.dark *));
 

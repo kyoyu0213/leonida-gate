@@ -37,8 +37,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&family=Archivo:wght@700;900&display=swap" rel="stylesheet" />
+    <!-- Google Fonts。ウェイトは使用実態に合わせて絞ってある（2026-08-08 の計測）。
+         日本語フォントは1ウェイトが多数のサブセットに分割されるため、ウェイト数が
+         そのままリクエスト数とCSSサイズの倍率になる。増やすときはその点に注意。
+           Space Mono  400;700 … h1-h6（font-bold 固定だが本文混在で400も要る）
+           Roboto      400;500;600;700 … body。300 は使用箇所が無いため外した
+           Roboto Mono 400;500 … code, pre
+           Anton       単一 … .vice-display
+           Noto Sans JP 400;700 … .vice-page 本文・.article-title
+                       500/900 は外し、font-medium / font-black はブラウザ合成に任せる
+           Archivo     900 … .vice-num（font-weight:900 固定）。700 は使用箇所が無い -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;700&family=Archivo:wght@900&display=swap" rel="stylesheet" />
   </head>
 
   <body>
