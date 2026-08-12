@@ -281,6 +281,73 @@ if (blockedButInSitemap.length) {
   );
 }
 
+// --- 4. App.tsx のルート ↔ vercel.json の rewrites ---------------------------
+//  catch-all が未知URLへ 404 を返すようになったため（api/not-found.js）、
+//  「プリレンダもされず vercel.json にも列挙されていない CSR ルート」は
+//  実ユーザーに 404 が出てしまう。App.tsx を正として、漏れを検知する。
+//
+//  プリレンダ済みのルートは列挙不要（rewrites はファイルシステム検査の後に
+//  適用されるため静的配信が優先される）。むしろ列挙すると未知の派生URLまで
+//  200 になってソフト404が復活するので、列挙してはいけない。
+const appSrc = readFileSync(resolve(__dirname, '../client/src/App.tsx'), 'utf8');
+const appRoutes = [...appSrc.matchAll(/<Route\s+path="([^"]+)"/g)].map((m) => m[1]);
+if (!appRoutes.length) {
+  errors.push(
+    'App.tsx から <Route path="..."> を1件も読めませんでした。' +
+      'ルーターの書式が変わった可能性があります（check-route-tables.mjs の正規表現を直してください）。',
+  );
+}
+
+const vercelCfg = JSON.parse(readFileSync(resolve(__dirname, '../vercel.json'), 'utf8'));
+const rewriteSources = (vercelCfg.rewrites ?? []).map((r) => r.source);
+
+/** vercel.json の source 記法（:id / :slug(a|b) / (.*)）を正規表現へ。 */
+const sourceToRe = (s) =>
+  new RegExp(
+    '^' +
+      s
+        .replace(/\/:[A-Za-z_]+\(([^)]*)\)/g, '/(?:$1)')
+        .replace(/\/:[A-Za-z_]+/g, '/[^/]+')
+        .replace(/\(\.\*\)/g, '.*') +
+      '$',
+  );
+const rewriteRes = rewriteSources.map(sourceToRe);
+
+/** App.tsx の path（:id を含む）を、代表的な実URLに落とす。 */
+const sampleUrl = (p) => p.replace(/:[A-Za-z_]+/g, 'x');
+
+const uncovered = [];
+for (const r of appRoutes) {
+  const sample = sampleUrl(r);
+  // プリレンダ済みなら列挙不要
+  const isPrerendered =
+    prerenderedJa.has(r) ||
+    (r.startsWith('/en/') && prerenderedJa.has(r.slice(3))) ||
+    r === '/en' ||
+    r === '/';
+  if (isPrerendered) continue;
+  // /news/<数字> は専用 rewrite（/api/news-og）が拾う
+  if (/^\/(en\/)?news\/:id$/.test(r)) continue;
+  // 板スラッグ・体験記スラッグは固定集合でプリレンダ済み（未知値は 404 が正）
+  if (/^\/(en\/)?board\/:slug$/.test(r)) continue;
+  if (/field-notes\/:category\/:slug$/.test(r)) continue;
+  // /404 は「404 を返すべきURL」そのもの。catch-all に落として
+  // 404ステータス＋NotFound描画になるのが正しいので、列挙しない。
+  if (r === '/404') continue;
+  // catch-all（最後の /(.*)）以外でマッチするか
+  const covered = rewriteSources.some(
+    (s, i) => s !== '/(.*)' && rewriteRes[i].test(sample),
+  );
+  if (!covered) uncovered.push(r);
+}
+if (uncovered.length) {
+  errors.push(
+    `App.tsx にあるのにプリレンダも vercel.json の rewrites も無いルート: ${uncovered.join(', ')}\n` +
+      '    → catch-all が /api/not-found に落とすため、このURLは 404 になります。\n' +
+      '    → プリレンダ対象にするか、vercel.json の rewrites に追加してください。',
+  );
+}
+
 // --- 結果 --------------------------------------------------------------------
 for (const w of warnings) console.warn(`[check-routes] WARN: ${w}`);
 

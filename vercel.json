@@ -4,8 +4,16 @@
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
   "redirects": [
-    { "source": "/news/17", "destination": "/news/19", "statusCode": 301 },
-    { "source": "/en/news/17", "destination": "/en/news/19", "statusCode": 301 },
+    {
+      "source": "/news/17",
+      "destination": "/news/19",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/17",
+      "destination": "/en/news/19",
+      "statusCode": 301
+    },
     {
       "source": "/news/:id(3|4|5|6|7|8|9|11|12|13|14|15|20|21|22|23|24|25|27)",
       "destination": "/fivem-gtarp",
@@ -53,8 +61,81 @@
     }
   ],
   "rewrites": [
-    { "source": "/sitemap-news.xml", "destination": "/api/sitemap-news" },
-    { "source": "/news/:id(\\d+)", "destination": "/api/news-og?id=:id" },
-    { "source": "/(.*)", "destination": "/app.html" }
+    {
+      "source": "/sitemap-news.xml",
+      "destination": "/api/sitemap-news"
+    },
+    {
+      "source": "/news/:id(\\d+)",
+      "destination": "/api/news-og?id=:id"
+    },
+    {
+      "source": "/search",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/search",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/admin/reports",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/admin/news",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/thread/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/thread/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/board/friends/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/board/crews/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/recruit",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/servers",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board/friends",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board/crews",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board/friends/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board/crews/:id",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/en/board/:slug(gta6|gtarp|gtarp-servers|streamer-servers|fivem-dev|gta-online)",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/not-found"
+    }
   ]
 }
