@@ -16,7 +16,10 @@ export default function LangToggle() {
   const lang = useLang();
   const [loc, navigate] = useLocation();
 
-  const go = (l: Lang) => {
+  const go = (e: React.MouseEvent, l: Lang) => {
+    // 修飾キー・中クリックは既定動作（別タブで開く等）に任せる。
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
     if (l === lang) return;
     navigate(pathForLang(loc, l));
   };
@@ -26,10 +29,16 @@ export default function LangToggle() {
       {OPTS.map((o) => {
         const active = lang === o.id;
         return (
-          <button
+          // <button> ではなく <a href> で出す。button だとクローラーが辿れず、
+          // ja→en の内部リンク経路がサイト内に1本も存在しない状態だった
+          // （2026-08-08 の監査で /en 配下が orphan 化していた一因）。
+          // クリック時は preventDefault して従来どおり SPA 遷移する＝挙動は不変。
+          <a
             key={o.id}
-            onClick={() => go(o.id)}
-            aria-pressed={active}
+            href={pathForLang(loc, o.id)}
+            onClick={(e) => go(e, o.id)}
+            aria-current={active ? 'true' : undefined}
+            hrefLang={o.id}
             className="px-2.5 py-1 text-[12px] font-bold whitespace-nowrap transition-colors"
             style={{
               background: active ? 'linear-gradient(95deg,#ff8a3d,#ff2d95)' : 'transparent',
@@ -37,7 +46,7 @@ export default function LangToggle() {
             }}
           >
             {o.label}
-          </button>
+          </a>
         );
       })}
     </div>
