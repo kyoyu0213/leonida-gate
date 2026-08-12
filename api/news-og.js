@@ -77,7 +77,10 @@ export default async function handler(req, res) {
   }
 
   const url = `${SITE}/news/${id}`;
-  const fullTitle = `${title}｜GTA6 FEED`;
+  // 見つからないID（/news/99999・未公開のDB記事）は「記事のタイトル」を持たない。
+  // 既定値 'GTA6 FEED' に接尾辞を足すと "GTA6 FEED｜GTA6 FEED" と二重化していたので、
+  // 見つからないときは専用の文言にする。
+  const fullTitle = found ? `${title}｜GTA6 FEED` : 'ページが見つかりません｜GTA6 FEED';
   const meta = [
     `<meta property="og:type" content="article" />`,
     `<meta property="og:site_name" content="GTA6 FEED" />`,
@@ -89,7 +92,8 @@ export default async function handler(req, res) {
     `<meta name="twitter:title" content="${esc(fullTitle)}" />`,
     `<meta name="twitter:description" content="${esc(desc)}" />`,
     `<meta name="twitter:image" content="${esc(image)}" />`,
-    `<link rel="canonical" href="${esc(url)}" />`,
+    // 存在しないURLを正規URLとして主張しない。canonical は実在する記事のときだけ出す。
+    ...(found ? [`<link rel="canonical" href="${esc(url)}" />`] : []),
   ].join('\n    ');
 
   // JSON-LD（NewsArticle + パンくず）。実在する記事のときだけ出す。
@@ -156,5 +160,8 @@ export default async function handler(req, res) {
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=600');
-  res.status(200).send(html);
+  // 実在しない記事ID（/news/99999・未公開のDB記事）は 200 ではなく 404 を返す。
+  // 本文はシェルのままなので、React 側は NotFound を描画する＝見た目は従来どおり。
+  // noindex は app.html に焼かれたものがそのまま残る（found のときだけ剥がしている）。
+  res.status(found ? 200 : 404).send(html);
 }
