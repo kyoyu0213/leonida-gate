@@ -96,7 +96,19 @@ function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
   );
 }
 
-const articleComponents = { img: ArticleMedia } as never;
+/**
+ * 本文Markdownの  を h2 として描画する。
+ *
+ * 記事ページには既にタイトルの <h1>（.article-title）があり、本文先頭の
+ *  と合わせて h1 が2つになっていた（2026-08-08 の監査で34記事）。
+ * スタイルは data-streamdown="heading-1" の属性セレクタで当たっているので、
+ * 属性を保ったままタグだけ h2 に変えれば見た目は変わらない。
+ */
+function ArticleH1AsH2({ children }: { children?: React.ReactNode }) {
+  return <h2 data-streamdown="heading-1">{children}</h2>;
+}
+
+const articleComponents = { img: ArticleMedia, h1: ArticleH1AsH2 } as never;
 
 export default function NewsDetail() {
   const L = useLocalHref();

@@ -171,9 +171,13 @@ export default function Home() {
               }}
             />
 
-            <p
+            {/* ホームの h1。以前は <p> で、ページに h1 が1つも無かった（2026-08-08 の監査）。
+                グローバルCSSの h1 は Space Mono / font-bold を当てるため、
+                見た目を変えないよう fontFamily を継承に戻し、font-black も維持する。 */}
+            <h1
               className="font-black"
               style={{
+                fontFamily: 'inherit',
                 fontSize: 'clamp(15px,2.2vw,21px)',
                 margin: 'clamp(12px,1.8vw,16px) 0 0',
                 color: 'rgba(244,238,248,.92)',
@@ -182,7 +186,7 @@ export default function Home() {
               }}
             >
               {t('hero.tagline')}
-            </p>
+            </h1>
 
             <div className="flex gap-2.5 flex-wrap" style={{ marginTop: 'clamp(18px,2.6vw,24px)' }}>
               <a

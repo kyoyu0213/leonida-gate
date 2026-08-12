@@ -117,10 +117,16 @@ export default function ArticleLayout({
   //
   // ただし先頭の1枚は LCP 要素（Lighthouse の LCP element が article-body の
   // 最初の img を指していた）なので lazy にしてはいけない。ここだけ eager のまま
-  // fetchpriority="high" を付け、2枚目以降を lazy にする。
+  // fetchPriority="high" を付け、2枚目以降を lazy にする。
   // カウンタはレンダーごとに作り直すので、ページを跨いで持ち越さない。
   const imgIndex = { n: 0 };
   const bodyComponents = {
+    // 本文Markdownの `# 見出し` は h2 で描画する（ページの h1 は記事タイトル1つに保つ）。
+    // スタイルは data-streamdown="heading-1" の属性セレクタで当たっているため、
+    // 属性を保ったままタグだけ変えれば見た目は変わらない。
+    h1: ({ children }: { children?: ReactNode }) => (
+      <h2 data-streamdown="heading-1">{children}</h2>
+    ),
     img: ({ src, alt }: { src?: string; alt?: string }) => {
       const isFirst = imgIndex.n++ === 0;
       return (
