@@ -77,6 +77,10 @@ const GROUPS: CardGroup[] = [
     cards: [
       { titleKey: 'fg.card.imageResize.title', descKey: 'fg.card.imageResize.desc', href: '/fivem-gtarp/tools/image-resize', icon: ImageDown, accent: '#2de2e6' },
       { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
+      // ツール一覧ページ本体への導線。各記事は個別ツールへ直リンクしており、
+      // ハブ（/fivem-gtarp/tools）がどこからもリンクされず orphan になっていた
+      // （2026-08-08 の監査）。日英とも同じカードで解消する。
+      { titleKey: 'fg.card.toolsIndex.title', descKey: 'fg.card.toolsIndex.desc', href: '/fivem-gtarp/tools', icon: Wrench, accent: '#a78bfa' },
     ],
   },
   {
