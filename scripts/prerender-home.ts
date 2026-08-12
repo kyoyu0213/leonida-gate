@@ -89,7 +89,21 @@ const ROBOTS_META = '<meta name="robots" content="noindex" />';
 if (!TEMPLATE.includes('</head>')) {
   throw new Error('[prerender-home] index.html に </head> が見つからない（テンプレート想定外）');
 }
-writeFileSync(APP_PATH, TEMPLATE.replace('</head>', `    ${ROBOTS_META}\n  </head>`), 'utf8');
+// app.html からは canonical を落とす。
+//   テンプレート（client/index.html）の canonical はトップ（/）を指しており、
+//   これが noindex と併存すると「インデックスするな」と「正規URLはトップだ」という
+//   相反するシグナルを同時に送ることになる（2026-08-08 の監査）。
+//   このシェルが返るのは CSR ルートと未知URLだけで、いずれも noindex 単独が正しい。
+//   CSR の正当ページはマウント後に useSeo が自己参照 canonical を張り直す。
+//   （api/news-og.js は元々この canonical を除去してから自前のものを足しているので影響なし）
+const shell = TEMPLATE.replace(/\n?\s*<link rel="canonical"[^>]*>/, '').replace(
+  '</head>',
+  `    ${ROBOTS_META}\n  </head>`,
+);
+if (shell.includes('rel="canonical"')) {
+  throw new Error('[prerender-home] app.html から canonical を除去できなかった（書式変更の可能性）');
+}
+writeFileSync(APP_PATH, shell, 'utf8');
 
 // 2) ホームを ja/en で焼く。
 //    route は '/'（ja）と '/en'（en）。canonical は route 由来の自己参照、hreflang も付与。
