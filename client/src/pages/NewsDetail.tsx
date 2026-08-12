@@ -5,7 +5,7 @@ import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, Messa
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { getArticleById, formatArticleDate } from '@/data/news';
+import { getArticleById, formatArticleDate , isNoindexNewsId } from '@/data/news';
 import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -97,10 +97,10 @@ function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
 }
 
 /**
- * 本文Markdownの  を h2 として描画する。
+ * 本文Markdownの `# 見出し` を h2 として描画する。
  *
  * 記事ページには既にタイトルの <h1>（.article-title）があり、本文先頭の
- *  と合わせて h1 が2つになっていた（2026-08-08 の監査で34記事）。
+ * `# タイトル` と合わせて h1 が2つになっていた（2026-08-08 の監査で34記事）。
  * スタイルは data-streamdown="heading-1" の属性セレクタで当たっているので、
  * 属性を保ったままタグだけ h2 に変えれば見た目は変わらない。
  */
@@ -180,9 +180,13 @@ export default function NewsDetail() {
   // displayTitle の改行はそのまま反映される（.article-title は white-space: pre-line）。
   const headingTitle = (isEn ? article.displayTitleEn : article.displayTitle) ?? title;
 
+  // 関連記事からも noindex 記事（NOINDEX_NEWS_IDS）を外す。
+  // 一覧から外したのに関連記事だけ残ると、noindex のURLへ内部リンクで推す形が残る
+  // （2026-08-08 の監査）。記事URL自体は生かしたまま、導線だけ畳む。
   const relatedArticles = article.relatedArticles
     .map((id) => getArticleById(id))
-    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
+    .filter((a) => !isNoindexNewsId(a.id));
 
   const categoryColors: Record<string, string> = {
     release: 'border-orange-500/50 bg-orange-500/10 text-orange-300',

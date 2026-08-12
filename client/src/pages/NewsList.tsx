@@ -29,10 +29,11 @@ export default function NewsList() {
   const { articles: allNews } = useMergedNews();
   const commentCounts = useNewsCommentCounts();
 
-  // 英語版一覧（/en/news）からは noindex 記事（NOINDEX_NEWS_IDS）を外す。
-  // /en/news は今回新設した入口で、noindex のURLへ新たな導線を作らないため。
-  // 日本語側（/news）は既存の導線を変えないので従来どおり全件出す。
-  const listed = lang === 'en' ? allNews.filter((n) => !isNoindexNewsId(n.id)) : allNews;
+  // 一覧からは noindex 記事（NOINDEX_NEWS_IDS）を外す。日英とも同じ扱いにする。
+  // noindex のURLへ一覧から導線を張ると「インデックスするな」と言いながら
+  // 内部リンクで推す形になり、ja/en で掲載本数もずれる（2026-08-08 の監査）。
+  // 記事URL自体（/news/29）は残す（直リンク・既存の被リンクは生かす）。
+  const listed = allNews.filter((n) => !isNoindexNewsId(n.id));
 
   const filtered =
     selectedCat === 'all' ? listed : listed.filter((n) => n.category === selectedCat);
@@ -48,7 +49,7 @@ export default function NewsList() {
           <h1 className="font-black text-3xl md:text-[46px] leading-tight mt-2">{t('newsList.title')}</h1>
           <p className="text-white/60 text-sm mt-2.5 leading-relaxed max-w-[560px]">
             {lang === 'ja'
-              ? `GTA6の公式情報・考察・リークを日本語でお届け。全${allNews.length}件の記事を掲載中。`
+              ? `GTA6の公式情報・考察・リークを日本語でお届け。全${listed.length}件の記事を掲載中。`
               : `Official news, analysis, and leaks on GTA6. ${listed.length} articles published.`}
           </p>
         </div>
