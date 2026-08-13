@@ -27,6 +27,7 @@ import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { type BoardGuideKey } from '@/data/boardGuides';
 import { seedThreads } from '@/lib/ssrSeed';
+import SiteFooter from '@/components/SiteFooter';
 
 const COOLDOWN_KEY = 'board_last_post';
 
@@ -575,6 +576,8 @@ export default function BoardThreadList() {
             残すのはこのブロック。一覧の下に置き、利用者の導線は妨げない。 */}
         <BoardGuide guideKey={slug as BoardGuideKey} />
       </main>
+
+      <SiteFooter />
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { seedCrews } from '@/lib/ssrSeed';
+import SiteFooter from '@/components/SiteFooter';
 
 const emptyForm = {
   crew_name: '',
@@ -364,11 +365,7 @@ export default function CrewsBoard() {
         <BoardGuide guideKey="crews" />
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {tr('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

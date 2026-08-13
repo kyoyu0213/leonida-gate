@@ -5,6 +5,7 @@ import BoardGuide from '@/components/BoardGuide';
 import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT } from '@/lib/i18n';
 import './imageTools.css';
+import SiteFooter from '@/components/SiteFooter';
 
 // 画像リサイズ・圧縮ツール。
 // 検証済みHTML（tool_image_resize.html）の挙動を「正」として移植したもの。
@@ -322,11 +323,7 @@ export default function ImageResizeTool() {
         <BoardGuide content={TOOL_GUIDES['image-resize']} />
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {t('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter width={1100} />
     </div>
   );
 }

@@ -2,8 +2,13 @@ import Header from '@/components/Header';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import { useLocalHref } from '@/components/LocalLink';
+import SiteFooter from '@/components/SiteFooter';
 
-type Block = { p: string } | { ul: string[] } | { contact: true };
+type Block =
+  | { p: string }
+  | { ul: string[] }
+  | { link: { prefix: string; path: string; label: string; suffix: string } }
+  | { contact: true };
 interface Section {
   h: string;
   blocks: Block[];
@@ -16,12 +21,11 @@ interface TermsContent {
   contactLink: string;
   contactSuffix: string;
   back: string;
-  disclaimer: string;
 }
 
 const JA: TermsContent = {
-  title: '利用規約・プライバシーポリシー',
-  updated: '最終更新日: 2026-06-22',
+  title: '利用規約',
+  updated: '最終更新日: 2026-08-13',
   sections: [
     {
       h: '1. はじめに',
@@ -55,20 +59,17 @@ const JA: TermsContent = {
     {
       h: '3. プライバシー・記録する情報',
       blocks: [
-        { p: '掲示板への投稿時、当サイトは荒らし・不正行為の防止および健全な運営のため、次の情報を記録します。' },
         {
-          ul: [
-            '投稿日時',
-            '投稿者のIPアドレス（およびその匿名化ハッシュ・サブネット）',
-            'ブラウザ情報（User-Agent）',
-            '端末を識別する匿名ID（ブラウザに保存される識別子）',
-            '投稿内容、入力された名前',
-          ],
+          p: '当サイトは、掲示板への投稿時に投稿内容・投稿日時・IPアドレスなどを記録し、荒らし・不正行為の防止および健全な運営のために利用します。また、広告配信・アクセス解析・連投防止のためにCookieを使用します。',
         },
         {
-          p: 'IPアドレスは一般には公開されず、運営が不正対応などの管理目的でのみ閲覧します。ただし、法令に基づく正当な開示請求があった場合など、正当な理由がある場合には、関係機関へ開示することがあります。',
+          link: {
+            prefix: '取得する情報の詳細、その利用目的、Cookieの無効化方法については、',
+            path: '/privacy',
+            label: 'プライバシーポリシー',
+            suffix: 'に定めるとおりとします。',
+          },
         },
-        { p: 'また、連投防止や表示制御のために、ブラウザのCookieおよびローカルストレージを最小限の範囲で使用します。' },
       ],
     },
     {
@@ -106,13 +107,11 @@ const JA: TermsContent = {
   contactLink: 'お問い合わせフォーム',
   contactSuffix: 'よりお願いいたします。',
   back: '← ホームに戻る',
-  disclaimer:
-    '本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
 };
 
 const EN: TermsContent = {
-  title: 'Terms of Service & Privacy Policy',
-  updated: 'Last updated: 2026-06-22',
+  title: 'Terms of Service',
+  updated: 'Last updated: 2026-08-13',
   sections: [
     {
       h: '1. Introduction',
@@ -146,20 +145,17 @@ const EN: TermsContent = {
     {
       h: '3. Privacy & Information We Record',
       blocks: [
-        { p: 'When you post to the board, this site records the following information to prevent trolling and abuse and to keep the site healthy.' },
         {
-          ul: [
-            'Date and time of posting',
-            "The poster's IP address (and its anonymized hash and subnet)",
-            'Browser information (User-Agent)',
-            'An anonymous ID identifying the device (an identifier stored in the browser)',
-            'The post content and the name entered',
-          ],
+          p: 'When you post to the board, this site records the post content, the date and time, the IP address, and similar information, and uses it to prevent trolling and abuse and to keep the site healthy. Cookies are also used for advertising, analytics, and post rate limiting.',
         },
         {
-          p: 'IP addresses are not made public; the operator views them only for administrative purposes such as handling abuse. However, where there is a legitimate reason, such as a lawful disclosure request based on applicable law, they may be disclosed to the relevant authorities.',
+          link: {
+            prefix: 'The details of the information collected, the purposes for which it is used, and how to disable cookies are set out in our ',
+            path: '/privacy',
+            label: 'Privacy Policy',
+            suffix: '.',
+          },
         },
-        { p: 'We also use browser cookies and local storage to a minimal extent to prevent repeated posting and to control display.' },
       ],
     },
     {
@@ -197,8 +193,6 @@ const EN: TermsContent = {
   contactLink: 'contact form',
   contactSuffix: '.',
   back: '← Back to home',
-  disclaimer:
-    'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
 };
 
 export default function Terms() {
@@ -217,7 +211,7 @@ export default function Terms() {
       <Header />
 
       <main className="max-w-[820px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
-        <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">Terms &amp; Privacy</span>
+        <span className="text-xs font-extrabold tracking-[0.2em] text-[#22d3ee] uppercase">Terms of Service</span>
         <h1 className="vice-display vice-grad text-3xl md:text-[44px] mt-2 mb-2">{c.title}</h1>
         <p className="text-sm font-mono text-white/45 mb-10">{c.updated}</p>
 
@@ -244,6 +238,17 @@ export default function Terms() {
                     </ul>
                   );
                 }
+                if ('link' in block) {
+                  return (
+                    <p key={i} className={`${p} ${i > 0 ? 'mt-3' : ''}`}>
+                      {block.link.prefix}
+                      <a href={L(block.link.path)} className="text-[#22d3ee] underline hover:text-white transition-colors">
+                        {block.link.label}
+                      </a>
+                      {block.link.suffix}
+                    </p>
+                  );
+                }
                 // contact
                 return (
                   <p key={i} className={p}>
@@ -266,11 +271,7 @@ export default function Terms() {
         </div>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {c.disclaimer} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

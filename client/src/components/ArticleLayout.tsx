@@ -6,6 +6,7 @@ import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { useSeo, SITE_ORIGIN } from '@/hooks/useSeo';
 import { useT, useLang, type Lang } from '@/lib/i18n';
 import { localizedHref } from '@/components/LocalLink';
+import { FooterLinks } from '@/components/SiteFooter';
 
 // NewsDetail と同じく、自サイトのオリジンを渡して相対パス画像/リンクを許可する。
 // SSR（プリレンダ）では window が無く origin を取れないため、本番オリジンを既定にする。
@@ -295,6 +296,9 @@ export default function ArticleLayout({
       </article>
 
       <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
+        <p className="mb-2">
+          <FooterLinks />
+        </p>
         <p>&copy; 2026 GTA6 FEED. All rights reserved.</p>
       </footer>
     </div>

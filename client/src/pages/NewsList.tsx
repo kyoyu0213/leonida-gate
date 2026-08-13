@@ -5,6 +5,7 @@ import { CATEGORIES, CATEGORY_CONFIG, isNoindexNewsId, type NewsCategory } from 
 import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { useT, useLang, pathForLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import SiteFooter from '@/components/SiteFooter';
 
 /**
  * ニュース一覧ページ（/news）。全記事をカテゴリ絞り込み付きで表示する。
@@ -94,11 +95,7 @@ export default function NewsList() {
         )}
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {t('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

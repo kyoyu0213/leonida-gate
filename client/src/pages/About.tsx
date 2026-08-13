@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import SiteFooter from '@/components/SiteFooter';
 
 // 運営者情報・編集方針（About）。Terms と同じ固定ページの型（見出し＋段落）で組む。
 // 本文はハウススタイル（常体・三人称・ボールドなし）。h3 は編集方針の各項目に使う。
@@ -17,7 +18,6 @@ interface AboutContent {
   contactLink: string;
   contactSuffix: string;
   back: string;
-  disclaimer: string;
 }
 
 const JA: AboutContent = {
@@ -88,8 +88,6 @@ const JA: AboutContent = {
   contactLink: 'お問い合わせフォーム',
   contactSuffix: 'より受け付けている。',
   back: '← ホームに戻る',
-  disclaimer:
-    '本サイトは GTA6 の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
 };
 
 const EN: AboutContent = {
@@ -165,8 +163,6 @@ const EN: AboutContent = {
   contactLink: 'contact form',
   contactSuffix: '.',
   back: '← Back to home',
-  disclaimer:
-    'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
 };
 
 export default function About() {
@@ -238,11 +234,7 @@ export default function About() {
         </div>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {c.disclaimer} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

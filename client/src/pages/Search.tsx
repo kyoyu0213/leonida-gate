@@ -8,6 +8,7 @@ import { getBoard, boardColor } from '@/lib/boards';
 import { logSearch } from '@/lib/searchLog';
 import { useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import SiteFooter from '@/components/SiteFooter';
 
 interface BoardHit {
   key: string;
@@ -253,6 +254,8 @@ export default function SearchPage() {
           </div>
         )}
       </main>
+
+      <SiteFooter />
     </div>
   );
 }

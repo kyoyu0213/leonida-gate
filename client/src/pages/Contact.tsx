@@ -10,6 +10,7 @@ import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { PAGE_GUIDES } from '@/data/boardGuides';
 import { useLocalHref } from '@/components/LocalLink';
+import SiteFooter from '@/components/SiteFooter';
 
 export default function Contact() {
   const L = useLocalHref();
@@ -193,11 +194,7 @@ export default function Contact() {
         </div>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {t('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

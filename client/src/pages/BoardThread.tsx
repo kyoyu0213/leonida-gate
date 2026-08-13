@@ -25,6 +25,7 @@ import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import SiteFooter from '@/components/SiteFooter';
 
 const COOLDOWN_KEY = 'board_last_post';
 const REPORTED_KEY = 'board_reported_posts';
@@ -469,6 +470,8 @@ export default function BoardThread() {
           </>
         )}
       </main>
+
+      <SiteFooter inset />
 
       {/* sticky reply box */}
       {!loading && !notFound && (

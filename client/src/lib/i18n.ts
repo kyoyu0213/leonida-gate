@@ -368,7 +368,8 @@ const JA: Dict = {
   'cmt.bad': 'バッド',
   'footer.disclaimer':
     '本サイトは GTA6（Grand Theft Auto VI）の非公式ファンコミュニティです。Rockstar Games / Take-Two とは一切関係ありません。',
-  'footer.terms': '利用規約・プライバシー',
+  'footer.terms': '利用規約',
+  'footer.privacy': 'プライバシーポリシー',
   'footer.about': '運営者情報・編集方針',
   // ニュースのカテゴリ
   'cat.all': 'すべて',
@@ -964,7 +965,8 @@ const EN: Dict = {
   'cmt.bad': 'Bad',
   'footer.disclaimer':
     'This is an unofficial GTA6 (Grand Theft Auto VI) fan community. Not affiliated with Rockstar Games / Take-Two.',
-  'footer.terms': 'Terms & Privacy',
+  'footer.terms': 'Terms of Use',
+  'footer.privacy': 'Privacy Policy',
   'footer.about': 'About',
   'cat.all': 'All',
   'cat.release': 'Official',

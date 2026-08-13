@@ -10,6 +10,7 @@ import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import { useLocalHref } from '@/components/LocalLink';
+import { FooterLinks } from '@/components/SiteFooter';
 
 // Streamdown 同梱の rehype-harden は、自サイトのオリジン(defaultOrigin)が無いと
 // 相対パス画像（/images/...）や相対リンク（/news/...）を解決できずブロックしてしまう。
@@ -410,6 +411,9 @@ export default function NewsDetail() {
 
       {/* Footer */}
       <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
+        <p className="mb-2">
+          <FooterLinks />
+        </p>
         <p>&copy; 2026 GTA6 FEED. All rights reserved.</p>
       </footer>
     </div>

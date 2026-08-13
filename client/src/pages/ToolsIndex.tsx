@@ -5,6 +5,7 @@ import BoardGuide from '@/components/BoardGuide';
 import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
+import SiteFooter from '@/components/SiteFooter';
 
 // 便利ツール一覧。FiveM/GTARPページ下部の「便利ツール」セクションと同じ2カードを並べる軽い一覧。
 // カードの体裁は FivemGtarp.tsx のものを踏襲している。
@@ -80,11 +81,7 @@ export default function ToolsIndex() {
         <BoardGuide content={TOOL_GUIDES['tools']} />
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {t('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter width={1100} />
     </div>
   );
 }

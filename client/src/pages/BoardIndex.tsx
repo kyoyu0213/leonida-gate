@@ -8,6 +8,7 @@ import { seedThreads } from '@/lib/ssrSeed';
 import { MessageSquare, ArrowRight } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
+import SiteFooter from '@/components/SiteFooter';
 
 // 掲示板のトップ（まとめ）。/board を開くと先頭の板だけが出て「その板しか無い」と
 // 誤解されるため、全ジャンルの板をカードで一覧する。各板は /board/:slug のまま。
@@ -128,6 +129,8 @@ export default function BoardIndex() {
           })}
         </div>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }

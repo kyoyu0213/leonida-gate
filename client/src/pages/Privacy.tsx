@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import { useLocalHref } from '@/components/LocalLink';
+import SiteFooter from '@/components/SiteFooter';
 
 // プライバシーポリシー。Terms と同じ固定ページの型（見出し＋段落＋箇条書き）で組む。
 // AdSense のプログラムポリシーが必須とする記載（第三者配信事業者のCookie利用、
@@ -358,11 +359,7 @@ export default function Privacy() {
         </div>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10" style={{ background: 'rgba(8,6,15,.6)' }}>
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-[30px] py-8 text-center text-[11.5px] text-white/40">
-          {t('footer.disclaimer')} © 2026 GTA6 FEED
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

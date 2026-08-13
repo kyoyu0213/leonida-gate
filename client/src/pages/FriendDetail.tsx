@@ -24,6 +24,7 @@ import {
 import { formatPostDate } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import SiteFooter from '@/components/SiteFooter';
 
 const isUrl = (s: string) => /^https?:\/\//i.test(s.trim());
 
@@ -510,6 +511,8 @@ export default function FriendDetail() {
           </>
         )}
       </main>
+
+      <SiteFooter inset />
     </div>
   );
 }

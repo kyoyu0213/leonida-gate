@@ -9,6 +9,7 @@ import { seedFriends, seedCrews, seedServers } from '@/lib/ssrSeed';
 import { listPublishedFriends, friendPlatformLabelKey } from '@/lib/friends';
 import { listPublishedCrews } from '@/lib/crews';
 import { listApprovedServers } from '@/lib/servers';
+import SiteFooter from '@/components/SiteFooter';
 
 // 募集掲示板のトップ（まとめ）。FiveMサーバー募集だけが入口だと「サーバー募集しか
 // 無い」と誤解されるため、3カテゴリ（サーバー／フレンド／クルー）をカードで示す。
@@ -174,6 +175,8 @@ export default function RecruitIndex() {
           })}
         </div>
       </main>
+
+      <SiteFooter />
     </div>
   );
 }
