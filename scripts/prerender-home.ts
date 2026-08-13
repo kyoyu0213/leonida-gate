@@ -20,6 +20,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { stripAdsScript } from './lib/ads-html';
 import { ORIGIN, DEFAULT_IMAGE, toAbs } from './lib/site';
 import { webSiteNode, organizationNode, collectionNode, injectLd } from './lib/jsonld';
 import { indexableNewsArticles } from '../client/src/data/news';
@@ -96,10 +97,15 @@ if (!TEMPLATE.includes('</head>')) {
 //   このシェルが返るのは CSR ルートと未知URLだけで、いずれも noindex 単独が正しい。
 //   CSR の正当ページはマウント後に useSeo が自己参照 canonical を張り直す。
 //   （api/news-og.js は元々この canonical を除去してから自前のものを足しているので影響なし）
-const shell = TEMPLATE.replace(/\n?\s*<link rel="canonical"[^>]*>/, '').replace(
-  '</head>',
-  `    ${ROBOTS_META}\n  </head>`,
-);
+// app.html からは AdSense のローダーも落とす。
+//   このシェルが返るのは CSRルート（/thread/<id>・/board/friends|crews/<id>・/search・
+//   /admin/*・/en/board* など）と未知URL＝すべて広告を出さない対象（client/src/lib/ads.ts）。
+//   広告を出す唯一の例外は api/news-og.js が使うDB記事（/news/100001〜）だが、
+//   そちらは CSR で AdsLoader がマウント時に注入するため、ここで落として問題ない。
+const shell = stripAdsScript(
+  TEMPLATE.replace(/\n?\s*<link rel="canonical"[^>]*>/, ''),
+  'prerender-home',
+).replace('</head>', `    ${ROBOTS_META}\n  </head>`);
 if (shell.includes('rel="canonical"')) {
   throw new Error('[prerender-home] app.html から canonical を除去できなかった（書式変更の可能性）');
 }

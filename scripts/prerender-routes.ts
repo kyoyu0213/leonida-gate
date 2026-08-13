@@ -13,6 +13,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { stripAdsScript } from './lib/ads-html';
+import { isAdFreePath } from '../client/src/lib/ads';
 import { ORIGIN, DEFAULT_IMAGE, toAbs, stripSiteName } from './lib/site';
 import {
   articleNode,
@@ -265,6 +267,7 @@ function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
 }
 
 let count = 0;
+let adFree = 0;
 const skipped: string[] = [];
 
 for (const route of mod.ROUTE_PATHS) {
@@ -335,6 +338,13 @@ for (const route of mod.ROUTE_PATHS) {
     'prerender-routes',
   );
 
+  // 広告を出さないページ（UGC・ツール・固定ページ）からは AdSense のローダーを落とす。
+  // 判定は client/src/lib/ads.ts の AD_FREE_PREFIXES が単一の正。
+  if (isAdFreePath(jaPath)) {
+    html = stripAdsScript(html, 'prerender-routes');
+    adFree++;
+  }
+
   // #root に本文を焼き込む（クライアントの createRoot がマウント時に置き換える）。
   html = injectSsrBody(html, body, 'prerender-routes');
 
@@ -344,7 +354,10 @@ for (const route of mod.ROUTE_PATHS) {
   count++;
 }
 
-console.log(`[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html`);
+console.log(
+  `[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html` +
+    `（うち広告なし ${adFree} ルート）`,
+);
 if (skipped.length) console.log(`[prerender-routes] スキップ: ${skipped.join(', ')}`);
 if (missedReplacements.size) {
   console.warn(

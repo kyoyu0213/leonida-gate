@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import AdsLoader from "@/components/AdsLoader";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
@@ -171,6 +172,7 @@ function App() {
             <LangBanner />
           </div>
           <GoogleAnalytics />
+          <AdsLoader />
           <Analytics />
         </TooltipProvider>
       </ThemeProvider>
