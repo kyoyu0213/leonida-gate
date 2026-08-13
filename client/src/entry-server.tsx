@@ -36,6 +36,7 @@ import ImageMaskTool from '@/pages/ImageMaskTool';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
+import Privacy from '@/pages/Privacy';
 import BoardThreadList from '@/pages/BoardThreadList';
 import BoardIndex from '@/pages/BoardIndex';
 import NewsList from '@/pages/NewsList';
@@ -75,6 +76,7 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   // 3表の同期は scripts/check-route-tables.mjs が prebuild で検証する。
   '/contact': Contact,
   '/terms': Terms,
+  '/privacy': Privacy,
   // news一覧。記事カードは newsByDate（HIDDEN_NEWS_IDS 除外済み）を同期的に読むため、
   // renderToString で残った記事のカード一覧まで描画できる。
   //

@@ -46,6 +46,7 @@ export const STATIC_ROUTES = [
   { path: '/about', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
+  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
 ];
 
 /**
@@ -64,4 +65,5 @@ export const isLocalizedStaticPath = (p) =>
   p.startsWith('/fivem-gtarp') ||
   p === '/about' ||
   p === '/contact' ||
-  p === '/terms';
+  p === '/terms' ||
+  p === '/privacy';

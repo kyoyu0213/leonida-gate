@@ -34,6 +34,7 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
   '/about',
   '/contact',
   '/terms',
+  '/privacy',
 ];
 
 /** ニュース記事（/news/:id）は日英の対がある（記事データに titleEn/bodyEn を持つ）。

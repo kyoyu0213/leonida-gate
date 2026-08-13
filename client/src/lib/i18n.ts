@@ -250,6 +250,9 @@ const JA: Dict = {
   'seo.contact.desc': '情報提供・削除依頼などのお問い合わせはこちら。GTA6・FiveM RPに関するご連絡を受け付けています。',
   'seo.terms.title': '利用規約｜GTA6 FEED',
   'seo.terms.desc': 'GTA6 FEED の利用規約・免責事項です。',
+  'seo.privacy.title': 'プライバシーポリシー｜GTA6 FEED',
+  'seo.privacy.desc':
+    'GTA6 FEED のプライバシーポリシー。広告配信（Google AdSense）とCookie、アクセス解析（GA4）、掲示板の投稿時に取得する情報、Cookieの無効化方法について記載しています。',
   'seo.about.title': '運営者情報・編集方針 | GTA6 FEED',
   'seo.about.desc':
     'GTA6 FEED の運営者情報と編集方針。確定情報・未確認情報・考察を区別し、出典を明示する日本語の GTA6・FiveM/GTARP ファンメディア。',
@@ -843,6 +846,9 @@ const EN: Dict = {
   'seo.contact.desc': 'Contact us for tips, takedown requests, and other inquiries about GTA6 and FiveM RP.',
   'seo.terms.title': 'Terms of Use | GTA6 FEED',
   'seo.terms.desc': 'Terms of use and disclaimer for GTA6 FEED.',
+  'seo.privacy.title': 'Privacy Policy | GTA6 FEED',
+  'seo.privacy.desc':
+    'The privacy policy of GTA6 FEED: advertising (Google AdSense) and cookies, analytics (GA4), the information collected when you post to the board, and how to disable cookies.',
   'seo.about.title': 'About Us & Editorial Policy | GTA6 FEED',
   'seo.about.desc':
     'About GTA6 FEED and our editorial policy. A Japanese-language GTA6 and FiveM/GTARP fan media outlet that separates confirmed information, unconfirmed leaks, and analysis, and cites its sources.',

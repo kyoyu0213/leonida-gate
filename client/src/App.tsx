@@ -27,6 +27,7 @@ const AdminReports = lazy(() => import("./pages/AdminReports"));
 const AdminNews = lazy(() => import("./pages/AdminNews"));
 const SearchPage = lazy(() => import("./pages/Search"));
 const Terms = lazy(() => import("./pages/Terms"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
 const FivemGtarp = lazy(() => import("./pages/FivemGtarp"));
@@ -132,11 +133,13 @@ function Router() {
       <Route path="/en/about" component={About} />
       <Route path="/en/contact" component={Contact} />
       <Route path="/en/terms" component={Terms} />
+      <Route path="/en/privacy" component={Privacy} />
 
       <Route path="/admin/reports" component={AdminReports} />
       <Route path="/admin/news" component={AdminNews} />
       <Route path="/search" component={SearchPage} />
       <Route path="/terms" component={Terms} />
+      <Route path="/privacy" component={Privacy} />
       <Route path="/contact" component={Contact} />
       <Route path="/about" component={About} />
       <Route path="/404" component={NotFound} />
