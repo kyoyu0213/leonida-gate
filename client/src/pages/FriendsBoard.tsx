@@ -74,7 +74,8 @@ export default function FriendsBoard() {
     if (error) {
       console.error('フレンド募集の取得に失敗:', error);
       toast.error(tr('fr.toast.loadFail'));
-      setFriends([]);
+      // 取得できなかったときは今出ているもの（プリレンダ由来の seed）を残す。
+      // [] で上書きすると Supabase 不達時に「投稿0件の板」で確定してしまう。
     } else {
       setFriends((data as Friend[]) ?? []);
     }

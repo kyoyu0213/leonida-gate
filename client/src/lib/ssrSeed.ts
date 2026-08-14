@@ -9,7 +9,16 @@
 //  ▼ 使い方
 //    ビルド側: scripts/prerender-routes.ts が render() を回す前に setSsrSeed() を1回呼ぶ。
 //    画面側  : useState の初期値で seed アクセサを呼ぶ。
-//              ブラウザでは常に空なので、クライアントの挙動は一切変わらない。
+//
+//  ▼ ブラウザへの引き継ぎ（2026-08-14 追加）
+//    createRoot はプリレンダ本文を捨てて再マウントするため、以前はブラウザ側の
+//    初期stateが必ず空配列から始まっていた。Supabase が不達だとそのまま
+//    「投稿0件の板」で確定し、焼き込み済みの投稿が消えてしまう
+//    （BoardThreadList の取得失敗時 setThreads([]) がとどめを刺していた）。
+//    そこで prerender-routes が各ページに埋めた
+//      <script id="ssr-seed" type="application/json">…</script>
+//    をブラウザでも読み、同じ初期stateから描き直せるようにした。
+//    マウント後に Supabase から取り直す挙動は従来どおり。
 //
 //  ▼ ルート間リーク対策
 //    prerender-routes は同一プロセスで複数ルートを順に render する。
@@ -91,14 +100,44 @@ export function setSsrSeed(next: SsrSeed | null | undefined): void {
   seed = next ?? EMPTY;
 }
 
-/** SSR 中か（ブラウザでは常に false → seed は使われない）。 */
+/** SSR 中か（ブラウザでは false → 埋め込みタグ側を読む）。 */
 const isSsr = () => typeof window === 'undefined';
 
-export const seedThreads = (board: string): SeedThread[] =>
-  isSsr() ? (seed.threads[board] ?? []) : [];
+/** プリレンダHTMLに埋めた seed を入れる script タグの id。prerender-routes と対。 */
+export const SSR_SEED_ELEMENT_ID = 'ssr-seed';
 
-export const seedFriends = (): SeedFriend[] => (isSsr() ? seed.friends : []);
+// ブラウザ側の読み出しは1回だけ（undefined＝未読、null＝読んだが無い/壊れていた）。
+let clientSeed: SsrSeed | null | undefined;
 
-export const seedCrews = (): SeedCrew[] => (isSsr() ? seed.crews : []);
+/** 埋め込みタグを読んで seed を復元する。無い・壊れている場合は空 seed。 */
+function readClientSeed(): SsrSeed {
+  if (clientSeed !== undefined) return clientSeed ?? EMPTY;
+  clientSeed = null;
+  try {
+    const text = document.getElementById(SSR_SEED_ELEMENT_ID)?.textContent;
+    if (text) {
+      const p = JSON.parse(text) as Partial<SsrSeed>;
+      // 形が違っても落ちないように、各キーを個別に検証して詰め直す。
+      clientSeed = {
+        threads: p.threads && typeof p.threads === 'object' ? p.threads : {},
+        friends: Array.isArray(p.friends) ? p.friends : [],
+        crews: Array.isArray(p.crews) ? p.crews : [],
+        servers: Array.isArray(p.servers) ? p.servers : [],
+      };
+    }
+  } catch {
+    // 壊れた seed は「無かった」として扱う。従来どおり空から始まるだけで、
+    // マウント後の Supabase 取得は普通に走る。
+  }
+  return clientSeed ?? EMPTY;
+}
 
-export const seedServers = (): SeedServer[] => (isSsr() ? seed.servers : []);
+const current = (): SsrSeed => (isSsr() ? seed : readClientSeed());
+
+export const seedThreads = (board: string): SeedThread[] => current().threads[board] ?? [];
+
+export const seedFriends = (): SeedFriend[] => current().friends;
+
+export const seedCrews = (): SeedCrew[] => current().crews;
+
+export const seedServers = (): SeedServer[] => current().servers;

@@ -70,7 +70,8 @@ export default function CrewsBoard() {
     if (error) {
       console.error('クルー募集の取得に失敗:', error);
       toast.error(tr('cr.toast.loadFail'));
-      setCrews([]);
+      // 取得できなかったときは今出ているもの（プリレンダ由来の seed）を残す。
+      // [] で上書きすると Supabase 不達時に「投稿0件の板」で確定してしまう。
     } else {
       setCrews((data as Crew[]) ?? []);
     }

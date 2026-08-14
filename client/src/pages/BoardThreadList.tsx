@@ -129,7 +129,8 @@ export default function BoardThreadList() {
     if (error) {
       console.error(error);
       toast.error(tr('brd.toast.loadFail'));
-      setThreads([]);
+      // 取得できなかったときは今出ているもの（プリレンダ由来の seed）を残す。
+      // [] で上書きすると Supabase 不達時に「投稿0件の板」で確定してしまう。
     } else {
       setThreads((data as BoardThread[]) ?? []);
     }

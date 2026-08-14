@@ -20,3 +20,31 @@ export function injectSsrBody(html: string, body: string, ctx = 'inject-ssr-body
   }
   return html.replace(ROOT_MARKER, `<div id="root">${body}</div>`);
 }
+
+/** クライアントが初期stateに使う seed を入れる script タグの id。
+ *  client/src/lib/ssrSeed.ts の SSR_SEED_ELEMENT_ID と対。 */
+export const SSR_SEED_ELEMENT_ID = 'ssr-seed';
+
+/**
+ * 板・募集板の投稿（そのページに実際に描画されている分）を JSON として </body> の直前に埋める。
+ *
+ * createRoot はプリレンダ本文を捨てて再マウントするため、これが無いとブラウザ側の
+ * 初期stateが空配列から始まり、Supabase が不達だと「投稿0件の板」で確定してしまう。
+ *
+ * ▼ なぜ window.__SSR_SEED__ = ... ではなく application/json のタグなのか
+ *   投稿タイトルや本文抜粋は訪問者が書いた文字列で、`</script>` を含みうる。
+ *   実行される <script> に文字列として埋めると、脱出された瞬間に任意コードになる。
+ *   application/json なら中身は実行されず、HTMLパーサが見るのは `</script` だけなので、
+ *   JSON文字列内の `<` を < にエスケープすれば閉じタグを作れなくなる
+ *   （< は JSON として正当なので JSON.parse 側は元の文字に戻る）。
+ */
+export function injectSsrSeed(html: string, seed: unknown, ctx = 'inject-ssr-body'): string {
+  if (!html.includes('</body>')) {
+    throw new Error(`[${ctx}] index.html に </body> が見つからない（テンプレート想定外）`);
+  }
+  const json = JSON.stringify(seed).replace(/</g, '\\u003c');
+  return html.replace(
+    '</body>',
+    `    <script id="${SSR_SEED_ELEMENT_ID}" type="application/json">${json}</script>\n  </body>`,
+  );
+}

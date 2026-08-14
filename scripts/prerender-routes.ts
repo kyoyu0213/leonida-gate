@@ -12,7 +12,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { injectSsrBody } from './lib/inject-ssr-body';
+import { injectSsrBody, injectSsrSeed } from './lib/inject-ssr-body';
 import { stripAdsScript } from './lib/ads-html';
 import { isAdFreePath } from '../client/src/lib/ads';
 import { ORIGIN, DEFAULT_IMAGE, toAbs, stripSiteName } from './lib/site';
@@ -90,6 +90,69 @@ const { seed: boardSeed, total: seedTotal, warnings: seedWarnings } = await buil
 seedWarnings.forEach((w) => console.warn(w));
 mod.setSsrSeed(boardSeed);
 console.log(`[board-seed] 投稿 ${seedTotal} 件をプリレンダへ注入`);
+
+// ----------------------------------------------------------------------------
+//  seed のクライアント引き継ぎ（ルート単位のスライス）
+// ----------------------------------------------------------------------------
+//  createRoot は生HTMLの本文を捨てて再マウントするため、埋め込みが無いと
+//  ブラウザ側の初期stateは空配列から始まる。Supabase が不達だとそのまま
+//  「投稿0件の板」で確定してしまうので、各ページに「そのページが実際に
+//  描画している行」だけを JSON で埋め、同じ初期stateから描き直せるようにする。
+//
+//  全ページぶんを毎ページ配ると /board/gta6 に他5板ぶんが乗って無駄なので、
+//  ルートごとに必要な分だけ切り出す。切り出す件数は各ページの描画件数に合わせる
+//  （＝生HTMLに出ているものと一致させる。クローラーにだけ見えるデータを作らない）。
+//
+//  連絡先（contact / contact_kind / connect_info / discord_url）と author_name は
+//  そもそも buildBoardSeed のSELECT列に無く、この型にも存在しない。埋め込み先が
+//  増えても漏れようがない設計は維持する。
+// ----------------------------------------------------------------------------
+
+/** ハブのプレビュー件数（BoardIndex.PREVIEW_PER_BOARD / RecruitIndex.PREVIEW_PER_CAT と対）。 */
+const HUB_PREVIEW = 3;
+
+type Seed = typeof boardSeed;
+const EMPTY_SEED: Seed = { threads: {}, friends: [], crews: [], servers: [] };
+
+/** route（日本語パス）に対して、そのページが描画している分だけの seed を返す。
+ *  seed を使わないルートは null（＝タグを埋めない）。 */
+function seedForRoute(jaPath: string): Seed | null {
+  const board = /^\/board\/(?!friends$|crews$)(.+)$/.exec(jaPath)?.[1];
+  if (board) {
+    const rows = boardSeed.threads[board];
+    return rows?.length ? { ...EMPTY_SEED, threads: { [board]: rows } } : null;
+  }
+  if (jaPath === '/board') {
+    // 全板のカード＋各板の最新3件プレビュー。
+    const threads: Seed['threads'] = {};
+    for (const [slug, rows] of Object.entries(boardSeed.threads)) {
+      if (rows.length) threads[slug] = rows.slice(0, HUB_PREVIEW);
+    }
+    return Object.keys(threads).length ? { ...EMPTY_SEED, threads } : null;
+  }
+  if (jaPath === '/board/friends') {
+    return boardSeed.friends.length ? { ...EMPTY_SEED, friends: boardSeed.friends } : null;
+  }
+  if (jaPath === '/board/crews') {
+    return boardSeed.crews.length ? { ...EMPTY_SEED, crews: boardSeed.crews } : null;
+  }
+  if (jaPath === '/servers') {
+    return boardSeed.servers.length ? { ...EMPTY_SEED, servers: boardSeed.servers } : null;
+  }
+  if (jaPath === '/recruit') {
+    // 3カテゴリの最新3件ずつをプレビュー。
+    const s = {
+      ...EMPTY_SEED,
+      friends: boardSeed.friends.slice(0, HUB_PREVIEW),
+      crews: boardSeed.crews.slice(0, HUB_PREVIEW),
+      servers: boardSeed.servers.slice(0, HUB_PREVIEW),
+    };
+    return s.friends.length || s.crews.length || s.servers.length ? s : null;
+  }
+  return null;
+}
+
+let seededPages = 0;
 
 // ============================================================================
 //  JSON-LD（構造化データ）
@@ -348,6 +411,13 @@ for (const route of mod.ROUTE_PATHS) {
   // #root に本文を焼き込む（クライアントの createRoot がマウント時に置き換える）。
   html = injectSsrBody(html, body, 'prerender-routes');
 
+  // 板・募集板は、置き換え後のクライアントが同じ初期stateから描き直せるよう seed も埋める。
+  const routeSeed = seedForRoute(jaPath);
+  if (routeSeed) {
+    html = injectSsrSeed(html, routeSeed, 'prerender-routes');
+    seededPages++;
+  }
+
   const dir = resolve(ROOT, `dist/public${route}`);
   mkdirSync(dir, { recursive: true });
   writeFileSync(resolve(dir, 'index.html'), html, 'utf8');
@@ -356,7 +426,7 @@ for (const route of mod.ROUTE_PATHS) {
 
 console.log(
   `[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html` +
-    `（うち広告なし ${adFree} ルート）`,
+    `（うち広告なし ${adFree} ルート / seed埋め込み ${seededPages} ルート）`,
 );
 if (skipped.length) console.log(`[prerender-routes] スキップ: ${skipped.join(', ')}`);
 if (missedReplacements.size) {
