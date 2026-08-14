@@ -4,55 +4,77 @@ import AdsLoader from "@/components/AdsLoader";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import MobileTabBar from "./components/MobileTabBar";
 import LangBanner from "./components/LangBanner";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { lazyWithRetry } from "./lib/lazyLoad";
 
-// 各ページは遅延読み込み（コード分割）。記事ページ用の重いライブラリ（Markdown
-// レンダラ等）をトップの本体JSから切り離し、初回表示を軽くする。
-const Home = lazy(() => import("./pages/Home"));
-const RecruitIndex = lazy(() => import("./pages/RecruitIndex"));
-const ServerBoard = lazy(() => import("./pages/ServerBoard"));
-const NewsList = lazy(() => import("./pages/NewsList"));
-const NewsDetail = lazy(() => import("./pages/NewsDetail"));
-const BoardIndex = lazy(() => import("./pages/BoardIndex"));
-const BoardThreadList = lazy(() => import("./pages/BoardThreadList"));
-const BoardThread = lazy(() => import("./pages/BoardThread"));
-const FriendsBoard = lazy(() => import("./pages/FriendsBoard"));
-const CrewsBoard = lazy(() => import("./pages/CrewsBoard"));
-const FriendDetail = lazy(() => import("./pages/FriendDetail"));
-const CrewDetail = lazy(() => import("./pages/CrewDetail"));
-const AdminReports = lazy(() => import("./pages/AdminReports"));
-const AdminNews = lazy(() => import("./pages/AdminNews"));
-const SearchPage = lazy(() => import("./pages/Search"));
-const Terms = lazy(() => import("./pages/Terms"));
-const Privacy = lazy(() => import("./pages/Privacy"));
-const Contact = lazy(() => import("./pages/Contact"));
-const About = lazy(() => import("./pages/About"));
-const FivemGtarp = lazy(() => import("./pages/FivemGtarp"));
-const FivemArticle = lazy(() => import("./pages/FivemArticle"));
-const GtarpArticle = lazy(() => import("./pages/GtarpArticle"));
-const FivemVsGtarpArticle = lazy(() => import("./pages/FivemVsGtarpArticle"));
-const FivemHistoryArticle = lazy(() => import("./pages/FivemHistoryArticle"));
-const GtarpGlossaryArticle = lazy(() => import("./pages/GtarpGlossaryArticle"));
-const FivemFaqArticle = lazy(() => import("./pages/FivemFaqArticle"));
-const FivemCommandsArticle = lazy(() => import("./pages/FivemCommandsArticle"));
-const GtarpStreamerHistoryArticle = lazy(() => import("./pages/GtarpStreamerHistoryArticle"));
-const GtarpObserverGuideArticle = lazy(() => import("./pages/GtarpObserverGuideArticle"));
-const GtarpFirstDayGuideArticle = lazy(() => import("./pages/GtarpFirstDayGuideArticle"));
-const FivemServerGuide = lazy(() => import("./pages/FivemServerGuide"));
-const FivemServerSetupArticle = lazy(() => import("./pages/FivemServerSetupArticle"));
-const FieldNotesList = lazy(() => import("./pages/FieldNotesList"));
-const FieldNoteDetail = lazy(() => import("./pages/FieldNoteDetail"));
-const FivemInstallGuide = lazy(() => import("./pages/FivemInstallGuide"));
-const ToolsIndex = lazy(() => import("./pages/ToolsIndex"));
-const ImageResizeTool = lazy(() => import("./pages/ImageResizeTool"));
-const ImageMaskTool = lazy(() => import("./pages/ImageMaskTool"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+// ============================================================================
+//  公開ページのルートコンポーネントは「事前import」に統一する（コード分割しない）。
+//
+//  以前はここが全38本 lazy(() => import(...)) だった。だが 2026-08-14 の GSC
+//  ライブテストで、Googleレンダラーがルートチャンク1本（assets/Contact-*.js）の
+//  取得に失敗し、
+//    createRoot がプリレンダ本文を消す → lazy の promise が reject
+//    → 最上位 ErrorBoundary が全画面エラーを描画
+//  という順序で「本文ゼロ＋エラー文言」だけが Google に見えていた
+//  （ソフト404 3件・/contact ほか）。チャンク1本の取りこぼしが本文全消しに
+//  直結する構造そのものが原因。
+//
+//  事前importなら公開ページのJSは entry 1本になり、その取得に失敗した場合は
+//  React が起動しない＝プリレンダ本文がそのまま残る、という安全側の壊れ方になる。
+//  引き換えに entry は約1.16MB→約3.18MB（br 300KB→772KB）に増えるが、
+//  審査クローラーに正しく見えることを優先する意図的なコスト。
+//
+//  例外は /admin/* の2本だけ。noindex でプリレンダ対象外、クローラーが踏まないため
+//  失敗しても検索影響がゼロで、事前importすると全公開ページに約83KB を配ることになる。
+//  こちらは lazyWithRetry（失敗時に1回だけ再試行）を通して保険をかける。
+// ============================================================================
+import Home from "./pages/Home";
+import RecruitIndex from "./pages/RecruitIndex";
+import ServerBoard from "./pages/ServerBoard";
+import NewsList from "./pages/NewsList";
+import NewsDetail from "./pages/NewsDetail";
+import BoardIndex from "./pages/BoardIndex";
+import BoardThreadList from "./pages/BoardThreadList";
+import BoardThread from "./pages/BoardThread";
+import FriendsBoard from "./pages/FriendsBoard";
+import CrewsBoard from "./pages/CrewsBoard";
+import FriendDetail from "./pages/FriendDetail";
+import CrewDetail from "./pages/CrewDetail";
+import SearchPage from "./pages/Search";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import Contact from "./pages/Contact";
+import About from "./pages/About";
+import FivemGtarp from "./pages/FivemGtarp";
+import FivemArticle from "./pages/FivemArticle";
+import GtarpArticle from "./pages/GtarpArticle";
+import FivemVsGtarpArticle from "./pages/FivemVsGtarpArticle";
+import FivemHistoryArticle from "./pages/FivemHistoryArticle";
+import GtarpGlossaryArticle from "./pages/GtarpGlossaryArticle";
+import FivemFaqArticle from "./pages/FivemFaqArticle";
+import FivemCommandsArticle from "./pages/FivemCommandsArticle";
+import GtarpStreamerHistoryArticle from "./pages/GtarpStreamerHistoryArticle";
+import GtarpObserverGuideArticle from "./pages/GtarpObserverGuideArticle";
+import GtarpFirstDayGuideArticle from "./pages/GtarpFirstDayGuideArticle";
+import FivemServerGuide from "./pages/FivemServerGuide";
+import FivemServerSetupArticle from "./pages/FivemServerSetupArticle";
+import FieldNotesList from "./pages/FieldNotesList";
+import FieldNoteDetail from "./pages/FieldNoteDetail";
+import FivemInstallGuide from "./pages/FivemInstallGuide";
+import ToolsIndex from "./pages/ToolsIndex";
+import ImageResizeTool from "./pages/ImageResizeTool";
+import ImageMaskTool from "./pages/ImageMaskTool";
+import NotFound from "./pages/NotFound";
 
-// 遅延読み込み中のフォールバック（テーマ背景のみ。一瞬なので装飾は最小限）。
+// 管理画面のみ遅延読み込み（noindex・クローラー非対象）。
+const AdminReports = lazyWithRetry(() => import("./pages/AdminReports"));
+const AdminNews = lazyWithRetry(() => import("./pages/AdminNews"));
+
+// /admin/* の読み込み中フォールバック（テーマ背景のみ。一瞬なので装飾は最小限）。
 function PageFallback() {
   return <div className="vice-page" style={{ minHeight: "100vh" }} aria-hidden="true" />;
 }
