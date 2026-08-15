@@ -12,7 +12,10 @@
 import { useT } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
 
-/** 固定ページへのリンク3本（区切り付き）。独自レイアウトのフッターから使う。 */
+/** 固定ページへのリンク3本（区切り付き）＋画像の出典表記。独自レイアウトのフッターから使う。
+ *  出典表記はリンク行の下に置く。ホーム・記事ページは SiteFooter ではなく FooterLinks を
+ *  独自レイアウトで使っているため、表記をここに入れて全ページに出す。
+ *  呼び出し側では <p> の中に置かれることがあるので、ブロック要素ではなく span を使う。 */
 export function FooterLinks() {
   const L = useLocalHref();
   const t = useT();
@@ -30,6 +33,7 @@ export function FooterLinks() {
       <a href={L('/privacy')} className={cls}>
         {t('footer.privacy')}
       </a>
+      <span className="block mt-2 text-[11px] leading-relaxed opacity-70">{t('footer.credit')}</span>
     </>
   );
 }
@@ -51,7 +55,8 @@ export default function SiteFooter({
       <div
         className={`${width === 1100 ? 'max-w-[1100px]' : 'max-w-[1320px]'} mx-auto px-4 sm:px-6 lg:px-[30px] pt-8 ${inset ? 'pb-28' : 'pb-8'} text-center text-[11.5px] text-white/40 leading-relaxed`}
       >
-        {t('footer.disclaimer')} <FooterLinks />　© 2026 GTA6 FEED
+        {t('footer.disclaimer')} <FooterLinks />
+        <span className="block mt-1">© 2026 GTA6 FEED</span>
       </div>
     </footer>
   );

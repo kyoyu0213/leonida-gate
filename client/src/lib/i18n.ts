@@ -371,6 +371,9 @@ const JA: Dict = {
   'footer.terms': '利用規約',
   'footer.privacy': 'プライバシーポリシー',
   'footer.about': '運営者情報・編集方針',
+  // 画像の出典表記（Rockstar のプレス素材・公式スクリーンショットを使っている旨）。
+  'footer.credit':
+    '本サイトで使用している GTA6 / GTA Online 関連の画像の一部は Rockstar Games のプレス素材・公式スクリーンショットです。',
   // ニュースのカテゴリ
   'cat.all': 'すべて',
   'cat.release': '公式情報',
@@ -968,6 +971,8 @@ const EN: Dict = {
   'footer.terms': 'Terms of Use',
   'footer.privacy': 'Privacy Policy',
   'footer.about': 'About',
+  'footer.credit':
+    'Some GTA6 / GTA Online images on this site are press materials and official screenshots from Rockstar Games.',
   'cat.all': 'All',
   'cat.release': 'Official',
   'cat.topic': 'Trending',
