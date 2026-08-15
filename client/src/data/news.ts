@@ -1102,11 +1102,15 @@ GTA6の公式プロモ画像に、皮肉の効いた一文が仕込まれてい�
 
 ![カウンター左下のバーコード風ステッカーに「BUY MORE USELESS SHIT」の文字が読める](/images/news/HMeWeMxXkAA58wI.webp)
 
+*画像: Rockstar Games公式サイトのUltimate Edition紹介スクリーンショットより（赤丸は加筆）*
+
 ![ステッカーを拡大したところ。バーコードの下に「BUY MORE USELESS SHIT」とはっきり書かれている](/images/news/ULTIMATE_EDITION_STOCK_305_04up.webp)
 
 重要なのは、これがファンの加工ではなく、Rockstarのサイトにそのまま載っている本物のプロモ画像に含まれている点だ。ファンアカウントのGTA 6 Countdownなどが投稿したことをきっかけに、SNSで一気に広まった。
 
 ![発見を広めたファンアカウント「GTA 6 Countdown」の投稿。34万件超の表示を集めた](/images/news/buy-more-useless-shit-post.webp)
+
+*画像: X（旧Twitter）のファンアカウント「GTA 6 Countdown」（@GTAVI_Countdown）の投稿より*
 
 ---
 
@@ -1169,11 +1173,15 @@ The image in question is a screenshot published on Rockstar's official site to s
 
 ![On the sticker at the lower-left of the counter, the words “BUY MORE USELESS SHIT” are legible](/images/news/HMeWeMxXkAA58wI.webp)
 
+*Image: from the official Ultimate Edition screenshot on the Rockstar Games site (red circle added)*
+
 ![A close-up of the sticker: below the barcode, “BUY MORE USELESS SHIT” is clearly written](/images/news/ULTIMATE_EDITION_STOCK_305_04up.webp)
 
 What matters is that this isn't a fan edit — it's in the genuine promo image as posted on Rockstar's own site. Posts from fan accounts such as GTA 6 Countdown set it off, and it swept across social media.
 
 ![The post from fan account “GTA 6 Countdown” that spread the discovery, drawing over 340,000 views](/images/news/buy-more-useless-shit-post.webp)
+
+*Image: from a post by the fan account “GTA 6 Countdown” (@GTAVI_Countdown) on X (formerly Twitter)*
 
 ---
 
@@ -1827,6 +1835,8 @@ GTA Onlineで、独立記念日(Independence Day)を記念したイベントが7
 
 ![独立記念日仕様のCommunity Series。ラリーレースやクイックドロー対決などコミュニティ製モードでGTA$・RPが2倍になる](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.webp)
 
+*画像: Rockstar Games の公式プロモーション画像より*
+
 ---
 
 ## 「過去最大」のセール
@@ -1907,6 +1917,8 @@ There are also plenty of money-making opportunities. It's a good week to stockpi
 A special Independence Day–themed Community Series is also running. It features community-made missions and modes — rally races, Western-style quick-draw duels, musket deathmatches, and more — and playing these earns double GTA$ and RP. This too runs through July 13. Since it overlaps with the free bunker and the sale, it's also a reason to enjoy some out-of-the-ordinary modes while you're earning cash.
 
 ![The Independence Day Community Series. Community-made modes like rally races and quick-draw duels earn double GTA$ and RP](/images/news/IndependenceDay/HMQoKVnXcAAOE4P.webp)
+
+*Image: from official Rockstar Games promotional artwork*
 
 ---
 
@@ -2699,6 +2711,8 @@ As a caveat, GTA6 is unreleased at the time of writing, and the cast will not be
 
 ![草木のセルフシャドウやグローバルイルミネーションの欠如を指摘するReddit上の議論](/images/news/graphicdowngrade/reddit.webp)
 
+*画像: Redditより*
+
 挙げられるのは、照明やグローバルイルミネーションの条件の違い、ブルームや被写界深度、色調補正といったポストプロセスの差、遠景や背景の描き込み(LOD)の設定の違い、そして静止画では柔らかく見えやすいテンポラルアップスケーリングの影響などだ。コンソールで安定したフレームレートを保つために描画の一部を最適化した可能性も指摘されるが、これも確認はできていない。要するに、見え方を左右する変数が多すぎて、スクリーンショット一枚から「劣化」と断定するのは難しい。
 
 ---
@@ -2801,6 +2815,8 @@ The community's voices are split too.
 As to why the impression looks changed, several possibilities are discussed as technical background. However, we want to emphasize that all of these are speculation from outside, and there is no material confirming that any specific technology has been cut.
 
 ![A discussion on Reddit pointing to the lack of self-shadowing on foliage and degraded global illumination](/images/news/graphicdowngrade/reddit.webp)
+
+*Image: via Reddit*
 
 What gets cited includes differences in lighting and global illumination conditions; differences in post-processing such as bloom, depth of field, and color grading; differences in the settings for distant and background detail (LOD); and the influence of temporal upscaling, which tends to look soft in still images. The possibility that part of the rendering was optimized to maintain a stable frame rate on consoles is also raised, but this too cannot be confirmed. In short, there are too many variables that sway how things look to declare a “downgrade” from a single screenshot.
 
