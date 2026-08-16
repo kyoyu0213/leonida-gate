@@ -190,6 +190,263 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 41,
+    title:
+      "GTA RPがRockstar公式ランチャーに入る日 NoPixel Vクローズドβ9月8日、FiveMはどこへ行くのか",
+    displayTitle:
+      "GTA RPがRockstar公式ランチャーに入る日\nNoPixel Vクローズドβ9月8日、FiveMはどこへ行くのか",
+    description:
+      "GTA RPを遊ぶには、まずFiveMを自分で入れる。その手順の外側に、9月8日、Rockstar Games Launcherという入口が現れる。GTA RP最大手NoPixelの新環境「NoPixel V」が公式ランチャー上でクローズドβを開始すると報じられた。ただし招待制で、ホワイトリストはリセットされる。何が変わるのか、そして何がまだ分かっていないのかを見ていく。",
+    icon: "🕹️",
+    image: "/images/news/nopixel-v-rockstar-launcher/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-16",
+    publishedAt: "2026-08-16 15:30",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "https://nopixel.net/",
+    relatedArticles: [18, 30, 40],
+    aiSummary: [
+      "GTA RP最大手NoPixelの新環境「NoPixel V」が、2026年9月8日にRockstar Games Launcher上でクローズドβを開始すると報じられた。9月1日にはローンチトレーラーが控える。これまで必須だった「FiveMを別途入れる」という一段の外側に、公式ランチャーという入口が現れることになる。",
+      "ただし誰でも入れるわけではない。始まるのは招待制のクローズドβで、第1陣は約450人規模。ホワイトリストはリセットされ、4.0のホワイトリストはVの参加権にはならない。一方でNoPixel 4.0とPublicは継続するため、招待されなかった人が行き場を失うわけではない。",
+      "技術面では、Koilが説明したという「フルリビルド」の中身が読めない。RockstarINTELはFiveMベースとし、GTA BOOMは新しい自社フレームワークと報じており、基盤の説明が食い違っている。日程・人数・フルリビルドはいずれもKoilの告知を各メディアが報じた内容で、Rockstar Gamesの公式発表ではない。",
+    ],
+    fullContent: `# GTA RPがRockstar公式ランチャーに入る日 NoPixel Vクローズドβ9月8日、FiveMはどこへ行くのか
+
+GTA RPを遊ぶには、まずFiveMを自分で入れる。ここ数年、それは当たり前の手順だった。
+
+その手順の外側に、9月8日、Rockstar Games Launcherという入口が現れる。GTA RP最大手NoPixelの新環境「NoPixel V」が、公式ランチャー上でクローズドβを開始すると報じられた。
+
+明らかになっているのは次の内容である。
+
+- **9月1日**：ローンチトレーラー公開。英国夏時間17時（日本時間9月2日午前1時）、NoPixel公式サイトにて。
+- **9月8日**：Rockstar Games Launcher上でクローズドβ開始。
+- 参加は招待制。第1陣はクリエイターと既存プレイヤーを中心に約450人規模とされる。
+- 招待はフェーズを分けて拡大。第1フェーズの発送はすでにほぼ完了しているという。
+- ホワイトリストはリセット。NoPixel 4.0の権利はVに自動では引き継がれない。
+- NoPixel 4.0とPublicは継続。V開始後も稼働・サポートされる。
+- NoPixel創設者Koilは、ここに至るまでにNoPixelの「**フルリビルド**」を行ったと説明している。
+
+ただし、誰でも入れるわけではない。本記事は2026年8月16日時点の情報にもとづく。
+
+---
+
+## 「FiveMを入れる」という一段が消える
+
+これまでNoPixelで遊ぼうと思ったら、順番はこうだった。GTA Vを買う。FiveMを別途ダウンロードして入れる。FiveMを起動する。サーバー一覧からNoPixelに繋ぐ。
+
+慣れた人には何でもない手順だが、この「別途入れる」の一段が、実際にはかなり効いていた。非公式のMODプラットフォームを自分でインストールする時点で、遊ぶ人は「PCゲームのMODに慣れている層」にほぼ絞られる。配信で見て面白そうだと思った人が、その日のうちに始められる遊びではなかった。
+
+NoPixel VはRockstar Games Launcherで配信される。GTA Vを起動するのと同じ場所に、RPサーバーが並ぶということだ。GTA RPが「外部のMODでやる遊び」から「公式のランチャーから入れる遊び」へ動き始める。今回のニュースで一番大きいのは、たぶんここである。
+
+---
+
+## で、自分は入れるのか
+
+結論から言うと、9月8日の時点ではほとんどの人は入れない。
+
+始まるのはクローズドβで、入口は招待だけだ。NoPixel公式サイトのCreator Rosterにも「アクセスは制限されており、招待制のみ（Access is limited, available by invitation only.）」とはっきり書かれている。公式ランチャーに並ぶことと、誰でもダウンロードできることは別の話だ。
+
+報道によれば、最初に招待されるのは約450人規模のクリエイターと既存プレイヤー。この数字はサーバーの最大同時接続数ではなく、あくまで第1陣の人数として伝えられている。招待はフェーズを分けて広げていく方針で、第1フェーズの発送はすでにほぼ終わっているという。Koilは、まだ招待が届いていない人も対象外になったわけではない、という趣旨の説明をしている。
+
+そしてここが既存プレイヤーには重い話になる。NoPixel Vではホワイトリストがリセットされる。Koilはこれを「本当の意味でのリセットと仕切り直し」と表現したと報じられている。つまり、NoPixel 4.0のホワイトリストを持っていることが、そのままVの参加権にはならない。何年も遊んできた人も、Vに入るには改めて招待される必要がある。
+
+---
+
+## NoPixel 4.0は終わらない
+
+では、招待されなかった人は行き場を失うのか。ここは安心していい。
+
+NoPixel 4.0とNoPixel Publicは、V開始後も稼働とサポートを続けると報じられている。9月8日以降しばらくは、NoPixel V（クローズドβ）と4.0とPublicが並走する形になる。βの人数を段階的に増やしていくうえでも、既存サーバーを残すのは理にかなっている。
+
+ひとつ宙に浮いているのが、4.0で運用されていた有料の優先枠だ。これがVに引き継がれるのかどうかについて、GamesRadar+も「Koilは触れていない」として不明としている。
+
+---
+
+## Koilが言った「フルリビルド」が読めない
+
+今回、技術的にいちばん引っかかるのがこの言葉だ。
+
+Koilは、ここに至るまでにNoPixelの「フルリビルド（full rebuild）」を行った、と説明したと報じられている。4.0を作り替えた、ではなく、作り直した、である。
+
+問題は、その中身が外から読めないことだ。報道が割れている。RockstarINTELはNoPixel Vを「FiveMベース」と書いている。一方でGTA BOOMは、Vが動くのはコミュニティのFiveMではなく新しい自社フレームワークだと報じられている、と書いている。同じ対象について、基盤の説明が真っ向から食い違っている状態だ。
+
+FiveMの上でNoPixel側を全部作り直したのか。中身はFiveM系のままで、ユーザーからそれが見えなくなっただけなのか。それともRockstarとの協業で、まったく別の層が用意されたのか。どれなのかは、まだ誰も外からは言えない。
+
+はっきりさせる材料は9月1日に出てくる。トレーラーで「FiveMを別途入れる必要があるか」と「Cfx.re／FiveMの名前が画面に出るか」の2点が見えれば、フルリビルドが何を指していたのかはかなり絞れる。
+
+---
+
+## なぜRockstarはここまでやるのか
+
+念のため確認しておくと、NoPixel Vは「Rockstarが運営するRPサーバー」ではない。公式サイトの表現は「Rockstar Gamesとの協業で生まれたGTA RPの次の進化」であり、運営はあくまでNoPixel側だ。それでも、Rockstarがここまで踏み込んでいるのは事実である。
+
+この動きは今年始まったものではない。
+
+- **2023年8月**：RockstarがFiveM／RedMを開発するCfx.reチームを買収
+- **2025年9月**：Rockstarとの協業によるNoPixel Vを発表。展開先として「Rockstar Games Launcherおよび他のPCプラットフォーム」を明記
+- **2026年2月**：GTA V向けの非公式マルチプレイヤーalt:Vが、Take-Twoの要請を受けて終了を発表
+- **2026年6月**：Rockstar Games Launcherの内部データにNoPixel V関連のアセットが見つかったとの指摘
+- **2026年9月1日**：ローンチトレーラー公開予定
+- **2026年9月8日**：招待制クローズドβ開始予定
+
+非公式の実装は整理され、買収して自社に取り込んだFiveMと、その上に育った最大のコミュニティは公式ランチャー側へ引き寄せられていく。3年かけて進んできた線の、いまのところの先端が9月8日ということになる。
+
+なお、2025年の発表にあった「other PC platforms（他のPCプラットフォーム）」が何を指すのかは、いまだに明かされていない。Steam版やEpic版のGTA Vなのか、FiveMも含む言い方なのか。ここも9月1日の見どころのひとつだ。
+
+---
+
+## GTA6の話をしないわけにはいかない
+
+ここからは編集部の見立てである。
+
+まず前提として、RockstarもNoPixelも「NoPixel VはGTA6のRPの実験だ」とは一言も言っていない。NoPixel V自体はGTA VのRPだ。だから「NoPixel V＝GTA6のRP」ではない。
+
+そのうえで、GTA6の発売（11月19日）の2か月前にこれが始まる、という並びは無視しづらい。
+
+これまでのGTA Onlineは、Rockstarがコンテンツを作り、プレイヤーがそれを遊ぶ構造だった。対してFiveM圏では、コミュニティがサーバーを立て、開発者がスクリプトを書き、プレイヤーがルールと世界観を育て、配信者がそこで物語を生む。コンテンツを供給しているのが運営ではなく参加者側、という構造がすでに何年も回っている。NoPixelはその象徴だ。
+
+Cfx.reの買収、NoPixelとの協業、公式ランチャーへの接続。この3つを並べると、Rockstarがそのエコシステムを自社のプラットフォームの内側へ持ってこようとしている、という読み方は十分に成り立つ。もし「公式ランチャーを開く→RPコンテンツがある→コミュニティのサーバーに入る」という導線が本当に機能するなら、届く相手はFiveMを知っている層だけではなくなる。
+
+その先にGTA6があるのかどうかは、まだ何も発表されていない。
+
+---
+
+## 9月1日、最初の答え合わせ
+
+現時点で分かっていないことは多い。FiveMクライアントが要るのかどうか。一般ユーザー向けの応募がいつ始まるのか。オープンβと正式サービスの時期。同時接続の上限。課金や優先キューの扱い。Vのゲームシステムそのもの。
+
+その最初の答え合わせが、9月1日午後5時（英国夏時間／日本時間9月2日午前1時）のローンチトレーラーになる。ランチャー上でNoPixel Vがどう見えるのか、FiveMの名前が出るのか出ないのか、Rockstarがこれを何と呼ぶのか。派手な街並みや車より、そういう細部のほうが今回は重要かもしれない。
+
+そしてその1週間後、9月8日にクローズドβが始まる。
+
+---
+
+注記：本記事は2026年8月16日時点の情報にもとづく。NoPixel公式サイトの記載を除き、9月1日・9月8日の日程、招待人数、ホワイトリストのリセット、「フルリビルド」などはNoPixel創設者Koilの告知を各メディア（RockstarINTEL・GamesRadar+・PCGamesN・GTA BOOM）が報じた内容であり、Rockstar Gamesの公式発表ではない。NoPixel Vの技術基盤については報道が一致しておらず、本記事では断定していない。日本時間は英国夏時間（UTC+1）を基準に換算した目安である。新しい公式情報が出次第、内容を更新する。`,
+    titleEn:
+      "The Day GTA RP Arrives on Rockstar's Official Launcher — NoPixel V Closed Beta on September 8, and Where FiveM Goes From Here",
+    displayTitleEn:
+      "The Day GTA RP Arrives on Rockstar's Official Launcher\nNoPixel V Closed Beta on September 8, and Where FiveM Goes From Here",
+    descriptionEn:
+      "To play GTA RP, you first install FiveM yourself. On September 8, a doorway appears outside that procedure: the Rockstar Games Launcher. NoPixel V, the new environment from the biggest name in GTA RP, is reported to begin a closed beta on the official launcher. Access is invitation-only, though, and the whitelist is being reset. We look at what changes — and at what is still unknown.",
+    aiSummaryEn: [
+      "NoPixel V, the new environment from the biggest name in GTA RP, is reported to begin a closed beta on the Rockstar Games Launcher on September 8, 2026, with a launch trailer due on September 1. A doorway is appearing outside the step that has until now been mandatory: installing FiveM separately.",
+      "Not that anyone can walk in. What begins is an invitation-only closed beta, with roughly 450 people in the first wave. The whitelist is being reset, so a 4.0 whitelist does not grant access to V. NoPixel 4.0 and Public continue running, however, so those left uninvited are not left without anywhere to play.",
+      "On the technical side, what Koil's reported \"full rebuild\" actually means cannot be read from outside. RockstarINTEL calls it FiveM-based while GTA BOOM reports a new in-house framework — two accounts of the foundation that contradict each other. The dates, the headcount, and the full rebuild all come from Koil's announcement as reported by various outlets, not from an official Rockstar Games announcement.",
+    ],
+    fullContentEn: `# The Day GTA RP Arrives on Rockstar's Official Launcher — NoPixel V Closed Beta on September 8, and Where FiveM Goes From Here
+
+To play GTA RP, you first install FiveM yourself. For the past several years, that has simply been the procedure.
+
+On September 8, a doorway appears outside that procedure: the Rockstar Games Launcher. NoPixel V, the new environment from NoPixel — the biggest name in GTA RP — is reported to begin a closed beta on the official launcher.
+
+Here is what has been made clear so far.
+
+- **September 1**: Launch trailer goes up. 5:00 p.m. British Summer Time (September 2, 1:00 a.m. Japan time), on the official NoPixel site.
+- **September 8**: Closed beta begins on the Rockstar Games Launcher.
+- Access is invitation-only. The first wave is put at roughly 450 people, centered on creators and existing players.
+- Invitations widen in phases. The first phase's sends are said to be essentially complete already.
+- The whitelist is reset. NoPixel 4.0 privileges do not carry over to V automatically.
+- NoPixel 4.0 and Public continue, running and supported after V starts.
+- NoPixel founder Koil has explained that getting here involved a "**full rebuild**" of NoPixel.
+
+Not that anyone can walk in. This article is based on information as of August 16, 2026.
+
+---
+
+## The Step Where You "Install FiveM" Disappears
+
+Until now, playing on NoPixel went like this. Buy GTA V. Download and install FiveM separately. Launch FiveM. Connect to NoPixel from the server list.
+
+For anyone used to it, that is nothing. But in practice, the "install it separately" step mattered a great deal. The moment you have to install an unofficial mod platform yourself, the audience narrows to roughly "people comfortable with PC game mods." Someone who saw a stream and thought it looked fun could not simply start that same day.
+
+NoPixel V will be distributed through the Rockstar Games Launcher. That means RP servers sitting in the same place you launch GTA V from. GTA RP starts moving from "something you do on an external mod" to "something you enter from the official launcher." That, more than anything, is probably the big part of this news.
+
+---
+
+## So, Can You Get In?
+
+To put it plainly: as of September 8, most people cannot.
+
+What begins is a closed beta, and the only way in is an invitation. The Creator Roster on NoPixel's official site spells it out: "Access is limited, available by invitation only." Sitting on the official launcher and being downloadable by anyone are two different things.
+
+According to reporting, the first invitations go to roughly 450 creators and existing players. That figure is not the server's maximum concurrent player count — it is described as the size of the first wave. Invitations are meant to widen in phases, and the first phase's sends are said to be essentially complete. Koil has explained, in substance, that people who have not yet received an invite have not been ruled out.
+
+And here is the part that lands hard on existing players. NoPixel V resets the whitelist. Koil is reported to have described it as a true reset and a fresh start. In other words, holding a NoPixel 4.0 whitelist does not by itself grant access to V. Even someone who has played for years needs a fresh invitation to get in.
+
+---
+
+## NoPixel 4.0 Isn't Going Away
+
+So does that leave the uninvited with nowhere to go? On that count, you can relax.
+
+NoPixel 4.0 and NoPixel Public are reported to keep running and supported after V starts. For a while after September 8, NoPixel V (closed beta), 4.0, and Public will run side by side. Keeping the existing servers also makes sense if the beta's headcount is going to be raised in stages.
+
+One thing left hanging is the paid priority queue that ran on 4.0. On whether it carries over to V, GamesRadar+ treats the matter as unknown, noting that Koil did not address it.
+
+---
+
+## Koil Said "Full Rebuild," and No One Can Read It
+
+Technically, this is the phrase that snags the most.
+
+Koil is reported to have explained that getting here involved a "full rebuild" of NoPixel. Not that 4.0 was reworked — that it was rebuilt.
+
+The trouble is that what that means cannot be read from the outside. The reporting is split. RockstarINTEL describes NoPixel V as "FiveM-based." GTA BOOM, meanwhile, writes that V is reported to run on a new in-house framework rather than the community's FiveM. Two accounts of the same thing's foundation, pointing in opposite directions.
+
+Was everything on the NoPixel side rebuilt on top of FiveM? Are the internals still FiveM-family, with that fact simply made invisible to users? Or has an entirely different layer been prepared through the collaboration with Rockstar? Which of these it is, nobody outside can yet say.
+
+The material that settles it arrives on September 1. If the trailer answers two things — whether FiveM has to be installed separately, and whether the Cfx.re/FiveM name appears on screen — what "full rebuild" referred to narrows considerably.
+
+---
+
+## Why Is Rockstar Going This Far?
+
+For the record, NoPixel V is not "an RP server operated by Rockstar." The official site's wording is "the next evolution of GTA RP created in collaboration with Rockstar Games," and operation remains on NoPixel's side. Even so, it is a fact that Rockstar has stepped in this far.
+
+This movement did not start this year.
+
+- **August 2023**: Rockstar acquires the Cfx.re team, developers of FiveM and RedM
+- **September 2025**: NoPixel V, produced in collaboration with Rockstar, is announced, explicitly naming "the Rockstar Games Launcher and other PC platforms" as its destinations
+- **February 2026**: alt:V, an unofficial multiplayer client for GTA V, announces its shutdown at Take-Two's request
+- **June 2026**: Assets related to NoPixel V are reported found in the Rockstar Games Launcher's internal data
+- **September 1, 2026**: Launch trailer scheduled
+- **September 8, 2026**: Invitation-only closed beta scheduled to begin
+
+The unofficial implementations get cleared away, while FiveM — acquired and brought in-house — and the largest community grown on top of it are drawn toward the official launcher. September 8 is, for now, the leading edge of a line that has been advancing for three years.
+
+Incidentally, what "other PC platforms" from the 2025 announcement refers to still has not been disclosed. The Steam or Epic versions of GTA V? A phrasing that includes FiveM? That, too, is one of the things to watch for on September 1.
+
+---
+
+## We Can't Avoid Talking About GTA6
+
+From here on, this is the editorial team's reading.
+
+To start with, neither Rockstar nor NoPixel has said a word about NoPixel V being an experiment for GTA6 RP. NoPixel V is itself GTA V roleplay. So NoPixel V does not equal GTA6 RP.
+
+With that said, the sequencing — this starting two months before GTA6's release on November 19 — is hard to ignore.
+
+GTA Online has been built around Rockstar making content and players playing it. In the FiveM sphere, by contrast, communities stand up servers, developers write scripts, players grow the rules and the setting, and streamers generate stories inside it. A structure where the content is supplied by the participants rather than the operator has been turning for years already. NoPixel is its emblem.
+
+The Cfx.re acquisition, the NoPixel collaboration, the connection to the official launcher. Line those three up and the reading holds up well: that Rockstar is trying to bring that ecosystem inside its own platform. If a route of "open the official launcher → RP content is there → join a community server" genuinely works, the people it reaches are no longer only those who already know FiveM.
+
+Whether GTA6 lies beyond that, nothing has been announced.
+
+---
+
+## September 1: The First Answers
+
+Plenty remains unknown. Whether a FiveM client is required. When applications for general users begin. The timing of an open beta and full service. The concurrency cap. How payments and priority queues are handled. V's game systems themselves.
+
+The first answers come with the launch trailer on September 1 at 5:00 p.m. British Summer Time (September 2, 1:00 a.m. Japan time). How NoPixel V appears within the launcher, whether the FiveM name shows up or not, what Rockstar calls this. This time, those details may matter more than the flashy streets and cars.
+
+And a week later, on September 8, the closed beta begins.
+
+---
+
+Note: This article is based on information as of August 16, 2026. Apart from what is written on the official NoPixel site, the September 1 and September 8 dates, the invite numbers, the whitelist reset, and the "full rebuild" all come from NoPixel founder Koil's announcement as reported by various outlets (RockstarINTEL, GamesRadar+, PCGamesN, GTA BOOM), and are not official Rockstar Games announcements. Reporting does not agree on NoPixel V's technical foundation, and this article does not assert a conclusion. Japan times are approximate, converted from British Summer Time (UTC+1). We will update this article as new official information emerges.`,
+  },
+  {
     id: 40,
     title:
       "GTA6新映像はなぜNetflix先行公開なのか？『サイバーパンク』成功例から見るゲームIPの新時代",
