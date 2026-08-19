@@ -246,6 +246,10 @@ export const newsArticles: NewsArticle[] = [
 
 流出を主張しているのは「Cyberleek」と呼ばれる人物、あるいはグループだ。海外メディアの報道によれば、Cyberleek側は今回の行動を単なるリークではなく、ゲーム業界に対する抗議として位置付けている。
 
+![「GTA 6 LEAK」「CYBERLEEK FIGHTING FOR GAMER RIGHTS」の文字と、「NO DIGITAL PRE-ORDERS. BRING BACK PHYSICAL DISCS」という要求を並べたイメージ](/images/news/gta6-cyberleek-leak/cyberleek-demands.webp)
+
+*画像: Cyberleekの主張を分かりやすく示すためのAI生成イメージ画像。実際の投稿や流出画像ではない。*
+
 彼らが問題視しているのは、デジタル予約販売や物理メディアの縮小、ゲームの所有権、ディスクに収録されているコンテンツとDLCの扱いなどだ。いずれも近年のゲーム業界でたびたび議論になってきたテーマである。
 
 Cyberleek側の主張を大まかに整理すれば、「ゲーム会社が消費者より企業側に有利なデジタル販売へ進みすぎている」というものになる。そして、その問題を世界中へ訴えるための標的として選ばれたのがGTA6だった。
@@ -271,6 +275,10 @@ Rockstar Gamesは6月25日にGTA6の予約受付を開始した。Standard Editi
 ここだけ読めば、従来のゲームソフトと同じように思える。しかしRockstarの公式情報では、Physical Versionにはダウンロードコードが封入され、ゲームディスクは箱に含まれない形式になっている。
 
 つまり店へ行ってGTA6を買うことはできる。箱を棚に置くこともできるし、パッケージを手元に残すこともできる。しかし、その中にGTA6のゲームディスクはない。コードを入力し、ゲーム本体をインターネットからダウンロードする、いわゆる「Code in Box」だ。
+
+![開いたゲームパッケージの中にディスクがなく、「DOWNLOAD CODE / NO DISC INCLUDED」と書かれたカードだけが入っているイメージ](/images/news/gta6-cyberleek-leak/no-disc-package.webp)
+
+*画像: Code in Box方式を説明するためのAI生成イメージ画像。実際の製品写真ではない。*
 
 パッケージ版は発売日の11月19日より前の11月12日から出荷・店頭受け取りが始まる予定で、コードを受け取ったユーザーはゲームを事前にダウンロードできる。
 
@@ -324,9 +332,9 @@ GTA6は普通の大型ゲームではない。Rockstarが何かを公開する�
 
 報道やコミュニティの分析では、バスケットボールらしきゲームプレイ、6段階に見える手配度、Focusと表示されたステータス、スタミナ、車両燃料、車両コンディション、アイテムや武器の保管、Karmaあるいは評判に関連する可能性のある要素などが指摘されている。
 
-![夜の街でパトカーに追われる車と、画面隅に手配度の星・所持金・FOCUSゲージ・燃料計が並ぶHUDのイメージ](/images/news/gta6-cyberleek-leak/gameplay-hud.webp)
+![屋外のバスケットボールコートでプレイするキャラクターと、画面隅に手配度の星・所持金・LEVEL表示・FOCUS・スタミナ・体力のゲージが並ぶHUDのイメージ](/images/news/gta6-cyberleek-leak/basketball-gameplay.webp)
 
-*画像: 報道で指摘されているHUD要素を分かりやすく示すためのAI生成イメージ画像。実際の流出画像ではない。*
+*画像: 報道で指摘されているバスケットボールやHUD要素を分かりやすく示すためのAI生成イメージ画像。実際の流出画像ではない。*
 
 さらにLeonida全体を描いたとされるマップも拡散し、複数のCountyが記載されているとの分析が出ている。その中には、これまで広く知られていなかった地名も含まれているという。
 
@@ -337,6 +345,10 @@ GTA6は普通の大型ゲームではない。Rockstarが何かを公開する�
 ただし、ここには大きな注意点がある。**リーク映像に実際に映っているものと、そこからファンが推測したゲーム仕様は同じではない。** 開発途中のビルドだった場合、その機能が11月19日の製品版に残っている保証もない。
 
 「燃料システムらしき表示がある」と「GTA6では給油が必須になる」では意味がまったく違う。今回のリークを見る際には、最後までこの線を引いておく必要がある。
+
+![夜の街でパトカーに追われる車と、画面隅に手配度の星・所持金・FOCUSゲージ・燃料計が並ぶHUDのイメージ](/images/news/gta6-cyberleek-leak/gameplay-hud.webp)
+
+*画像: 報道で指摘されているHUD要素を分かりやすく示すためのAI生成イメージ画像。実際の流出画像ではない。*
 
 ---
 
@@ -444,6 +456,10 @@ And what made the incident stranger still is that the leaking side did not go qu
 
 The party claiming the leak is a person, or a group, calling itself "Cyberleek." According to reporting from outlets outside Japan, Cyberleek frames the act not as a mere leak but as a protest against the games industry.
 
+![A hooded figure at a bank of monitors beside the words "GTA 6 LEAK," "CYBERLEEK FIGHTING FOR GAMER RIGHTS," and the demand "NO DIGITAL PRE-ORDERS. BRING BACK PHYSICAL DISCS"](/images/news/gta6-cyberleek-leak/cyberleek-demands.webp)
+
+*Image: an AI-generated illustration made to convey Cyberleek's claims. Not an actual post or a leaked image.*
+
 What it objects to includes digital pre-orders, the shrinking of physical media, game ownership, and how on-disc content and DLC are handled. All of these have been debated repeatedly in the industry in recent years.
 
 Broadly summarized, Cyberleek's claim is that **"game companies have pushed too far into digital sales that favor the corporation over the consumer."** And the target chosen to put that problem in front of the whole world was GTA6.
@@ -469,6 +485,10 @@ Rockstar Games opened GTA6 pre-orders on June 25. A Standard Edition and an Ulti
 Read only that far and it sounds like a conventional boxed game. But per Rockstar's official information, the Physical Version contains a download code, in a format where the game disc is not included in the box.
 
 So you can go to a store and buy GTA6. You can put the box on a shelf, and you can keep the package on hand. But there is no GTA6 game disc inside it. You enter the code and download the game itself over the internet — the so-called "code in box."
+
+![An opened game case with no disc inside — only a card reading "DOWNLOAD CODE / NO DISC INCLUDED"](/images/news/gta6-cyberleek-leak/no-disc-package.webp)
+
+*Image: an AI-generated illustration explaining the code-in-box format. Not a photo of the actual product.*
 
 The package edition is scheduled to ship and become collectible in stores from November 12, ahead of the November 19 launch day, and users who receive the code can download the game in advance.
 
@@ -522,9 +542,9 @@ This is what most people are most curious about. From the material said to be ci
 
 Reporting and community analysis have pointed to what looks like basketball gameplay, a wanted level that appears to have six stages, a status labeled Focus, stamina, vehicle fuel, vehicle condition, storage for items and weapons, and elements possibly related to Karma or reputation.
 
-![A car pursued by a police car on a night street, with wanted stars, cash, a FOCUS gauge and a fuel meter arranged around the edges of the screen](/images/news/gta6-cyberleek-leak/gameplay-hud.webp)
+![A character playing on an outdoor basketball court, with wanted stars, cash, a LEVEL readout, FOCUS, stamina and health gauges around the edges of the screen](/images/news/gta6-cyberleek-leak/basketball-gameplay.webp)
 
-*Image: an AI-generated illustration made to show the HUD elements described in reporting. Not a leaked image.*
+*Image: an AI-generated illustration made to show the basketball gameplay and HUD elements described in reporting. Not a leaked image.*
 
 An image said to be a map of all of Leonida also spread, with analysis holding that several Counties are listed on it. Among them, reportedly, are place names not previously widely known.
 
@@ -535,6 +555,10 @@ An image said to be a map of all of Leonida also spread, with analysis holding t
 There is a large caveat here, though. **What actually appears in leaked footage and the game specifications fans infer from it are not the same thing.** If the material came from an in-development build, there is no guarantee those features survive into the November 19 retail version.
 
 "There appears to be something like a fuel readout" and "GTA6 will require refueling" mean entirely different things. That line needs to be held all the way through when looking at this leak.
+
+![A car pursued by a police car on a night street, with wanted stars, cash, a FOCUS gauge and a fuel meter arranged around the edges of the screen](/images/news/gta6-cyberleek-leak/gameplay-hud.webp)
+
+*Image: an AI-generated illustration made to show the HUD elements described in reporting. Not a leaked image.*
 
 ---
 
