@@ -2850,6 +2850,223 @@ Sources and references
 This article was independently reported and recorded by GTA6 FEED and has no relationship with the ALTF4 RP Japan operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
 };
 
+// ---------------------------------------------------------------------------
+//  サーバー訪問記 ユメグラ
+// ---------------------------------------------------------------------------
+const yumegura: FieldNote = {
+  slug: 'yumegura',
+  category: 'visit-note',
+  title: 'ユメグラとは？初期資金1500万円・自由開業を掲げる日本語ライトRPサーバーを訪問',
+  titleEn:
+    'What Is Yumegura? A Visit to a Japanese Light-RP Server With 15 Million in Starting Funds and Open-to-All Business Ownership',
+  date: '2026-08-22',
+  excerpt:
+    '「夢を叶える街」を掲げる日本語FiveMロールプレイサーバー「ユメグラ」をGTA6 FEEDが取材。同接125人、市役所で店舗を買って申請不要で開業できる仕組み、初期資金1500万円と10段階のチュートリアル、実際に試した狩りの売却単価まで、観測できた事実を記録。',
+  excerptEn:
+    'GTA6 FEED visits Yumegura, a Japanese FiveM roleplay server billed as “the city where dreams come true” — 125 concurrent players, shops bought at city hall so anyone can open a business without applying, 15 million in starting funds with a ten-step tutorial, and the hunting payouts we saw first-hand, recorded as observed.',
+  image: '/images/taikenki/serverhoumon/yumegura/loading.webp',
+  icon: '📍',
+  seoTitle: 'ユメグラとは？初期資金1500万円・自由開業の日本語ライトRPサーバーを訪問｜GTA6 FEED',
+  seoDesc:
+    '日本語FiveMロールプレイサーバー「ユメグラ」をGTA6 FEEDが取材。同接125人（接続枠128人）、6時間おきのサーバー再起動、市役所で店舗を購入して申請不要で開業できる仕組み、市役所ジョブ8種、現金1000万＋銀行500万の初期資金と10段階チュートリアル、デイリータスクとガチャチケット、結婚システム、実際に試した狩りの売却単価（鹿の角240,000など）まで。',
+  seoTitleEn:
+    'What Is Yumegura? A Japanese Light-RP FiveM Server With Free Business Ownership | GTA6 FEED',
+  seoDescEn:
+    "GTA6 FEED's report on Yumegura, a Japanese FiveM roleplay server — 125 concurrent players against a 128-slot cap, restarts every six hours, shops bought at city hall so you can open a business with no application, eight city hall jobs, 15 million in starting funds with a ten-step tutorial, daily tasks that pay out gacha tickets, a marriage system, and the hunting sale prices we recorded first-hand (deer antler at 240,000 a unit).",
+  body: `![ユメグラのロード画面。ピンクの旭日模様の壁を背景にバイクにまたがるピンク髪のキャラクターと毛皮のコートを着たキャラクターが並び、中央に「ユメグラ」「夢を叶える街」「自由に開業、ギャング作成、アイテム作成などができるロールプレイサーバーです。」の文字、右側に「開業ができます 市役所で店舗を購入することで、自由に開業ができます。飲食店、メカニック、キャバクラ、不動産などさまざまな店舗を開業できます。」のパネル、右下に「Loading game (59%)」の表示](/images/taikenki/serverhoumon/yumegura/loading.webp)
+
+ユメグラは、日本語のFiveMロールプレイサーバーである。「夢を叶える街」を掲げ、ライトRPを推奨する。自由な開業、ギャング作成、アイテム作成などを特徴とする。GTA6 FEEDが取材し、観測できた事実を記録する。以下、確認した確定情報と、確認できていない未確認項目を分けて記す。
+
+## 基本情報
+
+- コンセプト：自由に開業・ギャング作成・アイテム作成ができるライトRP推奨のロールプレイサーバー。犯罪コンテンツに加え、釣りでのんびり資金を貯めるスローライフや、飲食店経営・警察官・救急隊といった多彩な職業、貯めた資金での車・住宅の購入と模様替えなどを掲げている
+- 接続方法：公式Discordに参加し、ルールを確認したうえで指定チャンネルでリアクションを付けることで入街できる。リアクションを付けた時点でルールに同意したものとして扱われる
+- 同時接続数：125人（2026年8月22日 0時時点・観測値）。接続枠は128人
+- サーバー再起動：6時間おきの1日4回で、3時／9時／15時／21時
+- 運営はRPに直接干渉しない方針を掲げている
+
+## 街の雰囲気
+
+街には多数のMLOが導入されており、建物や衣装の作り込みに幅がある。ストグラでも見られる建物を導入しているほか、それ以外の建物も多く配置されている。マップのランドマーク一覧には60件が登録されている。
+
+![ユメグラのマップ画面。ロスサントス市街地がピンクと灰色の区画に塗り分けられ、店舗やジョブのアイコンが並ぶ。右側にBKM Herbal Lounge、鉱業、皿洗い、BKMメカニック、リビング＆ガチャエリア、おもちゃ加工台、ガソリンスタンド、ガレージ、ギャグマシーン研究所といったランドマークが並び、右下のカウンターは3/60。右上には「現在のタスク 1/10 バーディーのアカウントを作成して投稿しましょう」のチュートリアル表示と、/tutorial で開始・再開、/tutorialstop で表示のみ中断（進行は保存）というコマンド説明が出ている](/images/taikenki/serverhoumon/yumegura/map-landmarks.webp)
+
+たばこ屋や本屋を含む各種店舗が存在する。飲食店も複数あり、確認できた範囲で7店舗程度が確認できた。メカニックは4か所を確認した。
+
+このサーバーの特徴として、市役所で店舗を購入することで自由に開業できる仕組みがある。飲食店、メカニック、キャバクラ、不動産など、複数の業種の店舗を開業できる。開業にあたって運営への申請は不要で、開業時にはオリジナルアイテムを作成できる。
+
+## 経済・職業
+
+市役所のジョブとして、釣り、農業、金属探知、採掘、ハンティング（狩り）、ダイビング、リサイクルセンター、木こりを確認した。
+
+## 治安構造
+
+警察とEMS（救急）は、人が多い時間帯を通じて稼働している場面が確認できた。
+
+犯罪行為については、強制瞑想（再起動）の30分前から瞑想明け30分間までが犯罪禁止時間として設定されている。この時間帯の不用意な発砲行為はすべて犯罪行為として扱われる。誤って行った場合は警察（PD）の告知に従って出頭する必要があり、告知を無視・放置した場合はBAN対応となる。また、犯罪終了後10分間は新たな犯罪を行うことが禁止されている。
+
+## 犯罪・ギャング
+
+ギャングは、マップ上で確認できた範囲で3つ程度と見られる。ギャングへの応募方法・加入条件については、取材時点では確認していない。
+
+## クラフト・経済基盤
+
+リサイクルセンター（リサセン）が存在する。買い取り制度については、ゲーム内SNSで素材の買い取りが呼びかけられているのを確認した。
+
+武器クラフトの仕組み、車パーツ製作やメカニックへの素材供給の実態については、取材時点では確認していない。
+
+## 実際に狩りを体験
+
+ジョブのうち、狩りを試した。まずショップで銃を購入し、エサで動物をおびき寄せて仕留める。仕留めた動物から得た素材は、ショップ前にいるNPCに売却する。
+
+![山あいの雑貨店の店内。レジ台にロトの看板やお菓子の箱が並び、カウンターの奥に毛皮の帽子をかぶった店主NPCが立っている](/images/taikenki/serverhoumon/yumegura/hunting-shop.webp)
+
+![山あいの雑貨店の外観。丸太造りの建物に電飾がかけられ、店の前にエプロン姿の買い取りNPCが立っている。左上の所持金の表示は74,887,500と348,244](/images/taikenki/serverhoumon/yumegura/hunting-sell-npc.webp)
+
+取材時点の売却単価は以下のとおりだった。
+
+- 鹿の角：単価240,000
+- イノシシの牙：単価192,000
+- コヨーテの毛皮：単価156,000
+- 豚肉：単価84,000
+- 牛の毛皮：単価54,000
+
+![「アイテム売却」のメニュー。「すべて売却 所有している全てのアイテムを売却します」の項目の下に、鹿の角（所持9個）単価$240000・合計$2160000、豚肉（19個）単価$84000・合計$1596000、イノシシの牙（4個）単価$192000・合計$768000、牛の毛皮（8個）単価$54000・合計$432000、コヨーテの毛皮（5個）単価$156000・合計$780000が並ぶ](/images/taikenki/serverhoumon/yumegura/hunting-sell-menu.webp)
+
+単価の高い素材が複数あり、1回の狩りで複数の素材が得られるため、まとまった収入につながる。一方で、銃の購入という初期費用が先に発生する構造になっている。
+
+## キャラメイク・初心者案内
+
+キャラメイクは旧式のシステムを採用している。参加すると自宅の一室からスタートし、キャラメイク画面では遺伝、顔の詳細、髪型・メイクなどを調整する。キャラメイク画面では初心者案内のボイスを再生できる。
+
+![キャラメイク画面。自宅の一室の扉の前に作成中のキャラクターが立ち、左上に遺伝／顔の詳細／髪型・メイクの3項目と、デイリータスク（筋トレを10回する0/10、魚を10匹釣る0/10、石を10回掘る0/10）、所持金の10,000,000と5,000,000、プレイヤー数126が表示されている](/images/taikenki/serverhoumon/yumegura/character-create.webp)
+
+初期資金として、現金1000万円と銀行500万円の計1500万円が付与される。
+
+初心者向けの案内役は置かれていないが、チュートリアルが手厚く用意されている。参加直後に開始を促され、\`/tutorial\` で開始・再開、\`/tutorialstop\` で表示のみ中断（進行は保存）できる。チュートリアルは10段階で構成され、達成報酬は初回クリア時のみ付与される。
+
+![「ようこそ！」のダイアログ。「ユメグラへようこそ！ ユメグラの仕様を理解するためにチュートリアルを行って下さい」の本文と、「あとからでもチャットで /tutorial から開始・再開できます。」の注記、「はい（開始する）」のボタンが表示されている](/images/taikenki/serverhoumon/yumegura/tutorial-welcome.webp)
+
+![室内でスマートフォンを開いた画面。右上に「現在のタスク 1/10 バーディーのアカウントを作成して投稿しましょう」とスマホのキー設定手順が並び、スマホ画面には「こんにちは」の見出しと日本語／English／Deutsch／Françaisなどの言語選択リストが表示されている](/images/taikenki/serverhoumon/yumegura/tutorial-birdy.webp)
+
+このほか、デイリータスク（筋トレを10回、魚を10匹釣る、石を10回掘る、など）が設定されている。デイリータスクを達成すると、車両ガチャまたは武器ガチャのチケットと、ユメコインが得られる。デイリータスクの内容は再起動ごとに更新される。
+
+![夜のマッスル・サンズの屋外ジム。ベンチとバーベルラックが並び、左上のデイリータスクは「筋トレを10回する 1/10」に進んでいる。プレイヤー数は125](/images/taikenki/serverhoumon/yumegura/gym-daily-task.webp)
+
+## 結婚システム
+
+プレイヤー同士が結婚・離婚できるシステムが実装されている。手続きは婚姻届の受付を通じて行われ、結婚・離婚が成立するとDiscordの専用チャンネルに日時とともに通知される。
+
+## 状態マーカー
+
+稼働中（2026年8月時点）
+
+---
+
+出典・参考
+
+- ユメグラ 公式Discord・サーバー内表示・六法（ルールブック）
+- GTA6 FEEDによる取材時の観測（2026年8月）
+
+本記事はGTA6 FEEDが独自に取材・記録したものであり、ユメグラ運営、Rockstar Games、Take-Two Interactiveのいずれとも関係はない。記載内容は取材時点の情報であり、サーバーの仕様・ルールは変更される可能性がある。`,
+  bodyEn: `![Yumegura's loading screen. Against a wall painted with a pink rising-sun pattern, a pink-haired character on a motorcycle sits beside a character in a fur coat. In the center are the words "ユメグラ" (Yumegura), "the city where dreams come true," and a line describing it as a roleplay server where you can freely open a business, form a gang, and create items. A panel on the right reads "You can open a business — by buying a shop at city hall you can start a business freely; restaurants, mechanics, hostess clubs, real estate and more." "Loading game (59%)" appears at the lower right](/images/taikenki/serverhoumon/yumegura/loading.webp)
+
+Yumegura is a Japanese-language FiveM roleplay server. It bills itself as "the city where dreams come true" and encourages light RP. Its defining features are open business ownership, gang creation, and item creation. GTA6 FEED reported on it and records the facts we were able to observe. Below, we separate the confirmed information we verified from the items we could not confirm.
+
+## Basic Information
+
+- Concept: a light-RP roleplay server where you can freely open a business, create a gang, and create items. Alongside criminal content, it advertises a slow life of quietly building up funds by fishing, a wide range of occupations such as running a restaurant, police officer, and paramedic, and buying and redecorating cars and homes with the money you save
+- How to join: you join the official Discord, read the rules, and enter the city by adding a reaction in a designated channel. Adding the reaction is treated as agreeing to the rules
+- Concurrent players: 125 (observed at 00:00 on August 22, 2026). The slot cap is 128
+- Server restarts: four times a day, every six hours — 03:00, 09:00, 15:00, and 21:00
+- The operators state a policy of not interfering directly in roleplay
+
+## Atmosphere of the City
+
+A large number of MLOs are installed in the city, and the level of detail in buildings and clothing varies. Some buildings also seen on Sutogura (STGR) are installed, along with many others. The map's landmark list has 60 entries registered.
+
+![Yumegura's map screen. The Los Santos urban area is shaded into pink and gray blocks with shop and job icons scattered across it. The landmark list on the right shows entries such as BKM Herbal Lounge, mining, dishwashing, BKM Mechanic, the living and gacha area, a toy workbench, a gas station, garages, and a gag machine laboratory, with the counter at the lower right reading 3/60. At the upper right is the tutorial display "Current task 1/10 — create a Birdy account and post," along with a note that /tutorial starts or resumes it and /tutorialstop only hides the display while progress is saved](/images/taikenki/serverhoumon/yumegura/map-landmarks.webp)
+
+There are various shops, including a tobacconist and a bookstore. There are also several restaurants; within what we could confirm, there were around seven. We confirmed four mechanic locations.
+
+A distinguishing feature of this server is that by buying a shop at city hall, you can open a business freely. Restaurants, mechanics, hostess clubs, real estate, and other lines of business can all be opened. No application to the operators is required, and when you open a business you can create original items.
+
+## Economy and Jobs
+
+Among the city hall jobs we confirmed fishing, farming, metal detecting, mining, hunting, diving, the recycling center, and lumberjacking.
+
+## Public Safety Structure
+
+We were able to observe police and EMS operating through the busier hours of the day.
+
+As for criminal activity, a no-crime window is set from 30 minutes before the forced meditation (restart) until 30 minutes after players come out of it. Any careless discharge of a firearm during this window is treated as a criminal act. If you do so by mistake, you must turn yourself in according to the police (PD) notice, and ignoring or leaving the notice unanswered results in a ban. In addition, no new crime may be committed for 10 minutes after a crime ends.
+
+## Crime and Gangs
+
+Within what we could see on the map, there appear to be around three gangs. We did not confirm how to apply to a gang or what the conditions for joining are at the time of our visit.
+
+## Crafting and Economic Foundations
+
+There is a recycling center. As for the buyback system, we confirmed calls for buying materials being posted on the in-game social network.
+
+We did not confirm how weapon crafting works, or how car parts manufacturing and material supply to mechanics actually operate, at the time of our visit.
+
+## Trying Hunting
+
+Among the jobs, we tried hunting. You first buy a gun at the shop, then lure animals in with bait and take them down. The materials obtained from the animals you bring down are sold to an NPC standing in front of the shop.
+
+![The interior of a general store in the hills. Lotto signage and boxes of candy sit on the counter, with the shopkeeper NPC in a fur hat standing behind it](/images/taikenki/serverhoumon/yumegura/hunting-shop.webp)
+
+![The exterior of the general store in the hills, a log building strung with lights, with the buyer NPC in an apron standing out front. The balances at the upper left read 74,887,500 and 348,244](/images/taikenki/serverhoumon/yumegura/hunting-sell-npc.webp)
+
+Sale prices per unit at the time of our visit were as follows.
+
+- Deer antler: 240,000 per unit
+- Boar tusk: 192,000 per unit
+- Coyote pelt: 156,000 per unit
+- Pork: 84,000 per unit
+- Cow hide: 54,000 per unit
+
+![The "Sell items" menu. Under an entry reading "Sell everything — sells every item you hold" are deer antler (9 held) at $240000 each, $2160000 total; pork (19) at $84000 each, $1596000 total; boar tusk (4) at $192000 each, $768000 total; cow hide (8) at $54000 each, $432000 total; and coyote pelt (5) at $156000 each, $780000 total](/images/taikenki/serverhoumon/yumegura/hunting-sell-menu.webp)
+
+Several of the materials fetch a high unit price, and a single hunting run yields several different materials, so it adds up to a decent income. On the other hand, the structure front-loads an initial cost in the form of buying a gun.
+
+## Character Creation and Beginner Guidance
+
+Character creation uses an older-style system. When you join you start inside a room of your own home, and on the character creation screen you adjust genetics, facial details, and hair and makeup. A beginner guidance voice-over can be played from the character creation screen.
+
+![The character creation screen. The character being created stands in front of the door of a room at home. At the upper left are the three sections — genetics, facial details, and hair and makeup — along with daily tasks (work out 10 times 0/10, catch 10 fish 0/10, mine 10 rocks 0/10), balances of 10,000,000 and 5,000,000, and a player count of 126](/images/taikenki/serverhoumon/yumegura/character-create.webp)
+
+As starting funds, you are given 10 million in cash and 5 million in the bank, 15 million in total.
+
+There is no dedicated guide for newcomers, but the tutorial is thoroughly built out. You are prompted to start it immediately after joining; \`/tutorial\` starts or resumes it, and \`/tutorialstop\` hides the display only while progress is saved. The tutorial is made up of ten steps, and completion rewards are only granted on the first clear.
+
+![The "Welcome!" dialog, reading "Welcome to Yumegura! Please go through the tutorial to understand how Yumegura works," with a note that you can start or resume it later from chat with /tutorial, and a "Yes (start)" button](/images/taikenki/serverhoumon/yumegura/tutorial-welcome.webp)
+
+![The smartphone opened indoors. At the upper right are "Current task 1/10 — create a Birdy account and post" and the steps for binding the phone key, while the phone screen shows a "Hello" heading above a language list with Japanese, English, Deutsch, Français and more](/images/taikenki/serverhoumon/yumegura/tutorial-birdy.webp)
+
+Beyond that, daily tasks are set (work out 10 times, catch 10 fish, mine 10 rocks, and so on). Completing a daily task yields a vehicle gacha or weapon gacha ticket along with Yume Coins. The contents of the daily tasks refresh with each restart.
+
+![The outdoor gym at Muscle Sands at night, lined with benches and barbell racks. The daily task at the upper left has advanced to "work out 10 times, 1/10." The player count reads 125](/images/taikenki/serverhoumon/yumegura/gym-daily-task.webp)
+
+## Marriage System
+
+A system letting players marry and divorce each other is implemented. The procedure goes through a marriage registration desk, and when a marriage or divorce is finalized, a notice with the date and time is posted to a dedicated Discord channel.
+
+## Status Marker
+
+Active (as of August 2026)
+
+---
+
+Sources and references
+
+- Yumegura's official Discord, in-server displays, and the "Roppo" rulebook
+- GTA6 FEED's observations during the visit (August 2026)
+
+This article was independently reported and recorded by GTA6 FEED and has no relationship with the Yumegura operators, Rockstar Games, or Take-Two Interactive. The content is information as of the time of the visit, and the server's specifications and rules are subject to change.`,
+};
+
 /** 新しい順に並べる（配列の先頭が最新）。#3 以降はここに足す。 */
 export const fieldNotes: FieldNote[] = [
   devDiary7,
@@ -2859,6 +3076,7 @@ export const fieldNotes: FieldNote[] = [
   devDiary3,
   devDiary2,
   devDiary1,
+  yumegura,
   altf4RpJapan,
   stellaCity,
   lienCity,
