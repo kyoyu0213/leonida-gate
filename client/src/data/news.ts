@@ -190,6 +190,353 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 43,
+    title:
+      "Take-Twoが反撃開始――MicrosoftとDiscordに召喚状、GTA6リーカー追跡が法廷へ",
+    displayTitle:
+      "Take-Twoが反撃開始\nMicrosoftとDiscordに召喚状、GTA6リーカー追跡が法廷へ",
+    description:
+      "8月20日、Take-Twoが米連邦地裁へDMCA召喚状を申請したと報じられた。対象はCyberleek本人ではなく、記録を保有するMicrosoftとDiscord。求められているのはアカウント情報、メールアドレス、IPアドレス、デバイス情報、そしてOneDriveに保存された関連データまで。GTA6リークは「動画を消す」段階から「流した人物を特定する」段階へ入った。",
+    icon: "⚖️",
+    image: "/images/news/gta6-leak-subpoena/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-22",
+    publishedAt: "2026-08-22 16:00",
+    source: "GTA6 FEED 編集部",
+    sourceUrl: "#",
+    relatedArticles: [42, 41, 19],
+    aiSummary: [
+      "8月20日、Take-Two Interactiveが米ニューヨーク南部地区連邦地方裁判所へ、GTA6リークに関する記録をMicrosoftとDiscordから取得するためのDMCA召喚状を申請したと報じられた。要求されているのはアカウント情報、メールアドレス、IPアドレス、電話番号、リンク済みサービス、デバイス情報、さらにOneDriveに保存されたGTA・Rockstar・Cyberleek関連データまで含まれる。",
+      "召喚状には「CYBERLEEK」「CINEMATICROCKSTAR」「Surfer24k」といった複数のハンドルネームに加え、特定のDiscordサーバーで2026年6月1日以降に活動したアカウントの記録も対象に挙がっていると報じられている。DarkViperAUのコミュニティに関連するとされるサーバー名の記載も話題になったが、記載されたことは運営者や参加者の関与を意味しない。",
+      "記録の提出期限は9月4日とされる。ただしこれは逮捕状でも判決でもなく、著作権侵害を行ったとされる人物を特定するための身元開示手続きだ。その手前の8月27日には「An Extended Look」の公開が控えており、Rockstarは表でマーケティングを続けながら、裏でTake-Twoが流出元を追う状況になっている。",
+    ],
+    fullContent: `# Take-Twoが反撃開始――MicrosoftとDiscordに召喚状、GTA6リーカー追跡が法廷へ
+
+8月18日以降、GTA6の未公開ゲームプレイとされる映像がインターネット上に断続的に流出している。流出を主張する「Cyberleek」は「ゲーマーの権利」を掲げ、デジタル予約販売や物理ディスクをめぐってゲーム業界への要求を突きつけ、その後も新たな映像を公開してきた。さらに一部の映像からは、単に録画済みの動画を所持しているだけではなく、何らかのプレイ可能なGTA6ビルドへアクセスしているのではないかという疑惑まで浮上している。
+
+Rockstar Gamesは表向き、この騒動について大きな声明を出していない。しかし、その裏側では親会社Take-Two Interactiveがすでに動き始めていた。
+
+8月20日、Take-Twoは米ニューヨーク南部地区連邦地方裁判所に対し、GTA6リークに関連する記録をMicrosoftとDiscordから取得するためのDMCA召喚状を申請したと報じられた。要求されているのは単なる投稿削除ではなく、アカウント情報、メールアドレス、IPアドレス、電話番号、関連サービス、デバイス情報、さらに場合によってはOneDriveに保存されたGTA、Rockstar、Cyberleek関連データまで含まれる。
+
+つまりTake-Twoは、流出した映像を消すだけの段階から、その映像を流した人物を特定する段階へ進んだことになる。
+
+![「GTA 6 INVESTIGATION」と書かれたマグカップの横に、Leonidaの地図とVice City・Port Gellhorn・Grassrivers・Ambrosiaといった地名のメモをピンで留めた机のイメージ](/images/news/gta6-leak-subpoena/leak-material-board.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際の法廷資料・流出素材・企業の内部資料ではない。*
+
+---
+
+## Take-Twoが裁判所へ向かった理由
+
+Take-Twoが求めているのは、MicrosoftとDiscordが保有している利用者記録だ。今回利用されたと報じられているのは、米デジタルミレニアム著作権法、いわゆるDMCAのSection 512(h)に基づく手続きで、著作権者がオンラインサービス事業者に対して、著作権侵害を行った人物を特定するための情報開示を求める際に使われる。
+
+![連邦地方裁判所の書式に「SUBPOENA」「PURSUANT TO 17 U.S.C. § 512(h)」と記された書類と、MicrosoftとDiscordのロゴ、木槌を並べたイメージ](/images/news/gta6-leak-subpoena/dmca-subpoena.webp)
+
+ここで重要なのは、Take-TwoがCyberleek本人を相手取って損害賠償請求を起こしたわけではないことだ。現段階はその前にあたる身元特定のフェーズであり、Take-Two側はリークに関与した人物を割り出し、自社が保有するGTA6関連の著作物を保護するために情報を集めようとしている。
+
+対象となる著作物には、ゲーム映像や画像だけでなく、アートワーク、台詞、そのほかGTA6に含まれるクリエイティブ要素も含まれていると報じられている。数日前までTake-Twoが行っていたのは、ネット上に出回った映像に対する削除対応だったが、現在はその背後にいる人物まで追跡しようとしている。
+
+---
+
+## なぜMicrosoftが対象になったのか
+
+Discordが対象になる理由は比較的分かりやすい。Cyberleekやリーク関連のコミュニティがDiscord上で活動していたのであれば、アカウントの登録情報やログイン履歴は身元特定の有力な手掛かりになる。
+
+![オフィスビルの前に並ぶMicrosoftとDiscordの看板のイメージ](/images/news/gta6-leak-subpoena/microsoft-discord.webp)
+
+一方で、今回もう一社の対象になったMicrosoftについては、「Xboxを運営しているから」という単純な理由ではない。法廷資料を確認した海外メディアの報道によると、Take-TwoはCyberleekという名称に関係するMicrosoft側の内部記録に加え、登録メールアドレス、IPアドレス、電話番号、リンク済みアカウント、デバイス情報などを求めている。
+
+さらに注目されているのがOneDriveだ。リークに関係するGTA、Rockstar、Cyberleek関連のコンテンツがMicrosoftのクラウドストレージに保存されていた可能性を想定し、関連アカウントの記録も情報開示の対象に含まれていると報じられている。
+
+また、今回のリーク素材の保存やリンク共有に使われた可能性があるGitHubなど、Microsoft傘下のサービスも調査上の接点として挙げられている。つまりMicrosoftは単なるゲームプラットフォーム企業としてではなく、Cyberleekが利用した可能性のある複数のオンラインサービスを保有する企業として調査の対象になっている。
+
+---
+
+## Discordには複数アカウントの情報開示を要求
+
+Discord側に対する要求もかなり具体的だ。報道によれば、召喚状には「CYBERLEEK」「CINEMATICROCKSTAR」「Surfer24k」など複数のハンドルネームが記載されており、Take-Twoはそれらのアカウントに関する識別情報を求めている。
+
+![「GTA 6 LEAK INVESTIGATION」と書かれた資料袋の横に、Discordログ・Microsoft記録・OneDriveデータ・IPアドレス・デバイス情報・メールアカウントを列挙したメモと「CYBERLEEK Who are you?」の付箋を並べたイメージ](/images/news/gta6-leak-subpoena/evidence-board.webp)
+
+さらに、特定のDiscordサーバーについては2026年6月1日以降に参加または通信していたアカウントの記録まで対象に含まれていると報じられている。要求される情報にはアカウントID、登録メールアドレス、登録時や最終ログイン時のIPアドレス、電話番号、リンク済みサービス、デバイス情報などが含まれる。
+
+この範囲を見る限り、Take-Twoは「Cyberleek」という一つの匿名アカウントだけを追っているのではなく、その人物が利用した可能性のある経路を横断的にたどろうとしている。匿名アカウントそのものが偽名でも、複数のサービスで使われたIPアドレスや登録情報、リンク済みアカウントが結びつけば、その背後にいる人物へ近づける可能性がある。
+
+---
+
+## GTAコミュニティまで調査対象に含まれた
+
+今回の召喚状では、GTAシリーズの動画で知られるDarkViperAUのコミュニティに関連するとされるDiscordサーバーの名前も記載されていると報じられ、GTAファンの間で話題になった。
+
+ただし、この点は慎重に扱う必要がある。召喚状にサーバー名が記載されていることは、そのサーバーの運営者やDarkViperAU本人、そこに参加していたユーザーがリークに関与したことを意味しない。Take-Twoが知りたいのは、Cyberleek本人やリーク素材がそこを経由したのか、あるいは関係する人物がそこに痕跡を残しているのかという点だ。
+
+大規模なDiscordコミュニティには数千、数万人規模のユーザーが出入りすることも珍しくない。したがって、特定のコミュニティ名が法的文書に現れたことと、そのコミュニティ自体に責任があることは明確に分けて考える必要がある。
+
+今回の調査で興味深いのは、GTA6のリーク事件がRockstarやTake-Twoの内部問題にとどまらず、GTAを取り巻く一般のオンラインコミュニティにまで調査範囲を広げ始めた点にある。
+
+---
+
+## MicrosoftもRockstarへの協力姿勢を示す
+
+Microsoft側も今回の問題について、Take-TwoおよびRockstar Gamesと協力していることを示している。Xbox CTOのScott Van Vliet氏は、Microsoftが両社と緊密に連携し、クリエイティブ作品や知的財産を保護するための取り組みを支援しているという趣旨の発言をしたと報じられている。
+
+現時点でMicrosoftが具体的にどの情報をTake-Twoへ提供したのかは明らかになっていない。召喚状の要求すべてがそのまま認められ、すべての記録が提供されるとも限らない。
+
+それでも今回のリーク調査が、Rockstar社内だけで完結する問題ではなくなったことは明らかだ。Take-Two、Rockstar、Microsoft、Discord、そして米連邦裁判所という複数の組織が関わる事件へ発展している。
+
+8月18日にSNSへ出回り始めた数本のゲーム映像は、わずか数日で大企業の法務部門と裁判所を巻き込む案件へ変わった。
+
+---
+
+## 一つの節目になる「9月4日」
+
+今回の法的手続きで注目されているのが9月4日という日付だ。報道によれば、MicrosoftとDiscordに対して要求された記録の提出期限として設定されている。
+
+![連邦地方裁判所の法廷を背景に、木槌と天秤の横へ「SUBPOENA」と書かれた分厚い書類の束を置いたイメージ](/images/news/gta6-leak-subpoena/subpoena-sealed.webp)
+
+もちろん、9月4日にCyberleekの実名が公表されるという意味ではない。提供されたデータが一般公開される保証もなく、Take-Twoが受け取った情報を分析し、複数サービスの記録を照合する作業も必要になる。
+
+ただ、メールアドレスやIPアドレス、電話番号、デバイス情報、リンクされたアカウントなどが複数のサービスで一致すれば、匿名アカウントの背後にいる人物を特定するための手掛かりになる。インターネット上では「Cyberleek」という名前を使っていても、その人物が利用するすべてのサービスで完全な匿名性を維持できているとは限らない。
+
+その意味で9月4日は、今回の事件における一つの節目になる可能性がある。
+
+---
+
+## 「召喚状」はCyberleekへの逮捕状ではない
+
+今回の報道を受け、SNSでは「Take-TwoがCyberleekに召喚状を出した」「リーカー逮捕へ」といった強い表現も見られる。しかし、現時点で起きていることはそれとは異なる。
+
+今回の召喚状の主な対象は、Cyberleek本人ではなく、情報を保有しているMicrosoftとDiscordだ。Take-Twoは両社から利用者記録を得ることで、著作権侵害を行ったとされる人物を特定しようとしている。
+
+したがって、この召喚状は逮捕状でもなければ、Cyberleekの刑事責任や民事責任を確定する判決でもない。今いるのは、リークが発生し、削除対応が行われ、その次に証拠や記録を集めて身元を調べる段階だ。
+
+仮に人物が特定されたとしても、Take-Twoがその後どのような法的手段を取るのかはまだ分からない。民事訴訟へ進む可能性もあれば、事実関係の確認だけでさらに時間を要する可能性もある。
+
+---
+
+## 2022年のリークとは違う不気味さ
+
+Rockstarにとって、GTA6の情報流出そのものは今回が初めてではない。2022年には約90本の開発途中映像がインターネットへ流出し、当時まだ正式発表前だったGTA6の姿が大規模に露出する事件が起きた。
+
+今回のCyberleek事件は、現時点で流出量だけを比較すれば2022年と同じ規模とは言えない。ただし、今回は別の意味でRockstarにとって厄介な状況になっている。
+
+一部の流出映像では、Jasonが壁へ弾痕を残して「LEEK」と読める文字を作る場面があると報じられている。これが真正な映像であれば、Cyberleek側が単なる保存済み動画を入手しただけではなく、何らかの形でゲームを操作できる環境へアクセスしている可能性が出てくる。
+
+![壁に弾痕で「LEEK」と描かれた前で、拳銃を構えたキャラクターが立つゲーム画面風のイメージ。画面右上には手配度の星と所持金が表示されている](/images/news/gta6-leak-subpoena/leek-bullet-holes.webp)
+
+*画像: 報道されている「弾痕でLEEKと書かれた場面」を分かりやすく示すためのAI生成イメージ画像。実際の流出映像ではない。*
+
+もちろん、Cyberleek本人がゲームビルドを所有しているのか、別の人物が操作して映像だけを提供しているのか、それとも別の経路なのかは確認されていない。それでもTake-Twoにとって重要なのは、すでに公開された映像の本数よりも、その背後にいる人物がまだどれだけの未公開データへアクセスできるのかという点だろう。
+
+現在公開されている数本の動画を消して終わる問題なのか、それとも流出経路そのものを止めなければ追加素材が出続けるのか。その違いは大きい。
+
+---
+
+## 8月27日の「An Extended Look」は予定通り進むのか
+
+そして今回の事件は、Rockstarにとって非常に厄介なタイミングで起きている。8月27日にはGTA6の「An Extended Look」が公開される予定で、本来なら発売に向けたマーケティングがさらに大きく動き始める節目になるはずだった。
+
+![夕暮れの海岸沿いに広がる大都市の上空を、セスナ機が飛んでいくゲーム画面風のイメージ](/images/news/gta6-leak-subpoena/leonida-flyover.webp)
+
+*画像: GTA6の舞台Leonidaの雰囲気を表したAI生成イメージ画像。実際のゲーム画面や流出素材ではない。*
+
+ところが、その直前にCyberleekが現れた。ゲームプレイとされる映像が流出し、Leonida全体マップとされる画像が拡散し、その後も新たな映像が出続けた。さらにプレイ可能なビルドへのアクセス疑惑まで浮上し、Take-Twoは連邦裁判所を通じてMicrosoftとDiscordへ利用者情報を求める段階に入っている。
+
+それでもRockstarは、少なくとも表向きには大きく予定を変更していない。リーク事件について詳細な声明を出さず、8月27日の公式公開へ向けたマーケティングを続けている。一方、その裏側ではTake-Twoの法務チームが流出元の特定を進めている。
+
+表ではGTA6を予定通り見せる準備を続け、裏ではGTA6を勝手に見せた人物を追う。現在のRockstarとTake-Twoは、その二つを同時に進めていることになる。
+
+---
+
+## Cyberleekの「Wanted Level」は確実に上がった
+
+GTAシリーズでは、犯罪を重ねるほどWanted Levelが上昇し、追跡する警察の規模も大きくなる。今回の状況をゲームそのものと同一視することはできないが、事件の進み方にはどこか皮肉な共通点がある。
+
+![暗い部屋で複数のモニターに囲まれ、GTA6の画面と「LEAK LOADING...」の表示を前にしたフードの人物のイメージ](/images/news/gta6-leak-subpoena/cyberleek-monitors.webp)
+
+最初は数本の映像がSNSへ流出しただけだった。その後、追加のゲームプレイが投稿され、著作権上の削除対応が行われてもCyberleek側の活動は止まらなかった。そして現在、Take-TwoはMicrosoftとDiscordが保有する利用者記録を裁判所経由で求めている。
+
+つまりTake-Twoが追っている対象は、もはやネット上に存在するGTA6の動画だけではない。メールアドレス、IPアドレス、クラウドストレージ、Discordアカウント、関連サービスなどをたどり、その画面の向こう側にいる人物を特定しようとしている。
+
+GTAらしく表現するなら、Cyberleekの「Wanted Level」が上がったと言っていいだろう。ただし、ここから先はゲームのように警察車両から逃げ切れば終わりという話ではない。オンラインサービスに残された記録と企業の法務部門、そして裁判所を相手にする現実の追跡になる。
+
+9月4日までにMicrosoftとDiscordからどのような情報が提供されるのか。その前に迎える8月27日、Rockstarは予定通り「An Extended Look」を公開するのか。そしてCyberleek側は、それまでにさらに新たな素材を出してくるのか。
+
+発売まで約3か月。GTA6本編のマーケティングとは別の場所で、もう一つの追跡劇が進んでいる。
+
+---
+
+> **注記：** 本記事は2026年8月22日時点の公開情報に基づく。Take-Twoが行ったと報じられているのは、MicrosoftおよびDiscordから情報を取得するためのDMCAに基づく召喚状手続きであり、Cyberleek本人に対する逮捕状や有罪判決ではない。また、召喚状に記載されたアカウント、Discordサーバー、コミュニティの存在は、その運営者や参加者がGTA6のリークに関与したことを意味しない。Cyberleekとされる人物・グループの正体や具体的な流出経路についても、現時点では公式に確定していない。本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際の法廷資料・流出素材ではない。`,
+    titleEn:
+      "Take-Two Strikes Back — Subpoenas to Microsoft and Discord Take the GTA6 Leaker Hunt to Court",
+    displayTitleEn:
+      "Take-Two Strikes Back\nSubpoenas to Microsoft and Discord Take the GTA6 Leaker Hunt to Court",
+    descriptionEn:
+      "On August 20, Take-Two was reported to have applied to a US federal court for DMCA subpoenas. The targets are not Cyberleek but Microsoft and Discord, the companies holding the records. What is sought includes account details, email addresses, IP addresses, device information — and even related data stored in OneDrive. The GTA6 leak has moved from taking videos down to identifying who put them up.",
+    aiSummaryEn: [
+      "On August 20, Take-Two Interactive was reported to have applied to the US District Court for the Southern District of New York for DMCA subpoenas to obtain records relating to the GTA6 leak from Microsoft and Discord. What is sought includes account details, email addresses, IP addresses, phone numbers, linked services, device information, and even GTA-, Rockstar- and Cyberleek-related data stored in OneDrive.",
+      "The subpoenas are reported to list several handles — \"CYBERLEEK,\" \"CINEMATICROCKSTAR\" and \"Surfer24k\" — along with records of accounts active in certain Discord servers since June 1, 2026. The appearance of a server name tied to the community of GTA creator DarkViperAU drew attention, but being named in a subpoena does not mean the server's operators or members were involved in the leak.",
+      "The deadline for producing the records is reported as September 4. This is not an arrest warrant or a judgment, however: it is the identification stage, aimed at naming the party said to have infringed copyright. Ahead of that date sits August 27 and \"An Extended Look\" — leaving Rockstar to continue its marketing in public while Take-Two chases the source in private.",
+    ],
+    fullContentEn: `# Take-Two Strikes Back — Subpoenas to Microsoft and Discord Take the GTA6 Leaker Hunt to Court
+
+Since August 18, footage said to be unreleased GTA6 gameplay has been leaking onto the internet in bursts. "Cyberleek," the party claiming the leaks, raised the banner of "gamer rights," pressed demands on the games industry over digital pre-orders and physical discs, and has kept publishing new footage since. Some of that footage has even raised the suspicion that whoever is behind it does not merely possess pre-recorded video, but has access to some playable build of GTA6.
+
+Rockstar Games has issued no major public statement about the affair. Behind the scenes, though, parent company Take-Two Interactive had already begun to move.
+
+On August 20, Take-Two was reported to have applied to the US District Court for the Southern District of New York for DMCA subpoenas to obtain records relating to the GTA6 leak from Microsoft and Discord. What is sought is not a simple takedown but account details, email addresses, IP addresses, phone numbers, linked services, device information — and, in some cases, GTA-, Rockstar- and Cyberleek-related data stored in OneDrive.
+
+In other words, Take-Two has moved past the stage of deleting the leaked videos and on to the stage of identifying the person who put them out.
+
+![A desk with a map of Leonida pinned with notes reading Vice City, Port Gellhorn, Grassrivers and Ambrosia, beside a mug labeled "GTA 6 INVESTIGATION"](/images/news/gta6-leak-subpoena/leak-material-board.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are real court filings, leaked material, or internal corporate documents.*
+
+---
+
+## Why Take-Two Went to Court
+
+What Take-Two wants are the user records held by Microsoft and Discord. The mechanism reported to have been used is the one under Section 512(h) of the US Digital Millennium Copyright Act — the DMCA — which a copyright holder uses to ask an online service provider to disclose information identifying an alleged infringer.
+
+![A court document reading "SUBPOENA" and "PURSUANT TO 17 U.S.C. § 512(h)" beside the Microsoft and Discord logos and a gavel](/images/news/gta6-leak-subpoena/dmca-subpoena.webp)
+
+The important point here is that Take-Two has not filed a damages claim against Cyberleek. This is the stage that comes before that: identification. Take-Two is gathering information to work out who was involved in the leak and to protect the GTA6-related copyrighted works it owns.
+
+Those works are reported to include not only gameplay footage and images but artwork, dialogue, and other creative elements contained in GTA6. Until a few days ago, what Take-Two was doing was issuing takedowns against footage circulating online. Now it is trying to trace the person behind it.
+
+---
+
+## Why Microsoft Became a Target
+
+Discord is the easier of the two to explain. If Cyberleek and the communities around the leak were active on Discord, then account registration details and login history are a strong lead toward identification.
+
+![Microsoft and Discord signage standing in front of an office building](/images/news/gta6-leak-subpoena/microsoft-discord.webp)
+
+Microsoft, the other target, is not on the list for the simple reason that it runs Xbox. According to outlets that have reviewed the filings, Take-Two is seeking Microsoft's internal records associated with the name Cyberleek, along with registered email addresses, IP addresses, phone numbers, linked accounts and device information.
+
+OneDrive has drawn particular attention. On the assumption that GTA-, Rockstar- and Cyberleek-related content connected to the leak may have been stored in Microsoft's cloud storage, records for the associated accounts are reported to fall within the scope of disclosure as well.
+
+GitHub and other Microsoft-owned services that may have been used to store the leaked material or share links to it have also been raised as points of contact for the investigation. Microsoft, then, is a target not as a games platform company but as the owner of several online services Cyberleek may have used.
+
+---
+
+## Discord Asked to Disclose Multiple Accounts
+
+The demands made of Discord are quite specific. According to reporting, the subpoena names several handles — including "CYBERLEEK," "CINEMATICROCKSTAR" and "Surfer24k" — and Take-Two is seeking identifying information for those accounts.
+
+![An evidence folder labeled "GTA 6 LEAK INVESTIGATION" beside a note listing Discord logs, Microsoft records, OneDrive data, IP addresses, device info and email accounts, and a sticky note reading "CYBERLEEK Who are you?"](/images/news/gta6-leak-subpoena/evidence-board.webp)
+
+For certain Discord servers, the scope is reported to extend to records of accounts that joined or communicated there on or after June 1, 2026. The information sought includes account IDs, registered email addresses, IP addresses at registration and last login, phone numbers, linked services and device information.
+
+Judged by that scope, Take-Two is not chasing a single anonymous account called "Cyberleek." It is trying to trace, across services, every route that person may have used. Even if the anonymous account itself is a pseudonym, tying together IP addresses, registration details and linked accounts used across multiple services could bring it closer to whoever is behind them.
+
+---
+
+## The GTA Community Falls Within the Scope Too
+
+The subpoena is reported to name a Discord server said to be associated with the community of DarkViperAU, known for videos on the GTA series — a detail that became a talking point among GTA fans.
+
+This point needs to be handled carefully, though. A server name appearing in a subpoena does not mean the server's operators, DarkViperAU personally, or the users in it were involved in the leak. What Take-Two wants to know is whether Cyberleek or the leaked material passed through there, or whether anyone connected to it left traces there.
+
+It is hardly unusual for a large Discord community to have thousands or tens of thousands of users passing through. A community's name appearing in a legal document and that community bearing responsibility are two things that must be kept clearly separate.
+
+What is notable about this investigation is that the GTA6 leak has stopped being an internal matter for Rockstar and Take-Two, and has begun to widen into the ordinary online communities around GTA.
+
+---
+
+## Microsoft Signals Its Cooperation With Rockstar
+
+Microsoft, for its part, has signaled that it is cooperating with Take-Two and Rockstar Games on the matter. Xbox CTO Scott Van Vliet is reported to have said, in substance, that Microsoft is working closely with both companies and supporting efforts to protect creative work and intellectual property.
+
+Exactly what information Microsoft has provided to Take-Two is not known at this point. Nor is it certain that every demand in the subpoena will be granted as written and every record handed over.
+
+Even so, it is clear that this leak investigation is no longer something that ends inside Rockstar. It has grown into a matter involving several organizations at once: Take-Two, Rockstar, Microsoft, Discord and a US federal court.
+
+A handful of gameplay videos that began circulating on social media on August 18 turned, in a matter of days, into a case pulling in corporate legal departments and the courts.
+
+---
+
+## September 4 as a Turning Point
+
+One date stands out in these proceedings: September 4. According to reporting, it is the deadline set for producing the records demanded from Microsoft and Discord.
+
+![A thick stack of documents marked "SUBPOENA" set beside a gavel and scales, with a federal courtroom behind](/images/news/gta6-leak-subpoena/subpoena-sealed.webp)
+
+That does not mean Cyberleek's real name will be published on September 4, of course. There is no guarantee the data provided will be made public, and Take-Two will need to analyze what it receives and cross-reference records across several services.
+
+Still, if email addresses, IP addresses, phone numbers, device information and linked accounts line up across multiple services, that becomes a lead toward identifying the person behind the anonymous account. Using the name "Cyberleek" online is one thing; maintaining perfect anonymity across every service that person uses is another.
+
+In that sense, September 4 could well be a turning point in this affair.
+
+---
+
+## A Subpoena Is Not an Arrest Warrant for Cyberleek
+
+In the wake of this reporting, social media has produced some strong phrasings: "Take-Two has subpoenaed Cyberleek," "the leaker is going to be arrested." What is actually happening is something different.
+
+The principal targets of these subpoenas are not Cyberleek but Microsoft and Discord, the parties holding the information. By obtaining user records from those two companies, Take-Two is trying to identify the party said to have infringed its copyright.
+
+This subpoena is therefore neither an arrest warrant nor a judgment establishing criminal or civil liability for Cyberleek. Where things stand is this: a leak happened, takedowns followed, and now evidence and records are being gathered to establish identity.
+
+Even if a person is identified, what legal steps Take-Two takes afterward remains unknown. It could proceed to a civil suit; it could also spend considerably longer simply establishing the facts.
+
+---
+
+## An Unease the 2022 Leak Did Not Have
+
+This is not the first time GTA6 information has escaped Rockstar. In 2022, around 90 in-development videos leaked onto the internet, exposing GTA6 — then still unannounced — on a massive scale.
+
+Measured purely by volume, the Cyberleek affair does not currently match 2022. In another sense, though, this one puts Rockstar in a more awkward position.
+
+In some of the leaked footage, Jason is reported to shoot a wall so that the bullet holes spell out "LEEK." If that footage is genuine, it raises the possibility that Cyberleek did not merely obtain saved video, but has access in some form to an environment where the game can be played.
+
+![A character aiming a pistol in front of a wall where bullet holes spell "LEEK," with a wanted-level star display and cash counter in the corner](/images/news/gta6-leak-subpoena/leek-bullet-holes.webp)
+
+*Image: an AI-generated illustration made to convey the reported "LEEK spelled in bullet holes" scene. It is not the leaked footage itself.*
+
+Whether Cyberleek personally holds a game build, whether someone else is playing and merely supplying footage, or whether it came by some other route, none of this has been confirmed. What matters to Take-Two, though, is probably not the number of videos already published but how much unreleased data the person behind them can still reach.
+
+Is this a problem that ends once the handful of videos now online are deleted, or will more material keep appearing unless the route itself is closed? That difference is a large one.
+
+---
+
+## Will "An Extended Look" Go Ahead on August 27?
+
+This affair has also landed at an extremely awkward moment for Rockstar. GTA6's "An Extended Look" is scheduled for August 27 — a milestone at which the marketing run-up to launch was supposed to shift into a higher gear.
+
+![A light aircraft flying over a large coastal city at dusk, in the style of a game screenshot](/images/news/gta6-leak-subpoena/leonida-flyover.webp)
+
+*Image: an AI-generated illustration evoking the atmosphere of GTA6's setting, Leonida. It is not an actual game screenshot or leaked material.*
+
+Instead, right before it, Cyberleek appeared. Footage said to be gameplay leaked, an image said to be a full map of Leonida spread, and new videos kept coming. Suspicion of access to a playable build followed, and Take-Two has now entered the stage of seeking user information from Microsoft and Discord through a federal court.
+
+Rockstar, at least outwardly, has not significantly changed its plans. It has issued no detailed statement about the leak and is continuing the marketing push toward the official August 27 reveal. Behind that, Take-Two's legal team is working to identify the source.
+
+Out front, preparations to show GTA6 on schedule. Behind, a hunt for whoever showed GTA6 without permission. Rockstar and Take-Two are currently running both at once.
+
+---
+
+## Cyberleek's Wanted Level Has Certainly Gone Up
+
+In the GTA series, the more crimes you commit, the higher your wanted level climbs and the larger the police response becomes. The situation cannot be equated with the game itself, but there is something ironic in how the affair has escalated.
+
+![A hooded figure in a dark room surrounded by monitors showing GTA6 and a "LEAK LOADING..." display](/images/news/gta6-leak-subpoena/cyberleek-monitors.webp)
+
+At first it was just a few videos leaking onto social media. Then more gameplay was posted, and copyright takedowns did not stop Cyberleek from continuing. Now Take-Two is seeking, through the courts, the user records held by Microsoft and Discord.
+
+What Take-Two is pursuing, in other words, is no longer just GTA6 videos sitting on the internet. It is following email addresses, IP addresses, cloud storage, Discord accounts and linked services toward the person on the other side of the screen.
+
+To put it in GTA terms, Cyberleek's wanted level has gone up. From here, though, this is not a chase that ends by losing the police cars. It is a real-world pursuit against the records left on online services, corporate legal departments, and a court.
+
+What will Microsoft and Discord hand over by September 4? Before that, on August 27, will Rockstar publish "An Extended Look" as planned? And will Cyberleek put out more material in the meantime?
+
+Roughly three months to launch. Somewhere apart from GTA6's own marketing, a second chase is under way.
+
+---
+
+> **Note:** This article is based on public information as of August 22, 2026. What Take-Two is reported to have done is initiate DMCA subpoena proceedings to obtain information from Microsoft and Discord; it is not an arrest warrant or a guilty verdict against Cyberleek. The appearance of an account, Discord server or community in a subpoena does not mean its operators or members were involved in the GTA6 leak. The identity of the person or group said to be Cyberleek, and the specific route the material took, have not been officially established at this point. Every image in this article is an AI-generated illustration and is not a real court filing or leaked material.`,
+  },
+  {
     id: 42,
     title:
       "GTA6はなぜ狙われたのか――「ディスクを返せ」と叫ぶCyberleek、発売3か月前に起きた異様なリーク事件",
@@ -204,7 +551,7 @@ export const newsArticles: NewsArticle[] = [
     publishedAt: "2026-08-19 23:30",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
-    relatedArticles: [39, 38, 19],
+    relatedArticles: [43, 39, 38],
     aiSummary: [
       "8月18日、GTA6の未公開映像とされるゲームプレイ素材とLeonidaの全体マップとされる画像がインターネットに現れた。11月19日の発売まで約3か月、Rockstarが「An Extended Look」を公開する8月27日まで約1週間という異様なタイミングだった。RockstarもTake-Twoも、流出物の真正性を公式には認めていない。",
       "流出を主張する「Cyberleek」は今回の行動をゲーム業界への抗議と位置付け、デジタル予約販売の廃止と物理メディアの提供を要求していると報じられている。一方でGTA6のパッケージ版は、箱の中身がダウンロードコードのみでディスクは含まれない「Code in Box」方式であり、11月12日から出荷される。",
