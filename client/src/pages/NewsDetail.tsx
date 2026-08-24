@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
+import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare, AlertTriangle } from 'lucide-react';
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { getArticleById, formatArticleDate , isNoindexNewsId } from '@/data/news';
+import { getArticleById, formatArticleDate, formatNewsDate, isNoindexNewsId } from '@/data/news';
 import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -177,6 +177,14 @@ export default function NewsDetail() {
   const summary = isEn && article.aiSummaryEn ? article.aiSummaryEn : article.aiSummary;
   // ファーストビューで本文冒頭が見えるように、タイトル＋メタの直下に出すリード文
   const lead = isEn && article.descriptionEn ? article.descriptionEn : article.description;
+  // 訂正・追記ボックス（後から事実関係が変わった記事だけが持つ）。
+  const correction = article.correction;
+  const correctionLabel = correction
+    ? (isEn && correction.labelEn ? correction.labelEn : correction.label)
+    : '';
+  const correctionBody = correction
+    ? (isEn && correction.bodyEn ? correction.bodyEn : correction.body)
+    : [];
   // 記事ページのh1に出す表示用タイトル（無ければSEO用のtitleをそのまま使う）。
   // displayTitle の改行はそのまま反映される（.article-title は white-space: pre-line）。
   const headingTitle = (isEn ? article.displayTitleEn : article.displayTitle) ?? title;
@@ -235,7 +243,20 @@ export default function NewsDetail() {
             <div className="article-meta text-gray-400 font-mono text-sm">
               <div className="flex items-center gap-2">
                 <Calendar size={14} />
-                {formatArticleDate(article, lang)}
+                {article.updatedAt ? (
+                  <span className="article-dates">
+                    <span>
+                      {isEn ? 'Published: ' : '公開：'}
+                      {formatArticleDate(article, lang)}
+                    </span>
+                    <span className="article-date-updated">
+                      {isEn ? 'Updated: ' : '更新：'}
+                      {formatNewsDate(article.updatedAt, lang)}
+                    </span>
+                  </span>
+                ) : (
+                  formatArticleDate(article, lang)
+                )}
               </div>
 
               {/* この記事へのコメント：押すとコメント欄までスクロール */}
@@ -266,6 +287,27 @@ export default function NewsDetail() {
               )}
             </div>
           </header>
+
+          {/* 訂正・追記ボックス：公開後に事実関係が変わった記事だけに出す。
+              検索結果から直接来た読者にも「後から訂正された記事」だと最初に分かるよう、
+              タイトル帯の直後・アイキャッチと本文より前に置く。 */}
+          {correction && correctionBody.length > 0 && (
+            <aside
+              className="article-correction"
+              role="note"
+              aria-label={isEn ? 'Correction notice' : '訂正・追記'}
+            >
+              <p className="article-correction-head">
+                <AlertTriangle size={16} aria-hidden="true" />
+                <span className="article-correction-tag">{isEn ? 'CORRECTION' : '訂正'}</span>
+                {/* 隅つき括弧は日本語表記なので、EN ではそのままラベルだけ出す */}
+                <strong>{isEn ? correctionLabel : `【${correctionLabel}】`}</strong>
+              </p>
+              {correctionBody.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </aside>
+          )}
 
           {/* アイキャッチ画像（記事に image がある場合のみ。メタ情報のあと・本文の前に表示） */}
           {article.image && (

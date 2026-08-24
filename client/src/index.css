@@ -490,6 +490,19 @@
   margin-top: 14px;
 }
 
+/* 2a-2. 公開日＋更新日（updatedAt がある記事だけ2段になる）。
+         狭い画面では折り返して縦に積む。 */
+.article-dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+}
+
+.article-date-updated {
+  color: #fca5a5;
+}
+
 /* 2b. リード文：タイトル直下に置き、開いてすぐ記事の要旨が読めるようにする
        （幅は帯の内側いっぱい。ここで max-width を足さない） */
 .article-lead {
@@ -500,6 +513,69 @@
   color: rgba(230, 236, 255, 0.72);
   /* 記事詳細では省略しない（line-clamp / ellipsis を使わない）。
      一覧カード側の省略は NewsCard などの line-clamp で個別に行う。 */
+}
+
+/* 2b-2. 訂正・追記ボックス：公開後に事実関係が変わった記事の冒頭（タイトル帯の直下・
+          アイキャッチの上）に出す。本文中の注意ボックス（ピンク）より一段強い赤で、
+          ニュースサイトの訂正文らしく落ち着いた見た目にする。
+          上下マージンは隣接（.article-hero や本文）と相殺されるので、アイキャッチが
+          無い記事でも本文との間隔が潰れない。 */
+.article-correction {
+  margin: 20px 0;
+  padding: 18px 22px;
+  /* 本文幅からはみ出さない（長いURLや英単語もここで折る） */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-left: 5px solid #ef4444;
+  border-radius: 8px;
+  background: rgba(69, 10, 10, 0.55);
+  color: #fbe3e3;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.article-correction p {
+  margin: 0 0 1em;
+}
+
+.article-correction p:last-child {
+  margin-bottom: 0;
+}
+
+/* 見出し行：⚠アイコン＋「訂正」ラベル＋【2026年8月24日 追記・訂正】 */
+.article-correction-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #fecaca;
+  font-size: 15px;
+}
+
+/* 警告アイコンは狭い画面でも潰さない */
+.article-correction-head svg {
+  flex: none;
+}
+
+.article-correction-head strong {
+  font-weight: 700;
+  color: #fff1f1;
+}
+
+.article-correction-tag {
+  padding: 2px 8px;
+  border: 1px solid rgba(248, 113, 113, 0.6);
+  border-radius: 4px;
+  background: rgba(239, 68, 68, 0.18);
+  color: #fecaca;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  white-space: nowrap;
 }
 
 /* 2c. アイキャッチ：メタ情報の下・本文の上。大きくなりすぎないよう高さを抑える */
@@ -712,6 +788,15 @@
   margin: 0;
 }
 
+/* 6b. 打ち消し線：訂正記事で「当時こう書いていた」旧文を残すときに使う（~~…~~）。
+       消した文だと分かるよう薄くし、線だけ赤で目立たせる。 */
+.article-body del {
+  color: rgba(230, 236, 255, 0.55);
+  text-decoration-line: line-through;
+  text-decoration-color: rgba(248, 113, 113, 0.85);
+  text-decoration-thickness: 2px;
+}
+
 /* 7. 注意書き・補足：イタリック(*…*)だけの段落を「注意ボックス」にする */
 .article-body p:has(> em:only-child) {
   margin-top: 48px;
@@ -751,6 +836,19 @@
 
   .article-meta {
     margin-top: 12px;
+  }
+
+  .article-correction {
+    margin: 16px 0;
+    padding: 15px 16px;
+    /* 読みやすさ優先で本文と同じくらいのサイズを保つ（小さくしすぎない） */
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .article-correction-head {
+    font-size: 14.5px;
+    margin-bottom: 10px;
   }
 
   .article-hero {

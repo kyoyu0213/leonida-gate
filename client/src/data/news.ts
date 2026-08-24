@@ -109,6 +109,22 @@ export const isIndexableNewsId = (id: number | string): boolean =>
 
 export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
 
+/**
+ * 記事タイトル直下に出す「訂正・追記」ボックス。
+ * ----------------------------------------------------------------------------
+ * 公開後に事実関係が変わった記事へ付ける。本文を消さずに冒頭で断りを入れるための枠で、
+ * 記事ページ（NewsDetail）がタイトル帯のすぐ下・本文より前に赤い枠として描画する。
+ *   label : 見出し行（例: '2026年8月24日 追記・訂正'）。【】は表示側で付ける。
+ *   body  : 段落の配列（1要素＝1段落）。
+ * ...En は EN表示時に使い、無ければ日本語へフォールバックする。
+ */
+export interface ArticleCorrection {
+  label: string;
+  body: string[];
+  labelEn?: string;
+  bodyEn?: string[];
+}
+
 export interface NewsArticle {
   id: number;
   title: string;
@@ -129,6 +145,12 @@ export interface NewsArticle {
   // 任意：公開日時（時刻まで）。'YYYY-MM-DD HH:MM' か 'YYYY-MM-DDTHH:MM'。
   //   あれば日付表示が「2026年6月25日 14:30」のように時刻つきになる（無ければ date を年月日表示）。
   publishedAt?: string;
+  // 任意：後から訂正・追記した日（'YYYY-MM-DD'）。公開日（date / publishedAt）は変えないこと。
+  //   あると記事ページの日付表示が「公開：…／更新：…」の2段になり、
+  //   プリレンダのJSON-LD dateModified もこの日付になる。
+  updatedAt?: string;
+  // 任意：記事冒頭に出す訂正・追記ボックス（ArticleCorrection を参照）。
+  correction?: ArticleCorrection;
   // 任意：記事ページのh1だけに使う表示用タイトル。
   //   title はSEO（<title>・OGP・一覧カード・関連記事）に使い続け、
   //   displayTitle があれば記事ページの見出しだけこちらに差し替える。
@@ -146,10 +168,9 @@ const EN_MONTHS = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
-/** 記事の公開日時を整形する（publishedAt が無ければ年月日のみ）。
+/** 'YYYY-MM-DD[ HH:MM]' 形式の日付文字列を表示用に整形する。
  *  ja → 「2026年6月25日 14:30」 / en → 「Jun 25, 2026 14:30」 */
-export function formatArticleDate(article: NewsArticle, lang: 'ja' | 'en' = 'ja'): string {
-  const src = article.publishedAt || article.date;
+export function formatNewsDate(src: string, lang: 'ja' | 'en' = 'ja'): string {
   const m = src.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
   if (!m) return src;
   const [, y, mo, d, hh, mi] = m;
@@ -158,6 +179,11 @@ export function formatArticleDate(article: NewsArticle, lang: 'ja' | 'en' = 'ja'
       ? `${EN_MONTHS[Number(mo) - 1]} ${Number(d)}, ${y}`
       : `${y}年${Number(mo)}月${Number(d)}日`;
   return hh != null && mi != null ? `${base} ${hh}:${mi}` : base;
+}
+
+/** 記事の公開日時を整形する（publishedAt が無ければ年月日のみ）。 */
+export function formatArticleDate(article: NewsArticle, lang: 'ja' | 'en' = 'ja'): string {
+  return formatNewsDate(article.publishedAt || article.date, lang);
 }
 
 // カテゴリごとの表示設定。
@@ -191,36 +217,61 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 export const newsArticles: NewsArticle[] = [
   {
     id: 44,
+    // 8月24日の訂正にあわせてタイトルも差し替えた（URL・canonical・公開日は据え置き）。
+    // 既読の読者が一覧やSNSでタイトルだけ見ても訂正が入ったと分かるようにするため。
     title:
-      "Cyberleekが「捕まればGTA6を公開する」と主張――Take-Twoとの攻防が新たな段階へ",
+      "【追記・訂正】Cyberleek「捕まればGTA6を公開」は偽情報か――デッドマン・スイッチ騒動、その後判明したこと",
     displayTitle:
-      "Cyberleekが「捕まればGTA6を公開する」と主張\nTake-Twoとの攻防が新たな段階へ",
+      "【追記・訂正】Cyberleek「捕まればGTA6を公開」は偽情報か\nデッドマン・スイッチ騒動、その後判明したこと",
     description:
-      "Take-TwoがMicrosoftとDiscordへ召喚状を出した直後、Cyberleek側が「自分たちが捕まればGTA6のデータが自動で公開される」と主張し始めた。いわゆるデッドマン・スイッチだ。ただしCyberleekが本当に完全版を持っているのか、その仕組みが実在するのかは確認されていない。8月27日の「An Extended Look」と9月4日の記録提出期限を前に、リーク事件は次の段階へ入った。",
+      "【8月24日訂正】Take-TwoがMicrosoftとDiscordへ召喚状を出した直後、「Cyberleekが捕まればGTA6のデータが自動で公開される」といういわゆるデッドマン・スイッチの主張が広まった。しかしその後、発端となった投稿はCyberleek本人によるものではなく、第三者による偽情報だった可能性が高いことが判明した。当時どのような情報が出回り、その後何が分かったのかを記録として残す。",
     icon: "⏱️",
     image: "/images/news/gta6-cyberleek-dead-man-switch/eyecatch.webp",
     category: "topic",
     date: "2026-08-23",
     publishedAt: "2026-08-23 14:00",
+    // 8月24日、デッドマン・スイッチの発端となった投稿が第三者の偽情報だった可能性が高いと
+    // 判明したため、本文冒頭・該当箇所・末尾注記を訂正した（公開日は変えない）。
+    updatedAt: "2026-08-24",
+    correction: {
+      label: "2026年8月24日 追記・訂正",
+      body: [
+        "本記事で取り上げた「Cyberleekが、拘束された場合にGTA6のビルドを自動公開する“デッドマン・スイッチ”を用意した」とする情報について、その後、この主張の発端となった投稿がCyberleek本人によるものではなく、第三者によって作られた偽情報だった可能性が高いことが判明しました。",
+        "この情報を報じていた海外メディアでも訂正・撤回の動きが出ています。したがって現時点では、Cyberleekが「完全なGTA6ビルドを保有している」「拘束された場合に自動公開する仕組みを用意している」と確認できる根拠はありません。",
+        "一方、GTA6の未公開映像とされる素材が流出していることや、Take-TwoがMicrosoftおよびDiscordから関連情報を取得するための法的手続きを進めていることとは別の話です。リーク事件そのものが偽物だったという意味ではありません。",
+        "GTA6 FEEDでは当初から「完全ビルドの保有およびデッドマン・スイッチの存在は独立確認されていないCyberleek側の主張」として掲載していましたが、今回、その「Cyberleek側の主張」という出所自体に問題があったことが分かったため、訂正・追記します。",
+      ],
+      labelEn: "Correction and update — August 24, 2026",
+      bodyEn: [
+        "Regarding the report covered in this article — that Cyberleek had set up a “dead man's switch” to publish a GTA6 build automatically if its members were detained — it has since emerged that the post behind the claim was very likely not from Cyberleek at all, but disinformation created by a third party.",
+        "Outlets that carried the story have begun issuing corrections and retractions. As of now, there is no basis for saying that Cyberleek holds a complete GTA6 build, or that it has set up any mechanism to publish data automatically if detained.",
+        "That is separate from the fact that material said to be unreleased GTA6 footage has leaked, and that Take-Two is pursuing legal process to obtain related information from Microsoft and Discord. It does not mean the leak itself was fake.",
+        "GTA6 FEED presented the full build and the dead man's switch from the outset as unverified claims attributed to Cyberleek. Because the problem turned out to lie with that attribution itself, we are issuing this correction.",
+      ],
+    },
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",
     relatedArticles: [43, 42, 41],
     aiSummary: [
-      "8月18日からGTA6の未公開ゲームプレイとされる映像を公開しているCyberleekが、「自分たちが捕まった場合、保有するGTA6のデータが自動的に公開される仕組みを用意した」と主張し始めた。一定時間ごとに本人が操作を続けないと自動で公開される、いわゆるデッドマン・スイッチだと説明されている。",
-      "この主張が出たのは、Take-TwoがMicrosoftとDiscordに対してGTA6リーク関連の利用者記録を求めるDMCA召喚状の手続きを始めた直後だった。記録の提出期限は9月4日とされ、Take-Twoの狙いは動画の削除ではなく、流出させた人物の特定へ移っている。",
-      "ただしCyberleekがGTA6の完全なビルドを保有しているのか、デッドマン・スイッチが実在するのかは、いずれも確認されていない。ネット上で出回る「113GBのGTA6完全版」とされるファイルも本物とは確認されておらず、マルウェアの可能性がある。8月27日には「An Extended Look」が控えている。",
+      "【8月24日訂正】8月23日時点では、「Cyberleekが、自分たちが捕まった場合に保有するGTA6のデータを自動公開する仕組み（デッドマン・スイッチ）を用意した」と主張している、と報じられていた。しかしその後、この主張の発端となった投稿はCyberleek本人のものではなく、第三者が作成した偽情報だった可能性が高いことが判明した。",
+      "この話が広まったのは、Take-TwoがMicrosoftとDiscordに対してGTA6リーク関連の利用者記録を求めるDMCA召喚状の手続きを始めた直後だった。記録の提出期限は9月4日とされ、Take-Twoの狙いは動画の削除ではなく流出させた人物の特定へ移っている――この部分は現在も変わっていない。",
+      "現時点で、CyberleekがGTA6の完全なビルドを保有していることも、デッドマン・スイッチが実在することも確認されていない。ネット上で出回る「113GBのGTA6完全版」とされるファイルも本物とは確認されておらず、マルウェアの可能性がある。8月27日には「An Extended Look」が控えている。",
     ],
-    fullContent: `# Cyberleekが「捕まればGTA6を公開する」と主張――Take-Twoとの攻防が新たな段階へ
+    fullContent: `# 【追記・訂正】Cyberleek「捕まればGTA6を公開」は偽情報か――デッドマン・スイッチ騒動、その後判明したこと
 
 GTA6のリーク事件が、さらにややこしい展開になってきた。
 
-8月18日からGTA6の未公開ゲームプレイとされる映像を公開している「Cyberleek」が、新たに「自分たちが捕まった場合、持っているGTA6のデータが自動的に公開される仕組みを用意した」と主張している。
+~~8月18日からGTA6の未公開ゲームプレイとされる映像を公開している「Cyberleek」が、新たに「自分たちが捕まった場合、持っているGTA6のデータが自動的に公開される仕組みを用意した」と主張している。~~
 
-簡単に言えば、
+**【8月24日訂正】** その後、この「デッドマン・スイッチ」に関する投稿はCyberleek本人によるものではなく、第三者による偽情報だった可能性が高いことが判明した。現時点でCyberleek本人がこの主張を行ったと確認できる根拠はない。
+
+以下は、8月23日時点でどのような情報が出回っていたのかと、その後何が判明したのかの記録である。
+
+当時は、
 
 **「俺たちを捕まえたら、GTA6をネットにばらまくぞ」**
 
-という話だ。
+という趣旨の発言がCyberleek側のものとして広まり、大きく報じられていた。
 
 ![暗い部屋で複数のモニターに向かうフードの人物。中央の画面には壁の弾痕で描かれた「LEEK」の文字、右の画面には「UPLOADING... 73%」の表示、机には赤く光る「CYBERLEEK」のサインが置かれている](/images/news/gta6-cyberleek-dead-man-switch/cyberleek-uploading.webp)
 
@@ -228,11 +279,11 @@ GTA6のリーク事件が、さらにややこしい展開になってきた。
 
 ただし、ここで一番大事なことがある。
 
-Cyberleekが本当にGTA6の完全版を持っているのかは確認されていない。また、本当に自動公開する仕組みを作っているのかも確認されていない。
+当時から、Cyberleekが本当にGTA6の完全版を持っているのかは確認されていなかった。本当に自動公開する仕組みを作っているのかも確認されていなかった。
 
-現時点では、どちらも**Cyberleek本人がそう言っているだけ**だ。
+そして8月24日、**その「Cyberleek本人がそう言っている」という前提自体が崩れた**。デッドマン・スイッチの発端となった投稿が本人のものではなく、第三者による偽情報だった可能性が高いと報じられたためである。
 
-それでも今回の発言が注目されているのは、Take-TwoがちょうどCyberleekの正体を突き止めようと動き始めた直後だからである。
+それでもこの話が一気に広まったのは、Take-TwoがちょうどCyberleekの正体を突き止めようと動き始めた直後に出てきた主張だったからだ。
 
 ---
 
@@ -276,19 +327,21 @@ Take-Twoはもう、ネットに出た動画だけを消そうとしているわ
 
 ---
 
-## そこでCyberleekが「捕まえたら全部出す」と言い始めた
+## そこで「捕まえたら全部出す」という主張が広まった（※後に偽情報の可能性）
 
-Take-Twoが追跡を始めた直後、Cyberleek側から新しい主張が出てきた。
+Take-Twoが追跡を始めた直後、Cyberleek側の新しい主張として次のような話が広まった。
 
-Cyberleekによると、GTA6のデータはすでに複数の場所へコピーしてあり、一定時間ごとに自分で「公開しない」という操作を続けているという。
+**【8月24日訂正】** この主張の発端となった投稿は、その後Cyberleek本人によるものではなく、第三者が作成した偽情報だった可能性が高いと報じられている。以下は当時報じられていた内容であり、事実として確認されたものではない。
 
-もしCyberleekが捕まったり、パソコンを押収されたりして、その操作ができなくなればどうなるのか。
+当時の報道によれば、GTA6のデータはすでに複数の場所へコピーしてあり、一定時間ごとに本人が「公開しない」という操作を続けている、とされていた。
 
-Cyberleekの説明では、**GTA6のデータが自動で公開される**という。
+もし本人が捕まったり、パソコンを押収されたりして、その操作ができなくなればどうなるのか。
+
+その説明では、**GTA6のデータが自動で公開される**とされていた。
 
 ![「DEAD MAN SWITCH」と題した図解。フードの人物から24時間の時計、サーバー、クラウドストレージやDiscordなど複数の保存先へ矢印が伸び、右端に「AUTO RELEASE」と開いた南京錠が並ぶ。左下には「IF WE ARE ARRESTED, THE FULL GTA6 BUILD WILL BE RELEASED.」の一文](/images/news/gta6-cyberleek-dead-man-switch/dead-man-switch.webp)
 
-*図: Cyberleekが主張しているとされる仕組みを分かりやすく示すためのイメージ図であり、実在が確認された構成ではない。*
+*図: 当時Cyberleek側の主張として報じられていた仕組みを分かりやすく示すためのイメージ図。この主張自体が第三者による偽情報だった可能性が高いことが後に判明しており、実在が確認された構成ではない。*
 
 こうした仕組みは一般に「デッドマン・スイッチ」と呼ばれる。
 
@@ -298,7 +351,7 @@ Cyberleekの説明では、**GTA6のデータが自動で公開される**とい
 
 普段は本人が毎日「まだ送るな」と止める。しかし本人が突然操作できなくなると、止める人がいなくなり、そのまま送信される。
 
-Cyberleekは、それと同じような仕組みをGTA6のデータに設定したと主張している。
+当時は、Cyberleekがそれと同じような仕組みをGTA6のデータに設定した、と報じられていた。
 
 ---
 
@@ -306,9 +359,7 @@ Cyberleekは、それと同じような仕組みをGTA6のデータに設定し�
 
 ここはかなり重要だ。
 
-Cyberleekは「完全なGTA6ビルドを持っている」と主張している。
-
-しかし、**その証拠はまだない。**
+「完全なGTA6ビルドを持っている」とされる点についても、**その証拠はない。**
 
 ゲームを操作しているように見える映像が出ているため、何らかのGTA6開発版へアクセスしている可能性はある。
 
@@ -316,7 +367,7 @@ Cyberleekは「完全なGTA6ビルドを持っている」と主張している�
 
 開発中のゲームでは、特定の地域や機能だけを動かせるテスト用ビルドが存在することもある。Cyberleekが持っているものがそうした限定版なのか、本当にゲーム全体なのかは分からない。
 
-同じように、「デッドマン・スイッチを作った」という話も確認できていない。
+同じように、「デッドマン・スイッチを作った」という話も確認できていない。それどころか8月24日には、この話の発端となった投稿自体がCyberleek本人のものではなかった可能性が高いと報じられた。
 
 だから現時点では、
 
@@ -324,25 +375,25 @@ Cyberleekは「完全なGTA6ビルドを持っている」と主張している�
 
 **しかし、完全版を持っている証拠はない。**
 
-**自動公開システムが存在する証拠もない。**
+**自動公開システムが存在する証拠もなく、そもそもCyberleek本人がそう発言したという確認も取れていない。**
 
 この3つを分けて考える必要がある。
 
 ---
 
-## CyberleekはTake-Twoを脅しているのか
+## 「Take-Twoを脅している」と受け止められた理由（当時の見方）
 
-Cyberleek側の狙いは分かりやすい。
+ここから先は、デッドマン・スイッチの主張が本人のものだと考えられていた8月23日時点での見方である。前述のとおり、その出所自体が偽情報だった可能性が高いことが後に判明している。
 
-Take-Twoは現在、MicrosoftやDiscordから情報を集めてCyberleekの正体を探している。
+Take-Twoは現在も、MicrosoftやDiscordから情報を集めてCyberleekの正体を探している。
 
 ![ノートパソコンに向かうフードの人物と、その隣に積まれた資料の束と木槌。背景にはサーバーラック、捜査ボード、ネオンに染まる海辺の街並みが広がるイメージ](/images/news/gta6-cyberleek-dead-man-switch/standoff-gavel.webp)
 
-そこでCyberleekは、
+そこへ、
 
 **「俺たちを捕まえたら、もっと大きな被害が出るぞ」**
 
-という状況を作ろうとしているように見える。
+という状況を作ろうとしているように見える主張が現れた――というのが、当時の受け止め方だった。
 
 もし本当に完全なGTA6がネットへ公開されれば、RockstarとTake-Twoにとっては当然大きな問題になる。
 
@@ -356,13 +407,13 @@ Take-Twoは現在、MicrosoftやDiscordから情報を集めてCyberleekの正�
 
 それで追跡を止められるなら、企業側にとって非常に危険な前例になる。
 
-そのため、Cyberleekの主張が本当だったとしても、Take-Twoが法的手続きをそのまま止める可能性は低いだろう。
+そのため、仮にこの主張が本物だったとしても、Take-Twoが法的手続きをそのまま止める可能性は低い。まして発端が偽情報だった可能性が高いとなれば、なおさらである。
 
 ---
 
 ## Cyberleekを捕まえるだけでは終わらない可能性もある
 
-一方、Cyberleekが言っていることが本当なら、Take-Two側にも難しい問題が残る。
+一方、当時報じられていた内容が仮に本当なら、Take-Two側にも難しい問題が残る、とも指摘されていた。
 
 仮にCyberleek本人を特定できても、GTA6のデータがすでに複数の場所へコピーされていたらどうなるのか。
 
@@ -400,7 +451,7 @@ Take-Twoは現在、MicrosoftやDiscordから情報を集めてCyberleekの正�
 
 しかし、**一般ユーザーがダウンロードして遊べる本物のGTA6完全版が公開されたという事実は確認されていない。**
 
-つまり、「Cyberleekが完全版を持っていると言っている」という話と、「ネットに落ちているGTA6という名前のファイル」は完全に別物だ。
+つまり、「Cyberleekが完全版を持っていると報じられた」という話と、「ネットに落ちているGTA6という名前のファイル」は完全に別物だ。しかも前者については、その発言の出所自体が偽情報だった可能性が高いことが分かっている。
 
 偽物にGTA6という名前を付けることは簡単にできる。100GB以上のダミーデータを入れて、本物っぽいサイズに見せることもできる。
 
@@ -424,15 +475,15 @@ Cyberleekは、最初から単なるリーカーを名乗っていたわけで�
 
 こうした疑問を持つプレイヤーはCyberleek以外にも大勢いる。
 
-ただし、今回Cyberleekが、
+ただし、
 
 **「俺たちを追えばGTA6を公開する」**
 
-と主張し始めたことで、話はかなり変わってきた。
+という主張がCyberleekのものとして広まったことで、話はかなり変わってしまった。
 
-ゲーム業界への問題提起と、未発売ゲームを交渉材料として使うことは同じではない。
+一般論として、ゲーム業界への問題提起と、未発売ゲームを交渉材料として使うことは同じではない。
 
-Cyberleekが掲げるテーマに共感できたとしても、その手段まで支持できるかは別問題だ。
+ただし今回に限っては、その「交渉材料として使う」という発言自体が第三者による偽情報だった可能性が高い。他人の名前を騙った投稿ひとつで、その主張の中身まで世界中に報じられてしまう――今回の件は、その危うさも示している。
 
 ---
 
@@ -448,7 +499,7 @@ Rockstarが正式にGTA6を詳しく紹介する大きなイベントだ。
 
 ところが、その直前にCyberleekが現れた。
 
-ゲームプレイとされる映像を公開し、Take-Twoが身元特定へ動き、今度はCyberleekが「捕まればGTA6を自動公開する」と主張している。
+ゲームプレイとされる映像が公開され、Take-Twoが身元特定へ動き、さらに「捕まればGTA6を自動公開する」という（後に偽情報の可能性が高いと分かる）主張までが飛び交った。
 
 本来なら8月27日は、
 
@@ -474,21 +525,21 @@ Rockstarにとってリークが厄介なのは、秘密を知られることだ
 
 **確認されていること**は、CyberleekがGTA6の未公開映像とされるものを複数公開していること、Take-TwoがMicrosoftとDiscordから関連情報を得るための法的手続きを進めていることだ。
 
-一方、**確認されていないこと**は、CyberleekがGTA6の完全版を持っているという主張と、捕まった場合に自動公開される「デッドマン・スイッチ」が本当に存在するという主張だ。
+一方、**確認されていないこと**は、CyberleekがGTA6の完全版を持っているという話と、捕まった場合に自動公開される「デッドマン・スイッチ」が本当に存在するという話だ。さらに8月24日には、そのデッドマン・スイッチの発端となった投稿自体がCyberleek本人のものではなく、第三者による偽情報だった可能性が高いことが判明した。
 
 つまり今の状況は、
 
 **Take-Twoは本当にCyberleekを追っている。**
 
-**Cyberleekは「追えば全部出す」と言っている。**
+**「追えば全部出す」という発言は、本人のものだと確認できていない。**
 
-**でも、本当に全部持っているかは分からない。**
+**完全なビルドを持っているかどうかも、依然として分からない。**
 
 これだけ覚えておけば、今回の事件の大筋は理解できる。
 
 8月27日にはRockstarの「An Extended Look」が控えている。そして9月4日には、MicrosoftとDiscordに求められている情報提供の期限がやってくる。
 
-Cyberleekの言葉が本物の脅しなのか、それともTake-Twoの追跡を止めるためのブラフなのか。その答えはまだ出ていない。
+「Cyberleekの言葉」とされたものが本物の脅しなのか、Take-Twoの追跡を止めるためのブラフなのか――今回はそれ以前に、その言葉が本人のものだったのかどうかから疑わしくなった。リーク事件そのものは続いているが、周辺で流れる情報の扱いには、これまで以上に注意が必要だ。
 
 ただ、8月18日に始まった一本のリーク映像が、わずか数日でここまで大きな事件になったことだけは確かだ。
 
@@ -496,25 +547,31 @@ GTA6発売まで約3か月。本編とはまったく別の場所で、Rockstar�
 
 ---
 
-> **注記：** 本記事は2026年8月23日時点の公開情報に基づく。Cyberleekが「GTA6の完全なビルドを保有している」「複数の場所へコピーしている」「一定時間操作しなければ自動公開される仕組みを用意した」とする内容はCyberleek側の主張であり、Rockstar Games、Take-Two Interactive、独立した第三者によって確認された事実ではない。ネット上で「GTA6完全版」「GTA6流出ビルド」などとして配布されているファイルについても、本物であることは確認されていない。本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際の流出素材・法廷資料ではない。`,
+> **注記【8月24日更新】：** 本記事は8月23日時点で報じられていた情報をもとに、デッドマン・スイッチについて「Cyberleek側の未確認の主張」として掲載した。その後、この情報の発端となった投稿自体がCyberleek本人によるものではなく、第三者による偽情報だった可能性が高いことが判明したため、8月24日に記事冒頭および該当箇所を訂正した。
+>
+> 現時点でCyberleekがGTA6の完全なビルドを保有していることや、拘束時にデータを自動公開する仕組みを用意していることを裏付ける信頼できる情報は確認できていない。ネット上で「GTA6完全版」「GTA6流出ビルド」などとして配布されているファイルについても、本物であることは確認されていない。本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際の流出素材・法廷資料ではない。`,
     titleEn:
-      "Cyberleek Says It Will Release GTA6 If Arrested — The Standoff With Take-Two Enters a New Phase",
+      "[Correction] Cyberleek's \"Release GTA6 If Arrested\" Was Likely Disinformation — What Emerged After the Dead Man's Switch Story",
     displayTitleEn:
-      "Cyberleek Says It Will Release GTA6 If Arrested\nThe Standoff With Take-Two Enters a New Phase",
+      "[Correction] Cyberleek's \"Release GTA6 If Arrested\" Was Likely Disinformation\nWhat Emerged After the Dead Man's Switch Story",
     descriptionEn:
-      "Right after Take-Two moved for subpoenas against Microsoft and Discord, Cyberleek began claiming that its GTA6 data will publish itself automatically if the group is arrested — a dead man's switch. Whether Cyberleek actually holds a full build, and whether any such mechanism exists, remains unconfirmed. With An Extended Look set for August 27 and a September 4 production deadline ahead, the leak has entered its next phase.",
+      "[Correction, August 24] Right after Take-Two moved for subpoenas against Microsoft and Discord, a claim spread that Cyberleek's GTA6 data would publish itself automatically if the group were arrested — a dead man's switch. The post behind that claim has since been reported as very likely not Cyberleek's at all, but a third party's fabrication. This article is kept as a record of what was reported at the time and what emerged afterwards.",
     aiSummaryEn: [
-      "Cyberleek, which has been publishing footage said to be unreleased GTA6 gameplay since August 18, now claims to have set up a mechanism that automatically releases the GTA6 data it holds if its members are arrested — a so-called dead man's switch, which publishes unless the holder keeps checking in at regular intervals.",
-      "The claim surfaced immediately after Take-Two began DMCA subpoena proceedings seeking GTA6 leak-related user records from Microsoft and Discord. The production deadline is reported as September 4, and Take-Two's aim has shifted from taking videos down to identifying whoever put them out.",
-      "Neither claim has been confirmed: not that Cyberleek holds a complete GTA6 build, nor that the dead man's switch exists. Files circulating online as a 113GB full GTA6 build have likewise not been verified as genuine and may carry malware. An Extended Look is scheduled for August 27.",
+      "[Correction, August 24] As of August 23 it was reported that Cyberleek, which has been publishing footage said to be unreleased GTA6 gameplay since August 18, had set up a mechanism to release its GTA6 data automatically if its members were arrested — a so-called dead man's switch. The post behind that claim has since been reported as very likely not Cyberleek's, but a third party's fabrication.",
+      "The story spread immediately after Take-Two began DMCA subpoena proceedings seeking GTA6 leak-related user records from Microsoft and Discord. The production deadline is reported as September 4, and Take-Two's aim has shifted from taking videos down to identifying whoever put them out — that part is unchanged.",
+      "Nothing confirms that Cyberleek holds a complete GTA6 build, or that any dead man's switch exists. Files circulating online as a 113GB full GTA6 build have likewise not been verified as genuine and may carry malware. An Extended Look is scheduled for August 27.",
     ],
-    fullContentEn: `# Cyberleek Says It Will Release GTA6 If Arrested — The Standoff With Take-Two Enters a New Phase
+    fullContentEn: `# [Correction] Cyberleek's "Release GTA6 If Arrested" Was Likely Disinformation — What Emerged After the Dead Man's Switch Story
 
 The GTA6 leak affair has taken another complicated turn.
 
-"Cyberleek," which has been publishing footage said to be unreleased GTA6 gameplay since August 18, now claims to have set up a mechanism that automatically releases the GTA6 data it holds if its members are arrested.
+~~"Cyberleek," which has been publishing footage said to be unreleased GTA6 gameplay since August 18, now claims to have set up a mechanism that automatically releases the GTA6 data it holds if its members are arrested.~~
 
-Put simply, the message is:
+**[Correction, August 24]** The post that started this "dead man's switch" story has since been reported as very likely not Cyberleek's at all, but disinformation created by a third party. There is no basis at present for saying that Cyberleek itself made the claim.
+
+What follows is a record of what was circulating as of August 23, and of what emerged afterwards.
+
+At the time, the line going around as Cyberleek's was:
 
 **"Come after us and GTA6 goes out on the internet."**
 
@@ -524,11 +581,11 @@ Put simply, the message is:
 
 There is one thing that matters most here, though.
 
-It has not been confirmed that Cyberleek actually holds a complete build of GTA6. Nor has it been confirmed that any automatic-release mechanism has really been built.
+Even at the time, it was not confirmed that Cyberleek actually held a complete build of GTA6, nor that any automatic-release mechanism had really been built.
 
-At this point, both are **only what Cyberleek says**.
+Then, on August 24, **the premise that "Cyberleek says so" collapsed too**: the post behind the dead man's switch was reported as very likely a third party's fabrication rather than anything from the group.
 
-The reason the statement is drawing attention anyway is its timing: it came right after Take-Two started moving to uncover who Cyberleek is.
+The reason the story spread as far as it did was its timing — it surfaced right after Take-Two started moving to uncover who Cyberleek is.
 
 ---
 
@@ -570,19 +627,21 @@ Take-Two is no longer only trying to delete videos that reached the internet.
 
 ---
 
-## Then Cyberleek Said Catch Us and It All Goes Out
+## Then "Catch Us and It All Goes Out" Spread (Later Likely Disinformation)
 
-Right after Take-Two began its pursuit, a new claim came from Cyberleek.
+Right after Take-Two began its pursuit, a new claim spread under Cyberleek's name.
 
-According to Cyberleek, the GTA6 data has already been copied to several locations, and at regular intervals someone performs an action that amounts to telling the system not to publish.
+**[Correction, August 24]** The post behind this claim has since been reported as very likely disinformation produced by a third party rather than anything from Cyberleek. What follows is what was reported at the time; none of it is confirmed fact.
 
-So what happens if Cyberleek is arrested, or the computers are seized, and that action can no longer be performed?
+As reported then, the GTA6 data had already been copied to several locations, and at regular intervals someone performed an action that amounted to telling the system not to publish.
 
-By Cyberleek's account, **the GTA6 data publishes automatically**.
+So what happens if that person is arrested, or the computers are seized, and the action can no longer be performed?
+
+By that account, **the GTA6 data publishes automatically**.
 
 ![A diagram titled "DEAD MAN SWITCH": arrows run from a hooded figure through a 24-hour clock and a server out to cloud storage, Discord and other destinations, ending at "AUTO RELEASE" and an open padlock. A panel reads "IF WE ARE ARRESTED, THE FULL GTA6 BUILD WILL BE RELEASED."](/images/news/gta6-cyberleek-dead-man-switch/dead-man-switch.webp)
 
-*Diagram: an illustration of the mechanism Cyberleek is said to describe. It is not a depiction of anything verified to exist.*
+*Diagram: an illustration of the mechanism reported at the time as Cyberleek's claim. That claim itself has since been reported as very likely third-party disinformation, and nothing shown here is verified to exist.*
 
 Arrangements like this are generally called a "dead man's switch."
 
@@ -592,7 +651,7 @@ Imagine a system where, unless you press a button every 24 hours, a pre-written 
 
 Day to day, the person keeps saying "not yet." The moment they can no longer do so, there is nobody left to stop it, and the message goes out.
 
-Cyberleek claims to have set up something of that kind for the GTA6 data.
+At the time, Cyberleek was reported to have set up something of that kind for the GTA6 data.
 
 ---
 
@@ -600,9 +659,7 @@ Cyberleek claims to have set up something of that kind for the GTA6 data.
 
 This part matters a great deal.
 
-Cyberleek claims to have a complete GTA6 build.
-
-**There is no evidence for that yet, however.**
+As for the claim of a complete GTA6 build: **there is no evidence for it.**
 
 Because footage exists that appears to show the game being played, there is a possibility of access to some development build of GTA6.
 
@@ -610,27 +667,27 @@ That alone, though, does not amount to holding all of GTA6.
 
 Games in development often have test builds that run only a particular region or a particular feature. Whether what Cyberleek has is that kind of limited build or the whole game is unknown.
 
-The claim of a dead man's switch is equally unverified.
+The dead man's switch is equally unverified — and on August 24 the post that started that story was reported as very likely not Cyberleek's at all.
 
-So, for now, these three statements have to be kept apart:
+So these three statements have to be kept apart:
 
 **There may well be access to an environment where GTA6 can be played.**
 
 **There is no evidence of a complete build.**
 
-**There is no evidence that an automatic-release system exists.**
+**There is no evidence that an automatic-release system exists, and no confirmation that Cyberleek ever said there was one.**
 
 ---
 
-## Is Cyberleek Threatening Take-Two?
+## Why It Was Read as a Threat to Take-Two (The View at the Time)
 
-Cyberleek's aim is easy enough to read.
+What follows is how things were read on August 23, while the dead man's switch was still taken to be Cyberleek's own statement. As noted above, the source of that statement has since been reported as very likely disinformation.
 
-Take-Two is currently gathering information from Microsoft and Discord to work out who Cyberleek is.
+Take-Two is still gathering information from Microsoft and Discord to work out who Cyberleek is.
 
 ![A hooded figure at a laptop beside a stack of case files and a gavel, with server racks, an investigation board and a neon-lit coastal city in the background](/images/news/gta6-cyberleek-dead-man-switch/standoff-gavel.webp)
 
-Against that, Cyberleek appears to be manufacturing a situation that says:
+Against that, a claim appeared that looked designed to manufacture a situation reading:
 
 **"Catch us and the damage gets much bigger."**
 
@@ -646,13 +703,13 @@ When the company comes after you, say you will publish all of it if caught.
 
 If that were enough to stop a pursuit, it would set an extremely dangerous precedent for the industry.
 
-For that reason, even if Cyberleek's claims are true, Take-Two is unlikely to halt the legal process because of them.
+For that reason, even if the claims had been genuine, Take-Two would have been unlikely to halt the legal process over them — all the more so now that the source looks like a fabrication.
 
 ---
 
 ## Catching Cyberleek May Not End It Either
 
-On the other side, if what Cyberleek says is true, Take-Two is left with a hard problem of its own.
+On the other side, commentators noted that if what was reported at the time were true, Take-Two would be left with a hard problem of its own.
 
 Suppose Cyberleek is identified. What then, if the GTA6 data has already been copied to several places?
 
@@ -686,7 +743,7 @@ Files are currently circulating online labeled things like:
 
 But **there is no confirmed instance of a genuine, playable complete GTA6 being released for ordinary users to download.**
 
-The claim that Cyberleek says it has a full build and the files sitting on the internet with GTA6 in the name are two entirely different things.
+The reported claim that Cyberleek has a full build and the files sitting on the internet with GTA6 in the name are two entirely different things — and the source of that claim now looks like a fabrication in any case.
 
 Naming a fake file GTA6 is trivial. So is padding it with over 100GB of dummy data to make the size look convincing.
 
@@ -710,15 +767,15 @@ If you buy a game as a download, can you really be said to own it? Should it not
 
 Plenty of players besides Cyberleek hold those questions.
 
-But once Cyberleek began claiming:
+But once the line
 
-**"Come after us and we release GTA6,"**
+**"Come after us and we release GTA6"**
 
-the conversation changed considerably.
+spread under Cyberleek's name, the conversation changed considerably.
 
-Raising problems with the games industry and using an unreleased game as a bargaining chip are not the same act.
+As a general matter, raising problems with the games industry and using an unreleased game as a bargaining chip are not the same act.
 
-Even if you find Cyberleek's stated themes sympathetic, whether you can support the method is a separate question.
+In this instance, though, that bargaining-chip statement itself now looks like a third party's fabrication. A single post written in someone else's name was reported around the world as their position — which is a warning in its own right.
 
 ---
 
@@ -734,7 +791,7 @@ It is the big event at which Rockstar formally shows GTA6 in detail.
 
 Instead, right before it, Cyberleek appeared.
 
-Footage said to be gameplay was published, Take-Two moved toward identification, and now Cyberleek claims GTA6 will publish itself automatically if the group is caught.
+Footage said to be gameplay was published, Take-Two moved toward identification, and then a claim that GTA6 would publish itself automatically if the group were caught — later reported as very likely disinformation — spread on top of it all.
 
 August 27 was supposed to be:
 
@@ -756,21 +813,21 @@ There is a lot to hold in mind here, so a final summary.
 
 **What is confirmed** is that Cyberleek has published several pieces of footage said to be unreleased GTA6 material, and that Take-Two is pursuing legal proceedings to obtain related information from Microsoft and Discord.
 
-**What is not confirmed** is the claim that Cyberleek holds a complete build of GTA6, and the claim that a dead man's switch really exists to publish it automatically if the group is arrested.
+**What is not confirmed** is that Cyberleek holds a complete build of GTA6, or that a dead man's switch really exists to publish it automatically if the group is arrested. On August 24, moreover, the post behind that dead man's switch was reported as very likely a third party's fabrication rather than Cyberleek's own words.
 
 The state of play, then:
 
 **Take-Two really is pursuing Cyberleek.**
 
-**Cyberleek says that pursuit means everything gets published.**
+**The "come after us and it all goes out" line is not confirmed to be Cyberleek's.**
 
-**But whether it actually holds everything is unknown.**
+**Whether anyone in the group holds a complete build remains unknown.**
 
 Hold on to that much and the shape of the affair is clear.
 
 August 27 brings Rockstar's An Extended Look. September 4 brings the deadline for the information requested from Microsoft and Discord.
 
-Whether Cyberleek's words are a real threat or a bluff meant to stop Take-Two's pursuit is not yet answered.
+Whether those "words of Cyberleek's" were a real threat or a bluff meant to stop Take-Two's pursuit is now a second-order question: what fell into doubt first is whether they were Cyberleek's words at all.
 
 What is certain is that a single leaked video on August 18 grew into an affair of this size in a matter of days.
 
@@ -778,7 +835,9 @@ Roughly three months to launch. In a place entirely apart from the game itself, 
 
 ---
 
-> **Note:** This article is based on public information as of August 23, 2026. Cyberleek's statements that it holds a complete build of GTA6, that it has copied the data to several locations, and that it has set up a mechanism that publishes automatically unless operated at regular intervals are claims made by Cyberleek. They are not facts confirmed by Rockstar Games, Take-Two Interactive, or an independent third party. Files distributed online as a full GTA6 build or a leaked GTA6 build have likewise not been confirmed as genuine. Every image in this article is an AI-generated illustration and is not leaked material or a real court filing.`,
+> **Note [updated August 24]:** This article was published on the basis of what was being reported as of August 23, presenting the dead man's switch as an unverified claim attributed to Cyberleek. It has since emerged that the post behind that claim was very likely not from Cyberleek but disinformation created by a third party, so the opening and the relevant passages were corrected on August 24.
+>
+> No reliable information currently confirms that Cyberleek holds a complete build of GTA6, or that it has set up any mechanism to publish data automatically if detained. Files distributed online as a full GTA6 build or a leaked GTA6 build have likewise not been confirmed as genuine. Every image in this article is an AI-generated illustration and is not leaked material or a real court filing.`,
   },
   {
     id: 43,

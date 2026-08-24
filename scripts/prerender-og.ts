@@ -91,6 +91,8 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   const published = /T|\s/.test(article.publishedAt || '')
     ? (article.publishedAt as string).replace(' ', 'T')
     : `${article.date}T09:00:00+09:00`;
+  // 公開後に訂正した記事（updatedAt あり）は dateModified だけ更新日にする。
+  const modified = article.updatedAt ? `${article.updatedAt}T09:00:00+09:00` : published;
 
   let html = TEMPLATE;
   // <html lang>：テンプレート（client/index.html）は ja 固定なので、英語版は en へ差し替える。
@@ -134,7 +136,7 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
         description: descFull,
         image,
         datePublished: published,
-        dateModified: published,
+        dateModified: modified,
         lang,
       }),
       breadcrumbNode([
