@@ -216,6 +216,393 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 46,
+    title:
+      "GTA6、Dazed独占インタビューで大量の新情報。「銃を持てば街が反応」体型変化・ゲーム内SNS・NPCの進化も明らかに",
+    displayTitle:
+      "GTA6、Dazed独占インタビューで大量の新情報\n「銃を持てば街が反応」体型変化・ゲーム内SNS・NPCの進化も明らかに",
+    description:
+      "英国カルチャー誌「Dazed」が2026年8月26日、Rockstar Gamesの開発チームへの独占取材記事を公開した。街中で銃を持てばLeonidaが反応すること、JasonとLuciaを同じ車内で切り替えられること、実際に機能するゲーム内SNS、食事や運動で変化する体型システムなど、これまで公開されていなかったGTA6のシステムが一気に明らかになっている。",
+    icon: "🎤",
+    image: "/images/news/gta6-dazed-interview/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-27",
+    publishedAt: "2026-08-27 04:30",
+    source: "Dazed（Rockstar開発チーム独占インタビュー）",
+    sourceUrl: "https://x.com/Dazed/status/2092643360100008295",
+    relatedArticles: [45, 39, 42],
+    aiSummary: [
+      "英国カルチャー誌Dazedが2026年8月26日、Rockstar Northの開発責任者Rob Nelson氏らGTA6制作の中核スタッフへの独占取材記事を公開した。GTA6は「grounded and reactive（地に足がつき、反応する）」世界を目指しており、街中でライフルを持って歩けば街が反応するという。",
+      "JasonとLuciaは一緒にも別々にも行動でき、同じ車に乗っている状態で運転席と助手席の操作を切り替えられる。ゲーム内には実際に機能するSNSフィードが存在し、食事で体重が、運動で筋肉が変化する身体変化システムも復活・拡張されている。",
+      "Rockstarは10年以上Miamiを調査し、現在は現地に専属リサーチチームを置く。元犯罪者や警察関係者にも取材し、NPCは「シリーズ史上最も多様で詳細」に。開発チームの規模は『Red Dead Redemption 2』当時から2倍以上に拡大している。",
+    ],
+    fullContent: `# GTA6、Dazed独占インタビューで大量の新情報。「銃を持てば街が反応」体型変化・ゲーム内SNS・NPCの進化も明らかに
+
+『Grand Theft Auto VI（GTA6）』について、これまで見えていなかったゲームシステムや開発の舞台裏が一気に明らかになった。
+
+英国カルチャー誌「Dazed」は2026年8月26日、Rockstar Gamesの開発チームを独占取材した大型特集「GTAVI: An exclusive deep dive into the video game of the decade」を公開した。
+
+![](https://x.com/Dazed/status/2092643360100008295)
+
+記事にはRockstar Northの開発責任者Rob Nelson氏をはじめ、ナラティブ、キャラクター、UIなどGTA6制作の中核を担うスタッフが登場。これまでトレーラーや公式サイトだけでは分からなかった、Leonidaの世界がどのようにプレイヤーへ反応するのか、JasonとLuciaをどのように操作できるのか、さらには主人公の身体変化やNPC制作の規模まで語られている。
+
+DazedのGTA6特集は同誌2026年秋号にも掲載され、雑誌は9月10日から世界で発売される予定だ。オンライン版はすでに公開されている。
+
+---
+
+## GTA6の世界は「より現実的にプレイヤーへ反応する」
+
+今回のインタビューで、まず大きく取り上げられているのがGTA6のオープンワールドそのものだ。
+
+Dazedによれば、GTA6はシリーズらしい武器やスーパーカー、自由度を残しながらも、これまで以上に「grounded and reactive（地に足がつき、反応する）」世界を目指しているという。
+
+象徴的なのが、街中で銃を持った場合の反応だ。
+
+![銃を構えたまま店内に立つ男女のイメージ。Leonidaの街では、武器を持って歩くこと自体に周囲が反応するという](/images/news/gta6-dazed-interview/reactive-world-armed.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+
+記事では、ライフルを持ったまま通りを歩けば、街が何らかの反応を示すと説明されている。
+
+過去のGTAでは、武装した主人公が市街地を歩き回っても、プレイヤーが実際に発砲したり犯罪行為を起こしたりするまで、周囲の反応は限定的な場合もあった。
+
+しかしGTA6では、単に「犯罪を起こしたかどうか」だけではなく、プレイヤーの行動や状態そのものを世界が読み取り、それに応じてNPCや周囲の環境が反応する方向へ進化しているようだ。
+
+Rob Nelson氏は、Rockstarが過去作品を批判的に振り返り、当時は時間、リソース、技術的な制約などで実現できなかったものを見直しながら、システムを発展させていると説明している。
+
+---
+
+## JasonとLuciaは「二人で行動」も「別々に行動」も可能
+
+GTA6の主人公Jason DuvalとLucia Caminosについても、新たなプレイスタイルが具体的に語られた。
+
+Dazedは、プレイヤーが二人をカップルとして一緒に行動させることも、それぞれ別々に行動して自由に遊ぶこともできると伝えている。
+
+さらに興味深いのが、二人が同じ車に乗っている場面だ。
+
+![夜のVice Cityを走る車内。運転席の男性と、助手席でスマートフォンを見る女性のイメージ](/images/news/gta6-dazed-interview/dual-protagonist-car.webp)
+
+たとえば仕事へ向かう途中、Jasonとして高速道路を運転している状態から、助手席に座るLuciaへ操作を切り替え、ゲーム内スマートフォンを見ることができるという。
+
+その後カーチェイスが始まれば、運転するキャラクターと助手席から追手を攻撃するキャラクターを状況に合わせて切り替えることも可能だと説明されている。
+
+単に「二人の主人公を切り替えられる」というGTA5の発展形ではなく、二人が同じ状況の中に存在したまま操作対象を切り替えるシステムが、GTA6ではより深くゲームプレイへ組み込まれている可能性がある。
+
+---
+
+## GTA6には「実際に動くSNSフィード」が存在
+
+トレーラー公開時から大きな注目を集めていたゲーム内SNSについても、今回かなり重要な情報が出ている。
+
+Dazedは明確に、GTA6には実際に機能するソーシャルメディアのフィードが存在すると伝えている。
+
+![ビーチで掲げられたスマートフォンに、ライブ配信とコメント欄のような画面が表示されているイメージ](/images/news/gta6-dazed-interview/in-game-social-feed.webp)
+
+これまで公開された映像では、TikTokやInstagram Liveを思わせる縦型動画、ライブ配信、コメント欄のようなUIが何度も登場していた。
+
+そのためSNSがGTA6における現代アメリカ風刺の中心的な要素になることは以前から予想されていたが、今回の取材によって、それが単なるストーリー演出ではなく、プレイヤーがゲーム内で実際に触れるシステムであることがより明確になった。
+
+また、ゲーム内の女性ラップデュオ「Real Dimez」の活動についても、SNS上で拡散されるバイラル投稿を通してその軌跡を追えるという。
+
+SNSが単なる雰囲気作りではなく、Leonidaで起きる出来事や人物を知るための情報源として機能する可能性もありそうだ。
+
+---
+
+## 食べれば太る、運動すれば筋肉がつく――身体変化システムが復活
+
+シリーズファンにとって特に興味深いのが、主人公の身体変化だろう。
+
+DazedによるとGTA6では、過去のRockstar作品で採用されてきた身体変化システムが復活し、さらに拡張されている。
+
+![ジムでダンベルを持ち上げる男性と女性、画面右上に筋肉・体脂肪・スタミナのステータス表示があるイメージ](/images/news/gta6-dazed-interview/body-change-gym.webp)
+
+食事はJasonとLuciaの体重に影響し、運動をすれば筋肉が目に見えて発達する。
+
+さらに、長期間自宅へ戻らず警察から逃げ続けたり、何日にもわたって遊び歩いたりすると、その生活が二人の外見にも現れるという。
+
+これは『Red Dead Redemption 2』で見られた、Arthur Morganの体重、髪、ひげ、傷などがプレイヤーの生活によって変化する仕組みを、現代を舞台とするGTA6向けにさらに発展させたものと考えられる。
+
+つまり同じJasonやLuciaでも、プレイヤーがどのような生活を送るかによって見た目が変わっていくことになる。
+
+---
+
+## Rockstarは10年以上Miamiを調査。犯罪者や警察関係者にも取材
+
+GTA6の舞台Leonidaを作るため、Rockstarが行った調査の規模も明らかになっている。
+
+![ヤシ並木とパステルカラーの建物が続く海沿いの大通りと、停まっている赤いマッスルカーのイメージ](/images/news/gta6-dazed-interview/vice-city-ocean-drive.webp)
+
+Vice CityのモデルとなるMiamiとその周辺には、過去10年以上にわたって複数のRockstarスタッフが訪れており、現在はMiamiに専属のリサーチチームまで存在するという。
+
+そして調査対象は街並みだけではない。
+
+Rockstarのキャラクター部門でシニア・アートディレクターを務めるJamie-Lee Lloyd氏によれば、開発チームは元犯罪者、警察関係者、クラブプロモーター、銃器関係者など、地域を知るさまざまな人物から話を聞いてきたという。
+
+単に「Floridaの変な人物」を集めて風刺するのではなく、実際に現地の人々と交流し、その地域特有の文化や考え方を理解したうえでGTAの世界へ落とし込むことが狙いだ。
+
+ゲームライターのMichael Wiafe氏も、既存のFlorida像やミームをそのまま再現するだけではなく、プレイヤー自身がLeonidaを探索して発見できる世界を作る必要があると説明している。
+
+---
+
+## GTA6のNPCは「シリーズ史上最も多様で詳細」
+
+その現地調査の成果が特に現れているのが、Leonidaで暮らすNPCたちだ。
+
+![ビーチ沿いの遊歩道を歩く二人の後ろ姿と、その先に広がる大勢の人々のイメージ](/images/news/gta6-dazed-interview/npc-crowd-beach.webp)
+
+Vice CityのLittle CubaからMount Kalaga National Parkの自然地帯まで、地域によって服装、体格、年齢、ファッション、身体的特徴などが大きく異なるキャラクターが登場するという。
+
+Rockstarはこの膨大な人口を制作するため、新しいツールと制作パイプラインを開発した。
+
+Lloyd氏はGTA6について、「これまで作った中で最も詳細で多様なキャラクター人口」を構築できるようになったと説明している。
+
+さらに驚くべきことに、現在のRockstarにはLos Angelesの拠点に、ゲーム内の歩行者・NPC制作をほぼ専門的に担当する部門まで存在するという。
+
+---
+
+## GTA6開発チームはRDR2時代から「2倍以上」に
+
+こうした世界を作るため、Rockstarそのものの制作規模も大きく変わっている。
+
+![夕暮れのLeonidaの街並みを高所から見下ろしたイメージ。高速道路、ヘリコプター、海沿いの高層ビル群が広がる](/images/news/gta6-dazed-interview/leonida-skyline.webp)
+
+Dazedによれば、GTA6を制作するRockstarのチーム規模は、『Red Dead Redemption 2』発売時と比較して2倍以上に拡大した。
+
+NPCだけではない。
+
+Vice Cityの壁画制作には50人以上の実在するストリートアーティストが参加。
+
+さらに、車両のハンドリングを担当するチームには実際のレーシングドライバーが所属しているという。
+
+ファッションについても、Miamiを拠点とするスタイリストJillian Carr氏が2023年からRockstarと協力し、Vice Cityの「ファッション・エコシステム」を構築している。
+
+街を構成するブランドについても、一度きりのパロディとして作るのではなく、そのブランドを好む人、その店を利用する人、その商品が存在する地域まで含め、Leonidaの文化の一部として成立するよう設計しているという。
+
+---
+
+## 「13年待ったGTA」の中身が、ようやく見え始めた
+
+これまでGTA6について語られる時、その中心にあったのは巨大なマップ、グラフィック、車両、ストーリーといった目に見えやすい部分だった。
+
+しかし今回のDazed独占取材から見えてくるGTA6は、少し違う。
+
+武器を持って歩けば周囲が反応する。
+
+![路上で警察官に両手を上げさせられている男女のイメージ](/images/news/gta6-dazed-interview/police-reaction.webp)
+
+JasonとLuciaは同じ車の中でもシームレスに操作を切り替えられる。
+
+スマートフォンを開けばLeonidaで動いているSNSがあり、食事や運動、日々の生活は主人公の身体へ残っていく。
+
+![夜の街を走る車の助手席で、スマートフォンの画面を見ている人物のイメージ](/images/news/gta6-dazed-interview/passenger-phone-night.webp)
+
+そして、その街を歩く名もないNPC一人を作るためにも、Rockstarは専用の技術、現地調査、専門スタッフを投入している。
+
+Rob Nelson氏はDazedに対し、GTA6にかかる外部からの期待は前例のないものだと認めながらも、それ以上に開発チーム自身が自分たちへプレッシャーをかけていると語っている。
+
+13年間という長い時間を経て作られた次のGrand Theft Autoが、単に「GTA5を巨大にしたゲーム」ではなく、プレイヤーの行動に反応し続ける世界を作ろうとしていることが、今回のインタビューから少しずつ見え始めた。
+
+そしてタイミングも意味深だ。
+
+Rockstarがゲームプレイ映像の流出について声明を発表し、「GTA6はほぼ完成」と明かした直後。そして「Extended Look」の公開を目前に控えたタイミングで、今度は開発チーム自身の言葉によってGTA6の内部が語られ始めた。
+
+発売日は2026年11月19日。
+
+これまで慎重に隠されてきたGTA6の全貌が、いよいよ本格的に明らかになる段階へ入ったのかもしれない。
+
+---
+
+> **注記：** 本記事はDazedの独占取材記事「GTAVI: An exclusive deep dive into the video game of the decade」（2026年8月26日公開）の内容をもとにまとめたもので、引用部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+    titleEn:
+      "Dazed's Exclusive GTA6 Deep Dive Lands a Flood of New Detail: a City That Reacts to a Drawn Gun, Body Changes, a Working In-Game Social Feed, and Smarter NPCs",
+    displayTitleEn:
+      "Dazed's Exclusive GTA6 Deep Dive Lands a Flood of New Detail\nA City That Reacts to a Drawn Gun, Body Changes, a Working Social Feed, and Smarter NPCs",
+    descriptionEn:
+      "On August 26, 2026, UK culture magazine Dazed published an exclusive deep dive built on interviews with the Rockstar Games team behind GTA6. Walking Leonida with a rifle makes the city react, Jason and Lucia can be swapped inside the same car, the in-game social feed actually works, and eating and training visibly change the protagonists' bodies.",
+    aiSummaryEn: [
+      "UK culture magazine Dazed published an exclusive deep dive on August 26, 2026, built on interviews with Rockstar North art director Rob Nelson and other core GTA6 staff. The game is aiming for a more grounded and reactive world: walk down a street carrying a rifle and the city responds.",
+      "Jason and Lucia can be played together or separately, and control can switch between driver and passenger while both sit in the same car. GTA6 has a social media feed that genuinely functions, and the body-change system returns and expands — food affects weight, training visibly builds muscle.",
+      "Rockstar has researched Miami for over a decade and now keeps a dedicated research team there, speaking with former criminals, police, club promoters and firearms people. NPCs are described as the most detailed and diverse population the studio has built, and the team is more than twice the size it was for Red Dead Redemption 2.",
+    ],
+    fullContentEn: `# Dazed's Exclusive GTA6 Deep Dive Lands a Flood of New Detail: a City That Reacts to a Drawn Gun, Body Changes, a Working In-Game Social Feed, and Smarter NPCs
+
+A large amount of previously unseen detail about *Grand Theft Auto VI* — both its systems and the work behind them — has arrived at once.
+
+On August 26, 2026, UK culture magazine Dazed published a major feature titled "GTAVI: An exclusive deep dive into the video game of the decade," built on exclusive interviews with the development team at Rockstar Games.
+
+![](https://x.com/Dazed/status/2092643360100008295)
+
+The piece features Rockstar North art director Rob Nelson alongside staff working across narrative, characters and UI. It covers things trailers and the official site never made clear: how the world of Leonida responds to the player, how Jason and Lucia can be controlled, and how far the studio has gone on protagonist body changes and NPC production.
+
+Dazed's GTA6 feature also runs in the magazine's Autumn 2026 issue, which goes on sale worldwide from September 10. The online version is already live.
+
+---
+
+## A World That Reacts to the Player More Realistically
+
+The first thing the interview takes up at length is the open world itself.
+
+According to Dazed, GTA6 keeps the weapons, supercars and freedom the series is known for while aiming for a more **grounded and reactive** world than any previous entry.
+
+The clearest example is what happens when you carry a gun in public.
+
+![Two figures standing inside a store with guns raised — in Leonida, simply carrying a weapon draws a reaction from those around you](/images/news/gta6-dazed-interview/reactive-world-armed.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+
+The article explains that walking down a street while holding a rifle will get some kind of reaction out of the city.
+
+In earlier GTA games, an armed protagonist could often wander an urban area with only limited response until the player actually fired a shot or committed a crime.
+
+In GTA6, the world appears to read not just whether a crime has been committed, but the player's behavior and state itself, with NPCs and the surrounding environment responding accordingly.
+
+Nelson explains that Rockstar looks back critically at its past games, revisiting what could not be done at the time because of schedule, resources or technical limits, and builds its systems forward from there.
+
+---
+
+## Jason and Lucia Can Work Together — or Separately
+
+Dazed also gets specific about new ways to play as the protagonists, Jason Duval and Lucia Caminos.
+
+Players can move through the world with the two of them together as a couple, or send them off separately and play freely with each.
+
+The most interesting case is when both are in the same car.
+
+![Inside a car driving through Vice City at night: a man at the wheel and a woman in the passenger seat looking at her phone](/images/news/gta6-dazed-interview/dual-protagonist-car.webp)
+
+On the way to a job, for example, you can be driving down the highway as Jason, then switch control to Lucia in the passenger seat and look at the in-game phone.
+
+If a car chase starts from there, the article says you can keep switching as the situation demands — between the character driving and the character firing back at pursuers from the passenger seat.
+
+That is not simply GTA5's protagonist switching made bigger. Swapping control while both characters remain inside the same unfolding situation looks like a system built far more deeply into GTA6's moment-to-moment play.
+
+---
+
+## GTA6 Has a Social Feed That Actually Works
+
+Some genuinely important information also came out about the in-game social media that has drawn attention since the trailers.
+
+Dazed states plainly that GTA6 contains a functioning social media feed.
+
+![A phone held up at the beach showing what looks like a live stream with a comment column](/images/news/gta6-dazed-interview/in-game-social-feed.webp)
+
+Footage released so far has repeatedly shown vertical video, live streams and comment-style UI reminiscent of TikTok and Instagram Live.
+
+Social media was already expected to sit at the center of GTA6's satire of modern America, but this feature makes it clearer that it is not merely story dressing — it is a system players will actually interact with in-game.
+
+The rise of in-game female rap duo Real Dimez, for instance, can be followed through viral posts spreading across that feed.
+
+Social media may therefore work less as atmosphere and more as a source of information about the people and events of Leonida.
+
+---
+
+## Eat and Gain Weight, Train and Gain Muscle: Body Changes Return
+
+For long-time series fans, the protagonists' physical changes may be the most interesting piece.
+
+According to Dazed, the body-change system used in past Rockstar games returns in GTA6 — and goes further.
+
+![A man lifting a dumbbell in a gym with a woman beside him, and a muscle, body-fat and stamina status readout in the corner](/images/news/gta6-dazed-interview/body-change-gym.webp)
+
+Food affects Jason's and Lucia's weight, and training builds visible muscle.
+
+Beyond that, staying away from home for long stretches while running from the police, or partying for days on end, shows up in how the two of them look.
+
+It reads as an extension, built for GTA6's contemporary setting, of what *Red Dead Redemption 2* did with Arthur Morgan — where weight, hair, beard and scars all shifted with how the player lived.
+
+In other words, the same Jason and the same Lucia will look different depending on the life a given player gives them.
+
+---
+
+## Over a Decade of Miami Research — Including Former Criminals and Police
+
+The scale of the research behind Leonida is also laid out.
+
+![A palm-lined coastal boulevard of pastel buildings with a red muscle car parked at the curb](/images/news/gta6-dazed-interview/vice-city-ocean-drive.webp)
+
+Rockstar staff have been visiting Miami and its surroundings — the model for Vice City — for more than ten years, and the studio now keeps a dedicated research team based in the city.
+
+And the research is not limited to the streetscape.
+
+Jamie-Lee Lloyd, senior art director in Rockstar's character department, says the team has spoken with former criminals, police, club promoters, firearms people and others who know the area.
+
+The goal is not to round up "weird Florida characters" for easy satire, but to meet people there, understand the culture and mindset specific to the region, and then translate that into the world of GTA.
+
+Games writer Michael Wiafe likewise explains that the aim was not to reproduce existing Florida imagery and memes, but to build a world players discover for themselves by exploring Leonida.
+
+---
+
+## The Most Detailed and Diverse NPC Population in the Series
+
+That fieldwork shows up most clearly in the people who live in Leonida.
+
+![Two figures seen from behind on a beachfront walkway, with a large crowd spread out ahead of them](/images/news/gta6-dazed-interview/npc-crowd-beach.webp)
+
+From Vice City's Little Cuba to the wilderness of Mount Kalaga National Park, characters differ sharply by region in clothing, build, age, fashion and physical features.
+
+To produce a population that large, Rockstar developed new tools and a new production pipeline.
+
+Lloyd says this let the studio build what he describes as the most detailed and diverse character population it has ever made.
+
+More striking still: Rockstar's Los Angeles office now has a department working more or less exclusively on the game's pedestrians and NPCs.
+
+---
+
+## The GTA6 Team Is More Than Twice the Size It Was for RDR2
+
+Building a world like this has changed the scale of Rockstar itself.
+
+![A high vantage over Leonida at dusk: highways, a helicopter, and towers along the water](/images/news/gta6-dazed-interview/leonida-skyline.webp)
+
+According to Dazed, the Rockstar team working on GTA6 is more than twice the size it was when *Red Dead Redemption 2* shipped.
+
+And it is not only NPCs.
+
+More than 50 real street artists worked on Vice City's murals.
+
+The team handling vehicle handling includes actual racing drivers.
+
+On fashion, Miami-based stylist Jillian Carr has been working with Rockstar since 2023 to build out Vice City's "fashion ecosystem."
+
+Even the brands that make up the city are designed not as one-off parodies but as parts of Leonida's culture — who likes the brand, who shops at the store, which neighborhoods the product exists in.
+
+---
+
+## After 13 Years, We Are Finally Seeing What Is Inside
+
+When GTA6 has been discussed until now, the conversation has centered on the visible things: the size of the map, the graphics, the vehicles, the story.
+
+The GTA6 that emerges from Dazed's exclusive is a little different.
+
+Walk around armed and the people around you react.
+
+![A man and a woman with their hands raised in front of a police officer on the street](/images/news/gta6-dazed-interview/police-reaction.webp)
+
+Jason and Lucia can be swapped seamlessly even inside the same car.
+
+Open the phone and there is a social network running in Leonida, while meals, workouts and daily life leave their marks on the protagonists' bodies.
+
+![A passenger in a car at night looking at a phone screen](/images/news/gta6-dazed-interview/passenger-phone-night.webp)
+
+And to build even one nameless NPC walking those streets, Rockstar is pouring in dedicated technology, field research and specialist staff.
+
+Nelson told Dazed that the external expectation around GTA6 is unprecedented — but that the development team puts even more pressure on itself than that.
+
+What this interview begins to show is that the next Grand Theft Auto, made across 13 years, is not simply "GTA5 but enormous." It is an attempt to build a world that keeps reacting to what the player does.
+
+The timing carries weight, too.
+
+It comes right after Rockstar issued a statement about the leaked gameplay footage and revealed that GTA6 is nearly finished — and just before the Extended Look goes live. Now the inside of the game is being described in the development team's own words.
+
+The release date is November 19, 2026.
+
+GTA6, kept carefully hidden for so long, may have entered the stage where the whole picture finally starts to come into view.
+
+---
+
+> **Note:** This article summarizes Dazed's exclusive feature "GTAVI: An exclusive deep dive into the video game of the decade" (published August 26, 2026); quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the original for exact wording. Every image here is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+  },
+  {
     id: 45,
     title:
       "RockstarがGTA6リークに異例の声明。「ほぼ完成」と明言、明日“Extended Look”公開へ",
