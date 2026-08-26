@@ -216,6 +216,307 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 45,
+    title:
+      "RockstarがGTA6リークに異例の声明。「ほぼ完成」と明言、明日“Extended Look”公開へ",
+    displayTitle:
+      "RockstarがGTA6リークに異例の声明\n「ほぼ完成」と明言、明日“Extended Look”公開へ",
+    description:
+      "Rockstar Gamesが、この1週間に起きたGTA6のゲームプレイ映像流出について公式声明を発表した。「チームにとって胸が張り裂けるような出来事だった」としながら、開発状況を「nearly there!（もうほぼ完成している）」と表現。さらに明日、GTA6の「Extended Look」を公開することを正式に予告した。",
+    icon: "📢",
+    image: "/images/news/gta6-rockstar-statement/eyecatch.webp",
+    category: "release",
+    date: "2026-08-26",
+    publishedAt: "2026-08-26 23:00",
+    source: "Rockstar Games 公式X",
+    sourceUrl: "https://x.com/RockstarGames/status/2092574304571433078",
+    relatedArticles: [39, 44, 43],
+    aiSummary: [
+      "Rockstar Gamesが、この1週間に広がったGTA6のゲームプレイ映像流出について公式声明を発表した。映像がこのような形で流出したことを「チームにとって胸が張り裂けるような出来事だった」と表現し、「長い間待ってくれた皆さんに、このような形でゲームを見てほしかったわけではない」と説明している。",
+      "声明の中でRockstarは、ゲームの完成について「getting the game finished (nearly there!)」と記した。すべての開発作業が完了したという発表ではないが、Rockstar自身がGTA6を「もうほぼそこまで来ている」と表現し、発売に向けた最終段階にあることをファンへ直接伝えた形になる。",
+      "あわせてRockstarは「明日、Extended Lookを皆さんに見てもらえるのをとても楽しみにしている」とコメントし、8月27日の「An Extended Look」公開を正式に予告した。流出したネタバレには詳しく触れず、「もう少しだけ待って、11月19日に自分自身でゲームを体験してほしい」と呼びかけている。",
+    ],
+    fullContent: `# RockstarがGTA6リークに異例の声明。「ほぼ完成」と明言、明日“Extended Look”公開へ
+
+Rockstar Gamesが、『Grand Theft Auto VI（GTA6）』を巡ってこの1週間に起きたゲームプレイ映像の流出について、公式声明を発表した。
+
+![](https://x.com/RockstarGames/status/2092574304571433078)
+
+声明の中でRockstarは、開発中のGTA6の映像が意図しない形で公開されたことについて「チームにとって胸が張り裂けるような出来事だった」と率直な心境を明かしている。
+
+しかし今回の声明で注目すべきなのは、リークへの反応だけではない。
+
+RockstarはGTA6について**「nearly there!（もうほぼ完成している）」**と表現し、さらに**明日、GTA6の「Extended Look」を公開する**ことを正式に予告した。
+
+リークによって予定外の形でゲームの一部が世に出てしまった直後、Rockstar自身がファンに向けて語った言葉は、発売まで残された期間がいよいよ最終段階に入っていることを強く感じさせる内容となっている。
+
+---
+
+## 「このような形でGTA6を見てほしくなかった」
+
+Rockstarは声明の冒頭で、この1週間の出来事について多くのファンが公式からの説明を待っていたことを認識しているとしたうえで、ゲームプレイ映像の流出について触れた。
+
+同社は今回の出来事を、
+
+> GTA VIのゲームプレイ映像がこのような形で流出してしまったことは、私たちのチームにとって胸が張り裂けるような出来事だった
+
+という趣旨の言葉で表現している。
+
+そして、「長い間待ってくれた皆さんに、このような形でゲームを見てほしかったわけではない」と説明した。
+
+GTA6は世界でも最も注目を集めるゲームのひとつであり、Rockstarはこれまで、新しい映像やスクリーンショットを非常に慎重なタイミングで公開してきた。
+
+それだけに、発売を目前に控えた段階でゲームプレイ映像が意図しない形で広がったことは、開発チームにとって相当大きな出来事だったことが今回の声明から読み取れる。
+
+---
+
+## GTA6は「nearly there!」――Rockstarが“ほぼ完成”と表現
+
+今回の声明の中でも特に注目したいのが、GTA6の現在の開発状況について触れた部分だ。
+
+Rockstarは、ゲームの完成や新しい情報、公式ゲームプレイ映像などをファンに届けるまでに時間がかかっていることを謝罪。
+
+その中で、
+
+**「getting the game finished (nearly there!)」**
+
+と記している。
+
+直訳すれば、「ゲームを完成させること（もうほぼそこまで来ています！）」という意味になる。
+
+もちろん、これは「すべての開発作業が完了した」「すでにマスターアップした」という発表ではない。
+
+発売前のゲームには最終調整やバグ修正、最適化など多くの作業が残されるため、この一文だけから具体的な開発進捗率を判断することはできない。
+
+それでも、Rockstar自身がGTA6を**「nearly there」**と表現した意味は大きい。
+
+少なくとも現在のGTA6が、発売に向けた最終段階へ進んでいることをファンに直接伝えるメッセージと受け取ることができる。
+
+---
+
+## 明日「Extended Look」を公開すると正式発表
+
+そして、今回の声明でもうひとつ大きな情報が明らかになった。
+
+Rockstarは、
+
+**「We are very excited for everyone to see the extended look tomorrow.」**
+
+とコメント。
+
+**明日、GTA6の「Extended Look」を公開することを正式に明らかにした。**
+
+![夜の街とヤシの木を背景に、スマートフォンの画面に告知カードのような表示が浮かび上がっているイメージ](/images/news/gta6-rockstar-statement/extended-look-teaser.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面や流出素材ではない。*
+
+これまで予告されていた8月27日の公開を前に、Rockstar自身が改めてその存在を明言した形だ。
+
+「Extended Look」が具体的にどのような形式になるのかについて、今回の声明では詳しい説明はされていない。
+
+ただしRockstarは、準備に想定以上の時間がかかったとしながらも、
+
+**「皆さんの期待を上回る必要がある」**
+
+と強調している。
+
+さらに、
+
+**「皆さんが期待し、それに値するレベルのものを届ける決意がある」**
+
+とも述べた。
+
+単なる短い告知映像ではなく、Rockstar側も明日の公開を非常に重要なものとして位置づけていることがうかがえる。
+
+---
+
+## リークの詳細には触れず「自分自身で体験してほしい」
+
+一方でRockstarは、今回流出した内容によって、本来意図していたゲーム体験の一部が損なわれてしまう可能性についても言及している。
+
+声明では、
+
+「一部のネタバレによって、意図していたゲーム体験が影響を受ける可能性があることは残念だ」
+
+としたうえで、ファンに対して、
+
+**「もう少しだけ待って、11月19日に自分自身でゲームを体験してほしい」**
+
+と呼びかけた。
+
+![夜のリビングで大型テレビにネオンに彩られた海沿いの街並みが映り、手前のテーブルにゲームコントローラーが置かれているイメージ](/images/news/gta6-rockstar-statement/november-19-living-room.webp)
+
+GTA6 FEEDでは、今回流出した映像に含まれる具体的なネタバレについては本記事では扱わない。
+
+重要なのは、その内容そのものよりも、Rockstarが今回の流出を正式に認識し、初めて公の場で直接言及したことだろう。
+
+---
+
+## リークへの声明が、そのまま“明日”へのメッセージになった
+
+今回のRockstarの声明は、単なるリークへの抗議文ではなかった。
+
+意図しない形で映像が公開されたことへの落胆を示す一方で、GTA6が「ほぼ完成」に近づいていることを伝え、明日のExtended Look、そして11月19日の発売へとファンの視線を戻そうとしている。
+
+特に印象的なのは、声明の最後にコミュニティへの感謝を長く記していることだ。
+
+Rockstarは、この1週間に寄せられたファンからの応援メッセージについて、
+
+**「皆さんの言葉は、想像以上にこのチームにとって大きな意味を持っている」**
+
+とコメント。
+
+さらに、
+
+**「結局のところ、私たちは皆さんのためにこのゲームを作っている」**
+
+と結んでいる。
+
+長い沈黙を続けることも多いRockstarが、リークという予期せぬ出来事のあとにここまで感情を込めた声明を発表したこと自体、異例と言っていい。
+
+そして、その声明の翌日に待っているのが「Extended Look」だ。
+
+リークによって予定とは違う形でGTA6の一部を目にしてしまった人もいる。しかしRockstarが本来見せようとしていたGTA6がどのようなものなのかは、まだ分からない。
+
+**その答えの一部が、8月27日に正式に明らかになる。**
+
+---
+
+> **注記：** 本記事に掲載したRockstarの声明の日本語は、公式Xの投稿（本文中に埋め込み）をもとにした編集部訳であり、意訳を含む。正確な文言は原文を参照してほしい。また、本記事の画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・流出素材ではない。`,
+    titleEn:
+      "Rockstar Breaks Silence on the GTA6 Leak: the Game Is \"Nearly There,\" and the Extended Look Arrives Tomorrow",
+    displayTitleEn:
+      "Rockstar Breaks Silence on the GTA6 Leak\nThe Game Is \"Nearly There,\" and the Extended Look Arrives Tomorrow",
+    descriptionEn:
+      "Rockstar Games has issued an official statement on the GTA6 gameplay footage that leaked over the past week. Calling it \"heartbreaking for our team,\" the studio also described the game itself as \"nearly there!\" and confirmed that the Extended Look is coming tomorrow.",
+    aiSummaryEn: [
+      "Rockstar Games has published an official statement about the GTA6 gameplay footage that spread over the past week, saying it would be an understatement to call the leak heartbreaking for the team, and that this is obviously not how it intended players to see the game after all this time.",
+      "In the same statement Rockstar wrote of \"getting the game finished (nearly there!)\" — not an announcement that development is complete, but a direct signal from the studio that GTA6 has reached the final stretch before release.",
+      "Rockstar also said it is \"very excited for everyone to see the extended look tomorrow,\" formally confirming the August 27 premiere of An Extended Look. It did not address the leaked spoilers in detail, asking instead that everyone wait a bit longer and experience the game for themselves on November 19.",
+    ],
+    fullContentEn: `# Rockstar Breaks Silence on the GTA6 Leak: the Game Is "Nearly There," and the Extended Look Arrives Tomorrow
+
+Rockstar Games has issued an official statement about the gameplay footage from *Grand Theft Auto VI* that leaked over the past week.
+
+![](https://x.com/RockstarGames/status/2092574304571433078)
+
+In it, the studio speaks plainly about how it feels to have footage of a game still in development surface in a way nobody planned: seeing it happen, Rockstar says, has been heartbreaking for the team.
+
+But the reaction to the leak is not the only thing worth noting here.
+
+Rockstar described GTA6 itself as **"nearly there!"** — and formally confirmed that **the Extended Look is coming tomorrow**.
+
+Coming directly after part of the game reached the public on a schedule Rockstar never chose, the statement leaves a strong impression that the time remaining before release has entered its final stage.
+
+---
+
+## "This Is Not How We Intended for You to See the Game"
+
+Rockstar opens by acknowledging that many fans had been waiting to hear from the company about the events of the past week, before turning to the leaked gameplay footage.
+
+The studio puts it roughly this way:
+
+> Having videos of Grand Theft Auto VI gameplay leak in this way has been heartbreaking for our team
+
+And it adds that this is obviously not how it intended everyone to see the game after such a long wait.
+
+GTA6 is one of the most closely watched games in the world, and Rockstar has always released new footage and screenshots on very carefully chosen timing.
+
+That is exactly why the statement reads the way it does: with launch this close, gameplay footage spreading in an unintended form was clearly a significant event for the development team.
+
+---
+
+## "Nearly There!" — Rockstar's Own Words on How Close GTA6 Is
+
+The passage that deserves the most attention is the one touching on where development currently stands.
+
+Rockstar apologizes for how long everything has taken — finishing the game, sharing more details, showing official gameplay, giving the community what it wants to know.
+
+And in the middle of that list comes the phrase:
+
+**"getting the game finished (nearly there!)"**
+
+It is not an announcement that all development work is done, or that the game has gone gold.
+
+A game this close to release still has final tuning, bug fixing and optimization ahead of it, and no specific completion percentage can be read out of a single line.
+
+Even so, the fact that Rockstar itself chose the words **"nearly there"** matters.
+
+At minimum, it is a message delivered straight to fans that GTA6 has moved into the final stage before launch.
+
+---
+
+## The Extended Look Is Officially Confirmed for Tomorrow
+
+The statement also carried one more significant piece of information.
+
+Rockstar wrote:
+
+**"We are very excited for everyone to see the extended look tomorrow."**
+
+**That formally confirms the Extended Look arrives tomorrow.**
+
+![A smartphone standing against a neon-lit night skyline and palm trees, its screen showing what looks like an announcement card](/images/news/gta6-rockstar-statement/extended-look-teaser.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or leaked material.*
+
+The August 27 premiere had already been announced, and Rockstar has now restated it in its own words.
+
+The statement gives no further detail about what form the Extended Look will take.
+
+It does say, however, that getting it ready took longer than the studio wanted, because Rockstar knows it needs to **exceed your expectations**.
+
+It goes on to say that the company is **determined to deliver at the level you expect and deserve**.
+
+That framing suggests tomorrow is not a short teaser drop: Rockstar clearly regards it as a major moment.
+
+---
+
+## No Detail on the Leak — "Experience the Game for Yourselves"
+
+Rockstar also acknowledges that what leaked may damage part of the experience it had designed.
+
+Calling it unfortunate that the intended game experience may now be affected by some spoilers, the studio asks fans to
+
+**wait a bit longer and experience the game for themselves on November 19**.
+
+![A large TV in a dark living room showing a neon-lit coastal city at dusk, with a game controller on the table in the foreground](/images/news/gta6-rockstar-statement/november-19-living-room.webp)
+
+GTA6 FEED will not cover the specific spoilers contained in the leaked footage in this article.
+
+What matters more than their content is that Rockstar has now formally acknowledged the leak and addressed it directly in public for the first time.
+
+---
+
+## A Statement About the Leak That Became a Message About Tomorrow
+
+Rockstar's statement is not simply a protest against a leak.
+
+It expresses disappointment at footage going out in an unintended form, tells fans that GTA6 is close to finished, and steers attention back toward tomorrow's Extended Look and the November 19 release.
+
+The most striking part is how much space the closing gives to thanking the community.
+
+On the messages of support that arrived over the past week, Rockstar says:
+
+**your words have meant more to this team than you can imagine**
+
+And it closes with the line:
+
+**ultimately, we are making this game for you**
+
+For a studio that often stays silent for long stretches, releasing a statement this openly emotional after an unplanned event like a leak is, in itself, unusual.
+
+And what waits the day after that statement is the Extended Look.
+
+Some people have already seen part of GTA6 in a form nobody intended. What the GTA6 that Rockstar meant to show actually looks like is still unknown.
+
+**Part of that answer arrives officially on August 27.**
+
+---
+
+> **Note:** Quotations from Rockstar's statement are drawn from the official post on X embedded above; longer passages are summarized rather than reproduced in full. Every image in this article is an AI-generated illustration, not GTA6 footage or leaked material.`,
+  },
+  {
     id: 44,
     // 8月24日の訂正にあわせてタイトルも差し替えた（URL・canonical・公開日は据え置き）。
     // 既読の読者が一覧やSNSでタイトルだけ見ても訂正が入ったと分かるようにするため。
