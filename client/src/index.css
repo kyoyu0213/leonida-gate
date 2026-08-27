@@ -760,6 +760,26 @@
   margin: 0 auto !important;
 }
 
+/* 本文中に置いたYouTube埋め込み：<p> の中に入るので span を block 化して枠を作る
+   （見た目は記事上部の .article-video と同じ） */
+.article-body .article-inline-youtube {
+  display: block;
+  margin: 32px auto 28px;
+}
+
+/* Instagramの引用埋め込み：embed.js が blockquote に inline style を当てるため、
+   ラッパー側で中央寄せと余白だけを担保する（幅は公式ウィジェットに任せる） */
+.article-body .article-instagram {
+  display: block;
+  width: 100%;
+  margin: 32px auto 28px;
+}
+
+.article-body .article-instagram .instagram-media {
+  margin: 0 auto !important;
+  max-width: 540px !important;
+}
+
 /* 画像の下に余白を確保（直後の段落は通常の本文として表示する） */
 .article-body [data-streamdown="image-wrapper"] {
   margin-bottom: 28px;

@@ -34,12 +34,18 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
 }) as never;
 
 // 記事本文のメディアレンダラ。動画ファイル（.mp4 等）は <video> プレーヤー、
-// X(旧Twitter)の投稿URLは公式ウィジェットの引用埋め込みとして描画し、
+// X(旧Twitter)・Instagramの投稿URLは公式ウィジェットの引用埋め込みとして描画し、
 // それ以外の画像は Streamdown 標準と同じ image-wrapper 構造を再現して既存記事の見た目を保つ。
 // これにより本文中の `![キャプション](/path/foo.mp4)` で動画、
-// `![](https://x.com/user/status/123)` でX投稿を、好きな位置に埋め込める。
+// `![](https://x.com/user/status/123)` でX投稿、
+// `![](https://www.instagram.com/reel/XXXX/)` でInstagram投稿、
+// `![](https://www.youtube.com/watch?v=XXXX)` でYouTube動画を、好きな位置に埋め込める。
 const VIDEO_EXT_RE = /\.(mp4|webm|ogg|ogv|mov)(\?.*)?$/i;
 const TWEET_URL_RE = /^https?:\/\/(?:www\.)?(?:x|twitter|mobile\.twitter)\.com\/[^/]+\/status\/(\d+)/i;
+const INSTAGRAM_URL_RE =
+  /^https?:\/\/(?:www\.)?instagram\.com\/(?:[^/]+\/)?(p|reel|reels|tv)\/([A-Za-z0-9_-]+)/i;
+const YOUTUBE_URL_RE =
+  /^https?:\/\/(?:www\.|m\.)?(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/i;
 
 // X(旧Twitter)投稿を公式 widgets.js で埋め込む。スクリプト読込前後どちらでも描画されるよう、
 // 既存スクリプトがあれば load() を呼び、無ければ動的に読み込む。読込失敗時は blockquote 内の
@@ -78,10 +84,71 @@ function TweetEmbed({ url }: { url: string }) {
   );
 }
 
+// Instagram投稿を公式 embed.js で埋め込む。仕組みはXの埋め込みと同じで、
+// blockquote を置いてから instgrm.Embeds.process() に変換させる。
+// data-instgrm-permalink はクエリを落とした正規URLでないと変換に失敗するため、
+// 記事側が ?utm_source=... 付きのURLを貼っても正規化してから渡す。
+function InstagramEmbed({ url }: { url: string }) {
+  const m = url.match(INSTAGRAM_URL_RE);
+  const permalink = m ? `https://www.instagram.com/${m[1].toLowerCase()}/${m[2]}/` : url;
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const w = window as unknown as { instgrm?: { Embeds?: { process?: () => void } } };
+    const render = () => w.instgrm?.Embeds?.process?.();
+    if (w.instgrm?.Embeds) {
+      render();
+      return;
+    }
+    const existing = document.getElementById('instagram-embed-js') as HTMLScriptElement | null;
+    if (existing) {
+      existing.addEventListener('load', render, { once: true });
+      return;
+    }
+    const s = document.createElement('script');
+    s.id = 'instagram-embed-js';
+    s.src = 'https://www.instagram.com/embed.js';
+    s.async = true;
+    s.addEventListener('load', render, { once: true });
+    document.body.appendChild(s);
+  }, [permalink]);
+
+  return (
+    <span className="article-instagram">
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink={`${permalink}?utm_source=ig_embed`}
+        data-instgrm-version="14"
+      >
+        <a href={permalink}>{permalink}</a>
+      </blockquote>
+    </span>
+  );
+}
+
 function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
   if (!src) return null;
   if (TWEET_URL_RE.test(src)) {
     return <TweetEmbed url={src} />;
+  }
+  if (INSTAGRAM_URL_RE.test(src)) {
+    return <InstagramEmbed url={src} />;
+  }
+  // YouTube は記事上部の youtubeId と同じ見た目（.article-video）で本文中にも置ける。
+  // 本文の <p> の中に来るため、ブロック要素ではなく span で 16:9 の枠を作る。
+  const yt = src.match(YOUTUBE_URL_RE);
+  if (yt) {
+    return (
+      <span className="article-video article-inline-youtube">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${yt[1]}`}
+          title={alt || 'YouTube video player'}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          loading="lazy"
+        />
+      </span>
+    );
   }
   if (VIDEO_EXT_RE.test(src)) {
     return (

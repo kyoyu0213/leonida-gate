@@ -216,6 +216,397 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 47,
+    title:
+      "RockstarがGTA6を海外クリエイターに先行公開していたことが判明――TGG、El Rubiusらが情報解禁を予告",
+    displayTitle:
+      "RockstarがGTA6を海外クリエイターに先行公開していたことが判明\nTGG、El Rubiusらが情報解禁を予告",
+    description:
+      "Rockstar Gamesが2026年7月、世界各国の一部クリエイターをスコットランドのRockstar Northへ秘密裏に招待し、『Grand Theft Auto VI』を先行披露していたことが明らかになった。オーストラリアのTGG、スペインのEl Rubius、ブラジルのDavy Jones、イタリアのMike ShowShaらが訪問を公表し、Extended Look公開後の情報解禁を予告している。",
+    icon: "🎥",
+    image: "/images/news/gta6-creators-rockstar-north/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-27",
+    publishedAt: "2026-08-27 22:00",
+    source: "TGG・El Rubius 公式X／Mike ShowSha 公式Instagram ほか",
+    sourceUrl: "https://x.com/TGGonYT/status/2092582849111113810",
+    relatedArticles: [39, 46, 45],
+    aiSummary: [
+      "Rockstar Gamesが2026年7月、世界各国の一部クリエイターをスコットランド・エディンバラのRockstar Northへ秘密裏に招待し、『Grand Theft Auto VI』を事前に披露していたことが明らかになった。現在までに訪問を公表しているのは、オーストラリアのTGG、スペインのEl Rubius、ブラジルのDavy Jones、イタリアのMike ShowShaら。",
+      "TGGは「Rockstar NorthでGTA6の独占情報を得た」と説明し、Extended Look公開後にすべて話すと予告。El Rubiusは「未公開画像」とゲームの詳細を含む独占動画を公開するとしている。ただし今回のプレビューはハンズオン（試遊）ではなく、用意された映像を見せられるハンズオフ形式だったと報じられている。",
+      "8月26日のDazed独占取材、27日のNetflix「An Extended Look」、そして各国クリエイターの情報解禁が同じタイミングに重なる。Extended Lookは日本時間8月28日午前4時にNetflix、午前10時ごろにYouTube・公式サイトで公開予定で、日本では28日早朝から海外発のGTA6情報が一気に増える可能性がある。",
+    ],
+    fullContent: `# RockstarがGTA6を海外クリエイターに先行公開していたことが判明――TGG、El Rubiusらが情報解禁を予告
+
+GTA6の「Grand Theft Auto VI: An Extended Look」公開を目前にして、Rockstar Gamesがその裏でもうひとつの情報解禁を準備していたことが明らかになった。
+
+2026年7月、Rockstarは世界各国の一部クリエイターを、スコットランド・エディンバラにあるRockstar Northへ秘密裏に招待。そこで『Grand Theft Auto VI』を事前に披露していたという。
+
+現在までに訪問を明らかにしているのは、オーストラリアのTGG、スペインのEl Rubius、ブラジルのDavy Jones、イタリアのMike ShowShaら。
+
+しかも彼らは、単に8月27日のExtended Lookを一足先に見ただけではないようだ。少なくとも一部のクリエイターは、Rockstar NorthでGTA6に関する説明を受け、一般にはまだ公開されていない情報や画像についても知る機会を得ていたと明かしている。
+
+Extended Lookの公開後、その情報がそれぞれのYouTubeチャンネルなどで解禁される。
+
+つまり今回のGTA6情報解禁は、Netflixで一本の映像が公開されて終わるものではない可能性が高い。
+
+---
+
+## TGG「Rockstar NorthでGTA6の独占情報を知った」
+
+今回の訪問を公表したクリエイターのなかでも、大きな注目を集めたのがオーストラリアのGTA系YouTuber、TGG（The Gaming Gorilla）だ。
+
+200万人を超える登録者を持つTGGは、自身のXで「先月Rockstar Northに招待された」と公表。エディンバラのスタジオ滞在中に、GTA6について独占的な情報を得たと明かした。
+
+そしてExtended Lookが公開され次第、その内容をすべて話すと予告している。Rockstar Games公式Xもこの投稿にゴリラとハートの絵文字で返信しており、TGGの発表に公式側が公の場で反応した形となった。
+
+![](https://x.com/TGGonYT/status/2092582849111113810)
+
+TGGの発言で重要なのは、「Extended Lookについて動画を出す」とだけ言っているわけではない点だ。
+
+本人は明確に、Rockstar NorthでGTA6について情報を得たと説明している。
+
+そのため、公開される動画にはExtended Lookを見れば誰でも分かる内容だけでなく、現地でRockstarから説明された補足情報が含まれる可能性がある。
+
+---
+
+## El Rubiusは「未公開画像」を含む独占動画を予告
+
+さらに踏み込んだ予告をしているのが、スペイン語圏を代表する大型クリエイター、El Rubius（@Rubiu5）だ。
+
+El Rubiusも自身のXでRockstar Northを訪問したことを明らかにし、「明日、秘密が終わる」と投稿した。
+
+続けて、自身のチャンネルでGTA6の独占動画を公開すると予告。その動画には「未公開画像」とゲームの詳細が含まれるとしている。
+
+Rockstar Northへの訪問を「夢」と表現し、Rockstar Gamesに招待への感謝も伝えた。Rockstar公式アカウントもEl Rubiusの投稿に反応している。
+
+![](https://x.com/Rubiu5/status/2092643887441436699)
+
+この「未公開画像」という言葉は特に気になるところだ。
+
+それがExtended Look本編に登場する映像の静止画なのか、それともクリエイター向けに用意された別のスクリーンショットなのかは、現時点では分からない。
+
+ただし、少なくともEl Rubius自身は通常のリアクション動画ではなく「独占動画」として予告している。
+
+Extended Look公開後は、公式映像だけでなく彼の動画についても確認する必要がありそうだ。
+
+---
+
+## ブラジルからDavy Jones、イタリアからMike ShowShaもRockstar Northへ
+
+今回Rockstar Northへ招待されたのは、TGGとEl Rubiusだけではない。
+
+ブラジルからは「Gameplayrj」や「Flow Games」で知られるDavy Jonesが訪問を公表している。
+
+Flow Gamesも8月26日、Davy JonesがRockstarからの招待を受け、スコットランド・エディンバラのRockstar Northを訪問したことを記事で明らかにした。
+
+同メディアは訪問理由について当初詳細を明かせないとしていたが、Davy Jones本人もRockstarを訪れたことを動画で告知している。GTA BOOMによれば、Davy Jonesはブラジルから招待されたクリエイターとして参加していたという。
+
+![Davy JonesがRockstar North訪問を告知したYouTube動画](https://www.youtube.com/watch?v=asZaamVJs-I)
+
+さらにイタリアでは、ゲーム系クリエイターのMike ShowShaが7月のRockstar North訪問をInstagramで公表。今後GTA6に関するコンテンツを公開する予定であることを明らかにしている。
+
+![](https://www.instagram.com/reel/DcgKRwIImIT/)
+
+現時点で公に確認されている主なクリエイターは次の4人だ。
+
+* TGG / The Gaming Gorilla（オーストラリア）
+* El Rubius（スペイン）
+* Davy Jones / Gameplayrj・Flow Games（ブラジル）
+* Mike ShowSha（イタリア）
+
+この顔ぶれを見ると、Rockstarがひとつの地域に集中して招待したのではなく、オーストラリア、スペイン語圏、ブラジル、イタリアと、異なる市場から影響力のあるクリエイターを選んでいることが分かる。
+
+また、GTA BOOMは「今後さらに別のクリエイターが名乗り出る可能性がある」としている。エンバーゴの解禁に合わせ、これまで訪問自体を明らかにできなかった人物が新たに出てくる可能性もありそうだ。
+
+---
+
+## ただし「GTA6を実際に遊んだ」わけではない
+
+ここで注意しておきたいのが、今回の先行プレビューの形式だ。
+
+現時点の報道では、クリエイター自身がコントローラーを持ってGTA6をプレイする「ハンズオン」ではなく、Rockstar側が用意したゲームプレイや映像を見せてもらう**ハンズオフ形式**だったとされている。
+
+Forbesも、参加者が自由にLeonidaを探索したり、ストーリーミッションを操作したりしたわけではなく、ゲームプレイや映像を見せられる形式だったと報じている。
+
+そのため、今後公開されるクリエイター動画についても、
+
+「実際にGTA6を遊んでみた感想」
+
+というより、
+
+「Rockstar Northで実際に見たGTA6はどんなゲームだったのか」
+
+「開発側からどのような説明を受けたのか」
+
+「Extended Lookには含まれていない情報はあったのか」
+
+といった内容が中心になると考えた方がよさそうだ。
+
+それでも、Rockstarの外部にいる人物からGTA6についてまとまった情報が出てくるという意味では、これまでとは大きく状況が変わる。
+
+---
+
+## Rockstarはなぜ世界のYouTuberを招待したのか
+
+今回の動きでもうひとつ興味深いのが、Rockstarが「誰にGTA6を見せたのか」という点だ。
+
+Rockstar Gamesはこれまで、発売前の情報を非常に厳格に管理することで知られてきた。
+
+新しいトレーラーを一本公開しただけで数か月にわたって考察が続くほど情報量を絞り、ゲームの全貌を早い段階から大量に公開するようなマーケティングはほとんど行わない。
+
+今回もその基本姿勢自体は変わっていない。
+
+招待者は限定され、プレビューはハンズオフ形式。情報公開にはエンバーゴが設定され、Extended Lookと同じタイミングに合わせて解禁される。
+
+しかし一方で、これまで以上にクリエイターをマーケティングの中心へ組み込んでいるようにも見える。
+
+GTAシリーズは現在、YouTubeやTwitchをはじめとする配信文化と極めて強く結びついている。
+
+GTA Onlineはもちろん、FiveMやGTA RPによって、GTA Vは発売から長い年月が経った現在でも大量の動画やライブ配信が生まれ続けている。
+
+GTA6の発売後も同じように長期的なコミュニティが形成されることを考えれば、Rockstarが世界各地域の大型クリエイターとの関係を作り始めていることには大きな意味がある。
+
+今回の招待が一度限りのプロモーションなのか、それともGTA6発売後も続く新しいクリエイター戦略の始まりなのかは注目したい。
+
+---
+
+## Extended Lookだけではない――Rockstarが仕込んだ「情報解禁日」
+
+ここ数日の動きを並べると、8月27日が単なるトレーラー公開日ではないことも見えてくる。
+
+8月26日には英国カルチャー誌『Dazed』がRockstar Gamesへの独占取材を公開し、GTA6の開発や世界作りについて大規模な特集を掲載した。
+
+そして翌27日には、Netflixで「Grand Theft Auto VI: An Extended Look」を公開。
+
+さらにその公開に合わせ、1か月前からRockstar Northへ招待されていた世界各国のクリエイターたちも情報を解禁する。
+
+これらが偶然同じ時期に重なったとは考えにくい。
+
+Rockstarは公式映像だけでGTA6を紹介するのではなく、Netflix、海外メディア、そして各国のクリエイターを組み合わせ、複数方向から情報が広がる状態を作っていたと見ることができる。
+
+Extended Lookを見たユーザーがそのままYouTubeへ移動すれば、今度はTGGやEl RubiusらがRockstar Northで聞いた追加情報を見ることになる。
+
+そしてSNSでは、それぞれの動画から新情報が切り抜かれ、世界中で考察が始まる。
+
+8月27日は一本の映像が公開される日ではなく、RockstarがGTA6の情報量を一段階引き上げる日に設定されていたのかもしれない。
+
+---
+
+## 日本では8月28日早朝から大量の情報が出る可能性
+
+「Grand Theft Auto VI: An Extended Look」は、米国東部時間8月27日午後3時からNetflixで公開される。
+
+日本時間では**8月28日午前4時**だ。
+
+その6時間後にはRockstar Games公式YouTubeチャンネルやGTA6公式サイトでも公開される予定で、日本時間では**午前10時ごろ**となる。
+
+今回クリエイター側の情報もExtended Look公開後に解禁されるとされているため、日本では28日早朝から海外発のGTA6情報が一気に増える可能性がある。
+
+Extended Look本編だけを見て終わりではない。
+
+TGGが語る「独占情報」、El Rubiusが予告した「未公開画像」、そしてDavy JonesやMike ShowShaを含め、Rockstar Northを訪れたクリエイターたちが何を見て、何を聞いたのか。
+
+その内容次第では、Extended Lookそのものと同じくらい重要な情報が、YouTube側から出てくる可能性もある。
+
+GTA6 FEEDではExtended Look本編に加え、Rockstar Northへ招待された海外クリエイターによる動画や投稿についても確認し、新たに判明したゲーム内容を整理していく。
+
+いよいよGTA6の情報は、Rockstarの公式アカウントだけを追っていればいい段階から変わろうとしている。
+
+---
+
+> **注記：** 本記事は各クリエイター本人のX・Instagram投稿に加え、GTA BOOM、Forbes、Flow Gamesの報道をもとにまとめたもので、投稿内容の日本語部分は編集部訳・要約を含む。正確な文言は埋め込んだ原投稿を参照してほしい。`,
+    titleEn:
+      "Rockstar Showed GTA6 to Creators From Around the World Ahead of Time — TGG and El Rubius Tease Their Reveals",
+    displayTitleEn:
+      "Rockstar Showed GTA6 to Creators From Around the World Ahead of Time\nTGG and El Rubius Tease Their Reveals",
+    descriptionEn:
+      "In July 2026, Rockstar Games quietly flew a handful of creators from around the world to Rockstar North in Edinburgh, Scotland, and showed them Grand Theft Auto VI early. Australia's TGG, Spain's El Rubius, Brazil's Davy Jones and Italy's Mike ShowSha have all confirmed the visit and teased reveals timed to the Extended Look.",
+    aiSummaryEn: [
+      "In July 2026, Rockstar Games quietly invited a handful of creators from around the world to Rockstar North in Edinburgh, Scotland, and showed them Grand Theft Auto VI ahead of release. Those who have gone public so far are Australia's TGG, Spain's El Rubius, Brazil's Davy Jones and Italy's Mike ShowSha.",
+      "TGG says he learned exclusive GTA6 information at Rockstar North and will tell all once the Extended Look is out; El Rubius has promised an exclusive video containing unreleased images and details about the game. The preview was reportedly hands-off, though — creators were shown gameplay and footage rather than playing it themselves.",
+      "Dazed's exclusive interview on August 26, Netflix's Extended Look on August 27, and the creators' embargoed reveals all land together. The Extended Look hits Netflix at 4:00 a.m. JST on August 28 and YouTube and the official site around 10:00 a.m., so a wave of GTA6 information is likely to arrive in Japan through that morning.",
+    ],
+    fullContentEn: `# Rockstar Showed GTA6 to Creators From Around the World Ahead of Time — TGG and El Rubius Tease Their Reveals
+
+With "Grand Theft Auto VI: An Extended Look" about to go live, it has emerged that Rockstar Games was quietly preparing a second reveal behind it.
+
+In July 2026, Rockstar secretly invited a handful of creators from around the world to Rockstar North in Edinburgh, Scotland, and showed them *Grand Theft Auto VI* ahead of time.
+
+Those who have confirmed the visit so far include Australia's TGG, Spain's El Rubius, Brazil's Davy Jones and Italy's Mike ShowSha.
+
+And they did not simply get an early look at the August 27 Extended Look. At least some of the creators say they were walked through GTA6 at Rockstar North and given access to information and images that have not been made public.
+
+Once the Extended Look is out, that material gets unlocked on their respective YouTube channels and elsewhere.
+
+In other words, this round of GTA6 information very likely does not end when a single video goes up on Netflix.
+
+---
+
+## TGG: "I Learned Exclusive GTA6 Information at Rockstar North"
+
+Among the creators who have gone public, the one drawing the most attention is Australian GTA YouTuber TGG (The Gaming Gorilla).
+
+With more than two million subscribers, TGG announced on his own X account that he had been invited to Rockstar North last month, and said that during his stay at the Edinburgh studio he was given exclusive information about GTA6.
+
+He has promised to talk through all of it as soon as the Extended Look goes live. Rockstar Games' official X account replied to the post with gorilla and heart emoji — a public acknowledgment from the company itself.
+
+![](https://x.com/TGGonYT/status/2092582849111113810)
+
+The important part of TGG's post is that he is not merely saying he will put out a video about the Extended Look.
+
+He states clearly that he learned things about GTA6 at Rockstar North.
+
+That means his video may contain not only what anyone can work out from watching the Extended Look, but supplementary information Rockstar explained to him on site.
+
+---
+
+## El Rubius Teases an Exclusive Video With "Unreleased Images"
+
+Going a step further is El Rubius (@Rubiu5), one of the biggest creators in the Spanish-speaking world.
+
+He too revealed on X that he had visited Rockstar North, posting that "tomorrow, the secret ends."
+
+He followed up by announcing an exclusive GTA6 video for his own channel — one he says will include unreleased images and details about the game.
+
+He described the visit to Rockstar North as a dream and thanked Rockstar Games for the invitation. Rockstar's official account responded to his post as well.
+
+![](https://x.com/Rubiu5/status/2092643887441436699)
+
+That phrase — "unreleased images" — is the part worth watching.
+
+Whether those are stills from footage that appears in the Extended Look itself, or separate screenshots prepared for creators, is not clear at this point.
+
+What is clear is that El Rubius is billing this as an exclusive video rather than an ordinary reaction video.
+
+Once the Extended Look is out, his channel looks worth checking alongside the official footage.
+
+---
+
+## Davy Jones From Brazil and Mike ShowSha From Italy Also Visited Rockstar North
+
+TGG and El Rubius were not the only creators invited to Rockstar North.
+
+From Brazil, Davy Jones — known for "Gameplayrj" and "Flow Games" — has confirmed the visit.
+
+Flow Games also published a piece on August 26 stating that Davy Jones had accepted an invitation from Rockstar and visited Rockstar North in Edinburgh, Scotland.
+
+The outlet initially said it could not disclose the reason for the trip, but Davy Jones himself announced the visit in a video. According to GTA BOOM, he attended as the creator invited from Brazil.
+
+![Davy Jones' YouTube video announcing his visit to Rockstar North](https://www.youtube.com/watch?v=asZaamVJs-I)
+
+In Italy, meanwhile, gaming creator Mike ShowSha revealed his own July visit to Rockstar North on Instagram, saying he plans to publish GTA6 content going forward.
+
+![](https://www.instagram.com/reel/DcgKRwIImIT/)
+
+The four creators publicly confirmed so far are:
+
+* TGG / The Gaming Gorilla (Australia)
+* El Rubius (Spain)
+* Davy Jones / Gameplayrj and Flow Games (Brazil)
+* Mike ShowSha (Italy)
+
+Looking at that lineup, Rockstar clearly did not concentrate the invitations in one region. It picked influential creators across Australia, the Spanish-speaking world, Brazil and Italy — different markets, deliberately.
+
+GTA BOOM also notes that more creators may still come forward. As the embargo lifts, people who could not previously acknowledge the visit at all may begin to surface.
+
+---
+
+## But They Did Not Actually Play GTA6
+
+One thing worth being careful about is the format of this preview.
+
+Reporting so far indicates it was not a hands-on session with creators holding a controller, but a **hands-off** presentation in which Rockstar showed them gameplay and footage it had prepared.
+
+Forbes likewise reported that attendees did not freely explore Leonida or play through story missions; they were shown gameplay and footage.
+
+So the creator videos to come are probably less about
+
+"here's what GTA6 felt like to play"
+
+and more about
+
+"here's what the GTA6 I actually saw at Rockstar North was like,"
+
+"here's what the developers explained,"
+
+and "here's what wasn't in the Extended Look."
+
+Even so, having substantial GTA6 information come from people outside Rockstar is a meaningful change from where things have stood until now.
+
+---
+
+## Why Did Rockstar Invite YouTubers From Around the World?
+
+The other interesting angle here is *who* Rockstar chose to show GTA6 to.
+
+Rockstar Games has long been known for controlling pre-release information extremely tightly.
+
+It releases so little that a single new trailer sustains months of analysis, and it almost never runs marketing that dumps the full shape of a game early.
+
+That basic posture has not changed here.
+
+The invite list was limited, the preview was hands-off, and the information was placed under embargo timed to release alongside the Extended Look.
+
+At the same time, though, the company appears to be building creators into the center of its marketing more than ever before.
+
+The GTA series is now bound extremely tightly to streaming culture on YouTube, Twitch and elsewhere.
+
+Beyond GTA Online, FiveM and GTA RP keep generating an enormous volume of videos and live streams from GTA V years after release.
+
+If a similar long-term community forms after GTA6 launches, Rockstar starting to build relationships with major creators across regions carries real weight.
+
+Whether this was a one-off promotion or the beginning of a creator strategy that continues past launch is worth watching.
+
+---
+
+## Not Just the Extended Look — the "Reveal Day" Rockstar Built
+
+Line up the past few days and it becomes clear that August 27 is not simply a trailer release date.
+
+On August 26, UK culture magazine *Dazed* published an exclusive interview with Rockstar Games, a large feature on GTA6's development and world-building.
+
+The next day, August 27, "Grand Theft Auto VI: An Extended Look" arrives on Netflix.
+
+And timed to that release, the creators invited to Rockstar North a month earlier lift their embargoes too.
+
+It is hard to read all of this landing in the same window as coincidence.
+
+Rather than introducing GTA6 through official footage alone, Rockstar appears to have engineered a state in which information spreads from several directions at once — Netflix, international press, and creators in individual countries.
+
+A viewer who finishes the Extended Look and moves straight to YouTube runs into the additional information TGG, El Rubius and others were given at Rockstar North.
+
+From there, social media clips the new details out of each video and the analysis starts worldwide.
+
+August 27 may have been set not as the day one video goes out, but as the day Rockstar raises the total volume of GTA6 information a full step.
+
+---
+
+## Expect a Flood of Information in Japan From Early on August 28
+
+"Grand Theft Auto VI: An Extended Look" goes live on Netflix at 3:00 p.m. Eastern on August 27.
+
+In Japan that is **4:00 a.m. on August 28**.
+
+Six hours later it is due on the official Rockstar Games YouTube channel and the GTA6 site — around **10:00 a.m.** Japan time.
+
+Because the creator material is also said to unlock after the Extended Look, GTA6 information from abroad could surge in Japan from the early hours of the 28th.
+
+Watching the Extended Look is not where it ends.
+
+The "exclusive information" TGG describes, the "unreleased images" El Rubius has promised, and whatever Davy Jones, Mike ShowSha and the rest saw and heard at Rockstar North are all still to come.
+
+Depending on what is in them, information as significant as the Extended Look itself may arrive from the YouTube side.
+
+GTA6 FEED will be covering the Extended Look itself along with the videos and posts from the creators invited to Rockstar North, and will lay out whatever new details emerge.
+
+The stage where following Rockstar's official accounts was enough to keep up with GTA6 is, at last, coming to an end.
+
+---
+
+> **Note:** This article draws on the creators' own posts on X and Instagram along with reporting from GTA BOOM, Forbes and Flow Games; quoted passages are summarized or paraphrased. Refer to the embedded original posts for exact wording.`,
+  },
+  {
     id: 46,
     title:
       "GTA6、Dazed独占インタビューで大量の新情報。「銃を持てば街が反応」体型変化・ゲーム内SNS・NPCの進化も明らかに",
