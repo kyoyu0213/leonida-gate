@@ -244,9 +244,9 @@ export const newsArticles: NewsArticle[] = [
 
 映像が終わって最初に頭に浮かんだのは、ストーリーの筋でもキャラクターの名前でもなく、「光」だった。
 
-![夕暮れの海沿いに停めた車のそばに寄り添う男女のイメージ。逆光の水面と街のシルエットが橙色に染まっている](/images/news/gta6-extended-look-impressions/golden-hour-waterfront.webp)
+![空港のラウンジ。ガラス窓の外に駐機した小型ジェットが見え、窓から差し込んだ光が壁と床に硬い影を落としている](/images/news/gta6-extended-look-impressions/window-light-airport.webp)
 
-*本記事に掲載している画像はすべて、内容の雰囲気を伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。*
+*本記事に掲載している画像はすべて「Grand Theft Auto VI: An Extended Look」本編からのスクリーンショットである。*
 
 反射の仕方、差し込み方が、とにかくリアルなのだ。窓から入ってくる光、水面に跳ね返る光、夜のネオンが濡れた路面に伸びる光。景色を切り取ったワンカットだけを見せられたら、実写映像だと言われて信じてしまいそうなショットが何度もあった。ゲームの映像を見て「きれいだ」と思うことはこれまでにも何度もあったけれど、今回感じたのは「きれい」ではなく「本物っぽい」という方向の驚きで、この二つはたぶん似ているようで別物だ。
 
@@ -261,6 +261,8 @@ export const newsArticles: NewsArticle[] = [
 見る前は、トレーラーの延長線上でストーリーが一本つながって語られるものを想像していた。実際は違った。いろんなエピソードのダイジェスト、という感触に近い。
 
 始まりはブービーのお使いだ。Jasonがレイモンドという人物のところへブツを回収しに行き、その最中にエルネストから「警察が踏み込んでくる」という電話が入る。そして実際に踏み込まれ、そのまま銃撃戦のプレイシーンへとつながっていく。ここで早くも、ムービーとプレイの境目がほとんど意識されない作りになっていることが分かる。
+
+![暗いオフィスでアサルトライフルを構え、白い作業着の敵と撃ち合う場面。画面右上に残弾数「28 48」とライフルのアイコンが出ている](/images/news/gta6-extended-look-impressions/office-shootout.webp)
 
 面白いのは、その後の流れだ。銃撃戦が終わると、ルシアとJasonの家のシーンになる。そこにCMが挟まり、車でのドライブシーンがあって、それからブライアン夫妻とのレストランのシーンへと移っていく。
 
@@ -304,7 +306,7 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 
 そしてもうひとつ、ルシアで痺れたシーンがある。人質に紛れながら、スマホでJasonに犯人の状況を伝える場面だ。自分は動けない、でも情報だけは外に出せる。あの状況で頭が回るというキャラクター性が、説明台詞を一切使わずに一つの行動だけで示されている。あそこはかなり熱かった。
 
-![強盗に押し入られた店内で、人質に紛れながら床に座り、手元のスマートフォンを操作する女性のイメージ](/images/news/gta6-extended-look-impressions/hostage-phone.webp)
+![青いネオンに照らされた室内で、うつむいてスマートフォンを操作するルシア。画面左に「After Czr, he's in saferoom, 10 guys, auto weps, explosives, sound military...」というメッセージが表示されている](/images/news/gta6-extended-look-impressions/lucia-phone-message.webp)
 
 もうひとつ、これも彼女の性格が出ていたと思うのが、ルシアが運転しながらJasonが後部座席に移動して銃で応戦するシーン。運転と射撃を二人で分担するという、二人組ならではの絵。ここは後述するUIの話ともつながってくる。
 
@@ -313,6 +315,8 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 ## 周りの人間たち
 
 ブライアンは、夫妻でレストランに現れる。昔はずいぶんお盛んだったらしい、という話が出てくる、いわば「引退した先輩」的な立ち位置に見えた。
+
+![高層階のテラスで向かい合う男二人。手前は黒シャツにサングラスの主人公、奥はサングラスと葉柄のシャツ姿で葉巻を持った年配の男。背後にLeonidaの街並みが広がる](/images/news/gta6-extended-look-impressions/rooftop-conversation.webp)
 
 そのブライアンがJasonに「辞め時が肝心だ」と語るシーンがある。文脈からして、これは人生訓というより、強盗という商売について「引き際を見失うなよ」と諭している場面だと受け取った。
 
@@ -340,9 +344,9 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 
 そして走り出してからの映像が、本当に車に乗っているときの感覚に近い。景色の流れ方、車体の揺れ方。極端な話、これはドライブするだけで楽しめてしまうのではないかと思った。目的地に向かうための移動手段ではなく、走ること自体が目的になりうる乗り心地に見えた。
 
-もちろん、穏やかな運転ばかりではない。カーチェイスのシーンもかなりリアルだった。レース要素も、車のレースからモトクロスまで確認できた。
+![青空の下、橋を渡る赤いオープンカーを後方から見た画面。左右に水面と対岸の街並みが広がり、画面左下にミニマップと「1.55 mi」の表示がある](/images/news/gta6-extended-look-impressions/bridge-drive-daylight.webp)
 
-![雨の夜の海沿いを走る車。運転席の女性がハンドルを握り、後部座席から身を乗り出した男性がパトカーへ発砲しているイメージ](/images/news/gta6-extended-look-impressions/police-chase-drive-by.webp)
+もちろん、穏やかな運転ばかりではない。カーチェイスのシーンもかなりリアルだった。レース要素も、車のレースからモトクロスまで確認できた。
 
 そして印象的だったのが、強盗のあと、逃走に使った車を火炎瓶で燃やすシーン。火の回り方、そして炎に炙られて塗装が剥げていく様子が、ぞっとするほどリアルだった。あそこは物理演算というより質感の表現の勝利だと思う。
 
@@ -356,7 +360,7 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 
 武器はピストル、ショットガン、アサルトライフル、そしてサブマシンガンらしきものが確認できた。
 
-![夜の埠頭で炎に包まれた逃走車と、そこから歩き去る男女の後ろ姿のイメージ。路面には割れたガラスが散っている](/images/news/gta6-extended-look-impressions/burning-getaway-car.webp)
+![立体駐車場で炎上する車と、それを見つめるパーカー姿のルシア。画面右上には星6つの手配度と3つのアイコンが並んでいる](/images/news/gta6-extended-look-impressions/burning-car-garage.webp)
 
 映像の途中で、割れたガラスの表現のためにエンジニアが3年をかけたという話が出てくる。3年という数字だけ聞くと「そこにそんなに」と思ってしまうのだが、実際にガラスが割れるシーンを見ると納得する。割れ方、飛び散り方、ひびの入り方が、明らかに「ガラスが割れる映像」として自然だった。3年かけたと言われたあとにその成果を見せる、という映像の構成も含めて、うまい見せ方だったと思う。
 
@@ -378,9 +382,13 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 
 星の下のあの4アイコンが何を意味するのかは、正直まったく分からない。ただ、ハンガー（＝服）と車のマークが手配度のすぐ下に並んでいるという配置は、なんとなく意味ありげに見えた。
 
+![昼の大通りで車越しにパトカーへ発砲する場面。画面右上に星4つの手配度、その下に4つのアイコン、さらに残弾数「37 250」とライフルのアイコンが縦に並んでいる](/images/news/gta6-extended-look-impressions/hud-wanted-icons.webp)
+
 ### エイム
 
 エイムのレティクルは、武器によって丸く表示されたりと、いくつかパターンがありそうだった。武器ごとに見え方が変わるということは、精度や拡散の違いが視覚的に示されているのだと思う。
+
+![暗いオフィスでアサルトライフルを構えた画面。中央に丸いレティクルが表示され、左上にはHPらしきメーターと青いメーターが並ぶ](/images/news/gta6-extended-look-impressions/hud-aim-reticle.webp)
 
 ### ボタンプロンプト
 
@@ -390,6 +398,10 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 * **△**：ノックする
 * **△**：バッグを回収する
 * **〇連打**：ルシアが敵に押さえつけられている状態から逃れる（いわゆるQTE、クイックタイムイベント）
+
+![解体途中の室内。床に置かれた赤いバッグに「△ BAG」のプロンプトが重ねて表示されている。右上はピストルのアイコンと残弾数「17 80」で、中央のレティクルは丸ではなく短い線](/images/news/gta6-extended-look-impressions/prompt-bag-pickup.webp)
+
+![地面に押さえつけられた人物を上から見下ろした画面。〇ボタンと△ボタンのプロンプトが2つ表示されている](/images/news/gta6-extended-look-impressions/prompt-qte-struggle.webp)
 
 そして、車のドアの前で表示されていた選択肢が特に面白かった。
 
@@ -421,6 +433,8 @@ Jason、Luciaというフルネームではなく、短く縮めた愛称で呼�
 * 釣り
 * 射撃場のような場所
 
+![ジムのベンチプレスでバーベルを持ち上げる女性。バーに「L2」と「R2」のボタン表示が重ねられている](/images/news/gta6-extended-look-impressions/gym-bench-press.webp)
+
 筋トレのボタン表示まで見えてしまったので、これはかなり確度が高いと思っている。水泳・スキューバ・水上バイク・カヌー・釣りと、水絡みだけで5つある。舞台の性格を考えれば当然かもしれないけれど、水中と水上がここまで充実しているのは期待していい。
 
 VRゴーグルらしきものも出てきた。ゲームの中でゴーグルをかけて何をするのか、想像するとちょっと楽しい。
@@ -436,6 +450,8 @@ VRゴーグルらしきものも出てきた。ゲームの中でゴーグルを
 この作品の楽しみのひとつが街に貼られた広告やCMなのだけれど、今回もしっかりあった。
 
 プレイリーサンドイッチボックスミール、たったの30000キロカロリーというCM。「たったの」で30000である。この一言だけで、この世界の何もかもが分かる気がする。
+
+![「THE PRAIRIE SANDWICH BOX MEAL」の広告。左に「ONLY 30,000 CALORIES」の文字、右には大量のハムを挟んだサンドイッチとフライドポテト、ルートビアのジョッキが並ぶ](/images/news/gta6-extended-look-impressions/prairie-sandwich-ad.webp)
 
 アングスティパンのCMもあった。薬のCMだろうか。名前の響きだけで既におかしい。
 
@@ -457,7 +473,7 @@ VRゴーグルらしきものも出てきた。ゲームの中でゴーグルを
 
 ---
 
-> **注記：** 本記事は「Grand Theft Auto VI: An Extended Look」を視聴しながら取ったメモをもとにした個人的な視聴記録であり、Rockstar Gamesの公式発表ではない。人物名の表記や台詞は日本語字幕にもとづく編集部の書き起こし・要約を含み、UIやミニゲームに関する記述には筆者の推測が含まれる。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+> **注記：** 本記事は「Grand Theft Auto VI: An Extended Look」を視聴しながら取ったメモをもとにした個人的な視聴記録であり、Rockstar Gamesの公式発表ではない。人物名の表記や台詞は日本語字幕にもとづく編集部の書き起こし・要約を含み、UIやミニゲームに関する記述には筆者の推測が含まれる。また、本記事に掲載している画像はすべて「Grand Theft Auto VI: An Extended Look」本編からのスクリーンショットであり、著作権はRockstar Gamesに帰属する。`,
     titleEn:
       "Watching \"GTA VI: An Extended Look\" — Jay, Lou, and the Light",
     displayTitleEn:
@@ -477,9 +493,9 @@ VRゴーグルらしきものも出てきた。ゲームの中でゴーグルを
 
 When the video finished, the first thing in my head was not the plot or a character's name. It was the light.
 
-![Two figures leaning against a car parked by the water at sunset, the bay and the skyline burning orange behind them](/images/news/gta6-extended-look-impressions/golden-hour-waterfront.webp)
+![An airport lounge, a small jet parked outside the glass, light through the windows throwing hard shadows across the wall and floor](/images/news/gta6-extended-look-impressions/window-light-airport.webp)
 
-*All images in this article are AI-generated illustrations meant to convey the mood of what is described. They are not actual GTA6 screenshots or official Rockstar material.*
+*Every image in this article is a screenshot from "Grand Theft Auto VI: An Extended Look."*
 
 The way it reflects, the way it falls into a room — it is simply real. Light coming through a window, light bouncing off water, neon at night stretching across a wet road. There were several shots where, if you handed me a single frame and told me it was live-action footage, I would have believed you. I have thought "that's beautiful" about game footage plenty of times before. What I felt this time was not "beautiful" but "that looks real," and those two reactions are less alike than they seem.
 
@@ -494,6 +510,8 @@ What follows is written from the notes I took while watching.
 Going in, I expected something in the same vein as the trailers, telling one continuous story. It was not that. It felt much closer to a digest of a lot of different episodes.
 
 It opens with an errand for Boobie. Jason goes to a man named Raymond to pick up a package, and midway through, a call comes in from Ernesto: the police are coming in. They do come in, and it flows straight into a playable shootout. Right there, in the opening minutes, you can see that the seam between cutscene and gameplay is barely perceptible.
+
+![Trading fire with an enemy in white coveralls in a dark office, the ammo count "28 48" and a rifle icon in the top-right corner](/images/news/gta6-extended-look-impressions/office-shootout.webp)
 
 What is interesting is what comes next. When the shootout ends, we cut to Lucia and Jason's house. A commercial plays. There is a driving scene. Then we move to a restaurant scene with Brian and his wife.
 
@@ -537,7 +555,7 @@ Whether that indicates the breadth of player customization or the passage of tim
 
 There is one more Lucia scene that got to me: hidden among the hostages, using her phone to tell Jason what the robbers are doing. She cannot move, but she can still get information out. Her ability to keep thinking in that situation is conveyed with a single action and not one line of expository dialogue. That part was genuinely thrilling.
 
-![A woman sitting on the floor among hostages inside a robbed store, working her phone in her lap](/images/news/gta6-extended-look-impressions/hostage-phone.webp)
+![Lucia bent over her phone in a room lit blue, a message on screen reading "After Czr, he's in saferoom, 10 guys, auto weps, explosives, sound military..."](/images/news/gta6-extended-look-impressions/lucia-phone-message.webp)
 
 The other moment I think shows her character is the one where Lucia drives while Jason moves to the back seat and returns fire — the two of them splitting driving and shooting between them, a shot only a duo could produce. That connects to the UI section further down.
 
@@ -546,6 +564,8 @@ The other moment I think shows her character is the one where Lucia drives while
 ## The People Around Them
 
 Brian turns up at a restaurant with his wife. There is talk of how busy he used to be back in the day — he reads as the retired veteran of the group.
+
+![Two men facing each other on a high terrace: the protagonist in a black shirt and sunglasses, and an older man in sunglasses and a leaf-print shirt holding a cigar, with Leonida spread out behind them](/images/news/gta6-extended-look-impressions/rooftop-conversation.webp)
 
 There is a scene where Brian tells Jason **"knowing when to quit is what matters."** From the context, I took that less as life advice and more as a lecture about the robbery business: don't lose sight of your exit.
 
@@ -573,9 +593,9 @@ First: when you get into a car, the body actually settles. One person's weight r
 
 And once you are moving, the footage really does feel like being in a car. The way the scenery flows past, the way the body sways. To put it bluntly, I think you could enjoy this game just by driving. It looks like a ride where driving is the point, not a means of getting to a destination.
 
-Not all of it is calm, of course. The car chases were quite realistic too. Racing is in there as well, from car races to motocross.
+![A red convertible seen from behind as it crosses a bridge under a clear sky, water on both sides, with the minimap and a "1.55 mi" readout in the bottom-left corner](/images/news/gta6-extended-look-impressions/bridge-drive-daylight.webp)
 
-![A car speeding along a rain-slicked waterfront at night, a woman at the wheel and a man leaning out of the back window firing at pursuing police cars](/images/news/gta6-extended-look-impressions/police-chase-drive-by.webp)
+Not all of it is calm, of course. The car chases were quite realistic too. Racing is in there as well, from car races to motocross.
 
 The scene that stayed with me was the one after a robbery, torching the getaway car with a Molotov. The way the fire spreads and the way the paint blisters off under the flames were unsettlingly real. That one strikes me as a victory of material rendering more than physics.
 
@@ -589,7 +609,7 @@ The robbery scenes were realistic across the board. And the heist bag lives on. 
 
 For weapons I could identify a pistol, a shotgun, an assault rifle, and something that looked like a submachine gun.
 
-![A getaway car engulfed in flames on a dock at night, two figures walking away from it, broken glass scattered across the ground](/images/news/gta6-extended-look-impressions/burning-getaway-car.webp)
+![A car burning in a parking garage as Lucia, in a hoodie, watches it, with a six-star wanted meter and three icons in the top-right corner](/images/news/gta6-extended-look-impressions/burning-car-garage.webp)
 
 Partway through, the video mentions that an engineer spent three years on the way broken glass behaves. Hearing "three years" in isolation makes you think *on that?* — and then you watch glass actually break and you get it. How it fractures, how it scatters, how the cracks run: it plainly reads as footage of glass breaking. Telling you it took three years and then showing you the result was a smart bit of structuring in its own right.
 
@@ -611,9 +631,13 @@ Top right, the wanted level and related information. The wanted level goes up to
 
 What those four icons under the stars mean, I honestly have no idea. But a hanger (clothing) and a car sitting directly under the wanted level did look suggestive.
 
+![Firing at police cars from a vehicle on a daytime boulevard, with a four-star wanted meter, four icons beneath it, and the ammo count "37 250" with a rifle icon stacked in the top-right corner](/images/news/gta6-extended-look-impressions/hud-wanted-icons.webp)
+
 ### Aiming
 
 The aiming reticle seems to have several patterns, appearing circular with some weapons. If it changes per weapon, presumably it is showing differences in accuracy and spread visually.
+
+![Aiming an assault rifle in a dark office, a circular reticle at the center of the screen and a health bar with a second blue meter in the top-left](/images/news/gta6-extended-look-impressions/hud-aim-reticle.webp)
 
 ### Button prompts
 
@@ -623,6 +647,10 @@ This is where the information density was highest. Here is what I could confirm.
 * **Triangle**: knock
 * **Triangle**: pick up the bag
 * **Mash Circle**: break free when Lucia is being pinned by an enemy (a QTE, in other words)
+
+![A red bag on the floor of a gutted interior with a "Triangle — BAG" prompt over it; a pistol icon and the ammo count "17 80" in the top-right, and a reticle of short dashes rather than a circle](/images/news/gta6-extended-look-impressions/prompt-bag-pickup.webp)
+
+![Looking down at someone pinned to the ground, with a Circle prompt and a Triangle prompt both on screen](/images/news/gta6-extended-look-impressions/prompt-qte-struggle.webp)
 
 And the options displayed at a car door were especially interesting.
 
@@ -654,6 +682,8 @@ Around the edges of the footage there were clearly things that look like minigam
 * Fishing
 * Somewhere that looks like a shooting range
 
+![A woman pressing a barbell on a gym bench, with "L2" and "R2" button prompts overlaid on the bar](/images/news/gta6-extended-look-impressions/gym-bench-press.webp)
+
 Since I could actually see the button prompt for the weight training, I rate that one as fairly certain. Swimming, scuba, jet skis, canoeing and fishing make five water-related activities on their own. Given the setting that may be obvious, but the amount on and under the water looks worth being optimistic about.
 
 Something that looks like a VR headset also appears. Imagining what you put a headset on to do inside the game is its own small pleasure.
@@ -669,6 +699,8 @@ For city features there were strip club and nightclub scenes, and a monorail. Th
 One of the pleasures of this series is the advertising plastered around the city, and it is here in force.
 
 A commercial for the Prairie Sandwich Box Meal: only 30,000 calories. *Only.* That single word tells you everything about this world.
+
+![An advertisement reading "THE PRAIRIE SANDWICH BOX MEAL" with "ONLY 30,000 CALORIES" on the left, and a sandwich stacked with sliced meat, a carton of fries and a mug of root beer on the right](/images/news/gta6-extended-look-impressions/prairie-sandwich-ad.webp)
 
 There was an ad for something called Angstipan, too. A pharmaceutical ad, presumably. The name alone is already funny.
 
@@ -690,7 +722,7 @@ And finally, Brian's "knowing when to quit is what matters" will not leave my ea
 
 ---
 
-> **Note:** This article is a personal viewing record based on notes taken while watching "Grand Theft Auto VI: An Extended Look." It is not an official Rockstar Games announcement. Character names and lines are our own transcription and summary from the Japanese subtitles, and the descriptions of UI and minigames include the writer's own speculation. All images in this article are AI-generated illustrations and are not actual GTA6 screenshots or official Rockstar material.`,
+> **Note:** This article is a personal viewing record based on notes taken while watching "Grand Theft Auto VI: An Extended Look." It is not an official Rockstar Games announcement. Character names and lines are our own transcription and summary from the Japanese subtitles, and the descriptions of UI and minigames include the writer's own speculation. All images in this article are screenshots from "Grand Theft Auto VI: An Extended Look," copyright Rockstar Games.`,
   },
   {
     id: 47,
