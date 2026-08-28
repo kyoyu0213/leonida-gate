@@ -216,6 +216,515 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 51,
+    title:
+      "GTA6、PS5 Proでも30fps？Rockstar先行プレビューで判明した“現在の動作”と60fpsの可能性",
+    displayTitle:
+      "GTA6、PS5 Proでも30fps？\nRockstar先行プレビューで判明した“現在の動作”と60fpsの可能性",
+    description:
+      "Rockstar Northを訪問したブラジルのクリエイターDavy Jonesが、現地で見たGTA6が30fpsで動作していたと明かした。PS5 Proでも同様だったと報じられているが、Rob Nelson氏は60fpsに対応しないとは答えていない。「PS5 Pro Enhanced」の意味、CPUがボトルネックになる理由、40fpsという選択肢まで整理する。",
+    icon: "🎮",
+    image: "/images/news/gta6-ps5pro-30fps/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-28",
+    publishedAt: "2026-08-28 23:30",
+    source: "Davy Jones／Flow Games・Push Square ほか報道",
+    sourceUrl: "https://www.pushsquare.com/news/2026/08/gta-6-targeting-30fps-on-ps5-undecided-on-performance-mode",
+    relatedArticles: [50, 49, 48],
+    aiSummary: [
+      "Rockstar Northを訪問したブラジルのクリエイターDavy Jonesが、現地で見たGTA6が30fpsで動作していたと明かした。デモにはフレームレートカウンターも表示されていたと報じられ、ブラジルのFlow Gamesは開発責任者Rob Nelson氏の説明として、現在の開発段階ではPS5 Proを含むコンソール版が30fpsで動作しているとしている。",
+      "ただしNelson氏は「60fpsには対応しない」と答えたわけではなく、最終的な技術仕様については技術チームへの確認が必要という趣旨の回答だった。つまり「PS5 Proでも30fps確定」ではなく、「現在のGTA6は30fpsをターゲットとしており、60fpsについてRockstarはまだ約束していない」という段階になる。",
+      "PlayStation StoreにはGTA6が「PS5 Pro Enhanced」と明記されているが、この表示は60fpsを保証するものではない。PS5 ProはGPUとPSSR・レイトレーシングが強化された一方でCPUの世代交代は小幅で、大量のNPCや新しい警察システムを動かすGTA6ではCPUがボトルネックになりやすい。解像度を下げてもCPU負荷は下がらないため、60fpsは自明ではない。",
+    ],
+    fullContent: `# GTA6、PS5 Proでも30fps？Rockstar先行プレビューで判明した“現在の動作”と60fpsの可能性
+
+「PS5 Proなら、さすがにGTA6を60fpsで遊べるのではないか」。
+
+『Grand Theft Auto VI』の発売を待つプレイヤーの間では、以前からそんな期待があった。通常のPS5より高いグラフィック性能を持つPS5 Proは、PlayStation StoreでもGTA6の対応機能として正式に「PS5 Pro Enhanced」と表示されている。最高のコンソール環境でGTA6を遊びたい人にとって、PS5 Proは有力な選択肢に見える。
+
+ところが8月27日、Rockstar Northを訪問していたブラジルのクリエイターDavy Jonesから、少し気になる情報が出てきた。
+
+彼がRockstar Northで実際に見たGTA6は30fpsで動作していたという。さらにDavy Jonesは、その場でRockstar Northの開発責任者Rob Nelson氏へ「30fpsなのか、60fpsなのか」「PS5 Proではどうなるのか」と直接質問している。
+
+その回答によって見えてきたのは、「PS5 Proでも30fps確定」という単純な話ではない。
+
+しかし同時に、現段階のRockstarがGTA6を30fpsを前提とした状態で動かしていることを示す、これまででもっとも具体的な情報でもある。
+
+---
+
+## Rockstar Northで見せられたGTA6は30fpsだった
+
+今回の情報源となったDavy Jonesは、TGGやEl Rubiusらと同じく、7月にスコットランド・エディンバラのRockstar Northへ招待されていたクリエイターのひとりだ。
+
+Extended Look公開後、彼は現地で見たGTA6について次々と情報を明かしている。そのなかでフレームレートについても質問しており、ブラジルのFlow Gamesは、Rob Nelson氏の説明として現在の開発段階ではコンソール版が30fpsで動作していると報じた。Flow GamesはPS5 Proについても同様に30fpsだったとしている。
+
+Davy Jonesが見たデモではフレームレートカウンターも表示されており、30fpsで動いていることを直接確認できたと報じられている。
+
+これは、今回公開された「Grand Theft Auto VI: An Extended Look」の内容とも大きく矛盾しない。
+
+Rockstar自身がExtended Lookについて、すべてPlayStation 5上で撮影されたゲーム内映像だと明記している。PS5 Proではなく通常のPS5で、今回披露された密度の世界が実際に動いているわけだ。
+
+ただし、ここから「発売版は全機種30fps固定」と結論づけるのはまだ早い。
+
+---
+
+## Rob Nelson氏は「発売版も30fps」と断言していない
+
+Davy Jonesはさらに踏み込んで、60fpsの可能性やPS5 ProについてNelson氏へ質問している。
+
+ここでNelson氏は、「60fpsには対応しない」と答えたわけではなかった。
+
+正確な技術的回答をするにはRockstarの技術チームに確認する必要があるという趣旨の回答をしており、解像度やレイトレーシングを含む最終的な技術仕様についても、この場では明言していない。
+
+つまり、現時点で整理できる状況はこうだ。
+
+Rockstar Northで披露された現在のGTA6は30fpsで動いている。PS5 Proを含め、現在確認されているコンソール環境について60fpsモードは発表されていない。一方でRockstarは、発売時にも必ず30fpsしか選べないとは正式発表していない。
+
+この「現在の開発状況」と「製品版の確定仕様」が海外の見出しでは混ざり始めている。
+
+「GTA6はPS5 Proでも30fps確定」という表現は、現時点では少し強すぎる。
+
+より正確に言えば、
+
+> 現在のGTA6はPS5 Proを含むコンソールで30fpsをターゲットとしており、60fpsモードについてRockstarはまだ約束していない
+
+という段階だ。
+
+---
+
+## では「PS5 Pro Enhanced」とは何なのか
+
+ここで当然出てくるのが、「だったらPS5 Pro Enhancedって何なの？」という疑問だろう。
+
+GTA6の日本版PlayStation Storeには、スタンダード・エディション、アルティメット・エディションともに「**PS5 Pro Enhanced**」と明記されている。これは噂ではなく、PlayStation公式ストアで確認できる情報だ。
+
+![PS5本体と大型テレビが置かれたリビングのイメージ。テレビにはGTA6らしい夜のVice Cityが映り、机の上にはコントローラーとパフォーマンス解析のグラフを表示したノートPCが並んでいる](/images/news/gta6-ps5pro-30fps/ps5pro-console-analysis.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+
+ただし、「PS5 Pro Enhanced」という表示は60fpsを保証するものではない。
+
+PS5 Proでは、GPU性能の向上に加えて、AIを利用したアップスケーリング技術PSSR、レイトレーシング性能の強化などが用意されている。SonyもPS5 Proについて、高解像度化、高フレームレート、レイトレーシングなどをタイトルごとに活用できるハードウェアとして説明している。
+
+ゲームによってはPS5の30fps相当の画質を60fpsで実現するためにProの性能を使う。一方で、フレームレートはそのままに、より高い解像度や高品質な反射、影、描画距離などへ性能を振り分けることもできる。
+
+つまりGTA6がPS5 Pro Enhancedだからといって、
+
+> 通常PS5＝30fps、PS5 Pro＝60fps
+
+になるとは限らない。
+
+たとえば30fpsを維持したまま、通常PS5より高い内部解像度、より高品質なレイトレーシング、安定したPSSR、遠景や反射表現の強化などがPS5 Pro版の特徴になる可能性もある。
+
+現時点では、Rockstarがその中身を発表していないだけだ。
+
+---
+
+## なぜPS5 Proでも60fpsが簡単ではないのか
+
+では、通常PS5より高性能なPS5 Proでも、なぜGTA6の60fpsがこれほど疑問視されるのだろうか。
+
+ここで重要になるのが、ゲーム機の性能を単純に「グラフィックが何倍速いか」だけでは判断できないという点だ。
+
+GTA6で画面に映っているのは、美しい建物や車だけではない。
+
+![雨上がりの夜のネオン街を大量の車が走るイメージ。歩道には人が並び、奥にはパトカーの赤青灯が見えている](/images/news/gta6-ps5pro-30fps/dense-traffic-night-street.webp)
+
+街を歩く大量のNPC、それぞれの反応、交通システム、警察の捜査、車両や物体の物理演算、店や施設、天候、時間帯、遠くを走る車、プレイヤーの行動を認識する周囲の人々――今回のExtended Lookと先行プレビューからは、GTA6が非常に多くのシステムを同時に動かしていることが分かってきた。
+
+特に今回明らかになった新しい警察システムは象徴的だ。
+
+誰が犯罪を目撃したのか、どの服装を見られたのか、どの車を使ったのかといった情報をゲーム側が扱う。NPCも以前のように単純に逃げるだけではなく、状況によって抵抗する。車ひとつ盗む場合でもセキュリティや追跡装置が存在する。
+
+こうした世界の「裏側の計算」を主に担当するのがCPUだ。
+
+PS5 Proは通常PS5からGPU側が大きく強化された一方、CPUについてはそれほど劇的な世代交代をしていない。この点についてDigital FoundryはPS5 Proの登場以前から、GTAのような複雑なシミュレーションを行うゲームではCPUがボトルネックになる可能性を指摘し、通常PS5で30fpsを前提とするゲームをPS5 Proだけで60fpsへ倍増させるのは難しいとの見方を示していた。
+
+2026年に入ってGTA6の詳細がさらに明らかになった後も、Digital Foundryは同様に60fpsには慎重な見方を示している。
+
+そして今回、Rockstar Northの実機デモが30fpsだったことで、その分析に初めて開発現場側からの具体的な情報が重なったことになる。
+
+---
+
+## 「解像度を下げれば60fps」は必ずしも通用しない
+
+ゲームではよく、「4Kをやめて1080pにすれば60fpsにできるのでは」と考えられる。
+
+GPUが限界になっているゲームなら、それは有効な方法だ。描画するピクセル数を減らせばGPUの仕事が軽くなり、フレームレートを上げられる可能性がある。
+
+しかしCPUが先に限界へ達している場合は事情が違う。
+
+画面を1080pにしても、NPCは半分の速度で考えてくれるわけではない。交通量も、物理演算も、警察AIも、世界のシミュレーションも動き続ける。
+
+30fpsから60fpsへ上げるためには、それらの処理もより短い時間の中で完了させなければならない。
+
+だからこそ、PS5 Proの強力なGPUやPSSRがあれば必ず60fpsになる、とは言い切れないのである。
+
+むしろPS5 Proでは、CPU側で維持できるフレームレートの範囲内で、余ったGPU性能を画質へ振り分けるという使い方も十分に考えられる。
+
+---
+
+## 30fpsならGTA6は「ダメ」なのか
+
+ここも分けて考える必要がある。
+
+60fpsに慣れている人にとって、30fpsと60fpsの違いはかなり分かりやすい。カメラを素早く動かしたとき、銃撃戦で照準を合わせるとき、高速で車を運転するときなどは、60fpsの方が映像だけでなく操作の反応も滑らかに感じやすい。
+
+だから「できれば60fpsで遊びたい」と考えること自体は当然だ。
+
+一方、Rockstarはこれまで新作オープンワールドの発売時に、世界の密度や映像表現を優先して30fpsを選んできた歴史もある。
+
+『Grand Theft Auto V』も当初のコンソール版は30fpsをターゲットとしており、『Red Dead Redemption 2』もコンソールでは長く30fpsを前提としていた。GTA VがPS5やXbox Series X|Sで60fpsに対応したのは、世代をまたいだ後のことだ。
+
+GTA6も同じ思想を選んだとして、不思議ではない。
+
+今回のExtended Lookを見れば、Rockstarがどこへハードウェア性能を使っているのかもある程度想像できる。
+
+大量の人間が存在し、車が走り、店舗があり、建物の内部まで作り込まれ、水やガラスには複雑な反射があり、それらが巨大なLeonidaの中で同時に動いている。
+
+Rockstarにとって30fpsは「60fpsを実現できなかった結果」というより、何を画面に存在させるかを優先した結果として選ばれる可能性のある設計判断なのかもしれない。
+
+実際、Davy Jonesが伝えたNelson氏の言葉も、30fpsを謝罪するようなものではなく、現在画面上で動かしている大量の要素を踏まえて30fpsでの出来に自信を持っているようなニュアンスだったと報じられている。
+
+---
+
+## それでもPS5 Proユーザーが気になるのは当然
+
+一方で、PS5 Proを所有しているユーザーからすれば「通常PS5と同じ30fpsなら、何が違うのか」と思うのも自然だろう。
+
+その答えはまだRockstarから示されていない。
+
+PlayStation StoreにはPS5 Pro Enhancedと書かれている以上、何らかのPro向け強化が存在することは確認できる。しかし、それが高解像度なのか、レイトレーシングなのか、PSSRなのか、より安定した30fpsなのか、あるいは別のグラフィックモードが存在するのかは不明だ。
+
+ここは今後Rockstarから発表される技術仕様で、かなり重要なポイントになる。
+
+特にGTA6のためにPS5 Proを購入しようと考えている場合、現段階で「PS5 Proなら60fps」と期待して本体を選ぶのは避けた方がいい。
+
+PS5 Pro版が存在し、Enhanced対応することは確定。60fpsは未確定。
+
+このふたつは分けて考える必要がある。
+
+---
+
+## 60fps以外に「40fps」という可能性もある
+
+もし60fpsが技術的に難しかった場合、もうひとつ考えられるのが40fpsモードだ。
+
+これはRockstarが発表した情報ではなく、Digital Foundryなど技術系メディアが可能性として挙げているものなので、現時点では完全に推測の範囲になる。
+
+近年のコンソールゲームでは、120Hz対応テレビを利用している場合、30fpsと60fpsの中間となる40fpsを選べる作品も増えている。
+
+60fpsほどではないものの30fpsよりかなり滑らかに感じられ、同時に高品質なグラフィックも維持しやすい。
+
+PS5 Pro Enhancedという立場を考えれば、
+
+通常PS5では30fps、PS5 Proではより高品質な30fpsや40fpsモードを用意する、といった構成も技術的な選択肢としては考えられる。
+
+ただし繰り返しになるが、GTA6に40fpsモードが存在するという情報はRockstarから一切出ていない。
+
+現時点では「そういう落としどころもあり得る」という技術的な予想に過ぎない。
+
+---
+
+## 現時点で分かっていること、まだ分からないこと
+
+今回の情報を追っていくと、「GTA6はPS5 Proでも30fps」というニュースには、事実と推測がかなり混ざっていることが分かる。
+
+確実に言えるのは、Rockstar Northで披露された現在のコンソール版GTA6が30fpsで動作していたこと。そしてDavy JonesがPS5 Proと60fpsについて直接質問したものの、Nelson氏は最終的な技術仕様については技術チームへの確認が必要だと答えたことだ。
+
+また、GTA6がPS5 Pro Enhanced対応であることもPlayStation Storeで正式に確認できる。
+
+一方で、PS5 Proに60fpsモードが存在するのか、通常PS5にパフォーマンスモードがあるのか、40fpsモードがあるのか、各機種の解像度はいくつなのか、どのようなレイトレーシングが使われるのかについては、まだ正式発表されていない。
+
+したがって現時点では、
+
+> PS5 Proでも30fpsしか出ないことが確定した
+
+ではなく、
+
+> 現在のGTA6はPS5 Proを含め30fpsで動いており、60fpsについてRockstarはまだ約束していない
+
+と理解するのがもっとも正確だ。
+
+---
+
+## 30fpsという数字の向こうに、Rockstarが何を優先しているのかを見る
+
+今回の話は、「30と60、どちらの数字が大きいか」だけで終わらせると、GTA6について重要な部分を見落としてしまう。
+
+Extended LookとRockstar Northの先行プレビューから明らかになったのは、GTA6が非常に多くのシステムを同時に成立させようとしていることだ。
+
+![夜のアパートで市街地図を挟んで話し合う男女のイメージ。机には札束とスマートフォン、手前にはゲームコントローラーが置かれ、窓の外には湾岸の夜景と渋滞した道路が見えている](/images/news/gta6-ps5pro-30fps/jason-lucia-map-controller.webp)
+
+街を歩くNPCはプレイヤーを認識し、犯罪を目撃すれば通報する。警察は目撃情報をもとに犯人を探し、車両や服装まで捜査に利用する。盗む車によって必要な道具も違い、ジェイソンとルシアはプレイヤーが操作していない間もそれぞれの生活を続ける。
+
+こうしたシステムの詳細は「[Extended Lookだけでは分からないGTA6新情報まとめ](/news/50)」で整理している。
+
+そのうえで巨大なVice CityとLeonidaを描き、今回見せたグラフィックを通常のPS5上で動かしている。
+
+もしRockstarがその世界を維持するために30fpsを選んでいるのであれば、GTA6にとって重要なのは「PS5 Proなのに30fpsしか出ない」という話ではなく、Rockstarがフレームレートと引き換えに何を動かしているのかなのかもしれない。
+
+もちろん、発売までまだ時間はある。
+
+最適化によって新しいモードが追加される可能性もあれば、PS5 Pro専用の仕様が後から詳しく発表される可能性もある。反対に、最終的に30fpsのみで発売される可能性も残っている。
+
+GTA6の発売日は2026年11月19日。
+
+フレームレートについて初めて具体的な情報が出てきた今、次に待たれるのは噂や分析ではなく、Rockstar自身によるPS5、PS5 Pro、Xbox Series X|Sそれぞれの正式な技術仕様だ。
+
+GTA6 FEEDでは、PS5 Pro Enhancedの詳細や60fps・グラフィックモードについて新たな公式情報、またはRockstar Northを訪れたクリエイターから追加の証言が出た場合も引き続き追っていく。
+
+---
+
+> **注記：** 本記事はDavy Jonesの発言をもとにしたFlow Games、Push Squareなど各メディアの報道と、公開されている公式情報をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。フレームレートに関する記述は2026年8月時点の開発中ビルドについてのものであり、製品版の仕様はRockstarから正式発表されていない。40fpsモードの可能性は技術系メディアによる推測であり、Rockstarの発表ではない。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。`,
+    titleEn:
+      "GTA6 at 30fps Even on PS5 Pro? What the Rockstar Previews Showed About Current Performance — and the Odds of 60fps",
+    displayTitleEn:
+      "GTA6 at 30fps Even on PS5 Pro?\nWhat the Previews Showed, and the Odds of 60fps",
+    descriptionEn:
+      "Brazilian creator Davy Jones, who visited Rockstar North, revealed that the GTA6 he was shown ran at 30fps — reportedly including on PS5 Pro. But Rob Nelson never said 60fps was off the table. Here is what \"PS5 Pro Enhanced\" actually guarantees, why the CPU is the bottleneck, and where a 40fps mode might fit.",
+    aiSummaryEn: [
+      "Brazilian creator Davy Jones, one of the creators invited to Rockstar North in July, revealed that the GTA6 build he was shown ran at 30fps, with a frame rate counter visible on screen. Brazilian outlet Flow Games reported, citing development lead Rob Nelson, that current console builds run at 30fps — PS5 Pro included.",
+      "Nelson did not, however, say 60fps was ruled out; he indicated that a precise technical answer would require checking with Rockstar's technical team, and did not commit on resolution or ray tracing either. So this is not \"30fps confirmed on PS5 Pro\" — it is \"GTA6 currently targets 30fps, and Rockstar has not promised 60fps.\"",
+      "The PlayStation Store does list GTA6 as PS5 Pro Enhanced, but that label guarantees no particular frame rate. PS5 Pro's gains are concentrated in the GPU, PSSR and ray tracing, while its CPU is only modestly improved — and GTA6's crowds, traffic and new police investigation system lean on the CPU. Dropping resolution does not lighten that load, so 60fps is far from automatic.",
+    ],
+    fullContentEn: `# GTA6 at 30fps Even on PS5 Pro? What the Rockstar Previews Showed About Current Performance — and the Odds of 60fps
+
+"Surely on a PS5 Pro you'll be able to play GTA6 at 60fps."
+
+That hope has been circulating among players waiting on *Grand Theft Auto VI* for a while. The PS5 Pro, with graphics performance above the base PS5, is officially listed on the PlayStation Store as "PS5 Pro Enhanced" for GTA6. For anyone who wants the best console experience the game can offer, the Pro looks like the obvious pick.
+
+Then on August 27, something worth noting came from Brazilian creator Davy Jones, who had visited Rockstar North.
+
+The GTA6 he actually saw at Rockstar North was running at 30fps. Jones also asked Rockstar North development lead Rob Nelson directly, on the spot: is it 30 or 60fps, and what about PS5 Pro?
+
+What the answer reveals is not the simple story of "30fps confirmed, even on PS5 Pro."
+
+But it is also the most concrete indication yet that Rockstar is currently running GTA6 on the assumption of 30fps.
+
+---
+
+## The GTA6 Shown at Rockstar North Was Running at 30fps
+
+Davy Jones, the source here, was — like TGG and El Rubius — one of the creators invited to Rockstar North in Edinburgh, Scotland in July.
+
+Since Extended Look went live, he has been steadily sharing what he saw on site. Frame rate was among the things he asked about, and Brazilian outlet Flow Games reported, citing Rob Nelson's explanation, that console builds run at 30fps at the current stage of development. Flow Games states the same applied to PS5 Pro.
+
+The demo Jones saw reportedly had a frame rate counter on screen, letting him confirm the 30fps directly.
+
+None of this greatly contradicts "Grand Theft Auto VI: An Extended Look" itself.
+
+Rockstar explicitly states that Extended Look is in-game footage captured entirely on PlayStation 5. That density of world is genuinely running on a base PS5, not a Pro.
+
+Still, it is too early to conclude that "the shipping game is locked to 30fps on every platform."
+
+---
+
+## Rob Nelson Did Not Say the Shipping Game Is 30fps
+
+Jones pushed further, asking Nelson about the possibility of 60fps and about PS5 Pro specifically.
+
+Nelson did not answer that 60fps was not happening.
+
+He indicated that giving a precise technical answer would require checking with Rockstar's technical team, and he did not commit on final technical specifications — resolution and ray tracing included.
+
+So here is what can actually be established right now.
+
+The GTA6 shown at Rockstar North currently runs at 30fps. No 60fps mode has been announced for any confirmed console configuration, PS5 Pro included. At the same time, Rockstar has not officially stated that 30fps will be the only option at launch.
+
+"Current state of development" and "confirmed shipping specification" are starting to blur together in headlines abroad.
+
+"GTA6 confirmed at 30fps even on PS5 Pro" is a little too strong for where we are.
+
+More precisely:
+
+> GTA6 currently targets 30fps on consoles including PS5 Pro, and Rockstar has not yet promised a 60fps mode.
+
+That is the actual stage we are at.
+
+---
+
+## So What Is "PS5 Pro Enhanced"?
+
+The natural follow-up: then what does PS5 Pro Enhanced even mean?
+
+GTA6's PlayStation Store listing marks both the Standard and Ultimate editions as "**PS5 Pro Enhanced**." That is not a rumor — it is visible on the official store.
+
+![A living room with a PS5 and a large TV, GTA6-style night Vice City on screen, a controller and a laptop showing performance analysis graphs on the desk](/images/news/gta6-ps5pro-30fps/ps5pro-console-analysis.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+
+But the "PS5 Pro Enhanced" label does not guarantee 60fps.
+
+The PS5 Pro offers a stronger GPU, the AI upscaling technology PSSR, and improved ray tracing performance. Sony itself describes the Pro as hardware that titles can use for higher resolution, higher frame rates or ray tracing, on a per-game basis.
+
+Some games spend Pro performance on hitting 60fps at roughly base-PS5 image quality. Others keep the frame rate where it is and put the headroom into higher resolution, better reflections, shadows or draw distance instead.
+
+So GTA6 being PS5 Pro Enhanced does not necessarily mean:
+
+> base PS5 = 30fps, PS5 Pro = 60fps
+
+It is entirely possible that the Pro version holds 30fps while offering a higher internal resolution, better ray tracing, more stable PSSR, and improved distant detail and reflections.
+
+Right now, Rockstar simply has not said which it is.
+
+---
+
+## Why 60fps Is Not Easy Even on PS5 Pro
+
+So why is GTA6 at 60fps doubted even on hardware more powerful than a base PS5?
+
+The key point is that a console's capability cannot be judged purely by "how many times faster the graphics are."
+
+What is on screen in GTA6 is not just handsome buildings and cars.
+
+![Heavy traffic moving through a neon-lit street after rain at night, people lining the sidewalk, police lights visible in the distance](/images/news/gta6-ps5pro-30fps/dense-traffic-night-street.webp)
+
+Crowds of NPCs walking the streets and each of their reactions, the traffic system, police investigation, physics for vehicles and objects, stores and venues, weather, time of day, cars driving in the distance, bystanders registering what the player does — Extended Look and the previews have made clear that GTA6 is running a great many systems at once.
+
+The newly revealed police system is the emblematic case.
+
+The game now tracks who witnessed the crime, what clothing was seen, which car was used. NPCs no longer simply flee; depending on the situation they fight back. Even stealing a single car involves security and tracking devices.
+
+The "behind the scenes math" of a world like that falls mainly to the CPU.
+
+The PS5 Pro substantially strengthened the GPU side over the base PS5, but its CPU did not get a dramatic generational jump. On this point, Digital Foundry had noted even before the Pro launched that CPU could be the bottleneck in games running complex simulations like GTA, and took the view that doubling a base-PS5 30fps game to 60fps on Pro hardware alone would be difficult.
+
+After more GTA6 detail emerged through 2026, Digital Foundry has remained similarly cautious about 60fps.
+
+And now, with the Rockstar North demo running at 30fps, that analysis has concrete information from the development side layered on top of it for the first time.
+
+---
+
+## "Just Lower the Resolution for 60fps" Does Not Always Work
+
+A common assumption: drop from 4K to 1080p and you can hit 60fps.
+
+For a GPU-limited game, that is a valid approach. Fewer pixels to draw means less GPU work and a real chance at a higher frame rate.
+
+When the CPU hits its ceiling first, though, the situation is different.
+
+Rendering at 1080p does not make NPCs think at half speed. Traffic, physics, police AI and the world simulation all keep running.
+
+To go from 30fps to 60fps, all of that has to finish inside a shorter window too.
+
+Which is why a powerful GPU and PSSR on PS5 Pro cannot be assumed to deliver 60fps.
+
+If anything, the Pro may end up holding whatever frame rate the CPU can sustain and spending the leftover GPU budget on image quality.
+
+---
+
+## Does 30fps Make GTA6 "Bad"?
+
+This needs separating out too.
+
+For anyone used to 60fps, the difference between 30 and 60 is quite legible. Whipping the camera around, lining up a shot in a firefight, driving fast — 60fps tends to feel smoother not just visually but in how the controls respond.
+
+So wanting 60fps if at all possible is entirely reasonable.
+
+On the other hand, Rockstar has a history of choosing 30fps at launch for new open worlds, prioritizing world density and visual presentation.
+
+*Grand Theft Auto V* targeted 30fps on its original console release, and *Red Dead Redemption 2* ran on a 30fps assumption on consoles for a long time. GTA V only got 60fps on PS5 and Xbox Series X|S a generation later.
+
+It would not be strange for GTA6 to make the same call.
+
+Watch Extended Look and you can guess reasonably well where Rockstar is spending its hardware budget.
+
+Large numbers of people exist, cars drive, storefronts operate, building interiors are built out, water and glass carry complex reflections — and all of it runs simultaneously inside an enormous Leonida.
+
+For Rockstar, 30fps may be less "the result of failing to reach 60" than a design decision that follows from prioritizing what gets to exist on screen.
+
+Indeed, the Nelson comments Jones relayed reportedly carried less an apologetic tone about 30fps than confidence in how the game holds up at 30 given everything it is running.
+
+---
+
+## PS5 Pro Owners Are Still Right to Wonder
+
+That said, if you own a PS5 Pro, asking "what do I actually get, if it's the same 30fps as a base PS5?" is a fair question.
+
+Rockstar has not answered it.
+
+Since the PlayStation Store says PS5 Pro Enhanced, some form of Pro-specific improvement clearly exists. Whether that is higher resolution, ray tracing, PSSR, a more stable 30fps, or a separate graphics mode entirely is unknown.
+
+This is going to be an important point in whatever technical specifications Rockstar publishes next.
+
+In particular, if you are considering buying a PS5 Pro for GTA6, do not pick the hardware on the expectation of 60fps at this stage.
+
+A PS5 Pro version exists and is Enhanced: confirmed. 60fps: not confirmed.
+
+Those two need to stay separate.
+
+---
+
+## Beyond 60fps, There Is Also a "40fps" Possibility
+
+If 60fps proves technically difficult, the other option worth considering is a 40fps mode.
+
+This is not something Rockstar announced — it is a possibility raised by technical outlets like Digital Foundry, so at this point it is purely speculative.
+
+Recent console games increasingly offer 40fps, halfway between 30 and 60, for players on 120Hz-capable televisions.
+
+It is not 60fps, but it feels considerably smoother than 30 while remaining easier to pair with high-end graphics.
+
+Given the PS5 Pro Enhanced label, a configuration where the base PS5 runs 30fps and the Pro offers a higher-quality 30fps or a 40fps mode is at least technically on the table.
+
+To repeat, though: no information about a 40fps mode in GTA6 has come from Rockstar.
+
+For now it is only a technical guess at where things might land.
+
+---
+
+## What We Know, and What We Do Not
+
+Follow this story through and it becomes clear that the "GTA6 is 30fps even on PS5 Pro" news mixes fact and speculation fairly heavily.
+
+What can be said with confidence: the console build of GTA6 shown at Rockstar North was running at 30fps, and although Davy Jones asked directly about PS5 Pro and 60fps, Nelson answered that final technical specifications would require checking with the technical team.
+
+It is also officially verifiable on the PlayStation Store that GTA6 is PS5 Pro Enhanced.
+
+What has not been officially announced: whether a 60fps mode exists on PS5 Pro, whether the base PS5 has a performance mode, whether there is a 40fps mode, what resolution each platform runs at, or what form of ray tracing is used.
+
+So at this point, the accurate reading is not:
+
+> It has been confirmed that PS5 Pro can only manage 30fps
+
+but rather:
+
+> GTA6 currently runs at 30fps including on PS5 Pro, and Rockstar has not yet promised 60fps.
+
+---
+
+## Looking Past the Number at What Rockstar Is Prioritizing
+
+If this story ends at "which number is bigger, 30 or 60," it misses something important about GTA6.
+
+What Extended Look and the Rockstar North previews made clear is that GTA6 is trying to hold a great many systems together at once.
+
+![Two people talking over a city map in a night apartment, cash and a phone on the table, a game controller in the foreground, a waterfront skyline and busy road outside the window](/images/news/gta6-ps5pro-30fps/jason-lucia-map-controller.webp)
+
+NPCs walking the street register the player and call the police if they witness a crime. The police hunt the suspect based on those reports, using the vehicle and clothing in the investigation. Different cars need different tools to steal. Jason and Lucia keep living their own lives while you are playing the other one.
+
+The details of those systems are laid out in "[Everything Extended Look Did Not Tell You About GTA6](/en/news/50)."
+
+On top of all that, it renders an enormous Vice City and Leonida — and runs the graphics shown here on a base PS5.
+
+If Rockstar is choosing 30fps in order to sustain that world, then the important question for GTA6 may not be "why only 30fps on a PS5 Pro" but what Rockstar is running in exchange for the frame rate.
+
+There is, of course, still time before release.
+
+Optimization could add new modes; PS5 Pro-specific specifications could be detailed later. Conversely, shipping at 30fps only remains a real possibility.
+
+GTA6 releases on November 19, 2026.
+
+Now that concrete information about frame rate has appeared for the first time, what is needed next is not rumor or analysis but official technical specifications from Rockstar for PS5, PS5 Pro and Xbox Series X|S.
+
+GTA6 FEED will keep following this — new official information on PS5 Pro Enhanced details, 60fps and graphics modes, as well as any further testimony from creators who visited Rockstar North.
+
+---
+
+> **Note:** This article draws on reporting from Flow Games, Push Square and other outlets based on Davy Jones' comments, along with publicly available official information; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Statements about frame rate concern a build in development as of August 2026; the shipping specification has not been officially announced by Rockstar. The 40fps possibility is speculation by technical outlets, not a Rockstar announcement. Every image in this article is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+  },
+  {
     id: 50,
     title:
       "Extended Lookだけでは分からないGTA6新情報まとめ――警察、車両盗難、ジェイソンとルシアの関係まで",
