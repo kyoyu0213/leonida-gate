@@ -216,6 +216,387 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 49,
+    title:
+      "「GTA6は80時間？」Rockstar開発者の発言が判明――実際は“メインストーリー80時間”ではない",
+    displayTitle:
+      "「GTA6は80時間？」Rockstar開発者の発言が判明\n実際は“メインストーリー80時間”ではない",
+    description:
+      "Rockstar North共同スタジオ責任者Rob Nelson氏が、自身のGTA6プレイに約80時間かかったことを明らかにした。海外では「GTA6のストーリーは80時間」という見出しが広がっているが、実際の発言は2026年2月に行った1回のプレイ時間であり、メインストーリーに加えて物語に影響する一部の任意目標も含まれていた。元の発言まで確認して整理する。",
+    icon: "⏳",
+    image: "/images/news/gta6-80-hours-playtime/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-28",
+    publishedAt: "2026-08-28 20:00",
+    source: "The New York Times 取材（GameSpot・GamesRadar+ ほか報道）",
+    sourceUrl: "https://www.gamespot.com/articles/gta-6-playthrough-can-last-roughly-80-hours/",
+    relatedArticles: [48, 47, 46],
+    aiSummary: [
+      "Rockstar North共同スタジオ責任者のRob Nelson氏が、自身でGTA6を通してプレイした際に約80時間かかったことを明らかにした。The New York Timesの取材内容を報じた海外メディアによると、これは2026年2月に行った最後のプレイで、メインストーリーだけでなく「物語上の影響を持つ一部の任意目標（optional goals with narrative ramifications）」も含まれていた。",
+      "つまりRockstarが「GTA6のメインストーリーは80時間です」と発表したわけではない。公式なクリア時間でも、平均クリア時間でもなく、開発者1人による1回のプレイ例にすぎない。発売は11月19日で調整も続いているため、製品版の固定された数字として扱うのは早い。",
+      "むしろ重要なのは、任意コンテンツの一部が物語と結びつく可能性が示されたこと。The New York Timesの取材ではマップ全体が『Red Dead Redemption 2』のプレイ可能エリアの約3倍とも説明されており、寄り道を積極的に行うプレイヤーであれば80時間を大きく超える可能性がある。",
+    ],
+    fullContent: `# 「GTA6は80時間？」Rockstar開発者の発言が判明――実際は“メインストーリー80時間”ではない
+
+『Grand Theft Auto VI』のゲームボリュームについて、発売前としてはかなり具体的な数字が出てきた。
+
+Rockstar Northの共同スタジオ責任者Rob Nelson氏が、自身でGTA6をプレイした際、ひと通り遊び終えるまでに約80時間かかったことを明らかにした。
+
+この数字を受け、海外では早くも「GTA6のストーリーは80時間」「GTA6クリアには80時間必要」といった見出しが広がっている。
+
+ただし、ここには重要な注意点がある。
+
+Rockstarが「GTA6のメインストーリーは80時間です」と発表したわけではない。
+
+実際の発言を追っていくと、今回の80時間という数字は、Rob Nelson氏個人が2026年2月に行った1回のプレイ時間であり、そこにはメインストーリーだけでなく、物語に影響を与える一部の任意目標も含まれていたことが分かる。
+
+---
+
+## Rockstar North責任者のプレイは「約80時間」
+
+今回の情報は、8月27日の「Grand Theft Auto VI: An Extended Look」公開に合わせて解禁されたRockstar Northへの取材から明らかになった。
+
+![薄暗いスタジオでインタビューに答える開発者のイメージ。背後のモニターにLeonidaの街並みが映り、机には資料が広げられている](/images/news/gta6-80-hours-playtime/rob-nelson-interview.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+
+The New York Timesの取材内容を報じた複数の海外メディアによると、Rob Nelson氏が最後にGTA6を通してプレイしたのは2026年2月。
+
+その際のプレイ時間について、Nelson氏は「**おそらく約80時間だった**」と説明している。
+
+そして、そのプレイにはメインストーリーだけでなく、**物語上の影響を持つ一部の任意目標**（optional goals with narrative ramifications）も含まれていたという。
+
+ここが今回もっとも重要な部分だ。
+
+「80時間」という数字そのものはRockstar側の人物から出ているが、それはゲームの公式クリア時間でもなければ、メインストーリーだけを一直線に進めた場合の時間でもない。
+
+より正確に表現するなら、
+
+> Rockstar Northの責任者がメインストーリーと一部の重要な任意コンテンツを遊んだところ、約80時間かかった
+
+という情報になる。
+
+---
+
+## 「メインストーリー80時間確定」ではない
+
+発売前のゲームでは、「プレイ時間○○時間」という数字が非常に広まりやすい。
+
+今回もすでに一部の記事やSNSでは「GTA6は80時間のゲーム」といった形で情報が拡散している。
+
+しかし、現時点ではRockstarから、
+
+* 「メインストーリーだけで80時間」
+* 「平均クリア時間が80時間」
+* 「すべてのプレイヤーが80時間程度になる」
+
+といった発表は一切行われていない。
+
+Nelson氏のプレイスタイルも一般ユーザーと同じとは限らない。
+
+開発者としてゲームの構造やミッションを熟知しているため通常より速く進んだ可能性もあれば、逆に世界の細部を確認しながらプレイしていた可能性もある。
+
+さらに、今回語られているのは2026年2月時点のプレイだ。発売は11月19日に予定されており、その後もゲームの調整は続いている。したがって、80時間という数字を製品版の固定されたクリア時間として扱うのは早い。
+
+---
+
+## 本当に注目したいのは「80時間」より“物語に影響する寄り道”
+
+むしろ今回の発言で興味深いのは、プレイ時間そのものではないかもしれない。
+
+Nelson氏の約80時間には、「**物語に影響を与える任意目標**」が含まれていたとされている。
+
+つまりGTA6では、一部のサイドコンテンツが単なる金稼ぎや収集要素ではなく、本編の物語と何らかの形で結びつく可能性がある。
+
+![夜のビーチ沿いで、ジムのベンチプレス、カスタムカー、ボート、クラブ帰りの人だかりが同じ画面に収まっているイメージ](/images/news/gta6-80-hours-playtime/side-activities-night.webp)
+
+これは「サイドミッションをクリアするとエンディングが変わる」と確定したという意味ではない。
+
+“narrative ramifications”という表現から確認できるのは、あくまで任意で行う一部の行動が、ストーリーやキャラクターなどに何らかの影響を持つというところまでだ。
+
+複数の海外メディアも、この点を今回の80時間発言と合わせて取り上げている。
+
+Extended Lookや先行プレビューでは、GTA6が単純にミッションを次々クリアしていくゲームではなく、Leonidaの日常そのものにプレイヤーを滞在させようとしていることも見えてきた。
+
+街を歩き、人と交流し、運動をしたり、店に立ち寄ったり、犯罪を起こしたりする。
+
+Nelson氏自身も、プレイヤーにはゲームを急いで攻略するのではなく、この世界の中で時間を過ごしてほしいという趣旨の考えを語っている。
+
+そう考えると、GTA6のボリュームを「何時間でエンディングまで行けるか」だけで測ること自体が、Rockstarの狙いとは少し違うのかもしれない。
+
+---
+
+## 80時間より長くなるプレイヤーも当然出てきそう
+
+もちろん、今回の発言からGTA6がかなり大規模な作品になる可能性は十分に読み取れる。
+
+Nelson氏の約80時間にはメインストーリーと一部の任意目標しか含まれておらず、ゲーム内に存在するすべてのサイドコンテンツを消化したという説明ではない。
+
+そのため、寄り道を積極的に行うプレイヤーであれば、80時間を大きく超える可能性もある。
+
+![高所から見下ろしたLeonidaの全景イメージ。手前に州全体を映すマップ端末が置かれ、奥には湾と都市部、湿地帯が広がっている](/images/news/gta6-80-hours-playtime/leonida-map-scale.webp)
+
+実際、Rockstarは今回のプレビューでGTA6のオープンワールドについても大規模な拡張を明らかにしており、The New York Timesの取材では、ゲーム全体のマップが『Red Dead Redemption 2』のプレイ可能エリアのおよそ3倍になるとも説明されている。
+
+Extended Lookで確認できた大量のアクティビティや、各地で発生する出来事まで考えれば、「ストーリーを終えるまでの時間」と「GTA6を遊び尽くすまでの時間」はかなり違うものになりそうだ。
+
+---
+
+## なぜ「GTA6は80時間」という情報が広まったのか
+
+今回少しややこしいのは、「80時間」という数字自体が間違っているわけではないことだ。
+
+Rockstar North共同スタジオ責任者が実際に約80時間プレイした。
+
+ここまでは事実。
+
+しかし、
+
+> 開発者の1回のプレイが約80時間だった
+
+という情報が、
+
+> GTA6のストーリーは80時間
+
+へ変換されて拡散している。
+
+海外メディアの中でも表現にはかなり差があり、「約80時間のプレイスルー」と慎重に報じているところがある一方、「80時間のストーリー」と強く表現する記事も出ている。
+
+発売前のGTA6はひとつの数字だけでも大きなニュースになるため、今後も似たケースは増えていくだろう。
+
+その意味でも、元の発言まで確認しておく必要がある。
+
+---
+
+## 現時点で分かっていることを整理
+
+今回の「80時間」情報について、現時点で確認できる範囲を整理するとこうなる。
+
+* Rob Nelson氏は2026年2月にGTA6を通してプレイした
+* そのプレイ時間は約80時間だった
+* メインストーリーを含んでいた
+* 一部の任意目標もプレイしていた
+* その任意目標の中には物語に影響するものがある
+* Rockstarは「メインストーリーだけで80時間」とは発表していない
+* 一般プレイヤーの平均クリア時間もまだ分からない
+
+したがって現段階では、「GTA6は80時間」と断定するより、「ひとつのプレイ例として約80時間が確認された」と考えるのがもっとも正確だろう。
+
+---
+
+## GTA6は「クリアするゲーム」から、さらに「生活する世界」へ？
+
+Extended Lookと今回の先行プレビューを見ていると、RockstarがGTA6で目指しているものも少しずつ見えてきた。
+
+巨大なマップを用意するだけではなく、その中に大量のNPC、店舗、アクティビティ、ランダムな出来事、ジェイソンとルシアの関係性などを詰め込み、プレイヤーが目的もなく街を歩いている時間そのものをゲームにしようとしている。
+
+![夜の高台から街の夜景を眺める男女2人のイメージ。手前には停めた車があり、眼下にはネオンに照らされた道路と湾岸の高層ビル群が広がる](/images/news/gta6-80-hours-playtime/jason-lucia-city-overlook.webp)
+
+そう考えると、Rob Nelson氏の「約80時間」は、GTA6の長さを示すひとつの目安ではあっても、ゲーム全体のボリュームを表す数字ではない。
+
+* メインストーリーだけを追うプレイヤー
+* Leonidaを隅々まで探索するプレイヤー
+* ジェイソンとルシアの関係を深めるプレイヤー
+* サイドストーリーや犯罪、アクティビティに何十時間も費やすプレイヤー
+
+同じGTA6でも、プレイ時間にはかなり大きな差が生まれる可能性がある。
+
+現時点で言えるのはひとつ。
+
+「GTA6のメインストーリーが80時間」と確定したわけではない。
+
+しかし、Rockstar Northの責任者自身が、一部の寄り道を含めて約80時間を費やしたという事実は、GTA6がこれまで以上に長くプレイヤーをLeonidaへ留めるゲームになることを期待させるには十分な情報だ。
+
+GTA6 FEEDでは今後もRockstar Northで行われた先行プレビューや海外クリエイター・メディアから公開される情報を追い、数字だけが一人歩きしているものについては元発言まで確認しながら整理していく。
+
+---
+
+> **注記：** 本記事はThe New York TimesがRockstar Northへの取材をもとに報じた内容と、それを扱ったGameSpot、GamesRadar+などの海外メディアの報道をもとにまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+    titleEn:
+      "\"Is GTA6 80 Hours?\" What a Rockstar Developer Actually Said — It Is Not an 80-Hour Main Story",
+    displayTitleEn:
+      "\"Is GTA6 80 Hours?\" What a Rockstar Developer Actually Said\nIt Is Not an 80-Hour Main Story",
+    descriptionEn:
+      "Rockstar North co-studio head Rob Nelson revealed that his own playthrough of GTA6 took roughly 80 hours. Headlines calling it an \"80-hour story\" are already spreading, but what he actually described was a single playthrough in February 2026 that covered the main story plus some optional goals with narrative ramifications. Here is what the original quote does and does not say.",
+    aiSummaryEn: [
+      "Rockstar North co-studio head Rob Nelson revealed that playing GTA6 through took him roughly 80 hours. Per outlets reporting on The New York Times' interview, that was his last playthrough, in February 2026, and it covered the main story plus \"some optional goals with narrative ramifications.\"",
+      "So Rockstar did not announce that GTA6's main story is 80 hours long. It is neither an official completion time nor an average — it is one developer's single playthrough. With release set for November 19 and tuning still ongoing, it is too early to treat the number as fixed for the shipping game.",
+      "The more interesting part may be the hint that some optional content ties into the story. The New York Times interview also states the overall map is about three times the playable area of Red Dead Redemption 2, so players who chase side content could go well past 80 hours.",
+    ],
+    fullContentEn: `# "Is GTA6 80 Hours?" What a Rockstar Developer Actually Said — It Is Not an 80-Hour Main Story
+
+A surprisingly concrete number about how much game *Grand Theft Auto VI* contains has arrived, and it arrived before release.
+
+Rob Nelson, co-studio head at Rockstar North, revealed that when he played GTA6 himself, getting through it took roughly 80 hours.
+
+Off the back of that, headlines like "GTA6's story is 80 hours" and "GTA6 takes 80 hours to beat" are already spreading.
+
+There is an important caveat, though.
+
+Rockstar did not announce that "GTA6's main story is 80 hours long."
+
+Follow the actual quote and it becomes clear: the 80-hour figure is one playthrough Rob Nelson personally did in February 2026, and it included not only the main story but also some optional objectives that carry story consequences.
+
+---
+
+## The Rockstar North Head's Playthrough Was "About 80 Hours"
+
+The information came out of interviews with Rockstar North that lifted alongside the August 27 release of "Grand Theft Auto VI: An Extended Look."
+
+![A developer answering questions in a dim studio, city footage of Leonida on the monitors behind him and reference material spread across the desk](/images/news/gta6-80-hours-playtime/rob-nelson-interview.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+
+According to several outlets reporting on The New York Times' interview, the last time Nelson played GTA6 through was February 2026.
+
+Asked how long that took, he said it was "**probably about 80 hours**."
+
+And that playthrough covered not just the main story but also **some optional goals with narrative ramifications**.
+
+That is the most important part of this.
+
+The number "80 hours" does come from someone at Rockstar — but it is not an official completion time, and it is not how long the main story takes if you drive straight down it.
+
+Stated more precisely, what we have is:
+
+> The head of Rockstar North played the main story plus some significant optional content, and it took him roughly 80 hours.
+
+---
+
+## This Is Not "Main Story Confirmed at 80 Hours"
+
+With an unreleased game, a "playtime: XX hours" number travels extremely easily.
+
+Sure enough, some articles and social posts have already reshaped this into "GTA6 is an 80-hour game."
+
+But as of now, Rockstar has made no statement that:
+
+* the main story alone is 80 hours
+* the average completion time is 80 hours
+* every player will land somewhere around 80 hours
+
+Nelson's play style is not necessarily the same as a regular player's, either.
+
+As a developer who knows the game's structure and missions inside out, he may have moved faster than usual — or he may have played slowly, checking details of the world as he went.
+
+On top of that, what he described is a playthrough as of February 2026. Release is scheduled for November 19, and tuning has continued since. Treating 80 hours as a fixed completion time for the shipping game is premature.
+
+---
+
+## The Real Story Is Not "80 Hours" but Detours That Affect the Narrative
+
+The interesting part of this quote may not be the playtime at all.
+
+Nelson's roughly 80 hours are said to have included "**optional goals with narrative ramifications**."
+
+In other words, some of GTA6's side content may not be purely about money or collectibles — it may connect to the main story in some form.
+
+![A stretch of night beach where a gym bench press, a custom car, a speedboat and a crowd leaving a club all sit in the same frame](/images/news/gta6-80-hours-playtime/side-activities-night.webp)
+
+This does not mean it is confirmed that "clearing side missions changes the ending."
+
+All that phrase — *narrative ramifications* — establishes is that some optional actions carry some kind of influence over the story, the characters, or something along those lines.
+
+Several outlets have picked up on this alongside the 80-hour line.
+
+Extended Look and the early previews have also made it clear that GTA6 is not a game about clearing missions back to back; it wants to keep the player living inside Leonida's daily life.
+
+Walking the streets, talking to people, working out, stopping by a store, committing a crime.
+
+Nelson himself has expressed the view that he would rather players spend time in this world than rush to finish it.
+
+Seen that way, measuring GTA6's volume purely by "how many hours to the credits" may be slightly beside the point Rockstar is aiming at.
+
+---
+
+## Plenty of Players Will Obviously Go Past 80 Hours
+
+The quote does, of course, tell us GTA6 is likely to be a very large game.
+
+Nelson's roughly 80 hours covered the main story and some optional objectives — it was not a claim that he cleared every piece of side content in the game.
+
+So a player who actively takes detours could go well beyond 80 hours.
+
+![Leonida seen from high above, a state-wide map terminal in the foreground and the bay, downtown and wetlands stretching out behind it](/images/news/gta6-80-hours-playtime/leonida-map-scale.webp)
+
+Rockstar did in fact reveal a major expansion in scale for GTA6's open world in this round of previews: per The New York Times' interview, the overall map is around three times the playable area of *Red Dead Redemption 2*.
+
+Factor in the sheer number of activities visible in Extended Look and the events that fire off across the map, and "time to finish the story" and "time to exhaust GTA6" look like very different numbers.
+
+---
+
+## Why "GTA6 Is 80 Hours" Spread
+
+What makes this slightly awkward is that the number itself is not wrong.
+
+The co-studio head of Rockstar North really did play for about 80 hours.
+
+That much is fact.
+
+But the information that
+
+> a developer's single playthrough took about 80 hours
+
+has been converted into
+
+> GTA6's story is 80 hours
+
+on its way around the internet.
+
+Even among outlets, the framing varies a lot: some carefully report "a roughly 80-hour playthrough," while others go hard on "an 80-hour story."
+
+Because a single number about pre-release GTA6 is enough to make big news, cases like this will keep piling up.
+
+Which is exactly why it is worth going back to the original quote.
+
+---
+
+## What We Actually Know Right Now
+
+Laying out what can be confirmed about this "80 hours" at this point:
+
+* Rob Nelson played GTA6 through in February 2026
+* That playthrough took roughly 80 hours
+* It included the main story
+* It also included some optional objectives
+* Some of those optional objectives affect the narrative
+* Rockstar has not stated that the main story alone is 80 hours
+* The average completion time for regular players is still unknown
+
+So rather than declaring "GTA6 is 80 hours," the most accurate reading at this stage is "one example playthrough came in at around 80 hours."
+
+---
+
+## From a Game You Finish to a World You Live In?
+
+Watching Extended Look and this round of previews, what Rockstar is going for with GTA6 has started to come into focus.
+
+It is not just about handing you an enormous map. It is about packing that map with NPCs, storefronts, activities, random events and the relationship between Jason and Lucia — and turning the time you spend walking around with no objective at all into the game itself.
+
+![Two people looking out over a city at night from a hilltop, their car parked nearby, neon-lit roads and waterfront towers below](/images/news/gta6-80-hours-playtime/jason-lucia-city-overlook.webp)
+
+From that angle, Rob Nelson's "about 80 hours" is one useful yardstick for GTA6's length, but not a figure that describes the game's total volume.
+
+* Players who only follow the main story
+* Players who explore every corner of Leonida
+* Players who deepen the relationship between Jason and Lucia
+* Players who sink dozens of hours into side stories, crime and activities
+
+The same GTA6 could produce wildly different playtimes.
+
+One thing can be said right now.
+
+It has not been confirmed that "GTA6's main story is 80 hours."
+
+But the fact that the head of Rockstar North himself spent roughly 80 hours, detours included, is more than enough to expect GTA6 to hold players inside Leonida longer than anything before it.
+
+GTA6 FEED will keep following the Rockstar North previews and whatever creators and outlets abroad publish next — and when a number starts walking around on its own, we will keep going back to the original quote.
+
+---
+
+> **Note:** This article is based on what The New York Times reported from its interviews with Rockstar North, plus coverage of that reporting by outlets including GameSpot and GamesRadar+; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Every image here is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+  },
+  {
     id: 48,
     title:
       "「GTA VI: An Extended Look」を見た ― ジェイとルー、そして光の話",
