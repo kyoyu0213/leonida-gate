@@ -216,6 +216,495 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 50,
+    title:
+      "Extended Lookだけでは分からないGTA6新情報まとめ――警察、車両盗難、ジェイソンとルシアの関係まで",
+    displayTitle:
+      "Extended Lookだけでは分からないGTA6新情報まとめ\n警察、車両盗難、ジェイソンとルシアの関係まで",
+    description:
+      "Rockstar Northで行われた先行プレビューから、Extended Lookを何度見返しても分からない情報が一気に出てきた。目撃と通報で変わる手配システム、プレイヤーがどんな犯罪者かを見る「犯罪プロファイル」、電子キーとGPSトラッカーが絡む車両盗難、プレイヤーが選べるジェイソンとルシアの関係性まで、判明した内容を整理する。",
+    icon: "🚔",
+    image: "/images/news/gta6-preview-roundup/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-28",
+    publishedAt: "2026-08-28 22:00",
+    source: "ファミ通ほかRockstar North先行プレビュー各誌／Rockstar Games「An Extended Look」",
+    sourceUrl: "https://www.rockstargames.com/VI",
+    relatedArticles: [49, 48, 47],
+    aiSummary: [
+      "2026年8月28日に公開された「Grand Theft Auto VI: An Extended Look」に加え、7月にRockstar Northで行われた先行プレビューの内容が解禁され、映像だけでは分からないシステム情報が一気に出てきた。日本からはファミ通が現地取材を行い、Rob Nelson氏へのインタビューを実施している。",
+      "手配システムは「犯罪をしたら星が付く」から、目撃されたか・通報されたかを軸にした捜査へ変わる。マスクや服装、使用した車といった「警察が把握している情報」から自分を切り離す駆け引きが加わる。さらにプレイヤーがどのような犯罪者として振る舞うかを記録する「犯罪プロファイル」も導入され、NPCが必ずしも怯えず抵抗してくる場面もある。",
+      "車両盗難は電子キーやGPSトラッカーへの対処が必要になり、キークローナーのような専用装備も登場する。大型武器は車両に保管する方式へ変わり、ジェイソンとルシアの関係はプレイヤーの行動で変化する。Vice CityはLos Santosの約2倍という話も出ているが、比較対象で意味が変わるため単純化は避けたい。",
+    ],
+    fullContent: `# Extended Lookだけでは分からないGTA6新情報まとめ――警察、車両盗難、ジェイソンとルシアの関係まで
+
+2026年8月28日、日本時間午前4時。Netflixで『Grand Theft Auto VI: An Extended Look』が公開された。
+
+約26分という長さもさることながら、そこで映し出されたVice CityとLeonidaの姿は、これまでのトレーラーとは明らかに情報量が違っていた。ジェイソンとルシアが街を歩き、車を走らせ、銃撃戦を行い、店や施設に立ち寄る。Rockstar Gamesが「シリーズ史上最大かつもっとも没入感のある進化」と表現するGTA6が、ようやく「実際に遊ぶゲーム」として見え始めた。
+
+ところが今回、本当に重要だったのはExtended Lookだけではない。
+
+Rockstarはその約1か月前となる7月、スコットランド・エディンバラにあるRockstar Northへ世界各国のメディアやクリエイターを招待していた。そこで参加者たちは、実際に自分で操作するハンズオンではないものの、Rockstar側が動かすGTA6を見ながら、映像だけでは判断できないゲームシステムについて説明を受けていた。
+
+日本からはファミ通も現地を訪れ、Head of Development兼Co-Studio HeadのRob Nelson氏へ取材を実施。海外ではTGG、El Rubius、Davy Jones、Mike ShowShaといったクリエイターも訪問を明らかにしている。
+
+その結果、Extended Lookの公開後には、公式映像を何度見返しても分からない情報が一気に出てきた。
+
+海外では映像と各種プレビューを細かく分解し、「150以上の新情報」と整理するメディアまで現れている。ただ、重要なのは数ではない。今回明らかになった内容を追っていくと、GTA6が単純に「GTA Vを巨大にして、グラフィックを綺麗にしたゲーム」ではないことが見えてくる。
+
+Rockstarは、犯罪そのものの遊び方をかなり根本から作り直している。
+
+---
+
+## 警察から逃げるゲームが「星を消す」だけではなくなる
+
+GTAシリーズで犯罪を起こせば、手配度を示す星が付き、警察から逃げる。これはシリーズを象徴する仕組みのひとつだ。
+
+しかしGTA6では、「犯罪をしたから自動的に警察が知っている」というゲーム的な処理から、より現実的な捜査へ近づけようとしている。
+
+Rockstarの説明によれば、重要になるのは犯罪そのものよりも、誰かに見られたか、そして通報されたかだ。
+
+![夜の商店から袋を持って走り出る男女と、それを見て携帯電話をかける通行人のイメージ。奥の通りにはパトカーの赤青灯が見えている](/images/news/gta6-preview-roundup/witness-store-robbery.webp)
+
+*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+
+たとえば店を襲うとしても、銃を持ったまま正面入口へ向かい、その姿を通行人に見られれば、強盗を始める前から警察へ通報される可能性がある。一方、裏から侵入し、監視カメラなどのセキュリティへ対処して、誰にも気づかれずに金を奪えば、そのまま逃げられることもあるという。
+
+さらに面白いのが、その後の警察の捜査だ。
+
+マスクを着けて犯罪を行ったなら、警察が把握しているのは「マスクを着けた犯人」という情報になる。逃走中にマスクを外せば、見つかりにくくなる可能性がある。ただし、服装や使用した車まで知られていれば、それだけでは十分ではない。車を乗り換えたり、服装を変えたり、警察が把握している情報から自分を切り離していく必要がある。
+
+これまでのGTAでは、警察から十分に距離を取って星が点滅するのを待つことが逃走の基本だった。GTA6ではそこに、「**警察は今、自分について何を知っているのか**」という駆け引きが加わる。
+
+追跡から逃れることそのものが、小さなステルスゲームのようになっているわけだ。
+
+---
+
+## GTA6はプレイヤーを「どんな犯罪者なのか」まで見ている
+
+この警察システムと深く関わってくるのが、新たに明かされた「犯罪プロファイル」という考え方だ。
+
+『Red Dead Redemption 2』には、主人公の行動によって善悪が評価される名誉システムがあった。しかしGTAで「犯罪をしたら悪人」と判定してしまえば、ゲームそのものが成立しない。
+
+そこでGTA6が見るのは、犯罪をしたかどうかではなく、どのような犯罪者として振る舞っているかだという。
+
+目的を達成するために必要最低限の暴力だけを使い、その場から素早く立ち去るのか。それとも、邪魔する人間を次々と殺し、警察とも正面から撃ち合うのか。同じ強盗をしていても、プレイヤーの行動はまったく違う。
+
+GTA6ではその違いをゲーム側が記録し、世界の反応にも反映していく。
+
+ここで重要なのは、「暴れる遊び方ができなくなる」という話ではないことだ。Rockstarはプレイヤーに正しい遊び方を押し付けるつもりはないとしている。従来通り、大暴れすることもできる。ただ、その行動に対して世界が以前より強く反応するようになる。
+
+その変化はNPCにも表れている。
+
+これまでなら、プレイヤーが銃を向けて車を奪おうとすれば、多くのNPCは逃げ出した。しかしLeonidaでは、相手が必ずしも怯えてくれるとは限らない。武器を持っている市民なら、その場で抵抗してくる可能性もある。
+
+つまりGTA6では、プレイヤーだけが圧倒的に強い存在ではない。
+
+街を構成する人々が、プレイヤーの行動へ返事をする。
+
+Rockstarが作ろうとしている「生きた世界」というものが、こうした細かなシステムからも見えてくる。
+
+---
+
+## タイトルにもなっている「車を盗む」という行為が大幅に進化
+
+さらに興味深いのが車両盗難だ。
+
+Grand Theft Autoというタイトルでありながら、これまでのシリーズでは車を盗む行為そのものは非常にシンプルだった。道路を走っている車を止め、ドライバーを引きずり出し、そのまま走り去る。それだけで高級車まで手に入る。
+
+GTA6では、この当たり前が変わる。
+
+![夜の路地で高級車の運転席ドアに電子機器を差し込む人物のイメージ。足元には工具ケースが開かれ、壁際では仲間が見張りに立ち、頭上には監視カメラがある](/images/news/gta6-preview-roundup/keycloner-luxury-car.webp)
+
+古い車であれば従来に近い方法で比較的簡単に盗める一方、新しい車や高級車では電子キーへの対処が必要になる場合があり、「キークローナー」のような専用装備も登場するという。
+
+それだけではない。高級車には警報装置やGPSトラッカーが搭載されていることもあり、盗難そのものに成功しても、安心して走り去れるとは限らない。
+
+盗むための道具を準備し、セキュリティを突破し、追跡装置へ対処し、警察に見つからないよう運び、最終的に盗品商へ持ち込む。
+
+ここまでくると、「車を盗む」というひとつの行為自体が、小さなミッションになっている。
+
+RockstarはGTA6で新しい派手な要素を増やしているだけではない。これまでシリーズで何気なくやっていた行動をひとつずつ掘り下げ、それ自体をゲームとして成立させようとしているように見える。
+
+武器の扱いも同様だ。
+
+従来シリーズのように、ロケットランチャーからライフルまで大量の武器を見えないポケットへ入れて持ち歩く方式ではなく、大型武器は車両などに保管する必要がある。必要な武器をトランクから取り出して犯罪へ向かう、といった準備が発生する。
+
+さらに銃をむき出しのまま街を歩けば、周囲のNPCもそれを認識する。
+
+「犯罪が始まった瞬間だけ世界が反応する」のではなく、その前段階からプレイヤーの行動を世界が見ているのである。
+
+---
+
+## ジェイソンとルシアは、物語上の恋人だからずっと恋人とは限らない
+
+今回の先行プレビューで、もうひとつ大きく印象が変わったのがジェイソンとルシアの関係だ。
+
+これまで公開されてきたトレーラーだけを見ると、ふたりは恋人同士として物語を進める主人公に見える。しかし実際には、プレイヤーの行動によってふたりの関係性を変化させられることが明らかになっている。
+
+![夜のアパートで、机に広げた市街地図を挟んで向き合う男女のイメージ。机の上には札束、拳銃、スマートフォンが置かれ、窓の外にはネオンの街並みが広がる](/images/news/gta6-preview-roundup/jason-lucia-planning.webp)
+
+関係を深めれば、手をつないだりキスをしたりと、より恋人らしい関係になっていく。一方、恋愛部分へあまり踏み込みたくないプレイヤーであれば、犯罪のパートナーに近い関係のまま進めることもできるという。
+
+これは単なる恋愛ミニゲームではない。
+
+ふたりの関係にはゲーム内のステータスが存在し、その深さによって一緒にできることにも変化が生まれる。
+
+しかも、操作していない側の主人公がゲーム世界から消えているわけでもない。ジェイソンとルシアはそれぞれに日常を持ち、プレイヤーが別の主人公を操作している間も、自分の生活を続けている。
+
+ミッションによっては操作キャラクターが固定されるが、状況によってはふたりの役割を選ぶこともできる。逃走時にジェイソンへ運転を任せてルシアで銃撃するのか、それとも逆にするのか。主人公がふたりいることを、ストーリーだけではなくゲームプレイへ落とし込もうとしている。
+
+GTA Vでも3人の主人公を切り替えるシステムは大きな特徴だった。
+
+GTA6ではそこからさらに一歩進み、「ふたりが同じ世界で同時に生きている」こと自体をシステムにしようとしている。
+
+---
+
+## ジム、食事、スマホ、銀行――「生活」がゲームになっていく
+
+こうした変更を見ていくと、今回発表されたジムや食事の要素も単なる懐古要素ではないことが分かる。
+
+![夕暮れの海沿いの遊歩道のイメージ。屋外ジムで運動する人々、道路を走るスポーツカー、沖のボート、店の前に集まる人々が同じ画面に収まっている](/images/news/gta6-preview-roundup/waterfront-gym-life.webp)
+
+『GTA: San Andreas』を思い出させるように、GTA6では運動によって身体能力や体型が変化し、食生活によって体重にも影響が出る。街に存在するジムは背景ではなく、多くの器具を実際に使うことができる。
+
+スマートフォンも同じだ。
+
+GTA Vでは画面上のUIとして表示されていたスマホが、GTA6ではキャラクターが実際に手に持つ物として扱われる。そこからSNSを見たり、銀行を利用したり、車両を管理したりする。
+
+現金と銀行口座も明確に分けられる。
+
+大量の現金を持ち歩いている状態で警察に捕まったり、誰かに倒されたりすれば、その金を失う可能性がある。そのため犯罪で得た金を銀行へ預けることにも意味が生まれる。
+
+ひとつひとつを見ると小さなシステムだ。
+
+しかし、それらをまとめて見るとRockstarの狙いが見えてくる。
+
+GTA6は、目的地へ向かってミッションを開始し、クリアしたら次のミッションへ進むだけのゲームではない。犯罪の準備をし、車を選び、武器を取り出し、街で人々の目を気にしながら行動し、稼いだ金を持ち帰り、その合間に食事をしたりジムへ行ったりする。
+
+その「間の時間」までゲームにしようとしている。
+
+---
+
+## 「Vice CityはLos Santosの約2倍」という情報も出てきた
+
+世界そのものの規模についても、先行プレビューから非常に気になる数字が出てきている。
+
+ブラジルのクリエイターDavy JonesはRockstar Northを訪問した際、Rob Nelson氏へGTA6のマップ規模について質問したと説明している。その内容をもとにした海外報道では、Vice CityだけでもGTA VのLos Santosのおよそ2倍の規模があり、その周囲に広がる市街化された地域についても大幅に広くなっているとされる。
+
+ただし、この数字には注意が必要だ。
+
+Rockstarが公式Newswireで「GTA6のマップはGTA Vの何倍」と発表したわけではなく、比較対象によっても数字の意味は変わる。Vice Cityという都市だけの面積なのか、その周辺地域まで含めるのか。都市化された土地を比較するのか、マップ全体を比較するのかで印象はまったく違う。
+
+そのため、現段階で「GTA6はGTA Vの○倍の広さ」と単純化するのは避けた方がいい。
+
+ただ、ひとつ確かなのは、Vice Cityが巨大な都市として存在し、その外側にもKeys、湿地帯、郊外、別の街や集落などが広がるということだ。
+
+Extended Lookで見えた都市の密度を考えると、GTA6の規模を単純な平方キロメートルだけで評価することにも、あまり意味がないのかもしれない。
+
+---
+
+## 「約80時間」という数字も、この世界を見れば少し意味が変わってくる
+
+今回の情報解禁では、Rob Nelson氏が2026年2月にGTA6を通してプレイした際、約80時間かかったという発言も大きな話題になった。
+
+ただし、これは「メインストーリーが80時間」と発表されたわけではない。
+
+Nelson氏のプレイにはストーリーだけではなく、物語に影響を与える一部の任意目標も含まれていた。
+
+GTA6 FEEDではこの「80時間」について「[「GTA6は80時間？」Rockstar開発者の発言が判明](/news/49)」で詳しく整理したが、今回明らかになった大量のシステムを見ると、なぜ一度のプレイにこれほど時間がかかる可能性があるのかも理解しやすくなってくる。
+
+街へ出ればNPCがいる。
+
+車ひとつ盗むにもやり方がある。
+
+ジェイソンとルシアにはふたりの生活があり、関係性も変化する。
+
+ジムへ行くこともできれば、海へ出ることもできる。犯罪で稼いだ金をどう扱うかまで考える必要がある。
+
+「80時間」という数字だけを見れば非常に長いゲームに思える。
+
+しかしRockstarが目指しているのは、80時間分のミッションを詰め込むことではないのだろう。
+
+プレイヤーが目的地へ向かう途中で、何度も寄り道したくなる世界を作ること。
+
+今回のプレビューから見えてきたのは、むしろそちらだ。
+
+---
+
+## Extended Lookで見えたのは、GTA6の表面だったのかもしれない
+
+約26分のExtended Lookは、間違いなくGTA6についてこれまででもっとも多くのことを見せた公式映像だった。
+
+それでも、今回Rockstar Northから出てきた情報を追っていくと、映像で確認できたものはゲームの一部分にすぎなかったようにも思えてくる。
+
+* 犯罪をどう目撃されたのか
+* 警察が自分について何を知っているのか
+* NPCがこちらをどう見ているのか
+* どんな車をどう盗むのか
+* ジェイソンとルシアをどんな関係にするのか
+* どんな身体を作り、どんな生活をし、どんな犯罪者になるのか
+
+どれも映像だけでは伝わりにくいものばかりだ。
+
+そして、これらをひとつにつなげて考えると、RockstarがGTA6で目指しているものも少しずつ見えてくる。
+
+GTA Vより広い街を作ることでも、NPCの数を増やすことでも、グラフィックをさらにリアルにすることでもない。
+
+プレイヤーが行ったことに世界が反応し、その反応を受けて次の行動を考える。その積み重ねによって「Leonidaで生活している」と感じられるゲームを作ること。
+
+『Red Dead Redemption 2』でRockstarが追求した「世界の中で生きる感覚」を、現代の犯罪都市へ持ち込んだものがGTA6なのかもしれない。
+
+Extended Look公開によってGTA6の情報不足は一気に解消されたように見える。
+
+しかし実際には、ここからが始まりだ。
+
+Rockstar Northへ招待されたメディアやクリエイターからは現在も追加情報が出始めている。GTA6 FEEDでは今後もそれらを追いながら、公式映像で確認できた事実、Rockstar開発者が直接説明した内容、クリエイター自身の感想や推測を分け、日本語で整理していく。
+
+---
+
+> **注記：** 本記事はRockstar Northで行われた先行プレビューをもとにしたファミ通ほか各メディアの報道と、公式映像「Grand Theft Auto VI: An Extended Look」の内容をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。プレビューはハンズオン（試遊）ではなくハンズオフ形式であり、記載したシステムの詳細は製品版で変更される可能性がある。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+    titleEn:
+      "Everything Extended Look Did Not Tell You About GTA6 — Police, Car Theft, and the Jason–Lucia Relationship",
+    displayTitleEn:
+      "Everything Extended Look Did Not Tell You About GTA6\nPolice, Car Theft, and the Jason–Lucia Relationship",
+    descriptionEn:
+      "The Rockstar North previews surfaced a wave of detail no amount of rewatching Extended Look would reveal: a wanted system built on being seen and reported rather than on committing the crime, a \"criminal profile\" that tracks what kind of criminal you are, car theft that now involves electronic keys and GPS trackers, and a Jason–Lucia relationship the player gets to shape.",
+    aiSummaryEn: [
+      "Alongside \"Grand Theft Auto VI: An Extended Look\" on August 28, 2026, coverage from the July previews at Rockstar North went live, surfacing system detail the video alone could not convey. Japanese outlet Famitsu visited the studio and interviewed Head of Development and Co-Studio Head Rob Nelson.",
+      "The wanted system moves from \"commit a crime, get stars\" toward an investigation built on whether you were seen and reported. Masks, clothing and the car you used become information the police hold, and shedding that information is part of escaping. A \"criminal profile\" also tracks how you behave as a criminal, and NPCs do not always flee — armed civilians may fight back.",
+      "Car theft now involves electronic keys, alarms and GPS trackers, with dedicated gear like a key cloner. Heavy weapons must be stored in vehicles rather than carried invisibly. Jason and Lucia's relationship shifts based on player behavior. Vice City is said to be roughly twice the size of Los Santos, though the comparison depends heavily on what is being measured.",
+    ],
+    fullContentEn: `# Everything Extended Look Did Not Tell You About GTA6 — Police, Car Theft, and the Jason–Lucia Relationship
+
+August 28, 2026, 4:00 a.m. Japan time. "Grand Theft Auto VI: An Extended Look" went live on Netflix.
+
+Its roughly 26-minute runtime was notable enough, but the Vice City and Leonida it showed carried a clearly different volume of information than any trailer before it. Jason and Lucia walk the streets, drive, shoot their way out of rooms, stop into stores and venues. GTA6 — which Rockstar Games describes as the largest and most immersive evolution in the series' history — finally started to look like a game you actually play.
+
+But Extended Look was not the important part this time.
+
+Roughly a month earlier, in July, Rockstar had invited media and creators from around the world to Rockstar North in Edinburgh, Scotland. Attendees did not get hands-on time; instead they watched Rockstar staff play GTA6 while being walked through systems that footage alone cannot convey.
+
+From Japan, Famitsu visited the studio and interviewed Head of Development and Co-Studio Head Rob Nelson. Abroad, creators including TGG, El Rubius, Davy Jones and Mike ShowSha have confirmed visits of their own.
+
+The result: once Extended Look was out, a wave of information arrived that no amount of rewatching the official video would surface.
+
+Some outlets have broken the video and the previews down into lists of "150+ new details." The count is not the point. Follow what actually came out and one thing becomes clear — GTA6 is not simply "GTA V made bigger with better graphics."
+
+Rockstar has rebuilt how crime itself plays, close to the foundations.
+
+---
+
+## Escaping the Police Is No Longer Just About Clearing Stars
+
+Commit a crime in a GTA game and you get stars, and then you run from the police. It is one of the series' signature systems.
+
+In GTA6, though, Rockstar is moving away from the gamey shorthand of "you committed a crime, therefore the police know" and toward something closer to an actual investigation.
+
+Per Rockstar's explanation, what matters is less the crime itself than whether you were seen — and whether someone called it in.
+
+![Two people running out of a lit storefront at night carrying bags, a bystander on the phone watching them, police lights visible down the street](/images/news/gta6-preview-roundup/witness-store-robbery.webp)
+
+*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+
+Rob a store by walking up to the front entrance with a gun out, and a passerby who sees you may report it before the robbery even starts. Go in the back instead, deal with security like the cameras, and take the money without anyone noticing, and you may simply be able to leave.
+
+What happens afterward is the more interesting part.
+
+Commit the crime wearing a mask, and what the police have is "a suspect in a mask." Take the mask off while fleeing and you may become harder to find. But if they also know your clothing and the car you used, that alone is not enough. You need to switch vehicles, change clothes — peel yourself away from the information the police are holding.
+
+In past GTA games, escaping mostly meant putting enough distance between yourself and the police and waiting for the stars to blink out. GTA6 adds a second question: "**what do the police actually know about me right now?**"
+
+Getting away turns into something closer to a small stealth game.
+
+---
+
+## GTA6 Is Watching What Kind of Criminal You Are
+
+Closely tied to that police system is a newly revealed concept: the "criminal profile."
+
+*Red Dead Redemption 2* had an honor system that judged the protagonist's actions as good or bad. But a GTA game cannot function if committing crimes marks you as a villain — that is the whole premise.
+
+So what GTA6 looks at is not whether you committed a crime, but what kind of criminal you behave like.
+
+Do you use the minimum violence required to get what you came for and leave quickly? Or do you kill everyone in your way and trade fire with the police head-on? The same robbery can look completely different depending on the player.
+
+GTA6 records that difference and reflects it in how the world responds.
+
+Importantly, this is not a story about losing the ability to cause chaos. Rockstar has said it has no intention of pushing a "correct" way to play. You can still go loud, same as ever. It is just that the world now reacts more strongly to what you do.
+
+That shift shows up in NPCs too.
+
+Previously, pointing a gun at someone to take their car sent most NPCs running. In Leonida, the person on the other end will not necessarily be frightened. An armed civilian may fight back on the spot.
+
+In other words, the player is no longer the only overwhelmingly powerful thing in GTA6.
+
+The people who make up the city answer back.
+
+The "living world" Rockstar is trying to build shows through in details like these.
+
+---
+
+## Stealing Cars — the Thing in the Title — Has Been Significantly Deepened
+
+Car theft is the other genuinely interesting change.
+
+For a series called Grand Theft Auto, actually stealing a car has always been remarkably simple. Stop a car on the road, drag the driver out, drive away. That was enough to land you a supercar.
+
+GTA6 changes that baseline.
+
+![Someone crouched at the driver's door of a luxury car in a night alley, inserting an electronic device, a tool case open at their feet, a lookout against the wall and a security camera overhead](/images/news/gta6-preview-roundup/keycloner-luxury-car.webp)
+
+Older cars can still be taken relatively easily by something close to the old method, but newer and higher-end vehicles may require dealing with electronic keys, and dedicated gear such as a "key cloner" comes into play.
+
+That is not all. Luxury cars can carry alarms and GPS trackers, so pulling off the theft does not guarantee you can drive away in peace.
+
+Prepare the tools, defeat the security, deal with the tracker, move the car without being spotted by police, and finally get it to a fence.
+
+At that point, "stealing a car" has become a small mission in its own right.
+
+Rockstar is not simply adding flashy new features to GTA6. It looks more like the studio is taking actions the series treated as throwaway, digging into each one, and making it stand on its own as gameplay.
+
+Weapons work the same way.
+
+Rather than the traditional approach of carrying everything from a rocket launcher to a rifle in invisible pockets, heavy weapons need to be stored in vehicles. Pulling the weapon you need out of the trunk before heading into a job becomes part of the preparation.
+
+And walk the streets with a gun out in the open, and nearby NPCs will register it.
+
+The world is not only reacting the instant a crime begins — it is watching what you do in the run-up.
+
+---
+
+## Jason and Lucia Are Lovers in the Story, but Not Necessarily Lovers Throughout
+
+The other thing this round of previews substantially changed is the impression of Jason and Lucia's relationship.
+
+Going by the trailers alone, they look like a couple carrying the story together. In practice, it has now been confirmed that the player's actions can shift the relationship between them.
+
+![Two people facing each other across a city map spread on a table in a night apartment, stacks of cash, a handgun and a phone on the table, neon skyline outside the window](/images/news/gta6-preview-roundup/jason-lucia-planning.webp)
+
+Deepen it and they become more openly a couple — holding hands, kissing. A player who would rather not lean into the romance can keep things closer to a partnership in crime.
+
+This is not a romance minigame.
+
+Their relationship has an in-game status, and how deep it runs changes what the two can do together.
+
+Nor does the protagonist you are not controlling simply vanish from the world. Jason and Lucia each have their own daily lives, and they keep living them while you are playing as the other one.
+
+Some missions lock you to a specific character, but in certain situations you choose their roles. During an escape, do you leave the driving to Jason and shoot as Lucia, or the reverse? Having two protagonists is being pushed down into gameplay rather than staying a story device.
+
+Switching between three protagonists was already a defining feature of GTA V.
+
+GTA6 goes a step further and turns "these two are alive in the same world at the same time" into a system.
+
+---
+
+## Gyms, Food, Phones, Banks — Daily Life Becomes Gameplay
+
+Seen against those changes, the gym and food elements revealed this time are clearly not just nostalgia callbacks.
+
+![A waterfront promenade at golden hour, an outdoor gym with people training, sports cars on the road, boats offshore and crowds outside the storefronts, all in one frame](/images/news/gta6-preview-roundup/waterfront-gym-life.webp)
+
+In a way that recalls *GTA: San Andreas*, exercise changes your physical ability and your build, and diet affects your weight. The gyms in the city are not set dressing — you can actually use many of the machines.
+
+The phone is the same story.
+
+What was a screen-space UI in GTA V is now an object the character physically holds. From it you browse social media, use your bank, manage vehicles.
+
+Cash and bank accounts are also clearly separated.
+
+Get arrested or taken down while carrying a large amount of cash and you can lose it. That gives depositing your criminal earnings actual meaning.
+
+Individually, these are small systems.
+
+Put them together, though, and Rockstar's intent comes into view.
+
+GTA6 is not a game about heading to a marker, starting a mission, clearing it and moving to the next one. You prepare for a job, pick a car, pull out a weapon, move through the city aware of who is watching, bring the money home — and eat and hit the gym in between.
+
+It is trying to turn that in-between time into the game too.
+
+---
+
+## "Vice City Is About Twice the Size of Los Santos" Also Surfaced
+
+On the scale of the world itself, a very tempting number came out of the previews.
+
+Brazilian creator Davy Jones has said he asked Rob Nelson about GTA6's map scale during his Rockstar North visit. Coverage built on that reports that Vice City alone is roughly twice the size of GTA V's Los Santos, and that the urbanized area surrounding it is substantially larger as well.
+
+That number needs care, though.
+
+Rockstar has not announced on its official Newswire that "GTA6's map is N times GTA V's," and the meaning shifts entirely with what is being compared. The city of Vice City alone, or its surrounding region? Urbanized land, or the whole map? Each framing produces a different impression.
+
+So at this stage, flattening it to "GTA6 is N times the size of GTA V" is best avoided.
+
+What is certain is that Vice City exists as an enormous city, and that beyond it lie the Keys, wetlands, suburbs, and other towns and settlements.
+
+Given the density of the city visible in Extended Look, judging GTA6's scale by square kilometers alone may not mean much anyway.
+
+---
+
+## The "About 80 Hours" Figure Reads Differently Once You See This World
+
+This wave of coverage also made a lot of noise out of Rob Nelson's remark that playing GTA6 through in February 2026 took him roughly 80 hours.
+
+But that was not an announcement that "the main story is 80 hours."
+
+Nelson's playthrough included not only the story but some optional objectives that carry narrative consequences.
+
+GTA6 FEED covered that figure in detail in "[\"Is GTA6 80 Hours?\" What a Rockstar Developer Actually Said](/en/news/49)" — and looking at the volume of systems revealed this time, it becomes much easier to see why a single playthrough could run that long.
+
+Go out into the city and there are NPCs.
+
+Even stealing one car has a method to it.
+
+Jason and Lucia each have a life, and their relationship changes.
+
+You can go to the gym, or head out to sea. You have to think about what to do with the money you make.
+
+Taken purely as a number, 80 hours sounds like a very long game.
+
+But what Rockstar is going for probably is not cramming in 80 hours of missions.
+
+It is building a world where the player keeps wanting to take detours on the way to wherever they were going.
+
+That is what this round of previews actually showed.
+
+---
+
+## What Extended Look Showed May Have Been the Surface
+
+Those 26 minutes were, without question, the official video that has shown the most about GTA6 to date.
+
+Even so, following what came out of Rockstar North afterward, what the footage confirmed starts to look like one slice of the game.
+
+* How your crime was witnessed
+* What the police know about you
+* How NPCs see you
+* Which cars you steal, and how
+* What kind of relationship you build between Jason and Lucia
+* What body you build, what life you live, what kind of criminal you become
+
+None of these come across easily in footage.
+
+String them together and what Rockstar is aiming for with GTA6 comes gradually into focus.
+
+It is not building a bigger city than GTA V, or raising the NPC count, or pushing the graphics further.
+
+It is making a game where the world responds to what you did, and you decide your next move based on that response — until the accumulation of it feels like living in Leonida.
+
+The sense of "being alive inside a world" that Rockstar chased in *Red Dead Redemption 2*, carried into a modern crime city. That may be what GTA6 is.
+
+Extended Look looks like it resolved GTA6's information drought in one go.
+
+In reality, this is where it starts.
+
+Media and creators invited to Rockstar North are still publishing additional detail. GTA6 FEED will keep following it — separating what the official footage confirms, what Rockstar developers explained directly, and what creators themselves felt or guessed.
+
+---
+
+> **Note:** This article draws on coverage from Famitsu and other outlets based on the previews held at Rockstar North, along with the contents of the official video "Grand Theft Auto VI: An Extended Look"; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. The previews were hands-off rather than hands-on, and the system details described here may change in the shipping game. Every image in this article is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+  },
+  {
     id: 49,
     title:
       "「GTA6は80時間？」Rockstar開発者の発言が判明――実際は“メインストーリー80時間”ではない",
