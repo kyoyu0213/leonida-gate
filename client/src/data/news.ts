@@ -216,6 +216,442 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 53,
+    title:
+      "Rockstar Northに招待されたGTA6海外クリエイターまとめ｜TGG・El Rubius・Davy Jonesらが見た「発売前のGTA VI」",
+    displayTitle:
+      "Rockstar Northに招待されたGTA6海外クリエイターまとめ\nTGG・El Rubius・Davy Jonesらが見た「発売前のGTA VI」",
+    description:
+      "Rockstar Gamesが2026年7月、スコットランド・エディンバラのRockstar Northへ招待した海外クリエイターたち。TGG、El Rubius、Davy Jones、Mike ShowShaが「An Extended Look」には収録されなかったゲームプレイを見て、Rob Nelson氏から直接説明を受けている。犯罪プロファイル、一人称視点、フレームレート、NPC表現――彼らの証言を1本にまとめ、新情報が出るたびに追記していく。",
+    icon: "🗣️",
+    image: "/images/news/gta6-rockstar-north-creators/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-29",
+    publishedAt: "2026-08-29 18:00",
+    source:
+      "TGG・El Rubius・Davy Jones・Mike ShowSha 各公式チャンネル／ファミ通 Rob Nelson氏独占インタビュー ほか",
+    sourceUrl: "https://x.com/TGGonYT/status/2092582849111113810",
+    relatedArticles: [47, 50, 51],
+    aiSummary: [
+      "2026年7月、Rockstar Gamesはスコットランド・エディンバラのRockstar Northへ世界各国のクリエイターを招待し、『GTA VI』のハンズオフ形式の先行プレビューを行っていた。現時点で参加を公表しているのはTGG（オーストラリア）、El Rubius（スペイン）、Davy Jones（ブラジル）、Mike ShowSha（イタリア）の4人で、Extended Lookには収録されなかったゲームプレイを長時間見ている。",
+      "TGGは約3時間のゲームプレイを見たとして、行動の質を追跡する「犯罪プロファイル」の仕組みを説明。Davy JonesはRob Nelson氏への直接質問から、専用の一人称モードは発売時に用意されないこと、現在の開発ビルドが30fpsで動作していることを伝えている。El RubiusはLeonidaのNPC表現の細かさに驚いたと語った。",
+      "ただしいずれもRockstarが操作するハンズオフプレビューであり、公式発表とクリエイターの証言、そこからの推測は分けて扱う必要がある。GTA6 FEEDでは今後も招待クリエイターの動画・SNS・インタビューを確認し、新情報が出た場合はこの記事へ追記していく。",
+    ],
+    fullContent: `# Rockstar Northに招待されたGTA6海外クリエイターまとめ｜TGG・El Rubius・Davy Jonesらが見た「発売前のGTA VI」
+
+2026年8月27日に公開された『Grand Theft Auto VI: An Extended Look』によって、ジェイソンとルシアの物語、Leonidaの街並み、銃撃戦、警察とのチェイス、アクティビティなど、これまで断片的にしか見えていなかった『GTA VI』の姿が一気に明らかになった。
+
+しかし、今回の情報公開で注目すべきなのはExtended Lookだけではない。その約1か月前、Rockstar Gamesは世界各国の一部クリエイターをスコットランド・エディンバラのRockstar Northへ招待していた。
+
+そこで行われていたのが、Rockstar側が実際に『GTA VI』を操作し、それを招待者が見る「ハンズオフ形式」の先行プレビューだ。参加者自身が自由にコントローラーを握ったわけではないものの、Extended Lookには収録されていないゲームプレイを長時間見る機会が与えられ、Rockstar Northの開発責任者で共同代表でもあるRob Nelson氏らへ直接質問したクリエイターもいる。
+
+つまり、彼らが公開している動画やSNSには、公式映像を見ているだけでは分からない情報が含まれている。
+
+GTA6 FEEDでは今後、Rockstar Northに招待されたクリエイターの動画、SNS、インタビューなどを継続的に確認し、新しい情報が公開された場合はこの記事へ追記していく。新たな招待クリエイターが判明した場合も追加する予定だ。
+
+なお、Rockstar Northへの招待そのものが判明した経緯は「[RockstarがGTA6を海外クリエイターに先行公開していたことが判明](/news/47)」で扱っている。
+
+**※この記事は随時更新します。クリエイターから新しい証言が公開された場合、内容を追記します。**
+
+---
+
+## 現在確認できているRockstar North招待クリエイター
+
+2026年8月29日時点で、Rockstar Northで行われた『GTA VI』の先行プレビューへの参加を公表している主要クリエイターとして確認できるのは、TGG、El Rubius、Davy Jones、Mike ShowShaの4人だ。
+
+### TGG（The Gaming Gorilla）／オーストラリア
+
+GTAシリーズを長年扱ってきたYouTuber。Rockstar North訪問後、Extended Look公開に合わせて「I Saw 3 Hours of GTA 6 at Rockstar North - First Impressions」と題した動画を公開し、約3時間に及ぶ『GTA VI』のゲームプレイを見たことを明らかにしている。
+
+現在出ているクリエイター証言の中でも情報量が多く、犯罪プロファイルをはじめ、Extended Lookだけでは分からなかったゲームシステムについて詳しく語っている。
+
+### El Rubius／スペイン
+
+スペイン語圏を代表する巨大クリエイターのひとり。Rockstar Northを訪問し、約2時間にわたってゲームを見たとされている。
+
+Rockstarスタッフがゲームを操作するハンズオフ形式ではあったものの、El Rubius側から「これをやってほしい」と行動をリクエストできる場面もあったという。そのため、用意された映像を一方的に鑑賞しただけではなく、ある程度その場でゲーム世界を確認できるプレビューだったことが分かる。
+
+### Davy Jones／ブラジル
+
+GameplayrjやFlow Gamesで知られるブラジルのゲームクリエイター。本人によれば、今回Rockstar Northへ招待されたブラジル人クリエイターは自身のみだったという。
+
+Davy Jonesの情報で特に重要なのが、Rob Nelson氏へ直接質問する機会を得ていたことだ。一人称視点や現在のゲームのパフォーマンスなど、発売前の『GTA VI』についてかなり具体的な話が出ている。
+
+### Mike ShowSha／イタリア
+
+イタリアのゲームクリエイター。2026年7月にRockstar Northを訪問していたことを公表し、Extended Look公開後には『GTA VI』について語るコンテンツを展開している。
+
+現時点では、この4人が主要な招待クリエイターとして確認されている。ただし、これがRockstarから招待された人物の全員とは限らない。今後、新たにRockstar North訪問を明かすクリエイターやメディア関係者が現れた場合も確認していく。
+
+---
+
+## TGGが見た約3時間の『GTA VI』
+
+現在公開されているクリエイター情報の中でも、とくに情報量が多いのがTGGだ。Rockstar Northで約3時間にわたって『GTA VI』のゲームプレイを見たとしており、その中からExtended Lookでは十分に説明されなかったシステムも明らかになっている。
+
+そのひとつが「Criminal Profile（犯罪プロファイル）」だ。
+
+![犯罪プロファイルの仕組みを整理した図版。評価が上がる行動として「必要以上に人を殺さない」「効率よく強盗を成功させる」「素早く逃走する」「プロの犯罪者として振る舞う」、下がる行動として「無関係な市民の殺害」「動物の殺害」「倒れた相手への過剰な攻撃」「無意味な暴力の繰り返し」を挙げ、ジェイソンとルシアそれぞれのプロファイル表示を並べた図](/images/news/gta6-rockstar-north-creators/criminal-profile-explainer.webp)
+
+*図版は本記事の内容を整理するために編集部が作成したもので、実際のゲーム内UIではない。*
+
+Extended Lookを見た段階では、『Red Dead Redemption 2』の名誉システムに近いものではないかと考えた人も多いかもしれない。しかし、Rockstar側から説明された内容によると少し性質が違う。単純にプレイヤーを「善人か悪人か」で評価するのではなく、どのような犯罪者として行動しているのかを記録する仕組みになっているという。
+
+たとえば店を強盗するとき、必要以上に人を殺さず、目的を達成して素早く逃走するような行動は「プロの犯罪者」に近い。一方で、無関係な市民を殺害したり、倒れた相手へ必要以上に攻撃を加えたり、無意味な暴力を繰り返したりすると犯罪プロファイルに影響する。
+
+TGGによれば、このプロファイルはRDR2の名誉ゲージのように常時HUDへ表示されるものではなく、ジェイソンとルシアそれぞれのステータスとしてメニューから確認する仕組みになっているという。
+
+日本のファミ通がRockstar NorthでRob Nelson氏に行った独占インタビューでも、このシステムの存在について説明されている。Nelson氏によれば、GTAシリーズで初めてプレイヤーの一部の行動を追跡するシステムを導入しており、RDR2の名誉システムと共通する部分を持ちながらも、GTAで「善人として振る舞う」ことを求めるものではないという。
+
+つまり犯罪プロファイルそのものは単なるクリエイター発の噂ではなく、Rockstar開発者からも説明されているシステムだ。
+
+さらにTGGの証言では、犯罪プロファイルを極端に悪化させるとアイコンが壊れ、そのプレイでは元の状態へ戻せなくなる可能性があるという。この部分については細かな条件などがまだ分かっていないため、今後さらに確認する必要がある。
+
+手配システムや車両盗難など、犯罪プロファイル以外のシステム面については「[Extended Lookだけでは分からないGTA6の新情報まとめ](/news/50)」で整理している。
+
+---
+
+## Davy JonesがRob Nelsonに聞いた「一人称視点」
+
+Davy Jonesからは、GTA Vプレイヤーにとってかなり気になる情報が出ている。それが『GTA VI』の一人称視点だ。
+
+![Rockstar Northのロゴが掲げられた部屋で、テーブルにGTA6のスクリーンショットを並べながら身振りを交えて話すRob Nelson氏と、それを聞く取材者](/images/news/gta6-rockstar-north-creators/rob-nelson-rockstar-north.webp)
+
+Davy JonesがRockstar NorthでRob Nelson氏へ直接質問した内容として伝えられているところによると、『GTA VI』は三人称視点を中心として設計されており、GTA VのPS4／Xbox One以降のバージョンに搭載されたような、ゲーム全体を一人称でプレイできる専用モードは発売時には用意されないという。
+
+ただし、これは「一人称表示がゲームから完全になくなる」という意味ではない。特定の武器で照準を覗く場合など、一部のゲームプレイでは一人称表示が使用される。
+
+GTA Vでは後から一人称モードが追加されたが、『GTA VI』ではジェイソンやルシアの身体、アニメーション、周囲とのインタラクションなども含めて三人称視点での体験を重視している可能性がある。将来的なアップデートなどで完全な一人称モードが追加されるかについては、現時点では分からない。
+
+---
+
+## PS5 Proでも60fpsとは限らない？
+
+Davy JonesとRob Nelson氏のやり取りからは、もうひとつ注目されている話がある。『GTA VI』のフレームレートだ。
+
+現在のコンソール向け開発ビルドについて、Rob Nelson氏から30fpsで動作しているという説明があったとDavy Jonesは伝えている。現時点では60fpsモードが確認されているわけではない。
+
+ただし、ここはかなり慎重に見る必要がある。現在確認されている開発ビルドが30fpsで動いていることと、発売される製品版が30fps固定になることは同じではない。
+
+『GTA VI』は現在も開発と最適化が続いており、Rockstar Gamesから最終的なパフォーマンスモードについて正式発表が行われたわけではない。そのためGTA6 FEEDでは、現時点では「現在確認されている開発ビルドは30fps」「製品版の最終仕様は未確定」として扱う。
+
+この30fps報道をめぐる議論そのものは「[PS5 Proでも30fps？](/news/51)」でCPUボトルネックの観点も含めて検証している。
+
+---
+
+## El Rubiusが驚いた「LeonidaのNPC」
+
+El Rubiusの証言から見えてくるのは、ゲームシステムそのものというより、RockstarがLeonidaという世界をどこまで細かく作り込んでいるのかという部分だ。
+
+先行プレビューでは街を移動するNPCについて、かなり細かな表現を見ることができたという。とくに海外で話題になったのが、街中に裸体の男性NPCが登場したというEl Rubiusの証言だ。単に裸体のキャラクターモデルが用意されているだけではなく、身体の細かな部分までアニメーションしていたと語られている。
+
+Rockstarらしいジョークのようにも聞こえるが、ここで注目したいのはNPCそのものの作り込みだ。『GTA VI』ではNPCの身体にも、過去作以上のバリエーションが与えられている可能性がある。
+
+![Vice Cityのビーチを埋め尽くすほどのNPC。水着姿の人々が思い思いに歩き、寝そべり、その奥に高層ビル群とヘリコプターが見える](/images/news/gta6-rockstar-north-creators/leonida-npc-crowd.webp)
+
+これは日本のファミ通によるRob Nelson氏へのインタビューともつながる。Nelson氏によれば、『GTA VI』では歩行者の多様性にも力を入れており、今回は身長や体格の違いまで本格的に考慮しているという。過去作では身長のバリエーションが非常に限られていたのに対し、今回はキャラクターの身長や体型がかなり豊富になっている。
+
+Extended Lookに登場した大量のNPCが単純に「人数が多い」だけではなく、それぞれ違う人間として見える背景には、こうした技術的な作り込みもありそうだ。
+
+---
+
+## 「現金を持ち歩く」ことにも意味がある
+
+クリエイターの証言と合わせて確認しておきたいのが、Rockstar Northで行われたメディア向け説明だ。ファミ通のRob Nelson氏への独占インタビューでは、『GTA VI』には手持ちの現金とは別に銀行口座が存在することも明らかになっている。
+
+しかも現金を大量に持ち歩くことにはリスクがある。「Wasted」や「Busted」になった場合や、警察・市民によって倒された場合などに持っている現金を失う可能性があるため、安全な場所へ預けることが重要になるという。
+
+一見すると小さな変更だが、犯罪プロファイルなど今回明らかになってきたシステムと組み合わせると、『GTA VI』が目指している犯罪体験の方向性が見えてくる。強盗で現金を手に入れて終わりではなく、その場から逃走して警察を振り切り、手に入れた金を失わず安全な状態にするところまでが犯罪ゲームプレイの一連の流れとして強く意識されている可能性がある。
+
+---
+
+## ジェイソンとルシアの関係もプレイヤー次第
+
+今回のRockstar North取材では、ジェイソンとルシアの関係についても興味深い情報が出ている。
+
+![GTA VIのキーアート。夕暮れのVice Cityを背に、クラシックカーのボンネットへ腰かけたルシアと、その隣に立つジェイソン](/images/news/gta6-rockstar-north-creators/jason-lucia-key-art.webp)
+
+ふたりは単純に「最初から最後まで固定された恋人同士」として描かれるわけではないようだ。ファミ通の取材では、プレイヤーの行動によってふたりの関係性にも変化が生まれ、恋人として進む場合もあれば、犯罪をともに行うパートナーのような関係になる可能性も示されている。
+
+犯罪プロファイルと同様、プレイヤーがゲームの中でどのように行動するのかが、ゲーム世界だけではなくキャラクター同士の関係にも影響していく。『GTA VI』では従来以上にプレイヤーの選択や行動をゲーム側が記録し、それを別のシステムへ反映する設計が取り入れられているのかもしれない。
+
+---
+
+## なぜRockstarは海外クリエイターを招待したのか
+
+今回の動きそのものも興味深い。Rockstar Gamesといえば発売前の情報管理が非常に厳しい会社として知られているが、今回は従来のゲームメディアだけではなく、TGG、El Rubius、Davy Jones、Mike ShowShaといった各国のクリエイターをRockstar Northへ招待した。
+
+しかも招待された人物は英語圏だけに偏っていない。オーストラリア、スペイン、ブラジル、イタリアと、それぞれ異なる言語圏でGTAやゲームコンテンツを発信してきた人物が選ばれている。
+
+さらに彼らがRockstar Northを訪問していた事実は、Extended Look公開が近づくまで伏せられていた。これは『GTA VI』のマーケティングが、Rockstar自身が映像やスクリーンショットを公開するだけの段階から、実際にゲームを見た第三者がその体験を世界へ伝える段階へ移り始めたことを示す動きとも考えられる。
+
+とくにGTAを何年も追い続けてきたクリエイターの場合、一般的なメディアとは質問するポイントも違う。Davy Jonesが一人称視点についてRob Nelson氏へ直接尋ねたように、シリーズを遊んできたユーザーだからこそ気になる部分から、新しい情報が出てくる可能性もある。
+
+---
+
+## 「公式情報」と「クリエイターの証言」は分けて考えたい
+
+今回の情報を見るうえで注意しておきたいのは、TGGたちはRockstar Northへ正式に招待され、実際の『GTA VI』を見ている一方、自分たちで自由にゲームをプレイしたわけではないということだ。今回行われたのは、Rockstar側がゲームを操作するハンズオフプレビューだった。
+
+そのためGTA6 FEEDでは、今後も情報の出どころを明確に分けて扱う。
+
+【**確認された情報**】
+
+Rockstar Gamesの公式発表、Extended Lookで実際に確認できる内容、Rob Nelson氏をはじめとするRockstar開発者が明言した内容。
+
+【**クリエイターの証言**】
+
+TGG、El Rubius、Davy Jones、Mike ShowShaなど、Rockstar Northで実際にゲームを見た人物が自身の動画、配信、SNSなどで説明した内容。
+
+【**推測・未確認情報**】
+
+クリエイターの感想からコミュニティが推測している仕様、リーク情報、その他の未確認情報。
+
+Rockstar Northへ実際に招待された人物の発言は通常の噂よりはるかに重要だが、それでも本人の記憶や表現を介した情報である以上、Rockstarが正式に発表した仕様とは分けて考える必要がある。
+
+---
+
+## Extended Lookが終わっても、情報公開は終わっていない
+
+8月27日のExtended Lookは巨大な情報公開だった。しかし、Rockstar Northに招待されたクリエイターたちの証言を追っていくと、公式映像の外側にもまだ大量の情報が存在することが分かってきた。
+
+TGGが見た約3時間のゲームプレイ、El Rubiusが目撃したLeonidaのNPC、Davy JonesがRob Nelson氏へ直接聞いたゲーム仕様、そしてMike ShowShaが持ち帰った情報。さらに、今後新たにRockstar Northへの招待を公表する人物が現れる可能性もある。
+
+クリエイターたちは一度にすべてを話すとは限らない。後日の動画やライブ配信、SNSで追加のエピソードが語られたり、視聴者からの質問をきっかけにRockstar Northで聞いた話が新たに出てきたりする可能性もある。
+
+GTA6 FEEDでは今後も、TGG、El Rubius、Davy Jones、Mike ShowShaを中心に、Rockstar Northへ招待された海外クリエイターの動画、SNS、インタビューを継続的に確認していく。また、新しい参加者が判明した場合はその人物も追跡対象へ追加し、新しい証言やゲーム情報が確認できればこの記事を更新する。
+
+Extended Lookに映っていたものだけが、現在分かっている『GTA VI』のすべてではない。
+
+**Rockstar Northで発売前の『GTA VI』を実際に見た人たちは、ほかに何を知っているのか。発売まで、その証言をここに集めていく。**
+
+---
+
+## 更新履歴
+
+**2026年8月29日：初版公開**
+
+Rockstar North招待クリエイターとしてTGG、El Rubius、Davy Jones、Mike ShowShaを掲載。犯罪プロファイル、一人称視点、現在の開発ビルドにおけるフレームレート、NPC表現、現金と銀行口座、ジェイソンとルシアの関係性など、現在までに確認できている情報をまとめた。
+
+**※今後、新しいクリエイターの参加や新たな証言が確認できた場合、随時更新します。**
+
+---
+
+> **注記：** 本記事に掲載したクリエイターの発言は、Rockstar Northで行われたハンズオフ形式の先行プレビューに参加した各人が自身の動画・配信・SNSで公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した仕様ではない。Rob Nelson氏の発言はファミ通による独占インタビューほかの報道にもとづく。日本語部分は編集部訳・要約を含む。アイキャッチ画像はAIで生成したイメージ画像、犯罪プロファイルの図版は本記事の内容を整理するために編集部が作成したもので、いずれも実際のゲーム画面・公式UIではない。`,
+    titleEn:
+      "Every Creator Rockstar Invited to Rockstar North — What TGG, El Rubius and Davy Jones Saw of GTA VI Before Launch",
+    displayTitleEn:
+      "Every Creator Rockstar Invited to Rockstar North\nWhat TGG, El Rubius and Davy Jones Saw of GTA VI Before Launch",
+    descriptionEn:
+      "In July 2026 Rockstar Games flew a handful of creators to Rockstar North in Edinburgh. TGG, El Rubius, Davy Jones and Mike ShowSha watched gameplay that never made it into \"An Extended Look\" and were briefed directly by Rob Nelson. Criminal profiles, first-person view, frame rate, NPC variety — their accounts, collected in one place and updated as new ones appear.",
+    aiSummaryEn: [
+      "In July 2026 Rockstar Games invited creators from several countries to Rockstar North in Edinburgh for a hands-off preview of GTA VI. Four have gone public so far: TGG (Australia), El Rubius (Spain), Davy Jones (Brazil) and Mike ShowSha (Italy), all of whom watched extended gameplay that was not included in \"An Extended Look.\"",
+      "TGG, who says he saw roughly three hours, described a \"Criminal Profile\" system that tracks the character of your actions rather than good versus evil. Davy Jones, from questions put directly to Rob Nelson, reports that no dedicated full first-person mode will ship at launch and that the current console build runs at 30fps. El Rubius spoke about how finely Leonida's NPCs are rendered.",
+      "All of it came from a preview Rockstar itself controlled, so official announcements, creator testimony and inference from it need to stay separated. GTA6 FEED will keep checking the invited creators' videos, social posts and interviews, and will add new information to this article as it appears.",
+    ],
+    fullContentEn: `# Every Creator Rockstar Invited to Rockstar North — What TGG, El Rubius and Davy Jones Saw of GTA VI Before Launch
+
+"Grand Theft Auto VI: An Extended Look," released on August 27, 2026, laid out at once what had only been visible in fragments: Jason and Lucia's story, the streets of Leonida, gunfights, police chases and activities.
+
+But Extended Look was not the only thing worth watching in this wave of information. About a month earlier, Rockstar Games had invited a handful of creators from around the world to Rockstar North in Edinburgh, Scotland.
+
+What happened there was a hands-off preview: Rockstar operated GTA VI while the invited creators watched. None of them freely held a controller, but they were given hours with gameplay not included in Extended Look, and some were able to put questions directly to Rob Nelson, Rockstar North's head of development and co-studio head, among others.
+
+Which means the videos and social posts they have published contain information you cannot get from the official footage alone.
+
+GTA6 FEED will keep monitoring the videos, social posts and interviews of the creators invited to Rockstar North, and will add new information to this article as it is published — including any further invited creators who come to light.
+
+How the Rockstar North invitations came to light in the first place is covered in "[Rockstar Showed GTA6 to Overseas Creators Ahead of Launch](/en/news/47)."
+
+**Note: this article is updated on an ongoing basis. New accounts published by the creators will be added here.**
+
+---
+
+## The Rockstar North Invitees Confirmed So Far
+
+As of August 29, 2026, four major creators have publicly confirmed taking part in the GTA VI preview held at Rockstar North: TGG, El Rubius, Davy Jones and Mike ShowSha.
+
+### TGG (The Gaming Gorilla) / Australia
+
+A YouTuber who has covered the GTA series for years. After visiting Rockstar North, he released a video timed to Extended Look titled "I Saw 3 Hours of GTA 6 at Rockstar North - First Impressions," revealing that he watched roughly three hours of GTA VI gameplay.
+
+His account carries the most detail of any creator testimony out so far, going into the criminal profile and other game systems that Extended Look alone did not explain.
+
+### El Rubius / Spain
+
+One of the largest creators in the Spanish-speaking world. He visited Rockstar North and is said to have watched the game for about two hours.
+
+Although it was a hands-off format with Rockstar staff at the controls, there were reportedly moments where El Rubius could request specific actions — "try doing this." So rather than passively viewing a prepared reel, he was able to check the game world on the spot to some degree.
+
+### Davy Jones / Brazil
+
+A Brazilian gaming creator known for Gameplayrj and Flow Games. By his own account, he was the only Brazilian creator invited to Rockstar North this time.
+
+What matters most in his information is that he had the chance to question Rob Nelson directly. Fairly specific details about pre-launch GTA VI — the first-person view, current performance — have come out of that.
+
+### Mike ShowSha / Italy
+
+An Italian gaming creator. He confirmed visiting Rockstar North in July 2026 and has been publishing content discussing GTA VI since Extended Look went live.
+
+These four are the main invited creators confirmed at this point. That does not necessarily mean they are everyone Rockstar invited, and GTA6 FEED will keep watching for other creators or press who reveal a Rockstar North visit.
+
+---
+
+## The Three Hours of GTA VI TGG Saw
+
+Of the creator information published so far, TGG's carries the most detail. He says he watched roughly three hours of GTA VI gameplay at Rockstar North, and systems Extended Look did not adequately explain have emerged from it.
+
+One of them is the "Criminal Profile."
+
+![A graphic explaining how the Criminal Profile works, listing actions that improve it — not killing more people than necessary, pulling off robberies efficiently, escaping quickly, behaving like a professional — against actions that damage it: killing uninvolved civilians, killing animals, excessive attacks on downed opponents and repeated pointless violence, beside separate profile readouts for Jason and Lucia](/images/news/gta6-rockstar-north-creators/criminal-profile-explainer.webp)
+
+*This graphic was produced by the editorial team to organize the article's contents and is not actual in-game UI. Captions in the graphic are in Japanese.*
+
+Plenty of people who watched Extended Look may have assumed it was something close to the honor system in *Red Dead Redemption 2*. Per what Rockstar explained, though, its character is a little different. Rather than simply rating the player as good or evil, it records what kind of criminal you are behaving as.
+
+Rob a store, for instance, and killing no more people than necessary, achieving the goal and escaping quickly reads as closer to a "professional criminal." Conversely, killing uninvolved civilians, attacking downed opponents beyond what is necessary, or repeating pointless violence affects the criminal profile.
+
+Per TGG, this profile is not permanently shown on the HUD the way RDR2's honor gauge was; it exists as a status for Jason and Lucia individually, checked from a menu.
+
+Japanese outlet Famitsu's exclusive interview with Rob Nelson at Rockstar North also describes the system. Per Nelson, the series is tracking some player behavior for the first time, and while it shares ground with RDR2's honor system, it does not ask players to behave as good people in GTA.
+
+So the criminal profile is not merely a rumor originating with a creator — it is a system Rockstar's developers have described too.
+
+TGG further says that degrading the criminal profile to an extreme breaks the icon, and that the original state may be unrecoverable for that playthrough. The precise conditions there are still unknown, so this needs further confirmation.
+
+For systems beyond the criminal profile — the wanted system, vehicle theft and more — see "[Everything Extended Look Did Not Tell You About GTA6](/en/news/50)."
+
+---
+
+## What Davy Jones Asked Rob Nelson About First-Person View
+
+Davy Jones surfaced something GTA V players in particular will want to know about: GTA VI's first-person view.
+
+![Rob Nelson gesturing as he speaks in a room under a Rockstar North sign, GTA6 screenshots laid out on the table in front of him, with an interviewer listening](/images/news/gta6-rockstar-north-creators/rob-nelson-rockstar-north.webp)
+
+According to what has been relayed of Davy Jones's direct question to Rob Nelson at Rockstar North, GTA VI is designed around a third-person camera, and a dedicated mode letting you play the entire game in first person — as in GTA V's PS4/Xbox One and later versions — will not be available at launch.
+
+That does not mean first-person display disappears from the game entirely. Parts of gameplay, such as aiming down sights with certain weapons, do use it.
+
+GTA V had its first-person mode added after the fact; GTA VI may be prioritizing the third-person experience, including Jason and Lucia's bodies, their animation and how they interact with their surroundings. Whether a full first-person mode might arrive in a later update is unknown at this point.
+
+---
+
+## 60fps Is Not Guaranteed, Even on PS5 Pro
+
+The exchange between Davy Jones and Rob Nelson produced one more talking point: GTA VI's frame rate.
+
+Davy Jones reports that Rob Nelson described the current console development build as running at 30fps. No 60fps mode has been confirmed as of now.
+
+This needs to be read carefully, though. The current development build running at 30fps and the shipping game being locked to 30fps are not the same statement.
+
+GTA VI is still in development and optimization, and Rockstar Games has made no formal announcement about final performance modes. So for now GTA6 FEED treats this as "the currently confirmed development build is 30fps" and "the shipping specification is undetermined."
+
+The debate around that 30fps report, including the CPU-bottleneck angle, is examined in "[30fps Even on PS5 Pro?](/en/news/51)."
+
+---
+
+## The Leonida NPCs That Surprised El Rubius
+
+What comes through in El Rubius's account is less about game systems than about how finely Rockstar has built out the world of Leonida.
+
+The preview reportedly showed remarkably detailed work in the NPCs moving through the city. The account that drew the most attention abroad was El Rubius's description of a nude male NPC on the street — not merely a nude character model placed in the world, but one animated down to fine details of the body.
+
+It sounds like exactly the sort of joke Rockstar is known for, but what is worth noting here is the craft in the NPCs themselves. GTA VI may be giving NPC bodies more variation than any previous entry.
+
+![A Vice City beach packed with NPCs — people in swimwear walking and lying about as they please, with high-rises and a helicopter beyond](/images/news/gta6-rockstar-north-creators/leonida-npc-crowd.webp)
+
+This connects to Famitsu's interview with Rob Nelson. Per Nelson, GTA VI puts real effort into pedestrian diversity, and this time seriously accounts for differences in height and build. Where previous entries had very limited height variation, character heights and body types are now considerably varied.
+
+Technical work like that is likely part of why the crowds of NPCs in Extended Look read not simply as "a lot of people" but as individually distinct human beings.
+
+---
+
+## Carrying Cash Around Now Means Something
+
+Alongside the creators' accounts, the press briefings held at Rockstar North are worth noting. Famitsu's exclusive interview with Rob Nelson also revealed that GTA VI has a bank account separate from the cash you carry.
+
+And carrying large amounts of cash carries risk. If you go "Wasted" or "Busted," or are taken down by police or civilians, you may lose the cash on hand — which makes depositing it somewhere safe important.
+
+It looks like a small change at first glance, but combined with the criminal profile and the other systems now coming to light, it points to the direction GTA VI is taking with criminal play. Getting the cash from a robbery may not be the end of it: escaping the scene, losing the police, and getting the money somewhere safe without losing it may all be strongly designed as one continuous arc of criminal gameplay.
+
+---
+
+## Jason and Lucia's Relationship Is Up to the Player Too
+
+The Rockstar North coverage also produced interesting information about Jason and Lucia's relationship.
+
+![GTA VI key art: Lucia sitting on the hood of a classic car with Jason standing beside her, Vice City at dusk behind them](/images/news/gta6-rockstar-north-creators/jason-lucia-key-art.webp)
+
+The two do not appear to be depicted simply as a couple fixed in place from beginning to end. Famitsu's reporting indicates that player behavior produces change in their relationship as well: it may progress romantically, or become something closer to partners committing crimes together.
+
+As with the criminal profile, how the player behaves inside the game affects not only the game world but the relationships between characters. GTA VI may be adopting a design that records player choices and actions more than before, and feeds them into other systems.
+
+---
+
+## Why Did Rockstar Invite Overseas Creators?
+
+The move itself is interesting. Rockstar Games is known as a company with exceptionally tight control over pre-launch information, yet this time it invited not only traditional games media but creators from several countries — TGG, El Rubius, Davy Jones, Mike ShowSha — to Rockstar North.
+
+And the people invited were not weighted toward the English-speaking world. Australia, Spain, Brazil, Italy — people who have covered GTA and gaming content across different language communities were chosen.
+
+The fact of their Rockstar North visits was also kept quiet until Extended Look's release drew near. You could read this as GTA VI's marketing beginning to move from a stage where Rockstar simply publishes footage and screenshots to one where third parties who actually saw the game carry that experience to the world.
+
+Creators who have followed GTA for years in particular ask about different things than general media do. Just as Davy Jones asked Rob Nelson directly about the first-person view, new information may keep surfacing from exactly the places that matter to people who have played the series.
+
+---
+
+## Keep "Official Information" and "Creator Testimony" Separate
+
+The thing to keep in mind with all of this is that while TGG and the others were formally invited to Rockstar North and did see the actual GTA VI, they did not freely play it themselves. What took place was a hands-off preview with Rockstar at the controls.
+
+So GTA6 FEED will continue to keep the provenance of information clearly separated.
+
+【**Confirmed information**】
+
+Official Rockstar Games announcements, what can actually be seen in Extended Look, and what Rockstar developers including Rob Nelson stated explicitly.
+
+【**Creator testimony**】
+
+What people who actually watched the game at Rockstar North — TGG, El Rubius, Davy Jones, Mike ShowSha and others — described in their own videos, streams and social posts.
+
+【**Inference and unconfirmed information**】
+
+Specifications the community is inferring from creators' impressions, leaks, and other unconfirmed material.
+
+Statements from people actually invited to Rockstar North carry far more weight than ordinary rumor, but since the information still passes through their memory and phrasing, it needs to be kept separate from specifications Rockstar has formally announced.
+
+---
+
+## Extended Look Is Over. The Disclosure Is Not.
+
+The August 27 Extended Look was an enormous release of information. But following the accounts of the creators invited to Rockstar North makes clear that a great deal more exists outside the official footage.
+
+The three hours of gameplay TGG watched, the Leonida NPCs El Rubius witnessed, the specifications Davy Jones asked Rob Nelson about directly, and what Mike ShowSha brought back — plus the possibility that more people will reveal a Rockstar North invitation.
+
+Creators do not necessarily say everything at once. Additional episodes may come out in later videos, live streams or social posts, or a viewer's question may prompt something new from what they heard at Rockstar North.
+
+GTA6 FEED will keep checking the videos, social posts and interviews of the overseas creators invited to Rockstar North, centered on TGG, El Rubius, Davy Jones and Mike ShowSha. New participants will be added to that list as they come to light, and this article will be updated whenever new testimony or game information is confirmed.
+
+What appeared in Extended Look is not all that is currently known about GTA VI.
+
+**What else do the people who saw pre-launch GTA VI at Rockstar North know? Between now and launch, their accounts will be collected here.**
+
+---
+
+## Update Log
+
+**August 29, 2026: first published**
+
+Published with TGG, El Rubius, Davy Jones and Mike ShowSha as the Rockstar North invitees, covering what has been confirmed so far: the criminal profile, first-person view, the frame rate of the current development build, NPC rendering, cash and bank accounts, and the Jason–Lucia relationship.
+
+**This article will be updated as new creators or new accounts are confirmed.**
+
+---
+
+> **Note:** The creator statements collected here come from what each participant in the hands-off preview at Rockstar North published on their own videos, streams and social accounts; they are not specifications formally announced by Rockstar Games via Newswire or elsewhere. Rob Nelson's remarks are based on Famitsu's exclusive interview and other reporting. Japanese-language passages are summarized or paraphrased by the editorial team. The eyecatch is an AI-generated illustration and the criminal profile graphic was produced by the editorial team to organize this article's contents and carries Japanese captions; neither is GTA6 footage nor official UI.`,
+  },
+  {
     id: 52,
     title:
       "GTA6のマップはGTA5の約2倍――Vice CityだけでLos Santosの2倍、Rockstar Northで明かされた「Leonida」の巨大さ",
