@@ -216,6 +216,387 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 52,
+    title:
+      "GTA6のマップはGTA5の約2倍――Vice CityだけでLos Santosの2倍、Rockstar Northで明かされた「Leonida」の巨大さ",
+    displayTitle:
+      "GTA6のマップはGTA5の約2倍\nVice CityだけでLos Santosの2倍、Rockstar Northで明かされた「Leonida」の巨大さ",
+    description:
+      "Rockstar Northを訪問したクリエイターTGGが、GTA6のワールド全体はGTA5のおよそ2倍、Red Dead Redemption 2のおよそ3倍という説明を受けたと伝えた。Vice City単体でもLos Santosの約2倍、アクセス可能な建物は数百規模。ファンが長年作り続けてきた予想マップとの違いも含めて整理する。",
+    icon: "🗺️",
+    image: "/images/news/gta6-map-size-comparison/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-29",
+    publishedAt: "2026-08-29 13:00",
+    source: "TGG（Rockstar North先行プレビュー）ほか報道",
+    sourceUrl: "https://x.com/TGGonYT/status/2092582849111113810",
+    relatedArticles: [50, 51, 49],
+    aiSummary: [
+      "Rockstar Northに招待された海外GTAクリエイターのTGGが、開発責任者Rob Nelsonらから説明を受けながら約3時間GTA6を見たと報告し、マップ規模についても具体的な比較値を伝えた。GTA6のワールド全体はGTA5のおよそ2倍、Red Dead Redemption 2のおよそ3倍になるという。",
+      "さらにVice City単体でもLos Santosのおよそ2倍、Vice Cityと周辺エリアを含めるとLos Santosとその周辺のおよそ11倍という数字も伝えられている。アクセス可能なインテリアは数百規模に達するとされ、マップ面積だけでなくプレイヤーが実際に利用できる空間も大幅に増える可能性がある。",
+      "ただしこれらはRockstarがNewswireで正式発表した面積データではなく、先行プレビューを通じてクリエイターが伝えた情報だ。正確な平方キロメートル数も完全な公式マップも未公開のため、「2倍」「11倍」から地図面積を逆算することはできない。ファンが作ってきた予想マップも引き続き非公式情報として扱う必要がある。",
+    ],
+    fullContent: `# GTA6のマップはGTA5の約2倍――Vice CityだけでLos Santosの2倍、Rockstar Northで明かされた「Leonida」の巨大さ
+
+「GTA6のマップはどれくらい広いのか」。これは『Grand Theft Auto VI』が正式発表される以前から、ファンの間で繰り返し議論されてきたテーマのひとつだ。
+
+海外ではトレーラーに映った道路標識や建物、海岸線、高速道路などを手掛かりにLeonidaの地形を推測するマッピングプロジェクトが進められ、さまざまな「GTA6予想マップ」が作られてきた。しかし、そこには常にひとつの大きな問題があった。Rockstar Games自身が、GTA6のマップがどれほど大きいのかを具体的な数字で説明してこなかったことだ。
+
+その状況が、「Grand Theft Auto VI: An Extended Look」の公開に合わせて大きく変わった。
+
+Rockstar Northに招待された海外GTAクリエイターのTGGは、開発責任者Rob Nelsonらから説明を受けながら約3時間にわたってGTA6を見たと報告。その中でマップの規模についても質問し、GTA6のワールド全体はGTA5のおよそ2倍、Red Dead Redemption 2のおよそ3倍になるとの説明を受けたという。
+
+さらにTGGからは、Vice City単体でもLos Santosのおよそ2倍になるという、かなりインパクトのある情報も伝えられている。
+
+ただし、これらはRockstar公式サイトで発表された面積データではない。Rockstar Northで行われた先行プレビューを通じてTGGが伝えた情報であるため、本記事でも「公式発表済みのスペック」と「クリエイターを通じて伝えられた情報」を区別しながら見ていく。
+
+---
+
+## GTA6のマップは「GTA5の約2倍」
+
+TGGによれば、Rockstar Northで「An Extended Look」を事前に視聴したほか、Rob Nelsonによる約2時間半の追加ゲームプレイを見る機会があり、その中でLeonidaの規模についても説明を受けたという。
+
+そこで示された比較では、GTA6全体がおよそGTA5の2倍、RDR2の3倍。さらに都市単体で比較すると、Vice CityはLos Santosのおよそ2倍になるとされている。
+
+![GTA6のマップはGTA5の約2倍と示した図。GTA6全体はGTA5の約2倍・RDR2の約3倍、Vice CityはLos Santosの約2倍、Vice City＋周辺郊外はLos Santos＋周辺の約11倍という比較表と、Vice City・Grassrivers・Leonida Keys・Port Gellhorn・Ambrosia・Mount Kalagaを書き込んだLeonidaの地図](/images/news/gta6-map-size-comparison/scale-comparison-chart.webp)
+
+*図版は本記事の内容を整理するために編集部が作成したもので、数値はTGGがRockstar Northで説明を受けたとして公開した内容にもとづく。地図の形状はイメージであり、Rockstarの公式マップではない。*
+
+| 比較 | 先行プレビューで伝えられた規模 |
+| --- | --- |
+| GTA6全体 vs GTA5全体 | 約2倍 |
+| GTA6全体 vs RDR2 | 約3倍 |
+| Vice City vs Los Santos | 約2倍 |
+| Vice City＋周辺 vs Los Santos＋周辺 | 約11倍との説明 |
+| アクセス可能な建物 | 数百規模との情報 |
+| 正確な面積 | 未公表 |
+
+ここで注意したいのは、「GTA5の2倍」という数字だけを見て、GTA5のマップをそのまま縦横に拡大したような世界を想像するのは少し違うということだ。
+
+GTA6の舞台となるLeonidaには巨大都市Vice Cityだけでなく、湿地帯や島々、地方都市、工業地帯、山岳地域など、性格の異なる複数のエリアが存在する。今回示された数字は、それらを含めた世界全体の規模を表している。
+
+---
+
+## Vice CityだけでもLos Santosの約2倍
+
+GTA5をプレイしたことがある人にとっては、ゲーム全体の「2倍」より、こちらの比較の方がイメージしやすいかもしれない。
+
+GTA5のLos Santosは、ダウンタウン、高級住宅街、ビーチ、空港、港湾地域、郊外などを抱える巨大都市だった。GTA Onlineを長く遊んでいるプレイヤーであれば、十年以上走り回ってきた馴染み深い街でもある。
+
+今回の情報では、Vice CityだけでそのLos Santosのおよそ2倍になるという。
+
+![「Vice CityだけでLos Santosの約2倍」と題した図。夕暮れのVice Cityを空から見た風景で、湾を渡る高速道路と高層ビル群、上空を飛ぶヘリコプターが写っている](/images/news/gta6-map-size-comparison/vice-city-scale.webp)
+
+さらにTGGから伝えられた情報には、Vice Cityとその周辺エリアを含めた規模について、Los Santosとその周辺部のおよそ11倍という数字も登場している。
+
+ただし、この「11倍」は特に慎重に扱う必要がある。Rockstarは比較対象となる「周辺エリア」の境界や計測方法、平方キロメートル単位の面積を公表していない。そのため、「Vice Cityの市街地面積がLos Santosの11倍」という意味で受け取るのは適切ではない。
+
+現時点で重要なのは正確な平方キロメートル数よりも、Vice Cityとその周辺を含む都市圏がGTA5より大幅に拡張されているという点だろう。
+
+---
+
+## これまでの「GTA6マップ」は、ほとんどがファンの推測だった
+
+今回の情報が注目される理由は、単純に「2倍」という数字が大きいからだけではない。
+
+GTA6では公式マップが公開されるはるか前から、世界中のファンがLeonidaの地図を作り続けてきた。トレーラーに一瞬映った道路標識や建物、遠くに見える高層ビル、高速道路、海岸線などを照合し、それぞれの場所がどこに位置するのかを推測する大規模なマッピング活動が行われている。
+
+![GTA5（左）とGTA6（右）のマップを並べた、ファン制作の比較画像。GTA6側にはVice PointやPort Gellhornなど推測による地名が書き込まれている](/images/news/GAT25qlaMAAXcS5.webp)
+
+*画像はコミュニティで出回っているファン制作の比較図であり、Rockstarが公開した公式マップではない。地名・地形・面積比のいずれも確定した情報ではない。*
+
+特にGTAシリーズの場合、現実の都市や地域をモデルに架空の世界が作られるため、現実のフロリダ州南部との比較も重要な手掛かりになってきた。
+
+こうして作られた予想マップは非常に精密になっているものの、当然ながらRockstarが公開した公式地図ではない。同様に、これまでネット上で見かけた「GTA6はGTA5の○倍」という数字についても、ファンによる座標分析や推測から算出されたものが少なくなかった。
+
+今回大きく違うのは、Rockstar Northを実際に訪問したクリエイターが、開発側から説明を受けた内容として具体的な比較値を伝えていることだ。
+
+もちろんRockstar自身がNewswireなどで正式発表した数字ではないため一定の留保は必要だが、これまでのコミュニティによる推測とは情報の性質が異なる。
+
+---
+
+## RDR2の「約3倍」もかなり大きな数字
+
+GTA5との比較以上に、Rockstar作品を遊んできた人にとって衝撃的なのがRed Dead Redemption 2との比較かもしれない。
+
+TGGが伝えた内容によれば、GTA6の世界はRDR2のおよそ3倍の規模になるという。
+
+RDR2の世界は決して小さくない。雪に覆われた山岳地帯から森林、平原、湿地帯、町、Saint Denisのような都市まで、性格のまったく異なる地域が広大な土地の中につながっている。馬で移動することを前提としているため、ひとつの地域から別の地域へ向かうだけでも相応の時間が必要だった。
+
+一方、GTA6では自動車やバイク、高速道路、ボートなど、RDR2より圧倒的に速い移動手段が存在する。高速で移動できるゲームでありながら、それでも世界の広さを感じさせるためには相応のスケールが必要になる。
+
+その意味では、「RDR2の3倍」という数字は単なる面積比較以上に、RockstarがLeonidaをどのような世界として設計しているのかを考える手掛かりになる。
+
+---
+
+## Leonidaは「Vice Cityだけのマップ」ではない
+
+GTA6という名前を聞いて、多くの人が最初に思い浮かべるのはVice Cityだろう。ネオン、高層ホテル、ビーチ、ナイトライフといった街のイメージは、これまで公開されたトレーラーやスクリーンショットでも前面に押し出されてきた。
+
+しかし、GTA6の舞台であるLeonidaはVice Cityだけで構成されているわけではない。
+
+![「Leonidaは多彩なエリアで構成される広大な世界」と題した図。Vice City（大都市・ビーチ）、Grassrivers（湿地帯）、Leonida Keys（島々・リゾート）、Port Gellhorn（港町・観光地）、Ambrosia（工業地帯・田園）、Mount Kalaga（山岳・自然）の6地域を縦に並べている](/images/news/gta6-map-size-comparison/leonida-regions.webp)
+
+Rockstarがこれまでに紹介している地域には、Vice Cityのほか、広大な湿地帯Grassrivers、島々が連なるLeonida Keys、かつて栄えた海岸沿いの街Port Gellhorn、工業地域と田園地帯が混在するAmbrosia、そしてLeonida北部の自然が広がるMount Kalaga National Parkなどがある。
+
+つまりGTA5でいう「Los Santos＋Blaine County」という構造が、GTA6ではさらに細かく分かれ、それぞれ異なる文化や景観を持った地域として作られていると考えられる。
+
+Vice Cityの中心部で高級車を走らせていたプレイヤーが、高速道路を抜けて湿地帯へ向かい、そのまま島々へ移動する。あるいは都市を離れ、まったく違う景観の地方都市や自然地域まで足を延ばす。そうした環境の変化そのものが、Leonidaを探索する楽しさになりそうだ。
+
+---
+
+## 「広さ」だけではなく、数百規模とされる建物にも注目
+
+オープンワールドゲームでは、マップが大きければ面白くなるとは限らない。何もない土地を増やせば数字上の面積はいくらでも大きくできるため、プレイヤーにとって重要なのは、むしろその広い世界に何が存在するのかだ。
+
+そこで注目したいのが、今回の先行プレビューから伝えられているアクセス可能なインテリアが数百規模に達するという情報だ。
+
+GTA5では街そのものは巨大だったものの、自由に入れる建物は限られていた。外から見ると店舗やホテル、マンションが無数に並んでいても、その多くは背景として存在する建物だった。
+
+GTA6で数百規模の建物にアクセスできるのであれば、単純なマップ面積だけでなく、プレイヤーが実際に利用できる空間そのものが大幅に増える可能性がある。
+
+「An Extended Look」でも、街を移動するだけではなく、さまざまな店や施設、レジャー、犯罪などを通してLeonidaと関わる様子が描かれている。巨大なマップと大量のインテリアが組み合わされるのであれば、GTA6の進化は「遠くまで行けるようになった」ことより、どこへ行っても何かを見つけられる世界になったことに表れるのかもしれない。
+
+---
+
+## GTA6は「広さ」と「密度」を両立できるのか
+
+ここが、今回のマップ情報で最も気になる部分だ。
+
+GTA5が発売された2013年から13年が経ち、その間にオープンワールドゲームの規模は大きく拡大した。現在では、GTA5より広いマップを持つゲームそのものは珍しくない。そのため、2026年のRockstarが単純な面積競争だけを狙っているとは考えにくい。
+
+今回の情報で本当に注目したいのは、GTA5の約2倍とされる世界の中に巨大なVice Cityがあり、その外側に性格の異なる複数の地域が広がり、さらに数百規模とされるアクセス可能な建物まで存在するという組み合わせだ。
+
+単に土地が広くなるだけではなく、建物へ入り、店や施設に立ち寄り、車を盗み、犯罪を起こして警察から逃げ、そのまま都市を離れて別の地域へ向かう。さらに海や湿地帯へ出れば、都市部とはまったく違った遊びが始まる。こうした異なる体験がロード画面で切り離されるのではなく、一つの巨大なLeonidaの中で連続して起こることに意味がある。
+
+こうした犯罪や警察まわりのシステムがどう作り直されているかは「[Extended Lookだけでは分からないGTA6新情報まとめ](/news/50)」で整理している。
+
+![「警察システムも進化」と題した図。ネオン街をパトカーとヘリコプターが追跡する場面の下に、顔を認識・服装を記録・使用している車・同行者の有無というアイコンと、最大6つ星の手配度が並んでいる](/images/news/gta6-map-size-comparison/police-system-evolved.webp)
+
+もし先行プレビューで伝えられた規模と密度が実際のゲームでも両立しているのであれば、Rockstarが目指しているのは単なる「シリーズ最大のマップ」ではないのだろう。Leonidaというひとつの州を、プレイヤーが長時間そこで過ごしたくなる世界として成立させようとしている可能性がある。
+
+---
+
+## ファンが作ってきた予想マップは、どこまで当たっているのか
+
+今回具体的な規模が伝えられたことで、もうひとつ気になってくるのが、これまで世界中のファンが作ってきた予想マップの精度だ。
+
+現時点でもRockstarはLeonida全体を俯瞰できる完全な公式マップを公開していない。そのため、Vice Cityが正確にどこまで広がっているのか、Leonida Keysの先にどこまで行けるのか、北側のMount Kalaga周辺がどれほどの規模なのかといった部分には、まだ多くの謎が残っている。
+
+だからこそ、公式マップが公開されたときには面白い「答え合わせ」が待っている。
+
+何年にもわたってコミュニティが映像の断片から組み立ててきたLeonidaと、Rockstarが実際に作ったLeonidaはどれほど一致しているのか。道路一本、建物ひとつまで驚くほど正確に特定されていた場所もあれば、地図全体の形そのものが予想を裏切る場所もあるかもしれない。
+
+GTA6のマップをめぐる考察は、今回の「GTA5の約2倍」という情報で終わったわけではない。むしろ、ようやく比較するための具体的な材料がひとつ増えた段階だ。
+
+---
+
+## 現時点で分かっているGTA6マップ情報まとめ
+
+今回のRockstar North先行プレビューを通じて伝えられている情報を整理すると、GTA6全体はGTA5のおよそ2倍、RDR2のおよそ3倍。Vice City単体ではLos Santosのおよそ2倍とされ、Vice Cityと周辺エリアについてはLos Santosとその周辺のおよそ11倍という比較も伝えられている。
+
+一方で、正確な平方キロメートル数や完全な公式マップは依然として公開されていない。「2倍」「3倍」「11倍」という数字だけを使って正確な地図面積を逆算することはできず、コミュニティで作られている予想マップについても引き続き非公式情報として見る必要がある。
+
+また、今回の数字はRockstar公式サイトに掲載されたマップ仕様ではなく、TGGがRockstar NorthでRob Nelsonらから説明を受けた内容として公開したものだ。この点は、今後この数字が広く拡散されるほど重要になってくるだろう。
+
+それでも、GTA6のマップについて長年続いてきた「いったいどれほど大きいのか」という疑問に、これまでより具体的な答えが見えてきたことは間違いない。
+
+GTA5の約2倍という巨大な世界に、Vice City、湿地帯、島々、地方都市、工業地域、山岳地帯が広がり、さらに数百規模とされるアクセス可能な建物が存在する。そのすべてが十分な密度を保ったまま一つにつながっているのであれば、GTA6で本当に驚くことになるのは、マップを初めて見た瞬間ではないのかもしれない。
+
+発売後、何十時間遊んでも「まだ行ったことのない場所」が残っている。
+
+Leonidaの本当の巨大さを実感するのは、そんな瞬間なのかもしれない。
+
+---
+
+> **注記：** 本記事のマップ規模に関する数値は、Rockstar Northの先行プレビューに参加したTGGが公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した面積データではない。日本語部分は編集部訳・要約を含む。正確な平方キロメートル数および公式マップは本記事執筆時点で未公開であり、掲載したGTA5との比較画像はコミュニティで出回っているファン制作の非公式なものである。また、本文中の図版は本記事の内容を整理するために編集部が作成したもの、アイキャッチ画像はAIで生成したイメージ画像であり、いずれも実際のGTA6のゲーム画面・公式マップ・Rockstarの公式素材ではない。`,
+    titleEn:
+      "GTA6's Map Is Roughly Twice GTA5's — Vice City Alone Doubles Los Santos, and the Scale of Leonida Revealed at Rockstar North",
+    displayTitleEn:
+      "GTA6's Map Is Roughly Twice GTA5's\nVice City Alone Doubles Los Santos, and the Scale of Leonida",
+    descriptionEn:
+      "TGG, who visited Rockstar North, reports being told that GTA6's world is roughly twice the size of GTA5's and about three times Red Dead Redemption 2's. Vice City alone is said to be about double Los Santos, with hundreds of accessible interiors. Here is how that squares with the fan-built maps the community has spent years assembling.",
+    aiSummaryEn: [
+      "GTA creator TGG, invited to Rockstar North, reports watching around three hours of GTA6 with explanations from development lead Rob Nelson and others, including specific figures on map scale: GTA6's world is roughly twice the size of GTA5's and about three times Red Dead Redemption 2's.",
+      "Vice City alone is said to be roughly double Los Santos, and Vice City plus its surrounding area was described as about eleven times Los Santos and its surroundings. Accessible interiors reportedly number in the hundreds, meaning the usable space grows substantially, not just the raw area.",
+      "These are not area figures Rockstar published on its Newswire — they came through a creator relaying a hands-off preview. No exact square-kilometer count and no complete official map exist yet, so you cannot back-calculate an area from \"2x\" or \"11x,\" and the community's speculative maps remain unofficial.",
+    ],
+    fullContentEn: `# GTA6's Map Is Roughly Twice GTA5's — Vice City Alone Doubles Los Santos, and the Scale of Leonida Revealed at Rockstar North
+
+"How big is GTA6's map, actually?" This has been one of the most persistently debated questions among fans since before *Grand Theft Auto VI* was even formally announced.
+
+Mapping projects abroad have pieced together Leonida's geography from road signs, buildings, coastlines and highways glimpsed in trailers, producing all sorts of "predicted GTA6 maps." But there was always one big problem: Rockstar Games itself had never explained how large GTA6's map is in concrete numbers.
+
+That changed substantially alongside the release of "Grand Theft Auto VI: An Extended Look."
+
+TGG, a GTA creator invited to Rockstar North, reports watching around three hours of GTA6 with explanations from development lead Rob Nelson and others. Map scale was among the things he asked about, and he says he was told GTA6's world overall is roughly twice the size of GTA5's, and about three times that of Red Dead Redemption 2.
+
+TGG also relayed a genuinely striking figure: Vice City on its own is said to be about twice the size of Los Santos.
+
+None of this, however, is area data published on Rockstar's official site. It is information TGG passed on from a hands-off preview held at Rockstar North, so this article keeps "officially announced specifications" and "information relayed through a creator" clearly separated throughout.
+
+---
+
+## GTA6's Map Is "About Twice GTA5's"
+
+According to TGG, in addition to seeing "An Extended Look" early at Rockstar North, he had the chance to watch roughly two and a half hours of additional gameplay run by Rob Nelson, during which Leonida's scale was explained.
+
+The comparisons given: GTA6 overall is roughly twice GTA5, and three times RDR2. Comparing cities alone, Vice City is around double Los Santos.
+
+![A chart headlined "GTA6's map is about twice GTA5's," comparing GTA6 to GTA5 (~2x) and RDR2 (~3x), Vice City to Los Santos (~2x) and Vice City plus its outskirts to Los Santos plus its surroundings (~11x), beside a map of Leonida labeled with Vice City, Grassrivers, Leonida Keys, Port Gellhorn, Ambrosia and Mount Kalaga](/images/news/gta6-map-size-comparison/scale-comparison-chart.webp)
+
+*This graphic was produced by the editorial team to organize the article's contents; the figures come from what TGG published as having been explained to him at Rockstar North. The map shape is illustrative and is not Rockstar's official map. Captions in the graphics are in Japanese.*
+
+| Comparison | Scale relayed from the preview |
+| --- | --- |
+| GTA6 overall vs GTA5 overall | ~2x |
+| GTA6 overall vs RDR2 | ~3x |
+| Vice City vs Los Santos | ~2x |
+| Vice City + surroundings vs Los Santos + surroundings | described as ~11x |
+| Accessible buildings | reportedly in the hundreds |
+| Exact area | not disclosed |
+
+Worth noting: taking "twice GTA5" at face value and picturing GTA5's map simply scaled up in both directions would be somewhat off.
+
+Leonida, GTA6's setting, contains not only the enormous Vice City but wetlands, island chains, regional towns, industrial zones and mountainous areas — multiple regions with distinct characters. The figures given describe the scale of that entire world.
+
+---
+
+## Vice City Alone Is About Twice Los Santos
+
+For anyone who has played GTA5, this comparison may land harder than the "2x" for the whole game.
+
+GTA5's Los Santos was a huge city holding a downtown, wealthy residential districts, beaches, an airport, port areas and suburbs. For anyone who has played GTA Online for years, it is a city they have been driving around for over a decade.
+
+Per this information, Vice City alone is roughly twice that Los Santos.
+
+![A graphic headlined "Vice City alone is about twice Los Santos," showing Vice City from the air at dusk with a causeway crossing the bay, high-rise towers and a helicopter overhead](/images/news/gta6-map-size-comparison/vice-city-scale.webp)
+
+TGG also relayed a figure for Vice City including its surrounding area: about eleven times Los Santos and its surroundings.
+
+That "11x" needs particular care, though. Rockstar has not published the boundaries of the "surrounding area" being compared, the measurement method, or any figure in square kilometers. Reading it as "Vice City's urban area is eleven times Los Santos" would not be appropriate.
+
+What matters right now is less the exact square-kilometer count than the fact that the metropolitan area encompassing Vice City and its surroundings has been expanded substantially over GTA5.
+
+---
+
+## Until Now, "GTA6 Maps" Were Almost Entirely Fan Guesswork
+
+This information draws attention not simply because "2x" is a big number.
+
+Long before any official map existed, fans worldwide have been building maps of Leonida. Large-scale mapping efforts cross-reference road signs and buildings glimpsed for an instant in trailers, towers visible in the distance, highways and coastlines, to guess where each location sits.
+
+![A fan-made comparison image placing GTA5's map (left) beside GTA6's (right), with speculative place names such as Vice Point and Port Gellhorn written across the GTA6 side](/images/news/GAT25qlaMAAXcS5.webp)
+
+*This image is a fan-made comparison circulating in the community, not an official map released by Rockstar. None of the place names, terrain or area ratios in it are confirmed.*
+
+With the GTA series in particular, fictional worlds are modeled on real cities and regions, so comparisons with real-world South Florida have been an important clue as well.
+
+The resulting predicted maps have become remarkably precise — but they are, of course, not official maps published by Rockstar. Likewise, plenty of the "GTA6 is N times GTA5" figures floating around online were derived from fan coordinate analysis and inference.
+
+What is substantially different this time is that a creator who actually visited Rockstar North is relaying specific comparison figures as something explained by the development side.
+
+Rockstar itself has not announced these numbers on Newswire, so some reservation is warranted — but the nature of the information differs from the community's prior guesswork.
+
+---
+
+## "About 3x RDR2" Is a Large Number Too
+
+For anyone who has played Rockstar's games, the comparison with Red Dead Redemption 2 may land even harder than the GTA5 one.
+
+Per what TGG relayed, GTA6's world is roughly three times the scale of RDR2's.
+
+RDR2's world is hardly small. Snow-covered mountains, forests, plains, wetlands, towns and a city like Saint Denis — regions of completely different character connected across a vast stretch of land. Because it assumes travel on horseback, simply getting from one region to another took real time.
+
+GTA6, meanwhile, has cars, motorcycles, highways and boats — travel overwhelmingly faster than RDR2's. Making a world still feel vast in a game where you move that quickly requires a corresponding scale.
+
+In that sense, "three times RDR2" is more than an area comparison; it is a clue about what kind of world Rockstar is designing Leonida to be.
+
+---
+
+## Leonida Is Not "a Vice City Map"
+
+Say GTA6 and most people picture Vice City first. Neon, high-rise hotels, beaches, nightlife — that image of the city has been front and center in every trailer and screenshot released so far.
+
+But Leonida, GTA6's setting, is not composed of Vice City alone.
+
+![A graphic headlined "Leonida is a vast world made up of varied regions," showing six vertical panels: Vice City (metropolis and beach), Grassrivers (wetlands), Leonida Keys (islands and resorts), Port Gellhorn (port town and tourism), Ambrosia (industry and farmland) and Mount Kalaga (mountains and nature)](/images/news/gta6-map-size-comparison/leonida-regions.webp)
+
+The regions Rockstar has introduced so far include, alongside Vice City, the vast wetlands of Grassrivers, the island chain of the Leonida Keys, the once-thriving coastal town of Port Gellhorn, Ambrosia with its mix of industrial and agricultural land, and Mount Kalaga National Park in northern Leonida.
+
+In other words, the "Los Santos + Blaine County" structure of GTA5 appears to be subdivided much further in GTA6, into regions each built with its own culture and landscape.
+
+A player driving a supercar through central Vice City takes the highway out to the wetlands, then continues on to the islands. Or leaves the city entirely for a regional town or a stretch of nature that looks nothing like it. That shift in environment looks like it will be a large part of the pleasure of exploring Leonida.
+
+---
+
+## Not Just Size — Watch the "Hundreds" of Buildings
+
+In open-world games, a bigger map does not automatically mean a better one. Empty land can inflate the area figure indefinitely, so what matters to the player is what exists inside that space.
+
+Which makes one detail from the preview worth attention: accessible interiors reportedly number in the hundreds.
+
+GTA5's city was enormous, but the buildings you could freely enter were limited. From outside, stores, hotels and apartment blocks stretched everywhere — most of them existing as backdrop.
+
+If GTA6 lets you access hundreds of buildings, then it is not only the map area that grows but the space the player can actually use.
+
+"An Extended Look" too shows Jason and Lucia engaging with Leonida through stores, venues, leisure and crime rather than merely traveling through it. If a huge map is paired with a large volume of interiors, GTA6's leap may show less in "you can go farther" than in "wherever you go, there is something to find."
+
+---
+
+## Can GTA6 Deliver Both Size and Density?
+
+This is the part of the map news that matters most.
+
+Thirteen years have passed since GTA5 launched in 2013, and open-world scale has expanded enormously in that time. Games with maps larger than GTA5's are no longer unusual. It is hard to imagine Rockstar in 2026 chasing raw area alone.
+
+What is worth watching in this information is the combination: an enormous Vice City inside a world roughly twice GTA5's, multiple distinct regions spreading out beyond it, and hundreds of accessible buildings on top of that.
+
+Not just more land, but entering buildings, stopping into stores and venues, stealing a car, committing a crime and fleeing the police, then leaving the city for another region entirely. Head out to sea or into the wetlands and a completely different kind of play begins. What matters is that these different experiences are not separated by loading screens but occur continuously inside one enormous Leonida.
+
+How the crime and police systems underpinning that have been rebuilt is covered in "[Everything Extended Look Did Not Tell You About GTA6](/en/news/50)."
+
+![A graphic headlined "The police system has evolved too," showing a police pursuit through a neon street above icons for facial recognition, clothing recorded, vehicle used and whether you have company, alongside a six-star wanted meter](/images/news/gta6-map-size-comparison/police-system-evolved.webp)
+
+If the scale and density relayed from the preview genuinely coexist in the shipping game, then what Rockstar is aiming for is not simply "the biggest map in the series." It may be making the single state of Leonida hold together as a world players want to spend a long time inside.
+
+---
+
+## How Close Did the Fan Maps Get?
+
+Now that concrete scale figures have arrived, another question surfaces: how accurate are the predicted maps fans have been building?
+
+Rockstar still has not released a complete official map showing all of Leonida from above. So plenty of mysteries remain — exactly how far Vice City extends, how far past the Leonida Keys you can go, how large the Mount Kalaga area to the north is.
+
+Which is exactly why an interesting reckoning awaits when the official map does arrive.
+
+How closely does the Leonida the community assembled from fragments of footage over years match the one Rockstar actually built? There may be places pinned down with startling precision, right down to a single road or building — and places where the shape of the map itself defies every prediction.
+
+Speculation about GTA6's map did not end with this "roughly twice GTA5" figure. If anything, we have finally gained one concrete piece of material to compare against.
+
+---
+
+## What We Know About the GTA6 Map Right Now
+
+Summarizing what has been relayed through the Rockstar North preview: GTA6 overall is roughly twice GTA5 and about three times RDR2. Vice City alone is said to be about double Los Santos, and Vice City with its surrounding area was compared at around eleven times Los Santos and its surroundings.
+
+At the same time, no exact square-kilometer figure and no complete official map have been released. You cannot back-calculate a real map area from "2x," "3x" and "11x" alone, and the predicted maps circulating in the community still need to be treated as unofficial.
+
+It also bears repeating that these figures are not map specifications posted on Rockstar's official site; they are what TGG published as having been explained to him by Rob Nelson and others at Rockstar North. That distinction only becomes more important the more widely the numbers spread.
+
+Even so, there is no question that the long-running "just how big is it?" question about GTA6's map now has a more concrete answer than it did.
+
+Inside a world roughly twice the size of GTA5's sit Vice City, wetlands, islands, regional towns, industrial areas and mountains — plus hundreds of accessible buildings. If all of it connects as one world while holding sufficient density, then the moment GTA6 truly surprises people may not be the first time they see the map.
+
+Dozens of hours after launch, there are still places you have never been.
+
+That may be the moment Leonida's real size lands.
+
+---
+
+> **Note:** The map scale figures in this article come from what TGG, a participant in the Rockstar North preview, published; they are not area data officially announced by Rockstar Games via Newswire or elsewhere. Japanese-language passages are summarized or paraphrased by the editorial team. No exact square-kilometer figure and no official map had been released as of writing, and the GTA5 comparison image shown here is an unofficial fan creation circulating in the community. The in-article graphics were produced by the editorial team to organize this article's contents and carry Japanese captions, and the eyecatch is an AI-generated illustration; none of them are GTA6 footage, an official Rockstar map, or official Rockstar material.`,
+  },
+  {
     id: 51,
     title:
       "GTA6、PS5 Proでも30fps？Rockstar先行プレビューで判明した“現在の動作”と60fpsの可能性",
