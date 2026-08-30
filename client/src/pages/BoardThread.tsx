@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRoute } from 'wouter';
-import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply, ThumbsUp, ThumbsDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply, ThumbsUp, ThumbsDown, ChevronLeft, ChevronRight, ChevronsDown } from 'lucide-react';
 import Header from '@/components/Header';
 import ReportDialog from '@/components/ReportDialog';
 import { toast } from 'sonner';
@@ -143,6 +143,13 @@ export default function BoardThread() {
     if (!threadId || n < 1 || n > total) return;
     await loadPosts(threadId, total, { mode: 'range', page: Math.ceil(n / PAGE_SIZE) });
     window.setTimeout(() => scrollHighlight(n), 120);
+  };
+
+  // 現在表示中の最後（最新）のレスまで一気にスクロールする。
+  const jumpToBottom = () => {
+    const els = document.querySelectorAll('[id^="post-"]');
+    const last = els[els.length - 1];
+    last?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   // 本文をレンダリング：>>N をアンカーリンクに、URL をクリック可能なリンクに変換する
@@ -462,11 +469,22 @@ export default function BoardThread() {
                 )}
               </div>
               <h1 className="font-black text-2xl md:text-[30px] leading-snug m-0 break-words">{thread?.title}</h1>
-              <p className="text-[13px] text-white/50 mt-3 m-0">
-                {lang === 'en'
-                  ? `${thread?.post_count} replies · last updated ${thread ? formatPostDate(thread.last_posted_at) : ''}`
-                  : `${thread?.post_count}件の返信・最終更新 ${thread ? formatPostDate(thread.last_posted_at) : ''}`}
-              </p>
+              <div className="flex items-center justify-between gap-3 mt-3 flex-wrap">
+                <p className="text-[13px] text-white/50 m-0">
+                  {lang === 'en'
+                    ? `${thread?.post_count} replies · last updated ${thread ? formatPostDate(thread.last_posted_at) : ''}`
+                    : `${thread?.post_count}件の返信・最終更新 ${thread ? formatPostDate(thread.last_posted_at) : ''}`}
+                </p>
+                {posts.length > 3 && (
+                  <button
+                    type="button"
+                    onClick={jumpToBottom}
+                    className="flex-none inline-flex items-center gap-1 text-[12px] font-bold rounded-full px-3 py-1.5 border border-white/20 text-white/70 hover:text-white hover:border-white/45 transition-colors"
+                  >
+                    <ChevronsDown size={14} /> {tr('brd.jumpBottom')}
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* thread images (承認済みのみ・画像有効カテゴリのみ) */}
