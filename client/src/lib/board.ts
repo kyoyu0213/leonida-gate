@@ -96,6 +96,18 @@ export async function listPosts(threadId: string) {
     .order('post_number', { ascending: true });
 }
 
+// 爆サイ風ページング用：post_number の範囲（from〜to、両端含む）だけを取得する。
+// 長大スレを1ページ50件ずつ読み込み、全件フェッチを避けるために使う。
+export async function listPostsRange(threadId: string, from: number, to: number) {
+  return supabase
+    .from('board_posts')
+    .select('id, thread_id, post_number, name, body, created_at, hidden, good, bad')
+    .eq('thread_id', threadId)
+    .gte('post_number', from)
+    .lte('post_number', to)
+    .order('post_number', { ascending: true });
+}
+
 // このブラウザの投票記録（postId → 'good'|'bad'）。UI のハイライト用。
 const VOTES_KEY = 'board_votes';
 export function loadMyVotes(): Record<string, VoteKind> {

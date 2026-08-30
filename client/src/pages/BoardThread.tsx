@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import {
   getThread,
   listPosts,
+  listPostsRange,
   createPost,
   getPostId,
   formatPostDate,
@@ -29,6 +30,19 @@ import SiteFooter from '@/components/SiteFooter';
 
 const COOLDOWN_KEY = 'board_last_post';
 const REPORTED_KEY = 'board_reported_posts';
+
+// 爆サイ風ページング。1ページ＝50レス固定。
+const PAGE_SIZE = 50;
+
+// 表示モード。latest=最新50 / all=全部 / range=範囲ページ（1-50, 51-100, …）
+type PostView = { mode: 'latest' } | { mode: 'all' } | { mode: 'range'; page: number };
+
+// モードと総レス数から、取得すべき post_number の範囲 [from, to] を求める。
+const rangeFor = (v: PostView, total: number): [number, number] => {
+  if (v.mode === 'latest') return [Math.max(1, total - PAGE_SIZE + 1), total];
+  if (v.mode === 'range') return [(v.page - 1) * PAGE_SIZE + 1, v.page * PAGE_SIZE];
+  return [1, total];
+};
 
 // このブラウザで通報済みの post id 集合（UIでボタンを抑制するだけ。本当の重複防止はサーバー側）
 const loadReported = (): Set<string> => {
@@ -62,6 +76,10 @@ export default function BoardThread() {
   const [posts, setPosts] = useState<BoardPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
+  // 現在の表示モード（爆サイ風ページング）。総レス数が50以下なら実質「全部」。
+  const [view, setView] = useState<PostView>({ mode: 'all' });
+  // ページ切替時にレス一覧の先頭へスクロールするためのアンカー。
+  const postsTopRef = useRef<HTMLDivElement>(null);
 
   // スレッド読込後に件名から title を生成（読込中は無難な仮title）。canonical は実URLへ。
   useSeo(
@@ -105,13 +123,26 @@ export default function BoardThread() {
     replyRef.current?.focus();
   };
 
-  // 本文中の >>N をクリックでそのレスへジャンプ＆一瞬ハイライト
-  const jumpToPost = (n: number) => {
+  // 本文中の >>N をクリックでそのレスへジャンプ＆一瞬ハイライト。
+  // 別ページのレスを指す場合は、そのレスを含む範囲ページへ切り替えてからジャンプする。
+  const scrollHighlight = (n: number) => {
     const el = document.getElementById(`post-${n}`);
     if (!el) return;
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     setHighlight(n);
     window.setTimeout(() => setHighlight((cur) => (cur === n ? null : cur)), 3000);
+  };
+
+  const jumpToPost = async (n: number) => {
+    if (document.getElementById(`post-${n}`)) {
+      scrollHighlight(n);
+      return;
+    }
+    // 現在のページに無い＝別ページ。該当範囲ページへ切り替えてから描画後にスクロール。
+    const total = thread?.post_count ?? 0;
+    if (!threadId || n < 1 || n > total) return;
+    await loadPosts(threadId, total, { mode: 'range', page: Math.ceil(n / PAGE_SIZE) });
+    window.setTimeout(() => scrollHighlight(n), 120);
   };
 
   // 本文をレンダリング：>>N をアンカーリンクに、URL をクリック可能なリンクに変換する
@@ -177,35 +208,11 @@ export default function BoardThread() {
     return ids;
   };
 
-  const load = async () => {
-    if (!threadId) return;
-    setLoading(true);
-    const [{ data: t, error: te }, { data: p, error: pe }] = await Promise.all([
-      getThread(threadId),
-      listPosts(threadId),
-    ]);
-    if (te || !t) {
-      setNotFound(true);
-    } else {
-      const thread = t as ThreadType;
-      setThread(thread);
-      setNotFound(false);
-      // 画像設定と承認済み画像（無効カテゴリでは入口も表示も出ない）
-      const setting = await getBoardImageSetting(thread.board);
-      setImagesEnabled(!!setting?.images_enabled);
-      setRequireApproval(setting?.require_approval ?? true);
-      if (setting?.images_enabled) {
-        const imgs = await listApprovedImages(thread.id);
-        const byPost: Record<string, string[]> = {};
-        const noPost: string[] = [];
-        imgs.forEach((im) => {
-          if (im.post_id) (byPost[im.post_id] ??= []).push(im.url);
-          else noPost.push(im.url);
-        });
-        setPostImages(byPost);
-        setThreadImages(noPost);
-      }
-    }
+  // 指定モードのレスを取得して表示する（全件フェッチを避け、範囲だけ引く）。
+  const loadPosts = async (tid: string, total: number, v: PostView) => {
+    const [from, to] = rangeFor(v, total);
+    const res = v.mode === 'all' ? await listPosts(tid) : await listPostsRange(tid, from, to);
+    const { data: p, error: pe } = res;
     if (!pe) {
       const arr = (p as BoardPost[]) ?? [];
       setPosts(arr);
@@ -214,7 +221,53 @@ export default function BoardThread() {
         Object.fromEntries(arr.map((post) => [post.id, { good: post.good ?? 0, bad: post.bad ?? 0 }])),
       );
     }
+    setView(v);
+  };
+
+  const load = async (forceView?: PostView) => {
+    if (!threadId) return;
+    setLoading(true);
+    const { data: t, error: te } = await getThread(threadId);
+    if (te || !t) {
+      setNotFound(true);
+      setLoading(false);
+      return;
+    }
+    const thread = t as ThreadType;
+    setThread(thread);
+    setNotFound(false);
+    // 画像設定と承認済み画像（無効カテゴリでは入口も表示も出ない）
+    const setting = await getBoardImageSetting(thread.board);
+    setImagesEnabled(!!setting?.images_enabled);
+    setRequireApproval(setting?.require_approval ?? true);
+    if (setting?.images_enabled) {
+      const imgs = await listApprovedImages(thread.id);
+      const byPost: Record<string, string[]> = {};
+      const noPost: string[] = [];
+      imgs.forEach((im) => {
+        if (im.post_id) (byPost[im.post_id] ??= []).push(im.url);
+        else noPost.push(im.url);
+      });
+      setPostImages(byPost);
+      setThreadImages(noPost);
+    }
+    // 初期表示モードを決める。強制指定＞URLの#post-N＞既定（50超なら最新50、以下なら全部）。
+    const total = thread.post_count ?? 0;
+    let v = forceView;
+    if (!v) {
+      const hm = window.location.hash.match(/^#post-(\d+)$/);
+      if (hm && total > PAGE_SIZE) v = { mode: 'range', page: Math.ceil(Number(hm[1]) / PAGE_SIZE) };
+      else v = total > PAGE_SIZE ? { mode: 'latest' } : { mode: 'all' };
+    }
+    await loadPosts(threadId, total, v);
     setLoading(false);
+  };
+
+  // ツールバーからの表示切替。読み込み後にレス一覧の先頭へスクロール。
+  const changeView = async (v: PostView) => {
+    if (!threadId) return;
+    await loadPosts(threadId, thread?.post_count ?? posts.length, v);
+    postsTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // グッド/バッド投票（楽観更新→RPCの結果で確定）
@@ -295,7 +348,8 @@ export default function BoardThread() {
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
     toast.success(tr('brd.toast.posted') + imageNote);
-    load();
+    // 投稿直後は最新レスを表示して、自分の書き込みが見えるようにする。
+    load({ mode: 'latest' });
   };
 
   if (!match) return null;
@@ -303,7 +357,56 @@ export default function BoardThread() {
   const board = getBoard(thread?.board);
   const backHref = board ? `/board/${board.slug}` : '/board';
   const boardColor = boardColorFor(board?.accent);
-  const full = (thread?.post_count ?? 0) >= 1000;
+  const total = thread?.post_count ?? 0;
+  const full = total >= 1000;
+  const pageCount = Math.ceil(total / PAGE_SIZE);
+  // レスが50件を超えたときだけ爆サイ風のページ切替バーを出す。
+  const showPager = total > PAGE_SIZE;
+
+  // ページ切替バー（最新50 / 全部 / 1-50 / 51-100 …）。上下に同じものを表示する。
+  const renderPager = (place: 'top' | 'bottom') => {
+    if (!showPager) return null;
+    const base =
+      'text-[12px] font-bold rounded-full px-3 py-1.5 whitespace-nowrap transition-colors border';
+    const activeStyle = { background: boardColor, borderColor: boardColor, color: '#0b0714' };
+    const idleCls = 'border-white/15 text-white/60 hover:text-white hover:border-white/40';
+    return (
+      <div className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar ${place === 'top' ? 'mt-4 mb-1' : 'mt-2'}`}>
+        <button
+          type="button"
+          onClick={() => changeView({ mode: 'latest' })}
+          className={base + (view.mode === 'latest' ? '' : ` ${idleCls}`)}
+          style={view.mode === 'latest' ? activeStyle : undefined}
+        >
+          {tr('brd.pg.latest')}
+        </button>
+        {Array.from({ length: pageCount }, (_, i) => i + 1).map((p) => {
+          const from = (p - 1) * PAGE_SIZE + 1;
+          const to = Math.min(p * PAGE_SIZE, total);
+          const active = view.mode === 'range' && view.page === p;
+          return (
+            <button
+              key={p}
+              type="button"
+              onClick={() => changeView({ mode: 'range', page: p })}
+              className={base + (active ? '' : ` ${idleCls}`)}
+              style={active ? activeStyle : undefined}
+            >
+              {from}-{to}
+            </button>
+          );
+        })}
+        <button
+          type="button"
+          onClick={() => changeView({ mode: 'all' })}
+          className={base + (view.mode === 'all' ? '' : ` ${idleCls}`)}
+          style={view.mode === 'all' ? activeStyle : undefined}
+        >
+          {tr('brd.pg.all')}
+        </button>
+      </div>
+    );
+  };
 
   return (
     <div className="vice-page vice-noise">
@@ -357,6 +460,11 @@ export default function BoardThread() {
                 ))}
               </div>
             )}
+
+            {/* 爆サイ風ページ切替バー（上） */}
+            <div ref={postsTopRef} style={{ scrollMarginTop: '84px' }}>
+              {renderPager('top')}
+            </div>
 
             {/* posts */}
             <div className="flex flex-col">
@@ -467,6 +575,9 @@ export default function BoardThread() {
                 </div>
               ))}
             </div>
+
+            {/* 爆サイ風ページ切替バー（下） */}
+            {renderPager('bottom')}
           </>
         )}
       </main>

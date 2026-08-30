@@ -618,6 +618,8 @@ const JA: Dict = {
   'brd.hiddenPost': '※ この投稿は管理者により非表示にされました',
   'brd.good': 'グッド',
   'brd.bad': 'バッド',
+  'brd.pg.latest': '最新50',
+  'brd.pg.all': '全部',
   'brd.full':
     'このスレッドは1000レスに到達したため書き込めません。新しいスレを立ててください。',
   'brd.replyPlaceholder': '返信を入力…',
@@ -1211,6 +1213,8 @@ const EN: Dict = {
   'brd.hiddenPost': '* This post has been hidden by an admin.',
   'brd.good': 'Like',
   'brd.bad': 'Dislike',
+  'brd.pg.latest': 'Latest 50',
+  'brd.pg.all': 'All',
   'brd.full':
     'This thread has reached 1000 replies and is closed. Please start a new thread.',
   'brd.replyPlaceholder': 'Write a reply…',
