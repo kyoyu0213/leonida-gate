@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useRoute } from 'wouter';
-import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { Send, Loader2, ArrowLeft, ImagePlus, X, Reply, ThumbsUp, ThumbsDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import ReportDialog from '@/components/ReportDialog';
 import { toast } from 'sonner';
@@ -363,43 +363,67 @@ export default function BoardThread() {
   // レスが50件を超えたときだけ爆サイ風のページ切替バーを出す。
   const showPager = total > PAGE_SIZE;
 
-  // ページ切替バー（最新50 / 全部 / 1-50 / 51-100 …）。上下に同じものを表示する。
+  // ページ切替バー。最新50 / ◀ 1 2 3 … ▶ / 全部（ページ番号を丸ボタンで表示）。
   const renderPager = (place: 'top' | 'bottom') => {
     if (!showPager) return null;
-    const base =
-      'text-[12px] font-bold rounded-full px-3 py-1.5 whitespace-nowrap transition-colors border';
+    // 矢印の基準ページ。範囲表示中はそのページ、最新50/全部のときは最終ページ扱い。
+    const currentPage = view.mode === 'range' ? view.page : pageCount;
     const activeStyle = { background: boardColor, borderColor: boardColor, color: '#0b0714' };
-    const idleCls = 'border-white/15 text-white/60 hover:text-white hover:border-white/40';
+    const idle = 'border-white/20 text-white/65 hover:text-white hover:border-white/45';
+    const circle =
+      'flex-none w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold border transition-colors';
+    const pill =
+      'flex-none text-[12px] font-bold rounded-full px-3 py-1.5 whitespace-nowrap border transition-colors';
+    const goPage = (p: number) => changeView({ mode: 'range', page: p });
+    const arrowCls = (disabled: boolean) =>
+      `${circle} ${disabled ? 'border-white/10 text-white/25 cursor-not-allowed' : idle}`;
     return (
-      <div className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar ${place === 'top' ? 'mt-4 mb-1' : 'mt-2'}`}>
+      <div className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar ${place === 'top' ? 'mt-4 mb-1' : 'mt-3'}`}>
         <button
           type="button"
           onClick={() => changeView({ mode: 'latest' })}
-          className={base + (view.mode === 'latest' ? '' : ` ${idleCls}`)}
+          className={pill + (view.mode === 'latest' ? '' : ` ${idle}`)}
           style={view.mode === 'latest' ? activeStyle : undefined}
         >
           {tr('brd.pg.latest')}
         </button>
+        <button
+          type="button"
+          disabled={currentPage <= 1}
+          onClick={() => goPage(currentPage - 1)}
+          className={arrowCls(currentPage <= 1)}
+          aria-label={lang === 'en' ? 'Previous page' : '前のページ'}
+        >
+          <ChevronLeft size={16} />
+        </button>
         {Array.from({ length: pageCount }, (_, i) => i + 1).map((p) => {
-          const from = (p - 1) * PAGE_SIZE + 1;
-          const to = Math.min(p * PAGE_SIZE, total);
           const active = view.mode === 'range' && view.page === p;
           return (
             <button
               key={p}
               type="button"
-              onClick={() => changeView({ mode: 'range', page: p })}
-              className={base + (active ? '' : ` ${idleCls}`)}
+              onClick={() => goPage(p)}
+              className={circle + (active ? '' : ` ${idle}`)}
               style={active ? activeStyle : undefined}
+              aria-current={active ? 'page' : undefined}
             >
-              {from}-{to}
+              {p}
             </button>
           );
         })}
         <button
           type="button"
+          disabled={currentPage >= pageCount}
+          onClick={() => goPage(currentPage + 1)}
+          className={arrowCls(currentPage >= pageCount)}
+          aria-label={lang === 'en' ? 'Next page' : '次のページ'}
+        >
+          <ChevronRight size={16} />
+        </button>
+        <button
+          type="button"
           onClick={() => changeView({ mode: 'all' })}
-          className={base + (view.mode === 'all' ? '' : ` ${idleCls}`)}
+          className={pill + (view.mode === 'all' ? '' : ` ${idle}`)}
           style={view.mode === 'all' ? activeStyle : undefined}
         >
           {tr('brd.pg.all')}
