@@ -216,6 +216,410 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 54,
+    title:
+      "GTA6の「車泥棒」が本格化？ TGGが明かした車両盗難・ドライブスルー・NPCの細かすぎる新仕様",
+    displayTitle:
+      "GTA6の「車泥棒」が本格化？\nTGGが明かした車両盗難・ドライブスルー・NPCの細かすぎる新仕様",
+    description:
+      "Rockstar Northで約3時間『GTA VI』を見たTGGから追加情報が出ている。窓割り・Slim Jim・Key Clonerと段階が分かれた車両盗難、スマホで盗む前に価値とセキュリティを確認できるスキャンアプリ、Burger Shotのドライブスルー、そして犬のフン袋を拾ってNPCへ投げられるという細かすぎるインタラクション。Rob Nelson氏の説明と合わせて整理する。",
+    icon: "🚗",
+    image: "/images/news/gta6-car-theft-drive-thru/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-30",
+    publishedAt: "2026-08-30 18:30",
+    source:
+      "TGG（The Gaming Gorilla）／IGN Rob Nelson氏インタビュー／ファミ通 Rob Nelson氏独占インタビュー／Esquire Australia ほか",
+    sourceUrl: "https://x.com/TGGonYT",
+    relatedArticles: [53, 50, 51],
+    aiSummary: [
+      "『GTA VI』では車両盗難が段階制になり、古い車は窓を割るかSlim Jimで開けられる一方、現代的な高級車にはKey Clonerが必要になる。Rob Nelson氏はIGNとファミ通の取材で、プレイヤーの進行状況や所持している道具によって盗める車が変わると説明している。アラームやGPSトラッカーを積んだ車もあり、盗んだ後の逃走まで含めてひとつの犯罪ゲームプレイになっている。",
+      "ジェイソンとルシアのスマートフォンには車両スキャンアプリがあり、ロック状態・アラーム・トラッカーの有無・必要な道具・売却価格・自分の車として登録する費用まで、盗む前に確認できるという。一方で走行中の車は従来どおり運転手を引きずり出して奪えるため、「盗めるか」ではなく「どれだけ静かに、効率よく盗むか」が問われる設計になっている。",
+      "Rockstar Northで約3時間ゲームを見たTGGからは、Burger Shotの店内利用とドライブスルー、犬のフン袋を落とさせて拾いNPCへ投げられるインタラクションも報告されている。ドライブスルーは現時点でTGGの証言が主な情報源であり、Rockstarが正式発表した仕様とは分けて扱う必要がある。",
+    ],
+    fullContent: `# GTA6の「車泥棒」が本格化？ TGGが明かした車両盗難・ドライブスルー・NPCの細かすぎる新仕様
+
+8月27日に『Grand Theft Auto VI: An Extended Look』が公開されて以降、Rockstar Northで発売前の『GTA VI』を見た海外クリエイターたちから、公式映像だけでは分からなかった情報が次々と出始めている。
+
+中でも情報量が多いのが、Rockstar Northへ招待され、約3時間にわたってゲームプレイを見たGTA系YouTuberのTGGだ。
+
+[先日の記事](/news/53)では、TGGを含むRockstar North招待クリエイターの証言をまとめて紹介したが、その後も追加情報が出ている。Burger Shotのドライブスルー、車種によって変わる盗難方法、スマートフォンを使った車両スキャン、さらには犬のフンが入った袋を拾ってNPCへ投げられるという、いかにもRockstarらしい細かなインタラクションまで明らかになってきた。
+
+今回は、TGGの追加証言とRockstar North共同スタジオ責任者Rob Nelson氏の説明を中心に、『GTA VI』のオープンワールドがどこまで変わろうとしているのかを整理する。
+
+*※TGGがRockstar Northで見聞きした内容と、Rockstar開発者がメディアへ直接説明した内容を含みます。TGGのみが伝えている内容については、その旨が分かるように記載しています。本記事に掲載している画像は、内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面ではありません。*
+
+---
+
+## 「Grand Theft Auto」が本当にゲームになる――車を盗むだけでも簡単ではない
+
+今回明らかになった情報の中でも、とくにゲームプレイへの影響が大きそうなのが車両盗難システムだ。
+
+これまでのGTAシリーズでは、欲しい車を見つけたらドアへ近づき、そのまま乗り込んで盗むという流れが基本だった。ところが『GTA VI』では、駐車されている車を盗むこと自体にいくつもの段階が設けられている。
+
+Rockstar NorthのRob Nelson氏はIGNの取材で、これまでのGTAではボタンを押せばどんな車でも自動的にホットワイヤーして盗めたため、ゲームプレイとして活用できる余地を残していたと説明している。そこで今回は車両に段階を設け、プレイヤーの進行状況や所持している道具によって盗める車が変わる仕組みにしたという。
+
+古い車などでは窓を割って強引に侵入するほか、「Slim Jim」と呼ばれる鍵開け用の工具を使用して、比較的静かにドアを開けることもできる。Extended Lookでも、このSlim Jimを使って車へ侵入する場面が確認されている。
+
+一方、現代的な高級車になると話は変わる。電子的なセキュリティを突破するための「Key Cloner（キークローナー）」が必要になる車両があり、ゲーム序盤では必要な道具を持っていないため、そもそも盗めない駐車車両も存在する。
+
+この仕組みについては日本のファミ通によるRob Nelson氏への独占インタビューでも説明されており、ゲームを進めて新しい道具を手に入れることで、よりセキュリティの高い車を狙えるようになることが確認されている。
+
+つまり『GTA VI』では、シリーズタイトルそのものでもある「Grand Theft Auto＝自動車重窃盗」が、単なる移動手段の入手方法ではなく、ひとつの犯罪ゲームプレイとして本格的に作り直されている。
+
+---
+
+## 高級車を見つけても、すぐ盗めるとは限らない
+
+この変更によって、Leonidaで高級車を見つけたときの意味も変わってくる。
+
+従来なら「いい車を見つけたから盗む」で終わっていたが、『GTA VI』ではまず、その車を自分が盗めるのかを判断する必要がある。
+
+![夜のLeonidaの大通りを逃走する赤いマッスルカー。後方からパトカーが追い、上空にはヘリコプターが飛んでいる](/images/news/gta6-car-theft-drive-thru/stolen-car-police-chase.webp)
+
+高級車ほど高度なセキュリティを搭載している可能性が高く、アラームだけでなくGPSトラッカーまで装備されている場合がある。うまくドアを開けてエンジンを始動できたとしても、トラッカーから位置情報が送信されれば警察に居場所を把握される可能性がある。
+
+ファミ通の取材では、盗難車に搭載された高性能トラッカーから信号が送られ、警察が位置を把握するケースについてもRob Nelson氏が説明している。
+
+そのため「盗めた＝成功」ではない。盗難そのものに成功した後も、警察に捕まらず車を運び、売却するのか、自分の車として登録するのかまで考える必要がある。
+
+車を盗むというGTAシリーズでは当たり前だった行動に、「どの車を狙うのか」「どの方法で侵入するのか」「盗んだ後にどうするのか」という判断が追加されている。
+
+---
+
+## スマホで車をスキャン。盗む前に“査定”できる
+
+そこで重要になるのが、ジェイソンやルシアが持っているスマートフォンだ。
+
+ゲーム内には車両をスキャンできるアプリが存在し、対象となる車を調べることで、盗む前にさまざまな情報を確認できる。
+
+![路上に駐車されたSUVのドアを工具でこじ開けようとする男と、その車のロック状態・アラーム・トラッカー・必要な道具・売却価格・登録費用を表示したスマートフォンのアプリ画面](/images/news/gta6-car-theft-drive-thru/vehicle-scan-app.webp)
+
+報告されている情報には、その車がロックされているか、アラームが搭載されているか、トラッカーが付いているか、盗むためにどの道具が必要なのかといった項目が含まれている。
+
+さらに、その車を盗品として売却した場合にどれくらいの価値があるのか、自分の所有車として登録する場合にどれくらい費用がかかるのかまで確認できるという。
+
+高級車だからといって必ずしも盗む価値があるとは限らない。高度なセキュリティを突破して警察に追われるリスクを負った結果、思ったほど利益が出ない可能性もある。
+
+逆に、セキュリティが弱く、トラッカーもなく、売却価格が高い車を見つければ格好のターゲットになる。
+
+車を見つけ、スキャンし、リスクと利益を確認してから盗む。この流れを見るだけでも、『GTA VI』では犯罪そのものにかなりゲーム的な判断が追加されていることが分かる。
+
+---
+
+## ただし従来の「カージャック」は健在
+
+ここまで聞くと、「GTAなのに車を気軽に奪えなくなるのか」と思うかもしれない。
+
+そこについては心配なさそうだ。
+
+Rob Nelson氏によれば、道路を走っている車については、これまでのGTAと同じように運転手を引きずり出して奪うことができる。急いで逃走車が必要になった場合に、毎回Slim Jimを使ってミニゲームをする必要があるわけではない。
+
+ただし、強引なカージャックには当然リスクがある。車を奪われたNPCが警察へ通報する可能性があり、盗んだ車にトラッカーが搭載されていれば、その後の逃走にも影響する。
+
+『GTA VI』では「車を盗めるかどうか」ではなく、「どれだけ静かに、効率よく盗むか」が重要になっているようだ。
+
+これは、すでに明らかになっている[犯罪プロファイル](/news/53)とも相性がいい。必要以上に暴力を使わず犯罪を成功させるプレイと、目についた車を強引に奪って逃げるプレイの両方を成立させ、その選択をプレイヤーへ委ねる設計になっていると考えられる。
+
+---
+
+## Burger Shotが本当に使える。しかもドライブスルー対応？
+
+TGGからは、犯罪とはまったく違う方向の追加情報も出ている。
+
+GTAシリーズではおなじみのファストフードチェーン「Burger Shot」が、『GTA VI』では実際に利用できるという。
+
+![Burger Shotのドライブスルー窓口で、車に乗ったまま店員から紙袋を受け取る男性。窓の横には新商品のポスターが貼られている](/images/news/gta6-car-theft-drive-thru/burger-shot-drive-thru.webp)
+
+TGGが追加配信で説明した内容として報じられているところによると、プレイヤーはBurger Shotの店内へ入り、食事を購入できる。さらに興味深いのが、車に乗ったままドライブスルーを利用して注文することもできるという点だ。
+
+ここについては現時点でRockstarが単独で正式発表した機能ではなく、Rockstar Northでゲームを見たTGGの証言をもとにした情報として扱う必要がある。
+
+それでも事実であれば、GTA Vからの大きな変化になる。
+
+GTA VにもBurger ShotやCluckin' Bellといったファストフード店は存在したが、多くは街を構成する背景であり、プレイヤーが通常の飲食店として自由に利用することはできなかった。
+
+『GTA VI』では店内へ入れるだけでなく、車社会であるLeonidaらしくドライブスルーまでゲームシステムとして機能することになる。
+
+派手な銃撃戦や強盗とは正反対の要素だが、こうした何気ない日常行動こそ、オープンワールドを「背景」ではなく「生活できる場所」に感じさせる部分でもある。
+
+---
+
+## 犬のフン袋まで拾える。冗談みたいだが意味は大きい
+
+そして今回、海外でかなり話題になったのが「犬のフン」だ。
+
+TGGがRockstar NorthでRob Nelson氏から説明された例として紹介したところによると、Leonidaでは犬を散歩させているNPCが存在し、その犬が路上で排泄すると飼い主が袋を使って処理する。
+
+![ビーチ沿いの遊歩道で、犬を連れたNPCと、その足元に落ちた袋を拾おうと手を伸ばすアロハシャツの男](/images/news/gta6-car-theft-drive-thru/dog-poop-bag-npc.webp)
+
+ここまではNPCの日常アニメーションとして珍しくない。
+
+『GTA VI』がおかしいのは、その先だ。
+
+袋を持っているNPCに干渉して落とさせれば、プレイヤーがその袋を拾うことができ、さらに別のNPCへ投げることまでできるという。この話はTGGだけでなく、Rockstar Northでゲームを見たEsquire Australia側の取材内容でも報告されている。
+
+いかにもGTAらしいくだらない小ネタだが、ゲームシステムとして考えると意外に重要な話でもある。
+
+NPCが犬を散歩する。犬が排泄する。飼い主がそれを拾う。プレイヤーが飼い主へ干渉する。持っていた物が地面へ落ちる。そしてプレイヤーがそれを拾って別の行動に使う。
+
+あらかじめ決められた一本の演出ではなく、NPCの日常行動とプレイヤーの行動が途中からつながっている。
+
+Rockstar NorthのRob Nelson氏は別のインタビューでも、『Red Dead Redemption 2』で導入したNPCインタラクションを『GTA VI』ではさらに進化させていると説明している。Greet、Taunt、Defuse、Provokeといった会話や反応だけではなく、周囲で起きている出来事そのものへ介入できる世界を目指しているようだ。
+
+---
+
+## 「NPCが多い」だけではないLeonida
+
+Extended Lookでは、ビーチ、繁華街、道路、店舗など、いたるところに大量のNPCが登場していた。そのため映像公開直後は「GTA Vより街の人口密度が大幅に上がった」という部分に注目が集まった。
+
+しかし、Rockstar Northでゲームを見たクリエイターやメディアの証言を追っていくと、Rockstarが力を入れているのは単純なNPCの数だけではなさそうだ。
+
+NPCは会話し、スマートフォンを使い、犬を散歩させ、プレイヤーの行動を目撃し、場合によっては警察へ通報する。武器を持って歩けば周囲の人間が警戒し、犯罪を目撃した人物がプレイヤーの服装や車両について警察へ情報を伝えることもある。
+
+プレイヤー側もNPCへ挨拶したり、挑発したり、事態を鎮めようとしたりできる。
+
+つまりLeonidaでは、大量のNPCを配置して「人がたくさんいる街」を作るだけではなく、その一人ひとりをゲームシステムの一部として動かそうとしている。
+
+犬のフン袋を投げられるという話だけを切り取れば笑い話で終わる。しかし、その仕組みを支えているシステムまで考えると、『GTA VI』のオープンワールドが目指している方向が少し見えてくる。
+
+---
+
+## GTA Vから変わるのは「マップの広さ」だけではない
+
+『GTA VI』については、これまで[マップの広さ](/news/52)、グラフィック、NPCの数といった分かりやすい進化が注目されてきた。
+
+しかし今回出てきた情報を見ると、Rockstarが力を入れているのは「できることの密度」なのかもしれない。
+
+Burger Shotを見つけたら、本当に入れる。車に乗っていれば、そのままドライブスルーを利用できる。欲しい車を見つけたら、スマートフォンで価値やセキュリティを調べられる。高級車なら専用の道具を用意して盗む。NPCが何かを落とせば、それをプレイヤーが拾って使える場合もある。
+
+どれも単体では小さな要素だ。
+
+しかし、こうした小さなシステムがLeonida全体でつながれば、プレイヤーが予定していなかった出来事が次々と起こるオープンワールドになる。
+
+Rockstarが『Red Dead Redemption 2』で追求した「世界の中で生活している感覚」を、現代の巨大都市へ持ち込み、さらにGTAらしい犯罪やブラックユーモアと組み合わせようとしているようにも見える。
+
+---
+
+## まだTGGから追加情報が出てくる可能性も
+
+今回紹介した内容の一部は、Rockstar NorthのRob Nelson氏がIGNやファミ通などへ直接説明したことで複数の情報源から確認できる。一方、Burger Shotのドライブスルーのように、現時点ではTGGのRockstar North訪問時の証言が主な情報源になっているものもある。
+
+そのため、すべてを同じ確度の「Rockstar公式発表」として扱うべきではない。
+
+ただ、今回興味深いのは、Extended Look公開から数日が経ってもRockstar Northを訪れた人物から新しい話が出続けていることだ。
+
+約3時間にわたってゲームを見たTGGをはじめ、El Rubius、Davy Jones、Mike ShowShaなど、[Rockstar Northへ招待された海外クリエイター](/news/53)たちは、公式映像には収録されなかったゲームプレイを目撃している。
+
+さらにIGN、ファミ通、Esquire Australiaなど、Rockstarから直接説明を受けたメディア側にも、まだ掘り起こされていない細かな情報が残っている可能性がある。
+
+GTA6 FEEDでは引き続き、Rockstar Northで『GTA VI』を見たクリエイターやメディアの動画、配信、記事を追い、新しい情報が確認できれば紹介していく。
+
+Extended Lookで見えたのは、Leonidaのほんの一部だったのかもしれない。
+
+今回明らかになってきた「車を盗む」という基本行動ひとつを見ても、『GTA VI』が従来のシリーズからどれだけ多くの部分を作り直そうとしているのか、その輪郭が少しずつ見え始めている。
+
+---
+
+> **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。日本語部分は編集部訳・要約を含む。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。`,
+    titleEn:
+      "Grand Theft Auto, Literally: TGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs",
+    displayTitleEn:
+      "Grand Theft Auto, Literally\nTGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs",
+    descriptionEn:
+      "More is coming out of TGG, who watched roughly three hours of GTA VI at Rockstar North. Car theft is now tiered — smashed windows, a Slim Jim, a Key Cloner — a phone app lets you appraise a car's security and resale value before you take it, Burger Shot has a working drive-thru, and you can pick up a dropped bag of dog waste and throw it at an NPC. Set alongside what Rob Nelson told the press.",
+    aiSummaryEn: [
+      "Car theft in GTA VI is tiered: older cars can be broken into through a window or opened quietly with a Slim Jim, while modern high-end vehicles require a Key Cloner. Rob Nelson told IGN and Famitsu that which cars you can steal depends on your progress and the tools you carry. Alarms and GPS trackers mean the getaway is part of the crime, not an afterthought.",
+      "Jason and Lucia's phone includes a vehicle scanning app that reports lock state, alarm, tracker, the tool required, resale value and the cost of registering the car as your own — all before you touch it. Cars in traffic can still be jacked the old way, so the question becomes not whether you can steal a car but how quietly and efficiently you do it.",
+      "TGG, who saw about three hours of the game at Rockstar North, also reports that Burger Shot can be entered and ordered from by drive-thru, and that a bag of dog waste dropped by an NPC can be picked up and thrown at someone else. The drive-thru rests mainly on TGG's account and should not be treated as an official Rockstar announcement.",
+    ],
+    fullContentEn: `# Grand Theft Auto, Literally: TGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs
+
+Since "Grand Theft Auto VI: An Extended Look" went out on August 27, the overseas creators who saw pre-launch GTA VI at Rockstar North have been steadily putting out things the official footage never showed.
+
+The most detailed of them is TGG, the GTA-focused YouTuber who was invited to Rockstar North and watched roughly three hours of gameplay.
+
+[A previous article](/en/news/53) collected the accounts of the Rockstar North invitees, TGG among them — and more has come out since. A Burger Shot drive-thru, break-in methods that change with the car, a phone app for scanning vehicles, and, in a very Rockstar touch, the ability to pick up a bag of dog waste and throw it at an NPC.
+
+Below, TGG's additional testimony alongside explanations from Rob Nelson, co-studio head at Rockstar North, and what they suggest about how far GTA VI's open world is changing.
+
+*Note: this article contains both what TGG saw and heard at Rockstar North and what Rockstar developers explained directly to the press. Anything reported only by TGG is identified as such. All images here were generated with AI to illustrate the article and are not actual game footage.*
+
+---
+
+## Grand Theft Auto Becomes an Actual Game Mechanic — Stealing a Car Is No Longer Simple
+
+Of everything to come out this time, the vehicle theft system looks likely to have the biggest effect on how the game plays.
+
+In previous GTA games the loop was simple: spot the car you want, walk up to the door, get in, drive off. In GTA VI, stealing a parked car has been broken into several stages.
+
+Rob Nelson told IGN that in past GTA titles a button press would automatically hotwire any car, which left gameplay potential on the table. So this time vehicles are tiered, and which ones you can steal depends on your progress and the tools you are carrying.
+
+Older cars can be forced open by smashing a window, or opened relatively quietly with a lock tool known as a "Slim Jim." Extended Look itself includes a moment of a Slim Jim being used to get into a car.
+
+Modern luxury cars are a different matter. Some require a "Key Cloner" to defeat their electronic security, and early in the game, without the necessary tools, there will simply be parked cars you cannot steal at all.
+
+Famitsu's exclusive interview with Rob Nelson in Japan describes the same system, confirming that acquiring new tools as you progress opens up more heavily secured vehicles.
+
+In other words, "Grand Theft Auto" — the series' own name, and a real term for felony car theft — has been rebuilt in GTA VI as a piece of criminal gameplay in its own right, rather than just a way to obtain transport.
+
+---
+
+## Finding a Luxury Car Does Not Mean You Can Take It
+
+That change also alters what it means to spot an expensive car in Leonida.
+
+Previously the thought ended at "nice car, take it." In GTA VI you first have to judge whether you can steal it at all.
+
+![A red muscle car speeding away down a Leonida boulevard at night, a police cruiser in pursuit behind it and a helicopter overhead](/images/news/gta6-car-theft-drive-thru/stolen-car-police-chase.webp)
+
+The more expensive the car, the more likely it carries advanced security — not just an alarm but a GPS tracker. Even if you get the door open and the engine started, a tracker transmitting your position can put the police onto you.
+
+In the Famitsu interview, Rob Nelson also described cases where a high-end tracker in a stolen car sends a signal and the police work out where you are.
+
+So a successful break-in is not the same as a successful theft. After taking the car you still have to move it without being caught, and decide whether to sell it or register it as your own.
+
+Stealing a car — the most ordinary action in the series — now carries decisions: which car to target, how to get into it, and what to do with it afterward.
+
+---
+
+## Scan a Car With Your Phone and Appraise It Before You Steal It
+
+This is where Jason and Lucia's phone becomes important.
+
+The game includes an app that scans vehicles, letting you check a range of information about a car before stealing it.
+
+![A man prying at the door of an SUV parked on a street, beside a phone app screen listing that car's lock level, alarm, tracker, required tool, resale value and registration cost](/images/news/gta6-car-theft-drive-thru/vehicle-scan-app.webp)
+
+Reported fields include whether the car is locked, whether it has an alarm, whether it carries a tracker, and which tool you need to take it.
+
+Beyond that, it reportedly shows how much the car is worth if sold on as stolen goods, and how much it would cost to register as a vehicle you own.
+
+An expensive car is not automatically worth stealing. You may beat sophisticated security and take on a police chase only to clear less than you expected.
+
+Conversely, a car with weak security, no tracker and a high resale value makes an ideal target.
+
+Find a car, scan it, weigh risk against reward, then steal it. Even that sequence alone shows how much game-level decision-making GTA VI has added to the crime itself.
+
+---
+
+## The Old-Fashioned Carjack Is Still There
+
+At this point you might wonder whether a GTA game has made it hard to just grab a car.
+
+That does not appear to be a concern.
+
+According to Rob Nelson, cars driving on the road can be taken the way they always have been: pull the driver out and go. If you urgently need a getaway car, you are not obliged to play a Slim Jim minigame every time.
+
+A forced carjacking carries its own risk, of course. The NPC whose car you took may call the police, and if the stolen car has a tracker, that will shape the escape that follows.
+
+The question in GTA VI seems to be less whether you can steal a car than how quietly and efficiently you do it.
+
+That fits neatly with the [criminal profile](/en/news/53) already described. The design appears to support both playing a crime through without more violence than necessary and simply grabbing whatever car is nearby and running — and to leave that choice to the player.
+
+---
+
+## Burger Shot Actually Works — With a Drive-Thru?
+
+TGG has also brought out information pointing in an entirely different direction from crime.
+
+Burger Shot, the fast food chain familiar from across the series, can reportedly be used for real in GTA VI.
+
+![A man in his car at a Burger Shot drive-thru window taking a paper bag from the employee, a poster for a new item on the glass beside him](/images/news/gta6-car-theft-drive-thru/burger-shot-drive-thru.webp)
+
+According to reports of what TGG described in a follow-up stream, players can go inside a Burger Shot and buy food. More interesting still, you can also order from a drive-thru while remaining in your car.
+
+This is not something Rockstar has announced on its own, and needs to be treated as information resting on the account of TGG, who saw the game at Rockstar North.
+
+If it holds, though, it is a significant change from GTA V.
+
+GTA V had Burger Shot and Cluckin' Bell too, but most were set dressing rather than restaurants a player could actually use.
+
+In GTA VI you would be able not only to walk inside but to use a drive-thru as a working game system — fitting for Leonida, a place built around cars.
+
+It is the opposite of a spectacular shootout or heist, but these unremarkable everyday actions are exactly what make an open world feel like a place you can live in rather than a backdrop.
+
+---
+
+## You Can Even Pick Up a Bag of Dog Waste. It Sounds Like a Joke; It Is Not a Small One
+
+And then there is the thing that got the most attention overseas: dog waste.
+
+According to what TGG relayed as an example Rob Nelson gave him at Rockstar North, Leonida has NPCs out walking dogs, and when a dog relieves itself in the street the owner bags it up.
+
+![On a beachfront promenade, a man in an aloha shirt reaches for a bag on the ground beside an NPC walking a dog](/images/news/gta6-car-theft-drive-thru/dog-poop-bag-npc.webp)
+
+So far, nothing unusual as NPC ambient animation.
+
+What is strange about GTA VI is what comes next.
+
+Interfere with the NPC holding the bag so that they drop it, and the player can pick it up — and then throw it at another NPC. This has been reported not only by TGG but in coverage from Esquire Australia, who also saw the game at Rockstar North.
+
+It is exactly the kind of stupid GTA gag you would expect, but as a piece of game system design it matters more than it sounds.
+
+An NPC walks a dog. The dog relieves itself. The owner picks it up. The player interferes with the owner. What they were holding falls to the ground. And the player picks that up and uses it for something else.
+
+This is not one predetermined set piece; NPC routine and player action join up partway through.
+
+Rob Nelson has said in other interviews that the NPC interactions introduced in Red Dead Redemption 2 have been pushed further in GTA VI. Beyond dialogue and reactions like Greet, Taunt, Defuse and Provoke, the goal seems to be a world where you can intervene in the events happening around you.
+
+---
+
+## Leonida Is Not Just "a Lot of NPCs"
+
+Extended Look showed crowds everywhere — beaches, nightlife districts, roads, storefronts. Immediately after it went out, much of the attention went to how much denser the city felt than GTA V.
+
+But following the accounts of the creators and press who saw the game at Rockstar North, raw NPC count does not appear to be the only thing Rockstar has invested in.
+
+NPCs talk, use phones, walk dogs, witness what the player does, and in some cases call the police. Walk around armed and people nearby react warily; a witness to a crime may describe your clothes or your vehicle to the police.
+
+The player, in turn, can greet NPCs, provoke them, or try to defuse a situation.
+
+Leonida, then, is not just a matter of placing enough NPCs to make a crowded city — it is an attempt to run each of them as part of the game's systems.
+
+Taken on its own, "you can throw a bag of dog waste" is a punchline. Consider the systems underneath it and you start to see where GTA VI's open world is heading.
+
+---
+
+## What Changed From GTA V Is Not Only the Size of the Map
+
+The obvious upgrades — [map size](/en/news/52), graphics, NPC counts — have driven most of the GTA VI conversation so far.
+
+Looking at what has come out this time, though, what Rockstar has really invested in may be the density of things you can do.
+
+Find a Burger Shot and you can actually go in. Stay in your car and you can use the drive-thru. Spot a car you want and you can look up its value and its security on your phone. For a luxury car, bring the right tool. If an NPC drops something, you may be able to pick it up and use it.
+
+None of these is large on its own.
+
+But wire enough of these small systems together across Leonida and you get an open world where things you did not plan for keep happening.
+
+It looks like an attempt to take the "living inside a world" quality Rockstar chased in Red Dead Redemption 2 into a modern metropolis, and combine it with the crime and black humor that belong to GTA.
+
+---
+
+## There May Be More to Come From TGG
+
+Parts of what is covered here can be confirmed from multiple sources, because Rob Nelson explained them directly to IGN, Famitsu and others. Other parts — the Burger Shot drive-thru among them — currently rest mainly on TGG's account of his Rockstar North visit.
+
+So none of it should be treated as carrying the same weight as an official Rockstar announcement.
+
+What is interesting is that days after Extended Look, new material is still emerging from the people who went to Rockstar North.
+
+TGG, who watched about three hours, along with El Rubius, Davy Jones and Mike ShowSha — [the overseas creators invited to Rockstar North](/en/news/53) — all saw gameplay that never made the official footage.
+
+And on the press side, IGN, Famitsu and Esquire Australia, all briefed directly by Rockstar, may still have details that have not been dug out.
+
+GTA6 FEED will keep following the videos, streams and articles of the creators and outlets who saw GTA VI at Rockstar North, and will cover new information as it is confirmed.
+
+What Extended Look showed may have been only a small part of Leonida.
+
+Even in a single basic action — stealing a car — you can start to make out how much of the series GTA VI is rebuilding.
+
+---
+
+> **Note:** The portions of this article covering the vehicle theft system, GPS trackers, carjacking and NPC variety are based on what Rob Nelson of Rockstar North explained directly to outlets including IGN and Famitsu. Entering Burger Shot and using its drive-thru currently rests mainly on the account of TGG, who saw GTA VI at Rockstar North, and is not a specification announced by Rockstar Games. The dog waste bag interaction is reported by both TGG and Esquire Australia. Japanese-language passages are summarized or paraphrased by the editorial team. All images were generated with AI to illustrate the article and are not actual game footage or official UI.`,
+  },
+  {
     id: 53,
     title:
       "Rockstar Northに招待されたGTA6海外クリエイターまとめ｜TGG・El Rubius・Davy Jonesらが見た「発売前のGTA VI」",
