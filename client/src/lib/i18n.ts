@@ -620,7 +620,7 @@ const JA: Dict = {
   'brd.bad': 'バッド',
   'brd.pg.latest': '最新50',
   'brd.pg.all': '全部',
-  'brd.jumpBottom': '一番下へ',
+  'brd.jumpBottom': '最新レスへ',
   'brd.full':
     'このスレッドは1000レスに到達したため書き込めません。新しいスレを立ててください。',
   'brd.replyPlaceholder': '返信を入力…',
@@ -1216,7 +1216,7 @@ const EN: Dict = {
   'brd.bad': 'Dislike',
   'brd.pg.latest': 'Latest 50',
   'brd.pg.all': 'All',
-  'brd.jumpBottom': 'Jump to bottom',
+  'brd.jumpBottom': 'To latest',
   'brd.full':
     'This thread has reached 1000 replies and is closed. Please start a new thread.',
   'brd.replyPlaceholder': 'Write a reply…',
