@@ -34,15 +34,35 @@ const REPORTED_KEY = 'board_reported_posts';
 // 爆サイ風ページング。1ページ＝50レス固定。
 const PAGE_SIZE = 50;
 
-// 表示モード。latest=最新50 / all=全部 / range=範囲ページ（1-50, 51-100, …）
-type PostView = { mode: 'latest' } | { mode: 'all' } | { mode: 'range'; page: number };
+// 表示モード。all=全部 / range=ページ表示。
+type PostView = { mode: 'all' } | { mode: 'range'; page: number };
+
+// 総レス数からページ数。50件以下なら1ページ。
+const pageCountOf = (total: number): number =>
+  total <= PAGE_SIZE ? 1 : Math.ceil(total / PAGE_SIZE);
+
+// 先頭ページの件数。最新（末尾）ページが常に最大50件で埋まるよう、端数は先頭ページへ寄せる。
+// 例）66件 → 先頭16件・末尾50件。スカスカになるのは一番古い先頭ページだけ。
+const firstPageSizeOf = (total: number): number =>
+  total - (pageCountOf(total) - 1) * PAGE_SIZE;
+
+// ページ番号 → post_number の範囲 [from, to]。
+const rangeForPage = (page: number, total: number): [number, number] => {
+  const fps = firstPageSizeOf(total);
+  if (page <= 1) return [1, Math.max(0, fps)];
+  const from = fps + (page - 2) * PAGE_SIZE + 1;
+  return [from, Math.min(fps + (page - 1) * PAGE_SIZE, total)];
+};
+
+// post_number → それが含まれるページ番号。
+const pageOfPost = (n: number, total: number): number => {
+  const fps = firstPageSizeOf(total);
+  return n <= fps ? 1 : 2 + Math.floor((n - fps - 1) / PAGE_SIZE);
+};
 
 // モードと総レス数から、取得すべき post_number の範囲 [from, to] を求める。
-const rangeFor = (v: PostView, total: number): [number, number] => {
-  if (v.mode === 'latest') return [Math.max(1, total - PAGE_SIZE + 1), total];
-  if (v.mode === 'range') return [(v.page - 1) * PAGE_SIZE + 1, v.page * PAGE_SIZE];
-  return [1, total];
-};
+const rangeFor = (v: PostView, total: number): [number, number] =>
+  v.mode === 'all' ? [1, total] : rangeForPage(v.page, total);
 
 // このブラウザで通報済みの post id 集合（UIでボタンを抑制するだけ。本当の重複防止はサーバー側）
 const loadReported = (): Set<string> => {
@@ -138,18 +158,31 @@ export default function BoardThread() {
       scrollHighlight(n);
       return;
     }
-    // 現在のページに無い＝別ページ。該当範囲ページへ切り替えてから描画後にスクロール。
+    // 現在のページに無い＝別ページ。該当ページへ切り替えてから描画後にスクロール。
     const total = thread?.post_count ?? 0;
     if (!threadId || n < 1 || n > total) return;
-    await loadPosts(threadId, total, { mode: 'range', page: Math.ceil(n / PAGE_SIZE) });
+    await loadPosts(threadId, total, { mode: 'range', page: pageOfPost(n, total) });
     window.setTimeout(() => scrollHighlight(n), 120);
   };
 
-  // 現在表示中の最後（最新）のレスまで一気にスクロールする。
-  const jumpToBottom = () => {
+  const scrollToLastPost = () => {
     const els = document.querySelectorAll('[id^="post-"]');
-    const last = els[els.length - 1];
-    last?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    (els[els.length - 1] as HTMLElement | undefined)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+  };
+
+  // 「最新レスへ」。最新（末尾）ページでなければ切り替えてから、最新レスまでスクロール。
+  const jumpToBottom = async () => {
+    const total = thread?.post_count ?? 0;
+    const lastPage = pageCountOf(total);
+    if (threadId && view.mode === 'range' && view.page !== lastPage) {
+      await loadPosts(threadId, total, { mode: 'range', page: lastPage });
+      window.setTimeout(scrollToLastPost, 120);
+    } else {
+      scrollToLastPost();
+    }
   };
 
   // 本文をレンダリング：>>N をアンカーリンクに、URL をクリック可能なリンクに変換する
@@ -231,7 +264,7 @@ export default function BoardThread() {
     setView(v);
   };
 
-  const load = async (forceView?: PostView) => {
+  const load = async (forceView?: PostView | 'last') => {
     if (!threadId) return;
     setLoading(true);
     const { data: t, error: te } = await getThread(threadId);
@@ -258,13 +291,16 @@ export default function BoardThread() {
       setPostImages(byPost);
       setThreadImages(noPost);
     }
-    // 初期表示モードを決める。強制指定＞URLの#post-N＞既定（50超なら最新50、以下なら全部）。
+    // 初期表示モードを決める。強制指定＞URLの#post-N＞既定（最新＝末尾ページ）。
     const total = thread.post_count ?? 0;
-    let v = forceView;
-    if (!v) {
+    const lastPage = pageCountOf(total);
+    let v: PostView;
+    if (forceView === 'last') v = { mode: 'range', page: lastPage };
+    else if (forceView) v = forceView;
+    else {
       const hm = window.location.hash.match(/^#post-(\d+)$/);
-      if (hm && total > PAGE_SIZE) v = { mode: 'range', page: Math.ceil(Number(hm[1]) / PAGE_SIZE) };
-      else v = total > PAGE_SIZE ? { mode: 'latest' } : { mode: 'all' };
+      if (hm) v = { mode: 'range', page: pageOfPost(Number(hm[1]), total) };
+      else v = { mode: 'range', page: lastPage };
     }
     await loadPosts(threadId, total, v);
     setLoading(false);
@@ -355,8 +391,8 @@ export default function BoardThread() {
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     setBody('');
     toast.success(tr('brd.toast.posted') + imageNote);
-    // 投稿直後は最新レスを表示して、自分の書き込みが見えるようにする。
-    load({ mode: 'latest' });
+    // 投稿直後は最新（末尾）ページを表示して、自分の書き込みが見えるようにする。
+    load('last');
   };
 
   if (!match) return null;
@@ -366,9 +402,9 @@ export default function BoardThread() {
   const boardColor = boardColorFor(board?.accent);
   const total = thread?.post_count ?? 0;
   const full = total >= 1000;
-  const pageCount = Math.ceil(total / PAGE_SIZE);
-  // レスが50件を超えたときだけ爆サイ風のページ切替バーを出す。
-  const showPager = total > PAGE_SIZE;
+  const pageCount = pageCountOf(total);
+  // レスが50件を超えたとき（＝2ページ以上）だけページ切替バーを出す。
+  const showPager = pageCount > 1;
 
   // ページ切替バー。最新50 / ◀ 1 2 3 … ▶ / 全部（ページ番号を丸ボタンで表示）。
   const renderPager = (place: 'top' | 'bottom') => {
@@ -386,14 +422,6 @@ export default function BoardThread() {
       `${circle} ${disabled ? 'border-white/10 text-white/25 cursor-not-allowed' : idle}`;
     return (
       <div className={`flex items-center gap-1.5 overflow-x-auto no-scrollbar ${place === 'top' ? 'mt-4 mb-1' : 'mt-3'}`}>
-        <button
-          type="button"
-          onClick={() => changeView({ mode: 'latest' })}
-          className={pill + (view.mode === 'latest' ? '' : ` ${idle}`)}
-          style={view.mode === 'latest' ? activeStyle : undefined}
-        >
-          {tr('brd.pg.latest')}
-        </button>
         <button
           type="button"
           disabled={currentPage <= 1}
