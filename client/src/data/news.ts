@@ -228,6 +228,7 @@ export const newsArticles: NewsArticle[] = [
     category: "topic",
     date: "2026-08-30",
     publishedAt: "2026-08-30 18:30",
+    updatedAt: "2026-08-31",
     source:
       "TGG（The Gaming Gorilla）／IGN Rob Nelson氏インタビュー／ファミ通 Rob Nelson氏独占インタビュー／Esquire Australia ほか",
     sourceUrl: "https://x.com/TGGonYT",
@@ -320,6 +321,22 @@ Rob Nelson氏によれば、道路を走っている車については、これ�
 『GTA VI』では「車を盗めるかどうか」ではなく、「どれだけ静かに、効率よく盗むか」が重要になっているようだ。
 
 これは、すでに明らかになっている[犯罪プロファイル](/news/53)とも相性がいい。必要以上に暴力を使わず犯罪を成功させるプレイと、目についた車を強引に奪って逃げるプレイの両方を成立させ、その選択をプレイヤーへ委ねる設計になっていると考えられる。
+
+---
+
+## 盗んだ後の運転も別物に？ GTA6の車両挙動はゼロから再構築
+
+車を探し、スマートフォンでスキャンし、必要な道具を使って盗み、警察を振り切り、売却するか自分の車として登録する。ここまで整理してきた一連の流れの中心にあるのは、結局のところ車を運転している時間そのものだ。そしてTGGによれば、その運転部分もまた作り直されているという。
+
+TGGはRockstar Northで、共同スタジオ責任者のRob Nelson氏へ『GTA VI』のドライビングについて直接質問している。内容は「GTA IVのような重量感のある挙動になるのか」というもので、GTA IVの車の重さや慣性を好んできたプレイヤーにとっては長年の関心事だった。
+
+Rob Nelson氏の回答としてTGGが伝えているところによると、GTA IVの重量感やフィーリングの良かった部分は残しつつ、当時うまくいっていなかった部分は取り除き、GTA Vの操作しやすさも含めて各作品の良い部分を組み合わせているという。『GTA VI』の車両挙動は現行世代のハードへ向けてゼロから再構築されており、タイヤ、サスペンション、ステアリング、路面や地形ごとの反応といった車を構成する各要素を、従来作よりも細かく制御できるように開発が進められている。
+
+ここで注意しておきたいのは、これが「GTA IVの挙動がそのまま復活する」という話ではないことだ。Rob Nelson氏の説明はあくまで、GTA IVの重量感とGTA Vの扱いやすさという、これまで両立の難しかった長所を組み合わせる方向性を示したものになる。
+
+また、TGGが参加したのはRockstar側がゲームを操作するハンズオフプレビューであり、TGG自身がコントローラーを握って運転したわけではない。そのため実際の操作感について、本人も断定的な説明はしていない。Extended Lookの映像を見て「車に重量感がありそうだ」と感じた人は多いが、それは映像から受けた印象であって、Rockstarが確定情報として発表した挙動ではない。
+
+どの車をどう盗むかだけではなく、盗んだ車をどう走らせるかまで含めて、『GTA VI』では車まわりの体験そのものが組み直されているようだ。
 
 ---
 
@@ -421,6 +438,16 @@ Extended Lookで見えたのは、Leonidaのほんの一部だったのかもし
 
 ---
 
+## 更新履歴
+
+**2026年8月30日：初版公開**
+
+段階制になった車両盗難、スマートフォンの車両スキャンアプリ、Burger Shotの店内利用とドライブスルー、犬のフン袋のインタラクションなど、TGGの追加証言とRob Nelson氏の説明をまとめた。
+
+**2026年8月31日：TGGとRob Nelson氏のやり取りをもとに、GTA6の車両挙動・ドライビングシステムが現行世代向けに再構築されていることを追記**
+
+---
+
 > **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。日本語部分は編集部訳・要約を含む。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。`,
     titleEn:
       "Grand Theft Auto, Literally: TGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs",
@@ -519,6 +546,22 @@ That fits neatly with the [criminal profile](/en/news/53) already described. The
 
 ---
 
+## Driving the Car You Stole Has Been Rebuilt From Scratch Too
+
+Find a car, scan it with your phone, take it with the right tool, shake off the police, then sell it or register it as your own. At the center of that entire loop is the time you actually spend driving — and according to TGG, that part has been rebuilt as well.
+
+At Rockstar North, TGG put a question about GTA VI's driving directly to co-studio head Rob Nelson: would the handling carry the weight of GTA IV? For players who liked the heft and inertia of GTA IV's cars, it has been a long-standing question.
+
+As TGG relays the answer, the team has kept what felt good about GTA IV's sense of weight while stripping out what did not work at the time, combining the strengths of each game — GTA V's ease of control included. GTA VI's vehicle handling has been rebuilt from the ground up for current-generation hardware, with tires, suspension, steering and how a car responds to different road surfaces and terrain all built to be controlled in finer detail than in previous titles.
+
+Worth being clear about: this is not a statement that GTA IV's handling returns as it was. What Nelson described is a direction — combining GTA IV's weight with GTA V's manageability, two qualities the series has struggled to deliver at once.
+
+TGG also attended a hands-off preview, with Rockstar operating the game; he never held a controller himself, and he has not made definitive claims about how it feels to drive. Plenty of people came away from Extended Look thinking the cars look weighty, but that is an impression taken from footage rather than handling Rockstar has confirmed.
+
+Not just which car you steal and how, then, but how the stolen car drives — the whole experience around vehicles appears to have been reassembled for GTA VI.
+
+---
+
 ## Burger Shot Actually Works — With a Drive-Thru?
 
 TGG has also brought out information pointing in an entirely different direction from crime.
@@ -614,6 +657,16 @@ GTA6 FEED will keep following the videos, streams and articles of the creators a
 What Extended Look showed may have been only a small part of Leonida.
 
 Even in a single basic action — stealing a car — you can start to make out how much of the series GTA VI is rebuilding.
+
+---
+
+## Update Log
+
+**August 30, 2026: first published**
+
+Collected TGG's additional testimony and Rob Nelson's explanations, covering tiered vehicle theft, the phone's vehicle scanning app, entering Burger Shot and its drive-thru, and the dog waste bag interaction.
+
+**August 31, 2026: added, from the exchange between TGG and Rob Nelson, that GTA VI's vehicle handling and driving system have been rebuilt for the current console generation**
 
 ---
 
