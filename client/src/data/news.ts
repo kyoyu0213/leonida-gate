@@ -216,6 +216,581 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 56,
+    title:
+      "GTA6公式サイトにスクリーンショット29枚追加――本当に「初公開」だった3枚と、画像から見える4つの変化",
+    displayTitle:
+      "GTA6公式サイトにスクリーンショット29枚追加\n本当に「初公開」だった3枚と、画像から見える4つの変化",
+    description:
+      "2026年8月31日、GTA6公式サイトのギャラリーへスクリーンショット29枚が追加された。その大半はExtended Look公開週にメディアへ配布済みの4K素材だが、海外では3枚が初公開とみられている。車内のJasonとLucia、銃を手に並ぶ2人、人物のいないVice City――29枚全体から見える4つの変化を整理する。",
+    icon: "📸",
+    image: "/images/news/gta6-official-screenshots-29/jason-and-lucia-01.webp",
+    category: "topic",
+    date: "2026-08-31",
+    publishedAt: "2026-08-31 22:00",
+    source: "Rockstar Games公式サイト GTA VIスクリーンショットギャラリー／HobbyConsolas ほか",
+    sourceUrl: "https://www.rockstargames.com/VI/screenshots",
+    relatedArticles: [54, 53, 52],
+    aiSummary: [
+      "2026年8月31日、Rockstar Games公式サイトのGTA6ギャラリーにスクリーンショット29枚が追加された。大半は8月27日の「An Extended Look」公開に合わせて海外メディアへ配布された4Kプレス素材で、公式サイトへ集約されたのが今回。「29枚すべてが新規公開」ではない点に注意が必要だ。",
+      "一方、HobbyConsolasなど海外メディアは、この29枚のうち3枚がこれまで一般に確認されていなかったと報じている。車内でドリンクを手にするJasonとドアへ身を寄せるLucia、銃を持って並ぶ2人のローアングル、そして人物のいないVice Cityの湾岸建築という、いずれも派手さのない3枚だった。",
+      "29枚全体からは、JasonとLuciaが現場を共有するペアとして設計されていること、2人の外見バリエーションが大きいこと、昼のVice Cityの情報密度が高いこと、そして「景色を見せる観光写真」より強盗・逃走・対峙といった行動の瞬間が多いことが読み取れる。ただし操作仕様の断定はできず、画像から言えることと推測は分けて扱う必要がある。",
+    ],
+    fullContent: `# GTA6公式サイトにスクリーンショット29枚追加――本当に「初公開」だった3枚と、画像から見える4つの変化
+
+2026年8月31日、Rockstar Gamesの『Grand Theft Auto VI』公式サイトに、大量のスクリーンショットが追加された。
+
+今回追加されたのは29枚。GTA6の新しい映像「Grand Theft Auto VI: An Extended Look」が公開された8月27日前後に海外メディアやクリエイター向けに提供されていた4K画像を中心に、公式ギャラリーへまとめて収録したものだ。
+
+そのため、「GTA6の完全新規スクリーンショットが29枚公開された」と理解すると少し違う。
+
+29枚の大部分はExtended Look公開週にIGNをはじめとする海外メディアなどですでに掲載されていた画像で、今回初めてRockstar公式サイトに集約されたもの。一方、海外メディアやコミュニティでは、この29枚の中に、それまで一般公開されていなかったとみられる3枚が含まれていることが指摘されている。
+
+そして、この3枚がなかなか興味深い。
+
+派手な爆発や巨大な新ロケーションではない。JasonとLuciaが車で過ごす何気ない時間、銃を手に並ぶ2人、そして人物すら登場しないVice Cityの建築物だ。
+
+しかし29枚全体を眺めていくと、Rockstarが今回見せようとしているものが少しずつ見えてくる。
+
+それは単なる「GTA6はこんなに綺麗です」というグラフィックの宣伝ではない。JasonとLuciaがどのように一緒に行動し、プレイヤーが2人をどう変え、巨大なVice Cityの中で何をするゲームなのか。
+
+今回の記事では、新たに公式ギャラリーへ追加された29枚を整理しながら、特に注目したいポイントを見ていく。
+
+---
+
+## GTA6公式ギャラリーに29枚が追加
+
+Rockstar Games公式サイトのGTA6スクリーンショットギャラリーには、今回の更新によって29枚が追加された。
+
+ここでまず整理しておきたいのが、「公式サイトへの追加」と「世界初公開」は同じではないということだ。
+
+今回追加された画像の多くは、8月27日のExtended Look公開に合わせてメディアへ提供されたプレス素材とみられる。映像から単純にフレームを切り出したものではなく、ゲーム内の場面を高解像度の静止画として撮影した公式素材だ。
+
+つまり、すでに海外メディアの記事を追っていた人なら見覚えのある画像も多い。
+
+一方で、海外メディアHobbyConsolasなどは、今回の公式サイト更新によってこれまで確認されていなかった3枚の画像が登場したと報じている。
+
+まずは、その3枚から見ていこう。
+
+---
+
+## 初公開とされる1枚目――車内で過ごすJasonとLucia
+
+![オープンカーの助手席側のドアに腕をのせて外を眺めるLuciaと、運転席でドリンクを手にしたJason。背景にはVice Cityの高層ビル群が広がる](/images/news/gta6-official-screenshots-29/jason-and-lucia-03.webp)
+
+最初の1枚は、JasonとLuciaが車に乗っている場面だ。
+
+Jasonは運転席に座り、ドリンクを手にしている。その隣ではLuciaがドア側へ身体を寄せ、外の景色を眺めている。
+
+銃撃戦でもなければ、強盗でもない。
+
+むしろ注目したいのは、犯罪とは関係のない2人の日常が切り取られていることだ。
+
+これまでGTA6の宣伝では、JasonとLuciaは犯罪を共にするカップルとして描かれてきた。銀行や店舗を襲い、警察から逃げ、銃を持って行動する姿は何度も登場している。
+
+しかしGTA6が長時間のオープンワールドゲームである以上、2人が一緒にいる時間のすべてが犯罪になるわけではない。
+
+車で街を走る。食事をする。会話をする。目的地まで移動する。
+
+今回の1枚は、犯罪と犯罪の**あいだにある時間**までJasonとLuciaの関係を描こうとしている可能性を感じさせる。
+
+もちろん、静止画だけから車内会話システムなどの具体的な仕様を断定することはできない。
+
+それでも、Rockstarがわざわざこの何気ない場面を公式スクリーンショットとして選んだこと自体は興味深い。
+
+---
+
+## 初公開とされる2枚目――銃を持って並ぶ2人
+
+![蛍光灯の下、ローアングルで見上げるように捉えられたLuciaとJason。2人ともそれぞれ拳銃を手にしている](/images/news/gta6-official-screenshots-29/jason-and-lucia-07.webp)
+
+もう1枚は、下からJasonとLuciaを見上げるようなローアングルの画像だ。
+
+2人はそれぞれ銃を持ち、肩が触れる位置に並んで立っている。
+
+こちらは先ほどとは対照的に、GTA6の「犯罪者としての2人」を強く押し出した構図になっている。
+
+しかし、ここでも注目したいのは銃そのものではない。
+
+2人の距離だ。
+
+GTA6ではJasonとLuciaを単に2人の操作キャラクターとして並べるのではなく、2人の関係を物語の中心に置いていることが、これまでのトレーラーや公式紹介でも繰り返し示されてきた。
+
+今回の画像でも、2人はそれぞれ独立して立っているのではなく、身体が触れるほど近い。
+
+日常では車に並んで座り、犯罪の現場では武器を持って並ぶ。
+
+今回追加された画像を続けて見ると、RockstarがGTA6を「Jasonの物語＋Luciaの物語」ではなく**ひとつづきの物語**として見せようとしていることが改めて伝わってくる。
+
+---
+
+## 初公開とされる3枚目――人物のいないVice City
+
+![Vice Cityの湾岸に建つ、波打つような曲線を持つ2棟の高層タワー。手前の水面をボートが走り、上空をヘリコプターが飛んでいる](/images/news/gta6-official-screenshots-29/vice-city-10.webp)
+
+3枚目はさらに変わっている。
+
+JasonもLuciaもいない。
+
+写っているのは、Vice Cityの海岸沿いに建つ特徴的な曲線を持った建築物と、その周辺の都市景観だ。
+
+GTA6といえばネオン、高級車、ビーチ、ヤシの木という派手なイメージが先行しがちだが、今回Rockstarが人物のいない建築写真のような画像を公式ギャラリーへ加えたことは、Leonidaそのものもひとつの主役として扱っていることを感じさせる。
+
+特に最近公開された画像では、夜のネオンだけではなく日中のVice Cityを見せる場面が増えている。
+
+そして、今回追加された29枚全体を見ると、この「昼の街」がかなり重要だ。
+
+---
+
+## 29枚から見えてくる① JasonとLuciaは「現場で動くペア」
+
+![ダートバイクの後部座席から拳銃を構えるLuciaと、それを運転するJason。背後にはパトカーが迫り、上空を警察のヘリコプターが追っている](/images/news/gta6-official-screenshots-29/jason-and-lucia-09.webp)
+
+初公開とされる3枚以外にも、今回公式サイトへ追加された画像にはJasonとLuciaが一緒に行動している場面が数多く含まれている。
+
+車やバイクへ同乗する場面、強盗、室内で誰かと対峙している場面など、その状況はさまざまだ。
+
+ここから感じられるのは、2人が単にストーリー上の恋人として存在しているのではなく、実際のゲームプレイでも一緒に行動する「相棒」として設計されていることだ。
+
+GTA5ではMichael、Franklin、Trevorという3人の主人公が、それぞれ別の生活や人間関係を持ちながら必要に応じて合流した。
+
+GTA6は少し違う。
+
+今回のスクリーンショットを見る限り、JasonとLuciaが同じ場所にいること自体がゲームの基本的な風景になっている。
+
+Extended Lookで示されたキャラクター切り替えなどの情報と組み合わせて考えると、GTA6では「どちらを操作するか」だけでなく、操作していないもう一人がその場で何をするのかも重要になりそうだ。
+
+ただし、静止画だけから自由なタイミングでの切り替えや、同乗時の運転・射撃交代といった具体的な操作仕様までは断定できない。
+
+---
+
+## 29枚から見えてくる② LuciaとJasonはかなり見た目が変わる
+
+![チェックキャッシングの店先で、ダッフルバッグを肩にかけ拳銃を手にしたLucia。グレーのパーカーとレギンス姿](/images/news/gta6-official-screenshots-29/lucia-caminos-08.webp)
+
+今回の画像群で、もうひとつ分かりやすいのが外見の変化だ。
+
+同じLuciaでも、画像によって髪型や服装が大きく違う。アクセサリーやタトゥーが確認できる場面もあり、Jasonについても服装やスタイルの違いが見られる。
+
+1枚だけなら「ストーリー進行によって衣装が変わっただけ」と考えることもできる。
+
+しかし、これまで公開された映像やスクリーンショットまで並べてみると、同じキャラクターとは思えないほど印象が変わるケースもある。
+
+![夕暮れの水上で、キャップをかぶり水上機の脇に立つJason。背後には警察のボートが見える](/images/news/gta6-official-screenshots-29/jason-duval-08.webp)
+
+少なくとも、GTA5よりも主人公の外見を変えることを強く意識した作品であることは伝わってくる。
+
+髪型、衣服、アクセサリー、タトゥー。
+
+さらにDazedによるRockstarへの取材では、キャラクターの身体的な変化についても言及されている。
+
+ただし注意したいのは、今回の29枚だけで「体重を自由に変更できる」「筋肉量を好きな数値にできる」といった具体的な仕様まで確認できるわけではないことだ。
+
+スクリーンショットから確実に言えるのは、JasonとLuciaの見た目にはかなり大きなバリエーションが存在するというところまでだろう。
+
+---
+
+## 29枚から見えてくる③ 昼のVice Cityが想像以上に重要
+
+GTA6のVice Cityと聞いて、多くの人が最初に想像するのは夜だろう。
+
+![夕暮れのVice City。手前の高層ビルの奥に観覧車と湾岸のネオンが広がり、上空をヘリコプターが飛んでいる](/images/news/gta6-official-screenshots-29/vice-city-11.webp)
+
+ピンクとブルーのネオン、クラブ、高級車、ヤシの木。そのイメージは初期のプロモーションでも強く押し出されてきた。
+
+しかし今回のスクリーンショットでは、日中のVice Cityがかなり印象的だ。
+
+ウォーターフロントの向こうに高層建築が並び、海にはボートが浮かび、上空にはヘリコプターが飛ぶ。道路、建物、水面、空という異なる空間に同時にオブジェクトが存在し、一枚の画像の中だけでもかなりの情報量がある。
+
+これは「マップが広い」ことを証明する画像ではない。
+
+むしろ見えてくるのは、都市の密度だ。
+
+[先行プレビューではGTA6の世界がGTA5より大幅に大きいという比較](/news/52)も伝えられているが、巨大なマップを作るだけなら、それほど難しい話ではない。重要なのは、その空間をどれだけ意味のある場所で埋められるかだ。
+
+今回の日中スクリーンショットは、Rockstarが「広いLeonida」だけでなく、近い距離にも大量の情報が存在するLeonidaを作ろうとしていることを強く印象づける。
+
+---
+
+## 29枚から見えてくる④ 「観光写真」よりゲームプレイの瞬間が多い
+
+![宝飾店の店内で、ショーケースのガラスが砕け散るなか自動小銃を構えるJasonと、その奥で拳銃を天井へ向けるLucia](/images/news/gta6-official-screenshots-29/jason-and-lucia-04.webp)
+
+そして今回の29枚で最も重要なのがここかもしれない。
+
+これまでのGTA6スクリーンショットには、美しい景色やキャラクターを見せる「観光ポスター」のような画像も多かった。
+
+今回のセットは少し違う。
+
+強盗、誰かとの対峙、バイクでの逃走、警察のヘリコプター、車への同乗、室内での会合。
+
+「この世界がどんな場所なのか」だけではなく、「この世界で何をするのか」が見える画像が多い。
+
+たとえば、ダートバイクに2人で乗り、上空から警察ヘリに追われている場面。
+
+これだけでも、GTA6らしいゲームプレイの構造が凝縮されている。
+
+2人で犯罪を起こし、乗り物で逃げ、警察に追跡される。その途中でJasonとLuciaが異なる役割を担う。
+
+![ガラス扉の向こう、薄暗い室内で複数の人物に囲まれるように向き合うJasonとLucia](/images/news/gta6-official-screenshots-29/jason-and-lucia-05.webp)
+
+同じように、室内で相手を取り囲む場面も、単なる人物紹介ではなく「誰かから情報を聞き出しているのではないか」と想像させる構図になっている。
+
+もちろん、それが自由操作できる尋問システムなのか、ミッション中の演出なのかは画像だけでは分からない。
+
+だからこそ、スクリーンショットから見えるものと、そこから先の推測は分けて考える必要がある。
+
+---
+
+## 6月の63枚とは役割がまったく違う
+
+GTA6では6月の予約開始時にも大量の画像が公開されている。
+
+Ultimate EditionやVintage Vice City Packなどに関連した素材を含めると、こちらも非常に大きな画像セットだった。
+
+しかし、今回の29枚とは目的が違う。
+
+6月の画像群がエディションや特典、衣装、車両など**購入すると何が手に入るのか**を伝えるカタログ的な役割を持っていたのに対し、今回の29枚は**GTA6を遊ぶとどんな瞬間に出会うのか**を見せるものになっている。
+
+JasonとLuciaが車に乗る。街を歩く。誰かと対峙する。犯罪を起こす。警察から逃げる。
+
+その合間に、巨大なVice Cityの風景が広がっている。
+
+![炎上する車の前を、それぞれアタッシュケースとダッフルバッグ、そしてライフルを手にして歩き去るLuciaとJasonの後ろ姿](/images/news/gta6-official-screenshots-29/jason-and-lucia-08.webp)
+
+一枚ずつ見れば小さな情報だが、29枚をひとつのセットとして見ると、Rockstarが発売前のプロモーションを次の段階へ進めていることが分かる。
+
+---
+
+## なぜRockstarは今、29枚を公式サイトへ集めたのか
+
+[Extended Look](/news/48)によって、GTA6について分かる情報量は一気に増えた。
+
+映像では数秒で通り過ぎてしまう場面も、4Kのスクリーンショットなら止めて見ることができる。
+
+髪型、タトゥー、NPC、看板、車、建築物、水面の反射、遠景の交通。
+
+そうした細部は、動画を普通に再生しているだけでは見落としやすい。
+
+今回の29枚を公式ギャラリーへ追加した意味は、単純な「新画像公開」というより、Extended Lookで見せたGTA6を高解像度の静止画として改めて観察できるようにしたことにあるのだろう。
+
+そして、その中へ初公開とされる3枚も混ぜられた。
+
+派手な新キャラクターでも、新しい都市でもない。
+
+車で過ごすJasonとLucia、銃を手に並ぶ2人、Vice Cityの建築。
+
+そこから見えてくるのは、発売が近づくにつれてRockstarの宣伝が「GTA6には何があります」から、「GTA6でどんな時間を過ごすのか」へ変わり始めていることだ。
+
+---
+
+## 今回の29枚は、4Kで見てほしい
+
+![夕日を背に見つめ合うJasonとLucia。周囲の湿地には保安官のエアボートが集まり、上空にはヘリコプターが旋回している](/images/news/gta6-official-screenshots-29/jason-and-lucia-13.webp)
+
+スマートフォンの小さな画像だけでは、今回のスクリーンショットの価値はかなり失われる。
+
+特に日中のVice City、水面や車体の反射、JasonとLuciaの髪や衣服、背景にいるNPCや車両などは、公式サイトで高解像度画像を開いて初めて気づく部分が多い。
+
+→ [GTA VI公式スクリーンショットギャラリー（Rockstar Games）](https://www.rockstargames.com/VI/screenshots)
+
+今回の更新を「スクリーンショット29枚追加」で終わらせるのは、少しもったいない。
+
+29枚を通して見えてくるのは、JasonとLuciaは常に現場を共有するペアであり、2人の外見は大きく変化し、Vice Cityは昼でも圧倒的な情報量を持ち、ゲームプレイは強盗や追跡といった行動する場面へ踏み込んできたということだ。
+
+そして、その中で本当に初めて姿を見せたとされる3枚が、派手な爆発ではなく「2人の日常」「2人の距離」「Vice Cityそのもの」だったことも興味深い。
+
+GTA6の発売が近づくにつれて、Rockstarが見せ始めているのはゲームの機能一覧ではない。
+
+LeonidaでJasonとLuciaとして生きる時間そのものなのかもしれない。
+
+---
+
+> **注記：** 本記事に掲載したスクリーンショットは、Rockstar Gamesが公式サイトのGTA VIギャラリーで公開しているプレス素材にもとづく（表示用に幅1280pxへ縮小）。著作権はRockstar Games／Take-Two Interactiveに帰属する。29枚のうち3枚が初公開とされる点はHobbyConsolasなど海外メディアの報道にもとづくもので、Rockstarが「初公開」と明言したものではない。画像から読み取れる内容と、そこから先のゲーム仕様に関する推測は本文中で区別している。`,
+    titleEn:
+      "29 Screenshots Added to the Official GTA6 Site — the 3 That Really Were New, and 4 Shifts Visible in the Set",
+    displayTitleEn:
+      "29 Screenshots Added to the Official GTA6 Site\nThe 3 That Really Were New, and 4 Shifts Visible in the Set",
+    descriptionEn:
+      "On August 31, 2026, 29 screenshots were added to the official GTA6 gallery. Most were 4K press assets already distributed to media during Extended Look week, but three are reported overseas as previously unseen: Jason and Lucia in a car, the pair standing together armed, and a Vice City building with no one in it. Here is what the full set of 29 shows.",
+    aiSummaryEn: [
+      "On August 31, 2026, 29 screenshots were added to the GTA6 gallery on Rockstar Games' official site. Most are 4K press assets distributed to overseas media around the August 27 release of \"An Extended Look,\" now collected on the official site. It is not accurate to read this as 29 brand-new images.",
+      "Outlets including HobbyConsolas report that three of the 29 had not been publicly seen before: Jason at the wheel with a drink while Lucia leans on the door watching the city go by, a low-angle shot of the pair standing armed side by side, and a stretch of Vice City waterfront architecture with no people in it at all.",
+      "Across the full set, four things stand out: Jason and Lucia are designed as a pair who share the scene, their appearances vary widely, daytime Vice City is denser than expected, and the images favor moments of action — heists, chases, confrontations — over scenery. Specific control mechanics cannot be inferred from stills, so what the images show is kept separate from speculation.",
+    ],
+    fullContentEn: `# 29 Screenshots Added to the Official GTA6 Site — the 3 That Really Were New, and 4 Shifts Visible in the Set
+
+On August 31, 2026, a large batch of screenshots was added to the official Grand Theft Auto VI site from Rockstar Games.
+
+Twenty-nine of them. They are mainly the 4K images supplied to overseas media and creators around August 27, when GTA6's new footage "Grand Theft Auto VI: An Extended Look" was released, now collected into the official gallery.
+
+So reading this as "29 completely new GTA6 screenshots have been released" is slightly off.
+
+Most of the 29 had already run on IGN and other overseas outlets during Extended Look week; what is new is their collection on Rockstar's own site. Overseas media and the community, however, have pointed out that three images among the 29 appear not to have been publicly released before.
+
+And those three are rather interesting.
+
+No dramatic explosion, no enormous new location. An unremarkable stretch of time Jason and Lucia spend in a car, the two of them standing side by side holding guns, and a piece of Vice City architecture with no people in it at all.
+
+Look across all 29, though, and what Rockstar is trying to show starts to come into focus.
+
+It is not simply an advertisement for how good GTA6 looks. It is about how Jason and Lucia act together, how the player changes them, and what kind of game you are playing inside a vast Vice City.
+
+Below, a look through the 29 newly added images and the points worth paying attention to.
+
+---
+
+## 29 Images Added to the Official GTA6 Gallery
+
+This update added 29 images to the GTA6 screenshot gallery on Rockstar Games' official site.
+
+The first thing to sort out: "added to the official site" is not the same as "revealed for the first time."
+
+Most of what was added appears to be press material supplied to media alongside the August 27 release of Extended Look. These are not frames pulled from the video but official assets capturing in-game moments as high-resolution stills.
+
+If you were following coverage from overseas outlets, in other words, plenty of these will look familiar.
+
+At the same time, outlets including HobbyConsolas have reported that this official-site update brought three previously unconfirmed images to light.
+
+Start with those three.
+
+---
+
+## The First Reportedly New Image — Jason and Lucia in a Car
+
+![Lucia resting her arms on the passenger door watching the view go by, with Jason at the wheel holding a drink; Vice City's towers rise behind them](/images/news/gta6-official-screenshots-29/jason-and-lucia-03.webp)
+
+The first is a scene of Jason and Lucia riding in a car.
+
+Jason is in the driver's seat with a drink in his hand. Beside him, Lucia leans toward the door, watching the view outside.
+
+No gunfight. No robbery.
+
+What is worth noticing is that this captures a moment of the pair's ordinary life, with nothing criminal about it.
+
+GTA6's promotion so far has drawn Jason and Lucia as a couple who commit crimes together. They have appeared again and again hitting banks and stores, running from police, moving with guns in hand.
+
+But since GTA6 is a long open-world game, not every hour they spend together will be a crime.
+
+Driving through the city. Eating. Talking. Getting from one place to another.
+
+This image suggests Rockstar may be portraying their relationship in the **time between** crimes as well.
+
+Of course, a still on its own cannot confirm a specific feature such as an in-car conversation system.
+
+Even so, that Rockstar deliberately chose this unremarkable moment as an official screenshot is interesting in itself.
+
+---
+
+## The Second Reportedly New Image — Standing Side by Side, Armed
+
+![A low-angle shot under a fluorescent light of Lucia and Jason standing together, each holding a pistol](/images/news/gta6-official-screenshots-29/jason-and-lucia-07.webp)
+
+The second is a low-angle image looking up at Jason and Lucia.
+
+Each is holding a gun, and they stand close enough for their shoulders to touch.
+
+In contrast to the first, this composition pushes hard on the pair as criminals.
+
+But here too, the guns are not the point.
+
+The distance between them is.
+
+Rockstar's trailers and official material have repeatedly shown that GTA6 does not simply place Jason and Lucia side by side as two playable characters but puts their relationship at the center of the story.
+
+In this image as well, they are not standing independently; they are close enough to touch.
+
+In daily life they sit side by side in a car; at the scene of a crime they stand side by side with weapons.
+
+Looking at these newly added images in sequence, it comes across again that Rockstar is presenting GTA6 not as "Jason's story plus Lucia's story" but as **a single continuous one**.
+
+---
+
+## The Third Reportedly New Image — Vice City With No One In It
+
+![Two high-rise towers with rippling curved balconies on the Vice City waterfront, boats cutting across the water in front and a helicopter overhead](/images/news/gta6-official-screenshots-29/vice-city-10.webp)
+
+The third is stranger still.
+
+Neither Jason nor Lucia is present.
+
+What it shows is a distinctive curved building on the Vice City coastline and the cityscape around it.
+
+GTA6 tends to lead with flashy imagery — neon, luxury cars, beaches, palm trees — so Rockstar adding what amounts to an architectural photograph with no people in it suggests that Leonida itself is being treated as one of the leads.
+
+In recently released images in particular, there has been more of Vice City by day rather than only neon at night.
+
+And across the 29 added this time, that "city by daylight" matters a great deal.
+
+---
+
+## What the 29 Show, Part 1 — Jason and Lucia Are a Pair Who Work the Scene
+
+![Lucia aiming a pistol from the back of a dirt bike Jason is riding, a police cruiser closing in behind them and a police helicopter overhead](/images/news/gta6-official-screenshots-29/jason-and-lucia-09.webp)
+
+Beyond the three reportedly new images, many of the additions show Jason and Lucia acting together.
+
+Riding together in cars and on bikes, robberies, facing someone down indoors — the situations vary.
+
+What comes through is that the two are not merely lovers within the story but are designed as partners who act together in actual gameplay.
+
+In GTA5, Michael, Franklin and Trevor each had separate lives and relationships, converging when the story required it.
+
+GTA6 is somewhat different.
+
+Judging by these screenshots, Jason and Lucia being in the same place is the game's baseline scenery.
+
+Combined with what Extended Look showed about character switching, what matters in GTA6 may be not only which one you control but what the one you are not controlling does on the spot.
+
+That said, stills alone cannot confirm specific mechanics such as freely timed switching or trading driving and shooting duties while riding together.
+
+---
+
+## What the 29 Show, Part 2 — Lucia and Jason Change Appearance a Lot
+
+![Lucia outside a check-cashing storefront with a duffel bag over her shoulder and a pistol in her hand, in a grey hoodie and leggings](/images/news/gta6-official-screenshots-29/lucia-caminos-08.webp)
+
+Another thing this batch makes easy to see is how much their appearances change.
+
+The same Lucia has markedly different hair and clothing from image to image. Accessories and tattoos are visible in some, and Jason too shows differences in clothing and style.
+
+From a single image you could put it down to "the outfit changed as the story progressed."
+
+Line these up against previously released footage and screenshots, though, and there are cases where the impression changes so much it is hard to believe it is the same character.
+
+![Jason in a cap standing beside a seaplane on the water at dusk, a police boat visible behind him](/images/news/gta6-official-screenshots-29/jason-duval-08.webp)
+
+At minimum, it comes across that this is a game far more conscious than GTA5 about changing how its protagonists look.
+
+Hair, clothing, accessories, tattoos.
+
+Dazed's interview with Rockstar also touched on physical changes to the characters.
+
+What needs care, though, is that these 29 images alone do not confirm specific features such as "you can freely change body weight" or "you can set muscle mass to any value."
+
+What can be said with confidence from the screenshots is only that Jason and Lucia have a considerable range of appearances.
+
+---
+
+## What the 29 Show, Part 3 — Daytime Vice City Matters More Than Expected
+
+Ask most people to picture GTA6's Vice City and they will picture night.
+
+![Vice City at dusk, a Ferris wheel and waterfront neon spreading out beyond the tower in the foreground, a helicopter in the sky](/images/news/gta6-official-screenshots-29/vice-city-11.webp)
+
+Pink and blue neon, clubs, luxury cars, palm trees. Early promotion pushed that image hard.
+
+In these screenshots, though, Vice City by day is strikingly effective.
+
+High-rises line up beyond the waterfront, boats sit on the water, helicopters fly overhead. Objects occupy road, buildings, water and sky simultaneously, and a single image carries a considerable amount of information.
+
+This is not an image proving "the map is big."
+
+What it shows is density.
+
+Previews have also reported [comparisons indicating GTA6's world is substantially larger than GTA5's](/en/news/52), but simply building an enormous map is not that hard. What matters is how much of that space you can fill with places that mean something.
+
+These daytime screenshots make a strong case that Rockstar is building not just a wide Leonida but a Leonida with a great deal packed into short distances as well.
+
+---
+
+## What the 29 Show, Part 4 — More Gameplay Moments Than Postcards
+
+![Inside a jewelry store, Jason raising an assault rifle as a display case shatters, with Lucia behind him pointing a pistol upward](/images/news/gta6-official-screenshots-29/jason-and-lucia-04.webp)
+
+This may be the most important thing about the 29.
+
+Earlier GTA6 screenshots included a lot of "tourism poster" images showing off beautiful scenery and characters.
+
+This set is a little different.
+
+Robbery, a standoff, a getaway on a bike, a police helicopter, riding along in a car, a meeting indoors.
+
+Many of these images show not only what kind of place this world is but what you do in it.
+
+Take the pair riding a dirt bike while a police helicopter closes in from above.
+
+That alone compresses the structure of GTA6's gameplay.
+
+The two commit a crime, escape by vehicle, and get pursued by police — with Jason and Lucia taking different roles along the way.
+
+![Through a glass door, Jason and Lucia facing a group of people in a dim interior](/images/news/gta6-official-screenshots-29/jason-and-lucia-05.webp)
+
+Likewise, the scene of someone being surrounded indoors is composed less as a character introduction than to make you wonder whether information is being extracted from someone.
+
+Whether that is a freely controllable interrogation system or a scripted moment within a mission cannot be told from an image.
+
+Which is exactly why what the screenshots show and what is inferred beyond them need to be kept separate.
+
+---
+
+## A Completely Different Purpose From June's 63
+
+GTA6 also had a large batch of images released when pre-orders opened in June.
+
+Counting material tied to the Ultimate Edition and the Vintage Vice City Pack, that was a very large set too.
+
+Its purpose was different from this one.
+
+June's images served as a catalog conveying **what you get if you buy**, covering editions, bonuses, outfits and vehicles; this set of 29 shows **what moments you encounter when you play**.
+
+Jason and Lucia get in a car. Walk the streets. Face someone down. Commit a crime. Run from the police.
+
+And in between all of it, the enormous landscape of Vice City.
+
+![Lucia and Jason walking away from a burning car, one carrying an attaché case and a rifle, the other a duffel bag](/images/news/gta6-official-screenshots-29/jason-and-lucia-08.webp)
+
+Each image is a small piece of information on its own, but taken as one set, the 29 show Rockstar moving its pre-launch promotion into a new phase.
+
+---
+
+## Why Collect the 29 on the Official Site Now?
+
+[Extended Look](/en/news/48) sharply increased how much is known about GTA6.
+
+A moment that passes in seconds on video can be stopped and studied in a 4K screenshot.
+
+Hair, tattoos, NPCs, signage, cars, architecture, reflections on water, traffic in the distance.
+
+Details like these are easy to miss just playing a video at normal speed.
+
+The point of adding these 29 to the official gallery, then, is less "new images released" than making the GTA6 shown in Extended Look available to study again as high-resolution stills.
+
+And mixed in among them, the three said to be new.
+
+Not a flashy new character, not a new city.
+
+Jason and Lucia in a car, the pair standing armed, a piece of Vice City architecture.
+
+What that suggests is that as release approaches, Rockstar's promotion is beginning to shift from "here is what GTA6 has" to "here is the time you will spend in GTA6."
+
+---
+
+## These 29 Deserve to Be Seen in 4K
+
+![Jason and Lucia facing each other against the setting sun, sheriff's airboats gathered in the surrounding wetland and a helicopter circling overhead](/images/news/gta6-official-screenshots-29/jason-and-lucia-13.webp)
+
+Seen only as small images on a phone, much of the value of these screenshots is lost.
+
+Daytime Vice City, reflections on water and car bodies, Jason and Lucia's hair and clothing, the NPCs and vehicles in the background — a lot of it only registers when you open the high-resolution version on the official site.
+
+→ [GTA VI Official Screenshot Gallery (Rockstar Games)](https://www.rockstargames.com/VI/screenshots)
+
+Leaving this update at "29 screenshots added" sells it a little short.
+
+What the 29 show, taken together, is that Jason and Lucia constantly share the scene, that their appearances change substantially, that Vice City carries overwhelming detail even by day, and that the gameplay on display has moved toward moments of action — heists and pursuits.
+
+And it is interesting that the three said to be genuinely new were not spectacular explosions but "the pair's ordinary life," "the distance between them," and "Vice City itself."
+
+As GTA6's release approaches, what Rockstar has begun showing is not a feature list.
+
+It may be the time you spend living in Leonida as Jason and Lucia.
+
+---
+
+> **Note:** The screenshots in this article are press materials published by Rockstar Games in the GTA VI gallery on its official site (scaled to 1280px wide for display). Copyright belongs to Rockstar Games / Take-Two Interactive. That three of the 29 are newly revealed is based on reporting from outlets including HobbyConsolas; Rockstar has not itself described them as first reveals. What can be read from the images and what is inferred about game features beyond them are distinguished in the text above.`,
+  },
+  {
     id: 55,
     title:
       "RAGE:MPとは何だったのか――10年続いたGTA RP基盤の歴史と終了、FiveMだけが残るまで",
