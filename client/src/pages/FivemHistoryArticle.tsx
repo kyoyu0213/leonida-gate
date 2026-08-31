@@ -24,7 +24,7 @@ const BODY = `FiveMは、Grand Theft Auto V（GTA5）を独自のマルチプレ
 | 2019年 | RedM（RDR2版）の提供開始 |
 | 2021年 | 同時接続25万人に到達、GTA RPブーム |
 | 2023年8月 | RockstarがCfx.reを買収（額非公表）＝Rockstar傘下入り |
-| 2026年 | Cfx Marketplace始動（1月）、alt:V終了（2月）、RAGE:MP終了発表（5月） |
+| 2026年 | Cfx Marketplace始動（1月）、alt:V終了（2月）、[RAGE:MP終了](/news/55)（5月発表・8月31日サポート終了） |
 
 ![FiveMの主要な出来事をまとめた年表](/images/FiveMnorekisi/FiveMnenpyou.webp)
 
@@ -98,7 +98,7 @@ FiveMの歴史は、クライアント本体だけでなく、サーバー運営
 
 2023年の傘下入り以降、FiveMの立場はさらに強固になっている。2026年1月には、FiveM／RedM向けの公式ストアフロントであるCfx Marketplaceが始動し、ロールプレイサーバーを取り巻くクリエイター経済が制度化された。
 
-一方で、競合だったマルチプレイヤーMODプラットフォームは相次いで姿を消している。海外メディアの報道によれば、alt:Vは2026年2月にシャットダウンを開始し、RAGE:MP（RageMP）は2026年5月25日に終了を発表、8月31日に完全終了する予定とされる。RageMP側の声明では、Rockstar／Take-Twoが、同社のプラットフォームライセンス契約（PLA）のもとでFiveMをGTA5マルチプレイヤーMODの唯一の公認プラットフォームと位置づけたことが、終了の直接的な理由として挙げられている。結果として、GTA5のマルチプレイヤーMODは事実上FiveMへの一本化が進んでいる。2023年が「傘下入り」だったとすれば、この公認プラットフォーム化がはっきりと表面化したのが2026年だと整理できる。
+一方で、競合だったマルチプレイヤーMODプラットフォームは相次いで姿を消している。海外メディアの報道によれば、alt:Vは2026年2月にシャットダウンを開始し、RAGE:MP（RageMP）は2026年5月25日に終了を発表、8月31日に完全終了する予定とされる。RageMP側の声明では、Rockstar／Take-Twoが、同社のプラットフォームライセンス契約（PLA）のもとでFiveMをGTA5マルチプレイヤーMODの唯一の公認プラットフォームと位置づけたことが、終了の直接的な理由として挙げられている。結果として、GTA5のマルチプレイヤーMODは事実上FiveMへの一本化が進んでいる。2023年が「傘下入り」だったとすれば、この公認プラットフォーム化がはっきりと表面化したのが2026年だと整理できる。RAGE:MP側から見た約10年の経緯と終了までの流れは、[RAGE:MPとは何だったのか](/news/55)で年表とあわせて整理している。
 
 プレイヤー数の面でも勢いは衰えていない。2026年初頭以降、FiveMはSteam経由での起動分についてもSteamDB上で同時接続が追跡されるようになり、SteamDBによれば2026年4月12日に約21万5千人の最高記録を計上している。計測方法によって数値には幅があるものの、2026年現在も日常的に10万人を超える同時接続を維持しており、GTA5マルチプレイヤー文化の中核であり続けている。なお、FiveMはSteam上で単体販売されているわけではなく、利用には正規のGTA5が引き続き必要である。
 
@@ -141,7 +141,7 @@ This article organizes the history of FiveM, from when it first appeared in 2014
 | 2019 | RedM (the RDR2 version) becomes available |
 | 2021 | Reaches 250,000 concurrent players, the GTA RP boom |
 | August 2023 | Rockstar acquires Cfx.re (amount undisclosed) = coming under Rockstar |
-| 2026 | Cfx Marketplace launches (January), alt:V shuts down (February), RAGE:MP announces shutdown (May) |
+| 2026 | Cfx Marketplace launches (January), alt:V shuts down (February), [RAGE:MP shuts down](/news/55) (announced May, end of support August 31) |
 
 ![A timeline summarizing the major events of FiveM](/images/FiveMnorekisi/FiveMnenpyou.webp)
 
@@ -215,7 +215,7 @@ What spread widely in the early days was ESX. Afterward, QBCore, which has a mor
 
 Since coming under Rockstar in 2023, FiveM's position has become even more solid. In January 2026, the Cfx Marketplace, an official storefront for FiveM/RedM, launched, institutionalizing the creator economy surrounding roleplay servers.
 
-On the other hand, the multiplayer MOD platforms that had been competitors are disappearing one after another. According to overseas media reporting, alt:V began shutting down in February 2026, and RAGE:MP (RageMP) announced its end on May 25, 2026, with a full shutdown scheduled for August 31. In RageMP's statement, the fact that Rockstar/Take-Two positioned FiveM as the sole authorized platform for GTA5 multiplayer MODs under its Platform License Agreement (PLA) is cited as the direct reason for the shutdown. As a result, GTA5 multiplayer MODs are effectively consolidating onto FiveM. If 2023 was "coming under Rockstar," then 2026 can be organized as the year in which this becoming-the-authorized-platform clearly surfaced.
+On the other hand, the multiplayer MOD platforms that had been competitors are disappearing one after another. According to overseas media reporting, alt:V began shutting down in February 2026, and RAGE:MP (RageMP) announced its end on May 25, 2026, with a full shutdown scheduled for August 31. In RageMP's statement, the fact that Rockstar/Take-Two positioned FiveM as the sole authorized platform for GTA5 multiplayer MODs under its Platform License Agreement (PLA) is cited as the direct reason for the shutdown. As a result, GTA5 multiplayer MODs are effectively consolidating onto FiveM. If 2023 was "coming under Rockstar," then 2026 can be organized as the year in which this becoming-the-authorized-platform clearly surfaced. The same decade seen from RAGE:MP's side, through to its shutdown, is laid out with a timeline in [What RAGE:MP Was](/news/55).
 
 In terms of player numbers, the momentum has not waned either. Since early 2026, concurrent players for FiveM launched via Steam have also come to be tracked on SteamDB, and according to SteamDB, a record high of about 215,000 was recorded on April 12, 2026. While the figures vary depending on the measurement method, as of 2026 it routinely maintains over 100,000 concurrent players and remains at the core of GTA5 multiplayer culture. Note that FiveM is not sold separately on Steam, and a legitimate copy of GTA5 continues to be required to use it.
 

@@ -216,6 +216,734 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 55,
+    title:
+      "RAGE:MPとは何だったのか――10年続いたGTA RP基盤の歴史と終了、FiveMだけが残るまで",
+    displayTitle:
+      "RAGE:MPとは何だったのか\n10年続いたGTA RP基盤の歴史と終了、FiveMだけが残るまで",
+    description:
+      "2026年8月31日、GTA5のカスタムマルチプレイ基盤「RAGE Multiplayer（RAGE:MP）」がサポートを終了する。2016年の開発開始、GTA:Networkとの統合、1.0/1.1、Take-Twoの要請による終了まで約10年の歴史を年表で整理し、FiveMとの違い、alt:Vの終了、GTA RPがFiveMへ一本化されるまでの流れをまとめた。",
+    icon: "🗄️",
+    image: "/images/news/ragemp-history/eyecatch.webp",
+    category: "topic",
+    date: "2026-08-31",
+    publishedAt: "2026-08-31 16:00",
+    source:
+      "RAGE Multiplayer公式Announcements／Cfx.re・Rockstar Games公式発表／Grand RP公式告知 ほか",
+    sourceUrl: "https://rage.mp/",
+    relatedArticles: [18, 54, 53],
+    aiSummary: [
+      "2026年8月31日、GTA5用のカスタムマルチプレイ基盤「RAGE Multiplayer（RAGE:MP）」がサポートを終了する。2026年5月、RAGE:MP運営はTake-Two Interactiveからの要請を受けて段階的終了を発表し、6月1日に公開サーバーリストを終了。8月31日以降はクライアントとサーバーツールの提供・サポートが終わり、バックエンドも恒久的に停止するとしている。",
+      "RAGE:MPの開発開始は2016年5月2日。2017年にGTA:Networkと統合してC#環境を取り込み、2018年の0.3.7、2019年の1.0、2020年の1.1、2021年のmp.game v2とEAC対応を経て、長期運営のRPサーバーを支える開発基盤へ育った。GTA RPの入口はFiveMだけではなく、RAGE:MP、alt:V、GTA:Networkが並走する時代が長く続いていた。",
+      "2023年8月にFiveMを開発するCfx.reがRockstar傘下へ入り、2026年にはalt:Vも終了。Rockstar／Take-TwoがPLA上でFiveMを唯一の認可プラットフォームと位置づけたことが、RAGE:MP終了の直接的な理由として説明されている。ただしGrand RPのように独自インフラへ移行したコミュニティもあり、「全サーバーがFiveMへ移った」わけではない。",
+    ],
+    fullContent: `# RAGE:MPとは何だったのか――10年続いたGTA RP基盤の歴史と終了、FiveMだけが残るまで
+
+## 2026年8月31日、ひとつのGTA RP時代が終わる
+
+2026年8月31日。『Grand Theft Auto V』を使ったカスタムマルチプレイの世界で、約10年にわたって使われてきたプラットフォーム「RAGE Multiplayer（RAGE:MP）」が、その歴史に幕を下ろす。
+
+RAGE:MP運営チームは2026年5月、Take-Two Interactiveからの要請を受け、サービスを段階的に終了すると発表した。新規コミュニティサーバーの受付とサーバーツールの一般提供を停止し、6月1日には公開サーバーリストを終了。そして8月31日をサポート終了日とし、その後はゲームクライアントとサーバーツールの提供・サポートを終了し、バックエンドインフラも恒久的に停止するとしている。
+
+最近GTA RPを知った人にとって、「GTA RP＝FiveM」というイメージは強いかもしれない。しかし、GTA Vの発売から現在に至るまでの歴史を見ると、FiveMだけがこの文化を作ってきたわけではない。
+
+RAGE:MP、GTA:Network、alt:V、FiveM。GTA Vというひとつのゲームの上で、複数のカスタムマルチプレイ基盤が競争し、それぞれの開発者とサーバーコミュニティが独自の世界を作ってきた。
+
+その中でもRAGE:MPは、約10年という長い時間を生き残った代表的なプラットフォームのひとつだった。
+
+そして奇しくもGTA6発売を目前に控えた2026年、その時代は大きな転換点を迎えている。
+
+---
+
+## そもそもRAGE:MPとは何だったのか
+
+![「RAGE:MPとは何だったのか」と題した図版。夜の街並みとサーバーラックのラインアートが並ぶ](/images/news/ragemp-history/what-is-ragemp.webp)
+
+RAGE:MPは、GTA Vを利用して独自のマルチプレイサーバーを構築できるプラットフォームだ。
+
+通常のGTA Onlineでは、プレイヤーはRockstar Gamesが用意したゲームルールやコンテンツの中で遊ぶ。一方、RAGE:MPのようなプラットフォームでは、サーバー運営者が独自のゲームモード、ルール、UI、経済、職業、キャラクターシステムなどを作ることができた。
+
+つまり、同じGTA Vを使っていても、接続するサーバーによってまったく違うゲームになる。
+
+警察官として犯罪者を追う。タクシー運転手として客を運ぶ。企業を経営する。犯罪組織を作る。独自の経済システムの中で生活する。
+
+現在「GTA RP」と呼ばれている遊び方を成立させるための土台のひとつが、RAGE:MPだった。GTA RPそのものの遊び方については「[GTARPとは？](/fivem-gtarp/what-is-gtarp)」で解説している。
+
+技術的にはC++を基盤としたスタンドアロンのクライアントとして開発され、サーバー側ではNode.js、クライアント側ではJavaScriptを利用できた。CEF（Chromium Embedded Framework）を使い、HTML/CSS/JavaScriptで独自UIを構築することもでき、後にはC#にも対応していった。
+
+---
+
+## RAGE:MPの歴史
+
+| 年 | 主な出来事 |
+| --- | --- |
+| 2016年5月2日 | RAGE Multiplayerの開発開始 |
+| 2017年 | 初期β時代。0.2など大型更新の開発が進む |
+| 2017年7月 | GTA:Networkとの協力・統合を発表 |
+| 2017〜18年 | JavaScript/C#など開発環境を拡充 |
+| 2018年12月 | 0.3.7 Stable。クライアント側C#などを実装 |
+| 2019年 | 1.0 Developer Previewへ |
+| 2020年 | 1.1 Public Beta開始 |
+| 2021年 | mp.game v2、EAC対応などを発表 |
+| 2022年 | RockstarがRPサーバー向けポリシーを明確化 |
+| 2023年 | RAGE:MPがRP Server Policyへの対応を強化 |
+| 2023年8月 | FiveMを開発するCfx.reがRockstar Games傘下へ |
+| 2024〜25年 | RAGE:MPも継続開発。新Server List、1.2、Enhanced対応など |
+| 2026年5月 | Take-Twoの要請を受け終了を発表 |
+| 2026年6月1日 | 公開サーバーリスト終了 |
+| 2026年8月31日 | RAGE:MPサポート終了 |
+
+ここから、この約10年間をもう少し詳しく見ていく。
+
+---
+
+## 2016年――RAGE Multiplayerの開発が始まる
+
+![夜の街を見下ろす構図の中央に置かれたサーバーラック。GTA Vの街とサーバーがつながるイメージ](/images/news/ragemp-history/gtav-city-servers.webp)
+
+RAGE:MPの出発点は2016年5月2日まで遡る。
+
+これは後年のRAGE:MP自身の開発ブログでも明確に記録されている。2018年に公開された2周年の投稿では、2016年5月2日を「RAGE Multiplayerの開発が始まった日」と説明している。
+
+当時のGTA V PC版は発売からまだ約1年。GTA Onlineはすでに巨大な人気を獲得していたものの、「GTA Vの世界を使って、自分たちのルールで遊びたい」というPCコミュニティの需要も膨らんでいた。
+
+RAGE:MPが目指したのは、そのための独立したマルチプレイ環境だった。
+
+現在から振り返れば、これは後に巨大化するGTA RP文化の土台作りが進んでいた時期でもある。
+
+---
+
+## 2017年――まだ荒削りだった初期RAGE:MP
+
+2017年初頭の公式フォーラムを見ると、現在の成熟したGTA RP環境とはまったく違う光景が残っている。
+
+クライアントが起動しない、ゲームが突然終了する、GTA Vのアップデートに対応できない――そうした問題についてユーザーと開発者がやり取りしていた。
+
+たとえば2017年3月には、起動時の問題について開発者が「0.2ですでに修正した」と回答しながら、その0.2自体はまだ公開されていないというやり取りも残っている。
+
+0.2ではクライアント側スクリプトAPIの拡張、セキュリティ改善、ランチャー改良、新しいMaster Serverなどが計画された。初期にはDDoS攻撃による問題も発生しており、現在では当たり前に見える「サーバー一覧から選んで接続する」という体験自体を安定させるための試行錯誤が続いていた。
+
+この時点では、後に世界中で巨大なRPサーバーを支えるプラットフォームになることを想像していたユーザーは、それほど多くなかったかもしれない。
+
+---
+
+## 2017年7月――GTA:Networkとの統合
+
+RAGE:MPの歴史を語るうえで重要なのが、GTA:Networkだ。
+
+GTA:Networkもまた、GTA V上で独自マルチプレイ環境を作るために開発されていたプロジェクトだった。
+
+2017年7月、RAGE MultiplayerとGTA:Networkは協力・統合を発表する。両チームをまとめ、GTA V向け代替マルチプレイ環境の開発を強化することが目的だった。
+
+この統合は技術面にも影響した。
+
+RAGE:MPはもともとNode.js／JavaScriptを中心とした開発環境を持っていたが、GTA:Networkとの協力によってC#との橋渡しが進む。2017年11月には「Bridge 2.0」と呼ばれるC# API Bridgeが紹介され、GTA:Networkのサーバー環境をRAGE:MP側で再構築し、既存リソースを移行しやすくする取り組みが進められた。
+
+これは単なる名称変更やコミュニティ統合ではない。
+
+異なるGTAマルチプレイ開発文化が、RAGE:MPへ流れ込んだ瞬間でもあった。
+
+---
+
+## 2018年――RPサーバーを作るための「開発基盤」へ
+
+![雨の街を望む窓辺のデスクに並んだデュアルモニター。片方に街のマップ、もう片方にサーバースクリプトのコードが表示されている](/images/news/ragemp-history/developer-desk.webp)
+
+RAGE:MPはその後、単純にGTA Vへ複数人を接続するだけのMODから、複雑なゲームモードを作るための開発プラットフォームへ進化していく。
+
+2018年11月には0.3.7のPublic Testingが始まり、クライアント側C#スクリプトなどが導入された。同年12月10日には0.3.7がStableへ移行している。
+
+サーバー開発者が自由にコードを書き、独自のUIを作り、キャラクターや経済、車両、職業などの仕組みを組み合わせる。
+
+こうした技術的な自由度は、RPサーバーと非常に相性がよかった。
+
+「GTA Vで遊ぶ」のではなく、GTA Vを素材にして別のオンラインゲームを作る。
+
+RAGE:MPは、そのための土台になっていった。
+
+---
+
+## 2019〜2021年――1.0、そして1.1へ
+
+![サーバーラックが並ぶ暗いデータセンターの中央に、街のネットワークを映したホログラム画面が浮かんでいる](/images/news/ragemp-history/server-infrastructure.webp)
+
+2019年11月には「RAGE Multiplayer 1.0 Developer Preview #1」が登場し、2020年2月には1.1.0 DP#1がPublic Betaへ進んだ。
+
+1.1では、事前テストだけでも1.0から約200件のバグ修正が行われたと開発チームが説明しており、同期NPCなどの新機能も追加されている。
+
+さらに2021年7月には「mp.game v2」が発表された。
+
+JavaScriptからGTA Vのネイティブ機能を呼び出す部分が刷新され、開発チームのベンチマークではNative Callが平均約2倍高速化したと説明されたほか、Easy Anti-Cheat（EAC）のランチャー統合も進められた。
+
+この頃には、RAGE:MPはもはや実験的な小規模MODではない。
+
+長期間運営されるオンラインコミュニティを支えるため、パフォーマンス、同期、セキュリティ、API、アンチチートまで整備するプラットフォームへ変化していた。
+
+---
+
+## RAGE:MPは「RP専用」だったわけではない
+
+ここは歴史を振り返る際に重要なポイントだ。
+
+RAGE:MP自体は「GTA RP専用ソフト」ではない。
+
+サーバー運営者が独自ゲームモードを作れる汎用的なカスタムマルチプレイ基盤であり、RPはその代表的な利用方法のひとつだった。
+
+ただし、GTA Vのオープンワールドと自由なサーバースクリプティングの組み合わせはRPとの相性が非常によく、結果として多くのRoleplayコミュニティがRAGE:MP上に作られた。
+
+公式フォーラムにも、2010年から別のGTA RPコミュニティを運営していたDreamWorldが、RAGE:MPの登場によってGTA V上で安定したRP環境を構築できるようになったと説明する2019年の投稿が残っている。
+
+つまりRAGE:MPは、GTA VからRP文化を生み出したというより、以前のGTAシリーズから続いていたRP文化をGTA Vへ移すための橋のひとつだったと見る方が実態に近い。
+
+---
+
+## FiveMとの競争――GTA RPには複数の「入口」があった
+
+![暗いグリッド上に、無数のサーバーアイコンが街のかたちに敷き詰められている図。中央に高層ビル群が光る](/images/news/ragemp-history/community-servers.webp)
+
+現在ではFiveMの知名度が圧倒的だが、GTA Vのカスタムマルチプレイ史では複数のプラットフォームが存在した。
+
+FiveM、RAGE:MP、alt:V、そして初期のGTA:Network。
+
+それぞれ技術構成やAPI、同期、サーバー運営方法、コミュニティが異なり、開発者は「どの基盤で自分たちのサーバーを作るか」を選択していた。
+
+これは現在のGTA RPしか知らない人には、少し想像しづらい状況かもしれない。
+
+「GTA RPをするならFiveM」ではなく、「どのGTAマルチプレイ基盤を使うか」から選ぶ時代が存在したのである。FiveM側の歩みについては「[FiveMの歴史とは？](/fivem-gtarp/history)」で2014年からの年表を整理している。
+
+---
+
+## 2022〜2023年――RockstarがRPサーバーのルールを明確化する
+
+この状況が大きく変わり始めるのが2022年だ。
+
+Rockstar GamesはGTA OnlineのコミュニティRPサーバーに対する方針を明確化し、RAGE:MP側もその影響を受ける。
+
+2023年5月、RAGE:MP運営は「RP Server Policy: Long-Term Eco-System Integration」を公開。現実世界のブランドを使用した車両や衣服などを削除するようサーバー運営者へ求め、RockstarのRP Server Policyをプラットフォーム全体で適用していく方針を示した。
+
+これはRAGE:MPが即座に終了するという話ではなかった。
+
+むしろこの段階では、Rockstarのルールの中でRAGE:MPを長期的に存続させようとしていたことが読み取れる。
+
+しかし、そのわずか数か月後、GTAカスタムマルチプレイの勢力図そのものを変える出来事が起きる。
+
+---
+
+## 2023年8月――RockstarがFiveMのCfx.reを迎え入れる
+
+2023年8月11日。
+
+FiveMとRedMを開発するCfx.reが、Rockstar Gamesの一員になったことを発表した。
+
+Cfx.reは発表の中で、Rockstarの支援を受けながらFiveMプラットフォームとクリエイターコミュニティを発展させていくと説明した。
+
+ここはGTA RP史における巨大な転換点だ。
+
+かつてGTA Vの非公式マルチプレイMODとして始まったFiveMが、GTAを作るRockstar Gamesの傘下に入った。
+
+その一方で、RAGE:MPやalt:Vは独立したプラットフォームとして残った。
+
+この時点ではまだ複数の選択肢が共存していたが、FiveMだけがRockstarと直接結び付いた存在になったことで、それまでの競争環境は根本から変化していく。
+
+---
+
+## それでもRAGE:MPの開発は終わらなかった
+
+FiveMがRockstar傘下に入ったからといって、RAGE:MPがすぐに消えたわけではない。
+
+公式Announcementsを見ると、2024年にも新しいServer List、Rockstar Editor対応、Voice Chat改善、Entity GraphicsやBlips API、1.2のEarly Teaseなどの更新が続いている。
+
+さらに2025年にはゲーム最適化などの更新が行われ、9月には「**RAGE Multiplayer for GTAV Enhanced - Now Globally Available**」も発表された。
+
+つまりRAGE:MPは、FiveMがRockstar傘下になった後も開発を続けていた。
+
+だからこそ、2026年の終了発表はコミュニティにとって大きな意味を持った。
+
+---
+
+## 2026年――alt:V、そしてRAGE:MPへ
+
+2026年には、GTA Vカスタムマルチプレイを取り巻く環境が一気に変化した。
+
+競合プラットフォームだったalt:Vも段階的な終了プロセスに入り、現在の公式サイトには明確に「**alt:V has been shut down**」と表示されている。
+
+そして5月25日、RAGE:MP運営から決定的な発表が出る。
+
+タイトルは、「Long-Term Eco-System Integration, Pt. II: Final Outreach / C&D」だった。
+
+---
+
+## Take-Twoからの要請――RAGE:MP終了へ
+
+![暗い画面の中央に、同心円のレーダーに囲まれた小さなサーバーと街のアイコンだけが残っている図](/images/news/ragemp-history/shutdown-signal.webp)
+
+RAGE:MPチームは発表の中で、Rockstar GamesとTake-Two Interactiveから、GTA VのマルチプレイMODについてFiveMがPlatform License Agreement上の唯一の認可されたプラットフォームであることを明確にされたと説明している。
+
+そしてTake-Twoからの要請に従い、RAGE:MPを段階的に終了すると発表した。
+
+終了は一夜にして行われるのではなく、サーバー運営者がFiveMへ移行するための猶予期間が設けられた。
+
+まず新しいCommunity Serverの受付を即時停止し、RAGE:MP Server Toolkitの一般提供も終了。既存サーバー運営者についてはServer Managerから必要なビルドへアクセスできるようにした。
+
+そして2026年6月1日に公開サーバーリストを終了。最終期限として設定されたのが、2026年8月31日だった。
+
+この日までに残るコミュニティサーバーは移行することが求められ、その後はRAGE:MPのゲームクライアントとサーバーツールが提供・サポートされなくなり、バックエンドインフラも恒久的に停止するとされた。
+
+---
+
+## 「FiveMへ移行してください」――かつてのライバルが唯一の移行先に
+
+RAGE:MP終了発表で象徴的なのは、単に「サービスを終了します」で終わっていないことだ。
+
+運営チームは既存サーバーへFiveMへの移行を求めた。さらに移行時の技術的な疑問については、Cfxチームが支援すると説明されている。
+
+2010年代なら、FiveMとRAGE:MPは同じGTA Vカスタムマルチプレイ市場で競争する存在だった。
+
+2026年には、そのRAGE:MP自身がユーザーへFiveMへの移行を案内している。
+
+約10年間の歴史を考えると、非常に象徴的な結末だ。FiveMそのものの仕組みについては「[FiveMとは？](/fivem-gtarp/what-is-fivem)」、FiveMとGTA RPの関係の違いは「[FiveMとGTARPの違い](/fivem-gtarp/fivem-vs-gtarp)」で整理している。
+
+---
+
+## すべてのRAGE:MPサーバーがFiveMへ行ったわけではない
+
+![雨の降る夜の交差点。信号と車のライトが濡れた路面に反射している](/images/news/ragemp-history/rp-city-street.webp)
+
+ただし、「RAGE:MP終了＝全サーバーがFiveMへ移った」と理解するのも正確ではない。
+
+大規模コミュニティの中には独自の道を選んだ例もある。
+
+たとえばGrand RPは2026年7月、RAGE:MPを完全に離れ、独自インフラと独自ランチャーへ移行すると発表した。プレイヤーの進行状況やコンテンツを維持しながら、RAGE:MP経由ではなく独自ランチャーから接続する方式へ切り替えるとしている。
+
+RAGE:MPという基盤は消えても、その上で長年育ったコミュニティやゲームシステムまで同時に消えるとは限らない。
+
+ここも、プラットフォームとRPサーバーそのものを分けて考える必要がある。
+
+---
+
+## なぜRAGE:MPは終わることになったのか
+
+RAGE:MP公式発表から確認できる直接的な理由は明快だ。
+
+Take-Twoから終了を求められ、Rockstar／Take-Two側からFiveMがGTA Vの認可されたマルチプレイMOD基盤であるとの立場を示されたためである。
+
+現在のRockstarのCreator Platform License Agreementにも、FiveMとRedMがRockstarの「Creator Services」として明記されている。
+
+ただし、その先については慎重に見る必要がある。
+
+「GTA6のRPをFiveMだけにするためRAGE:MPを潰した」「GTA6発売時からFiveMが対応する」といった説明は、現時点で公式に確認された事実ではない。
+
+GTA6とFiveMの将来的な関係について、Rockstarがすべてを明らかにしたわけではないからだ。
+
+---
+
+## RAGE:MPの終了は「FiveMの勝利」だけでは説明できない
+
+![モニターに映ったGTA Vの街のマップと、そこに散らばるプレイヤーのアイコン](/images/news/ragemp-history/server-player-map.webp)
+
+表面的には、FiveMとの競争にRAGE:MPが敗れたようにも見える。
+
+しかし約10年の歴史を追うと、もう少し複雑だ。
+
+2016年当時、GTA V上のカスタムマルチプレイは、ゲームメーカーが正式に用意した遊びではなかった。外部の開発者たちがクライアント、サーバー、同期、スクリプトAPI、UI、アンチチートなどを自分たちで作り、GTA Vを別のオンラインゲームへ変えていった。
+
+RAGE:MPもFiveMも、その流れから生まれている。
+
+ところが2023年にCfx.reがRockstar Gamesへ加わり、2026年にはFiveMがRockstarのCreator ServicesとしてPLAに組み込まれた。
+
+つまりこの10年間に起きた本当の変化は、「非公式コミュニティがGTA Vの外側に作っていたカスタムマルチプレイ文化が、Rockstar自身のエコシステムへ取り込まれていった」ことなのかもしれない。
+
+RAGE:MPの終了は、その転換を象徴する出来事だ。
+
+---
+
+## そしてGTA6時代へ
+
+RAGE:MPが終了する2026年は、偶然にもGTAシリーズそのものが巨大な世代交代を迎える年でもある。
+
+GTA6の発売が近づく一方で、FiveMはRockstar傘下のプラットフォームとして存在し、GTA RPはGTA V発売当初には想像できなかったほど巨大な文化になった。日本でも配信を入口にRPが広がっており、その流れは「[日本のGTARP配信者サーバー史](/fivem-gtarp/streamer-server-history)」で年表にまとめている。
+
+だからこそ、RAGE:MPの歴史を残しておく意味がある。
+
+数年後、GTA6のRPサーバーが当たり前になった世界で「GTA RPはどこから始まったのか」「FiveM以外にもあったのか」と検索する人は必ず出てくる。
+
+そのとき、2010年代から2020年代前半のGTA RPをFiveMだけで説明してしまえば、歴史の一部が抜け落ちる。
+
+GTA:Networkがあり、RAGE:MPがあり、alt:Vがあり、FiveMがあった。それぞれの開発者が異なる方法でGTA Vをオンライン世界へ作り替え、無数のサーバー運営者とプレイヤーがその上にコミュニティを築いた。
+
+そして2026年8月31日、その選択肢のひとつだったRAGE:MPが役目を終える。
+
+RAGE:MPチームが最後の発表に残した言葉には、この10年間をよく表している一節がある。
+
+> RAGE:MPを形作ったのは、コードベース以上にコミュニティだった。
+
+プラットフォームは消えても、そこで生まれたGTA RPの文化まで消えるわけではない。
+
+その歴史はFiveMへ移ったサーバーにも、独自プラットフォームへ進んだコミュニティにも、そしてこれから始まるGTA6時代のRPにも続いていく。
+
+---
+
+> **注記：** 本記事はRAGE Multiplayer公式サイトのAnnouncements・開発ブログ・フォーラム、Cfx.reおよびRockstar Gamesの公式発表、Grand RPの公式告知など、公開情報をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactiveおよび各プラットフォーム運営とは一切関係がない。バージョン番号や日付は各公式発表の記載にもとづく。GTA6におけるロールプレイ対応やFiveMの扱いについては、現時点でRockstarからの正式発表がなく、本記事でも確定情報としては扱っていない。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UI・実在のサーバー画面ではない。アイキャッチと一部の図版には日本語のテキストが含まれる。`,
+    titleEn:
+      "What RAGE:MP Was — Ten Years of a GTA RP Platform, Its Shutdown, and How FiveM Came to Be the Only One Left",
+    displayTitleEn:
+      "What RAGE:MP Was\nTen Years of a GTA RP Platform, Its Shutdown, and How FiveM Came to Be the Only One Left",
+    descriptionEn:
+      "On August 31, 2026, RAGE Multiplayer (RAGE:MP) — a custom multiplayer platform for GTA V — reaches end of support. A timeline of its roughly ten years, from development starting in 2016 through the GTA:Network merger, 1.0/1.1, and the shutdown demanded by Take-Two, plus how it differed from FiveM, the end of alt:V, and how GTA RP consolidated onto FiveM.",
+    aiSummaryEn: [
+      "On August 31, 2026, RAGE Multiplayer (RAGE:MP), a custom multiplayer platform for GTA V, reaches end of support. In May 2026 its team announced a phased shutdown at the request of Take-Two Interactive, closed the public server list on June 1, and said that after August 31 the game client and server tools would no longer be provided or supported and the backend infrastructure would be permanently shut down.",
+      "Development began on May 2, 2016. After merging with GTA:Network in 2017 and absorbing its C# environment, RAGE:MP moved through 0.3.7 in 2018, 1.0 in 2019, 1.1 in 2020, and mp.game v2 with EAC integration in 2021, growing into a development platform capable of supporting long-running RP servers. FiveM was never the only entrance to GTA RP: RAGE:MP, alt:V and GTA:Network ran alongside it for years.",
+      "Cfx.re, which develops FiveM, joined Rockstar in August 2023, and alt:V shut down in 2026. RAGE:MP's team cited Rockstar/Take-Two identifying FiveM as the only authorized platform under their Platform License Agreement as the direct reason for the shutdown. Not every community moved to FiveM, though — Grand RP, for one, moved to its own infrastructure and launcher.",
+    ],
+    fullContentEn: `# What RAGE:MP Was — Ten Years of a GTA RP Platform, Its Shutdown, and How FiveM Came to Be the Only One Left
+
+## August 31, 2026: One Era of GTA RP Ends
+
+August 31, 2026. In the world of custom multiplayer built on Grand Theft Auto V, RAGE Multiplayer (RAGE:MP) — a platform used for roughly ten years — closes its history.
+
+In May 2026, the RAGE:MP team announced a phased shutdown at the request of Take-Two Interactive. New community server applications and general access to the server toolkit stopped; the public server list closed on June 1. August 31 was set as the end-of-support date, after which the game client and server tools would no longer be provided or supported and the backend infrastructure would be permanently shut down.
+
+For anyone who came to GTA RP recently, "GTA RP means FiveM" may be a strong impression. Look at the history from GTA V's release to now, though, and FiveM was not the only thing that built this culture.
+
+RAGE:MP, GTA:Network, alt:V, FiveM. On top of a single game, several custom multiplayer platforms competed, each with its own developers and server communities building their own worlds.
+
+Among them, RAGE:MP was one of the representative platforms that survived a full decade.
+
+And in 2026, with GTA6 close at hand, that era has reached a major turning point.
+
+---
+
+## What RAGE:MP Actually Was
+
+![A graphic titled "What was RAGE:MP" showing a night skyline beside a line-art server rack (caption in Japanese)](/images/news/ragemp-history/what-is-ragemp.webp)
+
+RAGE:MP was a platform that let you build your own multiplayer servers using GTA V.
+
+In ordinary GTA Online, players play inside the rules and content Rockstar Games provides. On a platform like RAGE:MP, a server operator could build their own game modes, rules, UI, economy, jobs and character systems.
+
+Which means that even on the same GTA V, the server you connect to makes it an entirely different game.
+
+Chase criminals as a police officer. Carry passengers as a taxi driver. Run a company. Build a criminal organization. Live inside a custom economy.
+
+RAGE:MP was one of the foundations that made possible what is now called GTA RP. For how GTA RP is actually played, see "[What Is GTARP?](/en/fivem-gtarp/what-is-gtarp)."
+
+Technically it was developed as a standalone client built on C++, with Node.js available on the server side and JavaScript on the client side. Using CEF (Chromium Embedded Framework), developers could build custom UI in HTML/CSS/JavaScript, and C# support followed later.
+
+---
+
+## A RAGE:MP Timeline
+
+| Year | Main Events |
+| --- | --- |
+| May 2, 2016 | Development of RAGE Multiplayer begins |
+| 2017 | Early beta era; work proceeds on major updates such as 0.2 |
+| July 2017 | Cooperation and merger with GTA:Network announced |
+| 2017–18 | Development environment expanded with JavaScript/C# and more |
+| December 2018 | 0.3.7 Stable, implementing client-side C# among other things |
+| 2019 | On to 1.0 Developer Preview |
+| 2020 | 1.1 Public Beta begins |
+| 2021 | mp.game v2 and EAC support announced |
+| 2022 | Rockstar clarifies its policy for RP servers |
+| 2023 | RAGE:MP strengthens compliance with the RP Server Policy |
+| August 2023 | Cfx.re, developer of FiveM, joins Rockstar Games |
+| 2024–25 | RAGE:MP keeps developing: a new Server List, 1.2, Enhanced support |
+| May 2026 | Shutdown announced at Take-Two's request |
+| June 1, 2026 | Public server list closes |
+| August 31, 2026 | RAGE:MP end of support |
+
+From here, a closer look at those ten years.
+
+---
+
+## 2016 — Development of RAGE Multiplayer Begins
+
+![A server rack placed at the center of a shot looking down over a city at night, evoking GTA V's streets connected to servers](/images/news/ragemp-history/gtav-city-servers.webp)
+
+RAGE:MP's starting point goes back to May 2, 2016.
+
+RAGE:MP's own development blog records this clearly in later years. A second-anniversary post published in 2018 describes May 2, 2016 as "the day development of RAGE Multiplayer began."
+
+The PC version of GTA V was then only about a year old. GTA Online had already become enormously popular, but demand was also swelling in the PC community to "use the world of GTA V and play by our own rules."
+
+What RAGE:MP set out to build was an independent multiplayer environment for exactly that.
+
+Looking back from now, this was also the period when the groundwork was being laid for a GTA RP culture that would later grow vast.
+
+---
+
+## 2017 — The Rough Early Days of RAGE:MP
+
+The official forums from early 2017 preserve a scene completely unlike today's mature GTA RP environment.
+
+The client would not launch, the game would suddenly quit, it could not keep up with GTA V updates — users and developers went back and forth over problems like these.
+
+In March 2017, for instance, there is an exchange where a developer answers a launch problem by saying it was "already fixed in 0.2," while 0.2 itself had not yet been released.
+
+Version 0.2 was planned to bring an expanded client-side scripting API, security improvements, launcher refinements and a new Master Server. Early on there were also problems caused by DDoS attacks, and the trial and error continued simply to stabilize what now looks obvious: picking a server from a list and connecting to it.
+
+At that point, not many users would have imagined this becoming the platform behind enormous RP servers worldwide.
+
+---
+
+## July 2017 — The Merger With GTA:Network
+
+GTA:Network matters to any account of RAGE:MP's history.
+
+It was another project being developed to create an independent multiplayer environment on top of GTA V.
+
+In July 2017, RAGE Multiplayer and GTA:Network announced cooperation and a merger, with the aim of bringing both teams together and strengthening development of an alternative multiplayer environment for GTA V.
+
+The merger had technical consequences as well.
+
+RAGE:MP had a development environment centered on Node.js and JavaScript, but cooperation with GTA:Network advanced a bridge to C#. In November 2017 a C# API Bridge called "Bridge 2.0" was introduced, with work to rebuild GTA:Network's server environment on the RAGE:MP side and make existing resources easier to migrate.
+
+This was not merely a rename or a community merger.
+
+It was the moment a different GTA multiplayer development culture flowed into RAGE:MP.
+
+---
+
+## 2018 — Becoming a Development Platform for Building RP Servers
+
+![Dual monitors on a desk by a rain-streaked window, one showing a city map and the other server script code](/images/news/ragemp-history/developer-desk.webp)
+
+RAGE:MP then evolved from a MOD that simply connected several people to GTA V into a development platform for building complex game modes.
+
+Public testing of 0.3.7 started in November 2018, introducing client-side C# scripting among other things. On December 10 that year, 0.3.7 moved to Stable.
+
+Server developers could write code freely, build their own UI, and combine systems for characters, economies, vehicles and jobs.
+
+That degree of technical freedom suited RP servers extremely well.
+
+Not "playing GTA V," but using GTA V as raw material to build a different online game.
+
+RAGE:MP became a foundation for exactly that.
+
+---
+
+## 2019–2021 — To 1.0, Then 1.1
+
+![A hologram screen showing a city's network floating in the middle of a dark data center lined with server racks](/images/news/ragemp-history/server-infrastructure.webp)
+
+November 2019 brought "RAGE Multiplayer 1.0 Developer Preview #1," and in February 2020, 1.1.0 DP#1 advanced to Public Beta.
+
+For 1.1, the development team said around 200 bugs had been fixed since 1.0 in pre-testing alone, along with new features such as synced NPCs.
+
+Then, in July 2021, "mp.game v2" was announced.
+
+The layer that calls GTA V's native functions from JavaScript was overhauled — the team's benchmarks described native calls as roughly twice as fast on average — and launcher integration with Easy Anti-Cheat (EAC) also moved forward.
+
+By this point RAGE:MP was no longer a small experimental MOD.
+
+It had become a platform maintaining performance, synchronization, security, APIs and anti-cheat in order to support online communities running for years.
+
+---
+
+## RAGE:MP Was Never "RP-Only"
+
+This is an important point when looking back at the history.
+
+RAGE:MP itself was not "GTA RP software."
+
+It was a general-purpose custom multiplayer foundation on which server operators could build their own game modes, and RP was one representative use of it.
+
+That said, the combination of GTA V's open world and free server scripting suited RP so well that a great many roleplay communities ended up built on RAGE:MP.
+
+The official forums still hold a 2019 post from DreamWorld, which had run a different GTA RP community since 2010, explaining that the arrival of RAGE:MP let them build a stable RP environment on GTA V.
+
+So rather than saying RAGE:MP produced RP culture out of GTA V, it is closer to the truth to see it as one of the bridges that carried an RP culture continuing from earlier GTA titles over to GTA V.
+
+---
+
+## Competing With FiveM — GTA RP Had Several Front Doors
+
+![Countless server icons laid out in the shape of a city on a dark grid, with a cluster of towers glowing at the center](/images/news/ragemp-history/community-servers.webp)
+
+FiveM's name recognition is overwhelming today, but the history of GTA V custom multiplayer had several platforms.
+
+FiveM, RAGE:MP, alt:V, and, early on, GTA:Network.
+
+Each differed in technical makeup, APIs, synchronization, how servers were run and community, and developers chose which foundation to build their server on.
+
+For anyone who only knows GTA RP as it is now, that situation may be hard to picture.
+
+It was not "FiveM if you want to do GTA RP" — there was an era when you chose which GTA multiplayer foundation to use in the first place. FiveM's own path is laid out from 2014 onward in "[What Is the History of FiveM?](/en/fivem-gtarp/history)."
+
+---
+
+## 2022–2023 — Rockstar Clarifies the Rules for RP Servers
+
+This began to change substantially in 2022.
+
+Rockstar Games clarified its policy toward community RP servers on GTA Online, and RAGE:MP felt the effects.
+
+In May 2023 the RAGE:MP team published "RP Server Policy: Long-Term Eco-System Integration," asking server operators to remove vehicles and clothing using real-world brands and setting out a policy of applying Rockstar's RP Server Policy across the platform.
+
+This was not a matter of RAGE:MP shutting down immediately.
+
+If anything, at that stage you can read an intent to keep RAGE:MP alive long term within Rockstar's rules.
+
+Just a few months later, however, came an event that changed the map of GTA custom multiplayer itself.
+
+---
+
+## August 2023 — Rockstar Brings FiveM's Cfx.re In-House
+
+August 11, 2023.
+
+Cfx.re, developer of FiveM and RedM, announced it had become part of Rockstar Games.
+
+In its announcement, Cfx.re said it would develop the FiveM platform and its creator community with Rockstar's support.
+
+This is an enormous turning point in GTA RP history.
+
+FiveM, which had begun as an unofficial multiplayer MOD for GTA V, came under Rockstar Games, the company that makes GTA.
+
+RAGE:MP and alt:V, meanwhile, remained independent platforms.
+
+Multiple options still coexisted at that point, but with FiveM alone directly tied to Rockstar, the competitive landscape began to change at its root.
+
+---
+
+## Even So, RAGE:MP Kept Developing
+
+FiveM coming under Rockstar did not make RAGE:MP disappear.
+
+The official announcements show updates continuing through 2024: a new Server List, Rockstar Editor support, voice chat improvements, Entity Graphics and a Blips API, an early tease of 1.2.
+
+Updates such as game optimization followed in 2025, and in September that year came "**RAGE Multiplayer for GTAV Enhanced - Now Globally Available**."
+
+RAGE:MP, in other words, kept developing after FiveM joined Rockstar.
+
+Which is exactly why the 2026 shutdown announcement meant so much to the community.
+
+---
+
+## 2026 — alt:V, Then RAGE:MP
+
+In 2026 the environment around GTA V custom multiplayer changed all at once.
+
+alt:V, a competing platform, entered its own phased shutdown; its official site now states plainly that "**alt:V has been shut down**."
+
+Then, on May 25, a decisive announcement came from the RAGE:MP team.
+
+Its title: "Long-Term Eco-System Integration, Pt. II: Final Outreach / C&D."
+
+---
+
+## Take-Two's Request — RAGE:MP Shuts Down
+
+![On a dark screen, only a small server-and-city icon remains, ringed by concentric radar circles](/images/news/ragemp-history/shutdown-signal.webp)
+
+In the announcement, the RAGE:MP team explained that Rockstar Games and Take-Two Interactive had made clear that, for GTA V multiplayer MODs, FiveM is the only authorized platform under their Platform License Agreement.
+
+Complying with Take-Two's request, they announced a phased shutdown of RAGE:MP.
+
+It would not happen overnight: a grace period was set so server operators could migrate to FiveM.
+
+New community server applications stopped immediately and general distribution of the RAGE:MP Server Toolkit ended, while existing server operators retained access to the builds they needed through the Server Manager.
+
+The public server list then closed on June 1, 2026. The final deadline was set at August 31, 2026.
+
+Remaining community servers were asked to migrate by that date, after which RAGE:MP's game client and server tools would no longer be provided or supported and the backend infrastructure would be permanently shut down.
+
+---
+
+## "Please Move to FiveM" — A Former Rival as the Only Destination
+
+What is symbolic about the RAGE:MP announcement is that it does not stop at "we are shutting down."
+
+The team asked existing servers to migrate to FiveM, and said the Cfx team would help with technical questions during the move.
+
+In the 2010s, FiveM and RAGE:MP were competitors in the same GTA V custom multiplayer market.
+
+In 2026, RAGE:MP itself is directing its users to FiveM.
+
+Given ten years of history, it is a strikingly symbolic ending. For FiveM's own mechanics, see "[What Is FiveM?](/en/fivem-gtarp/what-is-fivem)"; for how FiveM and GTA RP differ, see "[The Difference Between FiveM and GTARP](/en/fivem-gtarp/fivem-vs-gtarp)."
+
+---
+
+## Not Every RAGE:MP Server Went to FiveM
+
+![A rainy intersection at night, traffic signals and headlights reflecting off the wet road](/images/news/ragemp-history/rp-city-street.webp)
+
+It would be inaccurate, though, to read "RAGE:MP shuts down" as "every server moved to FiveM."
+
+Some large communities chose their own path.
+
+Grand RP, for example, announced in July 2026 that it was leaving RAGE:MP entirely for its own infrastructure and its own launcher, switching to connections through that launcher rather than through RAGE:MP while preserving player progress and content.
+
+A platform can disappear without the communities and game systems grown on it over years disappearing with it.
+
+Here too, the platform and the RP servers themselves need to be considered separately.
+
+---
+
+## Why Did RAGE:MP Have to End?
+
+The direct reason confirmable from RAGE:MP's official announcement is plain.
+
+Take-Two asked them to shut down, and Rockstar/Take-Two took the position that FiveM is the authorized multiplayer MOD platform for GTA V.
+
+Rockstar's current Creator Platform License Agreement also names FiveM and RedM as Rockstar "Creator Services."
+
+Beyond that, however, care is needed.
+
+Claims like "RAGE:MP was killed so that GTA6 RP would run only on FiveM" or "FiveM will support GTA6 at launch" are not facts confirmed officially at this point.
+
+Rockstar has not revealed everything about the future relationship between GTA6 and FiveM.
+
+---
+
+## "FiveM Won" Does Not Fully Explain RAGE:MP's Shutdown
+
+![A monitor showing a map of GTA V's city with player icons scattered across it](/images/news/ragemp-history/server-player-map.webp)
+
+On the surface it can look as though RAGE:MP simply lost its competition with FiveM.
+
+Follow ten years of history, though, and it is more complicated.
+
+Back in 2016, custom multiplayer on GTA V was not a form of play the publisher officially provided. Outside developers built the client, the server, synchronization, scripting APIs, UI and anti-cheat themselves, turning GTA V into a different online game.
+
+Both RAGE:MP and FiveM came out of that current.
+
+Then, in 2023, Cfx.re joined Rockstar Games, and in 2026 FiveM was written into the PLA as one of Rockstar's Creator Services.
+
+The real change across these ten years, then, may be that "a custom multiplayer culture unofficial communities had built outside GTA V was gradually absorbed into Rockstar's own ecosystem."
+
+RAGE:MP's shutdown is the event that symbolizes that shift.
+
+---
+
+## And On Into the GTA6 Era
+
+2026, the year RAGE:MP ends, also happens to be the year the GTA series itself goes through an enormous generational change.
+
+As GTA6's release approaches, FiveM exists as a platform under Rockstar, and GTA RP has become a culture far larger than anyone could have imagined when GTA V launched. In Japan, streaming became the entrance to RP; that history is laid out as a timeline in "[A History of Japanese GTARP Streamer Servers](/en/fivem-gtarp/streamer-server-history)."
+
+Which is exactly why there is a point in preserving RAGE:MP's history.
+
+A few years from now, in a world where GTA6 RP servers are taken for granted, people will search for "where did GTA RP begin" and "was there anything besides FiveM."
+
+Explain GTA RP from the 2010s to the early 2020s with FiveM alone and a piece of the history goes missing.
+
+There was GTA:Network, there was RAGE:MP, there was alt:V, and there was FiveM. Each set of developers rebuilt GTA V into an online world in a different way, and countless server operators and players built communities on top of them.
+
+And on August 31, 2026, RAGE:MP — one of those options — completes its role.
+
+The RAGE:MP team's final announcement contains a line that captures those ten years well.
+
+> More than a codebase, it was the community that made RAGE:MP what it was.
+
+The platform disappears; the GTA RP culture born on it does not.
+
+That history carries on in the servers that moved to FiveM, in the communities that went to their own platforms, and in the RP of the GTA6 era now beginning.
+
+---
+
+> **Note:** This article was compiled by GTA6 FEED from publicly available information including RAGE Multiplayer's official announcements, development blog and forums, official announcements from Cfx.re and Rockstar Games, and Grand RP's official notices; it has no relationship whatsoever with Rockstar Games, Take-Two Interactive or the operators of these platforms. Version numbers and dates follow the wording of each official announcement. Rockstar has made no formal announcement about roleplay support in GTA6 or FiveM's role there, and this article does not treat that as confirmed. All images were generated with AI to illustrate the article and are not actual game footage, official UI, or screens from real servers. The eyecatch and some graphics carry Japanese text.`,
+  },
+  {
     id: 54,
     title:
       "GTA6の「車泥棒」が本格化？ TGGが明かした車両盗難・ドライブスルー・NPCの細かすぎる新仕様",

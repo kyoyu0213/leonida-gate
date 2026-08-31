@@ -29,6 +29,8 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 ストグラが常設型の代表であり、VCR GTAが期間限定型の代表にあたる。ストグラは街が長期にわたって続く常設型で、区切りとなるシーズンの切り替え（一定の休止期間）を挟みながらも、参加者が同じ世界で人生を積み重ねていく点に特徴がある。これに対しVCRは、数週間で完結する「祭り」に近い。この二つは主催も運営もルールも異なる別の企画だが、参加者が重なることが多く、しばしば混同される。年表を読む際は、この二系統が並行して動いてきたことを念頭に置くとわかりやすい。
 
+なお、こうした配信者サーバーが動いている土台にあたるのがFiveMなどのカスタムマルチプレイ基盤で、その歴史は[FiveMの歴史](/fivem-gtarp/history)と[RAGE:MPとは何だったのか](/news/55)で扱っている。
+
 主な企画を形態ごとに整理すると、次のようになる。
 
 | 企画 | 形態 | 特徴 |
@@ -136,6 +138,8 @@ Note that streamer servers often have their start, end, and hiatus dates move on
 Japan's GTARP streamer servers broadly divide into two forms. One is the permanent type, where the server runs at all times and participants continue the life of the same character over the long term. The other is the limited-time event type, held within a set period.
 
 Stgra is the representative of the permanent type, and VCR GTA is the representative of the limited-time type. Stgra is a permanent type where the city continues over the long term, and it is characterized by participants accumulating life in the same world, even while passing through season transitions (set hiatus periods) that serve as breaks. VCR, by contrast, is closer to a "festival" that concludes in a few weeks. These two are separate projects with different hosts, operations, and rules, but their participants often overlap, and they are frequently confused. When reading the timeline, it is easier to understand if you keep in mind that these two lines have run in parallel.
+
+Incidentally, the foundation these streamer servers run on is a custom multiplayer platform such as FiveM; that history is covered in [The History of FiveM](/fivem-gtarp/history) and [What RAGE:MP Was](/news/55).
 
 Organizing the main projects by form gives the following.
 
