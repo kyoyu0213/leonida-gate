@@ -1531,7 +1531,7 @@ That history carries on in the servers that moved to FiveM, in the communities t
     category: "topic",
     date: "2026-08-30",
     publishedAt: "2026-08-30 18:30",
-    updatedAt: "2026-08-31",
+    updatedAt: "2026-09-01",
     source:
       "TGG（The Gaming Gorilla）／IGN Rob Nelson氏インタビュー／ファミ通 Rob Nelson氏独占インタビュー／Esquire Australia ほか",
     sourceUrl: "https://x.com/TGGonYT",
@@ -1643,6 +1643,24 @@ Rob Nelson氏の回答としてTGGが伝えているところによると、GTA 
 
 ---
 
+## 燃料、積載量、ガレージ――GTA6では車がただの移動手段ではなくなる
+
+運転そのものが作り直されているのと並行して、TGGがRockstar Northで得た情報としては、車を手に入れた後の部分についても複数の報告が出ている。走らせるだけでなく、燃料を管理し、何をどれだけ積み、どこへ置いておくのか。車まわりのシステムがかなり広い範囲へ伸びている。
+
+まず報告されているのが燃料システムだ。TGGによれば『GTA VI』にはガソリン車の燃料とEVの充電という概念があり、ガソリンスタンドで実際に給油できる。給油時には車を降りてノズルを使い、満タンまでは約10秒程度、専用のアニメーションと画面上のカウント表示も用意されているという。ただし燃費がどの程度なのか、どのくらいの頻度で給油が必要になるのか、燃料が尽きたときに何が起きるのかといった部分は現時点で分かっていない。確認できるのは「燃料という概念が存在し、給油・充電のシステムがあるとTGGが報告している」というところまでだ。
+
+この話は、開発途中では食料品店での買い物を必須の要素にする案もあったものの、Rockstarが「やりすぎ」と判断して強制要素から外したという以前の報道ともつながる。生活実感を上げる仕組みを積み上げつつ、それがゲームのテンポを損なわない範囲に収める調整が続いているのだろう。給油についても、現時点の報告だけで「常に燃料を気にしながら移動するゲーム」と決めつけるのは早い。
+
+TGG由来の情報としてもうひとつ興味深いのが、車種によって運べる荷物の量が違うという点だ。バイクは積める量が少なく、一般的な車はそれより多く、大型車やバンでは複数のダッフルバッグを運べる可能性があるとされている。これが製品版でも同様なら、逃走車の選択が「一番速い車を選べば正解」ではなくなる。速度を取るのか、盗品の積載量を取るのか。犯罪計画そのものに車種選びが関わってくるかもしれないが、これはあくまでRockstar Northプレビュー由来の情報にもとづく見立てであり、最終仕様として確認されたものではない。
+
+保管についても報告がある。Leonida各地で車両保管用のガレージを購入できるという説明で、ここは従来作のように隠れ家を次々と買い集める話とは分けて考えたい。ジェイソンとルシアは物語上、逃亡生活を送るキャラクターであり、住宅を増やしていくよりも「盗んだ車を置いておく場所」を持つシステムになっているという整理だ。購入できるガレージの数、価格、1か所に何台入るのかといった部分は現時点では分かっていない。
+
+さらにTGGは、シリーズおなじみのPay 'n' Sprayの復活や車両改造ショップの存在、店舗によって得意な改造内容が異なる可能性、Nitrousに関する要素、衝突時のクラッシュカメラなども伝えている。ひとつひとつは細かい話だが、盗んだ後に色を変え、手を入れ、性能を上げるところまで車両ゲームプレイが伸びていることを示す材料ではある。
+
+こうして並べてみると、『GTA VI』の車は単なる移動手段ではなくなりつつある。狙う車をスマートフォンで調べ、必要な道具を用意して盗み、燃料を確認し、作り直された挙動で走らせて警察を振り切り、積める量を考えて盗品を運び、ガレージへ置き、改造するか売却するか自分の車として登録するかを決める。ここまでが一本のミッションとして確認されたわけではなく、現時点で報告されている車両関連システムを並べたときに見えてくる遊び方の可能性にすぎない。それでも、シリーズタイトルの「Grand Theft Auto」がこれほど字義どおりの意味を持った作品は、これまでなかったはずだ。
+
+---
+
 ## Burger Shotが本当に使える。しかもドライブスルー対応？
 
 TGGからは、犯罪とはまったく違う方向の追加情報も出ている。
@@ -1749,9 +1767,11 @@ Extended Lookで見えたのは、Leonidaのほんの一部だったのかもし
 
 **2026年8月31日：TGGとRob Nelson氏のやり取りをもとに、GTA6の車両挙動・ドライビングシステムが現行世代向けに再構築されていることを追記**
 
+**2026年9月1日：TGGの追加情報をもとに、燃料・EV充電、車両ごとの積載量、購入可能なガレージ、Pay 'n' Sprayなど車両関連システムについて追記**
+
 ---
 
-> **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。日本語部分は編集部訳・要約を含む。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。`,
+> **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。燃料・EV充電、車種ごとの積載量、購入できるガレージ、Pay 'n' Sprayや車両改造、Nitrousに関する内容も、現時点ではTGGがRockstar Northで得た情報としての報告であり、Rockstarが個別に正式発表した仕様ではない。日本語部分は編集部訳・要約を含む。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。`,
     titleEn:
       "Grand Theft Auto, Literally: TGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs",
     displayTitleEn:
@@ -1865,6 +1885,24 @@ Not just which car you steal and how, then, but how the stolen car drives — th
 
 ---
 
+## Fuel, Cargo Capacity, Garages — a Car in GTA VI Is No Longer Just Transport
+
+Alongside driving itself being rebuilt, TGG has reported several things from Rockstar North about what happens after you have the car. Not just driving it, but managing its fuel, deciding what and how much you can carry in it, and where you keep it. The systems around vehicles reach a good deal further than before.
+
+The first of them is fuel. According to TGG, GTA VI has both petrol for combustion cars and charging for EVs, and you can actually refuel at a gas station. Doing so means getting out of the car and using the nozzle; filling the tank takes around ten seconds, with a dedicated animation and an on-screen count. How efficient cars are, how often you would need to refuel, and what happens when you run dry are all unknown at this point. What can be stated is only that a concept of fuel exists and that TGG reports a working refuel/charge system.
+
+This connects with earlier reporting that during development there was a proposal to make grocery shopping mandatory, which Rockstar judged to be going too far and removed as a requirement. Systems that add a sense of daily life keep being layered in, while being tuned to stay within what does not damage the game's pace. It is too early to take the current reports on refueling and conclude this is a game where you constantly watch a fuel gauge.
+
+Another interesting item from TGG is that how much you can carry differs by vehicle. Bikes hold little, ordinary cars more, and larger vehicles and vans may be able to carry several duffel bags. If that holds in the finished game, picking a getaway vehicle stops being a matter of "take the fastest car." Speed, or capacity for what you are stealing? Vehicle choice may become part of planning the crime itself — though this is a reading based on information from the Rockstar North preview, not a confirmed final specification.
+
+Storage has been reported on too: garages for keeping vehicles can be bought around Leonida. This is worth separating from buying up safehouses one after another as in previous games. Jason and Lucia are characters living on the run in the story, and the explanation given is that the system is built around having somewhere to keep stolen cars rather than accumulating homes. How many garages can be bought, what they cost, and how many cars fit in one are not known at this point.
+
+TGG has also mentioned the return of the series staple Pay 'n' Spray, vehicle modification shops, the possibility that different shops specialize in different work, something involving nitrous, and a crash camera on collisions. Individually these are small details, but together they show vehicle gameplay extending into changing the color, working on the car and improving its performance after the theft.
+
+Lined up like that, a car in GTA VI is becoming something other than transport. Look up the car you want on your phone, bring the right tools and take it, check the fuel, drive it on rebuilt handling and lose the police, weigh what it can carry against what you are hauling, put it in a garage, then decide whether to modify it, sell it, or register it as your own. None of this has been confirmed as a single mission; it is only the shape of play that emerges when the vehicle systems reported so far are placed side by side. Even so, there has probably never been an entry in which the series title "Grand Theft Auto" was this literal.
+
+---
+
 ## Burger Shot Actually Works — With a Drive-Thru?
 
 TGG has also brought out information pointing in an entirely different direction from crime.
@@ -1971,9 +2009,11 @@ Collected TGG's additional testimony and Rob Nelson's explanations, covering tie
 
 **August 31, 2026: added, from the exchange between TGG and Rob Nelson, that GTA VI's vehicle handling and driving system have been rebuilt for the current console generation**
 
+**September 1, 2026: added, from further information from TGG, the vehicle systems around fuel and EV charging, per-vehicle cargo capacity, purchasable garages, and Pay 'n' Spray**
+
 ---
 
-> **Note:** The portions of this article covering the vehicle theft system, GPS trackers, carjacking and NPC variety are based on what Rob Nelson of Rockstar North explained directly to outlets including IGN and Famitsu. Entering Burger Shot and using its drive-thru currently rests mainly on the account of TGG, who saw GTA VI at Rockstar North, and is not a specification announced by Rockstar Games. The dog waste bag interaction is reported by both TGG and Esquire Australia. Japanese-language passages are summarized or paraphrased by the editorial team. All images were generated with AI to illustrate the article and are not actual game footage or official UI.`,
+> **Note:** The portions of this article covering the vehicle theft system, GPS trackers, carjacking and NPC variety are based on what Rob Nelson of Rockstar North explained directly to outlets including IGN and Famitsu. Entering Burger Shot and using its drive-thru currently rests mainly on the account of TGG, who saw GTA VI at Rockstar North, and is not a specification announced by Rockstar Games. The dog waste bag interaction is reported by both TGG and Esquire Australia. Fuel and EV charging, per-vehicle cargo capacity, purchasable garages, Pay 'n' Spray and vehicle modification, and the nitrous item are likewise reported at this point as information TGG obtained at Rockstar North, not specifications Rockstar has individually announced. Japanese-language passages are summarized or paraphrased by the editorial team. All images were generated with AI to illustrate the article and are not actual game footage or official UI.`,
   },
   {
     id: 53,
