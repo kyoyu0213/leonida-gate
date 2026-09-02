@@ -216,6 +216,726 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 58,
+    title:
+      'NoPixelとは？ 世界最大級のGTA RPサーバーがRockstarと組むまで――10年の歴史をわかりやすく解説',
+    displayTitle:
+      'NoPixelとは？ 世界最大級のGTA RPサーバーがRockstarと組むまで\n10年の歴史をわかりやすく解説',
+    description:
+      'NoPixelはゲームの名前ではない。GTA Vの世界で参加者が警察官・犯罪者・医者・市民を演じる、世界最大級のGTA RPコミュニティだ。2016年のArma 3時代からGTA V/FiveMへの移行、Twitchでの爆発、3.0・4.0、そして2026年9月のNoPixel V正式発表まで、約10年の歴史を年表つきで解説する。',
+    icon: '📖',
+    image: '/images/news/nopixel-history/eyecatch.webp',
+    category: 'topic',
+    date: '2026-09-02',
+    publishedAt: '2026-09-02 19:00',
+    source:
+      'NoPixel公式／Rockstar Games Newswire／PC Gamer ほか',
+    sourceUrl: 'https://www.nopixel.net/',
+    relatedArticles: [57, 41, 55],
+    aiSummary: [
+      'NoPixelはゲームの名前ではなく、GTA Vの世界を舞台に参加者が警察官・犯罪者・医者・経営者・市民などを演じる、世界最大級のGTA RPコミュニティ／サーバーである。Rockstarが運営する通常のGTA Onlineとは別物で、独自の警察・司法・医療・経済・住宅・犯罪システムが作り込まれている。',
+      '始まりはGTA Vではなくarma 3だった。NoPixelは2026年5月に10周年を迎えており、2016〜2017年の1.0時代はArma 3を舞台にしたRPプラットフォームだった。2017〜2020年の2.0でGTA V/FiveMへ移行し、2019年前後に人気ストリーマーの参加でTwitchを中心に世界的な注目を集め、2021年2月5日の3.0、2023年12月15日の4.0と大規模な世代交代を繰り返してきた。',
+      '2023年8月にFiveM開発元のCfx.reがRockstar Games傘下となり、2025年にはNoPixelがRockstarとの協力でNoPixel Vを制作していることを公表。2026年9月1日、Rockstarが公式NewswireでNoPixel Vを正式発表し、9月8日からRockstar Games Launcher経由のクローズドβが始まる。ただしGTA6でFiveMが使えるか、NoPixel VがGTA6へ移行するかは未発表のままである。',
+    ],
+    fullContent: `# NoPixelとは？ 世界最大級のGTA RPサーバーがRockstarと組むまで――10年の歴史をわかりやすく解説
+
+GTA6やFiveMのニュースを追っていると、最近「NoPixel（ノーピクセル）」という名前を目にする機会が急激に増えている。
+
+2026年9月にはRockstar Games自身が「NoPixel V」を正式に紹介し、9月8日から始まるクローズドβを告知した。RockstarはNoPixelについて、GTA RPの限界を押し広げてきたコミュニティとして評価しており、NoPixel VはRockstar Games Launcherからアクセスできるようになる。
+
+![NoPixel V ローンチトレーラー（NoPixel公式YouTube）](https://www.youtube.com/watch?v=fVCD9oKjtZs)
+
+*※本記事に掲載している画像は、記事の内容をイメージしやすくするためにAIで生成したものです。実際のNoPixelのゲーム画面・UI・実在のサーバー画面ではありません。*
+
+しかし、日本でGTA6の情報だけを追っている人なら、「そもそもNoPixelって何？」「新しいGTAのゲーム？」「FiveMとは違うの？」と思っても不思議ではない。
+
+結論から言えば、NoPixelはゲームの名前ではない。GTA Vの世界を使い、参加者が警察官、犯罪者、医者、経営者、市民などになりきって生活する、世界的に有名なGTA RPコミュニティ／サーバーだ。
+
+そして、その歴史はGTA6発売直前に突然始まったものでもない。
+
+NoPixelは2026年に10周年を迎えた。初期のArma 3時代からGTA V、FiveM、Twitchでの爆発的な人気、NoPixel 3.0、4.0を経て、ついにRockstarと共同でNoPixel Vを作るところまで来たのである。
+
+今回は、GTA RPを知らない人でも分かるように「NoPixelとは何なのか」から、その約10年間の歴史まで順番に整理していく。
+
+---
+
+## そもそも「GTA RP」とは何なのか
+
+![警察官、女性警官、医師、フーディー姿の若者、飲食店の店員、私服の女性、ギャング風の男性、消防士が病院前に並んでいる。背景にはパトカーと消防車](/images/news/nopixel-history/rp-roles-lineup.webp)
+
+NoPixelを理解するには、まずGTA RPを知っておく必要がある。
+
+普通のGTAでは、プレイヤーは用意された主人公を操作してストーリーを進めたり、GTA Onlineでミッションやレース、強盗などを楽しんだりする。
+
+RPは少し違う。
+
+RPは「Roleplay（ロールプレイ）」の略で、プレイヤー自身が架空の人物を作り、その人物として街の中で生活する遊び方だ。
+
+たとえば、あるプレイヤーは警察官として犯罪者を追い、別のプレイヤーは救急隊員として負傷者を助ける。車を修理するメカニックや飲食店の店員、会社経営者として働く人がいる一方で、ギャングを結成して犯罪に手を染める人もいる。
+
+重要なのは、その多くをNPCではなく実際の人間が演じていることだ。
+
+犯罪者が銀行を襲えば、プレイヤーの警察官が現場へ向かう。銃撃戦で誰かが倒れれば、救急隊員役のプレイヤーが駆けつける。その事件を記者役のプレイヤーが取材することさえある。
+
+こうして、ゲーム会社が最初から用意したシナリオではない物語が毎日のように生まれていく。
+
+NoPixelは、そんなGTA RPを世界的な配信コンテンツへ押し上げた代表的なコミュニティのひとつだ。
+
+---
+
+## NoPixelは「GTA Online」と何が違う？
+
+ここは初心者が最も混乱しやすい。
+
+NoPixelはRockstarが運営する通常の「GTA Online」のサーバーではない。
+
+GTA VのPC版をベースに、カスタムマルチプレイ環境を利用して独自のシステムを大量に追加したRPサーバーとして発展してきた。
+
+そのため、見た目はLos Santosでも、中で行われていることは通常のGTA Onlineとはかなり違う。
+
+独自の警察・司法制度、医療、仕事、企業、経済、住宅、アイテム、スマートフォン、犯罪システムなどが作られ、プレイヤーたちはそのルールの中で生活する。
+
+「GTA Vのオンラインモードを改造しただけ」と説明すると少し分かりにくい。
+
+感覚としては、GTA Vという巨大な街を舞台セットとして使い、その上にコミュニティが別のオンライン社会を作ったものと考えると理解しやすい。
+
+---
+
+## NoPixelの始まり――GTAではなく「Arma 3」だった
+
+現在では「NoPixel＝GTA RP」という印象が強いが、その始まりはGTA Vではなかった。
+
+NoPixel自身が2026年5月に10周年を迎えたと発信しており、その歴史は2016年まで遡る。NoPixelの歴史をまとめた資料でも、2016〜2017年の1.0時代はArma 3を舞台にしたRPプラットフォームとして説明されている。
+
+Armaシリーズには以前からロールプレイ系コミュニティが存在しており、NoPixelもそうした文化の中から成長していった。
+
+つまりNoPixelは、「GTA VでRPが流行ったから作られたサーバー」ではない。
+
+もともとRPコミュニティを作っていた人たちが、より大きな可能性を持つGTA Vへ舞台を移していったという順番なのである。
+
+---
+
+## GTA VとFiveMへ――NoPixel 2.0の時代
+
+次の大きな転換点がGTA Vへの移行だった。
+
+NoPixelの歴史では、2017〜2020年が「NoPixel 2.0」の時代として整理されており、FiveMを利用したGTA VベースのRP環境が本格的に発展していった。
+
+ここで登場するのがFiveMだ。
+
+FiveMは、GTA Vを利用して独自のマルチプレイサーバーを構築できるプラットフォームである。現在日本で遊ばれているGTA RPサーバーの多くも、このFiveMを利用している。
+
+つまり、
+
+- **GTA V** … ゲーム本体
+- **FiveM** … 独自サーバーを作るための基盤
+- **NoPixel** … その基盤上に作られた巨大RPコミュニティ
+
+という関係だと考えると分かりやすい。
+
+NoPixelはFiveMそのものではないし、FiveMをインストールすれば自動的にNoPixelになるわけでもない。
+
+FiveMという「土地」の上に、NoPixelという巨大な「街」が作られているような関係だった。
+
+---
+
+## 2019年、NoPixelがTwitchで爆発する
+
+![夜のネオン街を走るパトカーとスポーツカー、バイク。上空から警察のヘリコプターがサーチライトを当てている](/images/news/nopixel-history/police-pursuit-street.webp)
+
+NoPixelの名前がGTAコミュニティの外にまで広がった大きな転換点が、2019年前後だった。
+
+人気ストリーマーたちが次々とNoPixelへ参加し、その様子をTwitchで配信するようになる。
+
+ここでGTA RPとライブ配信の相性の良さが一気に表面化した。
+
+通常のゲーム配信では、一人の配信者がひとつのゲームをプレイする。
+
+しかしGTA RPでは、同じ事件を何人もの配信者が別々の視点から体験している。
+
+銀行強盗が起きたとする。
+
+強盗側の配信を見れば「どうやって逃げるか」という犯罪ドラマになる。一方、警察側の配信へ移れば「どうやって犯人を捕まえるか」という刑事ドラマになり、偶然その場に居合わせた一般市民の配信では、まったく別の物語として事件を見ることができる。
+
+しかも台本通りに進むとは限らない。
+
+プレイヤー同士の判断によって、昨日まで敵だった人物が協力したり、仲間だった人物が裏切ったりする。
+
+ひとつの街で、数十人、数百人の物語が同時進行する。
+
+これがNoPixelを単なるGTAのMODサーバーではなく、「見るゲーム」としても巨大化させた理由のひとつだった。
+
+---
+
+## NoPixel 3.0――GTA RPが巨大配信コンテンツになる
+
+2021年2月5日、NoPixelは大規模な刷新となるNoPixel 3.0へ移行した。NoPixelの歴史資料でも、この日を3.0のリブート日としている。
+
+この時代は、現在のGTA RP人気を語る上で特に重要だ。
+
+NoPixelには世界的な人気ストリーマーが多数参加し、GTA Vは発売から何年も経過したゲームとは思えないほどTwitchで再び大きな注目を集めた。
+
+3.0では街の経済や職業、警察、犯罪、店舗などがさらに作り込まれ、「GTAで遊んでいる」というよりNoPixelという独自のオンライン世界へログインしている感覚が強くなっていった。
+
+また、人気の高まりによって「NoPixelで遊びたい」という人も急増した。
+
+---
+
+## なぜNoPixelは誰でも入れないの？
+
+NoPixelについて調べると、「Whitelist（ホワイトリスト）」という言葉を目にする。
+
+これは参加を許可されたプレイヤーのリストだ。
+
+RPサーバーでは、誰でも自由に参加できるようにすると、ロールプレイを無視して他人を攻撃したり、ゲーム世界を荒らしたりするプレイヤーが入ってくる可能性がある。
+
+そのためNoPixelでは、参加者を一定の基準で管理する仕組みが重要になった。
+
+さらに人気配信者が大量に参加するようになると、単純にサーバーへ入りたい人の数が収容人数を大きく上回る。
+
+こうした背景からNoPixelは、「世界で最も有名なGTA RPサーバーのひとつ」であると同時に、簡単には入れないRPサーバーとしても知られるようになった。
+
+その後は、より参加しやすい別のPublicサーバーも展開されている。
+
+---
+
+## NoPixelがすごいのは「有名配信者がいるから」だけではない
+
+NoPixelが世界的に知られるようになった理由として、有名ストリーマーの存在は非常に大きい。
+
+しかし、それだけで10年間続くコミュニティにはならない。
+
+NoPixelの大きな特徴は、独自システムを作り続けてきた開発力にもある。
+
+警察が使う端末、スマートフォン、銀行、店舗、車両、住宅、犯罪、クラフト、医療など、RPに必要な仕組みが継続的に開発されてきた。
+
+こうした仕組みがあるからこそ、「警察官のふりをする」「店員のふりをする」だけではなく、ゲームシステムそのものが役割を支える。
+
+そしてNoPixelで生まれたアイデアやシステムは、GTA RPコミュニティ全体にも大きな影響を与えてきた。
+
+---
+
+## NoPixel 4.0――2023年12月、大規模リセット
+
+次の大きな転換点がNoPixel 4.0だ。
+
+NoPixelの歴史資料では、4.0は2023年12月15日にスタートしたとされている。
+
+大規模アップデートによって街のシステムやゲームプレイが刷新され、プレイヤーたちは新しい環境で再び物語を作り始めた。
+
+NoPixelが特徴的なのは、一度完成した世界を永遠に維持するのではなく、数年単位で大規模な世代交代を行ってきたことだ。
+
+1.0から2.0、3.0、4.0へ。
+
+数字が変わるたびに単なるアップデートではなく、「次のNoPixel」と呼べるほど環境が作り直されてきた。
+
+そして4.0の次に発表された名称は、5.0ではなかった。
+
+NoPixel Vだった。
+
+---
+
+## その間に起きた「RockstarとFiveM」の歴史的変化
+
+NoPixelの歴史を理解する上で、もうひとつ欠かせない出来事がある。
+
+FiveMを開発するCfx.reが、2023年8月にRockstar Gamesへ加わったことだ。
+
+それまでFiveMは、Rockstarのゲームを利用しながら外部コミュニティが発展させてきたカスタムマルチプレイ文化の中心にあった。
+
+ところが、そのFiveMを作るチームそのものがRockstar側へ入った。
+
+ここから、GTA RPを取り巻く状況は大きく変わり始める。
+
+かつてRockstarの外側で成長していた文化と、Rockstar自身との距離が急速に縮まり始めたのである。
+
+この時期にRAGE:MPやalt:Vといった他のカスタムマルチプレイ基盤がどうなったのかは、[RAGE:MPの10年の歴史と終了をまとめた記事](/news/55)で詳しく整理している。
+
+---
+
+## 2025年、NoPixelとRockstarが手を組む
+
+そして2025年、さらに大きなニュースが発表された。
+
+NoPixelは、次世代のGTA V Roleplay体験となる「**NoPixel V**」をRockstar Gamesとの協力によって制作していることを明らかにした。
+
+この時点で、NoPixelは単に「FiveMで一番有名なRPサーバー」という存在から次の段階へ進み始めた。
+
+長年Rockstarのゲームを土台に独自文化を作ってきたコミュニティが、今度はRockstar自身と協力して次のRP環境を作る。
+
+2016年のArma 3時代を知る人からすれば、かなり大きな変化だろう。
+
+---
+
+## 2026年、Rockstar自身がNoPixel Vを正式発表
+
+そして2026年9月1日。
+
+Rockstar Gamesは公式Newswireで「**Introducing nopixel V**」を公開した。
+
+RockstarはNoPixelについて、キャラクターへの没入、GTA Vマップへの改変、ストーリーテラーのコミュニティなどを通してGTA Roleplayの可能性を押し広げてきた存在として紹介している。
+
+そしてNoPixel Vのクローズドβが9月8日から始まることを正式に発表した。
+
+招待されたプレイヤーはRockstar Games Launcherからアクセスする。
+
+さらにNoPixelとRockstarは開発段階から協力し、新しい機能や開発ツールの改良を進めてきたことも明らかになった。
+
+これはNoPixelの約10年間を考えると、非常に象徴的な到達点だ。
+
+2016年にRPコミュニティとして始まり、GTA Vへ移り、FiveM上で巨大化し、Twitchを通じて世界中から視聴されるようになり、そして10年後にはRockstar自身が公式サイトでその新世代を紹介するまでになった。
+
+発表内容の詳細（1,000件の所有可能物件、Pixel Hotel & Casino、Cypress Flatsの再開発、GTA OnlineへのTwitch Drops連携など）は、[NoPixel V正式発表の記事](/news/57)でまとめている。
+
+---
+
+## NoPixelの10年を年表で見る
+
+![「NoPixelの歴史 – 約10年の歩み」と題した年表の図版。2016年のArma 3から2026年のNoPixel V正式発表までを6つの節目で並べている](/images/news/nopixel-history/nopixel-history-timeline.webp)
+
+| 年 | NoPixelの主な出来事 |
+| --- | --- |
+| 2016 | NoPixelの歴史がスタート。初期はArma 3を舞台にRPコミュニティを展開 |
+| 2017〜 | GTA V / FiveMを利用したNoPixelへ本格移行 |
+| 2017〜2020 | NoPixel 2.0時代。GTA RP環境を大幅に発展 |
+| 2019前後 | 人気ストリーマーの参加でTwitchを中心に世界的な注目を集める |
+| 2021年2月5日 | NoPixel 3.0スタート |
+| 2021年〜 | GTA RPが巨大なライブ配信コンテンツとしてさらに成長 |
+| 2023年8月 | FiveM開発元Cfx.reがRockstar Gamesへ |
+| 2023年12月15日 | NoPixel 4.0スタート |
+| 2025年 | Rockstarとの協力によるNoPixel Vを発表 |
+| 2026年5月 | NoPixelが10周年 |
+| 2026年9月1日 | Rockstar GamesがNoPixel Vを正式発表 |
+| 2026年9月8日 | NoPixel Vクローズドβ開始予定 |
+
+NoPixel自身の10周年告知と歴史資料を合わせると、約10年間でArma 3 → GTA V/FiveM → 世界的GTA RPコミュニティ → Rockstarとの共同プロジェクトへ変化してきたことが分かる。
+
+---
+
+## 日本のGTA RPとは何が違う？
+
+日本からNoPixelを理解するときには、「海外版ストグラみたいなもの？」と考える人もいるだろう。
+
+入口としては、それほど遠くない。
+
+ひとつの街に多くの参加者が入り、それぞれキャラクターを演じながら、警察、救急、犯罪、店舗経営などを通して物語が生まれ、その様子を視聴者が複数の配信者から見るという構造には共通点がある。
+
+ただし、NoPixelと日本の各RP企画は運営、ルール、参加方法、文化、システムが異なるため、「NoPixel＝海外版○○」と完全に同一視するのは正確ではない。
+
+NoPixelはNoPixelとして、約10年かけて独自の文化を作ってきたコミュニティだ。
+
+---
+
+## なぜGTA6 FEEDでNoPixelを追うのか
+
+そして、ここが現在NoPixelを知っておく最大の理由になる。
+
+GTA6は2026年11月19日に発売予定だ。
+
+一方、Rockstarはその直前となる9月にNoPixel Vを正式発表し、GTA RPを「クリエイターコミュニティが生み出した新しい遊び方」の代表例として取り上げている。
+
+ただし、NoPixel VはGTA VのRPプロジェクトだ。
+
+Rockstarは現時点で「NoPixel VをGTA6へ移行する」とも、「GTA6発売時からFiveMに対応する」とも発表していない。
+
+ここを混同してはいけない。
+
+それでも、GTA6発売直前のRockstarが世界最大級のGTA RPコミュニティと協力し、その新世代をRockstar Games Launcherから展開するという事実は、今後のGTAシリーズとRP文化の関係を考える上で非常に重要だ。
+
+GTA6のロールプレイがどうなるのかという論点は、[GTA6のRP文化の現在地をまとめた記事](/news/18)でも扱っている。
+
+---
+
+## NoPixelは「有名なRPサーバー」からRockstarのパートナーへ
+
+NoPixelの歴史を振り返ると、今回のNoPixel Vが突然現れたものではないことが分かる。
+
+Arma 3から始まり、GTA Vへ移り、FiveMを使って独自の街を作り、配信文化と結びついて世界中へ広がった。
+
+その間にGTA RPそのものも変わった。
+
+一部のPCゲーマーが楽しむニッチな遊びだったRPが、何十万人もの視聴者が物語を追いかける巨大なライブコンテンツになり、最終的にはRockstar自身が公式Newswireで紹介するところまで来た。
+
+だからNoPixel Vを理解するために必要なのは、「新しいカジノが追加された」「NPCが賢くなった」という機能だけではない。
+
+なぜRockstarがNoPixelと組むことになったのか。
+
+その答えの一部は、この10年間の歴史そのものにある。
+
+NoPixelはGTA RPという遊び方を長年育て、配信文化として世界へ広げてきた。そして2026年、そのコミュニティはRockstar Gamesと一緒に「次のGTA V Roleplay」を作る段階まで到達した。
+
+GTA6時代にNoPixelやFiveMが最終的にどのような形になるのかは、まだ分からない。
+
+しかし、これからGTA6とGTA RPのニュースを追うのであれば、「NoPixel」という名前は覚えておいて損のない存在になった。
+
+---
+
+## 参考リンク
+
+→ [NoPixel公式サイト](https://www.nopixel.net/)
+
+→ [Introducing nopixel V（Rockstar Games Newswire）](https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v)
+
+→ [Rockstar touts new invite-only NoPixel V GTA roleplaying server as "the next evolution of the RP community"（PC Gamer）](https://www.pcgamer.com/games/grand-theft-auto/rockstar-touts-new-invite-only-nopixel-v-gta-roleplaying-server-as-the-next-evolution-of-the-rp-community/)
+
+---
+
+> **注記：** 本記事は、NoPixel公式の発信と歴史資料、Rockstar Games Newswireの発表、およびPC Gamerなどの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two InteractiveおよびNoPixel運営とは一切関係がない。バージョンごとの開始日（3.0＝2021年2月5日、4.0＝2023年12月15日）や10周年の時期はNoPixel側の公開情報にもとづく。GTA6でFiveMが利用できるか、NoPixel VがGTA6へ移行するかについては、現時点でRockstarからの発表がなく、本記事でも確定情報としては扱っていない。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UI・実在のサーバー画面ではない。年表の図版に含まれるロゴ・パッケージ画像は各権利者に帰属し、解説目的で引用的に配置している。アイキャッチと年表の図版には日本語のテキストが含まれる。冒頭に埋め込んだ動画はNoPixel公式のYouTubeチャンネルで公開されているもので、著作権は権利者に帰属する。`,
+    titleEn:
+      'What Is NoPixel? How the World\'s Biggest GTA RP Server Ended Up Working With Rockstar — Ten Years of History Explained',
+    displayTitleEn:
+      'What Is NoPixel? How the World\'s Biggest GTA RP Server Ended Up Working With Rockstar\nTen Years of History Explained',
+    descriptionEn:
+      'NoPixel is not the name of a game. It is one of the largest GTA RP communities in the world, where players live in GTA V as police officers, criminals, doctors, and citizens. From its Arma 3 origins in 2016 through the move to GTA V/FiveM, the Twitch explosion, 3.0 and 4.0, and the formal NoPixel V announcement in September 2026 — ten years of history, with a timeline.',
+    aiSummaryEn: [
+      'NoPixel is not a game but one of the largest GTA RP communities and servers in the world, where participants use the world of GTA V to play police officers, criminals, doctors, business owners, and citizens. It is separate from the regular GTA Online that Rockstar operates, with its own police, justice, medical, economic, housing, and crime systems built out in depth.',
+      'It began on Arma 3, not GTA V. NoPixel marked its tenth anniversary in May 2026; its 1.0 era of 2016–2017 was an RP platform set in Arma 3. The 2.0 era of 2017–2020 moved it to GTA V/FiveM, popular streamers drew worldwide attention on Twitch around 2019, and sweeping generational resets followed with 3.0 on February 5, 2021 and 4.0 on December 15, 2023.',
+      'In August 2023 Cfx.re, FiveM\'s developer, joined Rockstar Games, and in 2025 NoPixel revealed it was building NoPixel V in collaboration with Rockstar. On September 1, 2026, Rockstar formally announced NoPixel V on its official Newswire, with a closed beta beginning September 8 via the Rockstar Games Launcher. Whether FiveM will work on GTA6, or NoPixel V will move there, remains unannounced.',
+    ],
+    fullContentEn: `# What Is NoPixel? How the World's Biggest GTA RP Server Ended Up Working With Rockstar — Ten Years of History Explained
+
+If you follow GTA6 and FiveM news, the name "NoPixel" has been turning up far more often lately.
+
+In September 2026, Rockstar Games itself formally introduced "NoPixel V" and announced a closed beta starting September 8. Rockstar credits NoPixel as a community that has pushed the boundaries of GTA RP, and NoPixel V will be accessible from the Rockstar Games Launcher.
+
+![NoPixel V launch trailer, from the official NoPixel YouTube channel](https://www.youtube.com/watch?v=fVCD9oKjtZs)
+
+*Note: the images in this article were generated with AI to help illustrate the topic. They are not actual NoPixel gameplay, official UI, or screenshots of any real server. Text in the key art and the timeline graphic is in Japanese.*
+
+If you have only been following GTA6 coverage, though, it would be no surprise to wonder: what even is NoPixel? A new GTA game? Is it different from FiveM?
+
+The short answer: NoPixel is not the name of a game. It is a world-famous GTA RP community and server, where participants use the world of GTA V to live as police officers, criminals, doctors, business owners, and ordinary citizens.
+
+And its history did not begin suddenly on the eve of GTA6's release.
+
+NoPixel turned ten in 2026. From its early Arma 3 days through GTA V, FiveM, explosive popularity on Twitch, NoPixel 3.0 and 4.0, it has arrived at building NoPixel V together with Rockstar.
+
+Below is a walk through what NoPixel actually is and its roughly ten years of history, written so that it makes sense even if you have never touched GTA RP.
+
+---
+
+## First of All, What Is "GTA RP"?
+
+![A police officer, a female officer, a doctor, a young person in a hoodie, a restaurant worker, a woman in plain clothes, a man dressed like a gang member, and a firefighter lined up in front of a hospital, with police cars and a fire engine behind them](/images/news/nopixel-history/rp-roles-lineup.webp)
+
+To understand NoPixel, you first need to know GTA RP.
+
+In ordinary GTA, you control a pre-written protagonist through a story, or you play missions, races, and heists in GTA Online.
+
+RP works differently.
+
+RP is short for "roleplay": each player creates a fictional person and lives in the city as that person.
+
+One player chases criminals as a police officer while another saves the wounded as a paramedic. Some work as mechanics fixing cars, staff in restaurants, or business owners, while others form gangs and turn to crime.
+
+The important part is that most of those roles are played by actual people, not NPCs.
+
+When a criminal robs a bank, a player who is a police officer responds to the scene. If someone goes down in a shootout, a player playing a paramedic arrives. A player acting as a reporter may even cover the incident.
+
+Out of this, stories nobody at a game company scripted are generated more or less daily.
+
+NoPixel is one of the communities that pushed that kind of GTA RP into globally watched streaming content.
+
+---
+
+## How Is NoPixel Different From "GTA Online"?
+
+This is where newcomers get most confused.
+
+NoPixel is not a server on the regular "GTA Online" that Rockstar operates.
+
+It grew as an RP server built on the PC version of GTA V, using a custom multiplayer environment to add a huge amount of bespoke systems.
+
+So although it looks like Los Santos, what happens inside is quite different from standard GTA Online.
+
+Its own police and justice system, medical services, jobs, businesses, economy, housing, items, smartphones, and crime systems have been built, and players live within those rules.
+
+Calling it "a modded GTA Online mode" makes it harder to grasp, not easier.
+
+It is easier to think of it as: GTA V's enormous city is used as a stage set, and on top of it a community has built a separate online society.
+
+---
+
+## NoPixel Started Not on GTA — but on Arma 3
+
+The impression today is "NoPixel = GTA RP," but it did not start on GTA V.
+
+NoPixel itself announced that it reached its tenth anniversary in May 2026, dating its history back to 2016. Histories of NoPixel likewise describe the 1.0 era of 2016–2017 as an RP platform set in Arma 3.
+
+The Arma series had roleplay communities well before that, and NoPixel grew out of that culture.
+
+In other words, NoPixel was not "a server built because RP got popular in GTA V."
+
+The order was the reverse: people who were already running an RP community moved their stage to GTA V, which offered greater possibilities.
+
+---
+
+## On to GTA V and FiveM — the NoPixel 2.0 Era
+
+The next major turning point was the move to GTA V.
+
+In NoPixel's history, 2017–2020 is organized as the "NoPixel 2.0" era, when a GTA V-based RP environment running on FiveM developed in earnest.
+
+Which brings in FiveM.
+
+FiveM is a platform that lets you build your own multiplayer servers using GTA V. Most of the GTA RP servers played in Japan today also run on FiveM.
+
+So the relationship works out like this:
+
+- **GTA V** — the game itself
+- **FiveM** — the foundation for building your own servers
+- **NoPixel** — the enormous RP community built on that foundation
+
+NoPixel is not FiveM itself, and installing FiveM does not automatically get you NoPixel.
+
+It was more like a vast "city" called NoPixel built on top of "land" called FiveM.
+
+---
+
+## 2019: NoPixel Explodes on Twitch
+
+![Police cars, a sports car, and a motorcycle racing through a neon-lit street at night, with a police helicopter shining a searchlight from above](/images/news/nopixel-history/police-pursuit-street.webp)
+
+The big turning point that carried NoPixel's name beyond the GTA community came around 2019.
+
+Popular streamers joined NoPixel one after another and began broadcasting it on Twitch.
+
+That is when how well GTA RP suits live streaming became obvious all at once.
+
+In ordinary game streaming, one streamer plays one game.
+
+In GTA RP, many streamers experience the same incident from different points of view.
+
+Say a bank robbery happens.
+
+Watch the robbers' stream and it is a crime drama about how to get away. Switch to the police side and it becomes a procedural about catching the suspects. On the stream of a civilian who happened to be nearby, the same incident is an entirely different story.
+
+And nothing necessarily goes to script.
+
+Depending on what players decide, someone who was an enemy yesterday cooperates today, or an ally betrays you.
+
+Dozens or hundreds of stories run simultaneously in one city.
+
+That is one reason NoPixel grew beyond a GTA mod server into something huge as a game to watch.
+
+---
+
+## NoPixel 3.0 — GTA RP Becomes Massive Streaming Content
+
+On February 5, 2021, NoPixel moved to NoPixel 3.0, a large-scale overhaul. NoPixel's history materials give that date as the 3.0 reboot.
+
+This era matters especially for understanding GTA RP's popularity today.
+
+Many globally popular streamers joined NoPixel, and GTA V drew enormous attention on Twitch again in a way that seemed improbable for a game years past release.
+
+In 3.0 the city's economy, jobs, police, crime, and businesses were built out further, and it felt less like "playing GTA" and more like logging into a distinct online world called NoPixel.
+
+As popularity grew, so did the number of people who wanted to play on it.
+
+---
+
+## Why Can't Anyone Just Join NoPixel?
+
+Read about NoPixel and you will run into the word "whitelist."
+
+That is the list of players permitted to join.
+
+On an RP server, letting anyone in freely risks players who ignore roleplay to attack others or grief the game world.
+
+So managing participants against a standard became important for NoPixel.
+
+And once large numbers of popular streamers were involved, the number of people who wanted in simply exceeded capacity by a wide margin.
+
+Against that background, NoPixel became known both as one of the most famous GTA RP servers in the world and as an RP server that is not easy to get into.
+
+Separate Public servers that are easier to join have since been operated as well.
+
+---
+
+## What Makes NoPixel Impressive Is Not Just the Famous Streamers
+
+The presence of well-known streamers is a very large part of why NoPixel became globally known.
+
+But that alone does not sustain a community for ten years.
+
+A major characteristic of NoPixel is the development capability behind its continuously built custom systems.
+
+Police terminals, smartphones, banking, businesses, vehicles, housing, crime, crafting, medical care — the mechanisms RP needs have been developed continuously.
+
+Because those exist, roles are not just "pretending to be a police officer" or "pretending to be a clerk" — the game systems themselves support the role.
+
+And ideas and systems born on NoPixel have had a large influence on the wider GTA RP community.
+
+---
+
+## NoPixel 4.0 — the December 2023 Large-Scale Reset
+
+The next major turning point was NoPixel 4.0.
+
+NoPixel's history materials give December 15, 2023 as its start.
+
+A large-scale update overhauled the city's systems and gameplay, and players began building stories again in a new environment.
+
+What is distinctive about NoPixel is that rather than maintaining a finished world forever, it has carried out sweeping generational changes every few years.
+
+From 1.0 to 2.0, 3.0, and 4.0.
+
+Each time the number changed, the environment was rebuilt enough to be called "the next NoPixel" rather than merely updated.
+
+And the name announced after 4.0 was not 5.0.
+
+It was NoPixel V.
+
+---
+
+## Meanwhile: the Historic Shift Between Rockstar and FiveM
+
+There is one more event you cannot skip in understanding NoPixel's history.
+
+Cfx.re, the developer of FiveM, joined Rockstar Games in August 2023.
+
+Until then FiveM sat at the center of a custom multiplayer culture that outside communities had developed while using Rockstar's games.
+
+Then the team building FiveM itself moved inside Rockstar.
+
+From there, the situation around GTA RP began to change substantially.
+
+The distance between a culture that had grown outside Rockstar and Rockstar itself started closing rapidly.
+
+What happened to the other custom multiplayer foundations of that period, RAGE:MP and alt:V, is covered in detail in [our article on RAGE:MP's ten-year history and shutdown](/en/news/55).
+
+---
+
+## 2025: NoPixel and Rockstar Join Forces
+
+Then in 2025 came even bigger news.
+
+NoPixel revealed that it was building "**NoPixel V**," a next-generation GTA V Roleplay experience, in collaboration with Rockstar Games.
+
+At that point NoPixel began moving beyond being "the most famous RP server on FiveM."
+
+A community that had spent years building its own culture on top of Rockstar's games would now build the next RP environment together with Rockstar itself.
+
+For anyone who remembers the Arma 3 days of 2016, that is quite a change.
+
+---
+
+## 2026: Rockstar Itself Formally Announces NoPixel V
+
+Then, on September 1, 2026.
+
+Rockstar Games published "**Introducing nopixel V**" on its official Newswire.
+
+Rockstar introduces NoPixel as a community that has expanded what GTA Roleplay can be through character immersion, modifications to the GTA V map, and its community of storytellers.
+
+And it formally announced that NoPixel V's closed beta begins September 8.
+
+Invited players access it from the Rockstar Games Launcher.
+
+It also came to light that NoPixel and Rockstar have collaborated since the development stage, working on new features and improvements to development tools.
+
+Set against NoPixel's roughly ten years, that is a highly symbolic destination.
+
+It began as an RP community in 2016, moved to GTA V, grew enormous on FiveM, came to be watched worldwide through Twitch — and ten years later, Rockstar itself is introducing its new generation on its official site.
+
+The specifics of that announcement — 1,000 ownable properties, the Pixel Hotel & Casino, the Cypress Flats redevelopment, the Twitch Drops tie-in with GTA Online — are covered in [our article on the NoPixel V announcement](/en/news/57).
+
+---
+
+## Ten Years of NoPixel, as a Timeline
+
+![A graphic titled "NoPixel's history – roughly ten years" laying out six milestones from Arma 3 in 2016 to the formal NoPixel V announcement in 2026 (captions in Japanese)](/images/news/nopixel-history/nopixel-history-timeline.webp)
+
+| Year | Major NoPixel events |
+| --- | --- |
+| 2016 | NoPixel's history begins; early on it runs an RP community set in Arma 3 |
+| 2017 onward | Full move to a NoPixel built on GTA V / FiveM |
+| 2017–2020 | The NoPixel 2.0 era; the GTA RP environment develops substantially |
+| Around 2019 | Popular streamers join, drawing worldwide attention centered on Twitch |
+| February 5, 2021 | NoPixel 3.0 launches |
+| 2021 onward | GTA RP grows further as massive live streaming content |
+| August 2023 | Cfx.re, FiveM's developer, joins Rockstar Games |
+| December 15, 2023 | NoPixel 4.0 launches |
+| 2025 | NoPixel V, made in collaboration with Rockstar, is announced |
+| May 2026 | NoPixel turns ten |
+| September 1, 2026 | Rockstar Games formally announces NoPixel V |
+| September 8, 2026 | NoPixel V closed beta scheduled to begin |
+
+Taken together with NoPixel's own tenth-anniversary post and its history materials, the arc over roughly ten years runs: Arma 3 → GTA V/FiveM → a global GTA RP community → a joint project with Rockstar.
+
+---
+
+## How Does It Differ From GTA RP in Japan?
+
+Approaching NoPixel from Japan, some people will wonder whether it is "like an overseas version of Stogura."
+
+As an entry point, that is not far off.
+
+Many participants enter one city, each playing a character, and stories emerge through police work, emergency services, crime, and running businesses, while viewers watch it through several streamers at once. That structure has plenty in common.
+
+That said, NoPixel and Japan's various RP projects differ in operation, rules, how you join, culture, and systems, so treating "NoPixel = the overseas version of X" as an exact equivalence is not accurate.
+
+NoPixel is NoPixel: a community that has spent roughly ten years building a culture of its own.
+
+---
+
+## Why GTA6 FEED Follows NoPixel
+
+And here is the main reason to know about NoPixel right now.
+
+GTA6 is due out on November 19, 2026.
+
+Just before that, in September, Rockstar formally announced NoPixel V and held up GTA RP as a leading example of "a new way to play created by the creator community."
+
+But NoPixel V is a GTA V RP project.
+
+Rockstar has not announced that NoPixel V will move to GTA6, nor that FiveM will be supported at GTA6's launch.
+
+Those must not be conflated.
+
+Even so, the fact that Rockstar — right before GTA6's release — is collaborating with one of the largest GTA RP communities in the world and delivering its new generation through the Rockstar Games Launcher matters a great deal for thinking about the relationship between the GTA series and RP culture going forward.
+
+The question of what roleplay looks like in GTA6 is also covered in [our article on where GTA RP culture currently stands](/en/news/18).
+
+---
+
+## From "Famous RP Server" to Rockstar's Partner
+
+Look back over NoPixel's history and it is clear that NoPixel V did not appear out of nowhere.
+
+It started on Arma 3, moved to GTA V, built its own city using FiveM, tied itself to streaming culture, and spread worldwide.
+
+Over that time GTA RP itself changed too.
+
+What had been a niche pastime for some PC gamers became huge live content with hundreds of thousands of viewers following its stories — and eventually something Rockstar itself introduces on its official Newswire.
+
+So understanding NoPixel V takes more than the feature list of "a new casino was added" or "the NPCs got smarter."
+
+Why did Rockstar end up working with NoPixel?
+
+Part of the answer lies in these ten years of history.
+
+NoPixel spent years cultivating GTA RP as a way to play and spreading it worldwide as streaming culture. And in 2026, that community reached the point of building "the next GTA V Roleplay" together with Rockstar Games.
+
+What final shape NoPixel and FiveM take in the GTA6 era is still unknown.
+
+But if you are going to follow GTA6 and GTA RP news from here, "NoPixel" has become a name worth remembering.
+
+---
+
+## Sources
+
+→ [NoPixel official site](https://www.nopixel.net/)
+
+→ [Introducing nopixel V (Rockstar Games Newswire)](https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v)
+
+→ [Rockstar touts new invite-only NoPixel V GTA roleplaying server as "the next evolution of the RP community" (PC Gamer)](https://www.pcgamer.com/games/grand-theft-auto/rockstar-touts-new-invite-only-nopixel-v-gta-roleplaying-server-as-the-next-evolution-of-the-rp-community/)
+
+---
+
+> **Note:** This article was compiled by GTA6 FEED from NoPixel's own posts and history materials, Rockstar Games Newswire announcements, and reporting from outlets including PC Gamer. GTA6 FEED is not affiliated with Rockstar Games, Take-Two Interactive, or the NoPixel team. Version start dates (3.0 on February 5, 2021; 4.0 on December 15, 2023) and the tenth-anniversary timing come from NoPixel's public information. Nothing has been announced by Rockstar about FiveM being usable on GTA6 or NoPixel V moving to GTA6, and this article does not treat either as settled. All images were generated with AI to illustrate the article and are not actual gameplay, official UI, or real server screenshots. Logos and box art appearing in the timeline graphic belong to their respective rights holders and are placed for explanatory purposes. Text in the key art and the timeline graphic is in Japanese. The video embedded at the top is hosted on NoPixel's official YouTube channel and remains the property of its rights holders.`,
+  },
+  {
     id: 57,
     title:
       'NoPixel V正式発表――Rockstarと作る「次世代GTA RP」、1000物件・新カジノ・GTA Online連携まで判明',
@@ -238,6 +958,10 @@ export const newsArticles: NewsArticle[] = [
       '9月8日から30日まで、対象のNoPixel V Twitch配信を視聴すると最大GTA$1,500,000とBurger Shot TracksuitがGTA Onlineで受け取れる。ただしGTA6でFiveMが動く、NoPixel VがGTA6へ移行するといった発表はなく、GTA6のRP対応は現時点で未発表のままである。',
     ],
     fullContent: `# NoPixel V正式発表――Rockstarと作る「次世代GTA RP」、1000物件・新カジノ・GTA Online連携まで判明
+
+NoPixel（ノーピクセル）は、2016年から約10年にわたって発展してきた世界最大級のRPコミュニティで、GTA V/FiveMを舞台に警察・犯罪者・市民などをプレイヤー自身が演じるGTA RPを世界的な配信文化へ押し上げた代表的な存在だ。
+
+▶ [NoPixelとは？ Arma 3時代からRockstarと組むまでの10年の歴史を詳しく見る](/news/58)
 
 GTA RPにとって、2026年9月1日はひとつの節目として記録される日になるかもしれない。
 
@@ -504,6 +1228,10 @@ GTA6時代のRPがどこへ向かうのかを考える上で、これまでで�
       'From September 8 to 30, watching eligible NoPixel V streams on Twitch earns up to GTA$1,500,000 and the Burger Shot Tracksuit in GTA Online. Nothing has been announced about FiveM running on GTA6 or NoPixel V moving to GTA6, and GTA6 RP support remains unannounced.',
     ],
     fullContentEn: `# NoPixel V Officially Revealed — the "Next Evolution of GTA RP" Built With Rockstar: 1,000 Properties, a New Casino, and a GTA Online Tie-In
+
+NoPixel is one of the largest roleplay communities in the world, built up over roughly ten years since 2016. Using GTA V and FiveM as its stage, where players themselves take on the roles of police officers, criminals, and ordinary citizens, it is the community that pushed GTA RP into a global streaming culture.
+
+▶ [What is NoPixel? A closer look at ten years of history, from the Arma 3 days to partnering with Rockstar](/en/news/58)
 
 For GTA RP, September 1, 2026 may end up recorded as a turning point.
 
