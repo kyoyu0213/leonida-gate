@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, NotebookPen, MapPinned } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
+import { getArticleById, isNoindexNewsId, formatArticleDate, CATEGORY_CONFIG } from '@/data/news';
 import { useSeo } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
@@ -97,6 +98,13 @@ const GROUPS: CardGroup[] = [
   },
 ];
 
+// ページ最下部に出す「GTA RP関連のニュース」で拾う記事ID（新しい順に手で並べる）。
+//  - ハブのカード群（GROUPS）とは別枠で、タブ絞り込みの影響を受けずに常時表示する。
+//  - 非表示記事（HIDDEN_NEWS_IDS）は getArticleById が undefined を返すので自動で落ちる。
+//    noindex 記事（NOINDEX_NEWS_IDS）も内部リンクで推さないよう明示的に除外する。
+//  - ここに id を足すだけで増える。タイトル・説明・日付は news.ts から引くので二重管理にならない。
+const GTARP_NEWS_IDS = [58, 57, 55, 41, 18] as const;
+
 // カテゴリ絞り込みチップ。'all' + 各グループ。チップのラベルは短縮版（fg.tab.*）。
 const TABS = [
   { id: 'all', tabKey: 'fg.tab.all', color: '#ff2d95' },
@@ -130,6 +138,11 @@ export default function FivemGtarp() {
     .filter(Boolean);
 
   const langPrefix = lang === 'en' ? '/en' : '';
+
+  // GTA RP関連のニュース（最下部）。存在しない／非表示／noindex の id は落とす。
+  const gtarpNews = GTARP_NEWS_IDS.map((id) => getArticleById(id))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
+    .filter((a) => !isNoindexNewsId(a.id));
 
   return (
     <div className="vice-page vice-noise">
@@ -312,6 +325,74 @@ export default function FivemGtarp() {
             </section>
           ))}
         </div>
+
+        {/* GTA RP関連のニュース：カード群のタブ絞り込みとは独立させ、常に最下部へ出す。
+            条件レンダリングにするとプリレンダ時にDOMから消えるため、絞り込みの外に置くこと。 */}
+        {gtarpNews.length > 0 && (
+          <section className="mt-12">
+            <div className="flex items-center gap-3 mb-4">
+              <span
+                className="h-4 w-1 rounded-full"
+                style={{ background: '#ff2d95', boxShadow: '0 0 10px #ff2d9588' }}
+              />
+              <h2
+                className="text-[12px] font-extrabold tracking-[0.18em] uppercase m-0"
+                style={{ color: '#ff2d95' }}
+              >
+                {t('fg.news.title')}
+              </h2>
+              <span className="flex-1 h-px bg-white/10" />
+            </div>
+            <p className="text-white/55 text-[13px] leading-relaxed m-0 mb-4 max-w-[720px]">
+              {t('fg.news.lead')}
+            </p>
+
+            <div className="grid gap-2.5 sm:grid-cols-2">
+              {gtarpNews.map((a) => {
+                const color = CATEGORY_CONFIG[a.category].vice;
+                return (
+                  <a
+                    key={a.id}
+                    href={`${langPrefix}/news/${a.id}`}
+                    className="group flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 transition-all hover:-translate-y-0.5"
+                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${color}99`)}
+                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
+                  >
+                    <span
+                      className="w-9 h-9 flex-none rounded-lg flex items-center justify-center text-lg"
+                      style={{ background: `${color}1f`, border: `1px solid ${color}55` }}
+                    >
+                      {a.icon}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-[13.5px] font-extrabold text-white m-0 leading-snug line-clamp-2">
+                        {(lang === 'en' && a.titleEn) || a.title}
+                      </h3>
+                      <span className="block text-[11px] text-white/40 font-mono mt-1">
+                        {formatArticleDate(a, lang)}
+                      </span>
+                    </div>
+                    <ArrowRight
+                      size={15}
+                      className="flex-none mt-1 transition-transform group-hover:translate-x-1"
+                      style={{ color }}
+                    />
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="mt-4 text-[12.5px] font-bold">
+              <a
+                href={`${langPrefix}/news`}
+                className="inline-flex items-center gap-1.5 text-[#ff2d95] hover:underline"
+              >
+                <Newspaper size={14} />
+                {t('fg.news.all')} →
+              </a>
+            </div>
+          </section>
+        )}
       </main>
 
       <SiteFooter width={1100} />

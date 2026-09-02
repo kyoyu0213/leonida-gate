@@ -151,6 +151,10 @@ const JA: Dict = {
   'fg.group.more': '用語・歴史',
   'fg.group.dev': '開発者向け',
   'fg.group.fieldnotes': 'GTA6 FEEDの体験記',
+  'fg.news.title': 'GTA RP関連のニュース',
+  'fg.news.lead':
+    'NoPixel、FiveM、RAGE:MPなど、GTA RPの土台そのものが動いたニュースをまとめています。GTA6時代に向けて何が変わろうとしているのかは、この数本を追うと見えてきます。',
+  'fg.news.all': 'ニュース一覧へ',
   'fg.tab.all': 'ALL',
   'fg.tab.basics': '基本',
   'fg.tab.play': '遊ぶ',
@@ -755,6 +759,10 @@ const EN: Dict = {
   'fg.group.more': 'Glossary & History',
   'fg.group.dev': 'For Developers',
   'fg.group.fieldnotes': 'GTA6 FEED Field Notes',
+  'fg.news.title': 'GTA RP News',
+  'fg.news.lead':
+    'News on the foundations of GTA RP itself — NoPixel, FiveM, RAGE:MP and the rest. These few articles are where the shift heading into the GTA6 era becomes visible.',
+  'fg.news.all': 'All news',
   'fg.tab.all': 'All',
   'fg.tab.basics': 'Basics',
   'fg.tab.play': 'Play',
