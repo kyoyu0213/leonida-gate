@@ -216,6 +216,550 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 57,
+    title:
+      'NoPixel V正式発表――Rockstarと作る「次世代GTA RP」、1000物件・新カジノ・GTA Online連携まで判明',
+    displayTitle:
+      'NoPixel V正式発表\nRockstarと作る「次世代GTA RP」、1000物件・新カジノ・GTA Online連携まで判明',
+    description:
+      '2026年9月1日、Rockstar GamesがNewswireでNoPixel Vを正式に紹介した。9月8日開始のクローズドβ、Rockstar Games Launcherからのアクセス、刷新されたキャラクターカスタマイズ、Pixel Hotel & Casino、Cypress Flatsの6ブロック再開発、そして最大GTA$1,500,000のTwitch Drops。RAGE:MP終了の翌日に始まった「次世代GTA RP」を整理する。',
+    icon: '📣',
+    image: '/images/news/nopixel-v-official-reveal/eyecatch.webp',
+    category: 'release',
+    date: '2026-09-02',
+    publishedAt: '2026-09-02 13:30',
+    source:
+      'Rockstar Games Newswire「Introducing nopixel V」／NoPixel公式／PC Gamer ほか',
+    sourceUrl: 'https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v',
+    relatedArticles: [41, 55, 18],
+    aiSummary: [
+      '2026年9月1日、Rockstar GamesがNewswireでNoPixel Vを正式に取り上げた。9月8日からRockstar Games Launcher経由の招待制クローズドβが始まり、Rockstarは刷新されたキャラクターカスタマイズ、Pixel Hotel & Casino、Cypress Flatsの6ブロック再開発、より反応的な歩行者などを具体的に紹介している。',
+      'NoPixel側はRockstarとの協力が今回のリリースの重要な要素だったと説明し、両チームが開発開始以来、新機能と開発ツールの改良に取り組んできたとしている。一方でPC Gamerが報じた「1,000件の所有可能物件」はRockstarのNewswireには記載がなく、公式発表の数字ではない。',
+      '9月8日から30日まで、対象のNoPixel V Twitch配信を視聴すると最大GTA$1,500,000とBurger Shot TracksuitがGTA Onlineで受け取れる。ただしGTA6でFiveMが動く、NoPixel VがGTA6へ移行するといった発表はなく、GTA6のRP対応は現時点で未発表のままである。',
+    ],
+    fullContent: `# NoPixel V正式発表――Rockstarと作る「次世代GTA RP」、1000物件・新カジノ・GTA Online連携まで判明
+
+GTA RPにとって、2026年9月1日はひとつの節目として記録される日になるかもしれない。
+
+世界最大級のGTA RPコミュニティとして知られるNoPixelの次世代版「NoPixel V」が正式に姿を現した。トレーラーが公開されただけではない。Rockstar Games自身がNewswireでNoPixel Vを取り上げ、9月8日から始まるクローズドβ、Rockstar Games Launcherからのアクセス、刷新されたキャラクターカスタマイズ、新しい街区、より反応的なNPC、そしてGTA Onlineと連動するTwitch Dropsまで発表した。
+
+![NoPixel V ローンチトレーラー（NoPixel公式YouTube）](https://www.youtube.com/watch?v=fVCD9oKjtZs)
+
+*※本記事に掲載している画像は、記事の内容をイメージしやすくするためにAIで生成したものです。実際のNoPixel Vのゲーム画面・UI・実在のサーバー画面ではありません。*
+
+ここまでなら、「Rockstar公認の有名RPサーバーが大型アップデートされる」というニュースにも見える。
+
+しかし、今回の発表で重要なのはそこではない。
+
+RockstarはNoPixel Vを「**GTAV Roleplay Communityの次の進化**」として紹介している。そしてNoPixel側も、Rockstarとの協力が今回のリリースを実現する重要な要素だったと説明している。
+
+かつてRockstarの外側で発展してきたGTA RPが、いよいよRockstar自身のプラットフォームと深く結びつき始めた。
+
+---
+
+## NoPixel V、9月8日にクローズドβ開始
+
+![夕暮れの大通り。ネオンが灯りはじめた街並みを、旧型のマッスルカーとスポーツカーが並んで走っている](/images/news/nopixel-v-official-reveal/sunset-strip-cruise.webp)
+
+NoPixel Vのクローズドβは2026年9月8日にスタートする。
+
+現時点では誰でも参加できる一般公開ではなく、招待されたプレイヤーが対象だ。参加者はRockstar Games Launcherを通じてNoPixel Vへアクセスする。Rockstarは9月8日以降、配信プラットフォームでNoPixelコミュニティによるプレイを視聴できるとしており、おなじみのキャラクターだけでなく、新しいキャラクターによる物語も始まるとしている。
+
+ここは従来のNoPixelとの大きな違いのひとつだ。
+
+NoPixelは長年、GTA Vをベースにしながら独自のシステムやルールを積み上げ、大規模なRPコミュニティへ成長してきた。しかしNoPixel Vでは、その入口にRockstar Games Launcherが登場する。
+
+単にNoPixelのバージョン番号が「4」から「V」へ変わったという話ではない。
+
+NoPixelという巨大RPコミュニティとRockstarの公式エコシステムとの距離が、目に見える形で縮まったのである。
+
+クローズドβの日程や招待制、ホワイトリストのリセットについては、[NoPixel Vのクローズドβが9月8日に始まると報じられた段階の記事](/news/41)でも整理している。今回のNewswireは、そこで報じられていた内容をRockstar側から裏づける形になった。
+
+---
+
+## RockstarがNoPixel Vの「ゲーム内容」まで紹介
+
+![キャラクター作成画面。左側に顔・髪型・衣装のプリセットが並び、中央の人物が鏡に映った自分の姿を確認している](/images/news/nopixel-v-official-reveal/character-customization.webp)
+
+今回のNewswireでもうひとつ印象的なのは、RockstarがNoPixelの存在を紹介するだけで終わっていないことだ。
+
+NoPixel Vで何が変わるのかについても、かなり具体的に説明している。
+
+まず、キャラクターカスタマイズシステムが再構築される。Rockstarによれば、プレイヤーはキャラクターのバックストーリーに合わせて、これまで以上に個性的な人物を作れるようになる。
+
+RPでは非常に重要な変更だ。
+
+通常のGTA Onlineなら、自分のキャラクターを格好良くすること自体が目的になることも多い。しかしRPでは、外見そのものが物語の一部になる。
+
+警察官なのか、ギャングなのか、会社員なのか、ホームレスなのか。あるいは街で誰もが知っている奇妙な人物なのか。見た目からその人物の人生を表現する必要があるからだ。
+
+NoPixel Vでは、その部分がさらに強化されることになる。
+
+---
+
+## Los Santosそのものも作り直す
+
+![夜のPIXEL HOTEL & CASINO。紫のネオンサインが灯るエントランスに車が停まり、着飾った客が集まっている](/images/news/nopixel-v-official-reveal/pixel-hotel-casino-entrance.webp)
+
+変わるのはキャラクターだけではない。
+
+Rockstarが公式に挙げた代表的な場所が、Pixel Hotel & Casinoだ。
+
+![シャンデリアの下に広がるカジノフロア。ブラックジャックのテーブルでディーラーと客が向かい合い、奥にはスロットマシンが並ぶ](/images/news/nopixel-v-official-reveal/pixel-casino-interior.webp)
+
+さらにCypress Flatsでは、6ブロック規模の再開発が行われる。
+
+![雨に濡れた埠頭の道路。CYPRESS FLATSと落書きされた壁の脇を走るバイクを、複数のパトカーが追いかけている](/images/news/nopixel-v-official-reveal/cypress-flats-chase.webp)
+
+これは単純に建物をひとつ追加する程度の変更ではない。既存のLos Santosを土台にしながら、RPの舞台として使いやすいよう街そのものを作り替えていく方向性が見えてくる。
+
+Rockstarはそのほかにも、ビジュアルの刷新、合法・非合法双方での新しい稼ぎ方、そしてより賢く、プレイヤーの行動に反応する歩行者をNoPixel Vの特徴として挙げている。
+
+![昼のダウンタウンを上空から見た風景。運河沿いに高層ビルと低層の住宅街が広がり、ヘリコプターが飛んでいる](/images/news/nopixel-v-official-reveal/los-santos-daytime.webp)
+
+GTA RPでは、プレイヤー同士のロールプレイが主役になりやすい。その一方で、街を歩くNPCはどうしても「背景」になりがちだった。
+
+そのNPCがより反応的になるのであれば、Los Santosを単なるRP用マップではなく、より生きた街として感じさせるための重要な変更になる可能性がある。
+
+ただし、現段階ではNPCが具体的にどの程度賢くなるのか、どんな行動へ反応するのかといった詳細までは明らかになっていない。
+
+---
+
+## 「所有できる物件は1,000件」との情報も
+
+![夕方の資材置き場に集まった男たち。テーブルの上には札束と拳銃が置かれ、椅子に座った人物と向かい合っている](/images/news/nopixel-v-official-reveal/criminal-meeting-yard.webp)
+
+さらにPC Gamerは、NoPixel VによるGTA Vマップの改変について、1,000件の所有可能な物件が追加されると報じている。
+
+これはRockstarのNewswire本文に記載されている数字ではないため、「Rockstarが1,000物件を公式発表した」とするのは正確ではない。
+
+しかしNoPixel Vが目指している規模を考える上では興味深い数字だ。
+
+RPにおける家や店舗は、単なるセーブポイントではない。
+
+自宅として使う人もいれば、店を経営する人もいる。ギャングの拠点になったり、誰にも知られていない取引場所になったり、プレイヤー同士の物語が始まる舞台にもなる。
+
+もし1,000件規模の所有可能物件が実際に運用されるなら、NoPixel Vは「新しいジョブを追加したNoPixel」ではなく、Los SantosそのものをRP向けに再設計するプロジェクトと考えた方が近い。
+
+---
+
+## RockstarとNoPixelは何を一緒に作ったのか
+
+そして、今回もっとも注目しておきたい部分がある。
+
+NoPixel側はRockstarとの関係について、今回のリリースを実現する上でRockstarとの協力が重要だったと説明している。
+
+さらに両チームはNoPixel Vの開発開始以来、新しい能力の開発や開発ツールの改良に取り組んできたとしている。
+
+これはかなり興味深い。
+
+Rockstarが完成したNoPixel Vを後から「公認した」というだけではなく、開発段階から両者が協力していたことになるからだ。
+
+ただし、この情報から「NoPixel Vの技術がGTA6に使われる」「GTA6でFiveMが動く」「GTA6 OnlineにRPモードが搭載される」といったところまで話を広げることはできない。
+
+NoPixel Vは現在のところGTA VをベースとしたRP環境であり、RockstarはGTA6のオンライン展開とNoPixel Vを直接結びつける発表をしていない。PC Gamerも、GTA6発売が迫る一方で、RockstarはGTA6に関連するGTA Onlineの計画をまだ発表していないと指摘している。
+
+ここは明確に分けて考える必要がある。
+
+それでも、「RockstarとRP開発者が共同でツールや機能を改良している」という事実そのものは、今後のGTA RPを考える上で非常に大きい。
+
+---
+
+## NoPixel Vを見ると、GTA Onlineで150万GTA$がもらえる
+
+![夜の湾岸を上空から見た風景。橋を渡る車列と観覧車の明かりが水面に映り、警察のヘリコプターが飛んでいる](/images/news/nopixel-v-official-reveal/night-city-helicopter.webp)
+
+さらに今回、Rockstarは非常に象徴的な施策を用意した。
+
+NoPixel Vを視聴すると、GTA Online側で報酬がもらえる。
+
+9月8日から30日まで、対象となるNoPixel VのTwitch配信を視聴することで、最大GTA$1,500,000とBurger Shot TracksuitをGTA Onlineで獲得できるTwitch Dropsが実施される。
+
+一見すると、よくある視聴キャンペーンにも見える。
+
+しかしGTA RPの歴史を考えると意味は小さくない。
+
+これまでNoPixelを見ている層と、GTA Onlineを普通に遊んでいる層は、同じGTAファンでありながら別々のコミュニティとして存在してきた。
+
+今回Rockstarは、NoPixel Vを見る → Twitch Dropsを獲得する → GTA Onlineで報酬を受け取る、という公式の導線を作った。
+
+つまりNoPixel Vを、RPをすでに知っている人だけのコンテンツとして扱っていない。
+
+通常のGTA OnlineプレイヤーにもRPを見てもらおうとしている。
+
+これはRockstarがGTA RPをどのような位置づけで見始めているのかを考える上で、非常に分かりやすい変化だ。
+
+---
+
+## 9月8日は「完成」ではなく始まり
+
+そしてNoPixel Vは、9月8日に完成して終わるプロジェクトでもない。
+
+Rockstarは今回の発表の最後で、今後のアップデートについても触れている。
+
+予定されているのは、新しいPC向けゲーム内オーバーレイ、今後のイベント、そしてNoPixel Vへのアクセス拡大だ。
+
+特に重要なのは最後の部分だろう。
+
+現時点のNoPixel Vは招待制であり、誰でも参加できるサーバーではない。PC Gamerによれば、NoPixel側は今後さらに複数段階で招待を拡大すると説明する一方、既存のNoPixel PublicとNoPixel 4.0については「何も変わらない」としている。
+
+つまり9月8日はゴールではなく、新しいNoPixelを徐々に広げていく最初のフェーズになる。
+
+一般プレイヤーが最終的にどこまで参加できるのか、Publicや4.0とどう棲み分けるのかについては、今後の発表を待つ必要がある。
+
+---
+
+## RAGE:MPが終わった直後に、Rockstar×NoPixelが始まった
+
+![夕暮れの大通りに立つPIXEL HOTEL & CASINOのネオンサイン。カジノへ向かって車が走っている](/images/news/nopixel-v-official-reveal/pixel-casino-street.webp)
+
+今回の発表を単独で見るだけでも大きなニュースだが、GTA RP全体の歴史に置いてみると、さらに象徴的に見える。
+
+2026年8月31日、RAGE Multiplayerは約10年にわたる歴史を終えた。
+
+そして翌9月1日、RockstarはNoPixel Vを正式発表した。
+
+もちろん、この2つが意図的に連動した日程だとする根拠はない。
+
+それでも、時代の境目として見ると非常に興味深い。
+
+GTA Vでは長い間、FiveM、RAGE:MP、alt:Vなど複数のカスタムマルチプレイ基盤が存在し、その上でユーザー自身が街を作り、仕事を作り、ルールを作り、RP文化を育ててきた。この10年の流れは[RAGE:MPの歴史と終了をまとめた記事](/news/55)で整理している。
+
+しかし現在、その構図は大きく変わっている。
+
+FiveMを開発するCfx.reはRockstar Games傘下となり、NoPixel VはRockstarとの共同開発を明言し、Rockstar Games Launcherからアクセスする。そしてRockstar自身がNewswireでRPコミュニティを紹介し、GTA Online側へ報酬まで用意するようになった。
+
+GTA RPは、Rockstarの外側だけに存在する文化ではなくなりつつある。
+
+---
+
+## では、GTA6時代のRPはどうなるのか
+
+当然、ここで気になるのがGTA6だ。
+
+GTA6は2026年11月19日にPS5とXbox Series X|S向けに発売予定で、発売まで残された時間は少なくなっている。
+
+しかし現時点でRockstarは、GTA6でFiveMが利用できるとも、NoPixel VがGTA6へ移行するとも、GTA6に公式RPモードが搭載されるとも発表していない。
+
+したがって、NoPixel Vを「GTA6 RPのテスト」と断定することはできない。
+
+一方で、2026年のRockstarがGTA RPをどれほど重要視しているのかについては、今回の発表からかなりはっきり見えてきた。
+
+Rockstar Games LauncherからRPへ入る。
+
+RockstarとRP開発者が一緒に開発ツールを改良する。
+
+RP配信を見ることでGTA Onlineの報酬を受け取る。
+
+そして将来的にはアクセスをさらに広げる。
+
+数年前なら、どれも想像しにくかった光景だ。GTA6のロールプレイがどうなるのかという論点そのものは、[GTA6のRP文化の現在地をまとめた記事](/news/18)でも扱っている。
+
+---
+
+## 「次世代GTA RP」はもう始まっている
+
+NoPixel Vで本当に注目すべきなのは、新しいカジノでも、1,000件の物件でもないのかもしれない。
+
+それらを作っている環境そのものが変わったことだ。
+
+かつてGTA RPは、Rockstarが作ったGTA Vの外側でコミュニティが独自に育てた遊びだった。
+
+そこからFiveMが巨大化し、Cfx.reがRockstar傘下となり、今度は世界最大級のRPコミュニティであるNoPixelがRockstarと協力して次世代版を作るところまで来た。
+
+9月8日に始まるのは、NoPixelの新しいシーズンだけではない。
+
+GTA RPという文化が、コミュニティ主導で生まれた文化から、Rockstarとクリエイターが同じエコシステムの中で育てる文化へ変わっていく過程を、初めて大規模に見ることになるのかもしれない。
+
+そしてそのわずか約2か月後には、GTA6が控えている。
+
+NoPixel VがGTA6と直接つながるのかは、まだ誰にも分からない。
+
+だからこそ、今回のNoPixel Vは「GTA6 RPの答え」ではない。
+
+GTA6時代のRPがどこへ向かうのかを考える上で、これまでで最も重要なヒントのひとつなのである。
+
+---
+
+## 参考リンク
+
+→ [Introducing nopixel V（Rockstar Games Newswire）](https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v)
+
+→ [NoPixel公式サイト](https://www.nopixel.net/)
+
+→ [Rockstar touts new invite-only NoPixel V GTA roleplaying server as "the next evolution of the RP community"（PC Gamer）](https://www.pcgamer.com/games/grand-theft-auto/rockstar-touts-new-invite-only-nopixel-v-gta-roleplaying-server-as-the-next-evolution-of-the-rp-community/)
+
+---
+
+> **注記：** 本記事は、Rockstar Games NewswireのNoPixel V紹介記事、NoPixel公式の発表、およびPC Gamerなどの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two InteractiveおよびNoPixel運営とは一切関係がない。クローズドβの開始日、Rockstar Games Launcherからのアクセス、キャラクターカスタマイズの刷新、Pixel Hotel & Casino、Cypress Flatsの再開発、Twitch Drops（最大GTA$1,500,000とBurger Shot Tracksuit）はRockstarの発表にもとづく。1,000件の所有可能物件はPC Gamerの報道にもとづくもので、Rockstarが公式に発表した数字ではない。GTA6におけるFiveMの扱いや公式RPモードの有無については、現時点でRockstarからの発表がなく、本記事でも確定情報としては扱っていない。冒頭に埋め込んだ動画はNoPixel公式のYouTubeチャンネルで公開されているもので、著作権は権利者に帰属する。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UI・実在のサーバー画面ではない。アイキャッチには日本語のテキストが含まれる。`,
+    titleEn:
+      'NoPixel V Officially Revealed — the "Next Evolution of GTA RP" Built With Rockstar: 1,000 Properties, a New Casino, and a GTA Online Tie-In',
+    displayTitleEn:
+      'NoPixel V Officially Revealed\nThe "Next Evolution of GTA RP" Built With Rockstar',
+    descriptionEn:
+      'On September 1, 2026, Rockstar Games formally introduced NoPixel V on Newswire: a closed beta starting September 8, access via the Rockstar Games Launcher, rebuilt character customization, the Pixel Hotel & Casino, a six-block Cypress Flats redevelopment, and Twitch Drops worth up to GTA$1,500,000. A look at the "next generation of GTA RP" that began the day after RAGE:MP shut down.',
+    aiSummaryEn: [
+      'On September 1, 2026, Rockstar Games covered NoPixel V on Newswire. An invite-only closed beta begins September 8 through the Rockstar Games Launcher, and Rockstar describes specifics: rebuilt character customization, the Pixel Hotel & Casino, a six-block Cypress Flats redevelopment, and more reactive pedestrians.',
+      'NoPixel says collaboration with Rockstar was a key element in making the release possible, and that both teams have worked on new capabilities and improved development tools since development began. The "1,000 ownable properties" figure reported by PC Gamer does not appear in Rockstar\'s Newswire post and is not an official number.',
+      'From September 8 to 30, watching eligible NoPixel V streams on Twitch earns up to GTA$1,500,000 and the Burger Shot Tracksuit in GTA Online. Nothing has been announced about FiveM running on GTA6 or NoPixel V moving to GTA6, and GTA6 RP support remains unannounced.',
+    ],
+    fullContentEn: `# NoPixel V Officially Revealed — the "Next Evolution of GTA RP" Built With Rockstar: 1,000 Properties, a New Casino, and a GTA Online Tie-In
+
+For GTA RP, September 1, 2026 may end up recorded as a turning point.
+
+NoPixel V, the next-generation version of NoPixel — known as one of the largest GTA RP communities in the world — has formally been revealed. And not just with a trailer. Rockstar Games itself covered NoPixel V on Newswire, announcing a closed beta starting September 8, access through the Rockstar Games Launcher, a rebuilt character customization system, new districts, more reactive NPCs, and Twitch Drops that pay out in GTA Online.
+
+![NoPixel V launch trailer, from the official NoPixel YouTube channel](https://www.youtube.com/watch?v=fVCD9oKjtZs)
+
+*Note: the images in this article were generated with AI to help illustrate the topic. They are not actual NoPixel V gameplay, official UI, or screenshots of any real server. Captions on the key art are in Japanese.*
+
+Stated that way, it could still read as "a well-known Rockstar-approved RP server is getting a big update."
+
+But that is not what makes this announcement significant.
+
+Rockstar introduces NoPixel V as "**the next evolution of the GTAV Roleplay Community**". NoPixel, for its part, says that collaboration with Rockstar was a key element in making this release possible.
+
+GTA RP, a culture that grew up outside Rockstar, has begun to tie itself directly into Rockstar's own platform.
+
+---
+
+## NoPixel V Closed Beta Begins September 8
+
+![A wide boulevard at dusk with neon starting to glow, an older muscle car and a sports car driving side by side](/images/news/nopixel-v-official-reveal/sunset-strip-cruise.webp)
+
+The NoPixel V closed beta starts on September 8, 2026.
+
+It is not a general public release — it is limited to invited players, who reach NoPixel V through the Rockstar Games Launcher. Rockstar says that from September 8 onward you will be able to watch the NoPixel community play on streaming platforms, with stories from new characters as well as the familiar ones.
+
+That entry point is one of the biggest departures from NoPixel as it has existed until now.
+
+For years NoPixel has built its own systems and rules on top of GTA V, growing into a large-scale RP community. With NoPixel V, the door into it is the Rockstar Games Launcher.
+
+This is not simply NoPixel's version number moving from "4" to "V."
+
+The distance between an enormous RP community and Rockstar's official ecosystem has visibly narrowed.
+
+The beta dates, the invite-only access, and the whitelist reset were covered earlier in [our article from when NoPixel V's September 8 closed beta was first reported](/news/41). This Newswire post effectively confirms that reporting from Rockstar's side.
+
+---
+
+## Rockstar Describes NoPixel V's Actual Content
+
+![A character creation screen with face, hair, and outfit presets down the left side, and the character checking their reflection in a mirror](/images/news/nopixel-v-official-reveal/character-customization.webp)
+
+The other striking thing about this Newswire post is that Rockstar does not stop at acknowledging NoPixel exists.
+
+It goes into considerable detail about what changes in NoPixel V.
+
+First, the character customization system is being rebuilt. According to Rockstar, players will be able to create more distinctive characters that match their character's backstory than before.
+
+For RP, that matters enormously.
+
+In ordinary GTA Online, making your character look cool is often an end in itself. In RP, appearance is part of the story.
+
+Police officer, gang member, office worker, someone living on the street — or the strange local figure everyone in the city knows. The look has to express that person's life.
+
+NoPixel V is strengthening exactly that layer.
+
+---
+
+## Los Santos Itself Is Being Rebuilt
+
+![The PIXEL HOTEL & CASINO at night, purple neon over the entrance, cars pulling up and dressed-up guests gathering](/images/news/nopixel-v-official-reveal/pixel-hotel-casino-entrance.webp)
+
+Characters are not the only thing changing.
+
+The flagship location Rockstar named is the Pixel Hotel & Casino.
+
+![A casino floor beneath chandeliers, a dealer facing players at a blackjack table with rows of slot machines behind them](/images/news/nopixel-v-official-reveal/pixel-casino-interior.webp)
+
+On top of that, Cypress Flats gets a six-block redevelopment.
+
+![A rain-slicked dockside road, a motorcycle running past a wall tagged CYPRESS FLATS with several police cars in pursuit](/images/news/nopixel-v-official-reveal/cypress-flats-chase.webp)
+
+This is not a matter of dropping in one new building. Using the existing Los Santos as a foundation, the city itself is being reworked to function better as a stage for roleplay.
+
+Rockstar also lists a visual overhaul, new ways to earn money both legally and illegally, and smarter pedestrians who react to what players do.
+
+![A daytime aerial view of downtown, high-rises and low residential blocks along a waterway, with a helicopter overhead](/images/news/nopixel-v-official-reveal/los-santos-daytime.webp)
+
+In GTA RP, roleplay between players tends to be the main event. The NPCs walking the streets, meanwhile, have generally been scenery.
+
+If those NPCs become more reactive, that could be an important change in making Los Santos feel like a living city rather than just a map to roleplay on.
+
+At this stage, though, no details have been given about how much smarter the NPCs actually are, or what kinds of player behavior they respond to.
+
+---
+
+## Reports of "1,000 Ownable Properties"
+
+![Men gathered in a supply yard in the late afternoon, cash and a pistol on a table, facing a seated figure](/images/news/nopixel-v-official-reveal/criminal-meeting-yard.webp)
+
+PC Gamer reports that NoPixel V's changes to the GTA V map add 1,000 ownable properties.
+
+That figure does not appear in the body of Rockstar's Newswire post, so it would not be accurate to say "Rockstar officially announced 1,000 properties."
+
+It is an interesting number for gauging the scale NoPixel V is aiming at, though.
+
+In RP, a house or a storefront is not just a save point.
+
+Some people live in them. Some run businesses out of them. They become gang bases, or trade spots nobody else knows about, or the setting where a story between players begins.
+
+If something on the order of 1,000 ownable properties really is in operation, NoPixel V is better understood not as "NoPixel with new jobs added" but as a project to redesign Los Santos itself for roleplay.
+
+---
+
+## What Did Rockstar and NoPixel Build Together?
+
+And here is the part most worth watching.
+
+On its relationship with Rockstar, NoPixel says that collaboration with Rockstar was important in making this release possible.
+
+It adds that since NoPixel V's development began, both teams have worked on developing new capabilities and improving development tools.
+
+That is quite interesting.
+
+It means Rockstar did not merely bless a finished NoPixel V after the fact — the two sides were working together from the development stage.
+
+That said, this does not stretch far enough to support claims like "NoPixel V's technology will be used in GTA6," "FiveM will run on GTA6," or "GTA6 Online will ship with an RP mode."
+
+NoPixel V is, for now, an RP environment based on GTA V, and Rockstar has made no announcement connecting it directly to GTA6's online plans. PC Gamer likewise notes that with GTA6's release approaching, Rockstar has yet to announce any GTA Online plans related to GTA6.
+
+These need to be kept clearly separate.
+
+Even so, the plain fact that Rockstar and RP developers are jointly improving tools and features is a very large one for thinking about where GTA RP goes next.
+
+---
+
+## Watch NoPixel V, Get GTA$1.5 Million in GTA Online
+
+![A night aerial view of the waterfront, a line of cars crossing a bridge, a Ferris wheel reflected in the water, a police helicopter in the air](/images/news/nopixel-v-official-reveal/night-city-helicopter.webp)
+
+Rockstar has also set up something highly symbolic.
+
+Watch NoPixel V, and you get rewarded on the GTA Online side.
+
+From September 8 to 30, watching eligible NoPixel V streams on Twitch earns Twitch Drops worth up to GTA$1,500,000 plus the Burger Shot Tracksuit in GTA Online.
+
+At a glance it looks like an ordinary watch-and-earn campaign.
+
+Given the history of GTA RP, though, it is not a small thing.
+
+Until now, the people watching NoPixel and the people simply playing GTA Online have existed as separate communities, even as fans of the same game.
+
+What Rockstar has built here is an official path: watch NoPixel V → earn Twitch Drops → collect the reward in GTA Online.
+
+In other words, NoPixel V is not being treated as content only for people who already know RP.
+
+Rockstar is trying to get ordinary GTA Online players to watch RP too.
+
+As a signal of how Rockstar has begun to position GTA RP, it is about as legible as it gets.
+
+---
+
+## September 8 Is a Beginning, Not a Finish Line
+
+NoPixel V is also not a project that completes on September 8.
+
+Rockstar closes the announcement by touching on future updates.
+
+Planned are a new in-game overlay for PC, upcoming events, and expanded access to NoPixel V.
+
+That last item is the important one.
+
+As it stands, NoPixel V is invite-only, not a server anyone can join. According to PC Gamer, NoPixel says invitations will expand in several further stages, while for the existing NoPixel Public and NoPixel 4.0, "nothing changes."
+
+So September 8 is not a finish line but the first phase of gradually widening the new NoPixel.
+
+How far ordinary players will eventually be able to participate, and how V will coexist with Public and 4.0, will have to wait for further announcements.
+
+---
+
+## RAGE:MP Ended, and Rockstar × NoPixel Began the Next Day
+
+![A boulevard at dusk with the PIXEL HOTEL & CASINO neon sign, cars heading toward the casino](/images/news/nopixel-v-official-reveal/pixel-casino-street.webp)
+
+This would be major news on its own, but placed against the whole history of GTA RP it looks even more symbolic.
+
+On August 31, 2026, RAGE Multiplayer ended roughly ten years of history.
+
+The next day, September 1, Rockstar formally announced NoPixel V.
+
+There is of course no basis for saying the two dates were deliberately coordinated.
+
+As a seam between eras, though, it is striking.
+
+For a long time GTA V hosted multiple custom multiplayer foundations — FiveM, RAGE:MP, alt:V — and on top of them users built their own cities, jobs, and rules, and grew an RP culture. That decade is laid out in [our article on RAGE:MP's history and shutdown](/news/55).
+
+Today that picture has changed considerably.
+
+Cfx.re, the developer of FiveM, is now part of Rockstar Games. NoPixel V states outright that it was co-developed with Rockstar and is accessed through the Rockstar Games Launcher. And Rockstar itself is introducing the RP community on Newswire and handing out rewards on the GTA Online side.
+
+GTA RP is no longer a culture that exists only outside Rockstar.
+
+---
+
+## So What Happens to RP in the GTA6 Era?
+
+Which naturally raises the question of GTA6.
+
+GTA6 is due on November 19, 2026 for PS5 and Xbox Series X|S, and there is not much time left.
+
+As of now, though, Rockstar has not announced that FiveM will be usable on GTA6, that NoPixel V will move to GTA6, or that GTA6 will ship with an official RP mode.
+
+NoPixel V therefore cannot be declared "a test for GTA6 RP."
+
+What has become quite clear from this announcement is how much weight Rockstar in 2026 places on GTA RP.
+
+You enter RP from the Rockstar Games Launcher.
+
+Rockstar and RP developers improve development tools together.
+
+Watching RP streams earns you GTA Online rewards.
+
+And access is set to widen further in the future.
+
+A few years ago, none of that would have been easy to picture. The broader question of what roleplay looks like in GTA6 is covered in [our article on where GTA RP culture currently stands](/news/18).
+
+---
+
+## The "Next Generation of GTA RP" Has Already Started
+
+The thing genuinely worth watching in NoPixel V may be neither the new casino nor the 1,000 properties.
+
+It is that the environment in which they are being built has changed.
+
+GTA RP was once a pastime the community grew on its own, outside the GTA V that Rockstar made.
+
+From there FiveM became enormous, Cfx.re joined Rockstar, and now one of the largest RP communities in the world is building its next generation in collaboration with Rockstar.
+
+What begins on September 8 is not just a new NoPixel season.
+
+It may be the first large-scale look at GTA RP shifting from a culture born of community initiative into one that Rockstar and creators cultivate inside the same ecosystem.
+
+And roughly two months after that, GTA6 arrives.
+
+Whether NoPixel V connects directly to GTA6, nobody outside can say yet.
+
+Which is exactly why NoPixel V is not "the answer" for GTA6 RP.
+
+It is one of the most important hints so far about where RP is headed in the GTA6 era.
+
+---
+
+## Sources
+
+→ [Introducing nopixel V (Rockstar Games Newswire)](https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v)
+
+→ [NoPixel official site](https://www.nopixel.net/)
+
+→ [Rockstar touts new invite-only NoPixel V GTA roleplaying server as "the next evolution of the RP community" (PC Gamer)](https://www.pcgamer.com/games/grand-theft-auto/rockstar-touts-new-invite-only-nopixel-v-gta-roleplaying-server-as-the-next-evolution-of-the-rp-community/)
+
+---
+
+> **Note:** This article was compiled by GTA6 FEED from Rockstar Games Newswire's NoPixel V post, NoPixel's own announcement, and reporting from outlets including PC Gamer. GTA6 FEED is not affiliated with Rockstar Games, Take-Two Interactive, or the NoPixel team. The closed beta date, Rockstar Games Launcher access, the rebuilt character customization, the Pixel Hotel & Casino, the Cypress Flats redevelopment, and the Twitch Drops (up to GTA$1,500,000 plus the Burger Shot Tracksuit) come from Rockstar's announcement. The figure of 1,000 ownable properties comes from PC Gamer's reporting and is not a number Rockstar announced. Nothing has been announced by Rockstar regarding FiveM support or an official RP mode in GTA6, and this article does not treat either as settled. The video embedded at the top is hosted on NoPixel's official YouTube channel and remains the property of its rights holders. All images were generated with AI to illustrate the article and are not actual gameplay, official UI, or real server screenshots.`,
+  },
+  {
     id: 56,
     title:
       "GTA6公式サイトにスクリーンショット29枚追加――本当に「初公開」だった3枚と、画像から見える4つの変化",
