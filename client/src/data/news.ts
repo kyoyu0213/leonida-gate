@@ -3296,7 +3296,7 @@ Collected TGG's additional testimony and Rob Nelson's explanations, covering tie
     description:
       "Rockstar Gamesが2026年7月、スコットランド・エディンバラのRockstar Northへ招待した海外クリエイターたち。TGG、El Rubius、Davy Jones、Mike ShowShaが「An Extended Look」には収録されなかったゲームプレイを見て、Rob Nelson氏から直接説明を受けている。犯罪プロファイル、一人称視点、フレームレート、NPC表現――彼らの証言を1本にまとめ、新情報が出るたびに追記していく。",
     icon: "🗣️",
-    image: "/images/news/gta6-rockstar-north-creators/eyecatch.webp",
+    image: "/images/news/gta6-official/vice-city-03.webp",
     category: "topic",
     date: "2026-08-29",
     publishedAt: "2026-08-29 18:00",
@@ -3389,6 +3389,8 @@ Davy Jonesからは、GTA Vプレイヤーにとってかなり気になる情�
 
 ![Rockstar Northのロゴが掲げられた部屋で、テーブルにGTA6のスクリーンショットを並べながら身振りを交えて話すRob Nelson氏と、それを聞く取材者](/images/news/gta6-rockstar-north-creators/rob-nelson-rockstar-north.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
+
 Davy JonesがRockstar NorthでRob Nelson氏へ直接質問した内容として伝えられているところによると、『GTA VI』は三人称視点を中心として設計されており、GTA VのPS4／Xbox One以降のバージョンに搭載されたような、ゲーム全体を一人称でプレイできる専用モードは発売時には用意されないという。
 
 ただし、これは「一人称表示がゲームから完全になくなる」という意味ではない。特定の武器で照準を覗く場合など、一部のゲームプレイでは一人称表示が使用される。
@@ -3419,7 +3421,7 @@ El Rubiusの証言から見えてくるのは、ゲームシステムそのも�
 
 Rockstarらしいジョークのようにも聞こえるが、ここで注目したいのはNPCそのものの作り込みだ。『GTA VI』ではNPCの身体にも、過去作以上のバリエーションが与えられている可能性がある。
 
-![Vice Cityのビーチを埋め尽くすほどのNPC。水着姿の人々が思い思いに歩き、寝そべり、その奥に高層ビル群とヘリコプターが見える](/images/news/gta6-rockstar-north-creators/leonida-npc-crowd.webp)
+![Vice Cityのビーチを埋め尽くす人々。ライフガードタワーの周りを歩く人、砂浜に寝そべる人、その奥に高層ビル群が並ぶ公式スクリーンショット](/images/news/gta6-official/vice-city-05.webp)
 
 これは日本のファミ通によるRob Nelson氏へのインタビューともつながる。Nelson氏によれば、『GTA VI』では歩行者の多様性にも力を入れており、今回は身長や体格の違いまで本格的に考慮しているという。過去作では身長のバリエーションが非常に限られていたのに対し、今回はキャラクターの身長や体型がかなり豊富になっている。
 
@@ -3441,7 +3443,7 @@ Extended Lookに登場した大量のNPCが単純に「人数が多い」だけ�
 
 今回のRockstar North取材では、ジェイソンとルシアの関係についても興味深い情報が出ている。
 
-![GTA VIのキーアート。夕暮れのVice Cityを背に、クラシックカーのボンネットへ腰かけたルシアと、その隣に立つジェイソン](/images/news/gta6-rockstar-north-creators/jason-lucia-key-art.webp)
+![GTA VIの公式キーアート。クラシックカーのボンネットへ腰かけたルシアと、その隣に立つジェイソン](/images/news/gta6-official/jason-and-lucia-key-art-01.webp)
 
 ふたりは単純に「最初から最後まで固定された恋人同士」として描かれるわけではないようだ。ファミ通の取材では、プレイヤーの行動によってふたりの関係性にも変化が生まれ、恋人として進む場合もあれば、犯罪をともに行うパートナーのような関係になる可能性も示されている。
 
@@ -3509,7 +3511,7 @@ Rockstar North招待クリエイターとしてTGG、El Rubius、Davy Jones、Mi
 
 ---
 
-> **注記：** 本記事に掲載したクリエイターの発言は、Rockstar Northで行われたハンズオフ形式の先行プレビューに参加した各人が自身の動画・配信・SNSで公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した仕様ではない。Rob Nelson氏の発言はファミ通による独占インタビューほかの報道にもとづく。日本語部分は編集部訳・要約を含む。アイキャッチ画像はAIで生成したイメージ画像、犯罪プロファイルの図版は本記事の内容を整理するために編集部が作成したもので、いずれも実際のゲーム画面・公式UIではない。`,
+> **注記：** 本記事に掲載したクリエイターの発言は、Rockstar Northで行われたハンズオフ形式の先行プレビューに参加した各人が自身の動画・配信・SNSで公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した仕様ではない。Rob Nelson氏の発言はファミ通による独占インタビューほかの報道にもとづく。日本語部分は編集部訳・要約を含む。アイキャッチ・NPC・キーアートの画像はRockstar Games提供の公式素材。Rob Nelson氏の取材風景の画像はAIで生成したイメージ画像、犯罪プロファイルの図版は本記事の内容を整理するために編集部が作成したもので、この2点は実際のゲーム画面・公式UIではない。`,
     titleEn:
       "Every Creator Rockstar Invited to Rockstar North — What TGG, El Rubius and Davy Jones Saw of GTA VI Before Launch",
     displayTitleEn:
@@ -3601,6 +3603,8 @@ Davy Jones surfaced something GTA V players in particular will want to know abou
 
 ![Rob Nelson gesturing as he speaks in a room under a Rockstar North sign, GTA6 screenshots laid out on the table in front of him, with an interviewer listening](/images/news/gta6-rockstar-north-creators/rob-nelson-rockstar-north.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
+
 According to what has been relayed of Davy Jones's direct question to Rob Nelson at Rockstar North, GTA VI is designed around a third-person camera, and a dedicated mode letting you play the entire game in first person — as in GTA V's PS4/Xbox One and later versions — will not be available at launch.
 
 That does not mean first-person display disappears from the game entirely. Parts of gameplay, such as aiming down sights with certain weapons, do use it.
@@ -3631,7 +3635,7 @@ The preview reportedly showed remarkably detailed work in the NPCs moving throug
 
 It sounds like exactly the sort of joke Rockstar is known for, but what is worth noting here is the craft in the NPCs themselves. GTA VI may be giving NPC bodies more variation than any previous entry.
 
-![A Vice City beach packed with NPCs — people in swimwear walking and lying about as they please, with high-rises and a helicopter beyond](/images/news/gta6-rockstar-north-creators/leonida-npc-crowd.webp)
+![Official screenshot of a Vice City beach packed with people — some walking past a lifeguard tower, others lying on the sand, with high-rises beyond](/images/news/gta6-official/vice-city-05.webp)
 
 This connects to Famitsu's interview with Rob Nelson. Per Nelson, GTA VI puts real effort into pedestrian diversity, and this time seriously accounts for differences in height and build. Where previous entries had very limited height variation, character heights and body types are now considerably varied.
 
@@ -3653,7 +3657,7 @@ It looks like a small change at first glance, but combined with the criminal pro
 
 The Rockstar North coverage also produced interesting information about Jason and Lucia's relationship.
 
-![GTA VI key art: Lucia sitting on the hood of a classic car with Jason standing beside her, Vice City at dusk behind them](/images/news/gta6-rockstar-north-creators/jason-lucia-key-art.webp)
+![Official GTA VI key art: Lucia sitting on the hood of a classic car with Jason standing beside her](/images/news/gta6-official/jason-and-lucia-key-art-01.webp)
 
 The two do not appear to be depicted simply as a couple fixed in place from beginning to end. Famitsu's reporting indicates that player behavior produces change in their relationship as well: it may progress romantically, or become something closer to partners committing crimes together.
 
@@ -3721,7 +3725,7 @@ Published with TGG, El Rubius, Davy Jones and Mike ShowSha as the Rockstar North
 
 ---
 
-> **Note:** The creator statements collected here come from what each participant in the hands-off preview at Rockstar North published on their own videos, streams and social accounts; they are not specifications formally announced by Rockstar Games via Newswire or elsewhere. Rob Nelson's remarks are based on Famitsu's exclusive interview and other reporting. Japanese-language passages are summarized or paraphrased by the editorial team. The eyecatch is an AI-generated illustration and the criminal profile graphic was produced by the editorial team to organize this article's contents and carries Japanese captions; neither is GTA6 footage nor official UI.`,
+> **Note:** The creator statements collected here come from what each participant in the hands-off preview at Rockstar North published on their own videos, streams and social accounts; they are not specifications formally announced by Rockstar Games via Newswire or elsewhere. Rob Nelson's remarks are based on Famitsu's exclusive interview and other reporting. Japanese-language passages are summarized or paraphrased by the editorial team. The eyecatch, the NPC crowd shot and the key art are official Rockstar Games material. The image of the Rob Nelson interview is an AI-generated illustration, and the criminal profile graphic was produced by the editorial team to organize this article's contents and carries Japanese captions; neither of those two is GTA6 footage nor official UI.`,
   },
   {
     id: 52,
@@ -3732,7 +3736,7 @@ Published with TGG, El Rubius, Davy Jones and Mike ShowSha as the Rockstar North
     description:
       "Rockstar Northを訪問したクリエイターTGGが、GTA6のワールド全体はGTA5のおよそ2倍、Red Dead Redemption 2のおよそ3倍という説明を受けたと伝えた。Vice City単体でもLos Santosの約2倍、アクセス可能な建物は数百規模。ファンが長年作り続けてきた予想マップとの違いも含めて整理する。",
     icon: "🗺️",
-    image: "/images/news/gta6-map-size-comparison/eyecatch.webp",
+    image: "/images/news/gta6-official/mount-kalaga-04.webp",
     category: "topic",
     date: "2026-08-29",
     publishedAt: "2026-08-29 13:00",
@@ -3917,7 +3921,7 @@ Leonidaの本当の巨大さを実感するのは、そんな瞬間なのかも�
 
 ---
 
-> **注記：** 本記事のマップ規模に関する数値は、Rockstar Northの先行プレビューに参加したTGGが公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した面積データではない。日本語部分は編集部訳・要約を含む。正確な平方キロメートル数および公式マップは本記事執筆時点で未公開であり、掲載したGTA5との比較画像はコミュニティで出回っているファン制作の非公式なものである。また、本文中の図版は本記事の内容を整理するために編集部が作成したもの、アイキャッチ画像はAIで生成したイメージ画像であり、いずれも実際のGTA6のゲーム画面・公式マップ・Rockstarの公式素材ではない。`,
+> **注記：** 本記事のマップ規模に関する数値は、Rockstar Northの先行プレビューに参加したTGGが公開した内容にもとづくもので、Rockstar GamesがNewswire等で正式発表した面積データではない。日本語部分は編集部訳・要約を含む。正確な平方キロメートル数および公式マップは本記事執筆時点で未公開であり、掲載したGTA5との比較画像はコミュニティで出回っているファン制作の非公式なものである。また、本文中の図版は本記事の内容を整理するために編集部が作成したもので、実際のGTA6のゲーム画面・公式マップではない。アイキャッチはRockstar Games提供の公式スクリーンショットである。`,
     titleEn:
       "GTA6's Map Is Roughly Twice GTA5's — Vice City Alone Doubles Los Santos, and the Scale of Leonida Revealed at Rockstar North",
     displayTitleEn:
@@ -4102,7 +4106,7 @@ That may be the moment Leonida's real size lands.
 
 ---
 
-> **Note:** The map scale figures in this article come from what TGG, a participant in the Rockstar North preview, published; they are not area data officially announced by Rockstar Games via Newswire or elsewhere. Japanese-language passages are summarized or paraphrased by the editorial team. No exact square-kilometer figure and no official map had been released as of writing, and the GTA5 comparison image shown here is an unofficial fan creation circulating in the community. The in-article graphics were produced by the editorial team to organize this article's contents and carry Japanese captions, and the eyecatch is an AI-generated illustration; none of them are GTA6 footage, an official Rockstar map, or official Rockstar material.`,
+> **Note:** The map scale figures in this article come from what TGG, a participant in the Rockstar North preview, published; they are not area data officially announced by Rockstar Games via Newswire or elsewhere. Japanese-language passages are summarized or paraphrased by the editorial team. No exact square-kilometer figure and no official map had been released as of writing, and the GTA5 comparison image shown here is an unofficial fan creation circulating in the community. The in-article graphics were produced by the editorial team to organize this article's contents and carry Japanese captions; they are not GTA6 footage or an official Rockstar map. The eyecatch is an official Rockstar Games screenshot.`,
   },
   {
     id: 51,
@@ -4113,7 +4117,7 @@ That may be the moment Leonida's real size lands.
     description:
       "Rockstar Northを訪問したブラジルのクリエイターDavy Jonesが、現地で見たGTA6が30fpsで動作していたと明かした。PS5 Proでも同様だったと報じられているが、Rob Nelson氏は60fpsに対応しないとは答えていない。「PS5 Pro Enhanced」の意味、CPUがボトルネックになる理由、40fpsという選択肢まで整理する。",
     icon: "🎮",
-    image: "/images/news/gta6-ps5pro-30fps/eyecatch.webp",
+    image: "/images/news/gta6-official-screenshots-29/vice-city-10.webp",
     category: "topic",
     date: "2026-08-28",
     publishedAt: "2026-08-28 23:30",
@@ -4189,7 +4193,7 @@ GTA6の日本版PlayStation Storeには、スタンダード・エディショ�
 
 ![PS5本体と大型テレビが置かれたリビングのイメージ。テレビにはGTA6らしい夜のVice Cityが映り、机の上にはコントローラーとパフォーマンス解析のグラフを表示したノートPCが並んでいる](/images/news/gta6-ps5pro-30fps/ps5pro-console-analysis.webp)
 
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
 
 ただし、「PS5 Pro Enhanced」という表示は60fpsを保証するものではない。
 
@@ -4217,7 +4221,7 @@ PS5 Proでは、GPU性能の向上に加えて、AIを利用したアップス�
 
 GTA6で画面に映っているのは、美しい建物や車だけではない。
 
-![雨上がりの夜のネオン街を大量の車が走るイメージ。歩道には人が並び、奥にはパトカーの赤青灯が見えている](/images/news/gta6-ps5pro-30fps/dense-traffic-night-street.webp)
+![夜のVice Cityを上空から捉えた公式スクリーンショット。観覧車やネオンに照らされた建物が密集し、その間を道路が走っている](/images/news/gta6-official/vice-city-08.webp)
 
 街を歩く大量のNPC、それぞれの反応、交通システム、警察の捜査、車両や物体の物理演算、店や施設、天候、時間帯、遠くを走る車、プレイヤーの行動を認識する周囲の人々――今回のExtended Lookと先行プレビューからは、GTA6が非常に多くのシステムを同時に動かしていることが分かってきた。
 
@@ -4345,6 +4349,8 @@ Extended LookとRockstar Northの先行プレビューから明らかになっ�
 
 ![夜のアパートで市街地図を挟んで話し合う男女のイメージ。机には札束とスマートフォン、手前にはゲームコントローラーが置かれ、窓の外には湾岸の夜景と渋滞した道路が見えている](/images/news/gta6-ps5pro-30fps/jason-lucia-map-controller.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
+
 街を歩くNPCはプレイヤーを認識し、犯罪を目撃すれば通報する。警察は目撃情報をもとに犯人を探し、車両や服装まで捜査に利用する。盗む車によって必要な道具も違い、ジェイソンとルシアはプレイヤーが操作していない間もそれぞれの生活を続ける。
 
 こうしたシステムの詳細は「[Extended Lookだけでは分からないGTA6新情報まとめ](/news/50)」で整理している。
@@ -4365,7 +4371,7 @@ GTA6 FEEDでは、PS5 Pro Enhancedの詳細や60fps・グラフィックモー�
 
 ---
 
-> **注記：** 本記事はDavy Jonesの発言をもとにしたFlow Games、Push Squareなど各メディアの報道と、公開されている公式情報をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。フレームレートに関する記述は2026年8月時点の開発中ビルドについてのものであり、製品版の仕様はRockstarから正式発表されていない。40fpsモードの可能性は技術系メディアによる推測であり、Rockstarの発表ではない。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。`,
+> **注記：** 本記事はDavy Jonesの発言をもとにしたFlow Games、Push Squareなど各メディアの報道と、公開されている公式情報をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。フレームレートに関する記述は2026年8月時点の開発中ビルドについてのものであり、製品版の仕様はRockstarから正式発表されていない。40fpsモードの可能性は技術系メディアによる推測であり、Rockstarの発表ではない。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
     titleEn:
       "GTA6 at 30fps Even on PS5 Pro? What the Rockstar Previews Showed About Current Performance — and the Odds of 60fps",
     displayTitleEn:
@@ -4441,7 +4447,7 @@ GTA6's PlayStation Store listing marks both the Standard and Ultimate editions a
 
 ![A living room with a PS5 and a large TV, GTA6-style night Vice City on screen, a controller and a laptop showing performance analysis graphs on the desk](/images/news/gta6-ps5pro-30fps/ps5pro-console-analysis.webp)
 
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
 
 But the "PS5 Pro Enhanced" label does not guarantee 60fps.
 
@@ -4467,7 +4473,7 @@ The key point is that a console's capability cannot be judged purely by "how man
 
 What is on screen in GTA6 is not just handsome buildings and cars.
 
-![Heavy traffic moving through a neon-lit street after rain at night, people lining the sidewalk, police lights visible in the distance](/images/news/gta6-ps5pro-30fps/dense-traffic-night-street.webp)
+![Official screenshot of Vice City from the air at night — a Ferris wheel and neon-lit buildings packed together with roads running between them](/images/news/gta6-official/vice-city-08.webp)
 
 Crowds of NPCs walking the streets and each of their reactions, the traffic system, police investigation, physics for vehicles and objects, stores and venues, weather, time of day, cars driving in the distance, bystanders registering what the player does — Extended Look and the previews have made clear that GTA6 is running a great many systems at once.
 
@@ -4591,6 +4597,8 @@ What Extended Look and the Rockstar North previews made clear is that GTA6 is tr
 
 ![Two people talking over a city map in a night apartment, cash and a phone on the table, a game controller in the foreground, a waterfront skyline and busy road outside the window](/images/news/gta6-ps5pro-30fps/jason-lucia-map-controller.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
+
 NPCs walking the street register the player and call the police if they witness a crime. The police hunt the suspect based on those reports, using the vehicle and clothing in the investigation. Different cars need different tools to steal. Jason and Lucia keep living their own lives while you are playing the other one.
 
 The details of those systems are laid out in "[Everything Extended Look Did Not Tell You About GTA6](/en/news/50)."
@@ -4611,7 +4619,7 @@ GTA6 FEED will keep following this — new official information on PS5 Pro Enhan
 
 ---
 
-> **Note:** This article draws on reporting from Flow Games, Push Square and other outlets based on Davy Jones' comments, along with publicly available official information; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Statements about frame rate concern a build in development as of August 2026; the shipping specification has not been officially announced by Rockstar. The 40fps possibility is speculation by technical outlets, not a Rockstar announcement. Every image in this article is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+> **Note:** This article draws on reporting from Flow Games, Push Square and other outlets based on Davy Jones' comments, along with publicly available official information; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Statements about frame rate concern a build in development as of August 2026; the shipping specification has not been officially announced by Rockstar. The 40fps possibility is speculation by technical outlets, not a Rockstar announcement. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
   },
   {
     id: 50,
@@ -4622,7 +4630,7 @@ GTA6 FEED will keep following this — new official information on PS5 Pro Enhan
     description:
       "Rockstar Northで行われた先行プレビューから、Extended Lookを何度見返しても分からない情報が一気に出てきた。目撃と通報で変わる手配システム、プレイヤーがどんな犯罪者かを見る「犯罪プロファイル」、電子キーとGPSトラッカーが絡む車両盗難、プレイヤーが選べるジェイソンとルシアの関係性まで、判明した内容を整理する。",
     icon: "🚔",
-    image: "/images/news/gta6-preview-roundup/eyecatch.webp",
+    image: "/images/news/gta6-official/vice-city-01.webp",
     category: "topic",
     date: "2026-08-28",
     publishedAt: "2026-08-28 22:00",
@@ -4662,9 +4670,7 @@ GTAシリーズで犯罪を起こせば、手配度を示す星が付き、警�
 
 Rockstarの説明によれば、重要になるのは犯罪そのものよりも、誰かに見られたか、そして通報されたかだ。
 
-![夜の商店から袋を持って走り出る男女と、それを見て携帯電話をかける通行人のイメージ。奥の通りにはパトカーの赤青灯が見えている](/images/news/gta6-preview-roundup/witness-store-robbery.webp)
-
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+![店内で銃を突きつけ、居合わせた人々に両手を上げさせているジェイソンとルシアの公式スクリーンショット](/images/news/gta6-official-screenshots-29/jason-and-lucia-05.webp)
 
 たとえば店を襲うとしても、銃を持ったまま正面入口へ向かい、その姿を通行人に見られれば、強盗を始める前から警察へ通報される可能性がある。一方、裏から侵入し、監視カメラなどのセキュリティへ対処して、誰にも気づかれずに金を奪えば、そのまま逃げられることもあるという。
 
@@ -4714,6 +4720,8 @@ GTA6では、この当たり前が変わる。
 
 ![夜の路地で高級車の運転席ドアに電子機器を差し込む人物のイメージ。足元には工具ケースが開かれ、壁際では仲間が見張りに立ち、頭上には監視カメラがある](/images/news/gta6-preview-roundup/keycloner-luxury-car.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
+
 古い車であれば従来に近い方法で比較的簡単に盗める一方、新しい車や高級車では電子キーへの対処が必要になる場合があり、「キークローナー」のような専用装備も登場するという。
 
 それだけではない。高級車には警報装置やGPSトラッカーが搭載されていることもあり、盗難そのものに成功しても、安心して走り去れるとは限らない。
@@ -4740,7 +4748,7 @@ RockstarはGTA6で新しい派手な要素を増やしているだけではな�
 
 これまで公開されてきたトレーラーだけを見ると、ふたりは恋人同士として物語を進める主人公に見える。しかし実際には、プレイヤーの行動によってふたりの関係性を変化させられることが明らかになっている。
 
-![夜のアパートで、机に広げた市街地図を挟んで向き合う男女のイメージ。机の上には札束、拳銃、スマートフォンが置かれ、窓の外にはネオンの街並みが広がる](/images/news/gta6-preview-roundup/jason-lucia-planning.webp)
+![夕暮れの水辺で抱き合うジェイソンとルシアの公式スクリーンショット。奥にはヘリコプターとボートが見える](/images/news/gta6-official-screenshots-29/jason-and-lucia-13.webp)
 
 関係を深めれば、手をつないだりキスをしたりと、より恋人らしい関係になっていく。一方、恋愛部分へあまり踏み込みたくないプレイヤーであれば、犯罪のパートナーに近い関係のまま進めることもできるという。
 
@@ -4762,7 +4770,7 @@ GTA6ではそこからさらに一歩進み、「ふたりが同じ世界で同�
 
 こうした変更を見ていくと、今回発表されたジムや食事の要素も単なる懐古要素ではないことが分かる。
 
-![夕暮れの海沿いの遊歩道のイメージ。屋外ジムで運動する人々、道路を走るスポーツカー、沖のボート、店の前に集まる人々が同じ画面に収まっている](/images/news/gta6-preview-roundup/waterfront-gym-life.webp)
+![明るいジムでトレーニング器具に座り、グローブを着けたルシアの公式スクリーンショット](/images/news/gta6-official-screenshots-29/lucia-caminos-09.webp)
 
 『GTA: San Andreas』を思い出させるように、GTA6では運動によって身体能力や体型が変化し、食生活によって体重にも影響が出る。街に存在するジムは背景ではなく、多くの器具を実際に使うことができる。
 
@@ -4861,7 +4869,7 @@ Rockstar Northへ招待されたメディアやクリエイターからは現在
 
 ---
 
-> **注記：** 本記事はRockstar Northで行われた先行プレビューをもとにしたファミ通ほか各メディアの報道と、公式映像「Grand Theft Auto VI: An Extended Look」の内容をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。プレビューはハンズオン（試遊）ではなくハンズオフ形式であり、記載したシステムの詳細は製品版で変更される可能性がある。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+> **注記：** 本記事はRockstar Northで行われた先行プレビューをもとにしたファミ通ほか各メディアの報道と、公式映像「Grand Theft Auto VI: An Extended Look」の内容をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。プレビューはハンズオン（試遊）ではなくハンズオフ形式であり、記載したシステムの詳細は製品版で変更される可能性がある。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
     titleEn:
       "Everything Extended Look Did Not Tell You About GTA6 — Police, Car Theft, and the Jason–Lucia Relationship",
     displayTitleEn:
@@ -4901,9 +4909,7 @@ In GTA6, though, Rockstar is moving away from the gamey shorthand of "you commit
 
 Per Rockstar's explanation, what matters is less the crime itself than whether you were seen — and whether someone called it in.
 
-![Two people running out of a lit storefront at night carrying bags, a bystander on the phone watching them, police lights visible down the street](/images/news/gta6-preview-roundup/witness-store-robbery.webp)
-
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+![Official screenshot of Jason and Lucia holding up a store at gunpoint, the people inside with their hands raised](/images/news/gta6-official-screenshots-29/jason-and-lucia-05.webp)
 
 Rob a store by walking up to the front entrance with a gun out, and a passerby who sees you may report it before the robbery even starts. Go in the back instead, deal with security like the cameras, and take the money without anyone noticing, and you may simply be able to leave.
 
@@ -4953,6 +4959,8 @@ GTA6 changes that baseline.
 
 ![Someone crouched at the driver's door of a luxury car in a night alley, inserting an electronic device, a tool case open at their feet, a lookout against the wall and a security camera overhead](/images/news/gta6-preview-roundup/keycloner-luxury-car.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
+
 Older cars can still be taken relatively easily by something close to the old method, but newer and higher-end vehicles may require dealing with electronic keys, and dedicated gear such as a "key cloner" comes into play.
 
 That is not all. Luxury cars can carry alarms and GPS trackers, so pulling off the theft does not guarantee you can drive away in peace.
@@ -4979,7 +4987,7 @@ The other thing this round of previews substantially changed is the impression o
 
 Going by the trailers alone, they look like a couple carrying the story together. In practice, it has now been confirmed that the player's actions can shift the relationship between them.
 
-![Two people facing each other across a city map spread on a table in a night apartment, stacks of cash, a handgun and a phone on the table, neon skyline outside the window](/images/news/gta6-preview-roundup/jason-lucia-planning.webp)
+![Official screenshot of Jason and Lucia embracing by the water at sunset, with a helicopter and boats behind them](/images/news/gta6-official-screenshots-29/jason-and-lucia-13.webp)
 
 Deepen it and they become more openly a couple — holding hands, kissing. A player who would rather not lean into the romance can keep things closer to a partnership in crime.
 
@@ -5001,7 +5009,7 @@ GTA6 goes a step further and turns "these two are alive in the same world at the
 
 Seen against those changes, the gym and food elements revealed this time are clearly not just nostalgia callbacks.
 
-![A waterfront promenade at golden hour, an outdoor gym with people training, sports cars on the road, boats offshore and crowds outside the storefronts, all in one frame](/images/news/gta6-preview-roundup/waterfront-gym-life.webp)
+![Official screenshot of Lucia sitting at a gym machine in workout gloves, daylight streaming in](/images/news/gta6-official-screenshots-29/lucia-caminos-09.webp)
 
 In a way that recalls *GTA: San Andreas*, exercise changes your physical ability and your build, and diet affects your weight. The gyms in the city are not set dressing — you can actually use many of the machines.
 
@@ -5100,7 +5108,7 @@ Media and creators invited to Rockstar North are still publishing additional det
 
 ---
 
-> **Note:** This article draws on coverage from Famitsu and other outlets based on the previews held at Rockstar North, along with the contents of the official video "Grand Theft Auto VI: An Extended Look"; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. The previews were hands-off rather than hands-on, and the system details described here may change in the shipping game. Every image in this article is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+> **Note:** This article draws on coverage from Famitsu and other outlets based on the previews held at Rockstar North, along with the contents of the official video "Grand Theft Auto VI: An Extended Look"; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. The previews were hands-off rather than hands-on, and the system details described here may change in the shipping game. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
   },
   {
     id: 49,
@@ -5111,7 +5119,7 @@ Media and creators invited to Rockstar North are still publishing additional det
     description:
       "Rockstar North共同スタジオ責任者Rob Nelson氏が、自身のGTA6プレイに約80時間かかったことを明らかにした。海外では「GTA6のストーリーは80時間」という見出しが広がっているが、実際の発言は2026年2月に行った1回のプレイ時間であり、メインストーリーに加えて物語に影響する一部の任意目標も含まれていた。元の発言まで確認して整理する。",
     icon: "⏳",
-    image: "/images/news/gta6-80-hours-playtime/eyecatch.webp",
+    image: "/images/news/gta6-official/vice-city-02.webp",
     category: "topic",
     date: "2026-08-28",
     publishedAt: "2026-08-28 20:00",
@@ -5145,7 +5153,7 @@ Rockstarが「GTA6のメインストーリーは80時間です」と発表した
 
 ![薄暗いスタジオでインタビューに答える開発者のイメージ。背後のモニターにLeonidaの街並みが映り、机には資料が広げられている](/images/news/gta6-80-hours-playtime/rob-nelson-interview.webp)
 
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
 
 The New York Timesの取材内容を報じた複数の海外メディアによると、Rob Nelson氏が最後にGTA6を通してプレイしたのは2026年2月。
 
@@ -5195,7 +5203,7 @@ Nelson氏の約80時間には、「**物語に影響を与える任意目標**�
 
 つまりGTA6では、一部のサイドコンテンツが単なる金稼ぎや収集要素ではなく、本編の物語と何らかの形で結びつく可能性がある。
 
-![夜のビーチ沿いで、ジムのベンチプレス、カスタムカー、ボート、クラブ帰りの人だかりが同じ画面に収まっているイメージ](/images/news/gta6-80-hours-playtime/side-activities-night.webp)
+![Leonida Keysの沖に集まったボートとジェットスキー、デッキでくつろぐ人々を捉えた公式スクリーンショット](/images/news/gta6-official/leonida-keys-05.webp)
 
 これは「サイドミッションをクリアするとエンディングが変わる」と確定したという意味ではない。
 
@@ -5221,7 +5229,7 @@ Nelson氏の約80時間にはメインストーリーと一部の任意目標し
 
 そのため、寄り道を積極的に行うプレイヤーであれば、80時間を大きく超える可能性もある。
 
-![高所から見下ろしたLeonidaの全景イメージ。手前に州全体を映すマップ端末が置かれ、奥には湾と都市部、湿地帯が広がっている](/images/news/gta6-80-hours-playtime/leonida-map-scale.webp)
+![Grassriversの湿地帯を捉えた公式スクリーンショット。水路と木々の向こう、遠くにVice Cityの高層ビル群がかすんで見える](/images/news/gta6-official-screenshots-29/grassrivers-05.webp)
 
 実際、Rockstarは今回のプレビューでGTA6のオープンワールドについても大規模な拡張を明らかにしており、The New York Timesの取材では、ゲーム全体のマップが『Red Dead Redemption 2』のプレイ可能エリアのおよそ3倍になるとも説明されている。
 
@@ -5277,7 +5285,7 @@ Extended Lookと今回の先行プレビューを見ていると、RockstarがGT
 
 巨大なマップを用意するだけではなく、その中に大量のNPC、店舗、アクティビティ、ランダムな出来事、ジェイソンとルシアの関係性などを詰め込み、プレイヤーが目的もなく街を歩いている時間そのものをゲームにしようとしている。
 
-![夜の高台から街の夜景を眺める男女2人のイメージ。手前には停めた車があり、眼下にはネオンに照らされた道路と湾岸の高層ビル群が広がる](/images/news/gta6-80-hours-playtime/jason-lucia-city-overlook.webp)
+![マリーナを背にしたジェイソンとルシアの公式スクリーンショット。奥には高層ビル群とヘリコプターが見える](/images/news/gta6-official-screenshots-29/jason-and-lucia-01.webp)
 
 そう考えると、Rob Nelson氏の「約80時間」は、GTA6の長さを示すひとつの目安ではあっても、ゲーム全体のボリュームを表す数字ではない。
 
@@ -5298,7 +5306,7 @@ GTA6 FEEDでは今後もRockstar Northで行われた先行プレビューや海
 
 ---
 
-> **注記：** 本記事はThe New York TimesがRockstar Northへの取材をもとに報じた内容と、それを扱ったGameSpot、GamesRadar+などの海外メディアの報道をもとにまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+> **注記：** 本記事はThe New York TimesがRockstar Northへの取材をもとに報じた内容と、それを扱ったGameSpot、GamesRadar+などの海外メディアの報道をもとにまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
     titleEn:
       "\"Is GTA6 80 Hours?\" What a Rockstar Developer Actually Said — It Is Not an 80-Hour Main Story",
     displayTitleEn:
@@ -5332,7 +5340,7 @@ The information came out of interviews with Rockstar North that lifted alongside
 
 ![A developer answering questions in a dim studio, city footage of Leonida on the monitors behind him and reference material spread across the desk](/images/news/gta6-80-hours-playtime/rob-nelson-interview.webp)
 
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
 
 According to several outlets reporting on The New York Times' interview, the last time Nelson played GTA6 through was February 2026.
 
@@ -5378,7 +5386,7 @@ Nelson's roughly 80 hours are said to have included "**optional goals with narra
 
 In other words, some of GTA6's side content may not be purely about money or collectibles — it may connect to the main story in some form.
 
-![A stretch of night beach where a gym bench press, a custom car, a speedboat and a crowd leaving a club all sit in the same frame](/images/news/gta6-80-hours-playtime/side-activities-night.webp)
+![Official screenshot of boats and jet skis gathered off Leonida Keys, with people hanging out on deck](/images/news/gta6-official/leonida-keys-05.webp)
 
 This does not mean it is confirmed that "clearing side missions changes the ending."
 
@@ -5404,7 +5412,7 @@ Nelson's roughly 80 hours covered the main story and some optional objectives �
 
 So a player who actively takes detours could go well beyond 80 hours.
 
-![Leonida seen from high above, a state-wide map terminal in the foreground and the bay, downtown and wetlands stretching out behind it](/images/news/gta6-80-hours-playtime/leonida-map-scale.webp)
+![Official screenshot of the Grassrivers wetlands, with Vice City's skyline hazy on the horizon beyond the waterways](/images/news/gta6-official-screenshots-29/grassrivers-05.webp)
 
 Rockstar did in fact reveal a major expansion in scale for GTA6's open world in this round of previews: per The New York Times' interview, the overall map is around three times the playable area of *Red Dead Redemption 2*.
 
@@ -5460,7 +5468,7 @@ Watching Extended Look and this round of previews, what Rockstar is going for wi
 
 It is not just about handing you an enormous map. It is about packing that map with NPCs, storefronts, activities, random events and the relationship between Jason and Lucia — and turning the time you spend walking around with no objective at all into the game itself.
 
-![Two people looking out over a city at night from a hilltop, their car parked nearby, neon-lit roads and waterfront towers below](/images/news/gta6-80-hours-playtime/jason-lucia-city-overlook.webp)
+![Official screenshot of Jason and Lucia with a marina behind them, high-rises and a helicopter in the distance](/images/news/gta6-official-screenshots-29/jason-and-lucia-01.webp)
 
 From that angle, Rob Nelson's "about 80 hours" is one useful yardstick for GTA6's length, but not a figure that describes the game's total volume.
 
@@ -5481,7 +5489,7 @@ GTA6 FEED will keep following the Rockstar North previews and whatever creators 
 
 ---
 
-> **Note:** This article is based on what The New York Times reported from its interviews with Rockstar North, plus coverage of that reporting by outlets including GameSpot and GamesRadar+; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Every image here is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+> **Note:** This article is based on what The New York Times reported from its interviews with Rockstar North, plus coverage of that reporting by outlets including GameSpot and GamesRadar+; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
   },
   {
     id: 48,
@@ -6392,7 +6400,7 @@ The stage where following Rockstar's official accounts was enough to keep up wit
     description:
       "英国カルチャー誌「Dazed」が2026年8月26日、Rockstar Gamesの開発チームへの独占取材記事を公開した。街中で銃を持てばLeonidaが反応すること、JasonとLuciaを同じ車内で切り替えられること、実際に機能するゲーム内SNS、食事や運動で変化する体型システムなど、これまで公開されていなかったGTA6のシステムが一気に明らかになっている。",
     icon: "🎤",
-    image: "/images/news/gta6-dazed-interview/eyecatch.webp",
+    image: "/images/news/gta6-official/vice-city-07.webp",
     category: "topic",
     date: "2026-08-27",
     publishedAt: "2026-08-27 04:30",
@@ -6426,9 +6434,7 @@ Dazedによれば、GTA6はシリーズらしい武器やスーパーカー、�
 
 象徴的なのが、街中で銃を持った場合の反応だ。
 
-![銃を構えたまま店内に立つ男女のイメージ。Leonidaの街では、武器を持って歩くこと自体に周囲が反応するという](/images/news/gta6-dazed-interview/reactive-world-armed.webp)
-
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・公式素材ではない。*
+![薄暗い室内でライフルと拳銃を手にしたジェイソンとルシアの公式スクリーンショット](/images/news/gta6-official-screenshots-29/jason-and-lucia-12.webp)
 
 記事では、ライフルを持ったまま通りを歩けば、街が何らかの反応を示すと説明されている。
 
@@ -6448,7 +6454,7 @@ Dazedは、プレイヤーが二人をカップルとして一緒に行動させ
 
 さらに興味深いのが、二人が同じ車に乗っている場面だ。
 
-![夜のVice Cityを走る車内。運転席の男性と、助手席でスマートフォンを見る女性のイメージ](/images/news/gta6-dazed-interview/dual-protagonist-car.webp)
+![オープンカーを走らせるジェイソンと、助手席で拳銃を手にしたルシアの公式スクリーンショット](/images/news/gta6-official-screenshots-29/jason-and-lucia-11.webp)
 
 たとえば仕事へ向かう途中、Jasonとして高速道路を運転している状態から、助手席に座るLuciaへ操作を切り替え、ゲーム内スマートフォンを見ることができるという。
 
@@ -6465,6 +6471,8 @@ Dazedは、プレイヤーが二人をカップルとして一緒に行動させ
 Dazedは明確に、GTA6には実際に機能するソーシャルメディアのフィードが存在すると伝えている。
 
 ![ビーチで掲げられたスマートフォンに、ライブ配信とコメント欄のような画面が表示されているイメージ](/images/news/gta6-dazed-interview/in-game-social-feed.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
 
 これまで公開された映像では、TikTokやInstagram Liveを思わせる縦型動画、ライブ配信、コメント欄のようなUIが何度も登場していた。
 
@@ -6484,6 +6492,8 @@ DazedによるとGTA6では、過去のRockstar作品で採用されてきた身
 
 ![ジムでダンベルを持ち上げる男性と女性、画面右上に筋肉・体脂肪・スタミナのステータス表示があるイメージ](/images/news/gta6-dazed-interview/body-change-gym.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
+
 食事はJasonとLuciaの体重に影響し、運動をすれば筋肉が目に見えて発達する。
 
 さらに、長期間自宅へ戻らず警察から逃げ続けたり、何日にもわたって遊び歩いたりすると、その生活が二人の外見にも現れるという。
@@ -6498,7 +6508,7 @@ DazedによるとGTA6では、過去のRockstar作品で採用されてきた身
 
 GTA6の舞台Leonidaを作るため、Rockstarが行った調査の規模も明らかになっている。
 
-![ヤシ並木とパステルカラーの建物が続く海沿いの大通りと、停まっている赤いマッスルカーのイメージ](/images/news/gta6-dazed-interview/vice-city-ocean-drive.webp)
+![壁画の並ぶVice Cityの大通りを走るクラシックカーとバイクを捉えた公式スクリーンショット](/images/news/gta6-official/vice-city-09.webp)
 
 Vice CityのモデルとなるMiamiとその周辺には、過去10年以上にわたって複数のRockstarスタッフが訪れており、現在はMiamiに専属のリサーチチームまで存在するという。
 
@@ -6516,7 +6526,7 @@ Rockstarのキャラクター部門でシニア・アートディレクターを
 
 その現地調査の成果が特に現れているのが、Leonidaで暮らすNPCたちだ。
 
-![ビーチ沿いの遊歩道を歩く二人の後ろ姿と、その先に広がる大勢の人々のイメージ](/images/news/gta6-dazed-interview/npc-crowd-beach.webp)
+![Leonida Keysの通りを行き交う人々の公式スクリーンショット。自転車、バス、屋台に集まる人々が同じ画面に収まり、路上にはイグアナがいる](/images/news/gta6-official/leonida-keys-02.webp)
 
 Vice CityのLittle CubaからMount Kalaga National Parkの自然地帯まで、地域によって服装、体格、年齢、ファッション、身体的特徴などが大きく異なるキャラクターが登場するという。
 
@@ -6533,6 +6543,8 @@ Lloyd氏はGTA6について、「これまで作った中で最も詳細で多�
 こうした世界を作るため、Rockstarそのものの制作規模も大きく変わっている。
 
 ![夕暮れのLeonidaの街並みを高所から見下ろしたイメージ。高速道路、ヘリコプター、海沿いの高層ビル群が広がる](/images/news/gta6-dazed-interview/leonida-skyline.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
 
 Dazedによれば、GTA6を制作するRockstarのチーム規模は、『Red Dead Redemption 2』発売時と比較して2倍以上に拡大した。
 
@@ -6556,13 +6568,13 @@ Vice Cityの壁画制作には50人以上の実在するストリートアーテ
 
 武器を持って歩けば周囲が反応する。
 
-![路上で警察官に両手を上げさせられている男女のイメージ](/images/news/gta6-dazed-interview/police-reaction.webp)
+![夜のネオン街で、パトカーの前に立つ警官と人々を捉えた公式スクリーンショット](/images/news/gta6-official/vice-city-06.webp)
 
 JasonとLuciaは同じ車の中でもシームレスに操作を切り替えられる。
 
 スマートフォンを開けばLeonidaで動いているSNSがあり、食事や運動、日々の生活は主人公の身体へ残っていく。
 
-![夜の街を走る車の助手席で、スマートフォンの画面を見ている人物のイメージ](/images/news/gta6-dazed-interview/passenger-phone-night.webp)
+![夜のネオンに照らされた車内で、ハンドルを握るルシアの公式スクリーンショット](/images/news/gta6-official-screenshots-29/lucia-caminos-10.webp)
 
 そして、その街を歩く名もないNPC一人を作るためにも、Rockstarは専用の技術、現地調査、専門スタッフを投入している。
 
@@ -6580,7 +6592,7 @@ Rockstarがゲームプレイ映像の流出について声明を発表し、「
 
 ---
 
-> **注記：** 本記事はDazedの独占取材記事「GTAVI: An exclusive deep dive into the video game of the decade」（2026年8月26日公開）の内容をもとにまとめたもので、引用部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・Rockstarの公式素材ではない。`,
+> **注記：** 本記事はDazedの独占取材記事「GTAVI: An exclusive deep dive into the video game of the decade」（2026年8月26日公開）の内容をもとにまとめたもので、引用部分は編集部訳・要約を含む。正確な文言は原文を参照してほしい。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
     titleEn:
       "Dazed's Exclusive GTA6 Deep Dive Lands a Flood of New Detail: a City That Reacts to a Drawn Gun, Body Changes, a Working In-Game Social Feed, and Smarter NPCs",
     displayTitleEn:
@@ -6614,9 +6626,7 @@ According to Dazed, GTA6 keeps the weapons, supercars and freedom the series is 
 
 The clearest example is what happens when you carry a gun in public.
 
-![Two figures standing inside a store with guns raised — in Leonida, simply carrying a weapon draws a reaction from those around you](/images/news/gta6-dazed-interview/reactive-world-armed.webp)
-
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or official Rockstar material.*
+![Official screenshot of Jason and Lucia holding a rifle and a pistol in a dimly lit interior](/images/news/gta6-official-screenshots-29/jason-and-lucia-12.webp)
 
 The article explains that walking down a street while holding a rifle will get some kind of reaction out of the city.
 
@@ -6636,7 +6646,7 @@ Players can move through the world with the two of them together as a couple, or
 
 The most interesting case is when both are in the same car.
 
-![Inside a car driving through Vice City at night: a man at the wheel and a woman in the passenger seat looking at her phone](/images/news/gta6-dazed-interview/dual-protagonist-car.webp)
+![Official screenshot of Jason driving a convertible with Lucia in the passenger seat holding a pistol](/images/news/gta6-official-screenshots-29/jason-and-lucia-11.webp)
 
 On the way to a job, for example, you can be driving down the highway as Jason, then switch control to Lucia in the passenger seat and look at the in-game phone.
 
@@ -6653,6 +6663,8 @@ Some genuinely important information also came out about the in-game social medi
 Dazed states plainly that GTA6 contains a functioning social media feed.
 
 ![A phone held up at the beach showing what looks like a live stream with a comment column](/images/news/gta6-dazed-interview/in-game-social-feed.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
 
 Footage released so far has repeatedly shown vertical video, live streams and comment-style UI reminiscent of TikTok and Instagram Live.
 
@@ -6672,6 +6684,8 @@ According to Dazed, the body-change system used in past Rockstar games returns i
 
 ![A man lifting a dumbbell in a gym with a woman beside him, and a muscle, body-fat and stamina status readout in the corner](/images/news/gta6-dazed-interview/body-change-gym.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
+
 Food affects Jason's and Lucia's weight, and training builds visible muscle.
 
 Beyond that, staying away from home for long stretches while running from the police, or partying for days on end, shows up in how the two of them look.
@@ -6686,7 +6700,7 @@ In other words, the same Jason and the same Lucia will look different depending 
 
 The scale of the research behind Leonida is also laid out.
 
-![A palm-lined coastal boulevard of pastel buildings with a red muscle car parked at the curb](/images/news/gta6-dazed-interview/vice-city-ocean-drive.webp)
+![Official screenshot of a classic car and motorcycles on a Vice City street lined with murals](/images/news/gta6-official/vice-city-09.webp)
 
 Rockstar staff have been visiting Miami and its surroundings — the model for Vice City — for more than ten years, and the studio now keeps a dedicated research team based in the city.
 
@@ -6704,7 +6718,7 @@ Games writer Michael Wiafe likewise explains that the aim was not to reproduce e
 
 That fieldwork shows up most clearly in the people who live in Leonida.
 
-![Two figures seen from behind on a beachfront walkway, with a large crowd spread out ahead of them](/images/news/gta6-dazed-interview/npc-crowd-beach.webp)
+![Official screenshot of a busy Leonida Keys street — cyclists, a bus, people around food stalls, and an iguana on the roadside](/images/news/gta6-official/leonida-keys-02.webp)
 
 From Vice City's Little Cuba to the wilderness of Mount Kalaga National Park, characters differ sharply by region in clothing, build, age, fashion and physical features.
 
@@ -6721,6 +6735,8 @@ More striking still: Rockstar's Los Angeles office now has a department working 
 Building a world like this has changed the scale of Rockstar itself.
 
 ![A high vantage over Leonida at dusk: highways, a helicopter, and towers along the water](/images/news/gta6-dazed-interview/leonida-skyline.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
 
 According to Dazed, the Rockstar team working on GTA6 is more than twice the size it was when *Red Dead Redemption 2* shipped.
 
@@ -6744,13 +6760,13 @@ The GTA6 that emerges from Dazed's exclusive is a little different.
 
 Walk around armed and the people around you react.
 
-![A man and a woman with their hands raised in front of a police officer on the street](/images/news/gta6-dazed-interview/police-reaction.webp)
+![Official screenshot of police officers and a crowd in front of a patrol car on a neon-lit street at night](/images/news/gta6-official/vice-city-06.webp)
 
 Jason and Lucia can be swapped seamlessly even inside the same car.
 
 Open the phone and there is a social network running in Leonida, while meals, workouts and daily life leave their marks on the protagonists' bodies.
 
-![A passenger in a car at night looking at a phone screen](/images/news/gta6-dazed-interview/passenger-phone-night.webp)
+![Official screenshot of Lucia at the wheel, the car interior lit by neon at night](/images/news/gta6-official-screenshots-29/lucia-caminos-10.webp)
 
 And to build even one nameless NPC walking those streets, Rockstar is pouring in dedicated technology, field research and specialist staff.
 
@@ -6768,7 +6784,7 @@ GTA6, kept carefully hidden for so long, may have entered the stage where the wh
 
 ---
 
-> **Note:** This article summarizes Dazed's exclusive feature "GTAVI: An exclusive deep dive into the video game of the decade" (published August 26, 2026); quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the original for exact wording. Every image here is an AI-generated illustration, not GTA6 footage or official Rockstar material.`,
+> **Note:** This article summarizes Dazed's exclusive feature "GTAVI: An exclusive deep dive into the video game of the decade" (published August 26, 2026); quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the original for exact wording. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
   },
   {
     id: 45,
@@ -6779,7 +6795,7 @@ GTA6, kept carefully hidden for so long, may have entered the stage where the wh
     description:
       "Rockstar Gamesが、この1週間に起きたGTA6のゲームプレイ映像流出について公式声明を発表した。「チームにとって胸が張り裂けるような出来事だった」としながら、開発状況を「nearly there!（もうほぼ完成している）」と表現。さらに明日、GTA6の「Extended Look」を公開することを正式に予告した。",
     icon: "📢",
-    image: "/images/news/gta6-rockstar-statement/eyecatch.webp",
+    image: "/images/news/gta6-official/jason-and-lucia-key-art-02.webp",
     category: "release",
     date: "2026-08-26",
     publishedAt: "2026-08-26 23:00",
@@ -6863,7 +6879,7 @@ Rockstarは、
 
 ![夜の街とヤシの木を背景に、スマートフォンの画面に告知カードのような表示が浮かび上がっているイメージ](/images/news/gta6-rockstar-statement/extended-look-teaser.webp)
 
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際のGTA6のゲーム画面や流出素材ではない。*
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面や流出素材ではない。*
 
 これまで予告されていた8月27日の公開を前に、Rockstar自身が改めてその存在を明言した形だ。
 
@@ -6901,6 +6917,8 @@ Rockstarは、
 
 ![夜のリビングで大型テレビにネオンに彩られた海沿いの街並みが映り、手前のテーブルにゲームコントローラーが置かれているイメージ](/images/news/gta6-rockstar-statement/november-19-living-room.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面や流出素材ではない。*
+
 GTA6 FEEDでは、今回流出した映像に含まれる具体的なネタバレについては本記事では扱わない。
 
 重要なのは、その内容そのものよりも、Rockstarが今回の流出を正式に認識し、初めて公の場で直接言及したことだろう。
@@ -6937,7 +6955,7 @@ Rockstarは、この1週間に寄せられたファンからの応援メッセ�
 
 ---
 
-> **注記：** 本記事に掲載したRockstarの声明の日本語は、公式Xの投稿（本文中に埋め込み）をもとにした編集部訳であり、意訳を含む。正確な文言は原文を参照してほしい。また、本記事の画像はすべてAIで生成したイメージ画像であり、実際のGTA6のゲーム画面・流出素材ではない。`,
+> **注記：** 本記事に掲載したRockstarの声明の日本語は、公式Xの投稿（本文中に埋め込み）をもとにした編集部訳であり、意訳を含む。正確な文言は原文を参照してほしい。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。アイキャッチはRockstar Games提供の公式アートワークである。`,
     titleEn:
       "Rockstar Breaks Silence on the GTA6 Leak: the Game Is \"Nearly There,\" and the Extended Look Arrives Tomorrow",
     displayTitleEn:
@@ -7013,7 +7031,7 @@ Rockstar wrote:
 
 ![A smartphone standing against a neon-lit night skyline and palm trees, its screen showing what looks like an announcement card](/images/news/gta6-rockstar-statement/extended-look-teaser.webp)
 
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are GTA6 footage or leaked material.*
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or leaked material.*
 
 The August 27 premiere had already been announced, and Rockstar has now restated it in its own words.
 
@@ -7036,6 +7054,8 @@ Calling it unfortunate that the intended game experience may now be affected by 
 **wait a bit longer and experience the game for themselves on November 19**.
 
 ![A large TV in a dark living room showing a neon-lit coastal city at dusk, with a game controller on the table in the foreground](/images/news/gta6-rockstar-statement/november-19-living-room.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or leaked material.*
 
 GTA6 FEED will not cover the specific spoilers contained in the leaked footage in this article.
 
@@ -7069,7 +7089,7 @@ Some people have already seen part of GTA6 in a form nobody intended. What the G
 
 ---
 
-> **Note:** Quotations from Rockstar's statement are drawn from the official post on X embedded above; longer passages are summarized rather than reproduced in full. Every image in this article is an AI-generated illustration, not GTA6 footage or leaked material.`,
+> **Note:** Quotations from Rockstar's statement are drawn from the official post on X embedded above; longer passages are summarized rather than reproduced in full. Images that are AI-generated illustrations are labeled as such in their captions; the eyecatch is official Rockstar Games artwork.`,
   },
   {
     id: 44,
@@ -7082,7 +7102,7 @@ Some people have already seen part of GTA6 in a form nobody intended. What the G
     description:
       "【8月24日訂正】Take-TwoがMicrosoftとDiscordへ召喚状を出した直後、「Cyberleekが捕まればGTA6のデータが自動で公開される」といういわゆるデッドマン・スイッチの主張が広まった。しかしその後、発端となった投稿はCyberleek本人によるものではなく、第三者による偽情報だった可能性が高いことが判明した。当時どのような情報が出回り、その後何が分かったのかを記録として残す。",
     icon: "⏱️",
-    image: "/images/news/gta6-cyberleek-dead-man-switch/eyecatch.webp",
+    image: "/images/news/gta6-official/port-gellhorn-01.webp",
     category: "topic",
     date: "2026-08-23",
     publishedAt: "2026-08-23 14:00",
@@ -7131,7 +7151,7 @@ GTA6のリーク事件が、さらにややこしい展開になってきた。
 
 ![暗い部屋で複数のモニターに向かうフードの人物。中央の画面には壁の弾痕で描かれた「LEEK」の文字、右の画面には「UPLOADING... 73%」の表示、机には赤く光る「CYBERLEEK」のサインが置かれている](/images/news/gta6-cyberleek-dead-man-switch/cyberleek-uploading.webp)
 
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際の流出素材・法廷資料ではない。*
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の流出素材・法廷資料ではない。*
 
 ただし、ここで一番大事なことがある。
 
@@ -7165,6 +7185,8 @@ Take-Twoは8月20日、MicrosoftとDiscordに対して、GTA6リークに関係�
 
 ![連邦地方裁判所の書式に「SUBPOENA」と大きく記された書類の束と木槌。背景にMicrosoftとDiscordの看板が並ぶイメージ](/images/news/gta6-cyberleek-dead-man-switch/subpoena-microsoft-discord.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の流出素材・法廷資料ではない。*
+
 欲しがっているのは、たとえばメールアドレス、IPアドレス、電話番号、端末情報、関連アカウントなどだ。
 
 要するに、
@@ -7197,7 +7219,7 @@ Take-Twoが追跡を始めた直後、Cyberleek側の新しい主張として次
 
 ![「DEAD MAN SWITCH」と題した図解。フードの人物から24時間の時計、サーバー、クラウドストレージやDiscordなど複数の保存先へ矢印が伸び、右端に「AUTO RELEASE」と開いた南京錠が並ぶ。左下には「IF WE ARE ARRESTED, THE FULL GTA6 BUILD WILL BE RELEASED.」の一文](/images/news/gta6-cyberleek-dead-man-switch/dead-man-switch.webp)
 
-*図: 当時Cyberleek側の主張として報じられていた仕組みを分かりやすく示すためのイメージ図。この主張自体が第三者による偽情報だった可能性が高いことが後に判明しており、実在が確認された構成ではない。*
+*図: 当時Cyberleek側の主張として報じられていた仕組みを分かりやすく示すためのAI生成イメージ図。この主張自体が第三者による偽情報だった可能性が高いことが後に判明しており、実在が確認された構成ではない。*
 
 こうした仕組みは一般に「デッドマン・スイッチ」と呼ばれる。
 
@@ -7244,6 +7266,8 @@ Take-Twoが追跡を始めた直後、Cyberleek側の新しい主張として次
 Take-Twoは現在も、MicrosoftやDiscordから情報を集めてCyberleekの正体を探している。
 
 ![ノートパソコンに向かうフードの人物と、その隣に積まれた資料の束と木槌。背景にはサーバーラック、捜査ボード、ネオンに染まる海辺の街並みが広がるイメージ](/images/news/gta6-cyberleek-dead-man-switch/standoff-gavel.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の流出素材・法廷資料ではない。*
 
 そこへ、
 
@@ -7351,6 +7375,8 @@ Cyberleekは、最初から単なるリーカーを名乗っていたわけで�
 
 ![夕暮れの街並みを背景に「Grand Theft Auto VI」の巨大な広告看板が立ち、濡れた路面にスポーツカーが停まっているイメージ](/images/news/gta6-cyberleek-dead-man-switch/gta6-billboard.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の流出素材・法廷資料ではない。*
+
 Rockstarが正式にGTA6を詳しく紹介する大きなイベントだ。
 
 ところが、その直前にCyberleekが現れた。
@@ -7433,7 +7459,7 @@ At the time, the line going around as Cyberleek's was:
 
 ![A hooded figure at a desk of monitors in a dark room; the central screen shows "LEEK" spelled out in bullet holes on a wall, another reads "UPLOADING... 73%," and a red-lit "CYBERLEEK" sign sits on the desk](/images/news/gta6-cyberleek-dead-man-switch/cyberleek-uploading.webp)
 
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are leaked material or real court filings.*
+*Image: an AI-generated illustration made to help convey the story. It is not leaked material or a real court filing.*
 
 There is one thing that matters most here, though.
 
@@ -7467,6 +7493,8 @@ On August 20, Take-Two initiated legal proceedings to require Microsoft and Disc
 
 ![A stack of federal court documents headed "SUBPOENA" beside a gavel, with Microsoft and Discord signage in the background](/images/news/gta6-cyberleek-dead-man-switch/subpoena-microsoft-discord.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not leaked material or a real court filing.*
+
 What it wants includes email addresses, IP addresses, phone numbers, device information and linked accounts.
 
 In short:
@@ -7497,7 +7525,7 @@ By that account, **the GTA6 data publishes automatically**.
 
 ![A diagram titled "DEAD MAN SWITCH": arrows run from a hooded figure through a 24-hour clock and a server out to cloud storage, Discord and other destinations, ending at "AUTO RELEASE" and an open padlock. A panel reads "IF WE ARE ARRESTED, THE FULL GTA6 BUILD WILL BE RELEASED."](/images/news/gta6-cyberleek-dead-man-switch/dead-man-switch.webp)
 
-*Diagram: an illustration of the mechanism reported at the time as Cyberleek's claim. That claim itself has since been reported as very likely third-party disinformation, and nothing shown here is verified to exist.*
+*Diagram: an AI-generated illustration of the mechanism reported at the time as Cyberleek's claim. That claim itself has since been reported as very likely third-party disinformation, and nothing shown here is verified to exist.*
 
 Arrangements like this are generally called a "dead man's switch."
 
@@ -7542,6 +7570,8 @@ What follows is how things were read on August 23, while the dead man's switch w
 Take-Two is still gathering information from Microsoft and Discord to work out who Cyberleek is.
 
 ![A hooded figure at a laptop beside a stack of case files and a gavel, with server racks, an investigation board and a neon-lit coastal city in the background](/images/news/gta6-cyberleek-dead-man-switch/standoff-gavel.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not leaked material or a real court filing.*
 
 Against that, a claim appeared that looked designed to manufacture a situation reading:
 
@@ -7643,6 +7673,8 @@ GTA6's "An Extended Look" is scheduled for August 27.
 
 ![A huge "Grand Theft Auto VI" billboard above a city skyline at dusk, with a sports car parked on the wet road below](/images/news/gta6-cyberleek-dead-man-switch/gta6-billboard.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not leaked material or a real court filing.*
+
 It is the big event at which Rockstar formally shows GTA6 in detail.
 
 Instead, right before it, Cyberleek appeared.
@@ -7704,7 +7736,7 @@ Roughly three months to launch. In a place entirely apart from the game itself, 
     description:
       "8月20日、Take-Twoが米連邦地裁へDMCA召喚状を申請したと報じられた。対象はCyberleek本人ではなく、記録を保有するMicrosoftとDiscord。求められているのはアカウント情報、メールアドレス、IPアドレス、デバイス情報、そしてOneDriveに保存された関連データまで。GTA6リークは「動画を消す」段階から「流した人物を特定する」段階へ入った。",
     icon: "⚖️",
-    image: "/images/news/gta6-leak-subpoena/eyecatch.webp",
+    image: "/images/news/gta6-official/ambrosia-02.webp",
     category: "topic",
     date: "2026-08-22",
     publishedAt: "2026-08-22 16:00",
@@ -7728,7 +7760,7 @@ Rockstar Gamesは表向き、この騒動について大きな声明を出して
 
 ![「GTA 6 INVESTIGATION」と書かれたマグカップの横に、Leonidaの地図とVice City・Port Gellhorn・Grassrivers・Ambrosiaといった地名のメモをピンで留めた机のイメージ](/images/news/gta6-leak-subpoena/leak-material-board.webp)
 
-*本記事に掲載している画像はすべて、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、実際の法廷資料・流出素材・企業の内部資料ではない。*
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
 
 ---
 
@@ -7737,6 +7769,8 @@ Rockstar Gamesは表向き、この騒動について大きな声明を出して
 Take-Twoが求めているのは、MicrosoftとDiscordが保有している利用者記録だ。今回利用されたと報じられているのは、米デジタルミレニアム著作権法、いわゆるDMCAのSection 512(h)に基づく手続きで、著作権者がオンラインサービス事業者に対して、著作権侵害を行った人物を特定するための情報開示を求める際に使われる。
 
 ![連邦地方裁判所の書式に「SUBPOENA」「PURSUANT TO 17 U.S.C. § 512(h)」と記された書類と、MicrosoftとDiscordのロゴ、木槌を並べたイメージ](/images/news/gta6-leak-subpoena/dmca-subpoena.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
 
 ここで重要なのは、Take-TwoがCyberleek本人を相手取って損害賠償請求を起こしたわけではないことだ。現段階はその前にあたる身元特定のフェーズであり、Take-Two側はリークに関与した人物を割り出し、自社が保有するGTA6関連の著作物を保護するために情報を集めようとしている。
 
@@ -7749,6 +7783,8 @@ Take-Twoが求めているのは、MicrosoftとDiscordが保有している利�
 Discordが対象になる理由は比較的分かりやすい。Cyberleekやリーク関連のコミュニティがDiscord上で活動していたのであれば、アカウントの登録情報やログイン履歴は身元特定の有力な手掛かりになる。
 
 ![オフィスビルの前に並ぶMicrosoftとDiscordの看板のイメージ](/images/news/gta6-leak-subpoena/microsoft-discord.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
 
 一方で、今回もう一社の対象になったMicrosoftについては、「Xboxを運営しているから」という単純な理由ではない。法廷資料を確認した海外メディアの報道によると、Take-TwoはCyberleekという名称に関係するMicrosoft側の内部記録に加え、登録メールアドレス、IPアドレス、電話番号、リンク済みアカウント、デバイス情報などを求めている。
 
@@ -7763,6 +7799,8 @@ Discordが対象になる理由は比較的分かりやすい。Cyberleekやリ�
 Discord側に対する要求もかなり具体的だ。報道によれば、召喚状には「CYBERLEEK」「CINEMATICROCKSTAR」「Surfer24k」など複数のハンドルネームが記載されており、Take-Twoはそれらのアカウントに関する識別情報を求めている。
 
 ![「GTA 6 LEAK INVESTIGATION」と書かれた資料袋の横に、Discordログ・Microsoft記録・OneDriveデータ・IPアドレス・デバイス情報・メールアカウントを列挙したメモと「CYBERLEEK Who are you?」の付箋を並べたイメージ](/images/news/gta6-leak-subpoena/evidence-board.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
 
 さらに、特定のDiscordサーバーについては2026年6月1日以降に参加または通信していたアカウントの記録まで対象に含まれていると報じられている。要求される情報にはアカウントID、登録メールアドレス、登録時や最終ログイン時のIPアドレス、電話番号、リンク済みサービス、デバイス情報などが含まれる。
 
@@ -7799,6 +7837,8 @@ Microsoft側も今回の問題について、Take-TwoおよびRockstar Gamesと�
 今回の法的手続きで注目されているのが9月4日という日付だ。報道によれば、MicrosoftとDiscordに対して要求された記録の提出期限として設定されている。
 
 ![連邦地方裁判所の法廷を背景に、木槌と天秤の横へ「SUBPOENA」と書かれた分厚い書類の束を置いたイメージ](/images/news/gta6-leak-subpoena/subpoena-sealed.webp)
+
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
 
 もちろん、9月4日にCyberleekの実名が公表されるという意味ではない。提供されたデータが一般公開される保証もなく、Take-Twoが受け取った情報を分析し、複数サービスの記録を照合する作業も必要になる。
 
@@ -7842,9 +7882,7 @@ Rockstarにとって、GTA6の情報流出そのものは今回が初めてで�
 
 そして今回の事件は、Rockstarにとって非常に厄介なタイミングで起きている。8月27日にはGTA6の「An Extended Look」が公開される予定で、本来なら発売に向けたマーケティングがさらに大きく動き始める節目になるはずだった。
 
-![夕暮れの海岸沿いに広がる大都市の上空を、セスナ機が飛んでいくゲーム画面風のイメージ](/images/news/gta6-leak-subpoena/leonida-flyover.webp)
-
-*画像: GTA6の舞台Leonidaの雰囲気を表したAI生成イメージ画像。実際のゲーム画面や流出素材ではない。*
+![Leonida Keysの海岸線を上空から捉えた公式スクリーンショット。海の上を水上機が飛び、島と橋、点在するボートが見える](/images/news/gta6-official/leonida-keys-01.webp)
 
 ところが、その直前にCyberleekが現れた。ゲームプレイとされる映像が流出し、Leonida全体マップとされる画像が拡散し、その後も新たな映像が出続けた。さらにプレイ可能なビルドへのアクセス疑惑まで浮上し、Take-Twoは連邦裁判所を通じてMicrosoftとDiscordへ利用者情報を求める段階に入っている。
 
@@ -7860,6 +7898,8 @@ GTAシリーズでは、犯罪を重ねるほどWanted Levelが上昇し、追�
 
 ![暗い部屋で複数のモニターに囲まれ、GTA6の画面と「LEAK LOADING...」の表示を前にしたフードの人物のイメージ](/images/news/gta6-leak-subpoena/cyberleek-monitors.webp)
 
+*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際の法廷資料・流出素材・企業の内部資料ではない。*
+
 最初は数本の映像がSNSへ流出しただけだった。その後、追加のゲームプレイが投稿され、著作権上の削除対応が行われてもCyberleek側の活動は止まらなかった。そして現在、Take-TwoはMicrosoftとDiscordが保有する利用者記録を裁判所経由で求めている。
 
 つまりTake-Twoが追っている対象は、もはやネット上に存在するGTA6の動画だけではない。メールアドレス、IPアドレス、クラウドストレージ、Discordアカウント、関連サービスなどをたどり、その画面の向こう側にいる人物を特定しようとしている。
@@ -7872,7 +7912,7 @@ GTAらしく表現するなら、Cyberleekの「Wanted Level」が上がった�
 
 ---
 
-> **注記：** 本記事は2026年8月22日時点の公開情報に基づく。Take-Twoが行ったと報じられているのは、MicrosoftおよびDiscordから情報を取得するためのDMCAに基づく召喚状手続きであり、Cyberleek本人に対する逮捕状や有罪判決ではない。また、召喚状に記載されたアカウント、Discordサーバー、コミュニティの存在は、その運営者や参加者がGTA6のリークに関与したことを意味しない。Cyberleekとされる人物・グループの正体や具体的な流出経路についても、現時点では公式に確定していない。本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際の法廷資料・流出素材ではない。`,
+> **注記：** 本記事は2026年8月22日時点の公開情報に基づく。Take-Twoが行ったと報じられているのは、MicrosoftおよびDiscordから情報を取得するためのDMCAに基づく召喚状手続きであり、Cyberleek本人に対する逮捕状や有罪判決ではない。また、召喚状に記載されたアカウント、Discordサーバー、コミュニティの存在は、その運営者や参加者がGTA6のリークに関与したことを意味しない。Cyberleekとされる人物・グループの正体や具体的な流出経路についても、現時点では公式に確定していない。本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。アイキャッチとLeonida上空の画像はRockstar Games提供の公式スクリーンショットである。`,
     titleEn:
       "Take-Two Strikes Back — Subpoenas to Microsoft and Discord Take the GTA6 Leaker Hunt to Court",
     displayTitleEn:
@@ -7896,7 +7936,7 @@ In other words, Take-Two has moved past the stage of deleting the leaked videos 
 
 ![A desk with a map of Leonida pinned with notes reading Vice City, Port Gellhorn, Grassrivers and Ambrosia, beside a mug labeled "GTA 6 INVESTIGATION"](/images/news/gta6-leak-subpoena/leak-material-board.webp)
 
-*Every image in this article is an AI-generated illustration made to help convey the story. None of them are real court filings, leaked material, or internal corporate documents.*
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
 
 ---
 
@@ -7905,6 +7945,8 @@ In other words, Take-Two has moved past the stage of deleting the leaked videos 
 What Take-Two wants are the user records held by Microsoft and Discord. The mechanism reported to have been used is the one under Section 512(h) of the US Digital Millennium Copyright Act — the DMCA — which a copyright holder uses to ask an online service provider to disclose information identifying an alleged infringer.
 
 ![A court document reading "SUBPOENA" and "PURSUANT TO 17 U.S.C. § 512(h)" beside the Microsoft and Discord logos and a gavel](/images/news/gta6-leak-subpoena/dmca-subpoena.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
 
 The important point here is that Take-Two has not filed a damages claim against Cyberleek. This is the stage that comes before that: identification. Take-Two is gathering information to work out who was involved in the leak and to protect the GTA6-related copyrighted works it owns.
 
@@ -7917,6 +7959,8 @@ Those works are reported to include not only gameplay footage and images but art
 Discord is the easier of the two to explain. If Cyberleek and the communities around the leak were active on Discord, then account registration details and login history are a strong lead toward identification.
 
 ![Microsoft and Discord signage standing in front of an office building](/images/news/gta6-leak-subpoena/microsoft-discord.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
 
 Microsoft, the other target, is not on the list for the simple reason that it runs Xbox. According to outlets that have reviewed the filings, Take-Two is seeking Microsoft's internal records associated with the name Cyberleek, along with registered email addresses, IP addresses, phone numbers, linked accounts and device information.
 
@@ -7931,6 +7975,8 @@ GitHub and other Microsoft-owned services that may have been used to store the l
 The demands made of Discord are quite specific. According to reporting, the subpoena names several handles — including "CYBERLEEK," "CINEMATICROCKSTAR" and "Surfer24k" — and Take-Two is seeking identifying information for those accounts.
 
 ![An evidence folder labeled "GTA 6 LEAK INVESTIGATION" beside a note listing Discord logs, Microsoft records, OneDrive data, IP addresses, device info and email accounts, and a sticky note reading "CYBERLEEK Who are you?"](/images/news/gta6-leak-subpoena/evidence-board.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
 
 For certain Discord servers, the scope is reported to extend to records of accounts that joined or communicated there on or after June 1, 2026. The information sought includes account IDs, registered email addresses, IP addresses at registration and last login, phone numbers, linked services and device information.
 
@@ -7967,6 +8013,8 @@ A handful of gameplay videos that began circulating on social media on August 18
 One date stands out in these proceedings: September 4. According to reporting, it is the deadline set for producing the records demanded from Microsoft and Discord.
 
 ![A thick stack of documents marked "SUBPOENA" set beside a gavel and scales, with a federal courtroom behind](/images/news/gta6-leak-subpoena/subpoena-sealed.webp)
+
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
 
 That does not mean Cyberleek's real name will be published on September 4, of course. There is no guarantee the data provided will be made public, and Take-Two will need to analyze what it receives and cross-reference records across several services.
 
@@ -8010,9 +8058,7 @@ Is this a problem that ends once the handful of videos now online are deleted, o
 
 This affair has also landed at an extremely awkward moment for Rockstar. GTA6's "An Extended Look" is scheduled for August 27 — a milestone at which the marketing run-up to launch was supposed to shift into a higher gear.
 
-![A light aircraft flying over a large coastal city at dusk, in the style of a game screenshot](/images/news/gta6-leak-subpoena/leonida-flyover.webp)
-
-*Image: an AI-generated illustration evoking the atmosphere of GTA6's setting, Leonida. It is not an actual game screenshot or leaked material.*
+![Official screenshot of the Leonida Keys coastline from the air — a seaplane over the water, with islands, a causeway and scattered boats below](/images/news/gta6-official/leonida-keys-01.webp)
 
 Instead, right before it, Cyberleek appeared. Footage said to be gameplay leaked, an image said to be a full map of Leonida spread, and new videos kept coming. Suspicion of access to a playable build followed, and Take-Two has now entered the stage of seeking user information from Microsoft and Discord through a federal court.
 
@@ -8028,6 +8074,8 @@ In the GTA series, the more crimes you commit, the higher your wanted level clim
 
 ![A hooded figure in a dark room surrounded by monitors showing GTA6 and a "LEAK LOADING..." display](/images/news/gta6-leak-subpoena/cyberleek-monitors.webp)
 
+*Image: an AI-generated illustration made to help convey the story. It is not a real court filing, leaked material, or an internal corporate document.*
+
 At first it was just a few videos leaking onto social media. Then more gameplay was posted, and copyright takedowns did not stop Cyberleek from continuing. Now Take-Two is seeking, through the courts, the user records held by Microsoft and Discord.
 
 What Take-Two is pursuing, in other words, is no longer just GTA6 videos sitting on the internet. It is following email addresses, IP addresses, cloud storage, Discord accounts and linked services toward the person on the other side of the screen.
@@ -8040,7 +8088,7 @@ Roughly three months to launch. Somewhere apart from GTA6's own marketing, a sec
 
 ---
 
-> **Note:** This article is based on public information as of August 22, 2026. What Take-Two is reported to have done is initiate DMCA subpoena proceedings to obtain information from Microsoft and Discord; it is not an arrest warrant or a guilty verdict against Cyberleek. The appearance of an account, Discord server or community in a subpoena does not mean its operators or members were involved in the GTA6 leak. The identity of the person or group said to be Cyberleek, and the specific route the material took, have not been officially established at this point. Every image in this article is an AI-generated illustration and is not a real court filing or leaked material.`,
+> **Note:** This article is based on public information as of August 22, 2026. What Take-Two is reported to have done is initiate DMCA subpoena proceedings to obtain information from Microsoft and Discord; it is not an arrest warrant or a guilty verdict against Cyberleek. The appearance of an account, Discord server or community in a subpoena does not mean its operators or members were involved in the GTA6 leak. The identity of the person or group said to be Cyberleek, and the specific route the material took, have not been officially established at this point. Images that are AI-generated illustrations are labeled as such in their captions; the eyecatch and the aerial shot of Leonida are official Rockstar Games screenshots.`,
   },
   {
     id: 42,
@@ -8051,7 +8099,7 @@ Roughly three months to launch. Somewhere apart from GTA6's own marketing, a sec
     description:
       "8月18日、GTA6の未公開映像とされる動画がインターネットに現れた。発売まで約3か月、「An Extended Look」公開まで約1週間という異様なタイミング。流出を主張するCyberleekが掲げたのは「ゲーマーの権利」と「デジタル予約販売をやめてディスクを出せ」という要求だった。そしてGTA6のパッケージ版には、そもそもディスクが入っていない。",
     icon: "💿",
-    image: "/images/news/gta6-cyberleek-leak/eyecatch.webp",
+    image: "/images/news/gta6-official/leonida-keys-03.webp",
     category: "topic",
     date: "2026-08-19",
     publishedAt: "2026-08-19 23:30",
@@ -8083,7 +8131,7 @@ Roughly three months to launch. Somewhere apart from GTA6's own marketing, a sec
 
 今回出回ったのは、GTA6のものとされる複数のゲームプレイ素材と、Leonidaの全体マップとされる画像だ。海外のゲームメディアも相次いで流出を報じ、SNSでは映像やスクリーンショットが急速に拡散した。
 
-![夕暮れのビーチ沿いを背景に、車の前に立つ男女2人のイメージ。GTA6の舞台Leonidaの雰囲気を表したAI生成画像](/images/news/gta6-cyberleek-leak/protagonists-vice-beach.webp)
+![ボートの上でくつろぐジェイソンとルシアの公式スクリーンショット。奥にはVice Cityの高層ビル群が広がる](/images/news/gta6-official-screenshots-29/jason-and-lucia-03.webp)
 
 最初に確認しておきたいのは、**Rockstar GamesもTake-Two Interactiveも、流出した内容について「本物である」と公式には認めていない**という点だ。そのため、本記事でもリークから判明したとされるゲーム仕様については確定情報として扱わない。
 
@@ -8285,15 +8333,13 @@ And the GTA6 it targeted has, as it happens, a rather strange product on offer. 
 
 Follow this GTA6 leak and the view that opens up is a little different from a story about a game leaking before launch. What does it mean, now, to *own* a game? Right into the middle of that argument, the most closely watched game in the world has been dragged.
 
-*The images in this article are AI-generated illustrations made to help convey the story. They are not the leaked footage or images themselves.*
-
 ---
 
 ## August 18: Unreleased GTA6 Footage Appears Online
 
 What went around this time is several pieces of gameplay material said to be from GTA6, plus an image said to be a full map of Leonida. Games outlets outside Japan reported the leak one after another, and the footage and screenshots spread rapidly on social media.
 
-![Two people standing in front of a car with a beach and skyline at dusk behind them — an AI-generated image evoking the atmosphere of GTA6's setting, Leonida](/images/news/gta6-cyberleek-leak/protagonists-vice-beach.webp)
+![Official screenshot of Jason and Lucia relaxing on a boat, with the Vice City skyline behind them](/images/news/gta6-official-screenshots-29/jason-and-lucia-03.webp)
 
 The first thing to establish is that **neither Rockstar Games nor Take-Two Interactive has officially acknowledged the leaked material as genuine**. Accordingly, this article does not treat any game specification said to be revealed by the leak as settled fact.
 
