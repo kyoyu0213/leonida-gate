@@ -216,6 +216,80 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 59,
+    title:
+      'GTA6公式コラボDualSenseが正式発表。Vice City仕様の白・黒2モデル、11月19日発売へ',
+    displayTitle:
+      'GTA6公式コラボDualSenseが正式発表\nVice City仕様の白・黒2モデル、11月19日発売へ',
+    description:
+      '9月3日のState of Playで、Sony Interactive Entertainmentが『Grand Theft Auto VI』仕様の限定DualSenseコントローラー2種を正式発表した。ブラックとホワイトの2モデルで、色味が変化する仕上げとヤシの木モチーフのグリップを備える。発売は本編と同じ11月19日、価格は12,480円（税込）、予約開始は9月10日。',
+    icon: '🎮',
+    image: '/images/news/gta6-dualsense-limited-edition/eyecatch.webp',
+    category: 'release',
+    date: '2026-09-03',
+    publishedAt: '2026-09-03 23:45',
+    source: 'PlayStation Blog',
+    sourceUrl:
+      'https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/',
+    relatedArticles: [19, 28, 51],
+    aiSummary: [
+      '9月3日のState of Playで、『Grand Theft Auto VI』仕様の限定DualSenseコントローラー2種が正式発表された。正式名称は「DualSense Wireless Controller – Grand Theft Auto VI Black Limited Edition」と同White Limited Editionで、いずれもVice Cityの空気感を落とし込んだデザインになっている。',
+      '両モデルとも夕焼けとネオンを思わせる色味が変化する仕上げを採用し、グリップにはヤシの木モチーフの立体的なディテール、中央には『GTA VI』の公式ブランディングが入る。ホワイト版が“昼のVice City”、ブラック版が“夜のVice City”という位置づけだ。',
+      '発売日は本編と同じ2026年11月19日、価格は12,480円（税込）、予約開始は9月10日10:00（現地時間）。ホワイト版はPlayStation Directと参加小売店、ブラック版はDirect対応地域ではDirect中心の展開となる見込みで、地域によって発売日や取り扱いが異なる場合があるとも明記されている。',
+    ],
+    fullContent: `# GTA6公式コラボDualSenseが正式発表。Vice City仕様の白・黒2モデル、11月19日発売へ
+
+9月3日のState of Playで、Sony Interactive Entertainmentは『Grand Theft Auto VI』仕様の限定DualSenseコントローラー2種を正式発表した。公開されたのはブラックとホワイトの2モデルで、いずれもVice Cityの空気感を意識したデザインになっている。発売日は『GTA VI』本編と同じ11月19日で、予約受付は9月10日に始まる予定だ。
+
+---
+
+## Vice City仕様の限定DualSense、ブラックとホワイトの2モデル
+
+9月3日に配信されたState of Playで、PlayStationは『Grand Theft Auto VI』とコラボした限定DualSenseコントローラーを初公開した。正式名称は「DualSense Wireless Controller – Grand Theft Auto VI Black Limited Edition」と「DualSense Wireless Controller – Grand Theft Auto VI White Limited Edition」の2種類。PlayStation Blogでは、どちらも『GTA VI』の舞台となるVice Cityの“見ただけでわかるスタイル”を落とし込んだデザインだと説明されている。
+
+![ホワイト版のDualSense Wireless Controller – Grand Theft Auto VI White Limited Edition。夕焼け色の背景に浮かぶ本体は、上部が白、下部へ向かって青から紫へと色味が変化している](/images/news/gta6-dualsense-limited-edition/white-limited-edition-front.webp)
+
+---
+
+## 色味が変化する仕上げと、ヤシの木モチーフのグリップ
+
+今回発表された2モデルは、単に色違いというだけではない。両モデルとも、Vice Cityの夕焼けとネオンを思わせる色味が変化する仕上げが採用されており、さらにグリップ部分にはヤシの木をモチーフにした立体的なディテールが入っている。中央には『GTA VI』の公式ブランディングもあしらわれており、ゲームの世界観をかなり強く意識した作りだ。ホワイト版は白い砂浜やパステル調の空など“昼のVice City”を、ブラック版はネオンが映える“夜のVice City”を表現したモデルとして紹介されている。
+
+![ホワイト版のタッチパッド周辺の拡大。ヤシの木をあしらった『VI』のロゴが刻まれ、グリップ側はラメの入った紫のグラデーションになっている](/images/news/gta6-dualsense-limited-edition/white-touchpad-palm-detail.webp)
+
+---
+
+## 発売は11月19日、価格は12,480円（税込）
+
+発売日は2026年11月19日で、価格は12,480円（税込）。予約開始は9月10日10:00（現地時間）と案内されている。PlayStation Blogによると、ホワイト版はPlayStation Directと参加小売店で展開され、ブラック版はPlayStation Direct対応地域ではDirect中心、それ以外の地域では一部小売店で販売される見込みだ。なお、ブログには地域によって発売日や取り扱いが異なる場合があるとも明記されているため、日本国内の販売店情報は今後の案内待ちになりそうだ。
+
+---
+
+## ハプティックフィードバックとアダプティブトリガーにも対応
+
+今回の発表は、見た目だけのコラボにとどまらない。PlayStation Blogでは、『GTA VI』がDualSenseのハプティックフィードバックとアダプティブトリガーに対応し、JasonとLuciaの物語を“手の中で”感じられる体験を目指していると説明されている。実際、日本のPlayStation公式『GTA VI』ページでも、DualSenseの振動機能／トリガーエフェクト対応に加え、ハプティックフィードバック、アダプティブトリガー、内蔵スピーカー対応が案内されている。
+
+![『Grand Theft Auto VI』のロゴと、通常モデルのDualSenseおよびPS5本体が並ぶ「PLAYS BEST ON PS5」のスライド](/images/news/gta6-dualsense-limited-edition/plays-best-on-ps5.webp)
+
+---
+
+## 現時点で発表されているのはコントローラー2種のみ
+
+また、日本のPlayStation公式ページでは『グランド・セフト・オートVI』の発売日が2026年11月19日と明記されており、今回の限定DualSenseも本編発売日に合わせて投入される格好だ。少なくとも現時点の公式発表で案内されているのはコントローラー2種であり、同じ発表内ではPS5本体同梱版や本体カバーの詳細までは示されていない。まずはDualSenseから『GTA VI』コラボ展開が始まった、と見るのが自然だろう。
+
+---
+
+## 出典
+
+→ [First look at the Grand Theft Auto VI Limited Edition DualSense wireless controllers（PlayStation Blog）](https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/)
+
+→ [グランド・セフト・オートVI（PlayStation公式サイト）](https://www.playstation.com/ja-jp/games/grand-theft-auto-vi/)
+
+---
+
+> **注記：** 本記事は、2026年9月3日のState of Playで公開された内容とPlayStation Blogの発表、および日本のPlayStation公式サイトの掲載内容をもとにGTA6 FEEDが整理したものであり、Sony Interactive Entertainment／Rockstar Games／Take-Two Interactiveとは一切関係がない。掲載画像はState of Playおよび公式発表で公開された映像・素材にもとづく。価格・予約開始日時・販売経路は発表時点の情報であり、地域によって発売日や取り扱いが異なる場合があるとPlayStation Blog自身が明記している。日本国内での取り扱い小売店については、本記事執筆時点で個別の案内が出ていない。`,
+  },
+  {
     id: 58,
     title:
       'NoPixelとは？ 世界最大級のGTA RPサーバーがRockstarと組むまで――10年の歴史をわかりやすく解説',
