@@ -5,6 +5,8 @@
 //    - 広告を出すページ（ホーム・ニュース・解説ガイド・体験記）… ローダー script 1本
 //    - 広告を出さないページ（client/src/lib/ads.ts の AD_FREE_PREFIXES）… 0本
 //    - app.html（CSRシェル）… 0本（到達するのは全て広告対象外のルート）
+//    - /en 配下 … EN_INDEXING_ENABLED（client/src/lib/en-indexing.ts）が false の間は 0本、
+//      true に戻せば日本語側と同じ判定（＝記事・ガイドは1本）に戻る。両状態で検査できる。
 //  ズレたらビルドを止める。以前は「全ページ 1本」を前提にした検査しか無かったため、
 //  UGC から広告を外したときに「意図せず記事からも消えた／UGC に残った」を検知できない。
 //
@@ -13,6 +15,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, relative, sep, join } from 'node:path';
+import { EN_INDEXING_ENABLED, isEnPath } from './lib/en-indexing.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -30,7 +33,10 @@ const AD_FREE_PREFIXES = [...block[1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
 if (!AD_FREE_PREFIXES.length) throw new Error('[check-ads] AD_FREE_PREFIXES が空');
 
 const toLogicalPath = (p) => (p === '/en' ? '/' : p.startsWith('/en/') ? p.slice(3) : p);
+// client/src/lib/ads.ts の isAdFreePath と同じ判定（素の node から TS を import できないため写し）。
+// /en 配下の一括除外もフラグ連動でそちらと揃える。
 const isAdFreePath = (path) => {
+  if (!EN_INDEXING_ENABLED && isEnPath(path)) return true;
   const p = toLogicalPath(path);
   return AD_FREE_PREFIXES.some((pre) => p === pre || p.startsWith(`${pre}/`));
 };
@@ -70,5 +76,6 @@ if (errors.length) {
 
 console.log(
   `[check-ads] OK — 広告あり ${stats.withAd} ページ / 広告なし ${stats.withoutAd} ページ` +
-    `（対象外プレフィックス ${AD_FREE_PREFIXES.length} 件: ${AD_FREE_PREFIXES.join(', ')}）`,
+    `（対象外プレフィックス ${AD_FREE_PREFIXES.length} 件: ${AD_FREE_PREFIXES.join(', ')}` +
+    `${EN_INDEXING_ENABLED ? '' : ' ＋ /en 配下すべて（EN_INDEXING_ENABLED=false）'}）`,
 );

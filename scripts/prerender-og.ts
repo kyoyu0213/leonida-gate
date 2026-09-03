@@ -19,6 +19,9 @@ import {
   REDIRECTED_NEWS_IDS,
 } from '../client/src/data/news';
 import { injectSsrBody } from './lib/inject-ssr-body';
+import { stripAdsScript } from './lib/ads-html';
+import { isAdFreePath } from '../client/src/lib/ads';
+import { isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
 import { ORIGIN, SITE_NAME, DEFAULT_IMAGE, toAbs } from './lib/site';
 import { articleNode, breadcrumbNode, homeCrumb, injectLd } from './lib/jsonld';
 
@@ -84,7 +87,9 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   const descFull = (aDesc || '').replace(/\s+/g, ' ').trim();
   const desc = descFull.slice(0, 160);
   const base = `/news/${article.id}`;
-  const url = `${ORIGIN}${isEn ? '/en' : ''}${base}`;
+  // 言語プレフィックス付きの実パス（robots / 広告の判定に使う）。
+  const localizedPath = `${isEn ? '/en' : ''}${base}`;
+  const url = `${ORIGIN}${localizedPath}`;
   const jaUrl = `${ORIGIN}${base}`;
   const enUrl = `${ORIGIN}/en${base}`;
   const image = toAbs(article.image || DEFAULT_IMAGE);
@@ -102,8 +107,16 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   // canonical（各言語版は自言語URLを自己参照）
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
   // robots: noindex 対象のみ <head> に焼き込む（本文・canonical は残す）。
-  if (isNoindexNewsId(article.id)) {
-    html = html.replace('</head>', `    <meta name="robots" content="noindex,follow" />\n  </head>`);
+  //   - NOINDEX_NEWS_IDS の記事（日英とも）                     … noindex,follow
+  //   - /en 配下の一時 noindex（en-indexing.ts の EN_INDEXING_ENABLED=false） … noindex
+  // 両方に当たる記事でも robots メタは1本だけ出す（2本あると解釈が不定になる）。
+  const robots = isNoindexNewsId(article.id)
+    ? 'noindex,follow'
+    : isEnNoindexPath(localizedPath)
+      ? 'noindex'
+      : null;
+  if (robots) {
+    html = html.replace('</head>', `    <meta name="robots" content="${robots}" />\n  </head>`);
   }
   // meta 各種
   html = setMeta(html, 'description', desc);
@@ -116,13 +129,16 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   html = setMeta(html, 'twitter:description', desc);
   html = setMeta(html, 'twitter:image', image);
 
-  // hreflang（記事は日英の対あり）。
-  const alt = [
-    `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
-    `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
-  ].join('\n    ');
-  html = html.replace('</head>', `    ${alt}\n  </head>`);
+  // hreflang（記事は日英の対あり）。/en を noindex にしている間は出さない
+  // （noindex のページを alternate として宣言すると矛盾シグナルになるため）。
+  if (isHreflangEnabled()) {
+    const alt = [
+      `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
+      `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
+    ].join('\n    ');
+    html = html.replace('</head>', `    ${alt}\n  </head>`);
+  }
 
   // JSON-LD（NewsArticle + パンくず）。組み立ては scripts/lib/jsonld.ts に集約している
   // （プリレンダ3スクリプトで publisher・絶対URLの扱いを1本にするため）。
@@ -148,6 +164,13 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
     'prerender-og',
   );
 
+  // 広告：記事ページは通常 AdSense を載せるが、/en を noindex にしている間は
+  // /en 版から落とす（判定は client/src/lib/ads.ts の isAdFreePath が単一の正）。
+  if (isAdFreePath(localizedPath)) {
+    html = stripAdsScript(html, 'prerender-og');
+    adFree++;
+  }
+
   // 本文を #root へ焼き込む（head はここまでで確定済み。body だけ足す）。
   // SSRで例外が出ても head は残したままビルドを止めない（本文はCSRにフォールバック）。
   const route = `${isEn ? '/en' : ''}/news/${article.id}`;
@@ -166,6 +189,7 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
 }
 
 let count = 0;
+let adFree = 0;
 for (const article of newsArticles) {
   // 非表示記事（data/news.ts の HIDDEN_NEWS_IDS）は静的HTMLを生成しない。
   // URL は vercel.json が /fivem-gtarp へ 302 する。記事データ自体は残っているので、
@@ -188,7 +212,8 @@ console.log(
     (HIDDEN_NEWS_IDS.length
       ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}`
       : '（') +
-    (REDIRECTED_NEWS_IDS.length ? ` / 301統合: id ${REDIRECTED_NEWS_IDS.join(', ')}）` : '）'),
+    (REDIRECTED_NEWS_IDS.length ? ` / 301統合: id ${REDIRECTED_NEWS_IDS.join(', ')}）` : '）') +
+    (adFree ? `（うち広告なし ${adFree} ページ）` : ''),
 );
 if (bodyFailures.length) {
   console.warn(

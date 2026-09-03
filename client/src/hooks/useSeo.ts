@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { stripLangPrefix, pathForLang } from '@/lib/i18n';
+import { isHreflangEnabled } from '@/lib/en-indexing';
 
 /** 本番ドメイン（OGP/canonical の絶対URL生成に使う）。 */
 export const SITE_ORIGIN = 'https://gta6-feed.com';
@@ -144,7 +145,9 @@ export function useSeo(title: string, description?: string, options?: SeoOptions
     });
 
     // hreflang（日英の対があるページのみ）。現在のパスから ja/en/x-default を生成。
-    if (localized) {
+    // /en を一時 noindex にしている間は出さない（プリレンダHTML側と同じ扱い。
+    // 判定は client/src/lib/en-indexing.ts の EN_INDEXING_ENABLED が単一の正）。
+    if (localized && isHreflangEnabled()) {
       const path = window.location.pathname;
       const jaUrl = toAbsolute(stripLangPrefix(path));
       const enUrl = toAbsolute(pathForLang(path, 'en'));

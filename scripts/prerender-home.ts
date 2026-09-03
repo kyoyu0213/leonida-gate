@@ -21,6 +21,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
 import { stripAdsScript } from './lib/ads-html';
+import { isAdFreePath } from '../client/src/lib/ads';
+import { isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
 import { ORIGIN, DEFAULT_IMAGE, toAbs } from './lib/site';
 import { webSiteNode, organizationNode, collectionNode, injectLd } from './lib/jsonld';
 import { indexableNewsArticles } from '../client/src/data/news';
@@ -144,6 +146,10 @@ for (const { route, out } of targets) {
   html = replaceTracked(html, /(<html\s+lang=")[^"]*(")/, `$1${lang}$2`, 'html[lang]');
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${selfUrl}$2`, 'canonical');
+  // robots: /en（英語ホーム）の一時 noindex。canonical は自己参照のまま残す。
+  if (isEnNoindexPath(route)) {
+    html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
+  }
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', seo?.type || 'website');
   html = setMeta(html, 'og:url', selfUrl);
@@ -155,14 +161,17 @@ for (const { route, out } of targets) {
   html = setMeta(html, 'twitter:image', image);
 
   // hreflang（ja/en/x-default）。ホームは日英の対がある。
-  const jaUrl = `${ORIGIN}/`;
-  const enUrl = `${ORIGIN}/en`;
-  const alt = [
-    `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
-    `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
-    `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
-  ].join('\n    ');
-  html = html.replace('</head>', `    ${alt}\n  </head>`);
+  // /en を noindex にしている間は出さない（矛盾シグナルを作らないため）。
+  if (isHreflangEnabled()) {
+    const jaUrl = `${ORIGIN}/`;
+    const enUrl = `${ORIGIN}/en`;
+    const alt = [
+      `<link rel="alternate" hreflang="ja" href="${jaUrl}" />`,
+      `<link rel="alternate" hreflang="en" href="${enUrl}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${jaUrl}" />`,
+    ].join('\n    ');
+    html = html.replace('</head>', `    ${alt}\n  </head>`);
+  }
 
   // JSON-LD：サイト全体（WebSite / Organization）＋トップが並べる最新記事の ItemList。
   // 記事ページ・一覧ページ側の JSON-LD は prerender-og / prerender-routes が焼く。
@@ -185,6 +194,12 @@ for (const { route, out } of targets) {
     ],
     'prerender-home',
   );
+
+  // 広告：ホームは通常 AdSense を載せるが、/en を noindex にしている間は
+  // /en 版から落とす（判定は client/src/lib/ads.ts の isAdFreePath が単一の正）。
+  if (isAdFreePath(route)) {
+    html = stripAdsScript(html, 'prerender-home');
+  }
 
   html = injectSsrBody(html, body, 'prerender-home');
 

@@ -15,6 +15,7 @@ import { dirname, resolve } from 'node:path';
 import { injectSsrBody, injectSsrSeed } from './lib/inject-ssr-body';
 import { stripAdsScript } from './lib/ads-html';
 import { isAdFreePath } from '../client/src/lib/ads';
+import { isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
 import { ORIGIN, DEFAULT_IMAGE, toAbs, stripSiteName } from './lib/site';
 import {
   articleNode,
@@ -331,6 +332,7 @@ function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
 
 let count = 0;
 let adFree = 0;
+let enNoindex = 0;
 const skipped: string[] = [];
 
 for (const route of mod.ROUTE_PATHS) {
@@ -360,6 +362,12 @@ for (const route of mod.ROUTE_PATHS) {
   // <head>：title / canonical / 各メタを当該ルートの値へ差し替え
   html = replaceTracked(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`, 'title');
   html = replaceTracked(html, /(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`, 'canonical');
+  // robots: /en 配下の一時 noindex（client/src/lib/en-indexing.ts の EN_INDEXING_ENABLED）。
+  // canonical は自己参照のまま残す（URL は 200 で、ユーザーは今までどおり閲覧できる）。
+  if (isEnNoindexPath(route)) {
+    html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
+    enNoindex++;
+  }
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', seo?.type || 'website');
   html = setMeta(html, 'og:url', url);
@@ -371,7 +379,9 @@ for (const route of mod.ROUTE_PATHS) {
   html = setMeta(html, 'twitter:image', image);
 
   // hreflang（日英の対があるページのみ）。日URL/英URL/x-default(=日) を相互に張る。
-  if (seo?.localized) {
+  // /en を noindex にしている間は出さない（noindex のページを alternate として
+  // 宣言すると矛盾シグナルになるため）。判定は en-indexing.ts が単一の正。
+  if (seo?.localized && isHreflangEnabled()) {
     const jaPath = route.startsWith('/en/') ? route.slice(3) : route;
     const jaUrl = `${ORIGIN}${jaPath}`;
     const enUrl = `${ORIGIN}/en${jaPath}`;
@@ -402,8 +412,9 @@ for (const route of mod.ROUTE_PATHS) {
   );
 
   // 広告を出さないページ（UGC・ツール・固定ページ）からは AdSense のローダーを落とす。
-  // 判定は client/src/lib/ads.ts の AD_FREE_PREFIXES が単一の正。
-  if (isAdFreePath(jaPath)) {
+  // 判定は client/src/lib/ads.ts の isAdFreePath が単一の正。/en を noindex に
+  // している間は /en 配下も対象になるので、jaPath ではなく route（言語付き）を渡す。
+  if (isAdFreePath(route)) {
     html = stripAdsScript(html, 'prerender-routes');
     adFree++;
   }
@@ -426,7 +437,8 @@ for (const route of mod.ROUTE_PATHS) {
 
 console.log(
   `[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html` +
-    `（うち広告なし ${adFree} ルート / seed埋め込み ${seededPages} ルート）`,
+    `（うち広告なし ${adFree} ルート / seed埋め込み ${seededPages} ルート` +
+    `${enNoindex ? ` / noindex(/en) ${enNoindex} ルート` : ''}）`,
 );
 if (skipped.length) console.log(`[prerender-routes] スキップ: ${skipped.join(', ')}`);
 if (missedReplacements.size) {

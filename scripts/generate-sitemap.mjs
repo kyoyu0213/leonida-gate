@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
 import { readNewsIdLists, isIndexableNewsId } from './lib/news-visibility.mjs';
+import { EN_INDEXING_ENABLED } from './lib/en-indexing.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -81,6 +82,11 @@ const fieldNotes = extractFieldNotes();
 // 日英の対がある（=/en/ 版を持つ）静的ルートかの判定は static-routes.mjs 側に集約。
 const isLocalized = isLocalizedStaticPath;
 
+// /en 配下を sitemap に載せるか。client/src/lib/en-indexing.ts の EN_INDEXING_ENABLED
+// が false の間は、プリレンダHTML側で /en を noindex にしているので sitemap からも外す
+// （noindex のURLの登録を要求するのは矛盾シグナルになる）。フラグを true に戻せば復帰する。
+const enEntries = (make) => (EN_INDEXING_ENABLED ? make() : []);
+
 const entries = [
   // 日本語：固定ページ
   ...STATIC_ROUTES.map((r) =>
@@ -89,28 +95,34 @@ const entries = [
   // 英語：日英の対がある固定ページのみ /en/ を追加
   // ホーム（path='/'）だけは素朴に連結すると /en/ になり、canonical・hreflang が
   // 出す /en（末尾スラッシュ無し）と別URLになってしまうため、ここで落とす。
-  ...STATIC_ROUTES.filter((r) => isLocalized(r.path)).map((r) =>
-    urlEntry({
-      loc: `${ORIGIN}/en${r.path === '/' ? '' : r.path}`,
-      priority: r.priority,
-      changefreq: r.changefreq,
-    }),
+  ...enEntries(() =>
+    STATIC_ROUTES.filter((r) => isLocalized(r.path)).map((r) =>
+      urlEntry({
+        loc: `${ORIGIN}/en${r.path === '/' ? '' : r.path}`,
+        priority: r.priority,
+        changefreq: r.changefreq,
+      }),
+    ),
   ),
   // 日本語：記事
   ...articles.map((a) =>
     urlEntry({ loc: `${ORIGIN}/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
   ),
   // 英語：記事（日英の対あり）
-  ...articles.map((a) =>
-    urlEntry({ loc: `${ORIGIN}/en/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
+  ...enEntries(() =>
+    articles.map((a) =>
+      urlEntry({ loc: `${ORIGIN}/en/news/${a.id}`, lastmod: a.date, priority: '0.8', changefreq: 'weekly' }),
+    ),
   ),
   // 日本語：体験記の記事（/fivem-gtarp/field-notes/<category>/<slug>）
   ...fieldNotes.map((n) =>
     urlEntry({ loc: `${ORIGIN}/fivem-gtarp/field-notes/${n.category}/${n.slug}`, lastmod: n.date, priority: '0.7', changefreq: 'monthly' }),
   ),
   // 英語：体験記の記事（日英の対あり）
-  ...fieldNotes.map((n) =>
-    urlEntry({ loc: `${ORIGIN}/en/fivem-gtarp/field-notes/${n.category}/${n.slug}`, lastmod: n.date, priority: '0.7', changefreq: 'monthly' }),
+  ...enEntries(() =>
+    fieldNotes.map((n) =>
+      urlEntry({ loc: `${ORIGIN}/en/fivem-gtarp/field-notes/${n.category}/${n.slug}`, lastmod: n.date, priority: '0.7', changefreq: 'monthly' }),
+    ),
   ),
 ];
 
@@ -124,6 +136,7 @@ const out = resolve(ROOT, 'client/public/sitemap.xml');
 writeFileSync(out, xml, 'utf8');
 console.log(
   `[sitemap] ${STATIC_ROUTES.length} static + ${articles.length} articles + ${fieldNotes.length} field-notes → client/public/sitemap.xml` +
+    `（URL計 ${entries.length}件 / 英語版 ${EN_INDEXING_ENABLED ? '掲載' : '除外（EN_INDEXING_ENABLED=false）'}）` +
     `（記事除外 ${newsIds.excluded.size}件: 非表示 ${newsIds.hidden.join(',')} / ` +
     `301統合 ${newsIds.redirected.join(',')} / noindex ${newsIds.noindex.join(',')}）`,
 );
