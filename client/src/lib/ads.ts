@@ -8,8 +8,9 @@
 //   体験記）」という状態を作る。
 //
 //  ※ 日本語ページでは noindex は使わない。インデックス戦略は現状維持で、広告の有無だけを
-//    切り替える。/en 配下だけは別で、client/src/lib/en-indexing.ts の EN_INDEXING_ENABLED
-//    が false の間、noindex 化と対で広告も外す（下の isAdFreePath を参照）。
+//    切り替える。/en 配下だけは別で、client/src/lib/en-indexing.ts の
+//    EN_PUBLIC_INDEXABLE が false の間（＝noindex 中または公開停止中）は
+//    広告も外す（下の isAdFreePath を参照）。
 //
 //  審査通過後に板単位で広告を戻すときは、下の配列から該当行を1行消すだけでよい。
 //
@@ -20,7 +21,7 @@
 //    - scripts/prerender-og.ts              … 記事ページ（/en 版）から script を落とす
 //    - scripts/check-ads.mjs                … ビルド後の期待値検査
 // ============================================================================
-import { EN_INDEXING_ENABLED, isEnPath } from './en-indexing';
+import { EN_PUBLIC_INDEXABLE, isEnPath } from './en-indexing';
 
 /** AdSense のパブリッシャーID付きローダーURL。client/index.html の <script> と同じもの。 */
 export const ADSENSE_SRC =
@@ -58,12 +59,13 @@ function toLogicalPath(path: string): string {
 /**
  * そのパスで広告を出さないか（/en 版も日本語側と同じ判定になる）。
  *
- * 加えて、EN_INDEXING_ENABLED が false の間は /en 配下を丸ごと広告対象外にする。
- * 審査対策で /en を noindex にしている間、「低価値と自己申告したページに広告が
- * 載っている」状態を作らないための連動（client/src/lib/en-indexing.ts が単一の正）。
+ * 加えて、/en が「公開かつ検索対象」でない間（EN_PUBLIC_INDEXABLE=false）は
+ * /en 配下を丸ごと広告対象外にする。noindex 中は「低価値と自己申告したページに広告が
+ * 載っている」状態を、公開停止中はそもそも 302 で到達しないページに広告コードが
+ * 残る状態を作らないための連動（client/src/lib/en-indexing.ts が単一の正）。
  */
 export function isAdFreePath(path: string): boolean {
-  if (!EN_INDEXING_ENABLED && isEnPath(path)) return true;
+  if (!EN_PUBLIC_INDEXABLE && isEnPath(path)) return true;
   const p = toLogicalPath(path);
   return AD_FREE_PREFIXES.some((pre) => p === pre || p.startsWith(`${pre}/`));
 }

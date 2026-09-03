@@ -1,5 +1,6 @@
 import { useLocation } from 'wouter';
 import { useLang, pathForLang, type Lang } from '@/lib/i18n';
+import { isLangSwitchEnabled } from '@/lib/en-indexing';
 
 const OPTS: { id: Lang; label: string }[] = [
   { id: 'ja', label: 'JPN' },
@@ -11,10 +12,16 @@ const OPTS: { id: Lang; label: string }[] = [
  * 全ページで切替可能（掲示板・servers 等も UI を英語表示できる）。
  * ※ hreflang/sitemap で正式な英語版として扱うのは対訳が実在するページのみ（routes.ts）。
  *   それ以外の /en ページは canonical を日本語版へ集約しており、UI言語の切替用途。
+ *
+ * /en を一時公開停止している間（client/src/lib/en-indexing.ts の EN_SITE_ENABLED=false）は
+ * 何も描画しない。押しても vercel.json が 302 で日本語へ戻すだけの導線になるため。
+ * コンポーネント自体は残す（Header からの参照も含め、フラグを戻すだけで復帰する）。
  */
 export default function LangToggle() {
   const lang = useLang();
   const [loc, navigate] = useLocation();
+
+  if (!isLangSwitchEnabled()) return null;
 
   const go = (e: React.MouseEvent, l: Lang) => {
     // 修飾キー・中クリックは既定動作（別タブで開く等）に任せる。

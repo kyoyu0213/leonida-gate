@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useLang, prefersEnglish, pathForLang, stripLangPrefix } from '@/lib/i18n';
 import { isLocalizedPath } from '@/lib/routes';
+import { isLangSwitchEnabled } from '@/lib/en-indexing';
 
 const DISMISS_KEY = 'lang_banner_dismissed';
 
@@ -11,6 +12,7 @@ const DISMISS_KEY = 'lang_banner_dismissed';
  * - 自動リダイレクトはしない（クローラーを巻き込まないため）。
  * - 閉じる/英語へ遷移したら再表示しない（localStorage 記憶）。
  * - 英語版が無いページ（掲示板等）では出さない。
+ * - /en を一時公開停止している間（en-indexing.ts の EN_SITE_ENABLED=false）は出さない。
  */
 export default function LangBanner() {
   const [loc, navigate] = useLocation();
@@ -18,7 +20,7 @@ export default function LangBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (lang !== 'ja' || !isLocalizedPath(stripLangPrefix(loc))) {
+    if (!isLangSwitchEnabled() || lang !== 'ja' || !isLocalizedPath(stripLangPrefix(loc))) {
       setShow(false);
       return;
     }

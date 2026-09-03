@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
 import { readNewsIdLists, isIndexableNewsId } from './lib/news-visibility.mjs';
-import { EN_INDEXING_ENABLED } from './lib/en-indexing.mjs';
+import { EN_PUBLIC_INDEXABLE, EN_SITE_ENABLED } from './lib/en-indexing.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -82,10 +82,12 @@ const fieldNotes = extractFieldNotes();
 // 日英の対がある（=/en/ 版を持つ）静的ルートかの判定は static-routes.mjs 側に集約。
 const isLocalized = isLocalizedStaticPath;
 
-// /en 配下を sitemap に載せるか。client/src/lib/en-indexing.ts の EN_INDEXING_ENABLED
-// が false の間は、プリレンダHTML側で /en を noindex にしているので sitemap からも外す
-// （noindex のURLの登録を要求するのは矛盾シグナルになる）。フラグを true に戻せば復帰する。
-const enEntries = (make) => (EN_INDEXING_ENABLED ? make() : []);
+// /en 配下を sitemap に載せるか。client/src/lib/en-indexing.ts の EN_PUBLIC_INDEXABLE
+// （＝EN_SITE_ENABLED && EN_INDEXING_ENABLED）が false の間は外す。
+//   - noindex 中（⑰）… noindex のURLの登録を要求するのは矛盾シグナルになる
+//   - 公開停止中（⑲）… 302 で日本語へ飛ぶURLを sitemap に載せるのは矛盾シグナルになる
+// フラグを戻せばそのまま復帰する。
+const enEntries = (make) => (EN_PUBLIC_INDEXABLE ? make() : []);
 
 const entries = [
   // 日本語：固定ページ
@@ -136,7 +138,13 @@ const out = resolve(ROOT, 'client/public/sitemap.xml');
 writeFileSync(out, xml, 'utf8');
 console.log(
   `[sitemap] ${STATIC_ROUTES.length} static + ${articles.length} articles + ${fieldNotes.length} field-notes → client/public/sitemap.xml` +
-    `（URL計 ${entries.length}件 / 英語版 ${EN_INDEXING_ENABLED ? '掲載' : '除外（EN_INDEXING_ENABLED=false）'}）` +
+    `（URL計 ${entries.length}件 / 英語版 ${
+      EN_PUBLIC_INDEXABLE
+        ? '掲載'
+        : EN_SITE_ENABLED
+          ? '除外（EN_INDEXING_ENABLED=false）'
+          : '除外（EN_SITE_ENABLED=false・公開停止中）'
+    }）` +
     `（記事除外 ${newsIds.excluded.size}件: 非表示 ${newsIds.hidden.join(',')} / ` +
     `301統合 ${newsIds.redirected.join(',')} / noindex ${newsIds.noindex.join(',')}）`,
 );

@@ -11,6 +11,7 @@ import type { ComponentType } from 'react';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { readCollectedSeo, type CollectedSeo } from '@/hooks/useSeo';
+import { EN_SITE_ENABLED } from '@/lib/en-indexing';
 
 import FivemGtarp from '@/pages/FivemGtarp';
 import FivemArticle from '@/pages/FivemArticle';
@@ -119,11 +120,20 @@ const FIELD_NOTE_PATHS = fieldNotes.map((n) => `/fivem-gtarp/field-notes/${n.cat
 
 // プリレンダするパス一覧：全ルートの日本語版＋（localized ルート＋体験記記事の）英語版 /en/...。
 // 言語は URL（ssrPath）から useLang が判定するため、同じコンポーネントで英語版が描画される。
+//
+// /en を一時公開停止している間（client/src/lib/en-indexing.ts の EN_SITE_ENABLED=false）は
+// 英語版を生成しない。vercel.json が /en/* を日本語URLへ 302 するので、生成しても
+// 到達されない死んだファイルになるため。render() 側は /en を受け付けたままにしてある
+// （表を削らない＝フラグを true に戻すだけで元通りになる）。
+const EN_ROUTE_PATHS = [
+  ...Object.keys(LOCALIZED_ROUTES).map((p) => `/en${p}`),
+  ...FIELD_NOTE_PATHS.map((p) => `/en${p}`),
+];
+
 export const ROUTE_PATHS = [
   ...Object.keys(ROUTES),
   ...FIELD_NOTE_PATHS,
-  ...Object.keys(LOCALIZED_ROUTES).map((p) => `/en${p}`),
-  ...FIELD_NOTE_PATHS.map((p) => `/en${p}`),
+  ...(EN_SITE_ENABLED ? EN_ROUTE_PATHS : []),
 ];
 
 // 掲示板・募集板の投稿をプリレンダに焼き込むための初期データ注入口。

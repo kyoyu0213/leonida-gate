@@ -22,7 +22,7 @@ import { dirname, resolve } from 'node:path';
 import { injectSsrBody } from './lib/inject-ssr-body';
 import { stripAdsScript } from './lib/ads-html';
 import { isAdFreePath } from '../client/src/lib/ads';
-import { isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
+import { EN_SITE_ENABLED, isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
 import { ORIGIN, DEFAULT_IMAGE, toAbs } from './lib/site';
 import { webSiteNode, organizationNode, collectionNode, injectLd } from './lib/jsonld';
 import { indexableNewsArticles } from '../client/src/data/news';
@@ -115,9 +115,13 @@ writeFileSync(APP_PATH, shell, 'utf8');
 
 // 2) ホームを ja/en で焼く。
 //    route は '/'（ja）と '/en'（en）。canonical は route 由来の自己参照、hreflang も付与。
+//    /en を一時公開停止している間（en-indexing.ts の EN_SITE_ENABLED=false）は
+//    英語ホームを焼かない（vercel.json が /en → / へ 302 するため到達されない）。
 const targets: { route: string; out: string }[] = [
   { route: '/', out: resolve(ROOT, 'dist/public/index.html') },
-  { route: '/en', out: resolve(ROOT, 'dist/public/en/index.html') },
+  ...(EN_SITE_ENABLED
+    ? [{ route: '/en', out: resolve(ROOT, 'dist/public/en/index.html') }]
+    : []),
 ];
 
 let count = 0;
@@ -208,7 +212,9 @@ for (const { route, out } of targets) {
   count++;
 }
 
-console.log(`[prerender-home] ${count} ページ（/ と /en）を生成。app.html にシェルを退避。`);
+console.log(
+  `[prerender-home] ${count} ページ（${EN_SITE_ENABLED ? '/ と /en' : '/ のみ・/en は公開停止中'}）を生成。app.html にシェルを退避。`,
+);
 if (failures.length) {
   console.warn(`[prerender-home] WARN: 本文が焼けなかった: ${failures.join(', ')}`);
 }

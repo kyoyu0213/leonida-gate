@@ -24,6 +24,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
 import { readNewsIdLists } from './lib/news-visibility.mjs';
+import { EN_SITE_ENABLED } from './lib/en-indexing.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -126,6 +127,9 @@ if (gaps.length) {
 // ============================================================================
 const enGaps = [];
 for (const { path } of STATIC_ROUTES) {
+  // /en 一時公開停止中（en-indexing.ts の EN_SITE_ENABLED=false）は英語版を生成せず、
+  // sitemap にも /en を出していないので、この検査自体が対象外になる。
+  if (!EN_SITE_ENABLED) break;
   if (!isLocalizedStaticPath(path)) continue;
   // '/' の英語版（/en）は prerender-home.ts が本文ごと焼くため LOCALIZED_ROUTES に無くてよい。
   if (PRERENDERED_OUTSIDE_TABLES.has(path)) continue;
@@ -319,6 +323,10 @@ const sampleUrl = (p) => p.replace(/:[A-Za-z_]+/g, 'x');
 const uncovered = [];
 for (const r of appRoutes) {
   const sample = sampleUrl(r);
+  // /en 一時公開停止中は vercel.json の redirects（配列先頭）が /en/* を日本語URLへ
+  // 302 するため、rewrites に無くても 404 にはならない。下の検査Gがその 302 の存在を
+  // 保証しているので、ここではスキップしてよい。
+  if (!EN_SITE_ENABLED && (r === '/en' || r.startsWith('/en/'))) continue;
   // プリレンダ済みなら列挙不要
   const isPrerendered =
     prerenderedJa.has(r) ||
@@ -346,6 +354,75 @@ if (uncovered.length) {
       '    → catch-all が /api/not-found に落とすため、このURLは 404 になります。\n' +
       '    → プリレンダ対象にするか、vercel.json の rewrites に追加してください。',
   );
+}
+
+// ============================================================================
+//  検査G（fail）：/en 一時公開停止フラグ（EN_SITE_ENABLED）と vercel.json の整合
+// ----------------------------------------------------------------------------
+//  ⑲で /en 配下を一時公開停止にした。停止の実体は vercel.json の redirects で、
+//  ここだけはビルド時のフラグでは切り替えられない（Vercel はビルド出力ではなく
+//  リポジトリの vercel.json を読むため）。＝フラグと設定ファイルの二段構えになる。
+//
+//  片方だけ直すと事故になる：
+//    - フラグ false ＋ 302 無し … /en が 404（プリレンダしていないので catch-all 行き）
+//    - フラグ true  ＋ 302 あり … /en を生成しているのに全部 302 で日本語へ飛ぶ
+//  そのため両者の一致をここで強制する。エラーメッセージが復帰手順そのものになる。
+// ============================================================================
+{
+  const EN_SUSPEND_RULES = [
+    { source: '/en', destination: '/' },
+    { source: '/en/:path*', destination: '/:path*' },
+  ];
+  const redirects = vercelCfg.redirects ?? [];
+  const found = EN_SUSPEND_RULES.map((want) => redirects.find((r) => r.source === want.source));
+
+  if (!EN_SITE_ENABLED) {
+    // 停止中：2本そろっていて、302 で、正しい宛先で、かつ配列の先頭にあること。
+    EN_SUSPEND_RULES.forEach((want, i) => {
+      const got = found[i];
+      if (!got) {
+        errors.push(
+          `/en を公開停止中（EN_SITE_ENABLED=false）なのに vercel.json の redirects に ` +
+            `"${want.source}" → "${want.destination}"（302）がありません。\n` +
+            '    → /en 配下はプリレンダしていないため、この 302 が無いと 404 になります。\n' +
+            '    → vercel.json の redirects 先頭へ追加してください。',
+        );
+        return;
+      }
+      if (got.destination !== want.destination) {
+        errors.push(
+          `vercel.json の "${want.source}" の destination が "${got.destination}" になっています` +
+            `（期待: "${want.destination}"）。対応する日本語URLへ送れていません。`,
+        );
+      }
+      if (got.statusCode !== 302) {
+        errors.push(
+          `vercel.json の "${want.source}" が ${got.statusCode} になっています。` +
+            '/en の公開停止は一時的なので 302 が正しい（301 はブラウザに恒久キャッシュされ、' +
+            'フラグを戻しても /en に戻れなくなる）。',
+        );
+      }
+    });
+    // 既存の /en/news/... リダイレクトより後ろにあると 301 チェーンになる。
+    const firstEnSuspend = redirects.findIndex((r) => r.source === '/en');
+    const firstEnNews = redirects.findIndex((r) => String(r.source).startsWith('/en/news'));
+    if (firstEnSuspend >= 0 && firstEnNews >= 0 && firstEnNews < firstEnSuspend) {
+      errors.push(
+        'vercel.json の /en 公開停止リダイレクトが /en/news/... のリダイレクトより後ろにあります。\n' +
+          '    → Vercel は先に一致した1本だけを適用するため、/en/news/17 が 301 → 302 の\n' +
+          '       チェーンになります。公開停止の2本を redirects 配列の先頭へ移動してください。',
+      );
+    }
+  } else {
+    // 復帰済み：停止用の 302 が残っていてはいけない。
+    const leftovers = found.filter(Boolean).map((r) => r.source);
+    if (leftovers.length) {
+      errors.push(
+        `/en を公開中（EN_SITE_ENABLED=true）なのに vercel.json に公開停止の 302 が残っています: ${leftovers.join(', ')}\n` +
+          '    → プリレンダした /en が全て日本語へ 302 されます。該当の redirects を削除してください。',
+      );
+    }
+  }
 }
 
 // --- 結果 --------------------------------------------------------------------

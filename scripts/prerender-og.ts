@@ -21,7 +21,7 @@ import {
 import { injectSsrBody } from './lib/inject-ssr-body';
 import { stripAdsScript } from './lib/ads-html';
 import { isAdFreePath } from '../client/src/lib/ads';
-import { isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
+import { EN_SITE_ENABLED, isEnNoindexPath, isHreflangEnabled } from '../client/src/lib/en-indexing';
 import { ORIGIN, SITE_NAME, DEFAULT_IMAGE, toAbs } from './lib/site';
 import { articleNode, breadcrumbNode, homeCrumb, injectLd } from './lib/jsonld';
 
@@ -188,6 +188,9 @@ function buildHtml(article: (typeof newsArticles)[number], lang: 'ja' | 'en'): s
   return html;
 }
 
+/** 生成する言語。/en 公開停止中は 'ja' だけ。 */
+const LANGS: readonly ('ja' | 'en')[] = EN_SITE_ENABLED ? ['ja', 'en'] : ['ja'];
+
 let count = 0;
 let adFree = 0;
 for (const article of newsArticles) {
@@ -199,7 +202,9 @@ for (const article of newsArticles) {
   // 生成しても配信されない死んだファイルになる。
   if (isRedirectedNewsId(article.id)) continue;
   // 日本語版（/news/<id>）と英語版（/en/news/<id>）の両方を生成。
-  for (const lang of ['ja', 'en'] as const) {
+  // /en を一時公開停止している間（en-indexing.ts の EN_SITE_ENABLED=false）は
+  // 日本語版だけ生成する（/en/news/<id> は vercel.json が /news/<id> へ 302 する）。
+  for (const lang of LANGS) {
     const html = buildHtml(article, lang);
     const dir = resolve(ROOT, `dist/public${lang === 'en' ? '/en' : ''}/news/${article.id}`);
     mkdirSync(dir, { recursive: true });
@@ -208,7 +213,7 @@ for (const article of newsArticles) {
   }
 }
 console.log(
-  `[prerender] ${count} 記事ページ（日英）を生成: dist/public/(en/)news/<id>/index.html` +
+  `[prerender] ${count} 記事ページ（${EN_SITE_ENABLED ? '日英' : '日本語のみ・/en は公開停止中'}）を生成: dist/public/(en/)news/<id>/index.html` +
     (HIDDEN_NEWS_IDS.length
       ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}`
       : '（') +
