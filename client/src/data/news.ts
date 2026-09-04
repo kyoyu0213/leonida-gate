@@ -216,6 +216,193 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 61,
+    title:
+      '新たなGTAスト鯖「SURGE Town」が開幕。叶・ころん・BobSappAimら参加、9月20日まで開催',
+    displayTitle:
+      '新たなGTAスト鯖「SURGE Town」が開幕\n叶・ころん・BobSappAimら参加、9月20日まで開催',
+    description:
+      '2026年9月4日、新たなGTA Vコミュニティサーバー「SURGE Town」がスタートした。ストリーマー・VTuber・クリエイターが同じ街で職業を持って生活する期間限定サーバーで、開催は9月20日まで。参加者は100人を大きく超え、にじさんじの叶、ころん、BobSappAimらの参加も発表されている。',
+    icon: '🌆',
+    image: '/images/news/surge-town-gta-server/eyecatch.webp',
+    category: 'event',
+    date: '2026-09-04',
+    publishedAt: '2026-09-04 22:00',
+    source: 'SURGE公式X（@TeamSURGE_JP）／MoguraVR',
+    sourceUrl: 'https://www.moguravr.com/surge-town-gta/',
+    relatedArticles: [18, 58, 41],
+    aiSummary: [
+      '2026年9月4日、新たなGTA Vコミュニティサーバー「SURGE Town」が開幕した。ストリーマー・VTuber・クリエイターが同じ街に集まり、それぞれ職業を持って生活する期間限定サーバーで、開催期間は9月4日から9月20日まで。参加者向けの案内では基本のサーバー開放時間は19:00〜26:00とされている。',
+      '運営はゲームコミュニティ「SURGE」。2026年9月1日に「THE GAME SQUARE」から名称を変更して再スタートしたばかりで、SURGE Townは新体制で最初の大型企画にあたる。運営に携わるYASSHH氏は開幕当日、これまでで一番大きなイベントにしようと計画してきたと説明している。',
+      '参加者は9月2日時点で100人を大きく超え、風見くく、飛良ひかり、柚原いづみ、Kamito、rpr、ザクレイらに加え、開幕直前にはころん、BobSappAim、カワセ、そしてにじさんじの叶の参加が発表された。GTA RP経験者と「初GTA」勢が同じ街に混在するのが今回の特徴になっている。',
+    ],
+    fullContent: `# 新たなGTAスト鯖「SURGE Town」が開幕。叶・ころん・BobSappAimら参加、9月20日まで開催
+
+2026年9月4日、新たなGTA Vコミュニティサーバー「**SURGE Town**」がスタートした。
+
+ストリーマー、VTuber、クリエイターが同じ街に集まり、それぞれ職業を持ちながら生活していく期間限定のGTAサーバーだ。開催期間は**9月4日から9月20日まで**。参加者向けの案内では、基本的なサーバー開放時間は**19:00〜26:00**とされている。
+
+そして今回、参加者の顔ぶれもかなり大きい。
+
+---
+
+## 「SURGE」として最初の大型GTA企画
+
+SURGE Townを運営するのは、ゲームコミュニティ「SURGE」。
+
+SURGEは2026年9月1日、それまで活動していた「THE GAME SQUARE」から**名称を変更**して新たにスタートした。公式Xでは「新たな挑戦と、新たな可能性を」「もっと大きな熱狂を。もっと多くの人が集まる場所へ」とリブランディングを発表している。
+
+そして、その直後に発表された大型企画がSURGE Townだった。
+
+運営に携わるYASSHH氏は開幕当日、「これまで僕らがやってきたイベントの中で、一番大きなものにしよう」という思いで計画してきたと説明。予想を大きく超える反響があり、追加参加希望も多数届いているという。
+
+つまりSURGEにとっても、今回のGTAサーバーは新体制を象徴する最初の大きな企画になっている。
+
+---
+
+## 参加者は100人を大きく超える規模に
+
+SURGE Townには、GTA RP経験者から今回がGTA初参加となる配信者まで、非常に幅広いメンバーが集まっている。
+
+発表されている参加者には、風見くく、飛良ひかり、柚原いづみ、Kamito、rpr、しろまんた、ひょう太朗、ザクレイ、CHiCO、こはならむ、Rio、みつき、アベレージなど多数のストリーマー・VTuber・クリエイターが含まれる。9月2日時点ですでに100人を大きく超える名前が公開されていた。
+
+さらに開幕直前にも追加発表が続き、**ころん、BobSappAim、カワセ**らの参加が明らかになった。
+
+そして特に注目を集めたのが、**にじさんじ・叶の参加発表**だ。開幕前日の9月3日にSURGE公式から単独で参加が告知されている。
+
+参加者は今後さらに増える可能性もある。運営側はサーバー負荷と実際のログイン状況を確認しながら、追加参加者を順次案内する方針を示している。
+
+---
+
+## ストグラ経験者と「初GTA勢」が同じ街に
+
+SURGE Townで面白くなりそうなのが、参加者のGTA経験にかなり差があることだ。
+
+ストグラなどで長期間RPを経験しているプレイヤーがいる一方、「初めてGTAをプレイする」と告知しているVTuberもいる。実際、開幕日の配信予定には「初GTA5」「初めてのGTA」と掲げる参加者も複数確認できる。
+
+職業もさまざまだ。
+
+柚原いづみは「新米メカニック」として参加すると発表。愁子は薬局で働くことを明かしており、開幕日の配信では医療関係や店舗経営に関わる参加者も確認できる。
+
+GTAに慣れたプレイヤーだけで固めるのではなく、経験者と初心者が同じ環境に放り込まれることで、予想できない人間関係や物語が生まれることになりそうだ。
+
+---
+
+## 招待制を中心に参加者を集める形式
+
+SURGE Townは一般ユーザーが自由に参加できる公開サーバーではなく、ストリーマーやクリエイターを中心としたコミュニティサーバーだ。
+
+開始前には追加参加枠も用意され、運営側から「SNSフォロワーまたはチャンネル登録者5000人以上」を条件として希望者を募集する案内も出ていた。参加確定者に対して運営から招待を送る形式となっている。
+
+開幕前から予想以上の参加希望が集まったため、現在はサーバー負荷を見ながら追加案内を行う状態になっているという。
+
+---
+
+## GTAスト鯖がまた一つ増えた
+
+日本のGTA配信では、ストグラをはじめ、VCR GTA、MadTown、NEWTOWNなど、異なる期間やコンセプトを持ったコミュニティサーバーが次々と登場してきた。
+
+SURGE Townも、その流れから生まれた新しい街の一つだ。
+
+ただし今回は、SURGEというコミュニティ自体のリスタートと同時に始まった企画であること、100人を大きく超える参加者が集まっていること、さらにGTA RP経験者だけでなく初参加勢も多数含まれていることが特徴になる。
+
+開催期間は**2026年9月4日〜9月20日**。
+
+わずか17日間の街で、どんな組織が生まれ、誰と誰が出会い、どんな事件や物語が残るのか。
+
+新しいGTAの街「SURGE Town」が、今日から動き始めている。
+
+---
+
+## 出典
+
+→ [SURGE公式X（@TeamSURGE_JP）](https://x.com/TeamSURGE_JP)
+
+→ [【GTA】コミュニティサーバー「SURGE Town」始動、ストリーマー、VTuber参加者まとめ（MoguraVR）](https://www.moguravr.com/surge-town-gta/)
+
+---
+
+> **注記：** 本記事は、SURGE公式X（@TeamSURGE_JP）の告知およびMoguraVRの報道、参加者各自の配信告知をもとにGTA6 FEEDが整理したものであり、SURGE／各参加者／Rockstar Gamesとは一切関係がない。掲載画像はSURGEが公開したSURGE Townの素材にもとづく。開催期間・サーバー開放時間・参加者の顔ぶれは本記事執筆時点の情報であり、参加者は今後さらに追加される可能性がある。`,
+  },
+  {
+    id: 60,
+    title:
+      'マイアミ国際空港が「Vice City Airport」に？ GTA6発売プロモーションを巡り地元当局が反発',
+    displayTitle:
+      'マイアミ国際空港が「Vice City Airport」に？\nGTA6発売プロモーションを巡り地元当局が反発',
+    description:
+      '米フロリダ州Miami-Dade Countyが、GTA6の発売に合わせてRockstar Gamesとのプロモーション提携を検討していると報じられ、その案のひとつとしてマイアミ国際空港を一時的に「Vice City Airport」とする可能性が浮上した。これに郡委員と保安官が共同声明で反対を表明。「Miami-Dade County is not Vice City.」と明言し、発売前から思わぬ議論に発展している。',
+    icon: '✈️',
+    image: '/images/news/gta6-vice-city-airport-miami/eyecatch.webp',
+    category: 'topic',
+    date: '2026-09-04',
+    publishedAt: '2026-09-04 21:30',
+    source: 'NBC Miami／WLRN',
+    sourceUrl:
+      'https://www.nbcmiami.com/news/local/game-over-miami-dade-sheriff-urges-county-against-proposed-gta-6-promotion/3854307/',
+    relatedArticles: [52, 59, 56],
+    aiSummary: [
+      '米フロリダ州Miami-Dade Countyが、GTA6の発売に合わせたRockstar Gamesとのプロモーション提携を検討していると報じられ、その案のひとつとしてMiami International Airport（マイアミ国際空港）を一時的に「Vice City Airport」としてリブランドする可能性が浮上した。',
+      '9月3日、Miami-Dade County CommissionerのJuan Carlos Bermudez氏とMiami-Dade SheriffのRosie Cordero-Stutz氏が共同声明を発表し、公共施設や公的資源を使って犯罪や暴力を描く架空都市の宣伝を行うことに反対を表明。声明は「Miami-Dade County is not Vice City.」と締めくくられている。',
+      'ただし空港の改名もRockstarとの提携も正式決定ではなく、郡の声明も「reported possibility（報じられている可能性）」という表現にとどまる。Bermudez氏は提携の公共的な利益・費用・使われるリソースについて、行政側に透明性のある説明を求めている。',
+    ],
+    fullContent: `# マイアミ国際空港が「Vice City Airport」に？ GTA6発売プロモーションを巡り地元当局が反発
+
+『Grand Theft Auto VI（GTA6）』の舞台「Vice City」が、現実のマイアミにまで飛び出すかもしれない。米フロリダ州Miami-Dade Countyで、GTA6の発売に合わせてRockstar Gamesとのプロモーション提携を検討していると報じられ、その案のひとつとしてMiami International Airport（マイアミ国際空港）を一時的に「Vice City Airport」として展開する可能性が浮上した。ところが、この計画に地元の郡委員と保安官がそろって反対を表明し、発売前から思わぬ議論に発展している。
+
+*※本記事に掲載している画像は、記事の内容をイメージしやすくするためにAIで生成したものです。実際のマイアミ国際空港の写真や、Rockstar Gamesが公開した素材ではありません。*
+
+---
+
+## 「Vice City Airport」案は噂だけの話ではない
+
+9月3日、Miami-Dade County CommissionerのJuan Carlos Bermudez氏と、Miami-Dade SheriffのRosie Cordero-Stutz氏が共同声明を発表した。声明によれば、郡長室がGTA6発売に向けてRockstar Gamesとの提携を模索していると報じられており、その中にはマイアミ国際空港を一時的に「Vice City Airport」としてリブランドする可能性も含まれているという。
+
+ただし、ここは誤解しないようにしたい。**現時点で空港の改名やRockstarとの提携が正式決定したわけではない。** Miami-Dade Countyの公式声明も「reported possibility（報じられている可能性）」という表現を使っており、Bermudez氏らがその検討に反対している段階だ。
+
+---
+
+## 地元当局が反対する理由
+
+Bermudez氏が問題視しているのは、GTA6が世界的な注目を集めることそのものではない。むしろ同氏は、GTA6がMiami-Dade Countyへ世界的な注目をもたらすことについて「間違いない」と認めている。そのうえで、観光・ビジネス・投資などを通じて築いてきた現実のMiami-Dadeのブランドを、犯罪や暴力を描く架空都市「Vice City」の宣伝に公共施設や公的資源を使ってまで結びつけるべきなのか、と疑問を呈している。
+
+SheriffのCordero-Stutz氏も同様に、GTAシリーズでは強盗、車両窃盗、薬物取引、警察への暴力などが描かれていることを指摘。現実の警察が日々そうした犯罪を防ごうとしている中で、行政自らがその架空世界を宣伝することには慎重になるべきだとの立場を示した。共同声明は最後に、非常に明確な一文を置いている。
+
+> Miami-Dade County is not Vice City.
+
+---
+
+## Rockstarとの協議内容にも説明を要求
+
+Bermudez氏は単に計画へ反対しただけではなく、Miami-Dade CountyとRockstar Gamesの間でどのような協議が行われているのかについて透明性を求めている。提携によって得られる公共的な利益、必要となる費用、郡の施設やその他のリソースがどの程度使われるのかを明らかにするよう行政側へ要求した。
+
+そのため、今後の注目点はRockstar Gamesとのプロモーションが実際にどこまで具体化しているのかだ。現時点ではRockstar側から「Vice City Airport」計画について正式発表は確認できておらず、空港が本当にVice City仕様になると決まったわけではない。
+
+---
+
+## GTA6が「現実のマイアミ」を動かし始めた
+
+今回のニュースが面白いのは、単なる空港の名称変更論争ではないところにある。
+
+GTA6のVice Cityは、Miamiや南フロリダを強く意識した架空世界として描かれている。NBC Miamiも、公開映像にはOcean Driveを思わせる場所や空港、Evergladesを想起させる地域など、現実の南フロリダとの共通点が数多く見られると伝えている。
+
+これまでは「Rockstarが現実のMiamiをどうゲームに落とし込むのか」が注目されてきた。しかし今回浮上したのは、その逆だ。現実のMiamiが、世界的な注目を集めるVice Cityという架空のブランドを利用する可能性である。
+
+空港が本当に「Vice City Airport」になるかはまだ分からない。それでも、公的機関が公式声明を出して反対するところまで話が進んだこと自体、GTA6が発売前から現実の都市や行政を巻き込むほど巨大なコンテンツになっていることを象徴する出来事と言えそうだ。
+
+---
+
+## 出典
+
+→ [Miami-Dade Sheriff urges county against proposed GTA 6 promotion（NBC Miami）](https://www.nbcmiami.com/news/local/game-over-miami-dade-sheriff-urges-county-against-proposed-gta-6-promotion/3854307/)
+
+→ [Vice City Airport? Miami-Dade commissioner, sheriff blast Grand Theft Auto VI rebranding plan（WLRN）](https://www.wlrn.org/government-politics/2026-09-03/vice-city-airport-miami-dade-commissioner-sheriff-blast-grand-theft-auto-vi-rebranding-plan)
+
+---
+
+> **注記：** 本記事は、2026年9月3日に発表されたMiami-Dade County CommissionerのJuan Carlos Bermudez氏とMiami-Dade SheriffのRosie Cordero-Stutz氏による共同声明、およびNBC Miami・WLRNの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Miami-Dade Countyとは一切関係がない。掲載画像は記事内容のイメージとしてAIで生成したものであり、実在の施設や公開素材の写真ではない。マイアミ国際空港の「Vice City Airport」化やRockstar Gamesとの提携は、本記事執筆時点でいずれも正式決定・正式発表されていない。`,
+  },
+  {
     id: 59,
     title:
       'GTA6公式コラボDualSenseが正式発表。Vice City仕様の白・黒2モデル、11月19日発売へ',
