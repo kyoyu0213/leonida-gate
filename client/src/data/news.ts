@@ -314,6 +314,16 @@ SURGE Townも、その流れから生まれた新しい街の一つだ。
 
 ---
 
+## SURGE Townの情報交換スレッド
+
+GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッドを用意している。誰がどの職業で入っているのか、印象に残った場面、初GTA勢の動きなど、気づいたことを気軽に書き込んでほしい。
+
+→ [【SURGE Town】新ストリーマーGTA鯖 総合スレ](/thread/c0ad4249-5438-4a1d-aa2d-6f2bbde1e655)
+
+ほかのスト鯖の話題は[ストリーマーサーバー板](/board/streamer-servers)にまとまっている。
+
+---
+
 ## 出典
 
 → [SURGE公式X（@TeamSURGE_JP）](https://x.com/TeamSURGE_JP)
