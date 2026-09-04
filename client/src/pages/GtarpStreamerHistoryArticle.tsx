@@ -21,7 +21,8 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 | 2024年6月 | にじさんじGTAサーバー（にじGTA）開催（6月15日〜25日）。星川サラ・叶主催、ストグラ運営チームがサポート | にじさんじ |
 | 2024年9月 | ホロライブによる「ホロGTA（ホロライブGTA）」開催（9月17日〜23日）。さくらみこ・星街すいせい主催 | ホロライブ |
 | 2024年12月 | 「VCR GTA3」開催（12月2日〜12日）。180名超が参加 | 幅広い配信者・VTuber |
-| 2025年〜2026年 | CR／VAULTROOM系のMadTown・NEWTOWNなど招待制サーバーが定着。ストグラはシーズン1終了（9月）を経てSeason2を開始（12月19日） | ぶいすぽなど各グループ＋個人勢 |
+| 2025年〜2026年前半 | CR／VAULTROOM系のMadTown・NEWTOWNなど招待制サーバーが定着。ストグラはシーズン1終了（9月）を経てSeason2を開始（12月19日） | ぶいすぽなど各グループ＋個人勢 |
+| 2026年9月 | SURGE主催の期間限定コミュニティサーバー「SURGE Town」が開始（9月4日〜20日） | ストリーマー・VTuber・クリエイター。GTARP経験者から初参加層まで |
 
 ## 前提：常設サーバーと期間限定イベントの違い
 
@@ -41,6 +42,7 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 | ホロGTA | グループ専用企画 | ホロライブメンバーによる7日間の箱企画（2024年9月） |
 | MadTown | 招待制・カジュアル型 | CR／VAULTROOM主催。約1か月、RPの強制はゆるめ |
 | NEWTOWN | 招待制イベント | CR／VAULTROOM主催。約3週間（2026年2月） |
+| SURGE Town | 期間限定コミュニティサーバー | SURGE主催。ストリーマー・VTuber・クリエイターが参加。2026年9月4日〜20日 |
 
 ## 2022年8月 ―― ストグラの開始
 
@@ -92,15 +94,19 @@ const BODY = `GTA6時代を前に、日本のGTARP（GTAロールプレイ）は
 
 @youtube:axTfs14TTDs
 
+2026年9月4日には、ゲームコミュニティ「SURGE」が主催する期間限定のコミュニティサーバー「SURGE Town」が始まった。開催は9月20日までで、ストリーマー・VTuber・クリエイターが同じ街に集まり、警察・救急・メカニックといった役割を持ちながら生活する形式である。参加者には叶、ころん、BobSappAim、カワセといった配信者が名を連ねる一方、今回がGTAや配信者サーバー自体はじめてというクリエイターも複数見られ、ストグラなどでGTARPを経験してきた層と初参加の層が同じ街に入る構成になっている点も特徴といえる。
+
+SURGE Townは、ストグラやVCR GTA、NEWTOWNとは主催・運営の異なる独立した企画である。2025年以降は特定の大型企画だけでなく、複数のコミュニティがそれぞれ独自のサーバーを立ち上げる動きが見られており、SURGE Townもその一例といえそうだ。開幕時点の参加者や運営側の説明については[SURGE Town開幕の記事](/news/61)で扱っている。
+
 常設企画であるストグラも、大きな節目を迎えた。2022年8月28日に始まったシーズン1は、約800人のキャラクター・約600人の配信者が参加する規模へと育ち、2025年9月21日に約3年の歴史へいったん区切りをつけた。その後、約3か月の準備期間（休止）を経て、2025年12月19日からは生まれ変わった街を舞台に「ストグラSeason2」が始動している。常設の場としての性格はそのままに、街そのものを刷新して再開した形である。運営は株式会社GANMA、企画・主催はしょぼすけ氏が引き続き務める。
 
 ストグラは展開の幅も広げており、公式ラジオ番組などを通じて、配信・SNSと連動した多層的な情報発信が定着しつつある。切り抜き動画やマルチ視点でのアーカイブ視聴文化も広がり、リアルタイムで追えない層や、配信を直接見ない層までもがGTARPに触れるようになっている。
 
 ## 情報の確度について
 
-本記事のうち、ストグラのシーズン1開始（2022年8月28日、当初名「ストリーマーグラセフ」）と2023年4月17日のサーバー名変更、シーズン1終了（2025年9月21日）、Season2開始（2025年12月19日）、VCR GTA第1回の2023年7月開催、VCR GTA2の2023年12月開催、にじGTAの2024年6月開催（6月15日〜25日）、ホロGTAの2024年9月開催（9月17日〜23日）とVTuber Awards 2024での受賞、VCR GTA3の2024年12月開催（12月2日〜12日）、MadTownの2025年6月・10月開催、NEWTOWNの2026年2月開催は、報道や各企画の告知などで確認できる情報である。
+本記事のうち、ストグラのシーズン1開始（2022年8月28日、当初名「ストリーマーグラセフ」）と2023年4月17日のサーバー名変更、シーズン1終了（2025年9月21日）、Season2開始（2025年12月19日）、VCR GTA第1回の2023年7月開催、VCR GTA2の2023年12月開催、にじGTAの2024年6月開催（6月15日〜25日）、ホロGTAの2024年9月開催（9月17日〜23日）とVTuber Awards 2024での受賞、VCR GTA3の2024年12月開催（12月2日〜12日）、MadTownの2025年6月・10月開催、NEWTOWNの2026年2月開催、SURGEが新たなGTAコミュニティサーバーとして発表した「SURGE Town」の2026年9月4日開始（9月20日まで）は、報道や各企画の告知などで確認できる情報である。
 
-一方で、巷では「ストグラは2024年6月開始」とする記述も見られるが、ストグラの運営開始は2022年8月28日が正しい。2024年6月に始まったのは、にじさんじ専用のにじGTAであり、これと混同されたものとみられる。また、各サーバーの細かな稼働時間や定休日、終了日、全参加者などは開催ごとに変動するため、本記事では断定を避けている。本記事に挙げた参加者は各サーバーの代表的な例であり、全参加者を網羅したものではない。参加状況は回や時期によって変わるため、正確な日程・参加者は各公式情報を確認してほしい。
+一方で、巷では「ストグラは2024年6月開始」とする記述も見られるが、ストグラの運営開始は2022年8月28日が正しい。2024年6月に始まったのは、にじさんじ専用のにじGTAであり、これと混同されたものとみられる。また、各サーバーの細かな稼働時間や定休日、終了日、全参加者などは開催ごとに変動するため、本記事では断定を避けている。本記事に挙げた参加者は各サーバーの代表的な例であり、全参加者を網羅したものではない。開催中のSURGE Townについても参加者が追加される場合がある。参加状況は回や時期によって変わるため、正確な日程・参加者は各公式情報を確認してほしい。
 
 ## 出典・参考
 
@@ -131,7 +137,8 @@ Note that streamer servers often have their start, end, and hiatus dates move on
 | Jun 2024 | The Nijisanji GTA server (Niji GTA) held (June 15–25). Hosted by Sara Hoshikawa and Kanae, supported by the Stgra operations team | Nijisanji |
 | Sep 2024 | "Holo GTA (Hololive GTA)" held by Hololive (Sept 17–23). Hosted by Sakura Miko and Hoshimachi Suisei | Hololive |
 | Dec 2024 | "VCR GTA3" held (Dec 2–12). Over 180 participants | A wide range of streamers and VTubers |
-| 2025–2026 | Invitation-only servers in the CR / VAULTROOM line, such as MadTown and NEWTOWN, become established. Stgra starts Season 2 (Dec 19) after ending Season 1 (September) | Various groups such as VSpo, plus individuals |
+| 2025–early 2026 | Invitation-only servers in the CR / VAULTROOM line, such as MadTown and NEWTOWN, become established. Stgra starts Season 2 (Dec 19) after ending Season 1 (September) | Various groups such as VSpo, plus individuals |
+| Sep 2026 | "SURGE Town," a limited-time community server hosted by SURGE, begins (September 4-20) | Streamers, VTubers, and creators, from GTARP veterans to first-timers |
 
 ## Premise: The Difference Between Permanent Servers and Limited-Time Events
 
@@ -151,6 +158,7 @@ Organizing the main projects by form gives the following.
 | Holo GTA | Group-exclusive | A 7-day group project by Hololive members (September 2024) |
 | MadTown | Invitation-only, casual | Hosted by CR / VAULTROOM. About one month, with loose RP enforcement |
 | NEWTOWN | Invitation-only event | Hosted by CR / VAULTROOM. About three weeks (February 2026) |
+| SURGE Town | Limited-time community server | Hosted by SURGE. Streamers, VTubers, and creators take part. September 4-20, 2026 |
 
 ## August 2022 — The Start of Stgra
 
@@ -202,15 +210,19 @@ In the following February 2026, "NEWTOWN," likewise an invitation-only server by
 
 @youtube:axTfs14TTDs
 
+On September 4, 2026, "SURGE Town," a limited-time community server hosted by the gaming community "SURGE," began. It runs until September 20, and takes the form of streamers, VTubers, and creators gathering in the same city and living there while holding roles such as police, EMS, and mechanics. Streamers including Kanae, Koron, BobSappAim, and Kawase are among the participants, while several creators are taking part in GTA, or in a streamer server, for the first time; that makeup, where a layer with GTARP experience from Stgra and elsewhere enters the same city as a first-time layer, is one of its characteristics.
+
+SURGE Town is an independent project whose host and operations differ from those of Stgra, VCR GTA, and NEWTOWN. Since 2025, a movement in which multiple communities each launch their own servers, rather than only specific large projects, has been visible, and SURGE Town appears to be one example of that. The participants and the operators' explanations as of the opening are covered in [the article on the opening of SURGE Town](/news/61).
+
 Stgra, the permanent project, also reached a major milestone. Season 1, which began on August 28, 2022, grew to a scale with about 800 characters and about 600 streamers participating, and on September 21, 2025, it brought its roughly three-year history to a temporary close. After that, following a preparation period (hiatus) of about three months, "Stgra Season 2" launched on December 19, 2025, set in a reborn city. It is a form of reopening with the city itself renewed, while keeping its character as a permanent venue. Operation is by GANMA Inc., and Shobosuke continues to serve as the planner and host.
 
 Stgra has also broadened the range of its development, and multilayered information dissemination linked with streams and social media, through official radio programs and the like, is taking hold. A culture of clip videos and multi-viewpoint archive viewing has also spread, so that even those who cannot follow in real time, and those who do not watch streams directly, have come to encounter GTARP.
 
 ## On the Certainty of the Information
 
-Among the content of this article, the start of Stgra Season 1 (August 28, 2022, originally "Streamer Grand Theft") and the server name change on April 17, 2023, the end of Season 1 (September 21, 2025), the start of Season 2 (December 19, 2025), the July 2023 holding of the first VCR GTA, the December 2023 holding of VCR GTA2, the June 2024 holding of Niji GTA (June 15–25), the September 2024 holding of Holo GTA (September 17–23) and its award at VTuber Awards 2024, the December 2024 holding of VCR GTA3 (December 2–12), the June and October 2025 holdings of MadTown, and the February 2026 holding of NEWTOWN are information that can be confirmed through reporting and the announcements of each project.
+Among the content of this article, the start of Stgra Season 1 (August 28, 2022, originally "Streamer Grand Theft") and the server name change on April 17, 2023, the end of Season 1 (September 21, 2025), the start of Season 2 (December 19, 2025), the July 2023 holding of the first VCR GTA, the December 2023 holding of VCR GTA2, the June 2024 holding of Niji GTA (June 15–25), the September 2024 holding of Holo GTA (September 17–23) and its award at VTuber Awards 2024, the December 2024 holding of VCR GTA3 (December 2–12), the June and October 2025 holdings of MadTown, the February 2026 holding of NEWTOWN, and the September 4, 2026 start (through September 20) of "SURGE Town," announced by SURGE as a new GTA community server, are information that can be confirmed through reporting and the announcements of each project.
 
-On the other hand, descriptions saying "Stgra started in June 2024" can be seen in the wild, but the start of Stgra's operation is correctly August 28, 2022. What started in June 2024 was the Nijisanji-exclusive Niji GTA, and it appears this was confused with that. Also, the detailed operating hours, regular days off, end dates, and all participants of each server vary by occasion, so this article avoids definitive statements. The participants listed in this article are representative examples for each server and do not cover all participants. Because participation status changes by occasion and time, please check each official source for accurate schedules and participants.
+On the other hand, descriptions saying "Stgra started in June 2024" can be seen in the wild, but the start of Stgra's operation is correctly August 28, 2022. What started in June 2024 was the Nijisanji-exclusive Niji GTA, and it appears this was confused with that. Also, the detailed operating hours, regular days off, end dates, and all participants of each server vary by occasion, so this article avoids definitive statements. The participants listed in this article are representative examples for each server and do not cover all participants. Participants may also be added to SURGE Town while it is running. Because participation status changes by occasion and time, please check each official source for accurate schedules and participants.
 
 ## Sources / References
 
@@ -227,7 +239,7 @@ export default function GtarpStreamerHistoryArticle() {
   return (
     <ArticleLayout
       seoTitle="日本のGTARP配信者サーバー史｜ストグラ・VCR GTA・にじGTA・ホロGTAの年表｜GTA6 FEED"
-      seoDesc="日本のGTARP（GTAロールプレイ）配信者サーバーの流れを年表で解説。2022年ストグラ開始、2023年VCR GTA、2024年にじGTA・ホロGTA、2025〜2026年のMadTown・NEWTOWN・ストグラSeason2まで、常設型と期間限定型の違いを整理しました。"
+      seoDesc="日本のGTARP（GTAロールプレイ）配信者サーバーの流れを年表で解説。2022年ストグラ開始、2023年VCR GTA、2024年にじGTA・ホロGTA、2025〜2026年のMadTown・NEWTOWN・ストグラSeason2、2026年9月開始のSURGE Townまで、常設型と期間限定型の違いを整理しました。"
       title={TITLE}
       titleEn={TITLE_EN}
       icon="📺"
@@ -235,16 +247,16 @@ export default function GtarpStreamerHistoryArticle() {
       body={BODY}
       bodyEn={BODY_EN}
       seoTitleEn="A History of Japanese GTARP Streamer Servers | Stgra, VCR GTA, Niji GTA, Holo GTA | GTA6 FEED"
-      seoDescEn="A timeline of Japan's GTARP streamer servers: the 2022 start of Stgra, VCR GTA in 2023, Niji GTA and Holo GTA in 2024, and MadTown, NEWTOWN, and Stgra Season 2 in 2025–2026 — with the difference between permanent and limited-time types."
+      seoDescEn="A timeline of Japan's GTARP streamer servers: the 2022 start of Stgra, VCR GTA in 2023, Niji GTA and Holo GTA in 2024, MadTown, NEWTOWN, and Stgra Season 2 in 2025–2026, and SURGE Town from September 2026 — with the difference between permanent and limited-time types."
       aiSummary={[
         '日本のGTARP配信者サーバーは「常設型（ストグラ）」と「期間限定イベント型（VCR GTA）」の2系統が並行して発展。主催・運営・ルールは別で、参加者が重なるため混同されやすい。',
         '2022年8月ストグラ開始（当初名ストリーマーグラセフ→2023年4月改称）、2023年VCR GTA、2024年にじGTA（6月）・ホロGTA（9月、VTuber Awards受賞）・VCR GTA3（12月）と拡大。',
-        '2025〜2026年はCR／VAULTROOMのMadTown・NEWTOWNが定着。ストグラはSeason1終了（2025年9月）を経てSeason2開始（2025年12月19日）。「ストグラ2024年開始説」は誤りで、正しくは2022年8月。',
+        '2025〜2026年はCR／VAULTROOMのMadTown・NEWTOWNが定着し、ストグラもSeason1終了（2025年9月）を経てSeason2へ移行（2025年12月19日）。2026年9月にはSURGE主催の期間限定サーバー「SURGE Town」が始まり、選択肢はさらに広がっている。「ストグラ2024年開始説」は誤りで、正しくは2022年8月。',
       ]}
       aiSummaryEn={[
         "Japan's GTARP streamer servers developed along two parallel lines: the permanent type (Stgra) and the limited-time event type (VCR GTA). They have separate hosts, operations, and rules, but their participants overlap, so they are easily confused.",
         'Stgra started in August 2022 (originally "Streamer Grand Theft," renamed April 2023), then VCR GTA in 2023, and Niji GTA (June), Holo GTA (September, VTuber Awards winner), and VCR GTA3 (December) in 2024.',
-        "In 2025–2026, CR / VAULTROOM's MadTown and NEWTOWN became established. Stgra started Season 2 (December 19, 2025) after ending Season 1 (September 2025). The claim that 'Stgra started in 2024' is wrong; it was correctly August 2022.",
+        "In 2025–2026, CR / VAULTROOM's MadTown and NEWTOWN became established, and Stgra moved to Season 2 (December 19, 2025) after ending Season 1 (September 2025). In September 2026, SURGE's limited-time server 'SURGE Town' began, widening the options further. The claim that 'Stgra started in 2024' is wrong; it was correctly August 2022.",
       ]}
     >
       <div className="flex flex-wrap gap-3 mb-12">
