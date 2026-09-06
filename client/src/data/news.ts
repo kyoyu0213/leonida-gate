@@ -12,7 +12,8 @@
 //     description     : 一覧カードに出る短い説明（1〜2文）
 //     fullContent     : 詳細ページの本文。空行（改行2つ）で段落が分かれます。
 //     icon            : カードに出る絵文字（1文字）
-//     category        : 'official'（公式発表） / 'leak'（リーク） / 'analysis'（考察）のいずれか
+//     category        : 'release'（公式情報） / 'topic'（話題） / 'update'（アップデート） /
+//                       'speculation'（考察・リーク） / 'event'（イベント） / 'gtarp'（GTARP）のいずれか
 //     date            : 'YYYY-MM-DD' 形式の日付
 //     source          : 出典の名前（例：'Rockstar Games Official'）
 //     sourceUrl       : 出典リンク。リンクが無いときは '#' にすると「出典を見る」ボタンが消えます。
@@ -107,7 +108,7 @@ export const isNoindexNewsId = (id: number | string): boolean => NOINDEX_SET.has
 export const isIndexableNewsId = (id: number | string): boolean =>
   !isHiddenNewsId(id) && !isRedirectedNewsId(id) && !isNoindexNewsId(id);
 
-export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event";
+export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event" | "gtarp";
 
 /**
  * 記事タイトル直下に出す「訂正・追記」ボックス。
@@ -199,6 +200,7 @@ export const CATEGORY_CONFIG: Record<
   update: { label: "アップデート", vice: "#22d3ee", color: "secondary", status: "UPDATE", filterIcon: "🔄" },
   speculation: { label: "考察・リーク", vice: "#ff2d95", color: "primary", status: "INTEL", filterIcon: "🔍" },
   event: { label: "イベント", vice: "#a78bfa", color: "accent", status: "EVENT", filterIcon: "🎉" },
+  gtarp: { label: "GTARP", vice: "#34d399", color: "secondary", status: "GTARP", filterIcon: "🎭" },
 };
 
 // 一覧フィルタの選択肢（「すべて」＋各カテゴリ）
@@ -209,12 +211,134 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
   { id: "update", label: CATEGORY_CONFIG.update.label, icon: CATEGORY_CONFIG.update.filterIcon },
   { id: "speculation", label: CATEGORY_CONFIG.speculation.label, icon: CATEGORY_CONFIG.speculation.filterIcon },
   { id: "event", label: CATEGORY_CONFIG.event.label, icon: CATEGORY_CONFIG.event.filterIcon },
+  { id: "gtarp", label: CATEGORY_CONFIG.gtarp.label, icon: CATEGORY_CONFIG.gtarp.filterIcon },
 ];
 
 // ----------------------------------------------------------------------------
 //  記事本体（新しい記事ほど上に並べると、一覧でも上に表示されます）
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
+  {
+    id: 65,
+    title:
+      '今日のSURGE Town｜9月5日 DAY2まとめ――初心者勢までギャング側へ、警察・救急・店舗も本格稼働',
+    displayTitle:
+      '今日のSURGE Town｜9月5日 DAY2まとめ\n初心者勢までギャング側へ、警察・救急・店舗も本格稼働',
+    description:
+      'SURGE TownのDAY2まとめ。初日の「職探し・顔合わせ」から一段進み、警察・救急・店舗が本格稼働する一方、初GTA参加のミーニャ・スコットがギャングへ加入するなど犯罪側へ動く参加者が増え始めました。街が「職探しの段階」から「組織形成の段階」へ移り始めた1日です。',
+    icon: '🌃',
+    image: '/images/news/surge-town-day2/eyecatch.webp',
+    category: 'gtarp',
+    date: '2026-09-06',
+    publishedAt: '2026-09-06 16:00',
+    source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）',
+    sourceUrl: 'https://x.com/TeamSURGE_JP',
+    relatedArticles: [62, 61, 18],
+    aiSummary: [
+      'SURGE TownのDAY2（9月5日）は、初日の「職探し・顔合わせ」から一段進み、警察・救急・店舗が本格稼働し始めた日になった。警察では家入ポポ、雪芽るみ、終末むくろ、空衣御侍らが勤務し、医療では蛇宵ティア、白妙とき、きつねさんが救急・医師として活動している。',
+      '一方で犯罪側の動きも広がった。初GTAとして参加したミーニャ・スコットがギャングへ加入し、配信概要には所属ギャングのタグとして「#とろきん」が記載された。花前ハルも「ギャング入りを目指して悪行を重ねる」として犯罪側へ動き、暁月ホタルも「初めての悪いコト」として活動している。',
+      '店舗では折咲もしゅのCafe ニャイトメアがDAY2も営業を継続し、メカニックでは絢世ユウが「南のメカニック」として勤務。初日の「仕事を探す」状態から「この人はこの店・この職業」という定位置が生まれ始めており、街が職探しの段階から組織形成の段階へ移り始めた1日といえる。',
+    ],
+    fullContent: `# 今日のSURGE Town｜9月5日 DAY2まとめ
+
+2日目は、初日の「職探し・顔合わせ」から一段進み、警察・救急・店舗が本格稼働し始める一方、犯罪側ではギャング加入や「悪いこと」に動く参加者が増え始めた日になりました。9月5日だけでも多数のDAY2配信が確認されており、街の役割分担がかなり見え始めています。
+
+初日の動きについては[9月4日 DAY1のまとめ](/news/62)で扱っています。
+
+---
+
+## 🚓 警察｜新米警官たちが本格的に勤務開始
+
+DAY2では警察側の視点がかなり増えています。家入ポポは「立派な警察官になるには地道な外回りから」、雪芽るみは「ひよっこ警察官」、終末むくろも「警察業務今日も頑張るぞ！」として出勤。空衣御侍も引き続き警察官として活動しており、初日に比べて「警察として働くメンバー」が明確になってきました。
+
+![MRPD（警察署）前にパトカーが並び、「ポポリス」家入ポポがPOLICEと書かれた制服姿で立っている。画面右上には職業として「警察（新人）」が表示されている](/images/news/surge-town-day2/iehiri-popo-mrpd-police.webp)
+
+雪芽るみについては、空き巣対応中にパトカーを盗まれるという新米警察らしいトラブルを扱ったShortsも公開されています。ただしこのShortsは9月5日公開で、映像自体がDAY1由来の可能性があるため、DAY2の出来事としては断定しません。
+
+**現時点の見方：** 警察はまだ完成された組織というより、初心者を含むメンバーが仕事を覚えながら体制を作っている段階です。犯罪者が増え始めているため、DAY3以降は警察側の負担も一気に増えそうです。
+
+---
+
+## 🚑 救急・医療｜「救急隊」がはっきり職業として定着
+
+医療側では蛇宵ティアがDAY2を「**救急隊として生きる街**」として配信。白妙ときも「今日もいっぱい人を助ける人」として2日目の医療活動を続け、きつねさんも「Dr.きつね出勤」として参加しています。
+
+![夜の路上で「声枯れ女医」蛇宵ティアと「個人医」白妙ときが警察官らと話している。画面右上には職業として「救急隊（助手）」が表示されている](/images/news/surge-town-day2/jayoi-tia-shirotae-toki-ems.webp)
+
+DAY3の白妙ときの配信予定が「個人医による人助け（？）生活」となっている点も少し気になります。少なくとも医療側でも、それぞれの働き方や立ち位置に変化が出てくる可能性があります。
+
+---
+
+## 💰 犯罪・ギャング｜初心者勢まで「黒側」へ動き始める
+
+DAY2で最も大きな変化のひとつがここです。初GTAとして参加したミーニャ・スコットがギャングへ加入しました。本人のDAY2配信概要には所属ギャングのタグとして「**#とろきん**」が記載され、「ギャングのメンバーと仲良くなる」ことをこの日の目標に挙げています。初日は街を楽しむところから始めていた初心者が、わずか2日目でギャング側へ進んだことになります。
+
+![留置場の中に立つミーニャ・スコット。鉄格子の外には「ポポリス」家入ポポらがおり、画面右上には警察からの罰金請求の通知が表示されている](/images/news/surge-town-day2/minya-scott-jail.webp)
+
+さらに花前ハルもDAY2で「**ギャング入りを目指して悪行を重ねる**」と明確に犯罪側へ。暁月ホタルも「初めての悪いコト」と題して活動しており、初日に一部の経験者が先行していた犯罪ルートへ、別の参加者たちも入り始めています。
+
+つまり初日は「誰が犯罪者になる？」という段階でしたが、DAY2からは実際のギャングメンバー候補・黒市民が増え始めたと見てよさそうです。
+
+---
+
+## ☕ 店舗・仕事｜Cafe ニャイトメアがDAY2も営業
+
+初日に店長となった折咲もしゅは、DAY2でも「**Cafe ニャイトメア今日もOPEN**」として営業を継続。さらに同日には「ついに店長になるも常にトラブルが発生するもしゅ」という公式チャンネル側の切り抜きも公開されています。
+
+![明るい時間帯のCAFEニャイトメア店内。「CAFEニャイトメア／店長」折咲もしゅがカウンターに立ち、画面右上には職業として「喫茶カフェ（店員）」が表示されている](/images/news/surge-town-day2/orisaki-mosyu-cafe-day2.webp)
+
+メカニックでは絢世ユウが「**南のメカニック**」として勤務し、バイクカスタムを目標にDAY2を配信。初日の「仕事を探す」状態から、2日目には「この人はこの店・この職業」という定位置が少しずつ生まれています。
+
+これは今後かなり重要で、スト鯖では固定店舗ができると、そこを中心に常連客・従業員・犯罪者・警察などの関係が自然に広がっていきます。
+
+---
+
+## 👥 個人・人間関係｜「初対面」から「所属先」へ
+
+DAY2では人間関係にも変化が出ています。初日は「友達を作る」「職業を探す」という参加者が多かった一方、2日目になるとミーニャのギャング加入、もしゅの店舗運営、警察・救急への継続勤務など、それぞれの居場所が決まり始めました。銀棘ぐみはDAY2でも「友達たくさん作る」、Kotohaも「今日はどんな出会いがあるかな」と配信しており、まだ自由に人脈を広げている層もいます。
+
+![夕暮れの埠頭に多数の参加者が集まり、「個人医」のMARUNNNやかなでででらが倒れている人たちを介抱している](/images/news/surge-town-day2/kanae-dock-medics.webp)
+
+初日組だけでなく、9月5日にSURGE Townへ入り始めた参加者も確認されています。イベント全体では参加者情報をまとめるサイト上で178人が掲載される規模になっており、今後も人間関係はかなり複雑になりそうです。なお、この178人という数字は公式の同時参加人数ではなく、外部サイトが掲載している参加者総数として見る必要があります。
+
+---
+
+## 🔥 DAY2の注目ポイント
+
+一番大きかったのは、街が「職探しの段階」から「組織形成の段階」へ移り始めたことです。初日は叶ら一部の参加者が早い段階から犯罪に動いていましたが、DAY2では初GTA勢を含めてギャング側へ進む人が現れました。一方で警察・救急・メカニック・飲食店も継続勤務するメンバーが増え、白・黒・市民それぞれの役割が見え始めています。
+
+叶もDAY2を「**こっそり隠れてトロールをたくらむ男！！**」として約6時間活動しており、引き続き街の中でも大きな視点のひとつになっています。
+
+---
+
+## 👀 DAY3以降に追いたいこと
+
+特に追いたいのは、「とろきん」がどんなギャングになっていくのかです。ミーニャの加入が確認できたことで、ここからメンバー構成やボス、活動内容が見えてくる可能性があります。
+
+同時に、花前ハルのようにギャング入りを目指している参加者がどこへ所属するのか、初日に犯罪側へ動いた叶・marunnn周辺と新しい黒市民がどう交わるのかも注目です。警察側も人数が揃ってきているため、DAY3〜4あたりから「犯罪組織 vs 警察」という形が本格的に出てくる可能性があります。これは現時点では予想で、まだ勢力図が完成したとまでは言えません。
+
+店舗ではCafe ニャイトメアをはじめ、どこが「街の溜まり場」になるかも見ておきたいところです。
+
+---
+
+## DAY2を一言でまとめると
+
+「仕事を探していた街」から「自分の居場所を持つ街」へ。
+
+警察・救急・店舗は2日目の勤務へ入り、犯罪側ではギャング加入者が現れ始めました。初日の顔合わせ期間を終え、SURGE Townの勢力図が作られ始めた1日だったと言えそうです。
+
+---
+
+## SURGE Townの情報交換スレッド
+
+GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッドがあります。見た配信、気になった人物、面白かった場面など、気づいたことを気軽に書き込んでください。
+
+→ [【SURGE Town】新ストリーマーGTA鯖 総合スレ](/thread/c0ad4249-5438-4a1d-aa2d-6f2bbde1e655)
+
+---
+
+> **注記：** 本記事は、DAY2に配信された各参加者のYouTube配信、配信タイトル・概要欄、SURGE公式X（@TeamSURGE_JP）の告知、および公開されている切り抜き・参加者まとめをもとにGTA6 FEEDが整理したものであり、SURGE／各参加者／Rockstar Gamesとは一切関係がありません。掲載画像は各参加者の配信画面のスクリーンショットです。配信数が非常に多いため、9月5日に確認できた主要配信・公開情報を中心に整理しており、全参加者・全事件を網羅したものではありません。ギャングの所属や今後の勢力図に関する見通しは本記事執筆時点での推測を含みます。`,
+  },
   {
     id: 64,
     title:
@@ -436,7 +560,7 @@ GTA6では、世界をリアルにすることだけを目的としているわ�
       '9月4日に開幕したSURGE TownのDAY1まとめ。19時前後から40本以上の視点が一斉にスタートし、叶のDAY1配信は同時視聴約3.5万人・アーカイブ80万再生超え。叶とmarunnnは初日から銀行強盗とカーチェイスへ、警察・救急・メカニック・店舗も動き出しました。',
     icon: '🌃',
     image: '/images/news/surge-town-day1/eyecatch.webp',
-    category: 'event',
+    category: 'gtarp',
     date: '2026-09-05',
     publishedAt: '2026-09-05 14:10',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）',
@@ -559,7 +683,7 @@ GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッ�
       '2026年9月4日、新たなGTA Vコミュニティサーバー「SURGE Town」がスタートした。ストリーマー・VTuber・クリエイターが同じ街で職業を持って生活する期間限定サーバーで、開催は9月20日まで。参加者は100人を大きく超え、にじさんじの叶、ころん、BobSappAimらの参加も発表されている。',
     icon: '🌆',
     image: '/images/news/surge-town-gta-server/eyecatch.webp',
-    category: 'event',
+    category: 'gtarp',
     date: '2026-09-04',
     publishedAt: '2026-09-04 22:00',
     source: 'SURGE公式X（@TeamSURGE_JP）／MoguraVR',
@@ -830,7 +954,7 @@ GTA6のVice Cityは、Miamiや南フロリダを強く意識した架空世界�
       'NoPixelはゲームの名前ではない。GTA Vの世界で参加者が警察官・犯罪者・医者・市民を演じる、世界最大級のGTA RPコミュニティだ。2016年のArma 3時代からGTA V/FiveMへの移行、Twitchでの爆発、3.0・4.0、そして2026年9月のNoPixel V正式発表まで、約10年の歴史を年表つきで解説する。',
     icon: '📖',
     image: '/images/news/nopixel-history/eyecatch.webp',
-    category: 'topic',
+    category: 'gtarp',
     date: '2026-09-02',
     publishedAt: '2026-09-02 19:00',
     source:
@@ -1550,7 +1674,7 @@ But if you are going to follow GTA6 and GTA RP news from here, "NoPixel" has bec
       '2026年9月1日、Rockstar GamesがNewswireでNoPixel Vを正式に紹介した。9月8日開始のクローズドβ、Rockstar Games Launcherからのアクセス、刷新されたキャラクターカスタマイズ、Pixel Hotel & Casino、Cypress Flatsの6ブロック再開発、そして最大GTA$1,500,000のTwitch Drops。RAGE:MP終了の翌日に始まった「次世代GTA RP」を整理する。',
     icon: '📣',
     image: '/images/news/nopixel-v-official-reveal/eyecatch.webp',
-    category: 'release',
+    category: 'gtarp',
     date: '2026-09-02',
     publishedAt: '2026-09-02 13:30',
     source:
@@ -2677,7 +2801,7 @@ It may be the time you spend living in Leonida as Jason and Lucia.
       "2026年8月31日、GTA5のカスタムマルチプレイ基盤「RAGE Multiplayer（RAGE:MP）」がサポートを終了する。2016年の開発開始、GTA:Networkとの統合、1.0/1.1、Take-Twoの要請による終了まで約10年の歴史を年表で整理し、FiveMとの違い、alt:Vの終了、GTA RPがFiveMへ一本化されるまでの流れをまとめた。",
     icon: "🗄️",
     image: "/images/news/ragemp-history/eyecatch.webp",
-    category: "topic",
+    category: "gtarp",
     date: "2026-08-31",
     publishedAt: "2026-08-31 16:00",
     source:
@@ -9134,7 +9258,7 @@ The one certain thing is that the path toward the stage Rockstar had prepared fo
       "GTA RPを遊ぶには、まずFiveMを自分で入れる。その手順の外側に、9月8日、Rockstar Games Launcherという入口が現れる。GTA RP最大手NoPixelの新環境「NoPixel V」が公式ランチャー上でクローズドβを開始すると報じられた。ただし招待制で、ホワイトリストはリセットされる。何が変わるのか、そして何がまだ分かっていないのかを見ていく。",
     icon: "🕹️",
     image: "/images/news/nopixel-v-rockstar-launcher/eyecatch.webp",
-    category: "topic",
+    category: "gtarp",
     date: "2026-08-16",
     publishedAt: "2026-08-16 15:30",
     source: "GTA6 FEED 編集部",
@@ -13584,7 +13708,7 @@ Ultimate Editionの特典は、一度にまとめて付与されるのではな�
       "GTA6でRPはどうなるのか。NoPixelの公式提携、FiveMの一本化、Project ROMEの噂まで、確定情報・リーク・推測を信頼度ごとに切り分けて整理する。",
     icon: "🎭",
     image: "/images/news/GTA6RPhadounarunoka.webp",
-    category: "speculation",
+    category: "gtarp",
     date: "2026-06-24",
     source: "GTA6 FEED 編集部",
     sourceUrl: "#",

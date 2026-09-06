@@ -385,6 +385,7 @@ const JA: Dict = {
   'cat.update': 'アップデート',
   'cat.speculation': '考察・リーク',
   'cat.event': 'イベント',
+  'cat.gtarp': 'GTARP',
   // 掲示板名（slug 別）
   'board.gta-online': 'GTA5オンライン',
   'board.gtarp-servers': 'FiveMサーバー',
@@ -990,6 +991,7 @@ const EN: Dict = {
   'cat.update': 'Updates',
   'cat.speculation': 'Leaks & Analysis',
   'cat.event': 'Events',
+  'cat.gtarp': 'GTARP',
   'board.gta-online': 'GTA5 Online',
   'board.gtarp-servers': 'FiveM Servers',
   'board.streamer-servers': 'Streamer Servers',
