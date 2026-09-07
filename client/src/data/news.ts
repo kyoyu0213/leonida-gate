@@ -219,6 +219,118 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 66,
+    title:
+      '「Love Is A Long Road」の本当の意味――GTA6 Trailer 1に込められていた開発者たちの想い',
+    displayTitle:
+      '「Love Is A Long Road」の本当の意味\nGTA6 Trailer 1に込められていた開発者たちの想い',
+    description:
+      '2023年12月のTrailer 1で流れたTom Pettyの「Love Is A Long Road」。Rockstar NorthのRob Nelson氏は、この曲がチームにとっての「real mission statement」だったと語っている。JasonとLuciaの物語だと思われていた「長い道のり」は、GTA6を作り続けてきた開発者たち自身の道のりでもあった。',
+    icon: '🛣️',
+    image: '/images/news/gta6-official-screenshots-29/jason-duval-07.webp',
+    category: 'topic',
+    date: '2026-09-07',
+    publishedAt: '2026-09-07 12:00',
+    source: 'Trois Couleurs／TheGamer ほか Rob Nelson氏の各インタビュー',
+    sourceUrl:
+      'https://www.thegamer.com/gta-6-trailer-1-song-love-is-a-long-road-explained-rockstar/',
+    relatedArticles: [50, 48, 63],
+    aiSummary: [
+      '2023年12月のTrailer 1で使われたTom Pettyの「Love Is A Long Road」について、Rockstar North共同スタジオ責任者のRob Nelson氏が、当時まだ完成していなかったGTA6にとっての「real mission statement」のような存在だったと語っている。曲名の「長い道のり」はJasonとLuciaの物語だけでなく、GTA6を作ってきたRockstar自身の道のりとも重なっていた。',
+      'Nelson氏の説明によれば、GTA6の開発は2015年に始まり、『Red Dead Redemption 2』発売後の2018年からチームの大部分が本格的に参加した。開発期間が長いため、得意としてきた風刺も「時間に耐えられるものか」を基準に選ぶ必要があったという。目指しているのはシステムの数ではなく、複数の複雑なシステムがつながり、プレイヤーがゲームを遊んでいること自体を忘れられる世界だとしている。',
+      'フランスのTrois CouleursがRockstar Northを訪れた際には、記者の目の前でNelson氏がGTA6を操作している最中にも、開発チームがJasonとLuciaの仕草の速度や、車がぶつかったときに吹き飛ぶ交通コーンの重さまで調整していたと伝えられている。発売直前の今も、細部の積み重ねが続いている。',
+    ],
+    fullContent: `# 「Love Is A Long Road」の本当の意味
+
+2023年12月、世界で初めて『Grand Theft Auto VI』の姿が公開されたTrailer 1。夕日に染まるVice City、ビーチを埋め尽くす人々、SNSに投稿される奇妙な日常、そしてLuciaとJason。そのすべての後ろで流れていたのが、Tom Pettyの「Love Is A Long Road」だった。
+
+当時、この曲はJasonとLuciaの関係を象徴しているのだろうと考えた人も多かったはずだ。タイトルをそのまま受け取れば「愛は長い道のり」。犯罪を繰り返しながら生きていく二人の物語を考えれば、これ以上ないほど似合う曲に思える。
+
+しかし、GTA6発売を前にして明かされたRockstar NorthのRob Nelson氏の言葉を知ると、Trailer 1の見え方が少し変わってくる。この「長い道のり」は、JasonとLuciaだけのものではなかった。GTA6を作ってきたRockstar自身の道のりでもあった。
+
+---
+
+## あの曲は、開発チームにとっての「ミッションステートメント」だった
+
+Rockstar North共同スタジオ責任者で、GTA6の開発を率いるRob Nelson氏は、Trailer 1で「Love Is A Long Road」を使用した理由について語っている。Nelson氏によれば、当時のGTA6は現在ほど完成した状態ではなかった。それでもチームには、自分たちがどこへ向かっているのかという明確なビジョンがあり、この曲はそれを表す“**real mission statement**”のような存在だったという。
+
+ミッションステートメントとは、自分たちが何を目指し、何のために進むのかを示すものだ。Rockstarはそれを長い説明文ではなく、一曲の音楽に託していた。そして、この言葉が今になって強く響くのは、GTA6が実際に歩いてきた時間を考えたときだ。
+
+---
+
+## GTA6は、本当に「長い道のり」だった
+
+Nelson氏は別のインタビューで、GTA6の開発は2015年から始まり、『Red Dead Redemption 2』発売後の2018年からチームの大部分が本格的に参加したと説明している。企画が生まれ、現地を調査し、世界を作り、物語を書き、キャラクターを演じてもらい、それを一本のゲームとして成立させる。その間にも現実世界は変化し続ける。
+
+![泥まみれのバギーが並ぶ河原で騒ぐ人々。カウボーイハットにサングラスの男が両手でロックサインを掲げ、カメラに向かって笑っている](/images/news/gta6-official-screenshots-29/ambrosia-06.webp)
+
+Rockstarが得意としてきた風刺ひとつを取っても、開発期間がこれほど長ければ、その時に流行している出来事をそのままゲームへ入れるわけにはいかない。Nelson氏は、アイデアを書き、キャスティングし、撮影し、実装する頃には題材自体が変化したり時代遅れになったりする可能性があるため、「時間に耐えられるものか」を考えて選ぶ必要があると説明している。
+
+十年以上をかけてひとつの世界を作る。「Love Is A Long Road」という言葉が、ここまでGTA6の開発そのものに重なっていたとは、Trailer 1が公開された当時には分からなかった。
+
+---
+
+## 2023年、まだ完成していないGTA6を世界に見せた
+
+Trailer 1が公開された2023年12月。当時のGTA6は、現在私たちが[Extended Look](/news/48)や[先行プレビュー](/news/50)を通じて知っているものとは、かなり違う開発段階にあった。それでもRockstarには「自分たちはここへ向かっている」というビジョンがあった。
+
+![金色のライフルを手にしたギャング風の男が、もう片方の手に持ったスマートフォンの画面をのぞき込んでいる](/images/news/gta6-official-screenshots-29/vice-city-12.webp)
+
+Vice Cityの夕焼け、高速道路を走る車、大量のNPC、SNS、そして最後に映るJasonとLucia。ゲームのすべてを説明することはできなくても、自分たちがどんな世界を作ろうとしているのかは、すでにあの映像に詰め込まれていた。
+
+だからこそ「Love Is A Long Road」だったのだろう。ただVice Cityの雰囲気に似合う曲を選んだのではない。少なくとも開発チームにとっては、**これから自分たちが歩かなければならない道そのものを表す曲でもあった。**
+
+---
+
+## Rockstarが目指したのは「ゲームであることを忘れられる世界」
+
+最近のNelson氏の発言を追っていくと、その長い道の先でRockstarが何を作ろうとしていたのかも見えてくる。GTA6にはNPC、犯罪、警察、店、車、体調、JasonとLuciaの関係など、非常に多くのシステムが存在する。しかしRockstarが目指しているのは、単純に「システムがたくさんあるゲーム」ではないようだ。
+
+![湿地帯の小屋の前で、ショットガンを肩に担いだ髭の男がこちらを見ている。背後にはワニが吊るされ、他の住人たちが思い思いに過ごしている](/images/news/gta6-official-screenshots-29/grassrivers-06.webp)
+
+Nelson氏は、自身がGTA6で特に誇りに感じている部分として、多数の複雑なシステムが互いにつながって動いていることを挙げている。その目的はプレイヤーに一つひとつのシステムを意識させることではなく、プレイヤー自身が何を大切にするかによって体験が変わり、やがて**ゲームを遊んでいること自体を忘れられるような世界**を作ることだという。
+
+最近明らかになった細かな仕様も、この考え方で見ると印象が変わる。NPCがプレイヤーの行動に反応し、[車には燃料があり](/news/63)、JasonとLuciaの状態や関係が変化し、街のさまざまな場所にインタラクションが存在する。一つひとつは小さな機能でも、それらが自然につながったとき、「用意されたゲームシステム」ではなく「そこに存在する世界」のように感じられる。Rockstarが長い時間をかけて作ってきたのは、その感覚なのかもしれない。
+
+---
+
+## 発売直前でも「交通コーンの重さ」を直している
+
+そして、開発者たちの熱量を最も分かりやすく感じられるのが、フランスのTrois CouleursがRockstar Northを訪れた際に伝えた開発現場の様子だ。記者の目の前でNelson氏がGTA6を実際に操作している最中にも、開発チームはゲームを調整していたという。JasonとLuciaのちょっとした仕草の速度から、車がぶつかったときに吹き飛ぶ交通コーンの重さまで、細かな違和感を見つけて修正していた。
+
+![室内でハンドガンを構えるジェイソン。手前には拳銃、弾丸、札束が宙に浮かんだように並んでいる](/images/news/gta6-official-screenshots-29/jason-duval-09.webp)
+
+世界中が待っているGTA6には、巨大なマップ、膨大なNPC、犯罪、警察、ストーリーといった目立つ要素がいくつもある。しかし、その巨大なゲームを作っている人たちが、最後には「交通コーンの重さ」まで気にしている。
+
+GTA6の世界が異常なほどリアルに見える理由は、最新技術だけではないのだと思う。誰かが小さな違和感に気づき、それを一つずつ直してきた。その途方もない積み重ねが、私たちが映像で見ているVice Cityを作っている。
+
+---
+
+## 「長い道のり」は、もうすぐプレイヤーへ渡される
+
+Trailer 1が公開されてからも、GTA6は作り続けられてきた。延期もあった。リークもあった。世界中から途方もない期待を向けられ続けた。それでもRockstar Northでは、JasonとLuciaの仕草や街角に転がる交通コーンの挙動まで調整が続いている。
+
+![Leonida Keysの岩場を登るイグアナ。奥には青い海と、椰子の木が茂る小さな島が見える](/images/news/gta6-official-screenshots-29/leonida-keys-06.webp)
+
+そう考えてから2023年のTrailer 1をもう一度見ると、「Love Is A Long Road」という曲が以前とは少し違って聞こえてくる。JasonとLuciaにとっての長い道。GTA5から新作を待ち続けてきたプレイヤーにとっての長い道。そして何より、GTA6という途方もないゲームを作り続けてきた開発者たちにとっての長い道だ。
+
+あのTrailer 1でRockstarが見せていたのは、完成したGTA6ではなかったのかもしれない。「**自分たちは、この先にあるものを作る**」――**その決意だった。**
+
+そして2026年。あの日、一曲の音楽に込められていた「長い道のり」は、ようやくゴールへ近づいている。
+
+---
+
+## 出典
+
+→ [GTA 6 Trailer 1's Song Had A Hidden Meaning This Whole Time（TheGamer）](https://www.thegamer.com/gta-6-trailer-1-song-love-is-a-long-road-explained-rockstar/)
+
+→ [Grand Theft Auto VI 公式サイト（Rockstar Games）](https://www.rockstargames.com/VI)
+
+---
+
+> **注記：** 本記事は、フランスのTrois CouleursによるRockstar North取材、およびRob Nelson氏の各インタビューを伝える報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Trois Couleursとは一切関係がない。Nelson氏の発言は翻訳・要約を経ているため、原文のニュアンスとは異なる場合がある。掲載画像はRockstar Gamesが公開した公式スクリーンショットであり、Trailer 1の映像そのものではない。`,
+  },
+  {
     id: 65,
     title:
       '今日のSURGE Town｜9月5日 DAY2まとめ――初心者勢までギャング側へ、警察・救急・店舗も本格稼働',
