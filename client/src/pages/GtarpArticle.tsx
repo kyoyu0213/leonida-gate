@@ -13,6 +13,8 @@ GTARP（GTAロールプレイ）は、FiveMなどのカスタムサーバー上�
 
 舞台となるのは、多くの場合GTA5（PC版）をベースにFiveMで構築されたサーバーである。サーバーごとに独自のルール・職業・経済システムが用意され、参加者はその“街”の住人として日々を過ごす。一台の交通検問が緊迫した交渉になり、何気ない就職活動が長いキャリアの始まりになる。こうした、他のゲームモードでは生まれにくい群像劇こそがGTARPの核心である。
 
+![カフェの店内で顔を合わせるプレイヤーたち。GTARPでは日常の会話そのものが物語になる](/images/news/surge-town-day5/yogurt-friends-cafe.webp)
+
 ## 普通のGTA（GTAオンライン）との違い
 
 GTAオンラインは、ミッションやヘイストを次々こなし、派手な兵器で暴れることもできる“お祭り”型の体験が中心である。これに対しGTARPは、交通ルールを守り、職に就き、他のプレイヤーと社会を作っていく“生活シミュレーション”に近い。
@@ -31,6 +33,8 @@ GTARPの幅広さは、演じられる役割の多さに表れる。サーバー
 
 こうした「合法職」と「違法職」、そして両者の間で揺れ動く一般市民が同じ街に共存することで、警察と犯罪者、経営者と客といった関係が立ち上がり、サーバー全体が一つの社会として動いていく。
 
+![バイクで巡回する警察官視点の画面。画面右上には通報のアナウンスが表示されている](/images/news/surge-town-day5/police-bike-patrol.webp)
+
 ## RPを成立させるルールと用語
 
 GTARPには、没入感と公平さを守るための共通ルールと、それを表す用語がある。初心者が最初につまずきやすく、違反すると警告やBANにつながることも多いため、主要なものを押さえておきたい。
@@ -43,6 +47,8 @@ GTARPには、没入感と公平さを守るための共通ルールと、それ
 
 これらは堅苦しく見えるが、要は「現実に近い反応をし、相手の物語を尊重する」という一点に集約される。細かな用語はサーバーごとに差があり、実際にプレイしながら自然と身につくものでもある。
 
+![GTA RPを配信している画面。ゲーム画面の端に配信者のカメラとコメント欄が並んでいる](/images/news/nopixel-v-launch-day/xqc-highway-drive.webp)
+
 ## 配信文化との結びつき
 
 GTARPが世界的に広まった背景には、TwitchやYouTubeでの配信文化との強い結びつきがある。配信者が演じるキャラクターのドラマや事件が切り抜かれ、視聴者を巻き込みながら拡散していく構造が、このジャンルを大きく育ててきた。
@@ -50,6 +56,8 @@ GTARPが世界的に広まった背景には、TwitchやYouTubeでの配信文�
 英語圏では、NoPixelをはじめとする大手サーバーが、人気配信者の参加するドラマの舞台として知られ、GTARPは配信文化とともに成長してきた。日本でも近年、配信者・クリエイターが集う招待制・参加申請制のサーバーが相次いで登場している。代表的な例が「ストグラ（Streamers' Grand Theft Auto Roleplay）」で、GTA6 FEEDが調査した範囲では2024年6月の開始以降、声優やストリーマー、VTuber事務所所属の活動者など、幅広い顔ぶれが参加してきた。このほか、RP要素を必須としない交流重視の配信者サーバーや、期間限定の招待制サーバーなど、性格の異なる企画が併存しているのが現在の状況である。
 
 一方で、配信者向けサーバーの多くは参加に審査や招待を要する。視聴は誰でもできるが、プレイ参加のハードルは決して低くない。これから自分で演じてみたい初心者には、一般参加を受け入れているサーバーから始める道もある。実際、日本でも警察・救急・飲食・メカニック・ギャングなどの職業をそろえ、初心者を歓迎する一般向けサーバーがDiscord上で住民を募集している。
+
+![夜のフリーウェイでの一場面。配信の字幕が入ったGTA RPの画面](/images/news/nopixel-v-launch-day/night-freeway-roleplay.webp)
 
 ## GTA6時代のGTARP
 
@@ -75,7 +83,9 @@ GTARPの将来を語るうえで欠かせないのが、GTA6との関係であ�
 
 ## 免責事項
 
-本記事のうち、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、NoPixel VとRockstarの公式協力（2025年9月発表）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）、および「ストグラ」の開始時期（2024年6月）は、複数の情報源で確認できた事実である。一方、GTA6でのGTARP／FiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代のGTARP」の節における移行の形に関する記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。職業構成やルールの細部はサーバーごとに異なり、サーバー名・運営体制・開催状況は変動する可能性があるため、参加時は各サーバーの公式情報を確認されたい。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。`;
+本記事のうち、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、NoPixel VとRockstarの公式協力（2025年9月発表）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）、および「ストグラ」の開始時期（2024年6月）は、複数の情報源で確認できた事実である。一方、GTA6でのGTARP／FiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代のGTARP」の節における移行の形に関する記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。職業構成やルールの細部はサーバーごとに異なり、サーバー名・運営体制・開催状況は変動する可能性があるため、参加時は各サーバーの公式情報を確認されたい。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。
+
+掲載画像は、日本語FiveMサーバー「SURGE Town」参加者の配信画面、およびGTA RP配信のスクリーンショットであり、本文の説明そのものを撮影したものではない。`;
 
 const TITLE_EN = 'What Is GTARP? A Beginner-Friendly Guide to Living a Second Life in GTA5';
 
@@ -86,6 +96,8 @@ const BODY_EN = `In the world of GTA, you play a "role" such as a police officer
 GTARP (GTA Roleplay) refers to a way of playing in which players become original characters and act in character on custom servers such as FiveM. You are neither the protagonist of the story mode nor your own avatar in GTA Online. You live in the city as a single person whose name, background, job, and personality you set yourself, weaving an improvised story while interacting with other players.
 
 The setting is, in most cases, a server built on FiveM based on GTA5 (PC version). Each server has its own rules, jobs, and economic system, and participants spend their days as residents of that "city." A single traffic checkpoint becomes a tense negotiation, and a casual job hunt becomes the start of a long career. This kind of ensemble drama, which is hard to produce in other game modes, is the very heart of GTARP.
+
+![Players meeting up inside a café — in GTARP, everyday conversation itself becomes the story](/images/news/surge-town-day5/yogurt-friends-cafe.webp)
 
 ## Differences From Regular GTA (GTA Online)
 
@@ -105,6 +117,8 @@ On the other hand, illegal-side roles are also provided. This is a way of playin
 
 By having such "legal jobs" and "illegal jobs," along with ordinary citizens who waver between the two, coexist in the same city, relationships such as police and criminals, business owners and customers arise, and the entire server moves as a single society.
 
+![A police officer on patrol by motorcycle, with a dispatch announcement shown in the top right](/images/news/surge-town-day5/police-bike-patrol.webp)
+
 ## Rules and Terms That Make RP Work
 
 GTARP has common rules to protect immersion and fairness, along with terms that express them. Beginners often stumble on these first, and violations frequently lead to warnings or bans, so it is worth understanding the major ones.
@@ -117,6 +131,8 @@ Relatedly, FearRP (Value of Life) is a norm that requires you to realistically f
 
 These may look stiff, but in short they all come down to a single point: "react in a way close to reality, and respect the other party's story." The finer terms differ from server to server, and they are also things you naturally pick up while actually playing.
 
+![A GTA RP stream in progress, with the streamer's camera and chat alongside the game view](/images/news/nopixel-v-launch-day/xqc-highway-drive.webp)
+
 ## The Connection With Streaming Culture
 
 Behind GTARP spreading worldwide is a strong connection with streaming culture on Twitch and YouTube. A structure in which the dramas and incidents of the characters that streamers play are clipped and spread while drawing in viewers has greatly nurtured this genre.
@@ -124,6 +140,8 @@ Behind GTARP spreading worldwide is a strong connection with streaming culture o
 In the English-speaking world, major servers such as NoPixel are known as stages for dramas in which popular streamers participate, and GTARP has grown alongside streaming culture. In Japan too, invitation-based and application-based servers where streamers and creators gather have appeared one after another in recent years. A representative example is "Sutogura (Streamers' Grand Theft Auto Roleplay)," and within what GTA6 FEED has researched, a wide range of faces have participated since its start in June 2024, including voice actors, streamers, and performers affiliated with VTuber agencies. Besides this, the current situation is one in which projects of differing character coexist, such as interaction-focused streamer servers that do not require RP elements, and limited-time invitation-based servers.
 
 On the other hand, many streamer-oriented servers require screening or an invitation to participate. Anyone can watch, but the hurdle to participating in play is by no means low. For beginners who want to try playing a role themselves from now on, there is also the path of starting from a server that accepts general participation. In fact, in Japan as well, general-audience servers that offer jobs such as police, EMS, food and drink, mechanics, and gangs and welcome beginners are recruiting residents on Discord.
+
+![A moment on a night freeway, from a GTA RP stream with subtitles on screen](/images/news/nopixel-v-launch-day/night-freeway-roleplay.webp)
 
 ## GTARP in the GTA6 Era
 
@@ -149,7 +167,9 @@ At first there will be much to be confused about, but the terms and local rules 
 
 ## Disclaimer
 
-Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S), and the start timing of "Sutogura" (June 2024) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "GTARP in the GTA6 Era" are GTA6 FEED's considerations based on current information. The details of the job composition and rules differ from server to server, and server names, operating structures, and event status may change, so please check each server's official information when participating. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
+Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S), and the start timing of "Sutogura" (June 2024) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "GTARP in the GTA6 Era" are GTA6 FEED's considerations based on current information. The details of the job composition and rules differ from server to server, and server names, operating structures, and event status may change, so please check each server's official information when participating. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.
+
+The images in this article are screenshots from streams by participants on the Japanese FiveM server "SURGE Town" and from GTA RP streams; they do not depict the specific points made in the text.`;
 
 export default function GtarpArticle() {
   const t = useT();

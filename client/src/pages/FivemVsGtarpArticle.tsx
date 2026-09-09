@@ -13,6 +13,8 @@ FiveMはプラットフォーム（基盤）であり、サーバーを立てて
 
 たとえるなら、FiveMは「ゲーム機やOS」のような土台で、GTARPはその上で動く「人気タイトル」にあたる。土台があってこそ遊び方が成立する一方、土台の上で遊べるものはGTARPだけではない、という関係になっている。
 
+![パトカーで前の車を追跡している画面。FiveMというサーバー基盤の上で動いているGTARPの一場面](/images/news/surge-town-day3/yukime-rumi-pursuit.webp)
+
 ## なぜ混同されるのか
 
 両者が混同されるのは、現実のシーンで密接に結びついているからである。GTARPを遊ぶ最も一般的な方法がFiveMへの接続であり、「FiveMをやる」と言えば実質的にGTARPを指すことが多い。配信や紹介記事でも、両者がほぼ同義のように使われる場面は少なくない。
@@ -32,6 +34,8 @@ FiveMはプラットフォーム（基盤）であり、サーバーを立てて
 
 FiveMは「何で遊ぶか」を決める器であり、GTARPは「どう遊ぶか」を決める中身である。器の話と中身の話を分けて考えると、両者の関係を取り違えにくくなる。
 
+![桟橋で釣りをしているプレイヤーの画面。右上には職業「釣り人」の表示がある](/images/news/surge-town-day5/akagami-fishing.webp)
+
 ## FiveM上にはRP以外の遊びもある
 
 FiveM＝GTARPという理解が不正確なのは、FiveM上にロールプレイ以外の遊び方も存在するからである。サーバーの方針しだいで、その幅は大きく広がる。
@@ -48,6 +52,8 @@ FiveM＝GTARPという理解が不正確なのは、FiveM上にロールプレ�
 
 この結果、PC版GTA5のマルチプレイヤーMODは事実上FiveMへ一本化される流れにある。GTARP自体は土台を選ばない遊び方でありながら、その土台がFiveMにほぼ集約された、というのが現在の構図だ。なお、テキスト中心で進める形式のRPコミュニティなど、ボイス＋FiveMが主流の世界とは異なるスタイルも存在するが、PC上の主要な動作基盤としてはFiveMへの集中が進んでいる。
 
+![Rockstar Games Newswireの日本語記事。『GTA V』のロールプレイコミュニティとnopixel Vを紹介している](/images/news/nopixel-v-launch-day/rockstar-newswire-jp.webp)
+
 ## GTA6時代にこの関係はどうなるか
 
 「土台」と「遊び方」という関係は、GTA6時代に変化する可能性がある。ここは確定情報と見通しを分けて捉えたい。
@@ -62,7 +68,9 @@ FiveMは“遊ぶための土台”、GTARPは“その土台の上で行われ�
 
 ## 免責事項
 
-本記事のうち、alt:Vの段階的シャットダウン（2026年2月開始）、RAGE:MPのシャットダウン発表（2026年5月25日、公開サーバーリスト終了6月1日・完全終了8月31日予定）、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）は、複数の情報源で確認できた事実である。一方、GTA6でのGTARP／FiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代にこの関係はどうなるか」の節における記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。状況は今後の公式発表により変わる可能性がある。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。`;
+本記事のうち、alt:Vの段階的シャットダウン（2026年2月開始）、RAGE:MPのシャットダウン発表（2026年5月25日、公開サーバーリスト終了6月1日・完全終了8月31日予定）、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）は、複数の情報源で確認できた事実である。一方、GTA6でのGTARP／FiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代にこの関係はどうなるか」の節における記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。状況は今後の公式発表により変わる可能性がある。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。
+
+掲載画像は、日本語FiveMサーバー「SURGE Town」参加者の配信画面、およびRockstar Games Newswireのスクリーンショットであり、本文の説明そのものを撮影したものではない。`;
 
 const TITLE_EN = 'What Is the Difference Between FiveM and GTARP? A Clear Guide to the "Foundation" and the "Way to Play"';
 
@@ -73,6 +81,8 @@ const BODY_EN = `"FiveM" and "GTARP" are often talked about as if they were the 
 FiveM is a platform (a base), referring to the very mechanism for setting up servers and connecting to them. By contrast, GTARP is a genre (a way to play), and it is one of the most popular ways to play on FiveM.
 
 To put it in an analogy, FiveM is a foundation like "a game console or an OS," and GTARP corresponds to a "popular title" that runs on top of it. While a way to play only comes into being because there is a foundation, GTARP is not the only thing you can play on that foundation. That is the kind of relationship it is.
+
+![A police car pursuing another vehicle — a scene of GTARP running on top of the FiveM server platform](/images/news/surge-town-day3/yukime-rumi-pursuit.webp)
 
 ## Why Are They Confused
 
@@ -93,6 +103,8 @@ When you line up the positioning of the two, the difference becomes clear.
 
 FiveM is the vessel that decides "what you play with," and GTARP is the content that decides "how you play." If you think of the vessel and the content separately, you become less likely to mistake the relationship between the two.
 
+![A player fishing from a pier, with the job "fisher" shown in the top right](/images/news/surge-town-day5/akagami-fishing.webp)
+
 ## There Are Also Ways to Play Other Than RP on FiveM
 
 The reason the understanding of FiveM = GTARP is inaccurate is that ways to play other than roleplay also exist on FiveM. Depending on a server's policy, that range expands greatly.
@@ -109,6 +121,8 @@ However, this situation changed greatly in 2026. As confirmed facts, alt:V enter
 
 As a result, the multiplayer MODs for the PC version of GTA5 are effectively trending toward consolidation into FiveM. While GTARP itself is a way of playing that does not pick its foundation, the current picture is that its foundation has been almost entirely consolidated into FiveM. Note that styles different from the voice + FiveM mainstream world also exist, such as text-centered RP communities, but in terms of the main operating base on PC, concentration into FiveM is advancing.
 
+![A Japanese-language Rockstar Games Newswire article introducing the GTA V roleplay community and nopixel V](/images/news/nopixel-v-launch-day/rockstar-newswire-jp.webp)
+
 ## What Will Happen to This Relationship in the GTA6 Era
 
 The relationship of "foundation" and "way to play" may change in the GTA6 era. Here we want to grasp confirmed information and outlook separately.
@@ -123,7 +137,9 @@ FiveM is "the foundation for playing," and GTARP is "the way of playing that tak
 
 ## Disclaimer
 
-Of the contents of this article, the phased shutdown of alt:V (started February 2026), the announcement of RAGE:MP's shutdown (May 25, 2026, public server list ending June 1, complete shutdown scheduled for August 31), the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions in the section "What Will Happen to This Relationship in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change with future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
+Of the contents of this article, the phased shutdown of alt:V (started February 2026), the announcement of RAGE:MP's shutdown (May 25, 2026, public server list ending June 1, complete shutdown scheduled for August 31), the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are facts that could be verified through multiple sources. On the other hand, the specific form of GTARP/FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions in the section "What Will Happen to This Relationship in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change with future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.
+
+The images in this article are screenshots from streams by participants on the Japanese FiveM server "SURGE Town" and from the Rockstar Games Newswire; they do not depict the specific points made in the text.`;
 
 export default function FivemVsGtarpArticle() {
   const t = useT();

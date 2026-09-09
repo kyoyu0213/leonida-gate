@@ -15,6 +15,8 @@ FiveMは、PC版のGTA5（Grand Theft Auto V）向けに作られた、コミュ
 
 FiveMの大きな特徴は、GTA5本体やGTAオンラインのアカウントに干渉しない点にある。専用クライアントは独立して動作し、ゲームファイルを改変しない。そのため、FiveMを使ったことを理由にRockstarからGTAオンラインのアカウントを処罰される、という構造にはなっていない。GTAの所有確認のために初回起動時のみ公式サービスと通信するが、それ以降は公式オンラインとは切り離されて動く。
 
+![日本語FiveMサーバーの夜の路上。プレイヤーごとにネームタグが表示され、それぞれのキャラクターとして集まっている](/images/news/surge-town-day3/hanamae-haru-street-night.webp)
+
 ## GTAオンラインとの違い
 
 GTAオンラインは、Rockstarが公式に提供する一つの巨大なマルチプレイヤー空間である。これに対しFiveMは、サーバーを立てる人がそれぞれ独自のルール・スクリプト・MODを導入できる、いわば「無数の別世界」を生み出す土台だ。
@@ -22,6 +24,8 @@ GTAオンラインは、Rockstarが公式に提供する一つの巨大なマル
 最も分かりやすい違いは、世界観の作り込みの自由度にある。FiveMのサーバーでは、カスタムの車・マップ・武器・職業・経済システムなどを動的に追加でき、公式オンラインとは大きく異なる体験になる。ネットワーク同期にはRockstarのコードを改良したものを使っているため、大規模なプレイヤー数でも比較的安定した同期が得られるとされる。
 
 遊び方の方向性も対照的だ。GTAオンラインがヘイストや派手な兵器による「お祭り」型の体験を磨いてきたのに対し、FiveMの人気サーバーの多くは、厳しい経済バランスと行動への結果（コンセクエンス）を重視する。一台の車を買うために現実の時間にして何ヶ月も働く、保険料を払い忘れれば壊れた愛車がそのまま放置される、といった「重み」のある設計が、独特の没入感を生んでいる。
+
+![サーバー内のガレージに集まったプレイヤーと車。カスタムサーバーでは車や職業がサーバーごとに作り込まれている](/images/news/surge-town-day4/sugar-knuckle-garage.webp)
 
 ## なぜ人気なのか
 
@@ -41,6 +45,8 @@ FiveMの遊び方は、接続するサーバーの方針しだいで大きく変
 
 サーバーの個性も豊かだ。物語重視で参加にホワイトリスト（審査）を要する大規模サーバーから、審査なしで気軽に入れる公開サーバーまで幅広い。GTA6 FEEDが確認した範囲では、NoPixelのような審査制の大手、技術的な完成度で評価されるProdigy、初心者向けとして名前の挙がるEcho RPなど、性格の異なるコミュニティが共存している。多くのサーバーは独自のDiscordを運用しており、告知・申請・サポートはそこで行われるのが一般的である。
 
+![猫カフェの店内で接客するプレイヤー。RPサーバーでは飲食店の店員も職業のひとつになる](/images/news/surge-town-day4/neko-cafe-moshu.webp)
+
 ## GTA6との関係
 
 FiveMとGTA6の関係を語るうえで欠かせないのが、2023年8月のCfx.re買収である。GTA6 FEEDが調査したところ、RockstarはこのときFiveM/RedMの開発元であるCfx.reを取得した（取得額は約2,000万ドルと一部で報じられたが、正式な金額は非公表）。かつてRockstarとTake-Twoはモッダーに対して厳しい姿勢を取り、FiveMを海賊行為に関連づけて問題視していた時期もあっただけに、この買収は大きな驚きをもって受け止められた。買収当初、Cfx.re側は当面の運営に大きな変更はなく、GTA6の開発には関与しないと説明していた。
@@ -50,6 +56,8 @@ FiveMとGTA6の関係を語るうえで欠かせないのが、2023年8月のCfx
 GTA6本体との接続をうかがわせる最大の出来事が、NoPixelとの公式協力である。2025年9月、NoPixelは次世代版「NoPixel V」をRockstarの協力のもとで開発していると発表し、Rockstar公式もこれを支援する姿勢を示した。NoPixel VはRockstar Games Launcherなどのプラットフォームへの対応が予定されており、これは「サードパーティのソフトを別途導入せずに公式環境でRPを遊べる」方向への布石と見られている。GTA6 FEEDが調査した時点では、Rockstar Games LauncherのバックエンドにNoPixel Vが項目として追加されたことがデータマイナーによって確認されており、正式公開が近いとの観測も出ている。
 
 ただし、ここで確定情報と見通しを分けて捉える必要がある。GTA6がコンソール（PS5 / Xbox Series X|S）向けに2026年11月19日発売予定であることは公式に示されている。一方で、PC版の時期は明言されておらず、発売はコンソールより後になる。FiveMはPC版GTAを前提とする仕組みであるため、「GTA6でFiveMがそのまま使えるのか」という問いに対する確定的な答えは、現時点では存在しない。GTA6にロールプレイ要素が組み込まれるとする報道もあるが、その具体的な形は公式に詳細が示されておらず、未確定の段階にある。
+
+![Rockstar Games公式サイトのNoPixel Vページ。青緑のキーアートと「Launcherを入手」のボタンが並んでいる](/images/news/nopixel-v-launch-day/rockstar-site-nopixel-v.webp)
 
 ## GTA6時代にもFiveM文化は続くのか
 
@@ -77,7 +85,9 @@ GTA6本体との接続をうかがわせる最大の出来事が、NoPixelとの
 
 ## 免責事項
 
-本記事のうち、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、NoPixel VとRockstarの公式協力（2025年9月発表）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）は、複数の独立した情報源で確認できた確定情報である。一方、GTA6でのFiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代にFiveM文化は続くのか」の節における移行の形に関する記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。状況は今後の公式発表により変わる可能性がある。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。`;
+本記事のうち、Cfx.re買収（2023年8月）、Cfx Marketplaceの開始（2026年1月）、NoPixel VとRockstarの公式協力（2025年9月発表）、GTA6のコンソール版発売日（2026年11月19日、PS5 / Xbox Series X|S）は、複数の独立した情報源で確認できた確定情報である。一方、GTA6でのFiveM対応の具体的な形、PC版GTA6の発売時期、新MODプラットフォーム「ROME」の存在・仕様・登場時期は、いずれも未確認のリークまたは観測の段階にあり、公式に確定したものではない。「GTA6時代にFiveM文化は続くのか」の節における移行の形に関する記述は、現時点の情報をもとにしたGTA6 FEEDの考察である。状況は今後の公式発表により変わる可能性がある。本サイトはGTA6の非公式ファンコミュニティであり、Rockstar Games / Take-Twoとは一切関係しない。
+
+掲載画像は、日本語FiveMサーバー「SURGE Town」参加者の配信画面、およびRockstar Games公式サイトのスクリーンショットであり、本文の説明そのものを撮影したものではない。`;
 
 const TITLE_EN = 'What Is FiveM? A Beginner-Friendly Guide to GTA5 Roleplay and MOD Servers';
 
@@ -91,6 +101,8 @@ It is developed by a team called Cfx.re, and its foundations have existed in var
 
 A major characteristic of FiveM is that it does not interfere with the GTA5 base game or your GTA Online account. The dedicated client runs independently and does not modify the game files. For that reason, the structure is not one in which Rockstar would penalize your GTA Online account simply because you used FiveM. It communicates with the official service only on first launch to verify ownership of GTA, but after that it runs separately from the official online experience.
 
+![A night street on a Japanese FiveM server, with a name tag above each player character](/images/news/surge-town-day3/hanamae-haru-street-night.webp)
+
 ## Differences From GTA Online
 
 GTA Online is a single, massive multiplayer space officially provided by Rockstar. FiveM, by contrast, is a foundation that lets each person running a server introduce their own rules, scripts, and MODs, creating what amounts to "countless separate worlds."
@@ -98,6 +110,8 @@ GTA Online is a single, massive multiplayer space officially provided by Rocksta
 The most easily understood difference lies in the freedom to craft the game world. On FiveM servers, you can dynamically add custom cars, maps, weapons, jobs, economic systems, and more, resulting in an experience that differs greatly from the official online. Because it uses an improved version of Rockstar's code for network synchronization, it is said to achieve relatively stable synchronization even with large numbers of players.
 
 The direction of play is also contrasting. While GTA Online has refined a "festival"-style experience built on heists and flashy weaponry, many of FiveM's popular servers emphasize a strict economic balance and consequences for one's actions. Designs with real "weight," such as working for what amounts to months of real time just to buy a single car, or having your beloved car left abandoned in a wrecked state if you forget to pay your insurance, create a distinctive sense of immersion.
+
+![Players and cars gathered in a server garage — custom servers build their own vehicles and jobs](/images/news/surge-town-day4/sugar-knuckle-garage.webp)
 
 ## Why Is It Popular
 
@@ -117,6 +131,8 @@ Beyond roleplay, there are also diverse ways to play according to a server's pol
 
 The personalities of servers are rich as well. They range from large, story-focused servers that require a whitelist (screening) to participate, to public servers you can casually join without screening. Within what GTA6 FEED has confirmed, communities of differing character coexist, such as screening-based heavyweights like NoPixel, Prodigy which is praised for its technical polish, and Echo RP whose name comes up as beginner-friendly. Many servers operate their own Discord, where announcements, applications, and support are generally handled.
 
+![A player serving customers inside a cat café — running a restaurant is one of the jobs on an RP server](/images/news/surge-town-day4/neko-cafe-moshu.webp)
+
 ## The Relationship With GTA6
 
 Indispensable when discussing the relationship between FiveM and GTA6 is the acquisition of Cfx.re in August 2023. According to research by GTA6 FEED, Rockstar at that time acquired Cfx.re, the developer of FiveM/RedM (the acquisition amount was reported by some to be around 20 million dollars, but the official figure has not been disclosed). Since Rockstar and Take-Two had once taken a harsh stance toward modders and at times treated FiveM as a problem by associating it with piracy, this acquisition was received with great surprise. At the time of the acquisition, the Cfx.re side explained that there would be no major changes to operations for the time being and that it would not be involved in the development of GTA6.
@@ -126,6 +142,8 @@ Afterward, Rockstar's moves took concrete shape in the direction of "officially 
 The biggest event hinting at a connection with the GTA6 base game is the official cooperation with NoPixel. In September 2025, NoPixel announced that it was developing the next-generation "NoPixel V" with the cooperation of Rockstar, and Rockstar officially indicated a stance of supporting this. NoPixel V is planned to support platforms such as the Rockstar Games Launcher, and this is seen as a step toward a direction in which "you can play RP in an official environment without separately installing third-party software." At the point GTA6 FEED researched, data miners had confirmed that NoPixel V was added as an item in the backend of the Rockstar Games Launcher, and observations have emerged that an official release is near.
 
 That said, here we need to distinguish between confirmed information and outlook. It has been officially stated that GTA6 is scheduled for release on consoles (PS5 / Xbox Series X|S) on November 19, 2026. On the other hand, the timing of the PC version has not been stated explicitly, and its release will come after the console version. Because FiveM is a system premised on the PC version of GTA, a definitive answer to the question "can FiveM be used as-is on GTA6" does not exist at this point. There are also reports that roleplay elements will be built into GTA6, but the specific form has not been detailed officially and remains at an undetermined stage.
+
+![The NoPixel V page on the official Rockstar Games site, with the key art and a "Get the Launcher" button](/images/news/nopixel-v-launch-day/rockstar-site-nopixel-v.webp)
 
 ## Will FiveM Culture Continue in the GTA6 Era
 
@@ -153,7 +171,9 @@ Finally, there is PC performance. RP servers that load many custom assets tend t
 
 ## Disclaimer
 
-Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are confirmed information that could be verified through multiple independent sources. On the other hand, the specific form of FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "Will FiveM Culture Continue in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change due to future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.`;
+Of the contents of this article, the Cfx.re acquisition (August 2023), the start of the Cfx Marketplace (January 2026), the official cooperation between NoPixel V and Rockstar (announced September 2025), and the GTA6 console release date (November 19, 2026, PS5 / Xbox Series X|S) are confirmed information that could be verified through multiple independent sources. On the other hand, the specific form of FiveM support on GTA6, the release timing of the PC version of GTA6, and the existence, specifications, and appearance timing of the new MOD platform "ROME" are all at the stage of unconfirmed leaks or observations, and have not been officially confirmed. The descriptions regarding the form of the transition in the section "Will FiveM Culture Continue in the GTA6 Era" are GTA6 FEED's considerations based on current information. The situation may change due to future official announcements. This site is an unofficial GTA6 fan community and has no relationship whatsoever with Rockstar Games / Take-Two.
+
+The images in this article are screenshots from streams by participants on the Japanese FiveM server "SURGE Town" and from the official Rockstar Games site; they do not depict the specific points made in the text.`;
 
 export default function FivemArticle() {
   const t = useT();
