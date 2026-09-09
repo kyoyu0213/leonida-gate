@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import { ImageDown, EyeOff, ArrowRight, ChevronLeft } from 'lucide-react';
+import { ImageDown, EyeOff, UserRoundPlus, ArrowRight, ChevronLeft } from 'lucide-react';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { TOOL_GUIDES } from '@/data/boardGuides';
@@ -12,6 +12,7 @@ import SiteFooter from '@/components/SiteFooter';
 const CARDS = [
   { titleKey: 'fg.card.imageResize.title', descKey: 'fg.card.imageResize.desc', href: '/fivem-gtarp/tools/image-resize', icon: ImageDown, accent: '#2de2e6' },
   { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
+  { titleKey: 'fg.card.charaMaker.title', descKey: 'fg.card.charaMaker.desc', href: '/fivem-gtarp/tools/chara-maker', icon: UserRoundPlus, accent: '#ff8a3d' },
 ];
 
 export default function ToolsIndex() {

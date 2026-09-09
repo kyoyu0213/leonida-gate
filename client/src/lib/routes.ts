@@ -32,6 +32,7 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
   '/fivem-gtarp/tools',
   '/fivem-gtarp/tools/image-resize',
   '/fivem-gtarp/tools/image-mask',
+  '/fivem-gtarp/tools/chara-maker',
   '/about',
   '/contact',
   '/terms',

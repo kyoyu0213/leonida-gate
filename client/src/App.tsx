@@ -68,6 +68,7 @@ import FivemInstallGuide from "./pages/FivemInstallGuide";
 import ToolsIndex from "./pages/ToolsIndex";
 import ImageResizeTool from "./pages/ImageResizeTool";
 import ImageMaskTool from "./pages/ImageMaskTool";
+import CharaMakerTool from "./pages/CharaMakerTool";
 import NotFound from "./pages/NotFound";
 
 // 管理画面のみ遅延読み込み（noindex・クローラー非対象）。
@@ -117,6 +118,7 @@ function Router() {
       <Route path="/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
+      <Route path="/fivem-gtarp/tools/chara-maker" component={CharaMakerTool} />
 
       {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
           記事・fivem-gtarp・tools・contact・terms は hreflang/sitemap で正式な英語版として扱う。
@@ -156,6 +158,7 @@ function Router() {
       <Route path="/en/fivem-gtarp/tools" component={ToolsIndex} />
       <Route path="/en/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/en/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
+      <Route path="/en/fivem-gtarp/tools/chara-maker" component={CharaMakerTool} />
       <Route path="/en/about" component={About} />
       <Route path="/en/contact" component={Contact} />
       <Route path="/en/terms" component={Terms} />

@@ -44,6 +44,7 @@ export const STATIC_ROUTES = [
   { path: '/fivem-gtarp/tools', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/image-resize', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/image-mask', priority: '0.6', changefreq: 'monthly' },
+  { path: '/fivem-gtarp/tools/chara-maker', priority: '0.6', changefreq: 'monthly' },
   { path: '/about', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },

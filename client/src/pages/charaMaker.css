@@ -1,0 +1,145 @@
+/* FiveM/GTARP RPキャラメーカー専用スタイル。
+   サイト全体に漏れないよう、ツールのルートクラス配下にネストしてスコープする。
+   レイアウト・構造はプロトタイプ（_reference/rp-chara-maker.html）を正として移植し、
+   配色だけサイトのVICEトーン（マゼンタ／シアン／ダークパープル）へ寄せている。
+   外部フォントは読み込まない（このページからの通信をゼロに保つ）。 */
+
+.chara-maker-tool {
+  --base:#0b0714;
+  --panel:#160d24;
+  --panel-2:#1d1232;
+  --line:#2e1f47;
+  --magenta:#ff2d95;
+  --cyan:#2de2e6;
+  --sunset:#ff8a3d;
+  --text:#f4eefc;
+  --muted:#9a8cb5;
+  --display:'Chakra Petch',system-ui,sans-serif;
+
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  .wrap{max-width:720px;margin:0 auto}
+
+  .eyebrow{
+    font-family:var(--display);font-weight:600;letter-spacing:.28em;
+    font-size:11px;text-transform:uppercase;color:var(--cyan);
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+
+  h1{
+    font-family:var(--display);font-weight:700;line-height:1.06;
+    font-size:clamp(28px,5.6vw,46px);letter-spacing:-.01em;margin-bottom:6px;
+  }
+  h1 .hl{color:var(--magenta)}
+  .sub{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:14px;max-width:560px}
+
+  .privacy{
+    display:inline-block;font-size:12px;line-height:1.7;color:var(--muted);
+    background:rgba(45,226,230,.07);border:1px solid rgba(45,226,230,.28);
+    border-radius:999px;padding:7px 15px;margin-bottom:22px;
+  }
+  .privacy b{color:var(--cyan);font-weight:700}
+
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:18px;margin-bottom:16px;
+  }
+
+  .row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:14px}
+  .field{flex:1;min-width:150px}
+  .field label{
+    display:block;font-size:11px;color:var(--muted);margin-bottom:7px;
+    letter-spacing:.14em;text-transform:uppercase;font-family:var(--display);font-weight:600;
+  }
+
+  .seg{display:flex;background:var(--panel-2);border-radius:10px;padding:3px;gap:3px}
+  .seg button{
+    flex:1;border:0;background:transparent;color:var(--muted);padding:9px 4px;
+    border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:background .15s,color .15s;
+  }
+  .seg button:hover{color:var(--text)}
+  .seg button.on{background:var(--magenta);color:#fff;font-weight:700}
+
+  select{
+    width:100%;background:var(--panel-2);color:var(--text);border:1px solid var(--line);
+    border-radius:10px;padding:10px;font-size:14px;font-family:inherit;
+  }
+  select:focus{outline:none;border-color:var(--cyan)}
+
+  .agebox{display:flex;align-items:center;gap:8px}
+  .agebox select{flex:1}
+  .agebox .tilde{color:var(--muted);flex:none}
+
+  .btns{display:flex;gap:10px}
+  .gen{
+    flex:2;background:linear-gradient(135deg,var(--magenta),var(--sunset));border:0;color:#fff;
+    font-size:16px;font-weight:800;padding:15px;border-radius:12px;cursor:pointer;
+    letter-spacing:.1em;font-family:var(--display);
+    box-shadow:0 6px 22px rgba(255,45,149,.32);
+  }
+  .gen:active{transform:scale(.98)}
+  .gen10{
+    flex:1;background:var(--panel-2);border:1px solid var(--line);color:var(--cyan);
+    font-size:13px;font-weight:700;padding:15px 6px;border-radius:12px;cursor:pointer;font-family:inherit;
+  }
+  .gen10:hover{border-color:var(--cyan)}
+
+  .result{display:none}
+  .result.on{display:block}
+
+  .namebox{text-align:center;padding:18px 10px 14px}
+  .kana{color:var(--cyan);font-size:12.5px;letter-spacing:.25em;margin-bottom:4px;min-height:16px}
+  .name{font-size:34px;font-weight:900;letter-spacing:.08em;font-family:var(--display)}
+
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:14px 0}
+  .m{background:var(--panel-2);border-radius:10px;padding:10px 12px}
+  .m b{
+    display:block;font-size:10px;color:var(--muted);font-weight:400;margin-bottom:4px;
+    letter-spacing:.12em;text-transform:uppercase;
+  }
+  .m span{font-size:14.5px;font-weight:700}
+
+  .story{
+    background:var(--panel-2);border-left:3px solid var(--magenta);border-radius:0 10px 10px 0;
+    padding:13px 15px;font-size:14px;line-height:1.95;
+  }
+  .story b{
+    display:block;font-size:10px;color:var(--muted);font-weight:400;margin-bottom:6px;
+    letter-spacing:.12em;text-transform:uppercase;
+  }
+
+  .sub-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .sub-actions button{
+    flex:1;min-width:140px;background:var(--panel-2);border:1px solid var(--line);color:var(--text);
+    padding:12px;border-radius:10px;cursor:pointer;font-size:13px;font-family:inherit;
+  }
+  .sub-actions button:hover{border-color:var(--cyan)}
+  .sub-actions button.done{color:var(--cyan);border-color:var(--cyan)}
+
+  .list{display:none}
+  .list.on{display:block}
+  .list h2{
+    font-size:11px;color:var(--muted);font-weight:600;margin-bottom:10px;
+    letter-spacing:.14em;text-transform:uppercase;font-family:var(--display);
+  }
+  .list ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .list li{
+    background:var(--panel-2);border:1px solid transparent;border-radius:9px;padding:10px 12px;
+    font-size:14.5px;font-weight:700;cursor:pointer;
+  }
+  .list li:hover{border-color:var(--cyan)}
+  .list li small{display:block;font-weight:400;color:var(--cyan);font-size:10.5px;letter-spacing:.15em}
+
+  .note{color:var(--muted);font-size:11.5px;line-height:1.8;margin-top:4px}
+  .footnote{color:var(--muted);font-size:12px;line-height:1.9;margin-top:22px}
+}
+
+@media(max-width:480px){
+  .chara-maker-tool .name{font-size:27px}
+  .chara-maker-tool .list ul{grid-template-columns:1fr}
+  .chara-maker-tool .sub-actions button{min-width:100%}
+}

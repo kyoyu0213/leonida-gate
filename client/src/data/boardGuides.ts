@@ -558,7 +558,7 @@ export const PAGE_GUIDES: Record<PageGuideKey, { ja: BoardGuideContent; en: Boar
   },
 };
 
-export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask';
+export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker';
 
 export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {
   tools: {
@@ -713,4 +713,91 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
       ],
     },
   },
+  'chara-maker': {
+    ja: {
+      lead: 'FiveM/GTARPサーバーのキャラ申請に必要な「名前・生年月日・年齢・身長・血液型・星座・キャラクター設定」を、性別と国籍と年齢範囲を選ぶだけで一式そろえられるツールです。生成はすべてブラウザ内で行われ、条件も結果も送信されません。',
+      sections: [
+        {
+          heading: 'このツールでできること',
+          body: [
+            '名前は日本語（漢字＋ふりがな）とアメリカ英語から選べます。生年月日は指定した年齢範囲から逆算し、そこから星座も決まります。身長は性別と国籍ごとの平均を中心にばらつかせ、血液型は各国の分布に近い比率で抽選しています。',
+            'キャラクター設定は、出身地・前職・性格・癖・この街へ来た理由を組み合わせた2〜3行の文章として出力されます。申請フォームの設定欄にそのまま貼れる長さを目安にしました。'
+          ]
+        },
+        {
+          heading: '使いかた',
+          body: [
+            '1. 性別（男性／女性／おまかせ）、国籍（日本／アメリカ）、年齢範囲を選びます。',
+            '2.「キャラクターを生成」を押すと、名前から設定文まで一式が出ます。',
+            '3. 名前は気に入ったが設定を変えたいときは「設定だけ引き直す」を押します。名前と生年月日はそのままで、設定文だけが作り直されます。',
+            '4.「申請用にコピー」で、名前から設定までをまとめたテキストがクリップボードに入ります。名前から決めたいときは「名前だけ10連」を押すと候補が10件並び、クリックするとその名前でフル生成します。'
+          ]
+        },
+        {
+          heading: 'キャラ申請での使いかた',
+          body: [
+            '多くのFiveM/GTARPサーバーでは、申請時にキャラクターの氏名・生年月日・簡単な経歴の記入を求められます。「申請用にコピー」で出るテキストは、Discordの申請チャンネルや申請フォームへそのまま貼れる形にしてあります。',
+            '貼り付けたあとは、職業や地名をサーバーの世界観に合わせて書き換えてください。日本語圏のサーバーなら「日本」、NoPixel系なら「アメリカ」を選ぶと馴染みます。'
+          ]
+        },
+        {
+          heading: 'よくある質問',
+          body: [
+            'Q. 生成された名前は実在の人物ですか？ → いいえ。姓と名を辞書からランダムに組み合わせているだけで、実在の人物とは関係ありません。',
+            'Q. 入力や結果はどこかへ送信されますか？ → されません。生成はブラウザ内で完結し、外部への通信は行いません。',
+            'Q. 同じ名前が出ることはありますか？ → あります。ランダム抽選なので、まれに同じ組み合わせが出ます。申請前にサーバー内で重複していないかご確認ください。'
+          ]
+        },
+        {
+          heading: '免責',
+          body: [
+            '生成される人物・設定はすべて架空のものです。実在の人物・団体とは一切関係ありません。'
+          ]
+        }
+      ]
+    },
+    en: {
+      lead: 'A tool that assembles everything a FiveM/GTARP character application asks for — name, date of birth, age, height, blood type, star sign, and a short backstory — from just a gender, nationality, and age range. Generation happens entirely in your browser; neither your choices nor the result is sent anywhere.',
+      sections: [
+        {
+          heading: 'What it generates',
+          body: [
+            'Names come in Japanese (kanji with kana reading) or American English. The date of birth is derived from the age range you set, and the star sign follows from it. Height varies around the average for the selected gender and nationality, and blood type is drawn at a ratio close to the real distribution in Japan and the US.',
+            'The backstory combines a hometown, a former job, a personality trait, a habit, and a reason for coming to town, in two or three lines — sized to paste straight into the notes field of an application.'
+          ]
+        },
+        {
+          heading: 'How to use it',
+          body: [
+            '1. Pick a gender (male / female / random), a nationality (Japan / United States), and an age range.',
+            '2. Press \'Generate character\' to get the whole sheet, from the name down to the backstory.',
+            '3. If you like the name but not the story, press \'Reroll backstory only\' — the name and date of birth stay, and only the backstory is rebuilt.',
+            '4. \'Copy for application\' puts the name, gender, date of birth, height, blood type, and backstory on your clipboard as one block of text. If you would rather start from a name, \'10 names only\' lists ten candidates; click one to build a full character from it.'
+          ]
+        },
+        {
+          heading: 'Using it for an application',
+          body: [
+            'Most FiveM/GTARP servers ask for a character name, date of birth, and a short history when you apply. The copied text is formatted to paste directly into a Discord application channel or an application form.',
+            'After pasting, rewrite the job and place names to fit the world of that server. Choose \'Japan\' for Japanese-language servers and \'United States\' for NoPixel-style servers set in the US.'
+          ]
+        },
+        {
+          heading: 'FAQ',
+          body: [
+            'Q. Are the generated names real people? → No. Surnames and given names are combined at random from dictionaries, and the backstory is assembled from preset fragments. Any resemblance to a real person is coincidental.',
+            'Q. Is anything uploaded? → No. Generation runs entirely in your browser with no network calls, and nothing persists once you close the page.',
+            'Q. Can the same name come up twice? → Yes. Because it is a random draw, the same combination occasionally repeats. Check the server for an existing character with that name before you apply.'
+          ]
+        },
+        {
+          heading: 'Disclaimer',
+          body: [
+            'Every person and backstory generated here is fictional and has no connection to any real individual or organisation.'
+          ]
+        }
+      ]
+    },
+  },
+
 };
