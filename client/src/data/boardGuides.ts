@@ -720,7 +720,8 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
         {
           heading: 'このツールでできること',
           body: [
-            '名前は日本語（漢字＋ふりがな）とアメリカ英語から選べます。生年月日は指定した年齢範囲から逆算し、そこから星座も決まります。身長は性別と国籍ごとの平均を中心にばらつかせ、血液型は各国の分布に近い比率で抽選しています。',
+            '名前は日本語（漢字＋ふりがな）とアメリカ英語から選べます。生年月日は指定した年齢範囲から逆算し、そこから星座も決まります。身長は性別と国籍ごとの平均を中心にばらつかせ、血液型は各国の分布に近い比率で抽選しています。体格・髪色・髪型・目の色・特徴的な目印も、職業とは無関係にランダムで決まります。',
+            '職業は警察官・救急・消防・メカニック・カフェ・会社員・ドライバー・ギャング・フリーランス／無職の9職から選べます（おまかせにすると自動で1つ割り当てます）。選んだ職業に応じて、設定文の前職やその職ならではの癖、強み・弱み・目標・恐れが出やすくなります。',
             'キャラクター設定は、出身地・前職・性格・癖・この街へ来た理由を組み合わせた2〜3行の文章として出力されます。申請フォームの設定欄にそのまま貼れる長さを目安にしました。'
           ]
         },
@@ -762,7 +763,8 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
         {
           heading: 'What it generates',
           body: [
-            'Names come in Japanese (kanji with kana reading) or American English. The date of birth is derived from the age range you set, and the star sign follows from it. Height varies around the average for the selected gender and nationality, and blood type is drawn at a ratio close to the real distribution in Japan and the US.',
+            'Names come in Japanese (kanji with kana reading) or American English. The date of birth is derived from the age range you set, and the star sign follows from it. Height varies around the average for the selected gender and nationality, and blood type is drawn at a ratio close to the real distribution in Japan and the US. Build, hair colour, hair style, eye colour, and a distinguishing mark are rolled independently of the occupation.',
+            'You can pick one of nine occupations — police, EMS, fire, mechanic, café, office worker, driver, gang member, or freelance/unemployed — or leave it random. The chosen occupation flavours the backstory (a former job, why they took the work, a job-specific habit) and biases the strength, weakness, goal, and fear that come up.',
             'The backstory combines a hometown, a former job, a personality trait, a habit, and a reason for coming to town, in two or three lines — sized to paste straight into the notes field of an application.'
           ]
         },

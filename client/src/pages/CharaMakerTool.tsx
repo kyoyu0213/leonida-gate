@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
 import { TOOL_GUIDES } from '@/data/boardGuides';
-import { useT } from '@/lib/i18n';
+import { useT, useLang } from '@/lib/i18n';
 import './charaMaker.css';
 import SiteFooter from '@/components/SiteFooter';
 
@@ -50,7 +50,13 @@ function gauss(mean: number, sd: number): number {
 /* ============ 生成 ============ */
 interface CharaName { name: string; kana: string }
 interface Birth { y: number; m: number; d: number; age: number; zodiac: string }
-interface Chara { sex: string; nat: string; nm: CharaName; b: Birth; h: number; blood: string; story: string }
+interface Body { build: string; hairColor: string; hairStyle: string; eye: string; mark: string }
+interface Chara {
+  sex: string; nat: string; nm: CharaName; b: Birth; h: number; blood: string;
+  occ: Occupation; body: Body;
+  strength: string; weakness: string; goal: string; fear: string;
+  story: string;
+}
 
 function makeName(nat: string, sex: string): CharaName {
   if (nat === "jp") { const s = R(JP_SUR), g = sex === "m" ? R(JP_M) : R(JP_F); return { name: s[0] + " " + g[0], kana: s[1] + " " + g[1] }; }
@@ -66,21 +72,162 @@ function makeBirth(minA: number, maxA: number): Birth {
   const md = m * 100 + d; let z = "やぎ座"; for (const [nm, lim] of ZODIAC) { if (md < lim) { z = nm; break; } }
   return { y, m, d, age: realAge, zodiac: z };
 }
-function makeStory(nat: string, job: string, persona: string, habit: string): string {
+/* ============ 追加データ（職業・身体・強み/弱み・目標/恐れ） ============ */
+// 身体項目はすべて職業と無関係のランダム。職業で偏らせない。
+const BUILD: string[] = ["細身", "中肉中背", "がっしりした体格", "筋肉質", "ぽっちゃり", "長身痩躯", "小柄で引き締まった体格"];
+const HAIR_COLOR: string[] = ["黒", "焦げ茶", "明るい茶", "金", "赤", "銀", "青", "ピンク", "メッシュ入りの黒"];
+const HAIR_STYLE: string[] = ["短髪", "刈り上げ", "センター分け", "ミディアム", "ロング", "ポニーテール", "ツーブロック", "坊主", "パーマ", "三つ編み", "お団子", "無造作な寝癖ヘア"];
+const EYE: string[] = ["黒", "焦げ茶", "茶", "青", "灰", "緑", "琥珀", "オッドアイ"];
+const MARK: string[] = ["左眉の古い傷跡", "首筋のタトゥー", "腕一面のタトゥー", "両耳のピアス", "鼻ピアス", "目元の泣きぼくろ", "口元のほくろ", "頬の細い傷", "手の甲の火傷跡", "特になし", "特になし"];
+
+// 職業ごとの味付け。辞書を膨らませすぎないよう、各項目3〜4個に絞る。
+interface Occupation {
+  id: string;
+  ja: string;
+  en: string;
+  /** その職に就く前の仕事 */
+  prev: string[];
+  /** その職に就いた理由 */
+  why: string[];
+  /** その職ならではの癖 */
+  quirk: string[];
+  strengths: string[];
+  weaknesses: string[];
+  goals: string[];
+  fears: string[];
+}
+
+const OCCUPATIONS: Occupation[] = [
+  {
+    id: "free", ja: "フリーランス・無職", en: "Freelance / unemployed",
+    prev: ["売れないバンドマン", "地方紙の記者", "何でも屋の助手"],
+    why: ["やりたいことを探しに来たと本人は言う", "雇われるのが性に合わないらしい", "前の仕事を辞めた理由は、聞く相手によって説明が違う"],
+    quirk: ["名刺の肩書きが会うたびに変わる", "気になったことは何でもメモする", "朝と夜が完全に逆転している"],
+    strengths: ["どこにでも顔を出せる身軽さ", "話を引き出すのがうまい", "好奇心が強い", "どの陣営にもつける"],
+    weaknesses: ["収入が安定しない", "飽きっぽい", "首を突っ込みすぎる"],
+    goals: ["この街で食っていける仕事を見つけること", "誰も知らない話を最初に掴むこと", "名前を覚えてもらうこと"],
+    fears: ["何者にもなれないまま終わること", "家賃が払えなくなること", "街に居場所がなくなること"],
+  },
+  {
+    id: "police", ja: "警察官", en: "Police officer",
+    prev: ["交通誘導の警備員", "地元の消防団員", "法律を学んでいた学生"],
+    why: ["昔、事件に巻き込まれた家族を守れなかったからだという", "知り合いの警官に拾われ、そのままこの道へ進んだ", "「この街は誰かが線を引かないと終わる」が口癖"],
+    quirk: ["非番の日でも人の手元を無意識に見てしまう", "報告書の書式にやたらうるさい", "無線の呼び出し音で反射的に立ち上がる"],
+    strengths: ["どんな現場でも冷静さを失わない", "責任感が強い", "場を制する声の張り", "人の顔と名前を忘れない"],
+    weaknesses: ["融通が利かない", "仕事を抱え込みすぎる", "身内に甘い"],
+    goals: ["この街の凶悪犯を一人残らず挙げること", "後輩を一人前の警官に育てること", "昔の未解決事件に決着をつけること"],
+    fears: ["守るべき相手を守れないこと", "自分が越えてはいけない線を踏むこと", "身内が事件に巻き込まれること"],
+  },
+  {
+    id: "ems", ja: "救急・医療", en: "EMS / medical",
+    prev: ["看護助手", "介護施設の職員", "医学部を中退した学生"],
+    why: ["目の前で人が死ぬのを一度見てから進路を変えた", "家族が医療従事者で、当たり前のようにこの道へ来た", "「誰かの最悪の日に居合わせる仕事」がしたかったという"],
+    quirk: ["人の顔色をつい観察してしまう", "カバンに常に手袋とガーゼを入れている", "サイレンの音がすると会話を止める"],
+    strengths: ["どんな現場でも手が震えない", "観察眼が鋭い", "誰にでも分け隔てなく接する", "体力がある"],
+    weaknesses: ["自分のことは後回しにする", "眠らずに働きすぎる", "患者に情を移しすぎる"],
+    goals: ["搬送した人を一人も死なせないこと", "街のどこへでも数分で駆けつけられる体制を作ること", "昔助けられなかった人の分まで働くこと"],
+    fears: ["自分の判断ミスで人を失うこと", "血の匂いに慣れてしまうこと", "人手の足りない夜"],
+  },
+  {
+    id: "fire", ja: "消防", en: "Firefighter",
+    prev: ["建設現場の作業員", "山岳ガイド", "ジムのトレーナー"],
+    why: ["子どもの頃に助けられた消防士に憧れて", "体力しか取り柄がないと笑いながら話す", "焼け落ちた実家の記憶が理由だという"],
+    quirk: ["建物に入るとまず非常口を確認する", "装備の点検を1日に何度もやる", "焦げた匂いに人一倍敏感"],
+    strengths: ["度胸がある", "仲間との連携がうまい", "力仕事に強い", "責任感が強い"],
+    weaknesses: ["無茶をしがち", "細かい書類仕事が苦手", "休むのが下手"],
+    goals: ["この街で焼死者を出さないこと", "若い隊員を全員無事に帰すこと", "もう一度あの現場をやり直すこと"],
+    fears: ["逃げ遅れた誰かを見落とすこと", "仲間を失うこと", "炎の音"],
+  },
+  {
+    id: "mechanic", ja: "メカニック・整備士", en: "Mechanic",
+    prev: ["解体屋の下働き", "レース場のピットクルー", "町工場の旋盤工"],
+    why: ["親の工場を継ぐつもりが、途中で街へ出てきた", "車の音を聞き分けられるのが自慢", "「機械は嘘をつかない」が持論"],
+    quirk: ["爪の間の油汚れが落ちない", "エンジン音だけで不調を当てにいく", "工具の並びを人に触られると不機嫌になる"],
+    strengths: ["手先が誰より器用", "不調の原因を見抜く勘", "粘り強い", "値段交渉がうまい"],
+    weaknesses: ["口下手", "気に入らない客をあからさまに嫌う", "部品に金をかけすぎる"],
+    goals: ["自分の名前で店を持つこと", "街で一番速い車を仕上げること", "畳んだ工場を買い戻すこと"],
+    fears: ["自分の整備ミスで事故が起きること", "手が動かなくなること", "借金で工具を手放すこと"],
+  },
+  {
+    id: "cafe", ja: "カフェ・飲食店員", en: "Café / restaurant staff",
+    prev: ["ホテルの厨房", "移動販売のコーヒー屋", "パン職人の見習い"],
+    why: ["人が食事をしている時間を眺めているのが好きだという", "住み込みで働ける場所を探していた", "味は褒められるが経営はからきしだと自分で言う"],
+    quirk: ["他店の味をつい分析してしまう", "客の顔と注文を丸ごと覚えている", "閉店後にひとりで試作を続ける"],
+    strengths: ["人当たりがいい", "段取りがうまい", "誰の顔も覚えている", "味に妥協しない"],
+    weaknesses: ["断るのが苦手", "原価計算に弱い", "トラブルを一人で抱え込む"],
+    goals: ["自分の店を街の溜まり場にすること", "看板メニューを一つ作り上げること", "常連を100人つくること"],
+    fears: ["店を畳むことになること", "常連に見放されること", "厨房から火を出すこと"],
+  },
+  {
+    id: "office", ja: "会社員・実業家", en: "Office worker / entrepreneur",
+    prev: ["不動産の営業", "保険の外交員", "家業の跡取り"],
+    why: ["数字で人生を立て直すつもりでこの街へ来た", "「信用は現金より重い」が口癖", "前の会社を追い出された話は本人がしたがらない"],
+    quirk: ["名刺入れを肌身離さず持っている", "相手の靴を見て値踏みする癖がある", "会話の途中で急にメモを取り出す"],
+    strengths: ["交渉がうまい", "数字に強い", "人脈が広い", "身なりに隙がない"],
+    weaknesses: ["損得で人を見がち", "見栄を張る", "現場仕事に向かない"],
+    goals: ["街で一番大きな取引をまとめること", "自分の会社を持つこと", "失った信用を取り戻すこと"],
+    fears: ["無一文に戻ること", "裏切られること", "名前に傷がつくこと"],
+  },
+  {
+    id: "driver", ja: "タクシー・運送ドライバー", en: "Taxi / delivery driver",
+    prev: ["長距離トラックの運転手", "レーサー崩れ", "配達ドライバー"],
+    why: ["座って街を眺めていられる仕事を選んだ", "運転だけは誰にも負けないという自負がある", "事故で選手生命を絶たれ、それでもハンドルに戻った"],
+    quirk: ["街の抜け道をすべて把握している", "助手席に物を置かせない", "客の話を覚えていて後日蒸し返す"],
+    strengths: ["度胸のある運転", "街の地理に明るい", "話を聞くのがうまい", "時間に正確"],
+    weaknesses: ["運転が荒い", "口が軽い", "じっとしているのが苦手"],
+    goals: ["自分の車を一台持つこと", "街の全通りを走破すること", "家族への仕送りを続けること"],
+    fears: ["免許を失うこと", "乗せた客に何かあること", "二度と運転できなくなること"],
+  },
+  {
+    id: "gang", ja: "ギャング・組織構成員", en: "Gang member",
+    prev: ["解体屋", "裏カジノのディーラー", "ボクサー崩れ"],
+    why: ["食うために拾ってくれたのが、その組織だった", "身内を潰された落とし前をつけるため", "堅気の仕事に戻る気はないと言い切る"],
+    quirk: ["店に入るとまず出口を確認する", "仲間以外には本名を名乗らない", "財布より先に相手の手元を見る"],
+    strengths: ["度胸がある", "仲間思い", "修羅場慣れしている", "顔が広い"],
+    weaknesses: ["短気", "警察を見ると態度が変わる", "一度キレると引かない"],
+    goals: ["組織を街で一番にすること", "拾ってくれた相手に返しきること", "いつか足を洗って堅気になること"],
+    fears: ["仲間に裏切られること", "刑務所で終わること", "巻き込みたくない相手を巻き込むこと"],
+  },
+];
+
+const OCC_BY_ID: Record<string, Occupation> = Object.fromEntries(OCCUPATIONS.map((o) => [o.id, o]));
+
+// 職業に寄せきらないための汎用プール。職業プールと混ぜて抽選する。
+const STRENGTH_ANY: string[] = ["物覚えが早い", "場の空気を読むのがうまい", "嘘を見抜く", "打たれ強い", "誰とでもすぐ打ち解ける", "一度決めたら曲げない"];
+const WEAKNESS_ANY: string[] = ["酒に弱い", "金にだらしない", "朝が弱い", "人を信じすぎる", "こらえ性がない", "方向音痴"];
+const GOAL_ANY: string[] = ["この街に自分の居場所を作ること", "昔の恩人にもう一度会うこと", "誰にも頼らず生きていけるようになること", "失った時間を取り戻すこと"];
+const FEAR_ANY: string[] = ["ひとりで死ぬこと", "過去を知られること", "また同じ失敗を繰り返すこと", "誰かに必要とされなくなること"];
+
+/** 7割は職業プール、3割は汎用プールから引く（職業に寄せつつ固定化させない）。 */
+const mixed = (job: string[], any: string[]): string => (Math.random() < 0.7 ? R(job) : R(any));
+
+function makeBody(): Body {
+  return { build: R(BUILD), hairColor: R(HAIR_COLOR), hairStyle: R(HAIR_STYLE), eye: R(EYE), mark: R(MARK) };
+}
+
+/** 設定文。既存のテンプレ合成に、選んだ職業の「前職・就いた理由・その職ならではの癖」を織り込む。 */
+function makeStory(nat: string, occ: Occupation, persona: string, habit: string): string {
   const home = nat === "jp" ? R(HOME_JP) : R(HOME_US);
   const reason = R(REASON);
+  // 前職は職業ごとの候補と、従来の職業辞書を半々で使う。
+  const prev = Math.random() < 0.5 ? R(occ.prev) : R(JOBS);
+  const why = R(occ.why);
+  const quirk = R(occ.quirk);
   const tpl = Math.floor(Math.random() * 3);
-  if (tpl === 0) return `${home}の生まれ。${job}として働いていたが、${reason}この街へ流れ着いた。${persona}性格で、${habit}。`;
-  if (tpl === 1) return `${home}の出身。前の街では${job}をしていた。${reason}この街に来たが、本人はあまり昔を語りたがらない。${persona}タイプ。${habit}。`;
-  return `${home}で育ち、長く${job}をやっていた。${reason}この街へ。周囲からは「${persona}やつ」と言われている。${habit}。`;
+  if (tpl === 0) return `${home}の生まれ。前の街では${prev}をしていた。${reason}この街へ流れ着き、いまは${occ.ja}として暮らしている。${why}。${persona}性格で、${quirk}。`;
+  if (tpl === 1) return `${home}の出身。${prev}から流れて、${reason}この街に来た。現在は${occ.ja}。${persona}タイプで、${habit}。`;
+  return `${home}で育ち、長く${prev}をやっていた。${reason}この街へ。いまは${occ.ja}に落ち着いている。周囲からは「${persona}やつ」と言われていて、${quirk}。`;
 }
 
 export default function CharaMakerTool() {
   const t = useT();
+  const lang = useLang();
   useSeo(t('tools.charaMaker.seo.title'), t('tools.charaMaker.seo.desc'), { localized: true });
   const rootRef = useRef<HTMLDivElement>(null);
   const tRef = useRef(t);
   tRef.current = t;
+  const langRef = useRef(lang);
+  langRef.current = lang;
 
   useEffect(() => {
     const root = rootRef.current;
@@ -89,12 +236,19 @@ export default function CharaMakerTool() {
     const signal = ac.signal;
     const $ = (id: string): any => root.querySelector('#' + id);
     const tr = (k: string) => tRef.current(k);
+    const occLabel = (o: Occupation) => (langRef.current === 'en' ? o.en : o.ja);
 
-    const sexSeg = $('sexSeg'), nat = $('nat'), mn = $('ageMin'), mx = $('ageMax'),
+    const sexSeg = $('sexSeg'), nat = $('nat'), occSel = $('occ'), mn = $('ageMin'), mx = $('ageMax'),
       result = $('result'), listPanel = $('listPanel'), nameList = $('nameList'),
       copyBtn = $('copyBtn');
 
     let cur: Chara | null = null;
+
+    /** セレクトの値から職業を決める。'r'（おまかせ）なら9職から抽選。 */
+    function pickOcc(): Occupation {
+      const v = occSel.value;
+      return v === 'r' ? R(OCCUPATIONS) : OCC_BY_ID[v];
+    }
 
     function generate(fixedName?: CharaName) {
       const sexSel = sexSeg.querySelector('.on').dataset.v;
@@ -108,10 +262,19 @@ export default function CharaMakerTool() {
       const hF: [number, number] = natV === "jp" ? [158, 5.5] : [164, 6];
       const h = Math.round(gauss(...(sex === "m" ? hM : hF)));
       const blood = weighted(natV === "jp" ? BLOOD_JP : BLOOD_US);
-      const job = R(JOBS), persona = R(PERSONA), habit = R(HABIT);
-      cur = { sex, nat: natV, nm, b, h, blood, story: makeStory(natV, job, persona, habit) };
+      const occ = pickOcc();
+      const persona = R(PERSONA), habit = R(HABIT);
+      cur = {
+        sex, nat: natV, nm, b, h, blood, occ, body: makeBody(),
+        strength: mixed(occ.strengths, STRENGTH_ANY),
+        weakness: mixed(occ.weaknesses, WEAKNESS_ANY),
+        goal: mixed(occ.goals, GOAL_ANY),
+        fear: mixed(occ.fears, FEAR_ANY),
+        story: makeStory(natV, occ, persona, habit),
+      };
       render();
     }
+
     function render() {
       const c = cur!;
       result.classList.add('on');
@@ -120,9 +283,19 @@ export default function CharaMakerTool() {
       $('rSex').textContent = c.sex === "m" ? "男性" : "女性";
       $('rBirth').textContent = `${c.b.y}年${c.b.m}月${c.b.d}日`;
       $('rAge').textContent = c.b.age + "歳";
+      $('rOcc').textContent = occLabel(c.occ);
       $('rHeight').textContent = c.h + " cm";
+      $('rBuild').textContent = c.body.build;
+      $('rHairColor').textContent = c.body.hairColor;
+      $('rHairStyle').textContent = c.body.hairStyle;
+      $('rEye').textContent = c.body.eye;
+      $('rMark').textContent = c.body.mark;
       $('rBlood').textContent = c.blood + "型";
       $('rZodiac').textContent = c.b.zodiac;
+      $('rStrength').textContent = c.strength;
+      $('rWeakness').textContent = c.weakness;
+      $('rGoal').textContent = c.goal;
+      $('rFear').textContent = c.fear;
       $('rStory').textContent = c.story;
       copyBtn.classList.remove('done');
       copyBtn.textContent = tr('toolC.copy');
@@ -143,16 +316,38 @@ export default function CharaMakerTool() {
 
     $('genBtn').addEventListener('click', () => generate(), { signal });
     $('againBtn').addEventListener('click', () => generate(), { signal });
+
+    // 「設定だけ引き直す」：名前・生年月日・身体項目・職業はそのまま、
+    // 設定文と強み/弱み・目標/恐れだけを引き直す。
     $('storyBtn').addEventListener('click', () => {
       if (!cur) return;
-      cur.story = makeStory(cur.nat, R(JOBS), R(PERSONA), R(HABIT));
+      const occ = cur.occ;
+      cur.strength = mixed(occ.strengths, STRENGTH_ANY);
+      cur.weakness = mixed(occ.weaknesses, WEAKNESS_ANY);
+      cur.goal = mixed(occ.goals, GOAL_ANY);
+      cur.fear = mixed(occ.fears, FEAR_ANY);
+      cur.story = makeStory(cur.nat, occ, R(PERSONA), R(HABIT));
       render();
     }, { signal });
 
     copyBtn.addEventListener('click', () => {
       if (!cur) return;
       const c = cur;
-      const txt = `名前: ${c.nm.name}${c.nm.kana ? "（" + c.nm.kana + "）" : ""}\n性別: ${c.sex === "m" ? "男性" : "女性"}\n生年月日: ${c.b.y}年${c.b.m}月${c.b.d}日（${c.b.age}歳）\n身長: ${c.h}cm\n血液型: ${c.blood}型\nキャラクター設定:\n${c.story}`;
+      const txt = [
+        `名前: ${c.nm.name}${c.nm.kana ? "（" + c.nm.kana + "）" : ""}`,
+        `性別: ${c.sex === "m" ? "男性" : "女性"}`,
+        `生年月日: ${c.b.y}年${c.b.m}月${c.b.d}日（${c.b.age}歳）`,
+        `職業: ${c.occ.ja}`,
+        `身長: ${c.h}cm ／ 体格: ${c.body.build}`,
+        `髪: ${c.body.hairColor}・${c.body.hairStyle} ／ 目: ${c.body.eye}`,
+        `特徴: ${c.body.mark}`,
+        `血液型: ${c.blood}型`,
+        `強み: ${c.strength} ／ 弱み: ${c.weakness}`,
+        `目標: ${c.goal}`,
+        `恐れているもの: ${c.fear}`,
+        `キャラクター設定:`,
+        c.story,
+      ].join("\n");
       const done = () => { copyBtn.classList.add('done'); copyBtn.textContent = tr('toolC.copied'); };
       const fallback = (text: string, cb: () => void) => {
         const ta = document.createElement('textarea');
@@ -221,6 +416,15 @@ export default function CharaMakerTool() {
                   </select>
                 </div>
                 <div className="field">
+                  <label htmlFor="occ">{t('toolC.lab.occ')}</label>
+                  <select id="occ" defaultValue="free">
+                    {OCCUPATIONS.map((o) => (
+                      <option key={o.id} value={o.id}>{lang === 'en' ? o.en : o.ja}</option>
+                    ))}
+                    <option value="r">{t('toolC.occ.random')}</option>
+                  </select>
+                </div>
+                <div className="field">
                   <label htmlFor="ageMin">{t('toolC.lab.age')}</label>
                   <div className="agebox">
                     <select id="ageMin" aria-label={t('toolC.lab.ageMin')}></select>
@@ -244,9 +448,21 @@ export default function CharaMakerTool() {
                 <div className="m"><b>{t('toolC.res.sex')}</b><span id="rSex"></span></div>
                 <div className="m"><b>{t('toolC.res.birth')}</b><span id="rBirth"></span></div>
                 <div className="m"><b>{t('toolC.res.age')}</b><span id="rAge"></span></div>
+                <div className="m"><b>{t('toolC.res.occ')}</b><span id="rOcc"></span></div>
                 <div className="m"><b>{t('toolC.res.height')}</b><span id="rHeight"></span></div>
+                <div className="m"><b>{t('toolC.res.build')}</b><span id="rBuild"></span></div>
+                <div className="m"><b>{t('toolC.res.hairColor')}</b><span id="rHairColor"></span></div>
+                <div className="m"><b>{t('toolC.res.hairStyle')}</b><span id="rHairStyle"></span></div>
+                <div className="m"><b>{t('toolC.res.eye')}</b><span id="rEye"></span></div>
+                <div className="m"><b>{t('toolC.res.mark')}</b><span id="rMark"></span></div>
                 <div className="m"><b>{t('toolC.res.blood')}</b><span id="rBlood"></span></div>
                 <div className="m"><b>{t('toolC.res.zodiac')}</b><span id="rZodiac"></span></div>
+              </div>
+              <div className="traits">
+                <div className="tr"><b>{t('toolC.res.strength')}</b><span id="rStrength"></span></div>
+                <div className="tr"><b>{t('toolC.res.weakness')}</b><span id="rWeakness"></span></div>
+                <div className="tr"><b>{t('toolC.res.goal')}</b><span id="rGoal"></span></div>
+                <div className="tr"><b>{t('toolC.res.fear')}</b><span id="rFear"></span></div>
               </div>
               <div className="story"><b>{t('toolC.res.story')}</b><span id="rStory"></span></div>
               <div className="sub-actions">
