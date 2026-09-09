@@ -108,7 +108,14 @@ export const isNoindexNewsId = (id: number | string): boolean => NOINDEX_SET.has
 export const isIndexableNewsId = (id: number | string): boolean =>
   !isHiddenNewsId(id) && !isRedirectedNewsId(id) && !isNoindexNewsId(id);
 
-export type NewsCategory = "release" | "topic" | "update" | "speculation" | "event" | "gtarp";
+export type NewsCategory =
+  | "release"
+  | "topic"
+  | "update"
+  | "speculation"
+  | "event"
+  | "gtarp"
+  | "column";
 
 /**
  * 記事タイトル直下に出す「訂正・追記」ボックス。
@@ -141,6 +148,9 @@ export interface NewsArticle {
   youtubeId?: string;
   // 任意：アイキャッチ画像のパス（例: '/images/news/foo.webp'）。一覧カードのサムネに使う。
   image?: string;
+  // 任意：GTARP記事の二次分類（category: 'gtarp' のときだけ使う）。
+  //   'official'（公式発表） / 'surge-town'（SURGE Townの連載） / 省略＝'column'（コラム）
+  gtarpTag?: GtarpTag;
   // 任意：記事トップの「AIによる3行まとめ」ボタンで開く要約（3行程度。あらかじめ用意）。
   aiSummary?: string[];
   // 任意：公開日時（時刻まで）。'YYYY-MM-DD HH:MM' か 'YYYY-MM-DDTHH:MM'。
@@ -201,6 +211,9 @@ export const CATEGORY_CONFIG: Record<
   speculation: { label: "考察・リーク", vice: "#ff2d95", color: "primary", status: "INTEL", filterIcon: "🔍" },
   event: { label: "イベント", vice: "#a78bfa", color: "accent", status: "EVENT", filterIcon: "🎉" },
   gtarp: { label: "GTARP", vice: "#34d399", color: "secondary", status: "GTARP", filterIcon: "🎭" },
+  // 編集部の見解・考察を含む読み物。GTARP側のタグ（GTARP_TAG_CONFIG.column）と同じ色にして、
+  // どちらの一覧でも「コラム」が同じ見た目になるようにしている。
+  column: { label: "コラム", vice: "#60a5fa", color: "accent", status: "COLUMN", filterIcon: "📝" },
 };
 
 // 一覧フィルタの選択肢（「すべて」＋各カテゴリ）
@@ -212,7 +225,28 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
   { id: "speculation", label: CATEGORY_CONFIG.speculation.label, icon: CATEGORY_CONFIG.speculation.filterIcon },
   { id: "event", label: CATEGORY_CONFIG.event.label, icon: CATEGORY_CONFIG.event.filterIcon },
   { id: "gtarp", label: CATEGORY_CONFIG.gtarp.label, icon: CATEGORY_CONFIG.gtarp.filterIcon },
+  { id: "column", label: CATEGORY_CONFIG.column.label, icon: CATEGORY_CONFIG.column.filterIcon },
 ];
+
+// ----------------------------------------------------------------------------
+//  GTARP記事のタグ（/news/gtarp の中だけで使う二次分類）
+// ----------------------------------------------------------------------------
+//  GTARPは本数が増えて中身も「公式発表」「デイリー速報」「読み物」と性質が違うため、
+//  カテゴリ(gtarp)の下にもう一段タグを持たせている。記事側で gtarpTag を省略すると
+//  "column"（コラム）扱い。Supabase から来る記事も同じく column になる。
+export type GtarpTag = "official" | "surge-town" | "column";
+
+export const GTARP_TAG_CONFIG: Record<GtarpTag, { ja: string; en: string; vice: string; icon: string }> = {
+  official: { ja: "公式発表", en: "Official", vice: "#22d3ee", icon: "📢" },
+  "surge-town": { ja: "SURGE Town", en: "SURGE Town", vice: "#34d399", icon: "🏙️" },
+  column: { ja: "コラム", en: "Column", vice: "#60a5fa", icon: "📝" },
+};
+
+/** タグ絞り込みチップの並び（「すべて」＋各タグ）。 */
+export const GTARP_TAGS: (GtarpTag | "all")[] = ["all", "official", "surge-town", "column"];
+
+/** 記事のGTARPタグ。未指定は "column"（それ以外はコラム扱い）。 */
+export const getGtarpTag = (a: { gtarpTag?: GtarpTag }): GtarpTag => a.gtarpTag ?? "column";
 
 // ----------------------------------------------------------------------------
 //  記事本体（新しい記事ほど上に並べると、一覧でも上に表示されます）
@@ -228,7 +262,7 @@ export const newsArticles: NewsArticle[] = [
       'NoPixel V初日にxQcが約5.8万人を集めた一方で、日本でもGTA RPの配信に何万人もが集まる文化がすでに成立している。ストグラ、VCR GTA、ホロGTAが作った「GTAを遊ばないGTAファン」という巨大な層。GTA6の発売が、日本で過去作とは違う広がり方をするかもしれない理由を考える。',
     icon: '🌏',
     image: '/images/news/Official_Cover_Art_landscape.webp',
-    category: 'topic',
+    category: 'column',
     date: '2026-09-09',
     publishedAt: '2026-09-09 21:00',
     source: 'GTA6 FEED 編集部／LuciaStream（NoPixel V初日の配信データ）',
@@ -501,6 +535,7 @@ NoPixel Vはまだクローズドβ初日だ。初日の数字は当然大きく
     icon: '⚔️',
     image: '/images/news/surge-town-day5/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-09',
     publishedAt: '2026-09-09 15:00',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）／Mebae Lens（クリップ・配信記録）',
@@ -823,6 +858,7 @@ GTA6 FEEDでは今後もRockstarの公式発表だけでなく、Rockstar North�
     icon: '🆕',
     image: '/images/news/surge-town-day4/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-08',
     publishedAt: '2026-09-08 15:00',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）／Mebae Lens（クリップ・配信記録）',
@@ -968,6 +1004,7 @@ GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッ�
     icon: '🛳️',
     image: '/images/news/surge-town-day3/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-07',
     publishedAt: '2026-09-07 16:00',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）／Mebae Lens（クリップ・配信記録）',
@@ -1219,6 +1256,7 @@ Trailer 1が公開されてからも、GTA6は作り続けられてきた。延�
     icon: '🌃',
     image: '/images/news/surge-town-day2/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-06',
     publishedAt: '2026-09-06 16:00',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）',
@@ -1551,6 +1589,7 @@ GTA6では、世界をリアルにすることだけを目的としているわ�
     icon: '🌃',
     image: '/images/news/surge-town-day1/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-05',
     publishedAt: '2026-09-05 14:10',
     source: '各参加者のYouTube配信／SURGE公式X（@TeamSURGE_JP）',
@@ -1674,6 +1713,7 @@ GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッ�
     icon: '🌆',
     image: '/images/news/surge-town-gta-server/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'surge-town',
     date: '2026-09-04',
     publishedAt: '2026-09-04 22:00',
     source: 'SURGE公式X（@TeamSURGE_JP）／MoguraVR',
@@ -2665,6 +2705,7 @@ But if you are going to follow GTA6 and GTA RP news from here, "NoPixel" has bec
     icon: '📣',
     image: '/images/news/nopixel-v-official-reveal/eyecatch.webp',
     category: 'gtarp',
+    gtarpTag: 'official',
     date: '2026-09-02',
     publishedAt: '2026-09-02 13:30',
     source:
@@ -10249,6 +10290,7 @@ The one certain thing is that the path toward the stage Rockstar had prepared fo
     icon: "🕹️",
     image: "/images/news/nopixel-v-rockstar-launcher/eyecatch.webp",
     category: "gtarp",
+    gtarpTag: "official",
     date: "2026-08-16",
     publishedAt: "2026-08-16 15:30",
     source: "GTA6 FEED 編集部",

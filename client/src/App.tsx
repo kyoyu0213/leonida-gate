@@ -86,6 +86,8 @@ function Router() {
       <Route path="/recruit" component={RecruitIndex} />
       <Route path="/servers" component={ServerBoard} />
       <Route path="/news" component={NewsList} />
+      {/* GTARP専用のニュース一覧。/news/:id（数字ID）より前に置くこと。 */}
+      <Route path="/news/gtarp" component={NewsList} />
       <Route path="/news/:id" component={NewsDetail} />
       <Route path="/board" component={BoardIndex} />
       {/* フレンド募集・クルー募集（カード型・自由投稿）。/board/:slug より前に置く。 */}
@@ -122,6 +124,7 @@ function Router() {
           用意するが、hreflang は張らず canonical は日本語版に集約する（重複インデックスを避ける）。 */}
       <Route path="/en" component={Home} />
       <Route path="/en/news" component={NewsList} />
+      <Route path="/en/news/gtarp" component={NewsList} />
       <Route path="/en/recruit" component={RecruitIndex} />
       <Route path="/en/servers" component={ServerBoard} />
       <Route path="/en/board" component={BoardIndex} />

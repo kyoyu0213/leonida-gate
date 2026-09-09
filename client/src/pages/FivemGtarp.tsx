@@ -384,7 +384,7 @@ export default function FivemGtarp() {
 
             <div className="mt-4 text-[12.5px] font-bold">
               <a
-                href={`${langPrefix}/news`}
+                href={`${langPrefix}/news/gtarp`}
                 className="inline-flex items-center gap-1.5 text-[#ff2d95] hover:underline"
               >
                 <Newspaper size={14} />

@@ -1,5 +1,5 @@
 import { MessageSquare } from 'lucide-react';
-import { CATEGORY_CONFIG, type NewsArticle } from '@/data/news';
+import { CATEGORY_CONFIG, GTARP_TAG_CONFIG, getGtarpTag, type NewsArticle } from '@/data/news';
 import { useT, useLang } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
 
@@ -45,7 +45,10 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
   const L = useLocalHref();
   const t = useT();
   const lang = useLang();
-  const color = CATEGORY_CONFIG[article.category].vice;
+  // GTARP記事はカテゴリ名（GTARP）ではなくタグ名（公式発表／SURGE Town／コラム）を出す。
+  // /news/gtarp の中では「GTARP」表示に情報が無く、タグの方が一覧で効くため。
+  const gtarpTag = article.category === 'gtarp' ? GTARP_TAG_CONFIG[getGtarpTag(article)] : null;
+  const color = gtarpTag ? gtarpTag.vice : CATEGORY_CONFIG[article.category].vice;
   const title = lang === 'en' && article.titleEn ? article.titleEn : article.title;
 
   return (
@@ -92,7 +95,7 @@ export default function NewsCard({ article, index = 0, commentCount = 0 }: NewsC
           className={`absolute top-3 ${article.image ? 'right-3' : 'left-3'} text-[10.5px] font-black rounded-md`}
           style={{ background: color, color: '#0a0612', padding: '4px 10px' }}
         >
-          {t(`cat.${article.category}`)}
+          {gtarpTag ? (lang === 'en' ? gtarpTag.en : gtarpTag.ja) : t(`cat.${article.category}`)}
         </span>
         {!article.image && <span className="absolute top-3 right-3 text-2xl">{article.icon}</span>}
       </div>

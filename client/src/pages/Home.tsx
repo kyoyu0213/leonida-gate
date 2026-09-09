@@ -54,18 +54,24 @@ export default function Home() {
 
   const { articles: allNews } = useMergedNews();
   const commentCounts = useNewsCommentCounts();
+  // 「最新ニュース」欄は GTA6本編のみ。GTARP は下の専用セクション（/news/gtarp）へ分けており、
+  // 一覧ページ側（/news）の切り分けと同じ扱いにしている。
+  const mainNews = allNews.filter((n) => n.category !== 'gtarp');
   const filteredNews = (
-    selectedCat === 'all' ? allNews : allNews.filter((n) => n.category === selectedCat)
+    selectedCat === 'all' ? mainNews : mainNews.filter((n) => n.category === selectedCat)
   ).slice(0, TOP_NEWS_COUNT);
 
-  // 体験記：カテゴリごとに最新2本ずつ（開発日記2＋訪問記2＝計4本）をトップに、新しい順で並べる。
-  // 記事本数が増えても 2×2 のカード枠が崩れないよう、カテゴリ単位で上限をかける。
+  // GTARP だけを集めたセクション用（/news/gtarp の先頭2件）。
+  const gtarpNews = allNews.filter((n) => n.category === 'gtarp').slice(0, TOP_NEWS_COUNT);
+
+  // 体験記：カテゴリごとに最新1本ずつ（開発日記1＋訪問記1＝計2本）をトップに、新しい順で並べる。
+  // sm 以上では 2 カラムなので、ちょうど横並び1列に収まる。
   const latestFieldNotes = (['dev-diary', 'visit-note'] as const)
     .flatMap((cat) =>
       fieldNotes
         .filter((n) => n.category === cat)
         .sort((a, b) => b.date.localeCompare(a.date))
-        .slice(0, 2),
+        .slice(0, 1),
     )
     .sort((a, b) => b.date.localeCompare(a.date));
 
@@ -447,7 +453,8 @@ export default function Home() {
 
             {/* filter chips（スマホでは非表示：縦に長くなるのを防ぐ） */}
             <div className="hidden sm:flex gap-2 sm:overflow-x-auto pb-1.5 mb-5">
-              {CATEGORIES.map((c) => {
+              {/* GTARP は専用セクション（下の GTA RPニュース）へ分けたのでチップからも外す。 */}
+              {CATEGORIES.filter((c) => c.id !== 'gtarp').map((c) => {
                 const active = selectedCat === c.id;
                 const color = c.id === 'all' ? '#ff2d95' : CATEGORY_CONFIG[c.id as NewsCategory].vice;
                 return (
@@ -483,10 +490,53 @@ export default function Home() {
                 className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-sm font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
               >
                 {lang === 'ja'
-                  ? `すべての記事を見る（全${allNews.length}件）→`
-                  : `View all articles (${allNews.length}) →`}
+                  ? `すべての記事を見る（全${mainNews.length}件）→`
+                  : `View all articles (${mainNews.length}) →`}
               </a>
             </div>
+
+            {/* ===================== GTARP最新情報（GTARP カテゴリだけを横2枚） ===================== */}
+            {gtarpNews.length > 0 && (
+              <>
+                <h2 className="font-black text-xl md:text-[28px] m-0 mt-10 mb-4 flex items-center gap-2.5">
+                  <span
+                    className="inline-block rounded-[3px]"
+                    style={{
+                      width: 5,
+                      height: 24,
+                      background: 'linear-gradient(#34d399,#22d3ee)',
+                      boxShadow: '0 0 12px rgba(52,211,153,.55)',
+                    }}
+                  />
+                  {lang === 'ja' ? 'GTARP最新情報' : 'GTA RP News'}
+                </h2>
+
+                {/* 最新ニュース欄と同じ枠（スマホでは先頭1件のみ） */}
+                <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(248px,1fr))' }}>
+                  {gtarpNews.map((item, idx) => (
+                    <div key={item.id} className={idx === 0 ? '' : 'hidden sm:block'}>
+                      <NewsCard article={item} index={idx} commentCount={commentCounts[String(item.id)] ?? 0} />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7">
+                  <a
+                    href={L('/news/gtarp')}
+                    className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full transition-colors hover:bg-white/10"
+                    style={{
+                      background: 'rgba(255,255,255,.04)',
+                      border: '1px solid #34d39966',
+                      color: '#34d399',
+                    }}
+                  >
+                    {lang === 'ja'
+                      ? `GTARPの記事をすべて見る（全${allNews.filter((n) => n.category === 'gtarp').length}件）→`
+                      : `View all GTA RP articles (${allNews.filter((n) => n.category === 'gtarp').length}) →`}
+                  </a>
+                </div>
+              </>
+            )}
 
             {/* ===================== 体験記（開発日記・訪問記の最新1本ずつ） ===================== */}
             <h2 className="font-black text-xl md:text-[28px] m-0 mt-10 mb-4 flex items-center gap-2.5">

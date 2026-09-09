@@ -86,6 +86,9 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   //   どこにも無く、/en/news/<id> がリンクグラフ上 orphan（GSC「検出-インデックス未登録」の
   //   主塊）になっていることが判明したため方針を変更し、日英対に昇格させた。
   '/news': NewsList,
+  // GTARP専用の一覧。同じ NewsList が useRoute でパスを見て中身を出し分ける
+  //（体験記の /field-notes/<category> と同じ作り）。
+  '/news/gtarp': NewsList,
 };
 
 // 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。

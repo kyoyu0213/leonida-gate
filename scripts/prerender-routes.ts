@@ -252,9 +252,12 @@ function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
     ];
   }
 
-  // news 一覧（日本語のみ。英語版は作っていない）
-  if (jaPath === '/news') {
-    const items = indexableNewsArticles.slice(0, NEWS_ITEMLIST_MAX);
+  // news 一覧。/news は GTARP を除いた本編ニュース、/news/gtarp は GTARP だけ。
+  if (jaPath === '/news' || jaPath === '/news/gtarp') {
+    const onlyGtarp = jaPath === '/news/gtarp';
+    const items = indexableNewsArticles
+      .filter((a) => (onlyGtarp ? a.category === 'gtarp' : a.category !== 'gtarp'))
+      .slice(0, NEWS_ITEMLIST_MAX);
     return [
       collectionNode({
         url,
