@@ -219,6 +219,141 @@ export const CATEGORIES: { id: NewsCategory | "all"; label: string; icon: string
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 71,
+    title:
+      'NoPixel Vは本当に盛り上がった？ 初日のライブ配信を追う――xQc、buddhaらが集結、視聴者12万人超',
+    displayTitle:
+      'NoPixel Vは本当に盛り上がった？ 初日のライブ配信を追う\nxQc、buddhaらが集結、視聴者12万人超',
+    description:
+      '9月8日に始まったNoPixel Vのクローズドβ。初日のライブ配信を計測データから追うと、NoPixel Vだけで116チャンネル・約12万5,000人が同時視聴していた時間帯が確認された。xQcが約5.8万人を集め、buddhaやSykkunoらおなじみの顔も復帰。GTAカテゴリー全体の82万人という数字との違いも整理する。',
+    icon: '📺',
+    image: '/images/news/nopixel-v-launch-day/eyecatch.webp',
+    category: 'gtarp',
+    date: '2026-09-09',
+    publishedAt: '2026-09-09 19:00',
+    source: 'LuciaStream（GTA配信の視聴データ）／Rockstar Games Newswire／Twitch「GTA RP Week」',
+    sourceUrl: 'https://www.rockstargames.com/newswire/article/17857581o753k1/introducing-nopixel-v',
+    relatedArticles: [57, 58, 41],
+    aiSummary: [
+      '2026年9月8日、Rockstar Games Launcherからアクセスする「NoPixel V」のクローズドβが始まった。配信計測を行うLuciaStreamが9月9日4時台（UTC）に調査したところ、NoPixel Vを実際にプレイしていた配信は116チャンネル、その時間帯の平均同時視聴者数は125,031人で、世界のGTA配信視聴者の約39.2％を占めていた。前日の同時間帯はNoPixel関連全体でも982人程度だった。',
+      '最大の中心人物はxQcで、「JP IS BACK」と題した配信がTwitchで約46,248人、Kickで約11,591人。合計約5.8万人はNoPixel V視聴者全体の約46％にあたる。vanillamaceが約18,000人、buddhaが約16,000人、Sykkunoが約3,200人を集めた時間帯も確認され、視聴者の86.2％はTwitchに集中していた。',
+      '同じ9月8日、GTAカテゴリー全体では瞬間最大827,891人を記録し、総視聴時間は約799万時間とExtended Look公開日（約644万時間）を上回った。ただしこの数字にはNoPixelと無関係な大型配信も含まれるため、そのまま「NoPixel Vが82万人を集めた」とは言えない。',
+    ],
+    fullContent: `# NoPixel Vは本当に盛り上がった？ 初日のライブ配信を追う――xQc、buddhaらが集結、視聴者12万人超
+
+9月8日、GTA RPにとって大きな節目となる「NoPixel V」のクローズドβが始まった。Rockstar Games Launcherからアクセスする新しいNoPixel。Rockstar Games自身が公式Newswireで発表し、Twitchも「GTA RP Week」として大々的に展開するなど、これまでのFiveMサーバーとは明らかに違う規模でスタートを迎えた。
+
+では、実際にライブ配信はどれほど盛り上がったのか。初日の配信状況を追ってみると、単に「有名ストリーマーが何人か参加した」という規模ではなかった。開始から時間が経った9月9日早朝の計測では、**NoPixel Vだけで116チャンネル、約12万5,000人が同時に視聴している時間帯**が確認されている。
+
+発表内容そのものについては[NoPixel V正式発表](/news/57)で扱っている。
+
+---
+
+## NoPixel Vは実際に9月8日からライブ配信が始まった
+
+Rockstarは9月1日の発表時点で、9月8日から招待されたプレイヤーがRockstar Games Launcher経由でNoPixel Vへアクセスすると説明していた。同時に、各ライブ配信プラットフォームでNoPixelコミュニティの新たな物語を見るよう呼びかけていた。そして9月8日、実際にNoPixel Vの配信がスタートした。
+
+![Rockstar Games公式サイトのNoPixel Vページ。青緑のキーアートに「nopixel V」のロゴが置かれ、上部には「Launcherを入手」のボタンが並んでいる](/images/news/nopixel-v-launch-day/rockstar-site-nopixel-v.webp)
+
+今回のクローズドβは一般ユーザーが自由に参加できるものではなく、招待されたプレイヤーを中心にスタートしている。その一方で視聴については誰でも可能で、RockstarとTwitchも「遊ぶ」以上に「見る」ことをローンチの重要な部分として扱っている。
+
+Twitchでは9月8日から「GTA RP Week」も開始。NoPixel Vを視聴するとGTA Onlineで最大GTA$1,500,000やBurger Shot Tracksuitを獲得できるDropsまで用意された。つまり今回のNoPixel Vは、最初から「**配信されることを前提にした大型イベント**」として始まっている。
+
+---
+
+## 116チャンネル、約12万5,000人がNoPixel Vを同時視聴
+
+ライブ配信を計測しているLuciaStreamが9月9日4時台（UTC）にTwitch、Kick、YouTube上のGTA配信を調査したところ、NoPixel Vを実際にプレイしていた配信は**116チャンネル**確認された。その時間帯の平均同時視聴者数は**125,031人**。しかもNoPixel Vだけで、その時間に世界でGTA配信を見ていた視聴者の約39.2％を占めていたという。
+
+前日の同じ時間帯ではNoPixel関連配信全体でも982人程度だったとされており、NoPixel V開始後には約126,000人規模まで膨らんだ。単純比較では約129倍という急増だ。
+
+もちろんローンチ初日という特殊な状況ではある。それでも「Rockstar公式Launcherに入ったNoPixelを見てみよう」と、多くの視聴者が一斉に集まったことは数字からも確認できる。
+
+---
+
+## 最大の中心人物はxQc。Twitchだけで約4.6万人
+
+初日のNoPixel Vで特に大きな視聴者を集めていたのがxQcだ。xQcは世界最大級のストリーマーの一人で、過去のNoPixelでも「Jean Paul（JP）」として数々の騒動を起こしてきた人物。銀行強盗や警察との衝突などを繰り返す破天荒なRPで、GTA RPブームを象徴する存在の一人でもある。
+
+![高速道路をピンク色の車で走るxQcの配信画面。右上にはVINEWOOD HILLS／LOS SANTOS FREEWAYの表示があり、チャットにはWTFのエモートが並んでいる](/images/news/nopixel-v-launch-day/xqc-highway-drive.webp)
+
+NoPixel Vでは「JP IS BACK」と題して配信を行い、LuciaStreamが計測した時間帯ではTwitchで平均約46,248人、Kickで約11,591人が視聴していた。両方を合わせると約57,800人。計測されたNoPixel V視聴者全体の約46％を、xQcの配信だけで占めていた計算になる。
+
+「NoPixel Vが始まる」というニュースだけでなく、**かつてNoPixelを代表したキャラクターが新しい街へ戻ってくること自体が、一つの大型コンテンツになっていた**わけだ。
+
+---
+
+## Buddha、SykkunoらNoPixelでおなじみの顔も
+
+xQcだけではない。初日の配信ではvanillamaceが約18,000人、buddhaが約16,000人を集めた時間帯が確認されている。
+
+特にbuddhaはNoPixelを長年見てきた視聴者にはおなじみの存在で、「Lang Buddha」を中心とした長期的なストーリーでGTA RPを代表するストリーマーの一人になった人物だ。Twitch自身も今回のGTA RP Weekで、LIRIKと並んでbuddhaを代表的なGTA RPストリーマーとして紹介している。
+
+Sykkunoも「Yuno」としてNoPixel Vに参加。計測時間帯では約3,200人が視聴していた。ほかにもChatterbox、omie、roflgator、erobb221など、多数のストリーマーがそれぞれのキャラクターで新しいLos Santosへ入っている。
+
+単純に「有名人を450人集めたイベント」というより、**過去のNoPixelで何年も物語を作ってきた人物と、新しく参加する人物が同時に街へ放り込まれた**ことが今回の面白さでもある。
+
+---
+
+## 初日のGTA配信全体は82万人超。ただし全部がNoPixelではない
+
+さらに大きな数字も出ている。9月8日のGTA配信全体では、Twitch、Kick、YouTubeを合わせて**瞬間最大827,891人**が視聴していた。1日の平均同時視聴者数は332,802人、総視聴時間は約799万時間。LuciaStreamの計測では、9月1〜7日の平均と比較して1日の平均同時視聴者数が37％増加している。
+
+興味深いことに、総視聴時間では8月27日の「GTA VI: An Extended Look」が公開された日を上回ったという。Extended Lookの日は約644万時間。NoPixel V開始日の9月8日は約799万時間だった。
+
+ただし、ここは数字の読み方に注意が必要だ。9月8日にGTAカテゴリー全体が記録した約82.8万人を、すべて「NoPixel Vを見ていた人」とすることはできない。同日にはNoPixelとは無関係な大型GTA配信も行われており、Kickではアラビア語圏の配信者sxbが約17万人規模まで伸びた時間帯も確認されている。
+
+そのため、「NoPixel Vが82万人を集めた」と書くのは正確ではない。現時点で個別の配信まで確認できるデータとしては、**NoPixel Vだけで約12.5万人を集めていた時間帯が確認された**という数字を見る方が実態に近い。
+
+---
+
+## Twitchが圧倒的に強かった理由
+
+NoPixel Vの視聴者が特に集中したのはTwitchだった。約12.5万人を計測した時間帯では、NoPixel V視聴者の**86.2％がTwitch**に集まっていた。
+
+これには今回の公式展開も大きく関係していそうだ。Twitchでは9月8日から30日までNoPixel Vの視聴時間に応じてGTA Onlineの報酬を受け取れるDropsが実施されている。1時間でGTA$250,000、2時間でもうGTA$250,000、4時間でGTA$1,000,000、6時間でBurger Shot Tracksuitという内容だ。
+
+Twitch側もNoPixel V専用チャットバッジ、グローバルスタンプ、Cheermotesなどを用意しており、単に「NoPixelがTwitchで配信されている」という状態ではない。Rockstar、NoPixel、Twitchの3者が一緒になって、ローンチをイベント化している。
+
+---
+
+## 「遊べなくても見る」――NoPixelが持つもう一つの強さ
+
+今回の数字を見ると、改めてGTA RPというジャンルの特殊さが分かる。通常のオンラインゲームなら、新コンテンツが登場したときに重要なのは「何人が遊んでいるか」だ。しかしNoPixelでは、それと同じくらい「**何人が見ているか**」が重要になる。
+
+![レストランのレジに立つプレイヤーと、列を作って並ぶ客たち。画面左上には「SERVE CUSTOMERS」の表示、右下には給料が加算された通知が出ている](/images/news/nopixel-v-launch-day/xqc-burger-shot-job.webp)
+
+視聴者は一人のキャラクターを追い、その人物が別のキャラクターと出会い、事件が起こると今度は相手側の配信を見に行く。警察、犯罪者、店員、一般市民それぞれの視点から、同じ出来事を見ることもできる。だから一つの巨大なサーバーから、何十、何百という配信が同時に生まれる。今回確認された116チャンネルという数字は、その構造をよく表している。
+
+---
+
+## RockstarがNoPixelを公式に支援する意味
+
+そして今回までのNoPixelと決定的に違うのは、その後ろにRockstarの名前があることだ。RockstarはNoPixel Vを公式Newswireで発表し、Rockstar Games Launcherからアクセスできるようにした。さらにTwitchでNoPixel Vを見れば、Rockstar公式サービスであるGTA Onlineの報酬まで受け取れる。
+
+![Rockstar Games Newswireの日本語記事。「『GTA V』ロールプレイコミュニティの次なる進化をご覧あれ」という見出しと2026年9月1日の日付、nopixel Vのクローズドベータを紹介する本文が並んでいる](/images/news/nopixel-v-launch-day/rockstar-newswire-jp.webp)
+
+かつてFiveMは、Rockstarとは距離のあるコミュニティMODとして発展した。そこからCfx.reの買収を経て、2026年にはNoPixelの新しいサーバーをRockstar自身が宣伝し、Launcherへ載せ、視聴キャンペーンまで展開するところまで来た。ここまでの経緯は[NoPixelとは？ 10年の歴史](/news/58)でも整理している。
+
+初日の配信が盛り上がったこと以上に重要なのは、**GTA RPが「一部のコアユーザーが遊ぶMOD」ではなく、Rockstarが世界へ見せるGTAコンテンツの一つになったこと**なのかもしれない。
+
+---
+
+## 最初の夜は、確かに見られていた
+
+NoPixel Vはまだクローズドβ初日だ。初日の数字は当然大きくなりやすく、Twitch Dropsの効果もある。本当の評価は、ローンチの熱狂が落ち着いたあとも視聴者が街の物語を追い続けるかどうかで決まるだろう。
+
+![夜のロサンゼルス・フリーウェイ。高架下に停まった車のそばにキャラクターが立っており、画面下部には配信の字幕が表示されている](/images/news/nopixel-v-launch-day/night-freeway-roleplay.webp)
+
+それでも9月8日、世界中で100を超えるNoPixel V配信が同時に動き、その向こう側に10万人を大きく超える視聴者が集まっていた。
+
+**Rockstarが公式に支援する新しいGTA RP。その最初の夜は、確かに多くの人に見られていた。**
+
+---
+
+> **注記：** 本記事の視聴者数・チャンネル数は、Twitch・Kick・YouTubeのGTA配信を計測しているLuciaStreamの公開データをもとにGTA6 FEEDが整理したものであり、Rockstar Games／NoPixel／Twitchの公式発表ではありません。数値はいずれも特定の時間帯を切り取った計測値で、日や時間帯によって大きく変動します。掲載画像はNoPixel V関連の配信画面およびRockstar Games公式サイトのスクリーンショットです。`,
+  },
+  {
     id: 70,
     title:
       '今日のSURGE Town｜9月8日 DAY5まとめ――赤色を巡るギャング抗争、赤髪のともは釣り人に',
