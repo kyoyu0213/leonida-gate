@@ -214,9 +214,9 @@ function makeStory(nat: string, occ: Occupation, persona: string, habit: string)
   const why = R(occ.why);
   const quirk = R(occ.quirk);
   const tpl = Math.floor(Math.random() * 3);
-  if (tpl === 0) return `${home}の生まれ。前の街では${prev}をしていた。${reason}この街へ流れ着き、いまは${occ.ja}として暮らしている。${why}。${persona}性格で、${quirk}。`;
-  if (tpl === 1) return `${home}の出身。${prev}から流れて、${reason}この街に来た。現在は${occ.ja}。${persona}タイプで、${habit}。`;
-  return `${home}で育ち、長く${prev}をやっていた。${reason}この街へ。いまは${occ.ja}に落ち着いている。周囲からは「${persona}やつ」と言われていて、${quirk}。`;
+  if (tpl === 0) return `${home}の生まれ。前の街では${prev}。${reason}この街へ流れ着き、いまは${occ.ja}として暮らしている。${why}。${persona}——そう言われるタイプで、${quirk}。`;
+  if (tpl === 1) return `${home}の出身。${prev}を経て、${reason}この街に来た。現在は${occ.ja}。性格は「${persona}」。${habit}。`;
+  return `${home}で育ち、もとは${prev}。${reason}この街へ。いまは${occ.ja}に落ち着いている。周囲からは「${persona}」と言われていて、${quirk}。`;
 }
 
 export default function CharaMakerTool() {
