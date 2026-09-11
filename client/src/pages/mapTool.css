@@ -47,7 +47,8 @@
     position: relative; height: min(70vh, 600px); min-height: 360px;
     border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #0b1622;
   }
-  .mt-leaflet { width: 100%; height: 100%; background: #0b1622; }
+  /* 背景は atlas の外洋の色（縮小して絵の外が見えても継ぎ目にならない） */
+  .mt-leaflet { width: 100%; height: 100%; background: #0fa8d2; }
   .mt-map-placeholder, .mt-map-fallback {
     position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 12px; color: var(--muted); font-size: 13px;

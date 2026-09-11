@@ -50,7 +50,8 @@ export async function listApprovedMapPins(mapId: string): Promise<MapPin[]> {
       .from('map_pins')
       .select(MAP_PIN_PUBLIC_COLS)
       .eq('map_id', mapId)
-      .eq('status', 'approved')
+      // status では絞らない：status 列は匿名に select を許していないので、条件に使うと
+      // permission denied（401）で全件取れなくなる。承認済みへの限定は RLS がしている。
       .order('created_at', { ascending: true })
       .limit(2000);
     if (error || !Array.isArray(data)) return [];

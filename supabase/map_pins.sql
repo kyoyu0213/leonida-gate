@@ -23,7 +23,8 @@
 -- ----------------------------------------------------------------------------
 -- 1) 地図データセット（座標範囲）
 --    値は client/src/data/maps/gta5/meta.ts の bounds と一致させる。
---    ※ 今の値はプレースホルダ画像の暫定範囲。元画像が決まったら両方を更新すること。
+--    ※ tileVersion v1（martonp96 atlas・実座標変換）の範囲。X -5500〜6000 / Y -4000〜8000。
+--      このファイルを v1 より前の値で適用済みなら map_datasets_gta5_v1_bounds.sql を追加で実行する。
 -- ----------------------------------------------------------------------------
 create table if not exists public.map_datasets (
   map_id text primary key check (map_id ~ '^[a-z0-9-]{1,16}$'),
@@ -39,7 +40,7 @@ alter table public.map_datasets enable row level security;
 revoke all on public.map_datasets from anon, authenticated;
 
 insert into public.map_datasets (map_id, min_x, max_x, min_y, max_y, accepting)
-values ('gta5', -5144, 7144, -4144, 8144, true)
+values ('gta5', -5500, 6000, -4000, 8000, true)
 on conflict (map_id) do nothing;
 
 -- ----------------------------------------------------------------------------

@@ -167,8 +167,9 @@ export async function buildBoardSeed() {
 //  404 になるが、それで掲示板側の seed まで巻き込んで空にしないよう、呼び出しごと分けている。
 //
 //  焼き込むのは公開列だけ（map_pins.sql の grant select と同じ）。投稿者名・IP・UA・
-//  anon_id・審査メモは列リストに入れない。status='approved' 以外は RLS で返らないが、
-//  念のためクエリ側でも絞る。
+//  anon_id・審査メモは列リストに入れない。status='approved' 以外は RLS で返らない。
+//  ※ クエリ側で status=eq.approved を付けてはいけない。status 列は匿名に select を
+//    許していないので、条件に使っただけで permission denied（401）になり全件取れなくなる。
 // ============================================================================
 
 const MAP_PIN_COLS = 'id,map_id,category,x,y,z,title,description,source,created_at';
@@ -181,7 +182,7 @@ export async function buildMapSeed(mapIds = ['gta5']) {
     try {
       const rows = await q(
         `map_pins?select=${MAP_PIN_COLS}&map_id=eq.${encodeURIComponent(id)}` +
-          '&status=eq.approved&order=created_at.asc&limit=2000',
+          '&order=created_at.asc&limit=2000',
       );
       mapPins[id] = rows.map((r) => ({
         id: String(r.id),

@@ -64,7 +64,7 @@ function ClickToPick({ onPick }: { onPick: (x: number, y: number) => void }) {
   return null;
 }
 
-/** 初回だけ画像全体が収まる位置へ合わせる。 */
+/** 初回だけ地図全体が収まる位置へ合わせる。 */
 function FitOnce({ bounds }: { bounds: L.LatLngBoundsExpression }) {
   const map = useMap();
   useEffect(() => {
@@ -77,12 +77,20 @@ function FitOnce({ bounds }: { bounds: L.LatLngBoundsExpression }) {
 export default function MapCanvas(props: MapCanvasProps) {
   const { dataset, categories, pins, done, onToggleDone, onPick, picked, onCopy, labels } = props;
 
+  // CRS.Simple（scale(z)=2^z・zoom(s)=log(s)/ln2）の transformation だけを差し替える。
   const crs = useMemo(() => {
     const [a, b, c, d] = leafletTransformation(dataset);
     return L.extend({}, L.CRS.Simple, { transformation: new L.Transformation(a, b, c, d) }) as L.CRS;
   }, [dataset]);
 
-  const bounds = useMemo<L.LatLngBoundsExpression>(() => {
+  // ドラッグできる範囲・初期表示（LatLng は [y, x]）
+  const viewBounds = useMemo<L.LatLngBoundsExpression>(() => {
+    const m = dataset.maxBounds;
+    return [[m.minY, m.minX], [m.maxY, m.maxX]];
+  }, [dataset]);
+
+  // タイルが存在する範囲。これより外のタイルは要求しない（存在しない URL を叩かない）。
+  const tileBounds = useMemo<L.LatLngBoundsExpression>(() => {
     const w = imageWorldBounds(dataset);
     return [[w.minY, w.minX], [w.maxY, w.maxX]];
   }, [dataset]);
@@ -91,20 +99,20 @@ export default function MapCanvas(props: MapCanvasProps) {
     <MapContainer
       crs={crs}
       center={[0, 0]}
-      zoom={1}
+      zoom={dataset.minZoom}
       minZoom={dataset.minZoom}
       maxZoom={dataset.maxZoom}
-      maxBounds={bounds}
+      maxBounds={viewBounds}
       maxBoundsViscosity={0.8}
       className="mt-leaflet"
       attributionControl
     >
-      <FitOnce bounds={bounds} />
+      <FitOnce bounds={viewBounds} />
       <TileLayer
         url={tileUrlOf(dataset)}
         tileSize={dataset.tileSize}
         noWrap
-        bounds={bounds}
+        bounds={tileBounds}
         minZoom={dataset.minZoom}
         maxNativeZoom={dataset.maxNativeZoom}
         maxZoom={dataset.maxZoom}

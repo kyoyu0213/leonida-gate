@@ -3,18 +3,29 @@
 //
 //    node scripts/build-map-tiles.mjs
 //
-//  - 元画像 1 枚から sharp（libvips）の .tile({ layout: 'google' }) でピラミッドを作る。
-//    出力: client/public/maps/<map>/<tileVersion>/{z}/{y}/{x}.webp（vite build が dist へコピー）
-//    ※ 出力先は .gitignore 済み。タイル数千枚を git 履歴に積まないため、リポジトリには元画像だけを置く。
-//  - tileVersion は client/src/data/maps/<map>/meta.ts から読む。
-//      'placeholder' … 自前生成のグリッド画像からタイルを作る（Rockstar の画像は使わない）
-//      'v1' など     … assets-src/maps/<map>/atlas-<tileVersion>.(webp|png|jpg) を使う。
-//                       無ければ WARN を出してスキップ（ビルドは止めない。地図は空タイルになる）。
-//  - 同じ元画像から作ったタイルが既にあれば作り直さない（.stamp で判定）。
-//  - /maps 配下は 1 年 immutable で配信する（vercel.json）。元画像を差し替えたら
-//    meta.ts の tileVersion を必ず新しい値にすること（同じ URL を上書きしない）。
+//  ▼ 素材（道1：既にタイル分割された公開データを形式変換して使う）
+//    martonp96/GTAV-Maps（MIT）の atlas。ファイル名は {z}-{x}_{y}.png（x=列・y=行、z0〜z7）。
+//    それを Leaflet 標準の {z}/{x}/{y}.webp に並べ替えて webp 化し、
+//      client/public/maps/<map>/<tileVersion>/{z}/{x}/{y}.webp
+//    へ出力する（vite build が dist へコピー）。
+//    ※ 画像内容の権利は Rockstar Games。Rockstar の画像を git 履歴に残さないため、
+//      元PNGはビルド時に取得し（node_modules/.cache に保存して再利用）、出力先も .gitignore 済み。
+//
+//  ▼ 素材のタイル枠（非自明）
+//    atlas は「z7 で一辺 11000px の絵」を左上そろえで 256px に切ったもの。各ズームの一辺の枚数は
+//    ceil(11000 / 2^(7-z) / 256)（z7=43, z6=22, z5=11 … z0=1）で、右端・下端のタイルは一部が透明。
+//    座標変換（meta.ts の transformation）はこの枠に合わせてある。
+//
+//  ▼ 版の固定
+//    取得元は commit SHA で固定する。/maps 配下は 1 年 immutable で配信するため（vercel.json）、
+//    同じ tileVersion の中身が変わってはいけない。素材を変えるときは SOURCES に新しい版を足し、
+//    meta.ts の tileVersion を新しい値にする（同じ URL を上書きしない）。
+//
+//  ▼ 失敗時
+//    取得・変換に失敗してもサイト全体のビルドは止めない（WARN を出してその版をスキップ）。
+//    ただし途中までのタイルは配信しない（出力ディレクトリごと消す）。
 // ============================================================================
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 
@@ -29,43 +40,93 @@ try {
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MAPS = ['gta5'];
-const SIZE = 8192; // meta.ts の imageSize と同じ（= 256 × 2^5）
-const GENERATOR = 1; // 生成方法を変えたら上げる（既存タイルを作り直させる）
+const GENERATOR = 2; // 生成方法を変えたら上げる（既存タイルを作り直させる）
+const QUALITY = 80; // 256px の地図タイルで 1〜6KB。q80 で文字・道路の縁の劣化は見分けられない
+const CACHE = resolve(ROOT, 'node_modules/.cache/map-tiles-src');
 
-function readTileVersion(mapId) {
-  const meta = readFileSync(resolve(ROOT, `client/src/data/maps/${mapId}/meta.ts`), 'utf8');
-  const m = meta.match(/^\s*tileVersion:\s*'([a-z0-9-]+)'/m);
-  if (!m) throw new Error(`[map-tiles] ${mapId}/meta.ts から tileVersion を読めませんでした`);
-  return m[1];
+/** 版ごとの取得元。tileVersion をキーにする。 */
+const SOURCES = {
+  gta5: {
+    v1: {
+      repo: 'martonp96/GTAV-Maps',
+      commit: '17b57d9dc15b4a5cbe6179088b2328b9299d308c', // 2019-07-09（master の最終コミット）
+      dir: 'atlas',
+    },
+  },
+};
+
+/** meta.ts から tileVersion / imageSize / maxNativeZoom を読む（TS を import できないのでテキスト解析）。 */
+function readMeta(mapId) {
+  const src = readFileSync(resolve(ROOT, `client/src/data/maps/${mapId}/meta.ts`), 'utf8');
+  const pick = (re, name) => {
+    const m = src.match(re);
+    if (!m) throw new Error(`[map-tiles] ${mapId}/meta.ts から ${name} を読めませんでした`);
+    return m[1];
+  };
+  return {
+    version: pick(/^\s*tileVersion:\s*'([a-z0-9-]+)'/m, 'tileVersion'),
+    imageSize: Number(pick(/^\s*imageSize:\s*(\d+)/m, 'imageSize')),
+    maxZoom: Number(pick(/^\s*maxNativeZoom:\s*(\d+)/m, 'maxNativeZoom')),
+  };
 }
 
-/** 自前のプレースホルダ画像（暗い地にグリッド）。ゲームの地図ではない。 */
-async function placeholderImage() {
-  const minor = [];
-  for (let i = 0; i <= SIZE; i += 256) {
-    const major = i % 1024 === 0;
-    const stroke = major ? 'rgba(45,226,230,0.55)' : 'rgba(45,226,230,0.16)';
-    const w = major ? 4 : 1;
-    minor.push(`<line x1="${i}" y1="0" x2="${i}" y2="${SIZE}" stroke="${stroke}" stroke-width="${w}"/>`);
-    minor.push(`<line x1="0" y1="${i}" x2="${SIZE}" y2="${i}" stroke="${stroke}" stroke-width="${w}"/>`);
+/** 各ズームの一辺のタイル枚数（左上そろえ・端は一部透明）。 */
+const tilesPerSide = (imageSize, maxZoom, z) => Math.ceil(imageSize / 2 ** (maxZoom - z) / 256);
+
+function tileList(imageSize, maxZoom) {
+  const list = [];
+  for (let z = 0; z <= maxZoom; z++) {
+    const n = tilesPerSide(imageSize, maxZoom, z);
+    for (let x = 0; x < n; x++) for (let y = 0; y < n; y++) list.push({ z, x, y });
   }
-  const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}">` +
-    `<rect width="100%" height="100%" fill="#0b1622"/>` +
-    `<circle cx="${SIZE / 2}" cy="${SIZE / 2}" r="${SIZE * 0.36}" fill="#12263a"/>` +
-    minor.join('') +
-    `<text x="50%" y="50%" fill="rgba(255,255,255,0.35)" font-size="420" font-family="sans-serif" ` +
-    `text-anchor="middle" dominant-baseline="middle">PLACEHOLDER MAP</text>` +
-    `</svg>`;
-  return sharp(Buffer.from(svg), { limitInputPixels: false }).png().toBuffer();
+  return list;
 }
 
-function findSource(mapId, version) {
-  for (const ext of ['webp', 'png', 'jpg', 'jpeg']) {
-    const p = resolve(ROOT, `assets-src/maps/${mapId}/atlas-${version}.${ext}`);
-    if (existsSync(p)) return p;
+/** 並列数を絞って順に処理する。 */
+async function pool(items, limit, fn) {
+  let i = 0;
+  const workers = Array.from({ length: limit }, async () => {
+    while (i < items.length) {
+      const item = items[i++];
+      await fn(item);
+    }
+  });
+  await Promise.all(workers);
+}
+
+const PNG_SIG = Buffer.from([0x89, 0x50, 0x4e, 0x47]);
+
+async function fetchPng(url) {
+  let lastErr;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (!buf.subarray(0, 4).equals(PNG_SIG)) throw new Error('PNG ではない応答');
+      return buf;
+    } catch (e) {
+      lastErr = e;
+      await new Promise((r) => setTimeout(r, 500 * 2 ** attempt));
+    }
   }
-  return null;
+  throw new Error(`${url}: ${lastErr?.message ?? lastErr}`);
+}
+
+/** 元PNGをキャッシュへそろえる（既にあるものは取りに行かない）。 */
+async function ensureSource(source, tiles) {
+  const dir = join(CACHE, `${source.repo.replace('/', '__')}@${source.commit}`, source.dir);
+  mkdirSync(dir, { recursive: true });
+  const missing = tiles.filter((t) => !existsSync(join(dir, `${t.z}-${t.x}_${t.y}.png`)));
+  if (missing.length > 0) {
+    console.log(`[map-tiles] 元タイルを取得: ${missing.length} / ${tiles.length} 枚（${source.repo}@${source.commit.slice(0, 7)}）`);
+    await pool(missing, 16, async (t) => {
+      const name = `${t.z}-${t.x}_${t.y}.png`;
+      const url = `https://raw.githubusercontent.com/${source.repo}/${source.commit}/${source.dir}/${name}`;
+      writeFileSync(join(dir, name), await fetchPng(url));
+    });
+  }
+  return dir;
 }
 
 function countTiles(dir) {
@@ -77,50 +138,50 @@ function countTiles(dir) {
   return n;
 }
 
+/** 今の版以外の出力（古い版・旧生成器の残骸）を消す。手元の dist を Vercel と同じ中身にするため。 */
+function removeStale(mapId, version) {
+  const mapDir = resolve(ROOT, `client/public/maps/${mapId}`);
+  if (!existsSync(mapDir)) return;
+  for (const e of readdirSync(mapDir, { withFileTypes: true })) {
+    if (e.name === version) continue;
+    rmSync(join(mapDir, e.name), { recursive: true, force: true });
+    console.log(`[map-tiles] ${mapId}: 古い出力 ${e.name} を削除`);
+  }
+}
+
 for (const mapId of MAPS) {
-  const version = readTileVersion(mapId);
+  const { version, imageSize, maxZoom } = readMeta(mapId);
+  removeStale(mapId, version);
+  const source = SOURCES[mapId]?.[version];
+  if (!source) {
+    console.warn(`[map-tiles] WARN: ${mapId}/${version} の取得元が SOURCES にありません。タイル生成をスキップします。`);
+    continue;
+  }
   const outDir = resolve(ROOT, `client/public/maps/${mapId}/${version}`);
   const stampPath = join(outDir, '.stamp');
+  const tiles = tileList(imageSize, maxZoom);
+  const stamp = JSON.stringify({ generator: GENERATOR, quality: QUALITY, ...source, imageSize, maxZoom, count: tiles.length });
 
-  let input;
-  let stamp;
-  if (version === 'placeholder') {
-    stamp = { generator: GENERATOR, source: 'placeholder' };
-  } else {
-    const src = findSource(mapId, version);
-    if (!src) {
-      console.warn(
-        `[map-tiles] WARN: ${mapId} の元画像 assets-src/maps/${mapId}/atlas-${version}.(webp|png|jpg) がありません。` +
-          'タイル生成をスキップします（地図は空タイルで表示されます）。',
-      );
-      continue;
-    }
-    const st = statSync(src);
-    stamp = { generator: GENERATOR, source: src.replace(ROOT, ''), size: st.size, mtimeMs: Math.round(st.mtimeMs) };
-    input = src;
-  }
-
-  if (existsSync(stampPath) && readFileSync(stampPath, 'utf8') === JSON.stringify(stamp)) {
+  if (existsSync(stampPath) && readFileSync(stampPath, 'utf8') === stamp) {
     console.log(`[map-tiles] ${mapId}/${version}: 生成済み（${countTiles(outDir)} 枚）。スキップ`);
     continue;
   }
 
   const t0 = Date.now();
   try {
+    const srcDir = await ensureSource(source, tiles);
     rmSync(outDir, { recursive: true, force: true });
-    mkdirSync(dirname(outDir), { recursive: true });
-    const buf = input ? input : await placeholderImage();
-    // 元画像のサイズが違っても SIZE 四方に合わせる（meta.ts の imageSize と一致させるため）。
-    const src = sharp(buf, { limitInputPixels: false }).resize(SIZE, SIZE, { fit: 'fill' });
-    await src.webp({ quality: 80 }).tile({ size: 256, layout: 'google', depth: 'onepixel' }).toFile(outDir);
-    // google レイアウトが出す空タイル用の blank.png は使わない
-    rmSync(join(outDir, 'blank.png'), { force: true });
-    writeFileSync(stampPath, JSON.stringify(stamp));
-    console.log(
-      `[map-tiles] ${mapId}/${version}: ${countTiles(outDir)} 枚を生成（${((Date.now() - t0) / 1000).toFixed(1)}s）`,
-    );
+    await pool(tiles, 8, async (t) => {
+      const dir = join(outDir, String(t.z), String(t.x));
+      mkdirSync(dir, { recursive: true });
+      await sharp(join(srcDir, `${t.z}-${t.x}_${t.y}.png`))
+        .webp({ quality: QUALITY, effort: 5 })
+        .toFile(join(dir, `${t.y}.webp`));
+    });
+    writeFileSync(stampPath, stamp);
+    console.log(`[map-tiles] ${mapId}/${version}: ${countTiles(outDir)} 枚を生成（${((Date.now() - t0) / 1000).toFixed(1)}s）`);
   } catch (e) {
-    // 途中までのタイルを残すと .stamp 無しで次回作り直しになるだけだが、中途半端な版は配信しない。
+    // 中途半端な版は配信しない。
     rmSync(outDir, { recursive: true, force: true });
     console.warn(`[map-tiles] WARN: ${mapId}/${version} のタイル生成に失敗しました（${e?.message ?? e}）。スキップします。`);
   }
