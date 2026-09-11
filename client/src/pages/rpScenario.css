@@ -1,4 +1,4 @@
-/* RPお題（シチュエーション）ジェネレーター専用スタイル。
+/* RPお題ジェネレーター（役職別＋共通の今日のお題）専用スタイル。
    クルー名ジェネレーター（crewName.css）と同じトーン・同じトークンで揃え、
    サイト全体に漏れないようツールのルートクラス配下にネストしてスコープする。
    外部フォントは読み込まない（このページからの通信をゼロに保つ）。 */
@@ -53,14 +53,14 @@
     letter-spacing:.14em;text-transform:uppercase;font-family:var(--display);font-weight:600;
   }
 
-  /* ジャンル選択（7＋おまかせ）。狭い画面では折り返す。 */
-  .genres{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;margin-bottom:16px}
-  .genres button{
+  /* カテゴリ選択（8役職＋共通＋おまかせ）。狭い画面では折り返す。 */
+  .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px;margin-bottom:16px}
+  .cats button{
     border:1px solid var(--line);background:var(--panel-2);color:var(--muted);padding:10px 6px;
     border-radius:9px;cursor:pointer;font-size:13px;font-family:inherit;transition:background .15s,color .15s,border-color .15s;
   }
-  .genres button:hover{color:var(--text);border-color:var(--cyan)}
-  .genres button.on{background:var(--magenta);border-color:var(--magenta);color:#fff;font-weight:700}
+  .cats button:hover{color:var(--text);border-color:var(--cyan)}
+  .cats button.on{background:var(--magenta);border-color:var(--magenta);color:#fff;font-weight:700}
 
   .gen{
     width:100%;background:linear-gradient(135deg,var(--magenta),var(--sunset));border:0;color:#fff;
@@ -70,36 +70,34 @@
   }
   .gen:active{transform:scale(.98)}
 
-  /* 生成結果。お題は長いのでモバイル1カラム／PCは2カラムまで。 */
-  .scenarios{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;margin-bottom:16px}
-  .scenario{
-    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px 16px;
+  /* お題カード。モバイル1カラム／PCは3カラムまで。 */
+  .topics{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:16px}
+  .topic{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;
     display:flex;flex-direction:column;gap:10px;min-width:0;
   }
-  .genre{
-    align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:999px;
-    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);
+  .top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+
+  /* カテゴリバッジ（色分け）。文字・枠・地の3色をカテゴリごとに指定する。 */
+  .cat{
+    font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:999px;
+    color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.06);
   }
-  .genre.g-crime{color:#f87171;border-color:rgba(248,113,113,.45)}
-  .genre.g-emergency{color:#60a5fa;border-color:rgba(96,165,250,.45)}
-  .genre.g-slice{color:#34d399;border-color:rgba(52,211,153,.45)}
-  .genre.g-business{color:#e5c07b;border-color:rgba(229,192,123,.45)}
-  .genre.g-drama{color:var(--magenta);border-color:rgba(255,45,149,.45)}
-  .genre.g-chaos{color:#ff8a3d;border-color:rgba(255,138,61,.45)}
-  .genre.g-incident{color:var(--cyan);border-color:rgba(45,226,230,.45)}
-  .body{font-size:15.5px;font-weight:700;line-height:1.85;word-break:break-word}
-  .twist{
-    font-size:13.5px;line-height:1.75;color:var(--text);
-    background:var(--panel-2);border-left:3px solid var(--sunset);border-radius:0 8px 8px 0;padding:8px 11px;
-  }
-  .twist b{color:var(--sunset);font-weight:700}
-  .tags{display:flex;flex-wrap:wrap;gap:6px}
-  .tags div{background:var(--panel-2);border-radius:8px;padding:6px 10px;display:flex;gap:6px;align-items:baseline}
-  .tags dt{font-size:10.5px;color:var(--muted);letter-spacing:.06em}
-  .tags dd{font-size:12.5px;font-weight:700}
+  .cat.c-police{color:#60a5fa;border-color:rgba(96,165,250,.5);background:rgba(96,165,250,.12)}
+  .cat.c-ems{color:#fff;border-color:#fca5a5;background:rgba(239,68,68,.55)}
+  .cat.c-mechanic{color:#fb923c;border-color:rgba(251,146,60,.5);background:rgba(251,146,60,.12)}
+  .cat.c-criminal{color:#c4b5fd;border-color:rgba(167,139,250,.55);background:rgba(0,0,0,.5)}
+  .cat.c-media{color:#f472b6;border-color:rgba(244,114,182,.5);background:rgba(244,114,182,.12)}
+  .cat.c-transport{color:#4ade80;border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.12)}
+  .cat.c-civilian{color:#cbd5e1;border-color:rgba(148,163,184,.55);background:rgba(148,163,184,.14)}
+  .cat.c-shop{color:#2dd4bf;border-color:rgba(45,212,191,.5);background:rgba(45,212,191,.12)}
+  .cat.c-common{color:#fbbf24;border-color:rgba(251,191,36,.55);background:rgba(251,191,36,.12)}
+
+  .type{font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.06em}
+  .text{font-size:15.5px;font-weight:700;line-height:1.75;word-break:break-word;flex:1}
   .copy{
     align-self:flex-start;background:var(--panel-2);border:1px solid var(--line);color:var(--text);
-    padding:8px 14px;border-radius:9px;cursor:pointer;font-size:12.5px;font-family:inherit;margin-top:auto;
+    padding:8px 14px;border-radius:9px;cursor:pointer;font-size:12.5px;font-family:inherit;
   }
   .copy:hover{border-color:var(--cyan)}
   .copy.done{color:var(--cyan);border-color:var(--cyan)}
@@ -110,6 +108,6 @@
 }
 
 @media(max-width:480px){
-  .rp-scenario-tool .scenarios{grid-template-columns:1fr}
-  .rp-scenario-tool .body{font-size:15px}
+  .rp-scenario-tool .topics{grid-template-columns:1fr}
+  .rp-scenario-tool .text{font-size:15px}
 }
