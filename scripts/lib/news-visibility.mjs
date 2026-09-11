@@ -1,8 +1,9 @@
 // ============================================================================
 //  news 記事の「検索対象にするか」判定（ビルドスクリプト側の写し）。
 // ----------------------------------------------------------------------------
-//  正は client/src/data/news.ts の3配列と isIndexableNewsId()：
-//    HIDDEN_NEWS_IDS      … 一時的に非表示（発売後に戻す）
+//  正は client/src/data/news.ts の4配列と isIndexableNewsId()：
+//    HIDDEN_NEWS_IDS      … 一時的に非表示（302。いまは空）
+//    GONE_NEWS_IDS        … 公開終了（410・恒久）
 //    REDIRECTED_NEWS_IDS  … 他記事へ301統合済み（恒久）
 //    NOINDEX_NEWS_IDS     … URL・本文は残すが検索から外す
 //
@@ -32,18 +33,20 @@ function readIdList(src, name) {
   return [...m[1].matchAll(/\d+/g)].map((x) => x[0]);
 }
 
-/** 3つの除外リストを news.ts から読み出す（文字列のID配列）。 */
+/** 4つの除外リストを news.ts から読み出す（文字列のID配列）。 */
 export function readNewsIdLists() {
   const src = readFileSync(NEWS_TS, 'utf8');
   const hidden = readIdList(src, 'HIDDEN_NEWS_IDS');
+  const gone = readIdList(src, 'GONE_NEWS_IDS');
   const redirected = readIdList(src, 'REDIRECTED_NEWS_IDS');
   const noindex = readIdList(src, 'NOINDEX_NEWS_IDS');
   return {
     hidden,
+    gone,
     redirected,
     noindex,
     /** 検索対象から外す全ID（＝ !isIndexableNewsId）。 */
-    excluded: new Set([...hidden, ...redirected, ...noindex]),
+    excluded: new Set([...hidden, ...gone, ...redirected, ...noindex]),
   };
 }
 

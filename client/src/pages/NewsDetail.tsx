@@ -5,7 +5,7 @@ import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, Messa
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
-import { getArticleById, formatArticleDate, formatNewsDate, isNoindexNewsId } from '@/data/news';
+import { getArticleById, formatArticleDate, formatNewsDate, isNoindexNewsId, isGoneNewsId } from '@/data/news';
 import { useArticleById } from '@/hooks/useNews';
 import { useLang, useT } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
@@ -193,11 +193,15 @@ export default function NewsDetail() {
 
   // 記事は静的データ（data/news.ts）＋管理画面から投稿された DB 記事を解決する。
   const { article, loading } = useArticleById(match ? params?.id : undefined);
+  // 公開を終了した記事（GONE_NEWS_IDS）。サーバーは api/gone.js が 410 で返し、画面はその旨を出す。
+  const gone = !!(match && params?.id && isGoneNewsId(params.id));
 
   // 記事ごとに <title> / description / OGP を設定（フックは早期returnの前で呼ぶ）。
   const seoTitle = article
     ? `${isEn && article.titleEn ? article.titleEn : article.title} | GTA6 FEED`
-    : 'GTA6 FEED';
+    : gone
+      ? `${isEn ? 'This article is no longer available' : 'この記事は公開を終了しました'} | GTA6 FEED`
+      : 'GTA6 FEED';
   const seoDesc = article
     ? (isEn && article.descriptionEn ? article.descriptionEn : article.description)?.slice(0, 120)
     : undefined;
@@ -218,6 +222,32 @@ export default function NewsDetail() {
         <Header />
         <div className="container py-20 text-center">
           <p className="text-gray-400 font-mono">{lang === 'ja' ? '読み込み中…' : 'Loading…'}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (gone) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <div className="container py-20 text-center max-w-[560px] mx-auto">
+          <h1 className="text-xl font-bold mb-3">
+            {isEn ? 'This article is no longer available' : 'この記事は公開を終了しました'}
+          </h1>
+          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            {isEn
+              ? 'This article was written before GTA6’s release and has been retired. For the latest confirmed information, see our news list.'
+              : 'この記事はGTA6の発売前に書かれたもので、公開を終了しました。確定した最新情報はニュース一覧からご覧ください。'}
+          </p>
+          <div className="flex gap-4 justify-center font-mono text-sm">
+            <a href={L('/news')} className="text-cyan-400 hover:text-cyan-300">
+              {isEn ? 'News list' : 'ニュース一覧へ'}
+            </a>
+            <a href={L('/')} className="text-cyan-400 hover:text-cyan-300">
+              {isEn ? 'Back to home' : 'ホームに戻る'}
+            </a>
+          </div>
         </div>
       </div>
     );

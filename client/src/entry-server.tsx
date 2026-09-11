@@ -30,7 +30,7 @@ import FieldNotesList from '@/pages/FieldNotesList';
 import FieldNoteDetail from '@/pages/FieldNoteDetail';
 import FivemInstallGuide from '@/pages/FivemInstallGuide';
 import { fieldNotes } from '@/data/fieldNotes';
-import { isHiddenNewsId } from '@/data/news';
+import { isUnpublishedNewsId } from '@/data/news';
 import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
@@ -163,10 +163,10 @@ export interface RenderResult {
 export function render(url: string): RenderResult | null {
   // '/en'（末尾スラッシュ無し）も ja パス '/' に写す。
   const jaPath = url === '/en' ? '/' : url.startsWith('/en/') ? url.slice(3) : url;
-  // 非表示記事（HIDDEN_NEWS_IDS）は本文を描画しない。呼ばれても null を返して
-  // 「静的HTMLが生成されない」状態を保つ（URL は vercel.json が 302 する）。
+  // 一時非表示・公開終了の記事（HIDDEN / GONE_NEWS_IDS）は本文を描画しない。呼ばれても null を返して
+  // 「静的HTMLが生成されない」状態を保つ（URL は vercel.json が 302／410 で扱う）。
   const newsMatch = NEWS_PATH_RE.exec(jaPath);
-  if (newsMatch && isHiddenNewsId(newsMatch[1])) return null;
+  if (newsMatch && isUnpublishedNewsId(newsMatch[1])) return null;
   const Comp =
     (jaPath === '/' ? Home : undefined) ??
     ROUTES[jaPath] ??

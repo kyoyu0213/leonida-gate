@@ -19,7 +19,7 @@
 //
 //  実行: node scripts/check-route-tables.mjs
 // ============================================================================
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
@@ -177,21 +177,23 @@ if (notInSitemap.length) {
 }
 
 // ============================================================================
-//  検査E（fail）：一時的に非表示にした news 記事の3点整合
-//    1. client/src/data/news.ts の HIDDEN_NEWS_IDS   … 表示・プリレンダから外す
+//  検査E（fail）：news 記事の配信状態（一時非表示 302・公開終了 410・統合 301・noindex）の整合
+//    1. client/src/data/news.ts の4配列              … 表示・プリレンダ・一覧から外す
 //    2. scripts/generate-sitemap.mjs                  … sitemap から除外（1 を自動で読む）
-//    3. vercel.json の 302 リダイレクト                … URL を /fivem-gtarp へ逃がす
-//  3つがズレると「sitemap には載るのに 302 される」「一覧から消えたのに URL は生きていて
-//  空シェルが返る」といった不整合になる。復帰時（発売後）に消し忘れる事故も防ぐ。
+//    3. vercel.json の redirects（302/301）・rewrites（410 → api/gone）… URL の扱い
+//  ズレると「sitemap には載るのに 302 される」「一覧から消えたのに URL は生きていて
+//  空シェルが返る」「410 のはずが別の転送に先取りされる」といった不整合になる。
+//  1つの ID は1つの状態にだけ属すること（重複も検出する）。
 // ============================================================================
-// 3配列（HIDDEN / REDIRECTED / NOINDEX）の読み出しは scripts/lib/news-visibility.mjs に集約。
+// 4配列（HIDDEN / GONE / REDIRECTED / NOINDEX）の読み出しは scripts/lib/news-visibility.mjs に集約。
 // 解析できなければ throw されるので、チェックが黙って素通りすることはない。
 {
   const newsIds = readNewsIdLists();
   const hiddenIds = [...newsIds.hidden].sort((a, b) => a - b);
 
   const vercel = JSON.parse(readFileSync(resolve(ROOT, 'vercel.json'), 'utf8'));
-  const redirectIds = { ja: [], en: [] };
+  // 一時非表示の 302（/news/:id(...)）。無ければ null（HIDDEN が空ならそれで正しい）。
+  const redirectIds = { ja: null, en: null };
   for (const r of vercel.redirects ?? []) {
     const m = String(r.source).match(/^(\/en)?\/news\/:id\(([^)]*)\)$/);
     if (!m) continue;
@@ -232,21 +234,17 @@ if (notInSitemap.length) {
     }
   }
 
-  // 301統合済み・noindex 済みの記事を二重に非表示リストへ入れると、
-  // 301 → 302 のリダイレクトチェーンや意図の重複になるため弾く。
-  // 対象IDは news.ts の REDIRECTED_NEWS_IDS / NOINDEX_NEWS_IDS から読む（手書きしない）。
-  for (const id of newsIds.redirected) {
-    if (hiddenIds.includes(id)) {
-      errors.push(
-        `id${id} は HIDDEN_NEWS_IDS に入れないこと — 301統合済み（vercel.json）。302 と重なるとリダイレクトチェーンになる。`,
-      );
-    }
-  }
-  for (const id of newsIds.noindex) {
-    if (hiddenIds.includes(id)) {
-      errors.push(
-        `id${id} は HIDDEN_NEWS_IDS に入れないこと — noindex,follow 済み（news.ts の NOINDEX_NEWS_IDS）。`,
-      );
+  // 同じ記事IDが複数の配信状態（HIDDEN=302 / GONE=410 / REDIRECTED=301 / NOINDEX）に属さないこと。
+  // 重なると 301 → 302 のリダイレクトチェーンや、410 のはずが 301 で飛ぶ（redirects が rewrites より先）
+  // といった意図の衝突になる。対象IDは news.ts の4配列から読む（手書きしない）。
+  {
+    const lists = { HIDDEN: newsIds.hidden, GONE: newsIds.gone, REDIRECTED: newsIds.redirected, NOINDEX: newsIds.noindex };
+    const owner = new Map();
+    for (const [name, ids] of Object.entries(lists)) {
+      for (const id of ids.map(String)) {
+        if (owner.has(id)) errors.push(`id${id} が ${owner.get(id)}_NEWS_IDS と ${name}_NEWS_IDS の両方にある（配信状態は1つだけにする）。`);
+        else owner.set(id, name);
+      }
     }
   }
 
@@ -276,6 +274,8 @@ if (notInSitemap.length) {
         errors.push(`${prefix}/news/${id} の転送先 ${e.dest} が同じ言語の /news/<id> ではない。`);
       } else if (redirectedIds.includes(to[1]) || hiddenIds.map(String).includes(to[1])) {
         errors.push(`${prefix}/news/${id} → ${e.dest} の転送先がさらに統合・非表示になっている（リダイレクトチェーン）。`);
+      } else if (newsIds.gone.map(String).includes(to[1])) {
+        errors.push(`${prefix}/news/${id} → ${e.dest} の転送先が公開終了（410）になっている。`);
       }
     }
   }
@@ -286,16 +286,41 @@ if (notInSitemap.length) {
       }
     }
   }
-  for (const id of newsIds.noindex.map(String)) {
-    if (redirectedIds.includes(id)) {
-      errors.push(`id${id} が REDIRECTED_NEWS_IDS と NOINDEX_NEWS_IDS の両方にある（301 統合したなら NOINDEX から外す）。`);
+  // 公開終了（GONE_NEWS_IDS）と vercel.json の 410 ルートの整合（日英とも）。
+  //   rewrites の /news/:id(...) → /api/gone が GONE と完全に一致し、/news/:id(\d+)（news-og）より前にあること。
+  //   GONE の ID に redirects があると rewrites より先に効いて 410 にならないので、それも弾く。
+  {
+    const goneIds = newsIds.gone.map(String).sort((a, b) => a - b);
+    const rewrites = vercel.rewrites ?? [];
+    const newsOgIdx = rewrites.findIndex((r) => String(r.destination).startsWith('/api/news-og'));
+    for (const lang of ['ja', 'en']) {
+      const prefix = lang === 'en' ? '/en' : '';
+      const idx = rewrites.findIndex(
+        (r) => String(r.destination) === '/api/gone' && new RegExp(`^${prefix}/news/:id\\(`).test(String(r.source)),
+      );
+      if (idx < 0) {
+        if (goneIds.length) errors.push(`公開終了 ${goneIds.length} 件があるのに vercel.json の rewrites に ${prefix}/news/:id(...) → /api/gone が無い。`);
+        continue;
+      }
+      const ids = String(rewrites[idx].source).match(/:id\(([^)]*)\)/)[1].split('|').map((s) => s.trim()).sort((a, b) => a - b);
+      const missing = goneIds.filter((id) => !ids.includes(id));
+      const extra = ids.filter((id) => !goneIds.includes(id));
+      if (missing.length) errors.push(`GONE_NEWS_IDS にあるが ${prefix}/news の 410 ルートに無い記事ID: ${missing.join(', ')}`);
+      if (extra.length) errors.push(`${prefix}/news の 410 ルートにあるが GONE_NEWS_IDS に無い記事ID: ${extra.join(', ')}（公開中の記事が 410 になる）`);
+      if (newsOgIdx >= 0 && idx > newsOgIdx) errors.push(`${prefix}/news の 410 ルートが /news/:id(\\d+)（news-og）より後ろにある。先に一致した方が使われるため 410 にならない。`);
     }
+    for (const [lang, map] of Object.entries(merge301)) {
+      for (const id of map.keys()) {
+        if (goneIds.includes(id)) errors.push(`公開終了（410）の id${id} に ${lang === 'en' ? '/en' : ''}/news/${id} の redirects がある（rewrites より先に効いて 410 にならない）。`);
+      }
+    }
+    if (goneIds.length && !existsSync(resolve(ROOT, 'api/gone.js'))) errors.push('GONE_NEWS_IDS があるのに api/gone.js（410 を返す関数）が無い。');
   }
 
   if (hiddenIds.length) {
     warnings.push(
       `[一時非表示] news 記事 ${hiddenIds.length} 件を配信から外している（id ${hiddenIds.join(', ')}）。` +
-        'GTA6発売後に戻す手順は client/src/data/news.ts の HIDDEN_NEWS_IDS のコメントを参照。',
+        '恒久的に下げるなら GONE_NEWS_IDS（410）、後継記事があるなら REDIRECTED_NEWS_IDS（301）へ。',
     );
   }
 }

@@ -24,44 +24,55 @@
 // ============================================================================
 
 // ============================================================================
-//  非表示にする記事ID（削除ではなく一時的に配信から外す）
+//  記事の「配信状態」を表す4つのリスト（1つの ID は高々1つのリストにだけ入る）
 // ----------------------------------------------------------------------------
-//  ▼ これは何か
-//     ここに id を入れた記事は、記事データ・本文・画像を残したまま、
-//     サイト上のあらゆる経路から外れる：
-//       - ビルド        … prerender-og が /news/<id> の静的HTMLを生成しない
-//       - sitemap       … scripts/generate-sitemap.mjs が除外（EXCLUDE_IDS と連動）
-//       - 一覧・トップ  … newsByDate から外れる（Home / NewsList）
-//       - 記事ページ    … getArticleById が undefined を返す
-//       - 関連記事      … 残す記事の relatedArticles からも自動で消える
-//       - 検索          … Search が visibleNewsArticles を見る
-//       - URL           … vercel.json が /news/<id> を /fivem-gtarp へ 302（一時）
+//    HIDDEN_NEWS_IDS     … 一時的に配信から外す（URL は /fivem-gtarp へ 302）。いまは空
+//    GONE_NEWS_IDS       … 公開を終了した（URL は 410 Gone）
+//    REDIRECTED_NEWS_IDS … 後継記事へ統合した（URL は 301）
+//    NOINDEX_NEWS_IDS    … 公開したまま検索からだけ外す（noindex,follow）
+//  どのリストの記事も記事データ・本文・画像は消さずに残す。重複は
+//  scripts/check-route-tables.mjs が検出する。
 //
-//  ▼ なぜ非表示にしているか（2026-07-27）
-//     AdSense の「有用性の低いコンテンツ」判定を3回受けたため、GTA6発売前の
-//     リーク・考察系の記事を一時的に配信から外し、GTARP系（掲示板・体験記・
-//     FiveMガイド）と検証済みの公式情報で審査を通す方針。
-//
-//  ▼ 元に戻すには（GTA6発売＝2026年11月以降を想定）
-//     1. この配列から戻したい id を消す（配列を空にすれば全記事が復活）
-//     2. scripts/generate-sitemap.mjs の EXCLUDE_IDS から同じ id を消す
-//        （17・29 は別理由の除外なので残すこと）
-//     3. vercel.json の「news 一時非表示」ブロックの 302 リダイレクトを消す
-//     4. id18 の本文から削除した id6・id14 への誘導文を戻す場合は git 履歴を参照
-//     ※ 1〜3 は必ずセットで行うこと。片方だけだと sitemap に載るのに 302 される、
-//       といった不整合になる。
+//  ▼ 経緯
+//    2026-07-27：AdSense「有用性の低いコンテンツ」を3回受け、GTA6発売前のリーク・考察系
+//      19本（3〜15・20〜25・27）を「発売後に戻す」前提で HIDDEN（302）にした。
+//    2026-09-12（⑱-3）：記事と無関係な /fivem-gtarp への 302 はソフト404と判定されうるため
+//      解消。「発売後に戻す」予定は取りやめ（運営判断）、後継記事がある4本は 301
+//      （REDIRECTED）、残る15本は 410（GONE）に振り分けた。HIDDEN は空。
 // ============================================================================
-//     27 だけは理由が別：俳優の顔写真など第三者の権利物を扱っており、
-//        キャスト candidates を推測する内容のため、権利面のリスクを避けて下げている。
-//        戻す場合は画像・記述の見直しが前提（発売後に自動で戻す対象ではない）。
-export const HIDDEN_NEWS_IDS: readonly number[] = [
-  3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 27,
-];
+
+// ----------------------------------------------------------------------------
+//  一時的に配信から外す記事ID（いまは空。再び「一時的に」外したい記事が出たとき用）
+//    ここに入れた記事は prerender・sitemap・一覧・関連記事・検索から外れ、
+//    URL は vercel.json の /news/:id(...) → /fivem-gtarp の 302 で逃がす（入れるなら 302 も足す。
+//    check-route-tables の検査Eが両者の一致を見る）。恒久的に下げるなら GONE_NEWS_IDS へ。
+// ----------------------------------------------------------------------------
+export const HIDDEN_NEWS_IDS: readonly number[] = [];
 
 const HIDDEN_SET = new Set<number>(HIDDEN_NEWS_IDS);
 
 /** その記事IDが非表示対象か。 */
 export const isHiddenNewsId = (id: number | string): boolean => HIDDEN_SET.has(Number(id));
+
+/**
+ * 公開を終了した記事ID（URL は 410 Gone。vercel.json の rewrites → api/gone.js）。
+ * 内容を引き継いだ後継記事が無いもの。後継記事があるなら 410 ではなく REDIRECTED（301）へ。
+ * 2026-09-12 ⑱-3 で、2026-07-27 から HIDDEN（302）にしていた発売前のリーク・考察系から移した：
+ *    3 主人公は2人（公式と噂の切り分け）   5 グラフィックス（RAGE 9）   6 新オンラインは何が変わる
+ *    7 流出映像の強盗システム               8 声優はいつわかる           9 キャラの作り込み・筋トレの噂
+ *   11 PC版システム要件リーク              12 ゲームプレイ機能の考察     13 Switch2版は出るのか
+ *   14 オンラインはいつ始まる              21 天候                       22 カバーアートのヘリコプター
+ *   23 小売ページの“未公開情報”            24 販売本数の予測
+ *   27 ルシアとジェイソンの演者候補（俳優の顔写真など第三者の権利物を含むため恒久的に下げる）
+ * 静的HTMLは作らず（prerender-og が飛ばす）、sitemap・一覧・関連記事・検索からも外れる。
+ * 記事ページは NewsDetail が「この記事は公開を終了しました」を出す。
+ */
+export const GONE_NEWS_IDS: readonly number[] = [3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 21, 22, 23, 24, 27];
+
+const GONE_SET = new Set<number>(GONE_NEWS_IDS);
+
+/** その記事IDが公開終了（410）か。 */
+export const isGoneNewsId = (id: number | string): boolean => GONE_SET.has(Number(id));
 
 /**
  * 他の記事へ 301 で恒久統合した記事ID（vercel.json の redirects と対応）。
@@ -73,12 +84,17 @@ export const isHiddenNewsId = (id: number | string): boolean => HIDDEN_SET.has(N
  *   16 → 36  Fine Art Collector プログラム（終了）   … id36 を「Kortz Center Heist ガイド」に全面改稿
  *   31 → 36  独立記念日イベント（終了）
  *   29 → 36  Discord 連携クルーネック配布（終了。以前は NOINDEX_NEWS_IDS にあった＝二重に入れないこと）
+ *   ▼ 2026-09-12 ⑱-3（2026-07-27 から HIDDEN にしていた記事のうち、同じ問いに確定情報で答える後継記事があるもの）
+ *    4 → 52  マップサイズがGTA5の2倍以上       … 52「マップはGTA5の約2倍」
+ *   15 → 69  NPCは「背景」を卒業するのか       … 69「NPCはどこまで進化した？」
+ *   20 → 19  予約開始（確定事実とリークの切り分け）… 19「エディションと予約特典まとめ」
+ *   25 → 38  物理版にディスクが入っていない     … 38「パッケージ版、国内でも予約開始（中身はDLコード）」
  * 本文データは消さずに残す（記録として。表示経路・プリレンダ・sitemap からは外れる）。
  * 一覧・関連記事・検索に出すと「クリックすると別記事へ飛ぶカード」になり、
  * 生HTMLに 301 を踏む内部リンクが残ってしまうため、表示経路からは外す。
  * 非表示（HIDDEN_NEWS_IDS）とは別概念：こちらは恒久統合なので発売後も戻さない。
  */
-export const REDIRECTED_NEWS_IDS: readonly number[] = [16, 17, 29, 31, 32, 33, 39];
+export const REDIRECTED_NEWS_IDS: readonly number[] = [4, 15, 16, 17, 20, 25, 29, 31, 32, 33, 39];
 
 const REDIRECTED_SET = new Set<number>(REDIRECTED_NEWS_IDS);
 
@@ -102,20 +118,24 @@ export const isNoindexNewsId = (id: number | string): boolean => NOINDEX_SET.has
 /**
  * その記事を「検索対象にするか」の単一判定。
  * ----------------------------------------------------------------------------
- * 除外理由はここまでに3種類ある：
- *   - 一時的に非表示（HIDDEN_NEWS_IDS）        … 発売後に戻す
+ * 除外理由はここまでに4種類ある：
+ *   - 一時的に非表示（HIDDEN_NEWS_IDS）        … 302（いまは空）
+ *   - 公開終了（GONE_NEWS_IDS）                … 410・恒久
  *   - 他記事へ301統合済み（REDIRECTED_NEWS_IDS）… 恒久
  *   - noindex 指定（NOINDEX_NEWS_IDS）          … URL・本文は残すが検索から外す
  * 消費者（sitemap・プリレンダ・一覧・関連記事・検索）は個別のフラグを見ず、
  * 必ずこの関数を通すこと。理由が増えてもここ1箇所を直せば全経路へ波及する。
  *
  * ※ node 実行のビルドスクリプト（.mjs）は TypeScript を import できないため、
- *   scripts/lib/news-visibility.mjs が同じ3つの配列を news.ts から読み取って
+ *   scripts/lib/news-visibility.mjs が同じ4つの配列を news.ts から読み取って
  *   同じ判定を再現する。判定を増やすときは両方を直すこと（不一致は
  *   scripts/check-route-tables.mjs が検出する）。
  */
 export const isIndexableNewsId = (id: number | string): boolean =>
-  !isHiddenNewsId(id) && !isRedirectedNewsId(id) && !isNoindexNewsId(id);
+  !isHiddenNewsId(id) && !isGoneNewsId(id) && !isRedirectedNewsId(id) && !isNoindexNewsId(id);
+
+/** 本文を配信しない記事か（一時非表示・公開終了）。静的HTMLを作らない・日英の対も持たない。 */
+export const isUnpublishedNewsId = (id: number | string): boolean => isHiddenNewsId(id) || isGoneNewsId(id);
 
 export type NewsCategory =
   | "release"
@@ -18886,12 +18906,12 @@ GTA6の舞台はフロリダ州をモデルにしたレオニダ州で、ベイ�
 
 // 日付の新しい順（一覧・トップの表示用）。同日は id の大きい方を先に。
 /**
- * 公開中の記事だけを集めたもの（HIDDEN_NEWS_IDS を除外）。
+ * 公開中の記事だけを集めたもの（一時非表示・公開終了・301統合を除外）。
  * 一覧・トップ・検索・関連記事など、利用者に見せる経路はすべてこちらを使う。
  * newsArticles（全件）は prerender-og と管理画面だけが参照する。
  */
 export const visibleNewsArticles: NewsArticle[] = newsArticles.filter(
-  (a) => !isHiddenNewsId(a.id) && !isRedirectedNewsId(a.id),
+  (a) => !isUnpublishedNewsId(a.id) && !isRedirectedNewsId(a.id),
 );
 
 export const newsByDate: NewsArticle[] = [...visibleNewsArticles].sort(

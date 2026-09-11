@@ -5,7 +5,7 @@
 //   例: /fivem-gtarp/what-is-fivem（日） ↔ /en/fivem-gtarp/what-is-fivem（英）
 // 掲示板・servers・thread などユーザー投稿/動的ページは英語版を作らない（ここに含めない）。
 
-import { isHiddenNewsId } from '@/data/news';
+import { isUnpublishedNewsId } from '@/data/news';
 
 /** 日英の対がある静的ルート（日本語側の論理パス）。 */
 export const LOCALIZED_STATIC_PATHS: string[] = [
@@ -41,7 +41,7 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
 ];
 
 /** ニュース記事（/news/:id）は日英の対がある（記事データに titleEn/bodyEn を持つ）。
- *  ただし一時的に非表示にしている記事（data/news.ts の HIDDEN_NEWS_IDS）は
+ *  ただし一時非表示・公開終了の記事（data/news.ts の HIDDEN / GONE_NEWS_IDS）は
  *  そもそも配信されないため、言語トグル・hreflang の対象から外す。 */
 const NEWS_PATH_RE = /^\/news\/(\d+)$/;
 
@@ -54,6 +54,6 @@ const FIELD_NOTE_PATH_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)\
  */
 export function isLocalizedPath(jaPath: string): boolean {
   const news = NEWS_PATH_RE.exec(jaPath);
-  if (news) return !isHiddenNewsId(news[1]);
+  if (news) return !isUnpublishedNewsId(news[1]);
   return LOCALIZED_STATIC_PATHS.includes(jaPath) || FIELD_NOTE_PATH_RE.test(jaPath);
 }

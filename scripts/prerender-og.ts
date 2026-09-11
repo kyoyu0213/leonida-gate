@@ -13,9 +13,11 @@ import { dirname, resolve } from 'node:path';
 import {
   newsArticles,
   isHiddenNewsId,
+  isGoneNewsId,
   isRedirectedNewsId,
   isNoindexNewsId,
   HIDDEN_NEWS_IDS,
+  GONE_NEWS_IDS,
   REDIRECTED_NEWS_IDS,
 } from '../client/src/data/news';
 import { injectSsrBody } from './lib/inject-ssr-body';
@@ -198,6 +200,9 @@ for (const article of newsArticles) {
   // URL は vercel.json が /fivem-gtarp へ 302 する。記事データ自体は残っているので、
   // HIDDEN_NEWS_IDS から id を消して再ビルドすればそのまま復活する。
   if (isHiddenNewsId(article.id)) continue;
+  // 公開終了の記事（GONE_NEWS_IDS）も生成しない。静的HTMLがあると rewrite より先に
+  // 配信されて 410（api/gone.js）にならないため、ここで作らないことが 410 の前提になる。
+  if (isGoneNewsId(article.id)) continue;
   // 301統合済みの記事（id17→19）も生成しない。URL は必ずリダイレクトされるため、
   // 生成しても配信されない死んだファイルになる。
   if (isRedirectedNewsId(article.id)) continue;
@@ -217,6 +222,7 @@ console.log(
     (HIDDEN_NEWS_IDS.length
       ? `（非表示 ${HIDDEN_NEWS_IDS.length}件はスキップ: id ${HIDDEN_NEWS_IDS.join(', ')}`
       : '（') +
+    (GONE_NEWS_IDS.length ? `公開終了(410): id ${GONE_NEWS_IDS.join(', ')}` : '') +
     (REDIRECTED_NEWS_IDS.length ? ` / 301統合: id ${REDIRECTED_NEWS_IDS.join(', ')}）` : '）') +
     (adFree ? `（うち広告なし ${adFree} ページ）` : ''),
 );

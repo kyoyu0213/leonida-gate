@@ -146,5 +146,6 @@ console.log(
           : '除外（EN_SITE_ENABLED=false・公開停止中）'
     }）` +
     `（記事除外 ${newsIds.excluded.size}件: 非表示 ${newsIds.hidden.join(',')} / ` +
+    `公開終了(410) ${newsIds.gone.join(',')} / ` +
     `301統合 ${newsIds.redirected.join(',')} / noindex ${newsIds.noindex.join(',')}）`,
 );
