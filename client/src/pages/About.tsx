@@ -4,8 +4,9 @@ import { useSeo } from '@/hooks/useSeo';
 import SiteFooter from '@/components/SiteFooter';
 
 // 運営者情報・編集方針（About）。Terms と同じ固定ページの型（見出し＋段落）で組む。
-// 本文はハウススタイル（常体・三人称・ボールドなし）。h3 は編集方針の各項目に使う。
-type Block = { p: string } | { h3: string } | { contact: true };
+// 本文はハウススタイル（常体・三人称・ボールドなし）。h3 は各セクション内の小見出しに使う。
+// link は段落1つぶんのサイト内リンク（href は日本語側の論理パス。英語ページでは /en を前に付ける）。
+type Block = { p: string } | { h3: string } | { link: { href: string; label: string } } | { contact: true };
 interface Section {
   h: string;
   blocks: Block[];
@@ -31,6 +32,29 @@ const JA: AboutContent = {
           p: 'GTA6 FEED は、Grand Theft Auto VI（GTA6）と FiveM／GTARP に関する情報を、日本語で扱うファンメディアである。GTA6 の最新情報・分析記事、FiveM／GTARP の解説・ガイド、コミュニティ掲示板、サーバー募集板を通じて、日本語圏の GTA6・FiveM ファンのための情報拠点となることを目指している。',
         },
         { p: '本サイトは個人によって運営されている。運営主体は「GTA6 FEED編集部」として表記する。' },
+      ],
+    },
+    {
+      h: '運営者の取り組み',
+      blocks: [
+        {
+          p: 'GTA6 FEED の運営者は、FiveM／GTARP を外から解説するだけでなく、自分で手を動かして確かめることを重視している。サイト内の体験記は、いずれも運営者自身の一次体験にもとづく記録である。',
+        },
+        { h3: 'FiveMサーバーの自作（開発日記）' },
+        {
+          p: '2026年5月から FiveM サーバーをゼロから構築し、その過程を「FiveM開発日記」として公開している。txAdmin と vMenu の導入、古い MLO（建物・内装の追加データ）を現在の環境で動くようにする修正、開発用リソース「Simple Teleport」の自作と MIT License での公開など、実際の作業とそこでのつまずきをそのまま記録している。FiveM／GTARP の解説記事は、この実作業で得た知見をもとにしている。',
+        },
+        { link: { href: '/fivem-gtarp/field-notes/dev-diary', label: 'FiveM開発日記の一覧' } },
+        { h3: '日本語RPサーバーの訪問取材（訪問記）' },
+        {
+          p: '日本語の FiveM／GTARP サーバーに運営者が実際に参加し、街の雰囲気、初期資金、独自のシステム、同時接続数などを自分で確かめた記録を「訪問記」として公開している。これまでに Helios City、Refloria Town、Lien City、Stella City、ALTF4 RP Japan、ユメグラを訪問した。',
+        },
+        { p: '訪問先はすべて運営者自身が選んでおり、サーバー運営者からの依頼や対価は一切受けていない。' },
+        { link: { href: '/fivem-gtarp/field-notes/visit-note', label: 'GTARPサーバー訪問記の一覧' } },
+        { h3: '配信者サーバーの継続的な記録' },
+        {
+          p: 'SURGE Town などの配信者サーバーについては、各参加者の配信やクリップを追いながら、街で起きた出来事を日ごとに記録している。',
+        },
       ],
     },
     {
@@ -102,6 +126,31 @@ const EN: AboutContent = {
         },
         {
           p: 'This site is operated by an individual. The operator is credited as the “GTA6 FEED Editorial Team.”',
+        },
+      ],
+    },
+    {
+      h: 'What the Operator Does',
+      blocks: [
+        {
+          p: 'The operator of GTA6 FEED does not just explain FiveM / GTARP from the outside, but puts weight on trying things hands-on. The Field Notes on this site are all records of the operator’s own first-hand experience.',
+        },
+        { h3: 'Building a FiveM server (Dev Diary)' },
+        {
+          p: 'Since May 2026, the operator has been building a FiveM server from scratch and publishing the process as the “FiveM Dev Diary.” It records the actual work and the stumbles along the way: installing txAdmin and vMenu, fixing an old MLO (additional building/interior data) so it runs in the current environment, and writing the development resource “Simple Teleport” and releasing it under the MIT License. The FiveM / GTARP explainer articles draw on what was learned through this hands-on work.',
+        },
+        { link: { href: '/fivem-gtarp/field-notes/dev-diary', label: 'All FiveM Dev Diary entries' } },
+        { h3: 'Visiting Japanese RP servers (Visit Notes)' },
+        {
+          p: 'The operator actually joins Japanese FiveM / GTARP servers and publishes “Visit Notes” recording what was checked first-hand: the atmosphere of the city, starting money, unique systems, concurrent player counts, and so on. Servers visited so far are Helios City, Refloria Town, Lien City, Stella City, ALTF4 RP Japan, and Yumegura.',
+        },
+        {
+          p: 'Every destination is chosen by the operator, and no request or compensation of any kind has been received from any server’s administrators.',
+        },
+        { link: { href: '/fivem-gtarp/field-notes/visit-note', label: 'All GTARP server Visit Notes' } },
+        { h3: 'Ongoing records of streamer servers' },
+        {
+          p: 'For streamer servers such as SURGE Town, the operator follows each participant’s streams and clips and records what happened in the city day by day.',
         },
       ],
     },
@@ -203,6 +252,18 @@ export default function About() {
                   return (
                     <p key={i} className={`${p} ${tight ? '' : 'mt-3'}`}>
                       {block.p}
+                    </p>
+                  );
+                }
+                if ('link' in block) {
+                  return (
+                    <p key={i} className={`${p} mt-3`}>
+                      <a
+                        href={`${prefix}${block.link.href}`}
+                        className="text-[#22d3ee] underline hover:text-white transition-colors"
+                      >
+                        → {block.link.label}
+                      </a>
                     </p>
                   );
                 }
