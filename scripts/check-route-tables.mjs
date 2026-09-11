@@ -18,6 +18,11 @@
 //  チェックが素通りするのを防ぐ）。
 //
 //  実行: node scripts/check-route-tables.mjs
+//
+//  ※ このチェックは sitemap.xml の生成（generate-sitemap.mjs）より前に走るので、
+//    生成物そのものは見ない。配信される dist/public/sitemap.xml の中身
+//    （/en の混入・固定ページの欠落・実体の無いURL・noindex）は build の最後に
+//    scripts/check-sitemap.mjs が検査する。
 // ============================================================================
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
