@@ -48,6 +48,7 @@ export const STATIC_ROUTES = [
   { path: '/fivem-gtarp/tools/image-mask', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/chara-maker', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/crew-name-generator', priority: '0.6', changefreq: 'monthly' },
+  { path: '/fivem-gtarp/tools/rp-scenario', priority: '0.6', changefreq: 'monthly' },
   // 地図ツールは種データがそろって公開するまで sitemap に載せない（client/src/data/maps/release.ts）。
   ...(isMapReleased('gta5')
     ? [{ path: '/fivem-gtarp/tools/gta5-map', priority: '0.6', changefreq: 'weekly' }]

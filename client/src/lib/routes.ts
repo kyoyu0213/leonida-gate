@@ -34,6 +34,7 @@ export const LOCALIZED_STATIC_PATHS: string[] = [
   '/fivem-gtarp/tools/image-mask',
   '/fivem-gtarp/tools/chara-maker',
   '/fivem-gtarp/tools/crew-name-generator',
+  '/fivem-gtarp/tools/rp-scenario',
   '/fivem-gtarp/tools/gta5-map',
   '/about',
   '/contact',

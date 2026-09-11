@@ -217,7 +217,10 @@ export default function CrewNameTool() {
               <LocalLink href="/fivem-gtarp/tools/chara-maker">{t('fg.card.charaMaker.title')}</LocalLink>
               {t('toolN.related.mid')}
               <LocalLink href="/fivem-gtarp/what-is-gtarp">{t('toolN.related.gtarp')}</LocalLink>
-              {t('toolN.related.post')}
+              {t('toolN.related.post')}<br />
+              {t('toolN.related2.pre')}
+              <LocalLink href="/fivem-gtarp/tools/rp-scenario">{t('fg.card.rpScenario.title')}</LocalLink>
+              {t('toolN.related2.post')}
             </p>
           </div>
         </div>

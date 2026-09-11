@@ -1,5 +1,5 @@
 import Header from '@/components/Header';
-import { ImageDown, EyeOff, UserRoundPlus, Users, Map as MapIcon, ArrowRight, ChevronLeft } from 'lucide-react';
+import { ImageDown, EyeOff, UserRoundPlus, Users, Clapperboard, Map as MapIcon, ArrowRight, ChevronLeft } from 'lucide-react';
 import { MAP_RELEASED } from '@/data/maps/release';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
@@ -15,6 +15,7 @@ const CARDS = [
   { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
   { titleKey: 'fg.card.charaMaker.title', descKey: 'fg.card.charaMaker.desc', href: '/fivem-gtarp/tools/chara-maker', icon: UserRoundPlus, accent: '#ff8a3d' },
   { titleKey: 'fg.card.crewName.title', descKey: 'fg.card.crewName.desc', href: '/fivem-gtarp/tools/crew-name-generator', icon: Users, accent: '#fbbf24' },
+  { titleKey: 'fg.card.rpScenario.title', descKey: 'fg.card.rpScenario.desc', href: '/fivem-gtarp/tools/rp-scenario', icon: Clapperboard, accent: '#c084fc' },
   // 地図ツールは公開フラグが立つまで出さない（client/src/data/maps/release.ts）。
   ...(MAP_RELEASED.gta5
     ? [{ titleKey: 'fg.card.gta5Map.title', descKey: 'fg.card.gta5Map.desc', href: '/fivem-gtarp/tools/gta5-map', icon: MapIcon, accent: '#34d399' }]

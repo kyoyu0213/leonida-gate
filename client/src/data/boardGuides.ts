@@ -558,7 +558,7 @@ export const PAGE_GUIDES: Record<PageGuideKey, { ja: BoardGuideContent; en: Boar
   },
 };
 
-export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker' | 'crew-name' | 'gta5-map';
+export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker' | 'crew-name' | 'rp-scenario' | 'gta5-map';
 
 export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {
   tools: {
@@ -873,6 +873,103 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
           heading: 'Disclaimer',
           body: [
             'You are free to use the generated names and tags. Names are assembled from made-up parts; any match with a real organisation, company, or group is coincidental and implies no connection. Rights notices for Rockstar Games, GTA and GTA Online are as shown in the credits at the bottom of the page.'
+          ]
+        }
+      ]
+    },
+  },
+
+  'rp-scenario': {
+    ja: {
+      lead: 'FiveM/GTA RPで「今日は何をしよう」「この場面をどう始めよう」と迷ったときに、ロールプレイのシチュエーション（お題）をワンクリックで出すツールです。7つのジャンルから、場所・人物・物・動機を組み合わせたお題を3案ずつ作り、ひとひねりと想定ロールなどのタグを添えます。生成はすべてブラウザ内で行われ、選んだ条件も結果も外部へ送信されません（通信ゼロ）。',
+      sections: [
+        {
+          heading: 'RPお題の使いどころ',
+          body: [
+            'ソロのキャラ動機づけ：一人でログインしたとき、キャラクターが街で動く理由が決まっていないと、何となく歩き回るだけで終わりがちです。お題を1つ引いて「今日はこの件を片付けに行く」と決めるだけで、行き先や話しかける相手が自然に決まります。',
+            'シーンの起点：仲間とRPを始めるとき、最初の状況をお題に任せると、誰が場面を切り出すかで迷わずに済みます。「ひとひねり」は、場面が落ち着いてきたところで入れる展開の種として使えます。',
+            'サーバーイベントのネタ出し：運営やイベント担当が企画を考えるときの叩き台にもなります。おすすめ人数が「4人以上/イベント向き」の案は、複数の職業や勢力を巻き込む形に広げやすいお題です。'
+          ]
+        },
+        {
+          heading: '7つのジャンル',
+          body: [
+            '犯罪：受け渡し・運搬・依頼など、ギャングや犯罪者として動く仕事の場面です。取引の相手や運ぶ物が毎回変わるので、同じ組織でも違う一日を作れます。',
+            '警察・EMS：通報や事故、無線で入る不審者の情報など、緊急系の職業が出動する場面です。現場に着いてから何が分かるかを考える起点になります。',
+            '日常：いつもの一日や待ち合わせに、ちょっとした異物が入り込む場面です。一般市民や民間の職業のRPに向いています。',
+            'ビジネス：商談や持ちかけられた話など、店や会社を経営するキャラクター向けの場面です。お金と信用をどう扱うかがRPの軸になります。',
+            'ドラマ：呼び出しや思わぬ鉢合わせなど、人間関係が動く場面です。職業を問わず、キャラクターの過去や本音を掘り下げたいときに使えます。',
+            'カオス：なぜか始まった騒ぎや、妙な勝負に巻き込まれるコメディ寄りの場面です。重くなりすぎた空気を変えたいときにも向いています。',
+            '事件・サバイバル：街が突然騒然となる、手元の物だけで切り抜けるといった緊迫した場面です。緊急系の職業と一般のキャラクターが同じ現場に居合わせる形にしやすいジャンルです。'
+          ]
+        },
+        {
+          heading: 'タグの見かた',
+          body: [
+            '想定ロール：そのお題がどの立場のキャラクターに向いているかの目安です。「誰でも」とあるお題は、職業を問わず使えます。',
+            '雰囲気：シリアス・ライト・ドライ・エモ・カオス・緊迫といった、場面のトーンの目安です。同じお題でも、演じ方しだいで雰囲気は変えられます。',
+            '人数（おすすめ人数）：ソロ向き・2〜3人向き・4人以上/イベント向きのうち、どれで遊ぶと回しやすいかの目安です。ジャンルとは関係なく付くので、実際の人数に合わせて場面を広げたり絞ったりしてください。'
+          ]
+        },
+        {
+          heading: '使いかた',
+          body: [
+            '1. 「犯罪」「警察・EMS」「日常」「ビジネス」「ドラマ」「カオス」「事件・サバイバル」「おまかせ」の8つから、ジャンルを選びます。おまかせにすると、3案それぞれのジャンルがランダムに決まります。',
+            '2. 「お題を生成（3案）」を押すと、お題の本文とタグが3案並びます。約6割の案には「ひとひねり」が付きます。気に入るものがなければ「もう一度生成」で入れ替えます。',
+            '3. 使いたい案の「お題をコピー」を押すと、本文とひとひねりがまとめてクリップボードに入ります。Discordで仲間に共有したり、メモに残したりして使ってください。'
+          ]
+        },
+        {
+          heading: '免責',
+          body: [
+            '生成されるお題はすべてフィクションで、自由に使って構いません。実在の事件・人物・団体とは一切関係ありません。実際にプレイするときは各サーバーのルールを最優先し、犯罪系のお題でも、そのサーバーで認められていない行為は行わないでください。'
+          ]
+        }
+      ]
+    },
+    en: {
+      lead: 'A tool for the moments on FiveM/GTA RP when you are not sure what to do today or how to open a scene: one click gives you a roleplay situation to work from. It builds three scenarios at a time from seven genres by combining a place, a person, an object, and a motive, and adds a twist and tags such as the suggested role. Everything is generated in your browser — neither your choices nor the results are sent anywhere.',
+      sections: [
+        {
+          heading: 'When to use it',
+          body: [
+            'Motivating a solo character: log in alone without a reason to go anywhere and you tend to just wander. Draw one scenario and decide "today I am sorting this out", and where to go and who to talk to follow naturally.',
+            'Starting a scene: when you play with friends, letting a scenario set the opening situation saves everyone from waiting on who will kick things off. Keep the twist in reserve and drop it in once the scene settles.',
+            'Planning a server event: organisers can use the scenarios as a starting draft. Ideas marked "4+ players / events" are the easiest to expand into something that pulls in several jobs or factions.'
+          ]
+        },
+        {
+          heading: 'The seven genres',
+          body: [
+            'Crime: handoffs, deliveries and jobs taken on as a gang member or criminal. The contact and the cargo change every time, so the same crew can have a different day.',
+            'Police / EMS: calls, accidents and radio reports of someone suspicious — scenes where the emergency services roll out. A starting point for working out what they find on arrival.',
+            'Everyday: an ordinary day or a simple meet-up with something slightly off thrown in. It suits civilians and characters with ordinary jobs.',
+            'Business: negotiations and offers for characters who run a shop or a company. Money and trust sit at the centre of the scene.',
+            'Drama: a summons or an unexpected run-in — scenes where relationships shift. Use it for any character when you want to dig into their past or what they really think.',
+            'Chaos: comedy-leaning scenes where a commotion starts for no clear reason or you get dragged into a strange contest. Handy for lightening a mood that has become too heavy.',
+            'Incident: tense scenes where the street suddenly erupts or you have to get through with only what is in your hands. It makes it easy to put emergency workers and ordinary characters in the same place.'
+          ]
+        },
+        {
+          heading: 'Reading the tags',
+          body: [
+            'Role: a guide to which kind of character the scenario suits. "Anyone" means it works regardless of job.',
+            'Mood: the tone of the scene — serious, light, dry, emotional, chaotic or tense. How you play it can still change the mood.',
+            'Players: whether it runs best solo, with two or three people, or with four or more / as an event. It is assigned independently of genre, so widen or narrow the scene to fit your group.'
+          ]
+        },
+        {
+          heading: 'How to use it',
+          body: [
+            '1. Pick a genre from the eight options: Crime, Police / EMS, Everyday, Business, Drama, Chaos, Incident, or Random. With Random, each of the three scenarios gets its own genre.',
+            '2. Press \'Generate 3 scenarios\' to see three scenarios with their tags. About six in ten come with a twist. If none of them fit, press \'Generate again\' to replace them.',
+            '3. Press \'Copy scenario\' on the one you want to put the scenario and its twist on your clipboard, ready to share on Discord or keep in your notes.'
+          ]
+        },
+        {
+          heading: 'Disclaimer',
+          body: [
+            'Every generated scenario is fiction and free to use, with no connection to any real event, person, or organisation. When you actually play, each server\'s rules come first — even with a crime scenario, do not do anything that server does not allow.'
           ]
         }
       ]

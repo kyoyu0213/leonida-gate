@@ -33,8 +33,12 @@ const ORIGIN = 'https://gta6-feed.com';
 
 /** 総数の想定レンジ。外れたら warn（記事の増減で動くので fail にはしない）。 */
 const LOC_RANGE = [80, 130];
-/** 名指しで存在を確かめるツール（過去に古い sitemap で消えていたもの）。 */
-const MUST_HAVE = ['/fivem-gtarp/tools/chara-maker', '/fivem-gtarp/tools/crew-name-generator'];
+/** 名指しで存在を確かめる独自ツール（古い sitemap が紛れ込むと真っ先に消えるもの）。 */
+const MUST_HAVE = [
+  '/fivem-gtarp/tools/chara-maker',
+  '/fivem-gtarp/tools/crew-name-generator',
+  '/fivem-gtarp/tools/rp-scenario',
+];
 
 const target = resolve(ROOT, process.argv[2] || 'dist/public/sitemap.xml');
 const errors = [];

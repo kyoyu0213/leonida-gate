@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MAP_RELEASED } from '@/data/maps/release';
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, UserRoundPlus, Map as MapIcon, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, UserRoundPlus, Clapperboard, Map as MapIcon, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { getArticleById, isNoindexNewsId, formatArticleDate, CATEGORY_CONFIG } from '@/data/news';
 import { useSeo } from '@/hooks/useSeo';
@@ -84,6 +84,7 @@ const GROUPS: CardGroup[] = [
       // 説明文は i18n の fg.card.charaMaker.* が単一ソースなので、ハブと食い違わない。
       { titleKey: 'fg.card.charaMaker.title', descKey: 'fg.card.charaMaker.desc', href: '/fivem-gtarp/tools/chara-maker', icon: UserRoundPlus, accent: '#ff8a3d' },
       { titleKey: 'fg.card.crewName.title', descKey: 'fg.card.crewName.desc', href: '/fivem-gtarp/tools/crew-name-generator', icon: Users, accent: '#fbbf24' },
+      { titleKey: 'fg.card.rpScenario.title', descKey: 'fg.card.rpScenario.desc', href: '/fivem-gtarp/tools/rp-scenario', icon: Clapperboard, accent: '#c084fc' },
       // 地図ツールは公開フラグが立つまで出さない（client/src/data/maps/release.ts）。
       ...(MAP_RELEASED.gta5
         ? [{ titleKey: 'fg.card.gta5Map.title', descKey: 'fg.card.gta5Map.desc', href: '/fivem-gtarp/tools/gta5-map', icon: MapIcon, accent: '#34d399' }]

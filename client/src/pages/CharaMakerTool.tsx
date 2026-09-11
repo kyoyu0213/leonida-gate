@@ -485,7 +485,10 @@ export default function CharaMakerTool() {
               {t('toolC.footnote.b')}<br />
               {t('toolC.related.pre')}
               <LocalLink href="/fivem-gtarp/tools/crew-name-generator">{t('fg.card.crewName.title')}</LocalLink>
-              {t('toolC.related.post')}
+              {t('toolC.related.post')}<br />
+              {t('toolC.related2.pre')}
+              <LocalLink href="/fivem-gtarp/tools/rp-scenario">{t('fg.card.rpScenario.title')}</LocalLink>
+              {t('toolC.related2.post')}
             </p>
           </div>
         </div>
