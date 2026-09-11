@@ -2387,7 +2387,7 @@ GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッ�
     description:
       '米フロリダ州Miami-Dade Countyが、GTA6の発売に合わせてRockstar Gamesとのプロモーション提携を検討していると報じられ、その案のひとつとしてマイアミ国際空港を一時的に「Vice City Airport」とする可能性が浮上した。これに郡委員と保安官が共同声明で反対を表明。「Miami-Dade County is not Vice City.」と明言し、発売前から思わぬ議論に発展している。',
     icon: '✈️',
-    image: '/images/news/gta6-vice-city-airport-miami/eyecatch.webp',
+    image: '/images/news/gta6-official/vice-city-postcard.webp',
     category: 'topic',
     date: '2026-09-04',
     publishedAt: '2026-09-04 21:30',
@@ -2403,8 +2403,6 @@ GTA6 FEEDのストリーマーサーバー板に、SURGE Townの総合スレッ�
     fullContent: `# マイアミ国際空港が「Vice City Airport」に？ GTA6発売プロモーションを巡り地元当局が反発
 
 『Grand Theft Auto VI（GTA6）』の舞台「Vice City」が、現実のマイアミにまで飛び出すかもしれない。米フロリダ州Miami-Dade Countyで、GTA6の発売に合わせてRockstar Gamesとのプロモーション提携を検討していると報じられ、その案のひとつとしてMiami International Airport（マイアミ国際空港）を一時的に「Vice City Airport」として展開する可能性が浮上した。ところが、この計画に地元の郡委員と保安官がそろって反対を表明し、発売前から思わぬ議論に発展している。
-
-*※本記事に掲載している画像は、記事の内容をイメージしやすくするためにAIで生成したものです。実際のマイアミ国際空港の写真や、Rockstar Gamesが公開した素材ではありません。*
 
 ---
 
@@ -2454,7 +2452,7 @@ GTA6のVice Cityは、Miamiや南フロリダを強く意識した架空世界�
 
 ---
 
-> **注記：** 本記事は、2026年9月3日に発表されたMiami-Dade County CommissionerのJuan Carlos Bermudez氏とMiami-Dade SheriffのRosie Cordero-Stutz氏による共同声明、およびNBC Miami・WLRNの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Miami-Dade Countyとは一切関係がない。掲載画像は記事内容のイメージとしてAIで生成したものであり、実在の施設や公開素材の写真ではない。マイアミ国際空港の「Vice City Airport」化やRockstar Gamesとの提携は、本記事執筆時点でいずれも正式決定・正式発表されていない。`,
+> **注記：** 本記事は、2026年9月3日に発表されたMiami-Dade County CommissionerのJuan Carlos Bermudez氏とMiami-Dade SheriffのRosie Cordero-Stutz氏による共同声明、およびNBC Miami・WLRNの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Miami-Dade Countyとは一切関係がない。掲載画像はRockstar Gamesが公開したVice Cityの公式アートワークであり、マイアミ国際空港や本記事で扱っている提携計画を写したものではない。マイアミ国際空港の「Vice City Airport」化やRockstar Gamesとの提携は、本記事執筆時点でいずれも正式決定・正式発表されていない。`,
   },
   {
     id: 59,
@@ -5115,7 +5113,7 @@ That history carries on in the servers that moved to FiveM, in the communities t
     description:
       "Rockstar Northで約3時間『GTA VI』を見たTGGから追加情報が出ている。窓割り・Slim Jim・Key Clonerと段階が分かれた車両盗難、スマホで盗む前に価値とセキュリティを確認できるスキャンアプリ、Burger Shotのドライブスルー、そして犬のフン袋を拾ってNPCへ投げられるという細かすぎるインタラクション。Rob Nelson氏の説明と合わせて整理する。",
     icon: "🚗",
-    image: "/images/news/gta6-car-theft-drive-thru/eyecatch.webp",
+    image: "/images/news/gta6-official/raul-bautista-02.webp",
     category: "topic",
     date: "2026-08-30",
     publishedAt: "2026-08-30 18:30",
@@ -5139,7 +5137,7 @@ That history carries on in the servers that moved to FiveM, in the communities t
 
 今回は、TGGの追加証言とRockstar North共同スタジオ責任者Rob Nelson氏の説明を中心に、『GTA VI』のオープンワールドがどこまで変わろうとしているのかを整理する。
 
-*※TGGがRockstar Northで見聞きした内容と、Rockstar開発者がメディアへ直接説明した内容を含みます。TGGのみが伝えている内容については、その旨が分かるように記載しています。本記事に掲載している画像は、内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面ではありません。*
+*※TGGがRockstar Northで見聞きした内容と、Rockstar開発者がメディアへ直接説明した内容を含みます。TGGのみが伝えている内容については、その旨が分かるように記載しています。本文中の画像は、内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面ではありません（アイキャッチはRockstar Gamesが公開した公式スクリーンショットです）。*
 
 ---
 
@@ -5359,7 +5357,7 @@ Extended Lookで見えたのは、Leonidaのほんの一部だったのかもし
 
 ---
 
-> **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。燃料・EV充電、車種ごとの積載量、購入できるガレージ、Pay 'n' Sprayや車両改造、Nitrousに関する内容も、現時点ではTGGがRockstar Northで得た情報としての報告であり、Rockstarが個別に正式発表した仕様ではない。日本語部分は編集部訳・要約を含む。掲載画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。`,
+> **注記：** 本記事のうち車両盗難システム、GPSトラッカー、カージャック、NPCの多様性に関する部分は、Rockstar NorthのRob Nelson氏がIGN・ファミ通などのメディアへ直接説明した内容にもとづく。Burger Shotの店内利用およびドライブスルーについては、現時点ではRockstar Northで『GTA VI』を見たTGGの証言が主な情報源であり、Rockstar Gamesが正式発表した仕様ではない。犬のフン袋のインタラクションはTGGとEsquire Australiaの双方が伝えている。燃料・EV充電、車種ごとの積載量、購入できるガレージ、Pay 'n' Sprayや車両改造、Nitrousに関する内容も、現時点ではTGGがRockstar Northで得た情報としての報告であり、Rockstarが個別に正式発表した仕様ではない。日本語部分は編集部訳・要約を含む。本文中の画像はいずれも記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式UIではない。アイキャッチはRockstar Gamesが公開した公式スクリーンショットであり、車両盗難やドライブスルーの場面そのものを写したものではない。`,
     titleEn:
       "Grand Theft Auto, Literally: TGG on GTA VI's Layered Car Theft, Drive-Thrus and Absurdly Detailed NPCs",
     displayTitleEn:
@@ -5381,7 +5379,7 @@ The most detailed of them is TGG, the GTA-focused YouTuber who was invited to Ro
 
 Below, TGG's additional testimony alongside explanations from Rob Nelson, co-studio head at Rockstar North, and what they suggest about how far GTA VI's open world is changing.
 
-*Note: this article contains both what TGG saw and heard at Rockstar North and what Rockstar developers explained directly to the press. Anything reported only by TGG is identified as such. All images here were generated with AI to illustrate the article and are not actual game footage.*
+*Note: this article contains both what TGG saw and heard at Rockstar North and what Rockstar developers explained directly to the press. Anything reported only by TGG is identified as such. The images in the body were generated with AI to illustrate the article and are not actual game footage (the header image is an official screenshot released by Rockstar Games).*
 
 ---
 
@@ -5601,7 +5599,7 @@ Collected TGG's additional testimony and Rob Nelson's explanations, covering tie
 
 ---
 
-> **Note:** The portions of this article covering the vehicle theft system, GPS trackers, carjacking and NPC variety are based on what Rob Nelson of Rockstar North explained directly to outlets including IGN and Famitsu. Entering Burger Shot and using its drive-thru currently rests mainly on the account of TGG, who saw GTA VI at Rockstar North, and is not a specification announced by Rockstar Games. The dog waste bag interaction is reported by both TGG and Esquire Australia. Fuel and EV charging, per-vehicle cargo capacity, purchasable garages, Pay 'n' Spray and vehicle modification, and the nitrous item are likewise reported at this point as information TGG obtained at Rockstar North, not specifications Rockstar has individually announced. Japanese-language passages are summarized or paraphrased by the editorial team. All images were generated with AI to illustrate the article and are not actual game footage or official UI.`,
+> **Note:** The portions of this article covering the vehicle theft system, GPS trackers, carjacking and NPC variety are based on what Rob Nelson of Rockstar North explained directly to outlets including IGN and Famitsu. Entering Burger Shot and using its drive-thru currently rests mainly on the account of TGG, who saw GTA VI at Rockstar North, and is not a specification announced by Rockstar Games. The dog waste bag interaction is reported by both TGG and Esquire Australia. Fuel and EV charging, per-vehicle cargo capacity, purchasable garages, Pay 'n' Spray and vehicle modification, and the nitrous item are likewise reported at this point as information TGG obtained at Rockstar North, not specifications Rockstar has individually announced. Japanese-language passages are summarized or paraphrased by the editorial team. The images in the body were all generated with AI to illustrate the article and are not actual game footage or official UI. The header image is an official screenshot released by Rockstar Games and does not show car theft or the drive-thru itself.`,
   },
   {
     id: 53,
@@ -8360,7 +8358,7 @@ And finally, Brian's "knowing when to quit is what matters" will not leave my ea
     description:
       "Rockstar Gamesが2026年7月、世界各国の一部クリエイターをスコットランドのRockstar Northへ秘密裏に招待し、『Grand Theft Auto VI』を先行披露していたことが明らかになった。オーストラリアのTGG、スペインのEl Rubius、ブラジルのDavy Jones、イタリアのMike ShowShaらが訪問を公表し、Extended Look公開後の情報解禁を予告している。",
     icon: "🎥",
-    image: "/images/news/gta6-creators-rockstar-north/eyecatch.webp",
+    image: "/images/news/gta6-official/jason-duval-01.webp",
     category: "topic",
     date: "2026-08-27",
     publishedAt: "2026-08-27 22:00",
@@ -8893,9 +8891,7 @@ Lloyd氏はGTA6について、「これまで作った中で最も詳細で多�
 
 こうした世界を作るため、Rockstarそのものの制作規模も大きく変わっている。
 
-![夕暮れのLeonidaの街並みを高所から見下ろしたイメージ。高速道路、ヘリコプター、海沿いの高層ビル群が広がる](/images/news/gta6-dazed-interview/leonida-skyline.webp)
-
-*画像: 内容を分かりやすく伝えるためのAI生成イメージ画像。実際のGTA6のゲーム画面・公式素材ではない。*
+![色鮮やかな壁画の前に立つRaul Bautistaの公式アートワーク](/images/news/gta6-official/raul-bautista-art.webp)
 
 Dazedによれば、GTA6を制作するRockstarのチーム規模は、『Red Dead Redemption 2』発売時と比較して2倍以上に拡大した。
 
@@ -9085,9 +9081,7 @@ More striking still: Rockstar's Los Angeles office now has a department working 
 
 Building a world like this has changed the scale of Rockstar itself.
 
-![A high vantage over Leonida at dusk: highways, a helicopter, and towers along the water](/images/news/gta6-dazed-interview/leonida-skyline.webp)
-
-*Image: an AI-generated illustration made to help convey the story. It is not GTA6 footage or official Rockstar material.*
+![Official artwork of Raul Bautista standing in front of a colorful mural](/images/news/gta6-official/raul-bautista-art.webp)
 
 According to Dazed, the Rockstar team working on GTA6 is more than twice the size it was when *Red Dead Redemption 2* shipped.
 
@@ -9782,7 +9776,7 @@ GTA6発売まで約3か月。本編とはまったく別の場所で、Rockstar�
 
 > **注記【8月24日更新】：** 本記事は8月23日時点で報じられていた情報をもとに、デッドマン・スイッチについて「Cyberleek側の未確認の主張」として掲載した。その後、この情報の発端となった投稿自体がCyberleek本人によるものではなく、第三者による偽情報だった可能性が高いことが判明したため、8月24日に記事冒頭および該当箇所を訂正した。
 >
-> 現時点でCyberleekがGTA6の完全なビルドを保有していることや、拘束時にデータを自動公開する仕組みを用意していることを裏付ける信頼できる情報は確認できていない。ネット上で「GTA6完全版」「GTA6流出ビルド」などとして配布されているファイルについても、本物であることは確認されていない。本記事に掲載している画像はすべてAIで生成したイメージ画像であり、実際の流出素材・法廷資料ではない。`,
+> 現時点でCyberleekがGTA6の完全なビルドを保有していることや、拘束時にデータを自動公開する仕組みを用意していることを裏付ける信頼できる情報は確認できていない。ネット上で「GTA6完全版」「GTA6流出ビルド」などとして配布されているファイルについても、本物であることは確認されていない。本文中の画像はすべてAIで生成したイメージ画像であり（各画像のキャプションに記載）、実際の流出素材・法廷資料ではない。アイキャッチはRockstar Gamesが公開した公式スクリーンショットである。`,
     titleEn:
       "[Correction] Cyberleek's \"Release GTA6 If Arrested\" Was Likely Disinformation — What Emerged After the Dead Man's Switch Story",
     displayTitleEn:
@@ -10076,7 +10070,7 @@ Roughly three months to launch. In a place entirely apart from the game itself, 
 
 > **Note [updated August 24]:** This article was published on the basis of what was being reported as of August 23, presenting the dead man's switch as an unverified claim attributed to Cyberleek. It has since emerged that the post behind that claim was very likely not from Cyberleek but disinformation created by a third party, so the opening and the relevant passages were corrected on August 24.
 >
-> No reliable information currently confirms that Cyberleek holds a complete build of GTA6, or that it has set up any mechanism to publish data automatically if detained. Files distributed online as a full GTA6 build or a leaked GTA6 build have likewise not been confirmed as genuine. Every image in this article is an AI-generated illustration and is not leaked material or a real court filing.`,
+> No reliable information currently confirms that Cyberleek holds a complete build of GTA6, or that it has set up any mechanism to publish data automatically if detained. Files distributed online as a full GTA6 build or a leaked GTA6 build have likewise not been confirmed as genuine. Every image in the body is an AI-generated illustration (as noted in each caption) and is not leaked material or a real court filing. The header image is an official screenshot released by Rockstar Games.`,
   },
   {
     id: 43,
@@ -10474,7 +10468,7 @@ Roughly three months to launch. Somewhere apart from GTA6's own marketing, a sec
 
 今回のGTA6リークを追っていくと、単なる「発売前のゲームが漏れた」というニュースとは少し違う景色が見えてくる。ゲームを「所有する」とは、いま何を意味するのか。その議論のど真ん中に、世界で最も注目されているゲームが引きずり込まれた。
 
-*本記事に掲載している画像は、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり、今回流出したとされる映像・画像そのものではない。*
+*本記事の画像のうち、流出や主張の内容を説明する画像は、内容を分かりやすく伝えるためにAIで生成したイメージ画像であり（各画像のキャプションに記載）、今回流出したとされる映像・画像そのものではない。*
 
 ---
 
@@ -11003,7 +10997,7 @@ Cfx.reの買収、NoPixelとの協業、公式ランチャーへの接続。こ�
 
 ---
 
-注記：本記事は2026年8月16日時点の情報にもとづく。NoPixel公式サイトの記載を除き、9月1日・9月8日の日程、招待人数、ホワイトリストのリセット、「フルリビルド」などはNoPixel創設者Koilの告知を各メディア（RockstarINTEL・GamesRadar+・PCGamesN・GTA BOOM）が報じた内容であり、Rockstar Gamesの公式発表ではない。NoPixel Vの技術基盤については報道が一致しておらず、本記事では断定していない。日本時間は英国夏時間（UTC+1）を基準に換算した目安である。新しい公式情報が出次第、内容を更新する。`,
+注記：本記事は2026年8月16日時点の情報にもとづく。NoPixel公式サイトの記載を除き、9月1日・9月8日の日程、招待人数、ホワイトリストのリセット、「フルリビルド」などはNoPixel創設者Koilの告知を各メディア（RockstarINTEL・GamesRadar+・PCGamesN・GTA BOOM）が報じた内容であり、Rockstar Gamesの公式発表ではない。NoPixel Vの技術基盤については報道が一致しておらず、本記事では断定していない。日本時間は英国夏時間（UTC+1）を基準に換算した目安である。アイキャッチは記事内容をイメージしやすくするためにAIで生成したもので、実際のゲーム画面・公式素材ではない。新しい公式情報が出次第、内容を更新する。`,
     titleEn:
       "The Day GTA RP Arrives on Rockstar's Official Launcher — NoPixel V Closed Beta on September 8, and Where FiveM Goes From Here",
     displayTitleEn:
@@ -11126,7 +11120,7 @@ And a week later, on September 8, the closed beta begins.
 
 ---
 
-Note: This article is based on information as of August 16, 2026. Apart from what is written on the official NoPixel site, the September 1 and September 8 dates, the invite numbers, the whitelist reset, and the "full rebuild" all come from NoPixel founder Koil's announcement as reported by various outlets (RockstarINTEL, GamesRadar+, PCGamesN, GTA BOOM), and are not official Rockstar Games announcements. Reporting does not agree on NoPixel V's technical foundation, and this article does not assert a conclusion. Japan times are approximate, converted from British Summer Time (UTC+1). We will update this article as new official information emerges.`,
+Note: This article is based on information as of August 16, 2026. Apart from what is written on the official NoPixel site, the September 1 and September 8 dates, the invite numbers, the whitelist reset, and the "full rebuild" all come from NoPixel founder Koil's announcement as reported by various outlets (RockstarINTEL, GamesRadar+, PCGamesN, GTA BOOM), and are not official Rockstar Games announcements. Reporting does not agree on NoPixel V's technical foundation, and this article does not assert a conclusion. Japan times are approximate, converted from British Summer Time (UTC+1). The header image was generated with AI to illustrate the article and is not actual game footage or official material. We will update this article as new official information emerges.`,
   },
   {
     id: 40,
@@ -11137,7 +11131,7 @@ Note: This article is based on information as of August 16, 2026. Apart from wha
     description:
       "GTA6の新映像「An Extended Look」は、8月27日にNetflixで先行公開され、その6時間後にYouTubeと公式サイトでも公開されると報じられている。なぜYouTubeではなくNetflixが先なのか。Netflixアニメ『Cyberpunk: Edgerunners』が『Cyberpunk 2077』の再注目につながった事例を手がかりに、ゲームIPが一般エンタメ層へ広がる流れを整理した。",
     icon: "📺",
-    image: "/images/news/gta6-netflix-cyberpunk/eyecatch.webp",
+    image: "/images/news/gta6-official/drequan-priest-art.webp",
     category: "topic",
     date: "2026-08-11",
     publishedAt: "2026-08-11 15:30",
@@ -15453,7 +15447,7 @@ Ultimate Editionの特典は、一度にまとめて付与されるのではな�
     description:
       "GTA6でRPはどうなるのか。NoPixelの公式提携、FiveMの一本化、Project ROMEの噂まで、確定情報・リーク・推測を信頼度ごとに切り分けて整理する。",
     icon: "🎭",
-    image: "/images/news/GTA6RPhadounarunoka.webp",
+    image: "/images/news/gta6-official/real-dimez-art.webp",
     category: "gtarp",
     date: "2026-06-24",
     source: "GTA6 FEED 編集部",
@@ -16831,7 +16825,7 @@ GTA6のSwitch2版をめぐる状況を整理すると、こうなる。
     description:
       "GTA6がこれまでに公開した公式映像は、2023年12月のTrailer 1、2025年5月のTrailer 2、そして2026年8月にNetflixで先行公開された約26分の「An Extended Look」の3本。その間に立っては外れた「第3弾トレーラー」の予想も含めて、全映像を時系列で記録する。",
     icon: "🎬",
-    image: "/images/news/trailersouzarai.webp",
+    image: "/images/news/gta6-official/boobie-ike-art.webp",
     category: "release",
     date: "2026-06-18",
     updatedAt: "2026-09-12",
@@ -17028,7 +17022,7 @@ Trailer 1とTrailer 2はRockstar Gamesの公式YouTubeチャンネルで見ら�
     description:
       "発売日は2026年11月19日（PS5／Xbox Series X|S）で確定。二度の延期の経緯と、プレオーダー開始で日付の確度が高まった理由を整理する。",
     icon: "📅",
-    image: "/images/news/hatubaibikakutei.webp",
+    image: "/images/news/gta6-official/leonida-keys-postcard.webp",
     category: "release",
     date: "2026-06-19",
     source: "Rockstar Games Official",
