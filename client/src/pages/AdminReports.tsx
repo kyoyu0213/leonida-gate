@@ -1,4 +1,15 @@
-import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  Suspense,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentType,
+  type LazyExoticComponent,
+  type ReactNode,
+} from 'react';
 import { Loader2, ShieldCheck, LogOut, EyeOff, Eye, Trash2, Check, ExternalLink, X, Mail, Info, Ban, Search, Pencil } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
@@ -68,6 +79,22 @@ import { REPORT_REASONS, formatPostDate } from '@/lib/board';
 import { getBoard, BOARDS } from '@/lib/boards';
 import { getAnyArticleById } from '@/data/news';
 import { NewsEditor } from './AdminNews';
+import {
+  listAdminMapPins,
+  reviewMapPin,
+  updateMapPin,
+  type AdminMapPinRow,
+  type MapPinStatus,
+} from '@/lib/adminMapPins';
+import { GTA5_MAP } from '@/data/maps/gta5/meta';
+import { GTA5_CATEGORIES, GTA5_CATEGORY_BY_ID } from '@/data/maps/gta5/categories';
+import type { MapPin } from '@/lib/mapPins';
+import { formatVector } from '@/lib/mapTransform';
+import { lazyWithRetry } from '@/lib/lazyLoad';
+import MapErrorBoundary from '@/components/map/MapErrorBoundary';
+// 地図キャンバス（Leaflet）は公開マップと同じチャンクを動的 import で使い回す。
+// 静的 import は禁止（check-leaflet-imports）。型だけは import してよい。
+import type { MapCanvasProps } from '@/components/map/MapCanvas';
 
 const reasonLabel = (value: string) =>
   REPORT_REASONS.find((r) => r.value === value)?.label ?? value;
@@ -532,6 +559,392 @@ function ImagesPanel() {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+// ---- マップピンの承認キュー --------------------------------------------------
+//  公開マップ（/fivem-gtarp/tools/gta5-map）への投稿は pending で入り、ここで承認するまで出ない。
+//  位置の確認・修正用のミニ地図は、公開マップと同じ MapCanvas チャンクを動的 import で使い回す
+//  （Leaflet を別チャンクに割らない＝公開ページのバンドルを変えない）。
+
+const PIN_STATUS_LABEL: Record<MapPinStatus, string> = { pending: '審査待ち', approved: '承認済み', rejected: '却下' };
+const PIN_STATUS_COLOR: Record<MapPinStatus, string> = { pending: '#fbbf24', approved: '#3de0a0', rejected: '#ff8fc0' };
+const PIN_FILTERS = ['pending', 'approved', 'rejected', 'all'] as const;
+const PIN_FILTER_LABEL: Record<(typeof PIN_FILTERS)[number], string> = { ...PIN_STATUS_LABEL, all: 'すべて' };
+
+type MiniCanvas = LazyExoticComponent<ComponentType<MapCanvasProps>>;
+const loadMiniCanvas = () => import('@/components/map/MapCanvas');
+const makeMiniCanvas = () => lazyWithRetry(loadMiniCanvas as never) as unknown as MiniCanvas;
+
+/** 1辺の半分（m）。ミニ地図はピンの周り 1600m × 1200m を枠いっぱいに出す。 */
+const MINI_HALF_X = 800;
+const MINI_HALF_Y = 600;
+
+function PinStatusBadge({ status }: { status: MapPinStatus }) {
+  const c = PIN_STATUS_COLOR[status];
+  return (
+    <span
+      className="inline-flex items-center text-[11px] font-extrabold rounded-full px-2 py-0.5"
+      style={{ color: c, border: `1px solid ${c}66`, background: `${c}14` }}
+    >
+      {PIN_STATUS_LABEL[status]}
+    </span>
+  );
+}
+
+/** 編集フォーム＋位置確認のミニ地図。地図をクリックすると X・Y が入る。 */
+function MapPinEditor({ row, onSaved, onCancel }: { row: AdminMapPinRow; onSaved: () => void; onCancel: () => void }) {
+  const [category, setCategory] = useState(row.category);
+  const [title, setTitle] = useState(row.title);
+  const [description, setDescription] = useState(row.description);
+  const [fx, setFx] = useState(String(row.x));
+  const [fy, setFy] = useState(String(row.y));
+  const [fz, setFz] = useState(row.z == null ? '' : String(row.z));
+  const [busy, setBusy] = useState(false);
+  // 地図の中心（「この座標へ移動」で入れ直す）。枠はこの周りに固定されるため、遠くへ直すときは数値で。
+  const [center, setCenter] = useState({ x: row.x, y: row.y });
+  const [Canvas, setCanvas] = useState<MiniCanvas>(() => makeMiniCanvas());
+  const [retryKey, setRetryKey] = useState(0);
+
+  const nx = Number(fx);
+  const ny = Number(fy);
+  const validXY = fx.trim() !== '' && fy.trim() !== '' && Number.isFinite(nx) && Number.isFinite(ny);
+
+  // 公開マップと同じデータセットで、ドラッグ範囲（＝初期表示）だけピンの周りに絞る。
+  const dataset = useMemo(
+    () => ({
+      ...GTA5_MAP,
+      maxBounds: {
+        minX: center.x - MINI_HALF_X,
+        maxX: center.x + MINI_HALF_X,
+        minY: center.y - MINI_HALF_Y,
+        maxY: center.y + MINI_HALF_Y,
+      },
+    }),
+    [center],
+  );
+  const pin: MapPin = {
+    id: row.id,
+    map_id: row.map_id,
+    category: row.category,
+    x: row.x,
+    y: row.y,
+    z: row.z,
+    title: `修正前：${row.title}`,
+    description: row.description,
+    source: row.source,
+    created_at: row.created_at,
+  };
+
+  const save = async () => {
+    if (!validXY) {
+      toast.error('X・Y を数値で入力してください');
+      return;
+    }
+    const z = fz.trim() === '' ? null : Number(fz);
+    if (z != null && !Number.isFinite(z)) {
+      toast.error('Z は数値か空欄にしてください');
+      return;
+    }
+    setBusy(true);
+    const { error } = await updateMapPin(row.id, { category, title, description, x: nx, y: ny, z });
+    setBusy(false);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success('修正しました');
+    onSaved();
+  };
+
+  const small = 'w-full bg-white/[0.04] border border-white/12 rounded-lg px-3 py-2 text-[13px] text-[#f4eef8] focus:outline-none focus:border-[#a78bfa]/60';
+  return (
+    <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3 space-y-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <label className="text-[11px] text-white/50">
+          カテゴリ
+          <select value={category} onChange={(e) => setCategory(e.target.value)} className={`${small} mt-1`}>
+            {GTA5_CATEGORIES.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.ja}
+              </option>
+            ))}
+            {GTA5_CATEGORY_BY_ID[category] ? null : <option value={category}>{category}（不明なカテゴリ）</option>}
+          </select>
+        </label>
+        <label className="text-[11px] text-white/50">
+          タイトル（60字まで）
+          <input value={title} onChange={(e) => setTitle(e.target.value)} maxLength={60} className={`${small} mt-1`} />
+        </label>
+      </div>
+      <label className="block text-[11px] text-white/50">
+        説明（400字まで）
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          maxLength={400}
+          rows={2}
+          className={`${small} mt-1 resize-y`}
+        />
+      </label>
+      <div className="flex gap-2">
+        {(
+          [
+            ['X', fx, setFx],
+            ['Y', fy, setFy],
+            ['Z（空欄可）', fz, setFz],
+          ] as const
+        ).map(([label, v, set]) => (
+          <label key={label} className="flex-1 min-w-0 text-[11px] text-white/50">
+            {label}
+            <input value={v} onChange={(e) => set(e.target.value)} inputMode="decimal" className={`${small} mt-1 font-mono`} />
+          </label>
+        ))}
+      </div>
+      <div className="map-tool">
+        <div className="mt-map" style={{ height: 300, minHeight: 0 }}>
+          <MapErrorBoundary
+            message="地図を読み込めませんでした"
+            retryLabel="再試行"
+            resetKey={retryKey}
+            onRetry={() => {
+              setCanvas(() => makeMiniCanvas());
+              setRetryKey((k) => k + 1);
+            }}
+          >
+            <Suspense fallback={<div className="mt-map-placeholder">地図を読み込み中…</div>}>
+              <Canvas
+                key={`${center.x},${center.y},${retryKey}`}
+                dataset={dataset}
+                categories={GTA5_CATEGORY_BY_ID}
+                pins={[pin]}
+                done={new Set()}
+                onToggleDone={() => {}}
+                onPick={(x, y) => {
+                  setFx(x.toFixed(2));
+                  setFy(y.toFixed(2));
+                }}
+                picked={validXY ? { x: nx, y: ny } : null}
+                onCopy={(text) => {
+                  navigator.clipboard?.writeText(text).then(
+                    () => toast.success('コピーしました'),
+                    () => toast.error('コピーできませんでした'),
+                  );
+                }}
+                labels={{
+                  zMissing: 'Z未計測',
+                  copy: 'コピー',
+                  markDone: '確認済みにする',
+                  markUndone: '確認済みを外す',
+                  sample: 'サンプル',
+                  picked: '修正後の位置',
+                }}
+              />
+            </Suspense>
+          </MapErrorBoundary>
+        </div>
+      </div>
+      <p className="text-[11px] text-white/45 leading-relaxed">
+        色付きの丸が修正前の位置、白い丸が入力中の位置です。地図をクリックすると X・Y が入ります（Z は変わりません）。
+        枠はピンの周り約1.6km四方に固定しているので、遠くへ直すときは数値を入れて「この座標へ地図を移動」を押してください。
+      </p>
+      <div className="flex gap-2 flex-wrap">
+        <button
+          disabled={busy}
+          onClick={save}
+          className="inline-flex items-center gap-1 text-[12px] font-bold text-[#3de0a0] border border-[#3de0a0]/30 rounded-lg px-3 py-1.5 hover:bg-[#3de0a0]/10 disabled:opacity-50"
+        >
+          {busy ? <Loader2 size={13} className="animate-spin" /> : <Check size={13} />} 保存
+        </button>
+        <button
+          disabled={!validXY}
+          onClick={() => setCenter({ x: nx, y: ny })}
+          className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10 disabled:opacity-50"
+        >
+          この座標へ地図を移動
+        </button>
+        <button
+          onClick={onCancel}
+          className="inline-flex items-center gap-1 text-[12px] font-bold text-white/55 border border-white/10 rounded-lg px-3 py-1.5 hover:bg-white/10"
+        >
+          閉じる
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function MapPinsPanel() {
+  const [filter, setFilter] = useState<(typeof PIN_FILTERS)[number]>('pending');
+  const [rows, setRows] = useState<AdminMapPinRow[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [busyId, setBusyId] = useState<string | null>(null);
+  const [open, setOpen] = useState<{ id: string; mode: 'reject' | 'edit' } | null>(null);
+  const [note, setNote] = useState('');
+
+  const load = async (f = filter) => {
+    setLoading(true);
+    const { data, error } = await listAdminMapPins(f);
+    setLoadError(error ?? null);
+    setRows(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    setOpen(null);
+    load(filter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  const review = async (id: string, status: 'approved' | 'rejected', reason?: string) => {
+    setBusyId(id);
+    const { error } = await reviewMapPin(id, status, reason);
+    setBusyId(null);
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success(status === 'approved' ? '承認しました（公開マップに出ます）' : '却下しました');
+    setOpen(null);
+    setNote('');
+    load();
+  };
+
+  return (
+    <div>
+      <div className="flex gap-2 mb-4 flex-wrap items-center">
+        {PIN_FILTERS.map((f) => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
+            className="px-3 py-1.5 rounded-full text-[12px] font-extrabold transition-colors"
+            style={{
+              border: `1px solid ${filter === f ? '#a78bfa' : 'rgba(255,255,255,.1)'}`,
+              background: filter === f ? 'rgba(167,139,250,.12)' : 'rgba(255,255,255,.04)',
+              color: filter === f ? '#fff' : 'rgba(244,238,248,.6)',
+            }}
+          >
+            {PIN_FILTER_LABEL[f]}
+          </button>
+        ))}
+        <span className="text-[11px] text-white/40 ml-auto">新しい順・最大500件</span>
+      </div>
+
+      {loading ? (
+        <div className="text-center py-16 text-white/50">
+          <Loader2 size={26} className="mx-auto mb-3 animate-spin" /> 取得中…
+        </div>
+      ) : loadError ? (
+        <div className="text-center py-12 text-[13px] text-[#ff8fc0]">{loadError}</div>
+      ) : rows.length === 0 ? (
+        <div className="text-center py-16 text-white/50">
+          {filter === 'pending' ? '審査待ちのピンはありません' : '該当するピンはありません'}
+        </div>
+      ) : (
+        <div className="space-y-3">
+          {rows.map((r) => {
+            const busy = busyId === r.id;
+            const cat = GTA5_CATEGORY_BY_ID[r.category];
+            const isOpen = open?.id === r.id ? open.mode : null;
+            return (
+              <div key={r.id} className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4" data-pin-id={r.id}>
+                <div className="flex items-center gap-2 flex-wrap text-[12px]">
+                  <PinStatusBadge status={r.status} />
+                  <span className="inline-flex items-center gap-1 font-bold" style={{ color: cat?.color ?? '#fff' }}>
+                    <span className="inline-block w-2 h-2 rounded-full" style={{ background: cat?.color ?? '#fff' }} />
+                    {cat?.ja ?? r.category}
+                  </span>
+                  {r.source === 'official' ? <span className="text-[11px] text-[#22d3ee]">運営</span> : null}
+                  <span className="text-white/40 ml-auto">#{r.id}・{formatPostDate(r.created_at)}</span>
+                </div>
+                <div className="font-extrabold text-[15px] mt-1.5">{r.title}</div>
+                {r.description ? <p className="text-[13px] text-white/70 mt-1 whitespace-pre-wrap">{r.description}</p> : null}
+                {/* 色は inline（管理画面だけのために公開 CSS へユーティリティクラスを増やさない） */}
+                <div className="mt-2 font-mono text-[12px]" style={{ color: '#9be7ff' }}>
+                  {formatVector(r.x, r.y, r.z)}
+                  {r.z == null ? (
+                    <span className="ml-2 text-[11px] font-sans" style={{ color: '#fbbf24' }}>
+                      Z未計測
+                    </span>
+                  ) : null}
+                </div>
+                <div className="mt-1.5 text-[11px] text-white/40 break-all">
+                  投稿者: {r.author_name || '（名前なし）'}　IP: {r.ip ?? '—'}　ブラウザID: {r.anon_id ?? '—'}
+                </div>
+                {r.reviewed_at ? (
+                  <div className="mt-1 text-[11px] text-white/45">
+                    審査: {formatPostDate(r.reviewed_at)}
+                    {r.review_note ? `　理由: ${r.review_note}` : ''}
+                  </div>
+                ) : null}
+
+                <div className="flex gap-2 mt-3 flex-wrap">
+                  {r.status !== 'approved' ? (
+                    <button
+                      disabled={busy}
+                      onClick={() => review(r.id, 'approved')}
+                      className="inline-flex items-center gap-1 text-[12px] font-bold text-[#3de0a0] border border-[#3de0a0]/30 rounded-lg px-3 py-1.5 hover:bg-[#3de0a0]/10 disabled:opacity-50"
+                    >
+                      <Check size={13} /> 承認
+                    </button>
+                  ) : null}
+                  {r.status !== 'rejected' ? (
+                    <button
+                      disabled={busy}
+                      onClick={() => {
+                        setNote('');
+                        setOpen(isOpen === 'reject' ? null : { id: r.id, mode: 'reject' });
+                      }}
+                      className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/30 rounded-lg px-3 py-1.5 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+                    >
+                      <X size={13} /> 却下…
+                    </button>
+                  ) : null}
+                  <button
+                    disabled={busy}
+                    onClick={() => setOpen(isOpen === 'edit' ? null : { id: r.id, mode: 'edit' })}
+                    className="inline-flex items-center gap-1 text-[12px] font-bold text-white/70 border border-white/15 rounded-lg px-3 py-1.5 hover:bg-white/10 disabled:opacity-50"
+                  >
+                    <Pencil size={13} /> 編集・位置確認
+                  </button>
+                </div>
+
+                {isOpen === 'reject' ? (
+                  <div className="mt-3 flex gap-2 flex-wrap items-start">
+                    <input
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      maxLength={500}
+                      placeholder="却下の理由（任意・運営だけが見ます）"
+                      className="flex-1 min-w-[220px] bg-white/[0.04] border border-white/12 rounded-lg px-3 py-2 text-[13px] text-[#f4eef8] focus:outline-none focus:border-[#ff2d95]/60"
+                    />
+                    <button
+                      disabled={busy}
+                      onClick={() => review(r.id, 'rejected', note)}
+                      className="inline-flex items-center gap-1 text-[12px] font-bold text-[#ff8fc0] border border-[#ff2d95]/40 rounded-lg px-3 py-2 hover:bg-[#ff2d95]/10 disabled:opacity-50"
+                    >
+                      却下する
+                    </button>
+                  </div>
+                ) : null}
+                {isOpen === 'edit' ? (
+                  <MapPinEditor
+                    key={r.id}
+                    row={r}
+                    onSaved={() => {
+                      setOpen(null);
+                      load();
+                    }}
+                    onCancel={() => setOpen(null)}
+                  />
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -2344,7 +2757,7 @@ function IpRankingPanel() {
 export default function AdminReports() {
   const [authed, setAuthed] = useState(isLoggedIn());
   const [tab, setTab] = useState<
-    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'ipranking' | 'searchlog' | 'images' | 'contacts' | 'applications' | 'servers' | 'recruit' | 'news' | 'blocks'
+    'newspost' | 'reports' | 'posts' | 'threads' | 'search' | 'ipranking' | 'searchlog' | 'images' | 'mappins' | 'contacts' | 'applications' | 'servers' | 'recruit' | 'news' | 'blocks'
   >('newspost');
   useEffect(() => subscribeAdmin(() => setAuthed(isLoggedIn())), []);
   const tabLabel = {
@@ -2356,6 +2769,7 @@ export default function AdminReports() {
     ipranking: 'IPランキング',
     searchlog: '検索ログ',
     images: '画像承認',
+    mappins: 'マップピン',
     contacts: 'お問い合わせ',
     applications: '掲載申請',
     servers: 'サーバー募集',
@@ -2386,7 +2800,7 @@ export default function AdminReports() {
         {authed ? (
           <IpLabelsProvider>
             <div className="flex gap-2 mb-5 flex-wrap">
-              {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'reports', 'contacts', 'searchlog', 'search', 'ipranking', 'blocks'] as const).map((t) => (
+              {(['newspost', 'news', 'servers', 'recruit', 'posts', 'threads', 'applications', 'images', 'mappins', 'reports', 'contacts', 'searchlog', 'search', 'ipranking', 'blocks'] as const).map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -2417,6 +2831,8 @@ export default function AdminReports() {
               <SearchLogsPanel />
             ) : tab === 'images' ? (
               <ImagesPanel />
+            ) : tab === 'mappins' ? (
+              <MapPinsPanel />
             ) : tab === 'contacts' ? (
               <ContactsPanel />
             ) : tab === 'applications' ? (
