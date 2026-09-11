@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { MAP_RELEASED } from '@/data/maps/release';
 import Header from '@/components/Header';
-import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, UserRoundPlus, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
+import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, UserRoundPlus, Map as MapIcon, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
 import { getArticleById, isNoindexNewsId, formatArticleDate, CATEGORY_CONFIG } from '@/data/news';
 import { useSeo } from '@/hooks/useSeo';
@@ -82,6 +83,10 @@ const GROUPS: CardGroup[] = [
       // 文言・アイコン・アクセント色は ToolsIndex（/fivem-gtarp/tools）のカードと同じものを使う。
       // 説明文は i18n の fg.card.charaMaker.* が単一ソースなので、ハブと食い違わない。
       { titleKey: 'fg.card.charaMaker.title', descKey: 'fg.card.charaMaker.desc', href: '/fivem-gtarp/tools/chara-maker', icon: UserRoundPlus, accent: '#ff8a3d' },
+      // 地図ツールは公開フラグが立つまで出さない（client/src/data/maps/release.ts）。
+      ...(MAP_RELEASED.gta5
+        ? [{ titleKey: 'fg.card.gta5Map.title', descKey: 'fg.card.gta5Map.desc', href: '/fivem-gtarp/tools/gta5-map', icon: MapIcon, accent: '#34d399' }]
+        : []),
       // ツール一覧ページ本体への導線。各記事は個別ツールへ直リンクしており、
       // ハブ（/fivem-gtarp/tools）がどこからもリンクされず orphan になっていた
       // （2026-08-08 の監査）。日英とも同じカードで解消する。

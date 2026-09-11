@@ -29,7 +29,8 @@ import {
 } from './lib/jsonld';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '../client/src/data/fieldNotes';
 import { indexableNewsArticles } from '../client/src/data/news';
-import { buildBoardSeed } from './lib/board-seed.mjs';
+import { buildBoardSeed, buildMapSeed } from './lib/board-seed.mjs';
+import { MAP_RELEASED } from '../client/src/data/maps/release';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -87,10 +88,15 @@ const mod = (await import(
 // 全ページぶんをキー付きで1回だけセットする（ルートごとのセット/クリアはしない）ため、
 // 下の render ループで前のルートのデータを引きずることが構造的に起きない。
 // 取得に失敗しても throw しない設計なので、Supabase 断でもビルドは止まらない。
-const { seed: boardSeed, total: seedTotal, warnings: seedWarnings } = await buildBoardSeed();
+const { seed: boardOnlySeed, total: seedTotal, warnings: seedWarnings } = await buildBoardSeed();
 seedWarnings.forEach((w) => console.warn(w));
+// マップの承認済みピンは掲示板とは別に取る（map_pins.sql 未実行でも掲示板の seed を巻き込まない）。
+const { mapPins, warnings: mapWarnings } = await buildMapSeed(["gta5"]);
+mapWarnings.forEach((w) => console.warn(w));
+const boardSeed = { ...boardOnlySeed, mapPins };
 mod.setSsrSeed(boardSeed);
 console.log(`[board-seed] 投稿 ${seedTotal} 件をプリレンダへ注入`);
+console.log(`[map-seed] 承認済みピン gta5=${mapPins.gta5?.length ?? 0} 件`);
 
 // ----------------------------------------------------------------------------
 //  seed のクライアント引き継ぎ（ルート単位のスライス）
@@ -112,7 +118,8 @@ console.log(`[board-seed] 投稿 ${seedTotal} 件をプリレンダへ注入`);
 /** ハブのプレビュー件数（BoardIndex.PREVIEW_PER_BOARD / RecruitIndex.PREVIEW_PER_CAT と対）。 */
 const HUB_PREVIEW = 3;
 
-type Seed = typeof boardSeed;
+// mapPins は地図ページだけが持つ（他ページの seed は従来どおりのバイト列のまま。欠けていればクライアントが {} 扱い）。
+type Seed = Omit<typeof boardSeed, 'mapPins'> & { mapPins?: typeof boardSeed.mapPins };
 const EMPTY_SEED: Seed = { threads: {}, friends: [], crews: [], servers: [] };
 
 /** route（日本語パス）に対して、そのページが描画している分だけの seed を返す。
@@ -139,6 +146,11 @@ function seedForRoute(jaPath: string): Seed | null {
   }
   if (jaPath === '/servers') {
     return boardSeed.servers.length ? { ...EMPTY_SEED, servers: boardSeed.servers } : null;
+  }
+  if (jaPath === '/fivem-gtarp/tools/gta5-map') {
+    // 地図ページは承認済みピンを全件、一覧として描画している（生HTMLと一致させる）。
+    const rows = boardSeed.mapPins.gta5 ?? [];
+    return rows.length ? { ...EMPTY_SEED, mapPins: { gta5: rows } } : null;
   }
   if (jaPath === '/recruit') {
     // 3カテゴリの最新3件ずつをプレビュー。
@@ -171,13 +183,20 @@ const FIELD_NOTE_LIST_RE = /^\/fivem-gtarp\/field-notes\/(dev-diary|visit-note)$
 /** /news の ItemList に載せる件数（一覧の先頭から。全件だとLDが肥大するため）。 */
 const NEWS_ITEMLIST_MAX = 30;
 
+/** 公開前の地図ツール（client/src/data/maps/release.ts が false）か。noindex・ItemList 除外に使う。 */
+function isUnreleasedMapPath(route: string): boolean {
+  const ja = route.startsWith('/en/') ? route.slice(3) : route;
+  return ja === '/fivem-gtarp/tools/gta5-map' && !MAP_RELEASED.gta5;
+}
+
 /** ハブ（/fivem-gtarp）が束ねる下位ページのURL一覧。ROUTE_PATHS から導出する（別表を作らない）。
  *  体験記の個別記事は各カテゴリ一覧（/field-notes/<cat>）の ItemList 側で列挙するため除く。 */
 function hubItemUrls(routePaths: string[], prefix: string): string[] {
   return routePaths
     .filter(
       (p) =>
-        p.startsWith('/fivem-gtarp/') && !p.startsWith('/en/') && !FIELD_NOTE_DETAIL_RE.test(p),
+        p.startsWith('/fivem-gtarp/') && !p.startsWith('/en/') && !FIELD_NOTE_DETAIL_RE.test(p) &&
+        !isUnreleasedMapPath(p),
     )
     .map((p) => `${ORIGIN}${prefix}${p}`);
 }
@@ -370,6 +389,9 @@ for (const route of mod.ROUTE_PATHS) {
   if (isEnNoindexPath(route)) {
     html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
     enNoindex++;
+  } else if (isUnreleasedMapPath(route)) {
+    // 種データがそろうまでの公開前プレビュー。sitemap・カードからも外している。
+    html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
   }
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', seo?.type || 'website');

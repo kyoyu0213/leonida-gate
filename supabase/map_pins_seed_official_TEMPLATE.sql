@@ -1,0 +1,30 @@
+-- ============================================================================
+--  GTA5 隠し要素マップ：運営が確認済みの種データ（source='official'）を入れる雛形
+--  前提：map_pins.sql 適用済み。
+--
+--  使い方
+--    1) 下の values に1行ずつ追記する（自分でゲーム内で確かめた場所だけ。他サイトの一覧の転載はしない）
+--    2) Supabase → SQL Editor に貼って Run
+--    3) 翌日 03:00 JST の定期再ビルドでプリレンダにも焼き込まれる（地図上にはすぐ出る）
+--
+--  列の意味
+--    category : client/src/data/maps/gta5/categories.ts の id
+--                 spaceship-parts / letter-scraps / nuclear-waste / submarine-parts /
+--                 peyote / signal-jammers / playing-cards / easter-eggs
+--    x, y     : ゲーム内ワールド座標（map_datasets の範囲内）
+--    z        : 高さ。ゲーム内で測れた場合だけ入れる。分からなければ null（地図では「Z未計測」）
+--    title    : 60字以内 / description : 400字以内
+--
+--  ※ 同じ地図・同じカテゴリで半径3m以内の重複は RPC では弾くが、この直接 insert では弾かない。
+--    入れる前に重複がないか確認すること。
+-- ============================================================================
+
+-- ↓ 使うときは insert 文ごとコメントを外し、values を実データに置き換える。
+--   （このままRunしても何も起きないように、全体をコメントにしてある）
+--
+-- insert into public.map_pins
+--   (map_id, category, x, y, z, title, description, status, source, reviewed_at)
+-- values
+--   ('gta5', 'spaceship-parts',  0.00,  0.00,  0.00, '（場所の名前）', '（目印・取り方）', 'approved', 'official', now()),
+--   ('gta5', 'easter-eggs',      0.00,  0.00,  null, '（場所の名前）', '（説明）',         'approved', 'official', now())
+-- ;

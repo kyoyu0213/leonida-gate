@@ -35,6 +35,7 @@ import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
 import CharaMakerTool from '@/pages/CharaMakerTool';
+import MapTool from '@/pages/MapTool';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
@@ -72,6 +73,8 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools/image-resize': ImageResizeTool,
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
   '/fivem-gtarp/tools/chara-maker': CharaMakerTool,
+  // 地図キャンバス（Leaflet）はマウント後にだけ読むので、SSR では説明・一覧だけが描画される。
+  '/fivem-gtarp/tools/gta5-map': MapTool,
   '/about': About,
   // /contact・/terms は sitemap と routes.ts の LOCALIZED_STATIC_PATHS には載っていたのに
   // ここに無く、日英4URLとも空シェル（#root 空・canonical がトップ吸われ）で配信されていた。

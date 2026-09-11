@@ -159,3 +159,49 @@ export async function buildBoardSeed() {
     return { seed: EMPTY, total: 0, warnings };
   }
 }
+
+// ============================================================================
+//  マップの承認済みピン（map_pins）
+//
+//  掲示板の seed とは別に取る。supabase/map_pins.sql が未実行の環境ではテーブルが無く
+//  404 になるが、それで掲示板側の seed まで巻き込んで空にしないよう、呼び出しごと分けている。
+//
+//  焼き込むのは公開列だけ（map_pins.sql の grant select と同じ）。投稿者名・IP・UA・
+//  anon_id・審査メモは列リストに入れない。status='approved' 以外は RLS で返らないが、
+//  念のためクエリ側でも絞る。
+// ============================================================================
+
+const MAP_PIN_COLS = 'id,map_id,category,x,y,z,title,description,source,created_at';
+
+/** データセットID → 承認済みピン。失敗しても throw しない（空 + 警告）。 */
+export async function buildMapSeed(mapIds = ['gta5']) {
+  const warnings = [];
+  const mapPins = {};
+  for (const id of mapIds) {
+    try {
+      const rows = await q(
+        `map_pins?select=${MAP_PIN_COLS}&map_id=eq.${encodeURIComponent(id)}` +
+          '&status=eq.approved&order=created_at.asc&limit=2000',
+      );
+      mapPins[id] = rows.map((r) => ({
+        id: String(r.id),
+        map_id: r.map_id,
+        category: r.category,
+        x: Number(r.x),
+        y: Number(r.y),
+        z: r.z == null ? null : Number(r.z),
+        title: r.title ?? '',
+        description: r.description ?? '',
+        source: r.source === 'user' ? 'user' : 'official',
+        created_at: r.created_at,
+      }));
+    } catch (e) {
+      mapPins[id] = [];
+      warnings.push(
+        `[map-seed] WARN: ${id} の承認済みピンを取得できませんでした（${e?.message || e}）。` +
+          ' supabase/map_pins.sql が未実行なら想定どおり。地図ページはサンプル／空で生成します。',
+      );
+    }
+  }
+  return { mapPins, warnings };
+}

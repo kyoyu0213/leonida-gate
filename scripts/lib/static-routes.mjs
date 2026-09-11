@@ -9,6 +9,8 @@
 //  の両方から同じ配列を参照させる。
 // ============================================================================
 
+import { isMapReleased } from './map-release.mjs';
+
 /** 固定ページ（手動メンテ）。path は日本語側の論理パス。 */
 export const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
@@ -45,6 +47,10 @@ export const STATIC_ROUTES = [
   { path: '/fivem-gtarp/tools/image-resize', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/image-mask', priority: '0.6', changefreq: 'monthly' },
   { path: '/fivem-gtarp/tools/chara-maker', priority: '0.6', changefreq: 'monthly' },
+  // 地図ツールは種データがそろって公開するまで sitemap に載せない（client/src/data/maps/release.ts）。
+  ...(isMapReleased('gta5')
+    ? [{ path: '/fivem-gtarp/tools/gta5-map', priority: '0.6', changefreq: 'weekly' }]
+    : []),
   { path: '/about', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },

@@ -558,7 +558,7 @@ export const PAGE_GUIDES: Record<PageGuideKey, { ja: BoardGuideContent; en: Boar
   },
 };
 
-export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker';
+export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker' | 'gta5-map';
 
 export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {
   tools: {
@@ -796,6 +796,87 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
           heading: 'Disclaimer',
           body: [
             'Every person and backstory generated here is fictional and has no connection to any real individual or organisation.'
+          ]
+        }
+      ]
+    },
+  },
+
+  'gta5-map': {
+    ja: {
+      lead: 'GTA5の地図のうち、ゲーム内マップでは分からない場所だけを集めたインタラクティブマップです。店や施設のようにゲーム内で表示されるものはあえて載せず、収集物・イースターエッグなど「探さないと見つからない場所」に絞っています。',
+      sections: [
+        {
+          heading: 'このマップでできること',
+          body: [
+            'カテゴリで表示を絞り込み、見つけた場所はチェックを付けて消し込めます。チェックの状態はこのブラウザにだけ保存され、サーバーには送られません。',
+            '各ピンの座標は、FiveMのスクリプトでそのまま使える vector3(x, y, z) 形式で表示し、ボタン一つでコピーできます。高さ（Z）が分かっていない場所は vector2(x, y) で表示し、「Z未計測」と明記しています。'
+          ]
+        },
+        {
+          heading: '使いかた',
+          body: [
+            '1. 上のカテゴリボタンで、見たい種類だけを残します。',
+            '2. 地図のピンを押すと、名前・説明・座標が出ます。「コピー」で座標をクリップボードに入れられます。',
+            '3. 見つけた場所は「確認済みにする」か、一覧のチェックボックスで消し込みます。'
+          ]
+        },
+        {
+          heading: '場所の投稿について',
+          body: [
+            '地図をクリックすると、投稿フォームにX・Yが入ります。名前と説明を書いて送ると、運営が確認してから地図に反映されます。承認されるまでは地図にも一覧にも出ません。同じ場所の二重登録を防ぐため、すぐ近くに同じカテゴリの場所がある場合は投稿できません。'
+          ]
+        },
+        {
+          heading: 'よくある質問',
+          body: [
+            'Q. 座標はどのくらい正確ですか？ → 地図画像から読み取った値のため、数メートル程度の誤差があります。正確な位置が必要な場合は、ゲーム内で確かめてから使ってください。',
+            'Q. 投稿した内容はどこかに公開されますか？ → 承認された場所の名前・説明・座標だけが公開されます。投稿者名は公開されません。'
+          ]
+        },
+        {
+          heading: '免責',
+          body: [
+            '地図画像の著作権はRockstar Gamesに帰属します（Map © Rockstar Games）。当サイトはRockstar GamesおよびTake-Two Interactiveとは一切関係のない非公式のファンサイトです。'
+          ]
+        }
+      ]
+    },
+    en: {
+      lead: 'An interactive GTA5 map that collects only the places the in-game map will not show you. Shops and facilities that already appear in game are deliberately left out; the map focuses on spots you have to go looking for, such as collectibles and easter eggs.',
+      sections: [
+        {
+          heading: 'What the map does',
+          body: [
+            'Filter by category, and tick off each spot as you find it. Your ticks are saved only in this browser and are never sent to a server.',
+            'Every pin shows its coordinates as vector3(x, y, z) — ready to paste into a FiveM script — with one-click copy. Spots whose height (Z) is unknown are shown as vector2(x, y) and marked \'Z not measured\'.'
+          ]
+        },
+        {
+          heading: 'How to use it',
+          body: [
+            '1. Use the category buttons at the top to keep only the kinds of spots you want.',
+            '2. Click a pin on the map to see its name, description, and coordinates. \'Copy\' puts the coordinates on your clipboard.',
+            '3. Mark spots as found with \'Mark as found\' or with the checkbox in the list.'
+          ]
+        },
+        {
+          heading: 'Submitting a spot',
+          body: [
+            'Click the map to fill X and Y into the submission form. Add a name and description and send it; it appears on the map once a moderator approves it, and not before. To avoid duplicates, you cannot submit a spot right next to an existing spot of the same category.'
+          ]
+        },
+        {
+          heading: 'FAQ',
+          body: [
+            'Q. How accurate are the coordinates? → They are read off the map image, so expect an error of a few metres. If you need an exact position, confirm it in game first.',
+            'Q. What gets published from my submission? → Only the name, description, and coordinates of approved spots. Your name is never published.'
+          ]
+        },
+        {
+          heading: 'Disclaimer',
+          body: [
+            'The map image is copyright Rockstar Games (Map © Rockstar Games). This site is an unofficial fan site with no connection to Rockstar Games or Take-Two Interactive.'
           ]
         }
       ]

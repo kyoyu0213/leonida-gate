@@ -83,15 +83,31 @@ export interface SeedServer {
   created_at: string;
 }
 
+/** マップの承認済みピン（map_pins.status='approved'）。公開列だけで、投稿者名・IP 等は持たない。 */
+export interface SeedMapPin {
+  id: string;
+  map_id: string;
+  category: string;
+  x: number;
+  y: number;
+  z: number | null;
+  title: string;
+  description: string;
+  source: 'official' | 'user';
+  created_at: string;
+}
+
 export interface SsrSeed {
   /** 板スラッグ（gta6 / gtarp / ...）→ スレッド一覧。 */
   threads: Record<string, SeedThread[]>;
   friends: SeedFriend[];
   crews: SeedCrew[];
   servers: SeedServer[];
+  /** マップID（gta5 など）→ 承認済みピン。 */
+  mapPins: Record<string, SeedMapPin[]>;
 }
 
-const EMPTY: SsrSeed = { threads: {}, friends: [], crews: [], servers: [] };
+const EMPTY: SsrSeed = { threads: {}, friends: [], crews: [], servers: [], mapPins: {} };
 
 let seed: SsrSeed = EMPTY;
 
@@ -123,6 +139,7 @@ function readClientSeed(): SsrSeed {
         friends: Array.isArray(p.friends) ? p.friends : [],
         crews: Array.isArray(p.crews) ? p.crews : [],
         servers: Array.isArray(p.servers) ? p.servers : [],
+        mapPins: p.mapPins && typeof p.mapPins === 'object' ? p.mapPins : {},
       };
     }
   } catch {
@@ -141,3 +158,5 @@ export const seedFriends = (): SeedFriend[] => current().friends;
 export const seedCrews = (): SeedCrew[] => current().crews;
 
 export const seedServers = (): SeedServer[] => current().servers;
+
+export const seedMapPins = (mapId: string): SeedMapPin[] => current().mapPins[mapId] ?? [];
