@@ -1,0 +1,108 @@
+/* クルー名・ギャング名ジェネレーター専用スタイル。
+   RPキャラメーカー（charaMaker.css）と同じトーン・同じトークンで揃え、
+   サイト全体に漏れないようツールのルートクラス配下にネストしてスコープする。
+   外部フォントは読み込まない（このページからの通信をゼロに保つ）。 */
+
+.crew-name-tool {
+  --base:#0b0714;
+  --panel:#160d24;
+  --panel-2:#1d1232;
+  --line:#2e1f47;
+  --magenta:#ff2d95;
+  --cyan:#2de2e6;
+  --sunset:#ff8a3d;
+  --text:#f4eefc;
+  --muted:#9a8cb5;
+  --display:'Chakra Petch',system-ui,sans-serif;
+
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  .wrap{max-width:760px;margin:0 auto}
+
+  .eyebrow{
+    font-family:var(--display);font-weight:600;letter-spacing:.28em;
+    font-size:11px;text-transform:uppercase;color:var(--cyan);
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+
+  h1{
+    font-family:var(--display);font-weight:700;line-height:1.12;
+    font-size:clamp(28px,5.6vw,44px);letter-spacing:-.01em;margin-bottom:8px;
+  }
+  h1 .hl{color:var(--magenta)}
+  .sub{color:var(--muted);font-size:13.5px;line-height:1.85;margin-bottom:14px;max-width:600px}
+
+  .privacy{
+    display:inline-block;font-size:12px;line-height:1.7;color:var(--muted);
+    background:rgba(45,226,230,.07);border:1px solid rgba(45,226,230,.28);
+    border-radius:999px;padding:7px 15px;margin-bottom:22px;
+  }
+  .privacy b{color:var(--cyan);font-weight:700}
+
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:18px;margin-bottom:16px;
+  }
+
+  .lab{
+    font-size:11px;color:var(--muted);margin-bottom:9px;
+    letter-spacing:.14em;text-transform:uppercase;font-family:var(--display);font-weight:600;
+  }
+
+  /* スタイル選択（6＋おまかせ）。狭い画面では折り返す。 */
+  .styles{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-bottom:16px}
+  .styles button{
+    border:1px solid var(--line);background:var(--panel-2);color:var(--muted);padding:10px 6px;
+    border-radius:9px;cursor:pointer;font-size:13px;font-family:inherit;transition:background .15s,color .15s,border-color .15s;
+  }
+  .styles button:hover{color:var(--text);border-color:var(--cyan)}
+  .styles button.on{background:var(--magenta);border-color:var(--magenta);color:#fff;font-weight:700}
+
+  .gen{
+    width:100%;background:linear-gradient(135deg,var(--magenta),var(--sunset));border:0;color:#fff;
+    font-size:16px;font-weight:800;padding:15px;border-radius:12px;cursor:pointer;
+    letter-spacing:.1em;font-family:var(--display);
+    box-shadow:0 6px 22px rgba(255,45,149,.32);
+  }
+  .gen:active{transform:scale(.98)}
+
+  /* 生成結果。モバイル1カラム／PCは2カラム。 */
+  .ideas{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-bottom:16px}
+  .idea{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .badge{
+    font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:999px;
+    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted);
+  }
+  .badge.s-street{color:#ff8a3d;border-color:rgba(255,138,61,.45)}
+  .badge.s-biker{color:#f87171;border-color:rgba(248,113,113,.45)}
+  .badge.s-mafia{color:#e5c07b;border-color:rgba(229,192,123,.45)}
+  .badge.s-cartel{color:#34d399;border-color:rgba(52,211,153,.45)}
+  .badge.s-corpo{color:#60a5fa;border-color:rgba(96,165,250,.45)}
+  .badge.s-crew{color:var(--magenta);border-color:rgba(255,45,149,.45)}
+  .tag{font-family:var(--display);font-weight:700;letter-spacing:.12em;color:var(--cyan);font-size:14px}
+  .name{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:.03em;line-height:1.25;word-break:break-word}
+  .hint{color:var(--muted);font-size:13px;line-height:1.7;flex:1}
+  .copy{
+    align-self:flex-start;background:var(--panel-2);border:1px solid var(--line);color:var(--text);
+    padding:8px 14px;border-radius:9px;cursor:pointer;font-size:12.5px;font-family:inherit;
+  }
+  .copy:hover{border-color:var(--cyan)}
+  .copy.done{color:var(--cyan);border-color:var(--cyan)}
+
+  .note{color:var(--muted);font-size:11.5px;line-height:1.8;margin-top:4px}
+  .footnote{color:var(--muted);font-size:12px;line-height:1.9;margin-top:22px}
+  .footnote a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+}
+
+@media(max-width:480px){
+  .crew-name-tool .ideas{grid-template-columns:1fr}
+  .crew-name-tool .name{font-size:20px}
+}

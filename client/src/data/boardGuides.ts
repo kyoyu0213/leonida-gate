@@ -558,7 +558,7 @@ export const PAGE_GUIDES: Record<PageGuideKey, { ja: BoardGuideContent; en: Boar
   },
 };
 
-export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker' | 'gta5-map';
+export type ToolGuideKey = 'tools' | 'image-resize' | 'image-mask' | 'chara-maker' | 'crew-name' | 'gta5-map';
 
 export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: BoardGuideContent }> = {
   tools: {
@@ -796,6 +796,83 @@ export const TOOL_GUIDES: Record<ToolGuideKey, { ja: BoardGuideContent; en: Boar
           heading: 'Disclaimer',
           body: [
             'Every person and backstory generated here is fictional and has no connection to any real individual or organisation.'
+          ]
+        }
+      ]
+    },
+  },
+
+  'crew-name': {
+    ja: {
+      lead: 'FiveM/GTA RPのサーバーでクルーやギャングを立ち上げるとき、最初に決めるのが組織の名前とタグです。このツールは、6つのスタイルから英語の組織名を5案ずつ作り、それぞれにクルータグの案を添えます。生成はすべてブラウザ内で行われ、選んだ条件も結果も外部へ送信されません（通信ゼロ）。',
+      sections: [
+        {
+          heading: 'クルータグとは',
+          body: [
+            'クルータグは、GTAオンラインでクルーに所属しているプレイヤーの名前の横に表示される短い略称です。GTAオンラインのクルータグは最大4文字までです。FiveM/GTA RPのサーバーでも、無線での呼び名や車のナンバー、Discordのロール名などに組織の略称を使うことがあり、名前と一緒に決めておくと何かと便利です。',
+            'このツールは、名前を単語に分けて各単語の頭文字をつなぎ、タグ案を自動で作ります。「de」「los」「el」「the」「of」「MC」といった小さな語は読み飛ばし、4文字を超えるときは先頭の4文字に切り詰めます。たとえば「Eastside Kings」なら「EK」、「Los Muertos Cartel」なら「MC」、「Iron Vultures MC」なら「IV」、「Meridian Holdings」なら「MH」になります。'
+          ]
+        },
+        {
+          heading: '6つのスタイル',
+          body: [
+            'ストリート：地区名や色の名前に「Kings」「Saints」「Hounds」などの集団名を組み合わせた、路上ギャング向けの名前です。縄張りを持つギャングRPや、特定の地区を拠点にするグループに向いています。色や地区を名乗る別の組織と張り合わせると、抗争のRPが作りやすくなります。',
+            'バイカー（MC）：形容詞と獣や異名を組み合わせ、末尾に「MC（モーターサイクルクラブ）」を付けた名前です。バイクで街道を走るMCや、ガレージを拠点にする走り屋グループのRPに使えます。MCはどのクラブにも付く語なので、タグには含めていません。',
+            'マフィア：イタリア系などの姓や地区名に「Family」「Syndicate」「Outfit」などを組み合わせた、ファミリー型の組織名です。表の商売と裏の顔を持つ一家や、ボスと構成員の上下関係があるRPに向いています。ボスの姓を組織名にすると、キャラ設定とつながりやすくなります。',
+            'カルテル：スペイン語の名詞を使った「Los ○○ Cartel」「Cartel de los ○○」の形の名前です。密輸や供給ルートを握る組織として、他のギャングに物資を卸す立場のRPで使いやすいスタイルです。',
+            '企業フロント：ビジネス風の名前に「Holdings」「Logistics」「Security」などを組み合わせた、表向きは合法企業に見える名前です。フロント企業を使った犯罪RPのほか、本当に合法の会社を経営するRPにも使えます。',
+            'クルー：形容詞と名詞を組み合わせた汎用的なクルー名です。GTAオンラインでミッションやヘイストを一緒に回すクルーや、RPサーバーでの職業仲間・チームの名前にも向いています。'
+          ]
+        },
+        {
+          heading: '使いかた',
+          body: [
+            '1. 「ストリート」「バイカー（MC）」「マフィア」「カルテル」「企業フロント」「クルー」「おまかせ」の7つから、組織のスタイルを選びます。おまかせにすると、5案それぞれのスタイルがランダムに決まります。',
+            '2. 「名前を生成（5案）」を押すと、名前・クルータグ・スタイル・設定のヒントが5案並びます。気に入る名前がなければ「もう一度生成」で入れ替えます。',
+            '3. 使いたい案の「名前をコピー」を押すと、名前がクリップボードに入ります。サーバーで使う前に、同じ名前やタグの組織がすでにないか確認してください。'
+          ]
+        },
+        {
+          heading: '免責',
+          body: [
+            '生成された名前とタグは自由に使って構いません。名前は造語の部品を組み合わせて作っており、実在の組織・企業・団体の名前と一致した場合も偶然で、それらとは一切関係ありません。Rockstar Games、GTA・GTA Onlineに関する権利表記は、ページ下部のクレジットのとおりです。'
+          ]
+        }
+      ]
+    },
+    en: {
+      lead: 'When you start a crew or gang on a FiveM/GTA RP server, the first things to settle are the group\'s name and its tag. This tool builds five English name ideas at a time from six styles and suggests a crew tag for each. Everything is generated in your browser — neither your choices nor the results are sent anywhere.',
+      sections: [
+        {
+          heading: 'What a crew tag is',
+          body: [
+            'A crew tag is the short abbreviation shown next to a player\'s name in GTA Online when they belong to a crew. GTA Online crew tags are limited to four characters. On FiveM/GTA RP servers, groups often use a short form of their name too — as a radio callsign, on licence plates, or as a Discord role — so it helps to settle it together with the name.',
+            'The tool splits the name into words and joins their first letters to build a tag. Small words such as "de", "los", "el", "the", "of" and "MC" are skipped, and anything longer than four letters is cut to the first four. "Eastside Kings" becomes "EK", "Los Muertos Cartel" becomes "MC", "Iron Vultures MC" becomes "IV", and "Meridian Holdings" becomes "MH".'
+          ]
+        },
+        {
+          heading: 'The six styles',
+          body: [
+            'Street: a district or colour paired with a collective such as "Kings", "Saints" or "Hounds" — names for street gangs. It suits turf-based gang RP and groups tied to one part of town. Setting two groups with rival colours or districts against each other makes conflict RP easy to start.',
+            'Biker (MC): an adjective and a beast or epithet, finished with "MC" (motorcycle club). Use it for clubs that ride the highways or crews that run out of a garage. Since every club carries "MC", it is left out of the tag.',
+            'Mafia: an Italian-style surname or a district combined with "Family", "Syndicate", "Outfit" and the like. It fits families with a legitimate business out front and a hierarchy of bosses and members behind it. Naming the group after the boss\'s surname ties it neatly to a character sheet.',
+            'Cartel: Spanish nouns in the form "Los ___ Cartel" or "Cartel de los ___". It works well for a group that controls smuggling or supply routes and sells to other gangs.',
+            'Corporate front: a business-style name with "Holdings", "Logistics", "Security" and so on — a group that looks like a legitimate company. Use it for crime RP run through a front company, or for a company that really is legitimate.',
+            'Crew: a general-purpose adjective-and-noun crew name. It suits a GTA Online crew that runs missions and heists together, or a team of co-workers on an RP server.'
+          ]
+        },
+        {
+          heading: 'How to use it',
+          body: [
+            '1. Pick a style from the seven options: Street, Biker (MC), Mafia, Cartel, Corporate front, Crew, or Random. With Random, each of the five ideas gets its own style.',
+            '2. Press \'Generate 5 names\' to see five ideas, each with a name, crew tag, style, and a one-line hint. If none of them fit, press \'Generate again\' to replace them.',
+            '3. Press \'Copy name\' on the one you like to put the name on your clipboard. Before using it on a server, check that no existing group already has the same name or tag.'
+          ]
+        },
+        {
+          heading: 'Disclaimer',
+          body: [
+            'You are free to use the generated names and tags. Names are assembled from made-up parts; any match with a real organisation, company, or group is coincidental and implies no connection. Rights notices for Rockstar Games, GTA and GTA Online are as shown in the credits at the bottom of the page.'
           ]
         }
       ]

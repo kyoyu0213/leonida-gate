@@ -35,6 +35,7 @@ import ToolsIndex from '@/pages/ToolsIndex';
 import ImageResizeTool from '@/pages/ImageResizeTool';
 import ImageMaskTool from '@/pages/ImageMaskTool';
 import CharaMakerTool from '@/pages/CharaMakerTool';
+import CrewNameTool from '@/pages/CrewNameTool';
 import MapTool from '@/pages/MapTool';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
@@ -73,6 +74,7 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/fivem-gtarp/tools/image-resize': ImageResizeTool,
   '/fivem-gtarp/tools/image-mask': ImageMaskTool,
   '/fivem-gtarp/tools/chara-maker': CharaMakerTool,
+  '/fivem-gtarp/tools/crew-name-generator': CrewNameTool,
   // 地図キャンバス（Leaflet）はマウント後にだけ読むので、SSR では説明・一覧だけが描画される。
   '/fivem-gtarp/tools/gta5-map': MapTool,
   '/about': About,

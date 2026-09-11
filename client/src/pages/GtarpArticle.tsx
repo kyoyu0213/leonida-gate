@@ -29,7 +29,7 @@ GTARPの幅広さは、演じられる役割の多さに表れる。サーバー
 
 公的な役割としては、警察（LSPDなど）、救急隊（EMS）、個人医といった、街の秩序や安全を担う職がある。これらは他のプレイヤーと深く関わるため、RPの中心になりやすい。生活・経済を支える役割としては、メカニック、タクシー、飲食店（バーガー店、ラーメン屋、カフェなど）、不動産、ディーラー、記者、各種店舗経営などがある。多くのサーバーでは、実績を積めば自分で起業し、店や会社を構えることもできる。
 
-一方で、違法側の役割も用意されている。ギャングとして領地（ターフ）を巡って抗争し、強盗や違法ビジネスに身を投じる遊び方だ。コンビニ・銀行・客船・飛行場・カジノ強盗など、サーバーごとに多彩な犯罪コンテンツが実装されている。重要なのは、これらの違法行為も“ルールに沿って演じられること”が前提であり、ただ暴れる場ではないという点である。
+一方で、違法側の役割も用意されている。ギャングとして領地（ターフ）を巡って抗争し、強盗や違法ビジネスに身を投じる遊び方だ。コンビニ・銀行・客船・飛行場・カジノ強盗など、サーバーごとに多彩な犯罪コンテンツが実装されている。重要なのは、これらの違法行為も“ルールに沿って演じられること”が前提であり、ただ暴れる場ではないという点である。ギャングやクルーを立ち上げるときの組織名とタグは、[クルー名・ギャング名ジェネレーター](/fivem-gtarp/tools/crew-name-generator)で候補を出せる。
 
 こうした「合法職」と「違法職」、そして両者の間で揺れ動く一般市民が同じ街に共存することで、警察と犯罪者、経営者と客といった関係が立ち上がり、サーバー全体が一つの社会として動いていく。
 
@@ -113,7 +113,7 @@ The breadth of GTARP shows in the sheer number of roles you can play. The jobs a
 
 As public roles, there are jobs that handle the city's order and safety, such as police (LSPD and the like), emergency medical services (EMS), and private doctors. Because these involve deep interaction with other players, they tend to become the center of RP. As roles that support life and the economy, there are mechanics, taxis, food and drink establishments (burger shops, ramen shops, cafes, and so on), real estate, dealers, reporters, and various shop management roles. On many servers, if you build up a track record, you can start your own business and set up a shop or company.
 
-On the other hand, illegal-side roles are also provided. This is a way of playing in which you fight over territory (turf) as a gang and throw yourself into robberies and illegal business. Diverse criminal content is implemented on each server, such as convenience store, bank, cruise ship, airfield, and casino heists. What is important is that these illegal acts are also premised on "being played according to the rules," and that this is not simply a place to run wild.
+On the other hand, illegal-side roles are also provided. This is a way of playing in which you fight over territory (turf) as a gang and throw yourself into robberies and illegal business. Diverse criminal content is implemented on each server, such as convenience store, bank, cruise ship, airfield, and casino heists. What is important is that these illegal acts are also premised on "being played according to the rules," and that this is not simply a place to run wild. If you are starting a gang or crew, the [Crew & Gang Name Generator](/fivem-gtarp/tools/crew-name-generator) can suggest a name and tag.
 
 By having such "legal jobs" and "illegal jobs," along with ordinary citizens who waver between the two, coexist in the same city, relationships such as police and criminals, business owners and customers arise, and the entire server moves as a single society.
 

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import { useSeo } from '@/hooks/useSeo';
 import BoardGuide from '@/components/BoardGuide';
+import LocalLink from '@/components/LocalLink';
 import { TOOL_GUIDES } from '@/data/boardGuides';
 import { useT, useLang } from '@/lib/i18n';
 import './charaMaker.css';
@@ -481,7 +482,10 @@ export default function CharaMakerTool() {
 
             <p className="footnote">
               {t('toolC.footnote.privacy')}<br />
-              {t('toolC.footnote.b')}
+              {t('toolC.footnote.b')}<br />
+              {t('toolC.related.pre')}
+              <LocalLink href="/fivem-gtarp/tools/crew-name-generator">{t('fg.card.crewName.title')}</LocalLink>
+              {t('toolC.related.post')}
             </p>
           </div>
         </div>

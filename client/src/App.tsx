@@ -69,6 +69,7 @@ import ToolsIndex from "./pages/ToolsIndex";
 import ImageResizeTool from "./pages/ImageResizeTool";
 import ImageMaskTool from "./pages/ImageMaskTool";
 import CharaMakerTool from "./pages/CharaMakerTool";
+import CrewNameTool from "./pages/CrewNameTool";
 // 地図ツールもページ本体は事前import（地図キャンバスだけが MapTool 内で lazy）。
 import MapTool from "./pages/MapTool";
 import NotFound from "./pages/NotFound";
@@ -121,6 +122,7 @@ function Router() {
       <Route path="/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
       <Route path="/fivem-gtarp/tools/chara-maker" component={CharaMakerTool} />
+      <Route path="/fivem-gtarp/tools/crew-name-generator" component={CrewNameTool} />
       <Route path="/fivem-gtarp/tools/gta5-map" component={MapTool} />
 
       {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
@@ -162,6 +164,7 @@ function Router() {
       <Route path="/en/fivem-gtarp/tools/image-resize" component={ImageResizeTool} />
       <Route path="/en/fivem-gtarp/tools/image-mask" component={ImageMaskTool} />
       <Route path="/en/fivem-gtarp/tools/chara-maker" component={CharaMakerTool} />
+      <Route path="/en/fivem-gtarp/tools/crew-name-generator" component={CrewNameTool} />
       <Route path="/en/fivem-gtarp/tools/gta5-map" component={MapTool} />
       <Route path="/en/about" component={About} />
       <Route path="/en/contact" component={Contact} />
