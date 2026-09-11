@@ -25,6 +25,66 @@
       "statusCode": 301
     },
     {
+      "source": "/news/33",
+      "destination": "/news/1",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/33",
+      "destination": "/en/news/1",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/39",
+      "destination": "/news/1",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/39",
+      "destination": "/en/news/1",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/32",
+      "destination": "/news/51",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/32",
+      "destination": "/en/news/51",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/16",
+      "destination": "/news/36",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/16",
+      "destination": "/en/news/36",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/31",
+      "destination": "/news/36",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/31",
+      "destination": "/en/news/36",
+      "statusCode": 301
+    },
+    {
+      "source": "/news/29",
+      "destination": "/news/36",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/news/29",
+      "destination": "/en/news/36",
+      "statusCode": 301
+    },
+    {
       "source": "/news/:id(3|4|5|6|7|8|9|11|12|13|14|15|20|21|22|23|24|25|27)",
       "destination": "/fivem-gtarp",
       "statusCode": 302

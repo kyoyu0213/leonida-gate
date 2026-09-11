@@ -66,11 +66,19 @@ export const isHiddenNewsId = (id: number | string): boolean => HIDDEN_SET.has(N
 /**
  * 他の記事へ 301 で恒久統合した記事ID（vercel.json の redirects と対応）。
  *   17 → 19（GTA6の予約開始・エディション情報を id19 に一本化）
+ *   ▼ 2026-09-12 ⑱-2（外れた予想・期限切れイベントの整理。統合先は書き直して統合元の情報を取り込み済み）
+ *   33 → 1   トレーラー3は7月中旬説（外れた予想）  … id1 を「公式映像まとめ」に全面改稿
+ *   39 → 1   An Extended Look のNetflix先行公開の告知
+ *   32 → 51  Digital Foundry の「PS5 Proでも30fps」予想 … id51 に「発売前の予想」節を追加
+ *   16 → 36  Fine Art Collector プログラム（終了）   … id36 を「Kortz Center Heist ガイド」に全面改稿
+ *   31 → 36  独立記念日イベント（終了）
+ *   29 → 36  Discord 連携クルーネック配布（終了。以前は NOINDEX_NEWS_IDS にあった＝二重に入れないこと）
+ * 本文データは消さずに残す（記録として。表示経路・プリレンダ・sitemap からは外れる）。
  * 一覧・関連記事・検索に出すと「クリックすると別記事へ飛ぶカード」になり、
  * 生HTMLに 301 を踏む内部リンクが残ってしまうため、表示経路からは外す。
  * 非表示（HIDDEN_NEWS_IDS）とは別概念：こちらは恒久統合なので発売後も戻さない。
  */
-export const REDIRECTED_NEWS_IDS: readonly number[] = [17];
+export const REDIRECTED_NEWS_IDS: readonly number[] = [16, 17, 29, 31, 32, 33, 39];
 
 const REDIRECTED_SET = new Set<number>(REDIRECTED_NEWS_IDS);
 
@@ -79,11 +87,12 @@ export const isRedirectedNewsId = (id: number | string): boolean => REDIRECTED_S
 
 /**
  * 本文は残したまま検索インデックスからだけ外す記事ID。
- *   29: 内容が薄く、検索から入っても得るものが無いと判断（本文は残す）
+ *   （2026-09-12 までは 29 が入っていたが、id36 へ 301 統合したので REDIRECTED_NEWS_IDS へ移した。
+ *     301 と noindex を同じ ID に二重にかけない。check-route-tables が重複を検出する）
  * prerender-og.ts が <meta name="robots" content="noindex,follow"> を焼き、
  * generate-sitemap.mjs は sitemap から外す。どちらもこの配列を正とする。
  */
-export const NOINDEX_NEWS_IDS: readonly number[] = [29];
+export const NOINDEX_NEWS_IDS: readonly number[] = [];
 
 const NOINDEX_SET = new Set<number>(NOINDEX_NEWS_IDS);
 
@@ -6408,9 +6417,20 @@ That may be the moment Leonida's real size lands.
     category: "topic",
     date: "2026-08-28",
     publishedAt: "2026-08-28 23:30",
-    source: "Davy Jones／Flow Games・Push Square ほか報道",
+    updatedAt: "2026-09-12",
+    source: "Davy Jones／Flow Games・Push Square ほか報道／Digital Foundry",
     sourceUrl: "https://www.pushsquare.com/news/2026/08/gta-6-targeting-30fps-on-ps5-undecided-on-performance-mode",
     relatedArticles: [50, 49, 48],
+    correction: {
+      label: "2026年9月12日 追記・記事統合",
+      body: [
+        "2026年7月4日に公開していた「GTA6はPS5 Proでも30fps止まりか——Digital Foundryが『60fpsは厳しい』と分析」を本記事に統合し、「発売前にDigital Foundryが示していた予想」の節を追加しました。旧URLは本記事へ転送しています。",
+      ],
+      labelEn: "Update and merge — September 12, 2026",
+      bodyEn: [
+        "We have merged our July 4, 2026 article \"Is GTA6 Stuck at 30fps Even on PS5 Pro? Digital Foundry Says 60fps Will Be Tough\" into this one and added a section, \"What Digital Foundry Predicted Before the Previews.\" The old URL now redirects here.",
+      ],
+    },
     aiSummary: [
       "Rockstar Northを訪問したブラジルのクリエイターDavy Jonesが、現地で見たGTA6が30fpsで動作していたと明かした。デモにはフレームレートカウンターも表示されていたと報じられ、ブラジルのFlow Gamesは開発責任者Rob Nelson氏の説明として、現在の開発段階ではPS5 Proを含むコンソール版が30fpsで動作しているとしている。",
       "ただしNelson氏は「60fpsには対応しない」と答えたわけではなく、最終的な技術仕様については技術チームへの確認が必要という趣旨の回答だった。つまり「PS5 Proでも30fps確定」ではなく、「現在のGTA6は30fpsをターゲットとしており、60fpsについてRockstarはまだ約束していない」という段階になる。",
@@ -6523,6 +6543,18 @@ PS5 Proは通常PS5からGPU側が大きく強化された一方、CPUについ�
 2026年に入ってGTA6の詳細がさらに明らかになった後も、Digital Foundryは同様に60fpsには慎重な見方を示している。
 
 そして今回、Rockstar Northの実機デモが30fpsだったことで、その分析に初めて開発現場側からの具体的な情報が重なったことになる。
+
+---
+
+## 発売前にDigital Foundryが示していた予想（2026年7月時点）
+
+Rockstar Northの先行プレビューより前、2026年7月の時点で、技術分析メディアのDigital Foundry（DF）はすでに「GTA6はPS5 Proでも30fps、よくて40fps」という見立てを示していた。当時GTA6 FEEDでも取り上げたこの分析は、今回の30fpsという情報とほぼ重なる内容なので、ここで振り返っておきたい。
+
+DFのWilliam Judd氏は、トレーラーや予約開始時のスクリーンショット、Rockstarの過去作の傾向から、GTA6が60fpsに達するのは難しいと分析した。DFでは2024年の時点でもRichard Leadbetter氏が同じくCPUのボトルネックを指摘しており、一貫した見方だ。NPCの挙動、交通、物理演算、レイトレーシング、ストリーミング、アニメーションといった世界の処理を、60fpsならおよそ半分の時間で更新し続けなければならない。Judd氏はGTA6の世界を『Dragon's Dogma 2』や『Baldur's Gate 3』といった重量級のRPGより「一段上の難しさ」とし、陸・海・空を高速で移動でき、車両ごとに重い物理演算が必要になる点を挙げて、この種の負荷が従来からコンソールを30fpsに縛ってきたと説明していた。PS5 ProのCPUはベースのPS5からわずかしか向上していないため、GPUの強化だけでは60fpsの壁は越えにくく、現実的な落としどころは120Hzディスプレイ向けの40fpsモード（フレーム時間25ミリ秒。30fpsの33.3ミリ秒と60fpsの16.7ミリ秒のちょうど中間）だろう、というのがDFの見立てだった。一方でDF自身、外れる可能性はあるとし、もし外れればGTA6はRockstarとして初めて発売時からコンソールで60fpsを狙うオープンワールド作品になる、とも述べていた。
+
+当時は反対の材料もあった。ポーランドの小売店Media MarktのFAQとされる情報が流出し、PS5・Xbox Series X向けに「Quality（高画質・30fps）」と「Performance（60fps）」の2モードがあると書かれていたのだ。ただしDFは、多くのPS5作品が同じような2モードを定型文として載せていることから決定的な証拠にはならないと懐疑的で、仮に「Performance」があっても40fpsや、画質を抑えて30fpsを安定させるモードの可能性があると見ていた。過去作を振り返っても、GTA IV・GTA V・RDR2はいずれもコンソールで30fpsで発売され、GTA Vに60fpsモードが加わったのはPS5・Xbox Series X|S版が出たあとのことだ。
+
+こうして7月時点のコンセンサスは「ベースのPS5とXbox Series Xは30fps中心、PS5 Proは30fpsが濃厚で運が良ければ40fps、Xbox Series Sは30fps固定、60fpsは発売時には望み薄で将来のパッチに余地」というものだった。8月のRockstar Northでのデモが30fpsだったことで、この予想は開発現場の情報によって裏づけられた形になる。ただし、Rockstarが製品版の仕様をまだ発表していないという点は、7月時点から変わっていない。
 
 ---
 
@@ -6658,7 +6690,7 @@ GTA6 FEEDでは、PS5 Pro Enhancedの詳細や60fps・グラフィックモー�
 
 ---
 
-> **注記：** 本記事はDavy Jonesの発言をもとにしたFlow Games、Push Squareなど各メディアの報道と、公開されている公式情報をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。フレームレートに関する記述は2026年8月時点の開発中ビルドについてのものであり、製品版の仕様はRockstarから正式発表されていない。40fpsモードの可能性は技術系メディアによる推測であり、Rockstarの発表ではない。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
+> **注記：** 本記事はDavy Jonesの発言をもとにしたFlow Games、Push Squareなど各メディアの報道と、公開されている公式情報をまとめたもので、発言の日本語部分は編集部訳・要約を含む。正確な文言は各原文を参照してほしい。フレームレートに関する記述は2026年8月時点の開発中ビルドについてのものであり、製品版の仕様はRockstarから正式発表されていない。40fpsモードの可能性は技術系メディアによる推測であり、Rockstarの発表ではない。「発売前にDigital Foundryが示していた予想」の節は、2026年7月時点のDigital Foundryの技術分析と、小売店FAQとされる流出情報（未確認）にもとづく当時の予想の記録である。また、本記事の画像のうちAI生成のイメージ画像には、その旨を各画像のキャプションに記載している。それ以外はRockstar Games提供の公式素材である。`,
     titleEn:
       "GTA6 at 30fps Even on PS5 Pro? What the Rockstar Previews Showed About Current Performance — and the Odds of 60fps",
     displayTitleEn:
@@ -6775,6 +6807,18 @@ The PS5 Pro substantially strengthened the GPU side over the base PS5, but its C
 After more GTA6 detail emerged through 2026, Digital Foundry has remained similarly cautious about 60fps.
 
 And now, with the Rockstar North demo running at 30fps, that analysis has concrete information from the development side layered on top of it for the first time.
+
+---
+
+## What Digital Foundry Predicted Before the Previews (as of July 2026)
+
+Before the Rockstar North previews, in July 2026, the technical analysis outlet Digital Foundry (DF) had already laid out the view that "GTA6 will run at 30fps even on PS5 Pro, 40fps at best." GTA6 FEED covered that analysis at the time, and since it lines up almost exactly with the 30fps news, it is worth revisiting here.
+
+DF's William Judd judged from the trailers, the pre-order screenshots, and Rockstar's track record that GTA6 would struggle to reach 60fps. DF's Richard Leadbetter had pointed to the same CPU bottleneck back in 2024, so it has been a consistent view. At 60fps, NPC behavior, traffic, physics, ray tracing, streaming, and animation all have to be updated in roughly half the time. Judd described GTA6's world as "a step above" heavyweight RPGs such as *Dragon's Dogma 2* and *Baldur's Gate 3* in difficulty, noting that players can move at speed across land, sea, and air with heavy physics for every vehicle — the kind of load that has always tied consoles to 30fps. Because the PS5 Pro's CPU is only slightly faster than the base PS5's, GPU gains alone would struggle to break the 60fps barrier, and DF saw a 40fps mode for 120Hz displays as the realistic compromise: a 25ms frame time, exactly halfway between 30fps (33.3ms) and 60fps (16.7ms). DF also cautioned that it could be wrong, adding that if it were, GTA6 would be Rockstar's first open world to target 60fps on consoles at launch.
+
+There was counter-evidence at the time. A leaked FAQ attributed to Polish retailer Media Markt listed two modes for PS5 and Xbox Series X — "Quality (high fidelity, 30fps)" and "Performance (60fps)." DF was skeptical, noting that many PS5 listings carry the same two modes as boilerplate, so it proved nothing; even if a "Performance" mode existed, it might mean 40fps or a mode that trims visuals to stabilize 30fps. History pointed the same way: GTA IV, GTA V, and RDR2 all launched at 30fps on consoles, and GTA V only gained a 60fps mode with the later PS5 and Xbox Series X|S versions.
+
+So the July consensus was: base PS5 and Xbox Series X mostly 30fps; PS5 Pro most likely 30fps, 40fps if lucky; Xbox Series S locked to 30fps; 60fps unlikely at launch, with room for a future patch. The 30fps demo at Rockstar North in August effectively backed that prediction with information from the developer side. What has not changed since July is that Rockstar has yet to announce the shipping specs.
 
 ---
 
@@ -6906,7 +6950,7 @@ GTA6 FEED will keep following this — new official information on PS5 Pro Enhan
 
 ---
 
-> **Note:** This article draws on reporting from Flow Games, Push Square and other outlets based on Davy Jones' comments, along with publicly available official information; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Statements about frame rate concern a build in development as of August 2026; the shipping specification has not been officially announced by Rockstar. The 40fps possibility is speculation by technical outlets, not a Rockstar announcement. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
+> **Note:** This article draws on reporting from Flow Games, Push Square and other outlets based on Davy Jones' comments, along with publicly available official information; quoted passages are summarized or paraphrased rather than reproduced in full, so refer to the originals for exact wording. Statements about frame rate concern a build in development as of August 2026; the shipping specification has not been officially announced by Rockstar. The 40fps possibility is speculation by technical outlets, not a Rockstar announcement. The section "What Digital Foundry Predicted Before the Previews" is a record of predictions made at the time, based on Digital Foundry's technical analysis as of July 2026 and an unverified leaked retailer FAQ. Images that are AI-generated illustrations are labeled as such in their captions; the rest are official Rockstar Games material.`,
   },
   {
     id: 50,
@@ -11777,167 +11821,290 @@ The principle to remember is simple. There is no public beta or early access for
   {
     id: 36,
     title:
-      "GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信——約6年ぶりの大仕事、美術館から名画を奪え",
+      "GTA Online「The Kortz Center Heist」ガイド——始め方・報酬・週1回の稼ぎ方と、配信までの準備イベントの記録",
     displayTitle:
-      "GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信\n約6年ぶりの大仕事、美術館から名画を奪え",
+      "GTA Online「The Kortz Center Heist」ガイド\n始め方・報酬・週1回の稼ぎ方と、配信までの準備イベントの記録",
     description:
-      "Rockstarが、GTA Onlineの新強盗「The Kortz Center Heist」を7月14日に配信すると発表。舞台は美術館Kortz Center。完全新規の大型強盗はCayo Perico以来およそ6年ぶりで、GTA6発売前・最後級の大型アップデートとみられる。内容と準備の要点をまとめた。",
+      "2026年7月14日に配信されたGTA Onlineの強盗「The Kortz Center Heist」のガイド。主催に必要なマンションとArt Studio、強盗の流れ、週ごとに最初の売却だけが高くなる報酬の仕組み、同じアップデートで変わった他の強盗の報酬、配信前に行われた準備イベントまでをまとめた。",
     icon: "🖼️",
     image: "/images/news/gta_online_kortz_center_heist_article/ff97a2a5a3c452c1049a75eae778870674ff0e48.webp",
     category: "update",
     date: "2026-07-10",
     publishedAt: "2026-07-10 12:00",
-    source: "GTA6 FEED 編集部",
-    sourceUrl: "https://www.rockstargames.com/newswire",
-    relatedArticles: [31, 35, 33],
+    updatedAt: "2026-09-12",
+    source: "Rockstar Games Newswire／GTA BOOM・Game Rant・RockstarINTEL ほか",
+    sourceUrl: "https://www.rockstargames.com/newswire/article/2525o93834o413/the-kortz-center-heist-now-available-in-gta-online",
+    relatedArticles: [57, 2, 1],
+    correction: {
+      label: "2026年9月12日 全面改稿・記事統合",
+      body: [
+        "本記事は2026年7月10日に、配信直前の告知記事として公開しました。配信後に分かった報酬の仕組みや、同じアップデートで変わった他の強盗の報酬などを加え、遊び方のガイドとして全面的に書き直しました。",
+        "配信前の準備イベントを扱っていた「Fine Art Collector」プログラムの解説（6月18日公開）、独立記念日イベント（7月3日公開）、Discord連携のクルーネック配布（7月1日公開）の3本は本記事に統合し、旧URLは本記事へ転送しています。",
+      ],
+      labelEn: "Rewritten and merged — September 12, 2026",
+      bodyEn: [
+        "This article was first published on July 10, 2026, as an announcement just before release. We have rewritten it as a play guide, adding what became clear after launch, such as how the payouts work and how the same update changed other heists' payouts.",
+        "Three articles covering the pre-release events — the Fine Art Collector program (published June 18), the Independence Day event (July 3), and the Discord-linked crewneck giveaway (July 1) — have been merged into this one, and their old URLs now redirect here.",
+      ],
+    },
     aiSummary: [
-      "Rockstarは、GTA Onlineの新しい強盗「The Kortz Center Heist」を7月14日に全機種で配信する。舞台はロスサントスの美術館Kortz Centerで、名画を盗み出す多段階の強盗。完全新規の大型強盗としてはCayo Perico以来およそ6年ぶりで、11月19日のGTA6発売を前にした最後級の大型アップデートとみられている。",
-      "主催にはマンション物件と新規のArt Studio拡張が必要。贋作師が本物とすり替える偽物を作り、盗んだ絵は故買屋に売るか自宅に飾れる。盗める絵画は毎週3枚が入れ替わる。新車Grotti Veleno GTはGTA+会員が7月14日から無料入手できる。",
-      "配信に先立ち無料の準備イベント「Fine Art Collector Program」が7月13日まで実施中で、ログイン＋強盗1回クリアで最大GTA$150万と装甲リムジンがもらえる。ただし強盗本編の報酬額は配信まで未確定である。",
+      "The Kortz Center Heistは2026年7月14日に配信されたGTA Onlineの強盗で、美術館Kortz Centerから名画を盗み出す。完全新規の大型強盗はCayo Perico以来およそ6年ぶり。主催にはマンションとArt Studio拡張が必要で、1〜4人で遊べる。",
+      "報酬は「その週に最初に売った1枚」だけが高い仕組みで、攻略サイトの集計では週初回のメインターゲットがGTA$1,925,000、同じ週の2回目以降は約GTA$40万から準備の開始費GTA$10万を引いた約GTA$30万になる。週のリセットは木曜日。",
+      "同じアップデートでは既存の強盗の報酬が1〜4割ほど下がり、代わりに週初回クリアのボーナス（最大4倍）が導入された。配信前には準備イベントFine Art Collector Programや、無料バンカーの独立記念日イベントも行われた（いずれも7月13日で終了）。",
     ],
-    fullContent: `# GTA Online、新たな強盗「The Kortz Center Heist」を7月14日配信——約6年ぶりの大仕事、美術館から名画を奪え
+    titleEn:
+      "GTA Online's The Kortz Center Heist Guide — How to Start, Payouts, Playing It Once a Week, and a Record of the Pre-Release Events",
+    displayTitleEn:
+      "GTA Online's The Kortz Center Heist Guide\nHow to Start, Payouts, Playing It Once a Week, and a Record of the Pre-Release Events",
+    descriptionEn:
+      "A guide to The Kortz Center Heist, the GTA Online heist released on July 14, 2026: the Mansion and Art Studio needed to host it, how the heist flows, the payout system where only your first sale each week pays big, how the same update changed other heists' payouts, and the events that ran before release.",
+    aiSummaryEn: [
+      "The Kortz Center Heist is a GTA Online heist released on July 14, 2026, in which you steal masterpieces from the Kortz Center museum. It is the first all-new major heist in roughly six years, since Cayo Perico. Hosting requires a Mansion and the Art Studio expansion, and it supports 1–4 players.",
+      "Payouts are built so that only the first painting you sell each week pays big. Per guide sites, the first Primary Target sale of the week is GTA$1,925,000, while later runs in the same week pay about $400,000, or roughly $300,000 after the $100,000 replay fee. The week resets on Thursday.",
+      "The same update cut payouts for existing heists by roughly 10–40% and introduced first-completion-of-the-week bonuses of up to 4x instead. Before launch, the Fine Art Collector Program and an Independence Day event with a free bunker also ran (both ended July 13).",
+    ],
+    fullContentEn: `# GTA Online's The Kortz Center Heist Guide — How to Start, Payouts, Playing It Once a Week, and a Record of the Pre-Release Events
 
-Rockstarは、GTA Onlineの新しい強盗(heist)ミッション「The Kortz Center Heist」を7月14日に配信すると公式に発表した。舞台はロスサントスの美術館Kortz Center。完全新規の大型強盗としてはCayo Perico以来、およそ6年ぶりで、11月19日のGTA6発売を前にした最後級の大型アップデートになるとみられている。GTA6 FEEDが、内容と準備の要点をまとめた。
+The Kortz Center Heist is a GTA Online heist released on July 14, 2026. The target is the Kortz Center, the art museum in Pacific Bluffs, Los Santos, and it is the first all-new major heist in roughly six years, since The Cayo Perico Heist (December 2020). The limited-time launch events have ended, but the heist itself can still be played. This guide covers how to start it, how its payouts work as of September 2026, and the preparation events that ran before release.
 
-本記事は2026年7月10日時点の情報にもとづく。
+---
+
+## The Basics
+
+- Release date: July 14, 2026 (Title Update 1.73)
+- Platforms: PS5, PS4, Xbox Series X|S, Xbox One, PC
+- Players: 1–4 (solo is possible)
+- To host: a Prix Luxury Real Estate Mansion plus the Art Studio expansion
+- Target: paintings and other pieces displayed at the Kortz Center in Pacific Bluffs
+- Characters: Raf De Angelis (guides you on the job), Yong-Rae (the forger), Mr. Faber (whose clients buy the art)
+
+---
+
+## What Kind of Heist It Is
+
+The Kortz Center has been on the map since 2013 but could never be entered, and it is also where a tense standoff took place near the end of GTA5's story. This heist finally sends you inside to steal its masterpieces. The flow — case the building, choose an approach, complete the preps, and escape with the loot in the finale — follows the same structure as the Cayo Perico and Diamond Casino heists, two of GTA Online's most replayed pieces of content. You can take it on solo or with a crew of up to four; more players make it easier to carry out more loot, while solo runs are harder but give you a bigger individual take.
+
+![A heist crew fleeing the Kortz Center museum with the loot, shaking off a pursuing helicopter and police](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.webp)
+
+---
+
+## Getting Started: The Mansion and the Art Studio
+
+To lead the heist, you need a Mansion and the Art Studio expansion. The forger Yong-Rae lives in the Art Studio and makes convincing replicas to swap in for the originals you steal. The studio doubles as your planning base: the more preps you complete, the more gear and skills you stock up, and you build your finale loadout from them. During the job, Raf De Angelis shares intel in your ear, and the Mansion's AI assistant also helps out.
+
+![The forger who lives in the Art Studio, making replicas to swap in for the stolen originals](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
+
+The Primary Target painting can be sold through Mr. Faber's clients for cash or hung in your own Mansion. The first target is the painting "La Dernière Débauche," and the stealable paintings rotate weekly, which gives you a reason to come back.
+
+![An example of a stealable painting. Stolen originals can be sold for cash or displayed in your Mansion](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
+
+---
+
+## Payouts (as of September 2026)
+
+Rockstar explains that the first painting you sell each week earns a bonus, and every sale after that "floods the market." In other words, this heist is designed to be done well once a week rather than ground out on repeat.
+
+Rockstar has not published a full payout table, but major guide sites report the following:
+
+- First sale of the week: selling the Primary Target "La Dernière Débauche" pays GTA$1,925,000. Adding Secondary Targets, a realistic solo total is around GTA$2.2 million.
+- Secondary Targets: up to around GTA$2.65 million can be on display, but each painting takes up a large share of your bag, so one player cannot carry it all.
+- Later runs in the same week: about GTA$400,000 per run. Since each setup after the first of the week costs GTA$100,000, the profit is roughly GTA$300,000.
+- Weekly reset: Thursday. The high payout is decided when you sell, not when you start the setup.
+- Cooldown: 2 hours 24 minutes solo, 48 minutes with 2–4 players.
+- Bonuses: the Buyer's Request and the Elite Challenge each pay GTA$50,000 on Normal and GTA$100,000 on Hard.
+- Time: allow about an hour for planning and preps on your first run.
+
+---
+
+## The Same Update Changed Other Heists' Payouts
+
+Title Update 1.73, which added The Kortz Center Heist, also cut the payouts of existing heists by roughly 10–40% — the Cayo Perico Pink Diamond, for example, fell from about GTA$1.3 million to about GTA$910,000. In exchange, Rockstar added first-completion-of-the-week bonuses of up to 4x across 11 classic heists, resetting every Thursday. Player backlash followed, and Rockstar later quietly adjusted The Doomsday Heist's payouts so that first weekly completions pay more than they did before the update. Across GTA Online as a whole, the design has shifted from grinding one heist to rotating through each heist once a week.
+
+---
+
+## Playing It Once a Week, and Whether to Invest
+
+The most efficient way to play is to do The Kortz Center Heist once each week after the Thursday reset and collect the first-sale bonus, then rotate through the other heists' first-completion bonuses. Running it repeatedly in the same week earns only about GTA$300,000 per run. The Mansion and Art Studio cost several million GTA$, so they pay off if you play every week; if you only play occasionally, weigh the cost first.
+
+---
+
+## New Cars and Other Additions
+
+The update also added new vehicles. The headline Grotti Veleno GT could be claimed free by GTA+ members at the Vinewood Car Club showroom from July 14, with general sale a week later. New supercars and vehicles compatible with Drift and Hao's Special Works were added too, along with updates to the Rockstar Mission Creator.
+
+![The headline new car, the Grotti Veleno GT](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
+
+---
+
+## The Road to Launch: A Record of the Preparation Events (June–July 2026)
+
+Several limited-time events ran before the heist launched. All of them have ended, but here is the record.
+
+### The Fine Art Collector Program (June 18 – July 13)
+
+A free preparation event with three tiers:
+
+- Enthusiast: play GTA Online during the period to get GTA$500,000 and the armored Benefactor Turreted Limo (seats five, roof-mounted minigun, called in via Pegasus).
+- Patron: complete any heist during the period for an extra GTA$1,000,000 and the NOOSE outfit — up to GTA$1.5 million in total.
+- Elitist: own a Mansion and play during the period to receive a GTA$1,000,000 discount on the Art Studio, a free Annihilator Stealth helicopter, a sculpture, and the right to unlock a special painting. These were delivered when the heist launched.
+
+The first two tiers paid out within 72 hours of meeting the conditions, and GTA+ members got a GTA$2 million discount on a Mansion. At the same time, the Diamond Casino finale paid double until June 24, and Shark Cards gave 40% bonus GTA$ until July 22.
+
+### The Independence Day Event (July 2 – July 13)
+
+An event that doubled as a week to build up funds before the heist. The Lago Zancudo Bunker — normally over GTA$1 million — was free from Maze Bank Foreclosures, with 40% off bunker upgrades and a free high-end garage. Bunker sell missions paid double and Stunt Races paid triple, and a Rockstar-billed "biggest ever" sale ran across aircraft, special vehicles, and properties. If you already owned the Chumash or Farmhouse bunker, which have shorter delivery routes, there was no need to switch.
+
+### The Discord-Linked Crewneck Giveaway (June 11 – July 1)
+
+Linking a Rockstar account to Discord unlocked a free burgundy Rockstar Varsity Crewneck, claimed with /claim in the official server's #discord-rewards channel. Rockstar said this was the last of its Discord-linked rewards.
+
+---
+
+## Summary
+
+- The Kortz Center Heist launched on July 14, 2026. Hosting requires a Mansion and the Art Studio; it supports 1–4 players.
+- Only the first sale each week pays big (about GTA$1,925,000 for the Primary Target per guide sites); later runs that week net about GTA$300,000. The week resets on Thursday.
+- The same update lowered other heists' payouts and added weekly first-completion bonuses, making "each heist once a week" the norm.
+- The pre-release events ended on July 13.
+
+GTA6 releases on November 19, 2026 (see "[GTA6's Release Date Is Locked In](/en/news/2)").
+
+---
+
+## Sources and References
+
+→ [The Kortz Center Heist Now Available in GTA Online (Rockstar Games Newswire)](https://www.rockstargames.com/newswire/article/2525o93834o413/the-kortz-center-heist-now-available-in-gta-online)
+
+→ [Kortz Center Heist Payouts (GTA BOOM)](https://www.gtaboom.com/gta-online-kortz-center-heist-payouts-4a8e)
+
+→ [GTA Online: Kortz Center Heist Cooldown & Payout Guide (Game Rant)](https://gamerant.com/gta-online-kortz-center-heist-payout-cooldown-times/)
+
+→ [Rockstar Responds To GTA Online Heist Payout Reduction Backlash (RockstarINTEL)](https://rockstarintel.com/rockstar-responds-to-gta-online-heist-payout-reduction-backlash/)
+
+---
+
+> **Note:** This article is based on Rockstar Games' official announcements (Newswire) and on payout figures compiled by major guide sites. Rockstar has not published a full payout table, and amounts, cooldowns, and fees may change with updates. The payout figures are as of September 2026. The limited-time events are recorded as they ran at the time and have all ended. This article is a full rewrite of our July 10, 2026 announcement article and merges three pieces: the Fine Art Collector program explainer (June 18), the Independence Day event (July 3), and the Discord-linked crewneck giveaway (July 1).`,
+    fullContent: `# GTA Online「The Kortz Center Heist」ガイド——始め方・報酬・週1回の稼ぎ方と、配信までの準備イベントの記録
+
+The Kortz Center Heistは、2026年7月14日に配信されたGTA Onlineの強盗ミッションだ。舞台はロスサントスのパシフィック・ブラフスにある美術館Kortz Centerで、完全新規の大型強盗としては2020年12月のThe Cayo Perico Heist以来、およそ6年ぶりとなる。配信記念のイベント期間は終わったが、強盗そのものは今も遊べる。本記事では、始め方と2026年9月時点の報酬の仕組み、そして配信前に行われた準備イベントの記録をまとめる。
+
+---
+
+## 基本情報
+
+- 配信日：2026年7月14日（タイトルアップデート1.73）
+- 対応機種：PS5・PS4・Xbox Series X|S・Xbox One・PC
+- 人数：1〜4人（ソロ可）
+- 主催に必要なもの：Prix Luxury Real Estateのマンションと、Art Studio拡張
+- 標的：パシフィック・ブラフスの美術館Kortz Centerに展示された絵画など
+- 登場人物：Raf De Angelis（現場で情報を伝えるナビ役）、Yong-Rae（贋作師）、Mr. Faber（絵を買い取る顧客を抱える故買屋）
 
 ---
 
 ## どんな強盗か
 
-配信は7月14日、対応は全機種(PS5・PS4・Xbox Series X|S・Xbox One・PC)。狙うのは、Pacific Bluffsの丘に建つ美術館Kortz Centerだ。2013年からマップに存在しながら中に入れなかった名所で、GTA5のストーリー終盤で緊迫した対峙が起きた場所でもある。そこに眠る名画を盗み出す、多段階の強盗となる。
+Kortz Centerは2013年からマップに存在しながら中に入れなかった名所で、GTA5のストーリー終盤で緊迫した対峙が起きた場所でもある。今回の強盗では、そこに眠る名画を盗み出すことになる。施設を下見し、侵入の方法を選び、準備ミッションをこなしてから、フィナーレで戦利品を持って逃げる——という流れはCayo PericoやDiamond Casinoの強盗と同じ構造で、いずれもGTA Onlineで最も繰り返し遊ばれてきた人気コンテンツだ。ソロでも最大4人のクルーでも挑め、人数が多いほど多くの戦利品を持ち出しやすく、ソロは難度が上がるぶん一人当たりの取り分が大きくなる。
 
 ![美術館Kortz Centerから戦利品を持って逃走する強盗団。追跡するヘリと警察をかわして逃げ切る](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.webp)
 
-流れは、施設を下見し、侵入の方法を選び、潜入し、戦利品を持って逃げる、というもの。これはCayo PericoやDiamond Casinoの強盗と同じ構造で、いずれもGTA Onlineで最も繰り返し遊ばれてきた人気コンテンツだ。ソロでも、最大4人のクルーでも挑める。仲間が多いほど多くの戦利品を持ち出しやすくなる一方、ソロは難度が上がるが一人当たりの取り分は大きくなる(このあたりもCayo Pericoと同様だ)。
+---
+
+## 始め方：マンションとArt Studio
+
+リーダーとしてこの強盗を主催するには、マンション物件と、Art Studio拡張が必要になる。Art Studioには贋作師のYong-Raeが住み込み、盗んだ本物とすり替えるための精巧な偽物を制作する。ここは計画の拠点も兼ねていて、準備を進めるほど装備や技術がストックされ、フィナーレではその中からロードアウトを組める。強盗中はRaf De Angelisが偵察や重要な情報を伝えてくれるほか、マンションのAIアシスタントも役に立つ。
+
+![Art Studioに住み込む贋作師。盗んだ本物とすり替えるための偽物を制作する](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
+
+盗み出したメインターゲットの絵画は、故買屋Mr. Faberの顧客に売って現金化するか、自分のマンションに飾って所有するかを選べる。最初の標的は「La Dernière Débauche」という絵画で、盗める絵画は週ごとに入れ替わるため、繰り返し遊ぶ動機になっている。
+
+![盗める絵画の一例。盗んだ本物は売って現金化するか、自分のマンションに飾って所有できる](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
 
 ---
 
-## ホストに必要なもの:マンションとArt Studio
+## 報酬（2026年9月時点）
 
-リーダーとしてこの強盗を主催するには、マンション物件と、新たに追加されるArt Studio拡張が必要になる。
+Rockstarは、その週に最初に売った絵画にはボーナスが付き、2枚目以降は「市場があふれる（floods the market）」ため値が下がると説明している。つまりこの強盗は、同じ週に何度も回して稼ぐものではなく、週に1回きっちりこなす設計になっている。
 
-![Art Studioに住み込む贋作師。盗んだ本物とすり替えるための偽物(フォージェリ)を制作する](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
+Rockstarは報酬の一覧を公表していないが、主要な攻略サイトの集計では次のとおりだ。
 
-Art Studioには贋作師が住み込み、盗んだ本物とすり替えるための偽物(フォージェリ)を制作する。ここは計画の拠点も兼ね、準備を進めるほど装備や技術がストックされ、フィナーレではその中からロードアウトを組める。強盗中は、Rafが偵察や重要な情報を共有する連絡役となり、マンションのAIアシスタントも役に立つ。
-
-盗み出した主目標の絵画は、故買屋Mr. Faberの顧客に売って現金化するか、あるいは自分のマンションに飾って所有するかを選べる。さらに、盗める絵画は毎週3枚が新たに入れ替わり、繰り返し遊ぶ動機になる。
-
-![盗める絵画の一例。盗んだ本物は故買屋に売って現金化するか、自分のマンションに飾って所有できる](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
-
----
-
-## 新車とその他の追加
-
-アップデートでは新しい車両も追加される。目玉のGrotti Veleno GTは、GTA+会員なら7月14日からVinewood Car Clubのショールームで無料で受け取れる。一般販売はその1週間後で、会員は先行して入手できる形だ。このほかにも新しいスーパーカーや、Drift、Hao's Special Worksに対応した車両が加わる。あわせて、Rockstar Mission Creatorのアップデートなども予定されている。
-
-![目玉の新車Grotti Veleno GT。GTA+会員は7月14日から無料で入手でき、一般販売は1週間後](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
+- 週の最初の売却：メインターゲット「La Dernière Débauche」を売るとGTA$1,925,000。サブターゲットを合わせたソロの現実的な合計は、およそGTA$220万。
+- サブターゲット：展示されている分を合計すると最大でGTA$265万ほどになるが、絵画1枚でバッグの容量を大きく使うため、1人ですべてを持ち出すことはできない。
+- 同じ週の2回目以降：1回あたり約GTA$40万。週の最初の1回以外は準備の開始にGTA$10万かかるため、手元に残るのは約GTA$30万。
+- 週のリセット：木曜日。高い報酬になるかどうかは、準備を始めた時点ではなく売却した時点で決まる。
+- クールダウン：ソロで2時間24分、2〜4人で48分。
+- ボーナス：買い手の依頼（Buyer's Request）とエリートチャレンジが、それぞれノーマルでGTA$5万、ハードでGTA$10万。
+- 所要時間：初回は計画と準備におよそ1時間を見ておきたい。
 
 ---
 
-## 準備:Fine Art Collector Program(7月13日まで)
+## 同じアップデートで変わった「ほかの強盗の報酬」
 
-配信に先立ち、無料の準備イベント「Fine Art Collector Program」が7月13日まで実施されている。受け取れる主な報酬は次のとおり。
-
-- GTA Onlineに7月13日までにログインしてプレイする:GTA$50万と、装甲仕様のリムジンBenefactor Turreted Limo(屋根にマシンガンを備える)。
-- 期間中にいずれかの強盗を1回クリアする:追加でGTA$100万と、NOOSE Special Forcesスーツ。これで合計最大GTA$150万になる。
-- マンション所有者が7月13日までにプレイする:上位の「Elitist」資格が得られ、Annihilator Stealthヘリの無料入手、Art Studio拡張のGTA$100万割引、Kortz Centerの彫像、そして高額な絵画を盗む機会が付く。
-- GTA+会員:Prix Luxury Real EstateのマンションがGTA$200万割引。
-
-上の2段階の報酬は条件達成から72時間以内に付与され、「Elitist」分は強盗の配信後に受け取れる。
+The Kortz Center Heistを追加したタイトルアップデート1.73では、既存の強盗の報酬もおおむね1〜4割引き下げられた。たとえばCayo Pericoのピンクダイヤモンドは約GTA$130万から約GTA$91万に下がっている。その代わりに、代表的な11の強盗で週初回クリア時に最大4倍のボーナスが付く仕組みが導入され、こちらも毎週木曜日にリセットされる。プレイヤーからは反発の声も上がり、Rockstarはその後、The Doomsday Heistの報酬を告知なく調整して、週初回クリア時の報酬がアップデート前を上回るようにした。GTA Online全体として、ひとつの強盗を繰り返し回すのではなく、各強盗を週に1回ずつこなしていく形へ設計が変わったと言える。
 
 ---
 
-## 報酬(ペイアウト)はまだ未確定
+## 週1回の遊び方と、投資の判断
 
-一点、注意しておきたい。強盗本編で得られる報酬額は、7月14日の配信まで公式に明らかになっていない。Cayo Pericoやカジノの強盗と同じ多段階の構造であることから、おおむねそれらと同程度(1回あたりおよそGTA$100万〜数百万規模)と予想されているが、これはあくまで推測だ。配信前に出回る具体的な金額は、いずれも見込みの数字として受け止めておきたい。
-
----
-
-## 位置づけと、今やっておくべきこと
-
-この強盗が注目されるのは、その規模と時期だ。完全新規の大型強盗としては、2020年12月のCayo Perico以来およそ6年ぶりで、この間のGTA Onlineは車両の小出しや事業の調整が中心だった。GTA6の発売(11月19日)が近づくなか、これはオンラインの最後を飾る大型更新の一つになるとみられ、「有終の美」と受け止める声も多い。プレスリリースの見出し「The Next Big Score」が、GTA5終盤の強盗「The Big Score」を想起させる点も話題になっている。
-
-実際的な備えとしては、まず準備イベントをこなしておくのがよい。ログインと強盗1回クリアで最大GTA$150万と装甲リムジンが実質タダで手に入るので、7月13日までに済ませておいて損はない。一方、自分で強盗を主催したい場合はマンションとArt Studioが必須になるが、これは相応の出費であり、しかも本編の報酬額はまだ確定していない。頻繁に回すつもりなら投資する価値は高いが、たまに遊ぶ程度なら、配信後に実際の稼ぎが判明してから購入を判断するのが堅実だ。
-
-この強盗に向けた準備プログラム「Fine Art Collector」については、予告時の記事「[GTAオンライン最新アップデート解説 「Fine Art Collector」開始](/news/16)」で詳しく解説している。`,
-    titleEn:
-      "GTA Online’s New Heist “The Kortz Center Heist” Arrives July 14 — the First Big Job in ~6 Years: Steal Masterpieces from a Museum",
-    displayTitleEn:
-      "GTA Online’s New “Kortz Center Heist” Arrives July 14\nThe First Big Job in ~6 Years: Steal Masterpieces from a Museum",
-    descriptionEn:
-      "Rockstar has announced that GTA Online’s new heist, “The Kortz Center Heist,” arrives July 14, set in the Kortz Center museum. The first all-new major heist since Cayo Perico — roughly six years — it looks to be one of the last big updates before GTA6’s launch. Here’s what it is and how to prepare.",
-    aiSummaryEn: [
-      "Rockstar is releasing GTA Online’s new heist, “The Kortz Center Heist,” on July 14 across all platforms. Set in Los Santos’ Kortz Center museum, it’s a multi-stage heist to steal masterpiece paintings. As the first all-new major heist since Cayo Perico — about six years — it looks to be one of the last big updates before GTA6’s November 19 launch.",
-      "Hosting requires a mansion property and the new Art Studio expansion. A forger makes fakes to swap for the originals; stolen paintings can be sold to a fence or hung in your mansion. The available paintings rotate three each week. The new Grotti Veleno GT is free for GTA+ members from July 14.",
-      "Ahead of launch, a free prep event, the “Fine Art Collector Program,” runs through July 13 — logging in plus clearing one heist nets up to GTA$1.5M and an armored limo. However, the heist’s actual payout stays unconfirmed until launch.",
-    ],
-    fullContentEn: `# GTA Online’s New Heist “The Kortz Center Heist” Arrives July 14 — the First Big Job in ~6 Years: Steal Masterpieces from a Museum
-
-Rockstar has officially announced that GTA Online’s new heist mission, “The Kortz Center Heist,” will be released on July 14. The setting is the Kortz Center, a museum in Los Santos. As the first all-new major heist since Cayo Perico — roughly six years — it’s seen as one of the last big updates before GTA6’s November 19 launch. GTA6 FEED has summarized what it is and the key points for preparing.
-
-This article is based on information as of July 10, 2026.
+効率を考えるなら、The Kortz Center Heistは毎週木曜日のリセット後に1回こなして最初の売却ボーナスを取り、残りはほかの強盗の週初回ボーナスを順に回していく遊び方が基本になる。同じ週に何度も回しても1回あたり約GTA$30万にとどまるため、長時間同じ強盗だけを繰り返す意味は薄い。主催に必要なマンションとArt Studioは合わせて数百万GTA$規模の出費になるので、毎週遊ぶなら元は取りやすいが、たまに遊ぶ程度なら費用とのバランスを考えてから判断したい。
 
 ---
 
-## What Kind of Heist Is It
+## 新車・その他の追加
 
-It releases July 14 on all platforms (PS5, PS4, Xbox Series X|S, Xbox One, PC). The target is the Kortz Center, a museum perched on the hills of Pacific Bluffs. It’s a landmark that has existed on the map since 2013 but was never enterable, and it’s also where a tense standoff took place near the end of GTA5’s story. This is a multi-stage heist to steal the masterpieces held inside.
+アップデートでは新しい車両も追加された。目玉のGrotti Veleno GTは、GTA+会員なら7月14日からVinewood Car Clubのショールームで無料で受け取れ、一般販売はその1週間後だった。このほかにも新しいスーパーカーや、DriftやHao's Special Worksに対応した車両が加わり、Rockstar Mission Creatorのアップデートも行われている。
 
-![The crew flees the Kortz Center museum with the loot, shaking off pursuing helicopters and police](/images/news/gta_online_kortz_center_heist_article/d581acb2e605beda510e700ef6c119be7ecf611e.webp)
-
-The flow is: scope out the facility, choose your method of entry, infiltrate, and escape with the loot. This is the same structure as the Cayo Perico and Diamond Casino heists — both among the most-replayed, most-popular content in GTA Online. You can take it on solo or with a crew of up to four. The more teammates, the easier it is to carry out more loot; solo is harder but the per-person cut is larger (this, too, mirrors Cayo Perico).
+![目玉の新車Grotti Veleno GT](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
 
 ---
 
-## What the Host Needs: a Mansion and an Art Studio
+## 配信までの流れ：準備イベントの記録（2026年6〜7月）
 
-To host this heist as the leader, you’ll need a mansion property and the newly added Art Studio expansion.
+強盗の配信前には、期間限定のイベントがいくつも行われた。いずれもすでに終了しているが、記録として残しておく。
 
-![The forger who lives in the Art Studio, making the fakes (forgeries) used to swap out the stolen originals](/images/news/gta_online_kortz_center_heist_article/5470eec937bfb5e7b080614e461fe2a61f477f15.webp)
+### Fine Art Collector Program（6月18日〜7月13日）
 
-A forger lives in the Art Studio, producing the fakes (forgeries) used to swap for the stolen originals. It doubles as your planning hub: the more prep you do, the more equipment and skills are stocked, and at the finale you assemble your loadout from them. During the heist, Raf acts as your contact, sharing recon and key intel, and the mansion’s AI assistant also helps.
+配信に向けた無料の準備イベントで、報酬は3つの段階に分かれていた。
 
-The primary target painting you steal can be cashed out by selling it to the fence Mr. Faber’s clients, or you can keep it and hang it in your own mansion. On top of that, the paintings available to steal rotate — three new ones each week — giving you a reason to replay.
+- Enthusiast：期間中にGTA Onlineをプレイすると、GTA$50万と、装甲仕様のリムジンBenefactor Turreted Limo（5人乗り・屋根にミニガン、Pegasusから配車）。
+- Patron：期間中にいずれかの強盗を1回クリアすると、追加でGTA$100万とNOOSEの衣装。合計で最大GTA$150万。
+- Elitist：マンションを所有して期間中にプレイすると、Art Studio拡張のGTA$100万割引、無料のヘリAnnihilator Stealth、彫刻、特別な絵画を解放できる権利。これらは強盗の配信時にまとめて付与された。
 
-![An example of a stealable painting. Stolen originals can be sold to a fence for cash or kept and displayed in your mansion](/images/news/gta_online_kortz_center_heist_article/96fff8386339452798cf2776ae88bf1193450e1e.webp)
+上の2段階は条件達成から72時間以内に付与され、GTA+会員にはマンションのGTA$200万割引も用意されていた。同じ時期には、Diamond Casino強盗のフィナーレ報酬2倍（6月24日まで）や、Shark Card購入時にGTA$が40%増えるボーナス（7月22日まで）も実施されている。
 
----
+### 独立記念日イベント（7月2日〜7月13日）
 
-## The New Car and Other Additions
+強盗に向けた資金集めの週にもなったイベントだ。通常GTA$100万を超えるLago ZancudoのバンカーがMaze Bank Foreclosuresから無料で取得でき、バンカーの改造は40%オフ、ハイエンドガレージも無料になった。バンカー売却ミッションは報酬2倍、スタントレースは3倍で、航空機・特殊車両・プロパティなどを大きく値引きする、Rockstarいわく「過去最大」のセールも行われた。すでに配送ルートの短いChumashやFarmhouseのバンカーを持っている場合は、無理に乗り換える必要はなかった。
 
-The update also adds new vehicles. The headliner, the Grotti Veleno GT, can be claimed for free at the Vinewood Car Club showroom from July 14 if you’re a GTA+ member. General sale is a week later, so members get it early. Beyond that, new supercars and vehicles compatible with Drift and Hao’s Special Works are added, along with a planned update to the Rockstar Mission Creator and more.
+### Discord連携のクルーネック配布（6月11日〜7月1日）
 
-![The headline new car, the Grotti Veleno GT. GTA+ members can claim it free from July 14, with general sale a week later](/images/news/gta_online_kortz_center_heist_article/ad240b86477e5c2cd18b4864778e45a1c3bbdd26.webp)
-
----
-
-## Prep: the Fine Art Collector Program (Through July 13)
-
-Ahead of the release, a free prep event, the “Fine Art Collector Program,” is running through July 13. The main rewards you can earn are as follows.
-
-- Log in and play GTA Online by July 13: GTA$500K and the armored limousine Benefactor Turreted Limo (fitted with a roof-mounted machine gun).
-- Clear any one heist during the period: an additional GTA$1M and the NOOSE Special Forces outfit. That brings the total to up to GTA$1.5M.
-- Mansion owners who play by July 13: earn the higher “Elitist” status, which grants a free Annihilator Stealth helicopter, a GTA$1M discount on the Art Studio expansion, a Kortz Center statue, and the chance to steal high-value paintings.
-- GTA+ members: a GTA$2M discount on a Prix Luxury Real Estate mansion.
-
-The two-tier rewards above are granted within 72 hours of meeting the conditions, and the “Elitist” portion can be claimed after the heist launches.
+RockstarアカウントとDiscordを連携すると、バーガンディ色の「Rockstar Varsity Crewneck」を無料で受け取れた。公式サーバーの「#discord-rewards」チャンネルで「/claim」を実行する形式で、RockstarはこれがDiscord連携特典として最後の配布だと案内していた。
 
 ---
 
-## Payouts Are Still Unconfirmed
+## まとめ
 
-One caveat worth noting. The payout you earn from the heist proper has not been officially revealed and won’t be until the July 14 launch. Because it shares the same multi-stage structure as the Cayo Perico and casino heists, it’s expected to be roughly on par with those (around GTA$1M to several million per run), but that’s pure speculation. Any specific figures circulating before launch should be treated as estimates.
+- The Kortz Center Heistは2026年7月14日に配信。主催にはマンションとArt Studioが必要で、1〜4人で遊べる。
+- 報酬は週に最初に売った1枚だけが高い仕組みで、攻略サイトの集計ではメインターゲットがGTA$1,925,000。同じ週の2回目以降は約GTA$30万の利益にとどまる。週のリセットは木曜日。
+- 同じアップデートでほかの強盗の報酬が下がり、週初回ボーナスが導入されたことで、「各強盗を週1回ずつ」が基本の遊び方になった。
+- 配信前の準備イベントは7月13日までにすべて終了している。
+
+なお、GTA6は2026年11月19日に発売される（「[GTA6の発売日は2026年11月19日で確定](/news/2)」）。
 
 ---
 
-## Where It Sits, and What to Do Now
+## 出典・参考
 
-What draws attention to this heist is its scale and its timing. As the first all-new major heist since Cayo Perico in December 2020 — about six years — the intervening GTA Online has mostly been drip-fed vehicles and business tweaks. With GTA6’s launch (November 19) approaching, this looks to be one of the last big updates capping off the online mode, and many take it as a fitting finale. The press-release headline “The Next Big Score,” evoking GTA5’s endgame heist “The Big Score,” has also become a talking point.
+→ [The Kortz Center Heist Now Available in GTA Online（Rockstar Games Newswire）](https://www.rockstargames.com/newswire/article/2525o93834o413/the-kortz-center-heist-now-available-in-gta-online)
 
-As for practical prep, first knock out the prep event. Logging in and clearing one heist nets up to GTA$1.5M and an armored limo essentially for free, so there’s no downside to getting it done by July 13. On the other hand, if you want to host the heist yourself, a mansion and Art Studio are required — a considerable outlay, and the heist’s payout is still unconfirmed. If you plan to run it often, it’s well worth the investment; if you only play occasionally, the safe move is to hold off and decide after launch, once the actual earnings are known.
+→ [Kortz Center Heist Payouts（GTA BOOM）](https://www.gtaboom.com/gta-online-kortz-center-heist-payouts-4a8e)
 
-The preparation program leading up to this heist, Fine Art Collector, was covered in detail when it was first announced, in "[GTA Online Latest Update Explained: Fine Art Collector Begins](/en/news/16)".`,
+→ [GTA Online: Kortz Center Heist Cooldown & Payout Guide（Game Rant）](https://gamerant.com/gta-online-kortz-center-heist-payout-cooldown-times/)
+
+→ [Rockstar Responds To GTA Online Heist Payout Reduction Backlash（RockstarINTEL）](https://rockstarintel.com/rockstar-responds-to-gta-online-heist-payout-reduction-backlash/)
+
+---
+
+> **注記：** 本記事は、Rockstar Gamesの公式発表（Newswire）と、主要な攻略サイトが集計した報酬額をもとにGTA6 FEEDが整理したものである。Rockstarは報酬の一覧を公表しておらず、金額・クールダウン・費用はアップデートによって変わる場合がある。報酬額は2026年9月時点の情報にもとづく。期間限定イベントの内容は当時の記録で、いずれもすでに終了している。本記事は2026年7月10日公開の配信告知記事を全面的に書き直し、「Fine Art Collector」プログラムの解説（6月18日公開）、独立記念日イベント（7月3日公開）、Discord連携のクルーネック配布（7月1日公開）の3本を統合したものである。`,
   },
   {
     id: 35,
@@ -16639,197 +16806,201 @@ GTA6のSwitch2版をめぐる状況を整理すると、こうなる。
   },
   {
     id: 1,
-    title: "GTA6のトレーラーを総ざらい——第2弾の中身と、第3弾「6月25日説」の現在地",
+    title: "GTA6の公式映像まとめ——Trailer 1・Trailer 2・An Extended Look、外れた「トレーラー3」予想まで全記録",
+    displayTitle: "GTA6の公式映像まとめ\nTrailer 1・Trailer 2・An Extended Look、外れた「トレーラー3」予想まで全記録",
     description:
-      "第1弾・第2弾トレーラーの中身を総整理。プレオーダー開始（6月25日）に合わせた第3弾トレーラー公開説の現在地まで見ていく。",
+      "GTA6がこれまでに公開した公式映像は、2023年12月のTrailer 1、2025年5月のTrailer 2、そして2026年8月にNetflixで先行公開された約26分の「An Extended Look」の3本。その間に立っては外れた「第3弾トレーラー」の予想も含めて、全映像を時系列で記録する。",
     icon: "🎬",
     image: "/images/news/trailersouzarai.webp",
     category: "release",
     date: "2026-06-18",
-    source: "Rockstar Games Official",
-    sourceUrl: "https://www.rockstargames.com",
-    relatedArticles: [33, 2, 19],
+    updatedAt: "2026-09-12",
+    source: "Rockstar Games公式（YouTube・Newswire・声明）／Netflix",
+    sourceUrl: "https://www.rockstargames.com/VI",
+    relatedArticles: [48, 40, 66],
     youtubeId: "ooZ1n4Fh7Ks",
+    correction: {
+      label: "2026年9月12日 全面改稿・記事統合",
+      body: [
+        "本記事は2026年6月18日に「第3弾トレーラーは予約開始日の6月25日に来るのか」を扱う記事として公開しました。その後、第3弾トレーラーは6月25日にも7月中旬にも公開されず、8月27日に「An Extended Look」がNetflix先行で公開されたため、これまでに公開された全映像の記録として全面的に書き直しました。",
+        "「GTA6のトレーラー3はいつ来るのか」（2026年7月5日公開）と「新映像『An Extended Look』8月27日にNetflixで独占先行公開」（8月7日公開）の2本は本記事に統合し、旧URLは本記事へ転送しています。当時の予想は、外れた経緯も含めて本文に残しています。",
+      ],
+      labelEn: "Rewritten and merged — September 12, 2026",
+      bodyEn: [
+        "This article was first published on June 18, 2026, as a piece about whether a third trailer would arrive on the June 25 pre-order date. Trailer 3 came neither on June 25 nor in mid-July; instead, \"An Extended Look\" premiered on Netflix on August 27. We have therefore rewritten the article as a record of every official video released so far.",
+        "\"When Will GTA6's Trailer 3 Arrive?\" (published July 5) and \"GTA6's New Video 'An Extended Look' Premieres Exclusively on Netflix on August 27\" (published August 7) have been merged into this article, and their old URLs now redirect here. The predictions made at the time remain in the text, including how they turned out to be wrong.",
+      ],
+    },
     aiSummary: [
-      "GTA6のトレーラーは現時点で2本、第1弾が2023年12月、第2弾が2025年5月6日に公開された。",
-      "第2弾では主人公ジェイソンとルシア、レオニダ州の陰謀、9人のキャラクターや多様な世界観が示された。",
-      "予約開始は6月25日で確定だが、同日の第3弾トレーラー公開は推測でRockstar未発表である。",
+      "GTA6の公式映像はこれまでに3本。2023年12月のTrailer 1、2025年5月6日のTrailer 2、そして2026年8月27日（日本時間28日）にNetflixで先行公開された約26分の「An Extended Look」だ。",
+      "Trailer 2のあとには「第3弾トレーラーは予約開始の6月25日」「7月中旬のWorld Cup決勝前後」という予想が相次いだが、どちらも外れた。6月24〜25日は予約開始とスクリーンショットの公開だけで、7月にも映像は出なかった。",
+      "Rockstarは「トレーラー」ではなく「An Extended Look」という名で、全編PS5で撮影されたゲームプレイを含む長尺映像を公開した。Trailer 1が世界観、Trailer 2が物語、Extended Lookが実際の遊び方を見せた、という流れになる。",
     ],
     titleEn:
-      "A Complete Rundown of the GTA6 Trailers — What Was in Trailer 2, and Where the Trailer 3 June 25 Theory Stands",
+      "Every Official GTA6 Video So Far — Trailer 1, Trailer 2, and An Extended Look, Plus the Trailer 3 Predictions That Missed",
+    displayTitleEn:
+      "Every Official GTA6 Video So Far\nTrailer 1, Trailer 2, and An Extended Look, Plus the Trailer 3 Predictions That Missed",
     descriptionEn:
-      "A full rundown of what was in Trailer 1 and Trailer 2, leading up to where the theory of a Trailer 3 release timed to the start of preorders (June 25) currently stands.",
+      "GTA6 has released three major official videos: Trailer 1 in December 2023, Trailer 2 in May 2025, and the roughly 26-minute \"An Extended Look,\" which premiered on Netflix in August 2026. This is a chronological record of all of them, including the Trailer 3 predictions that came and went in between.",
     aiSummaryEn: [
-      "There are two GTA6 trailers so far: Trailer 1 released in December 2023 and Trailer 2 released on May 6, 2025.",
-      "Trailer 2 showed protagonists Jason and Lucia, the conspiracy spanning the state of Leonida, nine characters, and a richly varied world.",
-      "The June 25 start of preorders is confirmed, but a Trailer 3 release on the same day is speculation and has not been announced by Rockstar.",
+      "There have been three official GTA6 videos: Trailer 1 in December 2023, Trailer 2 on May 6, 2025, and the roughly 26-minute \"An Extended Look,\" which premiered on Netflix on August 27, 2026.",
+      "After Trailer 2, predictions that Trailer 3 would land on the June 25 pre-order date, or around the World Cup Final in mid-July, both missed. June 24–25 brought only pre-orders and screenshots, and no video came in July either.",
+      "Rockstar released a long-form video under the name \"An Extended Look\" rather than \"trailer,\" including gameplay captured entirely on PS5. Trailer 1 showed the world, Trailer 2 the story, and An Extended Look how the game actually plays.",
     ],
-    fullContentEn: `# A Complete Rundown of the GTA6 Trailers — What Was in Trailer 2, and Where the Trailer 3 June 25 Theory Stands
+    fullContentEn: `# Every Official GTA6 Video So Far — Trailer 1, Trailer 2, and An Extended Look, Plus the Trailer 3 Predictions That Missed
 
-The buzz around Grand Theft Auto VI (GTA6) is heating up once again. The spark was Rockstar's announcement that preorders will begin on June 25, 2026. Based on past patterns in the series, the view that the long-awaited Trailer 3 might be released to coincide with that day has rapidly gained traction. Here, we revisit and organize what was revealed in the previously released Trailer 1 and Trailer 2, and then look at what we can expect from Trailer 3.
-
----
-
-## First, the Timeline: There Have Been Two Trailers So Far
-
-Since this often gets confused, let us first make the facts clear. As of now, two GTA6 trailers have been released.
-
-- Trailer 1: Released in December 2023, timed to Rockstar's 25th anniversary. It showed the world the return to Vice City and the existence of two protagonists. In its first 24 hours after release it racked up record-breaking view counts, leaving a historic number for a non-music YouTube video.
-- Trailer 2: Released on May 6, 2025. It was a so-called surprise release, coming just a few days after the announcement of a delay. The roughly three-minute stretch of new footage greatly deepened the outline of the story and the relationship between the two protagonists.
-
-In other words, Trailer 2 is not a recent event but something from over a year ago. The lengthening gap from then until Trailer 3 is what feeds fans' current craving.
+From Trailer 1 in December 2023 to "An Extended Look" in August 2026, *Grand Theft Auto VI (GTA6)* has released three major official videos ahead of launch. In between, predictions about when a third trailer would arrive rose and fell more than once, and in the end Rockstar made its next move not with a "trailer" but with a roughly 26-minute long-form video. This article records every official video released so far, and what happened between them, in chronological order. The release date is November 19, 2026 (PS5 and Xbox Series X|S).
 
 ---
 
-## What Could Be Seen in Trailer 2
+## The Three Official Videos at a Glance
 
-Trailer 2 was not merely a showcase of footage; it laid out the direction of GTA6 as a work in fairly concrete terms. Let us organize the key points.
+- December 2023 — Trailer 1
+- May 6, 2025 — Trailer 2
+- August 27, 2026 (August 28 in Japan) — Grand Theft Auto VI: An Extended Look (Netflix first, roughly 26 minutes)
 
-### The Two Protagonists — Jason and Lucia
-
-At the center of the story are Jason Duval and Lucia Caminos. The trailer gets moving from a scene in which Jason, after going about his daily life, goes to pick up Lucia as she is released from prison. From there, the neon-soaked chaos of Vice City unfolds all at once, with the two repeating robberies, shootouts, and getaways.
-
-What deserves special mention is Lucia's presence. She is said to be the first full-fledged female protagonist placed at the center of a solo story in the series' main line (the numbered titles). It has been officially revealed that her father trained her to fight from a young age, and that her actions to protect her family ultimately landed her in a prison in the state of Leonida. Jason, on the other hand, is depicted as a man who failed at a fresh start in the military and returned to the underworld as a drug courier.
-
-Rockstar is presenting the relationship between these two as a crime-and-romance story likened to Bonnie and Clyde. Whereas GTA5 used three protagonists to separately depict satire, tragedy, and chaos, GTA6 narrows its focus to two people who share a destiny, seeking to make emotional tension the axis of the story.
-
-### How the Story Begins
-
-According to the official description, Jason and Lucia get caught up in a conspiracy that spreads across the entire state of Leonida after a job that was supposed to be easy goes wrong. To survive, they are forced to rely on each other more than ever before — that is the broad outline of the plot.
-
-### A Cast of Distinctive Supporting Characters
-
-To coincide with the release of Trailer 2, Rockstar revealed information on nine characters, including the two protagonists. They line up as figures from differing backgrounds: Boobie Ike, a legendary figure of Vice City; Dre'Quan Priest, aiming for success in the music business; Real Dimez, a music duo cloaked in social media and local fame; Raul Bautista, a professional bank robber; and Brian Heder, a smuggler in the Leonida Keys. The fact that the supporting cast is designed not as mere window dressing but as a network in which multiple stories intertwine is what sets GTA6 apart from previous GTA games.
-
-### The World and Its Details
-
-The setting is Vice City, modeled on Miami, and the fictional state of Leonida, modeled on Florida. After Trailer 2's release, numerous screenshots were also published, showing the individuality of each region: the touristy Leonida Keys, the nature-rich Mount Kalaga National Park, Port Gellhorn lined with cheap motels and strip clubs, the rural and industrial areas of Ambrosia that are home to a biker gang, and the wetland Grassrivers.
-
-Among fans, small details were eagerly discussed as well, such as an alligator in a parking lot, an NPC livestreaming a robbery, and license plates reading VC-86 that allude to the original version (the 1986 Vice City). It is worth noting that everything released so far is trailer or engine footage as cinematic works, and actual playing footage (raw gameplay) has not yet been officially shown.
+Rockstar also released more than 60 screenshots when pre-orders opened on June 24–25, 2026, and added 29 more to the official site at the end of August. As moving footage, however, the three videos above are all there is.
 
 ---
 
-## Trailer 3 Is Widely Expected to Release on June 25
+## Trailer 1 (December 2023) — The Return to Vice City and Two Protagonists
 
-This is where the topic drawing the most attention right now comes in.
-
-Rockstar officially announced that GTA6 preorders will begin on June 25, 2026. In step with this, the view in the community that Trailer 3 might be released on the same day has rapidly spread.
-
-There are several grounds for this. First, the previous Trailer 2 was released on May 6, 2025, and over 400 days have already passed. The point is that it is hard to imagine reaching a major milestone like preorders with only a trailer from over a year ago. In fact, looking back at Rockstar's past marketing, with Red Dead Redemption 2 the flow was to put out a gameplay trailer about two months before release, after three cinematic trailers. The role division of Trailer 1 presenting the world and Trailer 2 introducing the story is the same for GTA6, so Trailer 3 is seen as likely to be a full-fledged story trailer.
-
-However, as of now Rockstar has not officially announced a release date for Trailer 3. The June 25 release is purely speculation from circumstantial evidence, and the possibility remains that only preorders begin first while the trailer comes on a different day. Precisely because this is a topic where expectations are running hot, this distinction is worth keeping in mind.
+Trailer 1 was released in December 2023, timed to Rockstar's 25th anniversary. It showed the world a return to Vice City, modeled on Miami, and the existence of two protagonists, Lucia and Jason. In its first 24 hours it racked up record-breaking views, a historic number for a non-music YouTube video. The song playing throughout was Tom Petty's "Love Is A Long Road." Rob Nelson of Rockstar North later explained that for the development team the song had been a kind of "real mission statement" (see "[The True Meaning of 'Love Is A Long Road'](/en/news/66)").
 
 ---
 
-## What Can Be Expected From Trailer 3
+## Trailer 2 (May 6, 2025) — The Shape of the Story and Nine Characters
 
-Given the role division of the previous two trailers, the following elements are expected from Trailer 3.
+Trailer 2 dropped on May 6, 2025, a surprise release just days after a delay was announced. Its roughly three minutes of new footage greatly deepened the outline of the story and the relationship between the two leads.
 
-- A more in-depth presentation of the story (the main plot) centered on Jason and Lucia
-- More gameplay-oriented footage, such as the mechanics of the heists that have so far been shown only in fragments
-- An announcement of the various preorder editions and pricing (in addition to a standard edition, there are also rumors of a collector's edition)
+At its center are Jason Duval and Lucia Caminos. The trailer starts moving from the scene in which Jason picks Lucia up as she is released from prison, and from there the neon-soaked chaos of Vice City unfolds, with the two repeating robberies, shootouts, and getaways. Lucia is said to be the first full-fledged female protagonist at the center of a solo story in the mainline series; it was officially revealed that her father taught her to fight from a young age and that her efforts to protect her family landed her in a Leonida prison. Jason is portrayed as a man who failed at a fresh start in the military and drifted back into the underworld as a drug courier. Rockstar presents their relationship as a crime-and-romance story likened to Bonnie and Clyde; where GTA5 split satire, tragedy, and chaos across three protagonists, GTA6 narrows its focus to two people who share a fate.
 
-GTA6 is scheduled to release on November 19, 2026, for PS5 and Xbox Series X|S. A PC version has not been officially announced, and going by the series' custom it is highly likely to come later. With less than half a year to go until release, Trailer 3 looks set to draw some of the series' greatest attention as the starting signal for the countdown to launch.
+According to the official synopsis, the two are pulled into a conspiracy spreading across the whole state of Leonida after a job that should have been easy goes wrong. Alongside Trailer 2, Rockstar revealed nine characters including the protagonists: Boobie Ike, a Vice City legend; Dre'Quan Priest, chasing success in music; the social-media-famous music duo Real Dimez; professional bank robber Raul Bautista; and Leonida Keys smuggler Brian Heder, among others. Screenshots released at the same time showed the character of each region — the touristy Leonida Keys, the wild Mount Kalaga National Park, Port Gellhorn with its cheap motels and strip clubs, rural and industrial Ambrosia, and the wetlands of Grassrivers. Fans pored over small details such as an alligator in a parking lot, an NPC livestreaming a robbery, and a "VC-86" license plate nodding to the original 1986 Vice City. Everything shown up to this point was cinematic trailer or engine footage; raw gameplay had not yet been shown officially.
 
 ---
 
-## Summary
+## The "Trailer 3" Predictions Missed Twice
 
-- There are two GTA6 trailers so far. Trailer 1 was released in December 2023, and Trailer 2 on May 6, 2025.
-- Trailer 2 showed the relationship between protagonists Jason and Lucia, a conspiracy set in the state of Leonida, nine distinctive characters, and a world that differs from region to region.
-- Preorders have been officially announced to begin on June 25, 2026. There is a strong observation that Trailer 3 will be released to coincide with this, but the release date has not been announced by Rockstar.
-- Trailer 3 is expected to be a full-fledged story trailer, and it looks set to be the one that signals the full launch of marketing toward release (November 19, 2026).
+In June 2026, more than a year after Trailer 2, Rockstar announced that pre-orders would open on June 25, and the view that Trailer 3 would drop the same day spread quickly. This article itself was first published to cover that "June 25 theory." The reasoning was that more than 400 days had passed since Trailer 2, and that with Red Dead Redemption 2, Rockstar had released a gameplay trailer about two months before launch after three cinematic trailers.
 
-GTA6's marketing, after a long silence, has finally begun to move. What will happen on June 25 — the answer will be revealed before long.
+In reality, pricing, editions, the start of pre-orders, and more than 60 new screenshots all arrived on June 24–25, but no video came with them (editions are covered in "[GTA6 Editions and Pre-Order Bonuses](/en/news/19)").
 
----
+The next favorite was "mid-July, around the FIFA World Cup Final (July 19)." Take-Two CEO Strauss Zelnick had said marketing would start "in the summer" with a social-media-centric strategy, which led to the reading that Rockstar would strike when global attention peaked around the final; July 21, and July 28 or August 4 around the earnings report, were also floated. That prediction missed too, and no video came in July. This was also the period when GTA Online's big update, The Kortz Center Heist, launched on July 14 (see "[The Kortz Center Heist Guide](/en/news/36)").
 
-*Note: Within this article, the descriptions of the Trailer 3 release timing, the various preorder editions and pricing, and the contents of Trailer 3 include speculation based on circumstantial evidence and community observation. They are not official announcements by Rockstar Games. The release dates and contents of Trailer 1 and Trailer 2, the preorder start date (June 25, 2026), and the main game's release date (November 19, 2026 / PS5 and Xbox Series X|S) are confirmed information based on official announcements.*
-
-For the latest predictions on when Trailer 3 will actually arrive, see "[When Will GTA6's Trailer 3 Arrive?](/en/news/33)".`,
-    fullContent: `# GTA6のトレーラーを総ざらい——第2弾の中身と、第3弾「6月25日説」の現在地
-
-『Grand Theft Auto VI（GTA6）』をめぐる話題が、ふたたび熱を帯びている。きっかけは、Rockstarが2026年6月25日からプレオーダー（予約購入）を開始すると発表したことだ。シリーズの過去のパターンから、この日に合わせて待望の第3弾トレーラーが公開されるのではないか、という観測が一気に強まっている。ここでは、これまでに公開された第1弾・第2弾トレーラーで何が判明したのかをあらためて整理したうえで、第3弾に何を期待できるのかを見ていく。
+Looking back, the missed dates were typical of a studio that moves without warning. And when the next video did come, it arrived in a different form from the "Trailer 3" fans had been waiting for.
 
 ---
 
-## まず時系列の整理：トレーラーはこれまで2本
+## An Extended Look (August 27, 2026) — A Roughly 26-Minute Video, Netflix First
 
-混同されがちなので、最初に事実関係をはっきりさせておきたい。GTA6のトレーラーは、現時点で2本公開されている。
+### The announcement (August 6)
 
-- 第1弾トレーラー：2023年12月、Rockstarの25周年に合わせて公開。ヴァイスシティへの回帰と、ふたりの主人公の存在を世界に示した。公開後の最初の24時間で記録的な再生数を叩き出し、音楽以外のYouTube動画として歴史的な数字を残した。
-- 第2弾トレーラー：2025年5月6日に公開。発売延期の発表から数日後の、いわゆる不意打ちのリリースだった。約3分間の新規映像で、物語の輪郭と主人公ふたりの関係性が大きく掘り下げられた。
+On August 6, 2026, Rockstar announced that "Grand Theft Auto VI: An Extended Look" would premiere exclusively on Netflix on August 27 — the series' first partnership of this kind with Netflix. It went live on Netflix (netflix.com/VI) at 3 p.m. ET on August 27 (4 a.m. on August 28 in Japan), and on the official YouTube channel and the GTA6 site six hours later (10 a.m. on August 28 in Japan). Brandon Riegg, who oversees nonfiction series at Netflix, commented that the anticipation around GTA6 was unprecedented and welcomed bringing the next chapter of its story to Netflix members first. Although fans treated it as "Trailer 3," Rockstar itself never called it a trailer. Why Rockstar chose Netflix is analyzed in "[Why Did the New GTA6 Video Premiere on Netflix?](/en/news/40)".
 
-つまり第2弾は「最近の出来事」ではなく、すでに1年以上前のものだ。そこから第3弾までの空白が長引いていることが、いまのファンの渇望につながっている。
+### The statement the day before (August 26)
 
----
+In the week before the premiere, gameplay footage of GTA6 leaked (background in "[Why Was GTA6 Targeted?](/en/news/42)"). On August 26, Rockstar issued an unusual statement calling the leak heartbreaking for the team, described the game as "nearly there!", and confirmed that "the extended look" would come the next day. It also asked fans to wait a little longer and experience the game themselves on November 19 (see "[Rockstar's Unusual Statement on the GTA6 Leak](/en/news/45)").
 
-## 第2弾トレーラーで何が見えたか
+### The premiere (August 28, Japan time)
 
-第2弾は、単なる映像のお披露目にとどまらず、GTA6という作品の方向性をかなり具体的に示すものだった。要点を整理する。
+An Extended Look ran roughly 26 minutes, and a closing caption stated that all of it was captured on PS5. Rather than a single linear story, it played like a digest of episodes — Boobie's errand leading into a police raid and a shootout, then the pair's home, TV ads, a drive, dinner with Brian and his wife, helping Raul escape, a heist, an escort job, and Lucia hiding among hostages — linked by slices of everyday life. For the first time, gameplay screens were shown in full: a minimap, a wanted level of up to six stars, aiming reticles that change by weapon, and button prompts such as "SLIM JIM / SMASH WINDOW" for getting into cars and even "hold hands." The video also mentioned that engineers had spent three years on how glass breaks. GTA6 FEED's viewing notes are in "[We Watched 'GTA VI: An Extended Look'](/en/news/48)," and information that the video alone doesn't reveal — from Rockstar North previews — is gathered in "[GTA6 New Info Roundup](/en/news/50)."
 
-### 主人公ふたり——ジェイソンとルシア
-
-物語の中心にいるのは、ジェイソン・デュバルとルシア・カミノスのふたりだ。トレーラーは、ジェイソンが日常を送ったのち、刑務所から出所してきたルシアを迎えに行く場面から動き出す。そこから先は、ふたりが強盗・銃撃・逃走を繰り返す、ネオンに染まったヴァイスシティの混沌が一気に展開する。
-
-特筆すべきは、ルシアの存在だ。彼女はシリーズのメインライン（ナンバリング作品）の単独ストーリーで中心に据えられる、初の本格的な女性主人公とされる。父から幼い頃に戦い方を仕込まれ、家族を守るための行動の果てにレオニダ州の刑務所に収監された、という背景が公式に明かされている。一方のジェイソンは、軍隊での再起に失敗し、麻薬の運び屋として裏社会に戻ってきた人物として描かれる。
-
-このふたりの関係を、Rockstarは「ボニーとクライド」になぞらえる犯罪×恋愛の物語として打ち出している。GTA5が3人の主人公で風刺・悲劇・混沌を描き分けたのに対し、GTA6は運命を共有するふたりに焦点を絞り、感情的な緊張を物語の軸に据えようとしている。
-
-### 物語の発端
-
-公式の説明によれば、ジェイソンとルシアは「簡単なはずだった仕事」がうまくいかなかったことをきっかけに、レオニダ州全体に広がる陰謀に巻き込まれていく。生き延びるために、これまで以上に互いを頼らざるを得なくなる——というのが大枠の筋立てだ。
-
-### 個性豊かな脇役たち
-
-第2弾の公開に合わせて、Rockstarは主人公2人を含む9人のキャラクター情報を公開した。ヴァイスシティの伝説的人物ブービー・アイク、音楽業界での成功を狙うドレクァン・プリースト、SNSと地元の名声をまとう音楽デュオのリアル・ダイメズ、プロのバンク強盗ラウル・バウティスタ、レオニダ・キーズの密輸業者ブライアン・ヘダーなど、背景の異なる人物が並ぶ。脇役が単なる賑やかしではなく、複数の物語が絡み合うネットワークとして設計されている点が、これまでのGTAと一線を画している。
-
-### 世界観とディテール
-
-舞台は、マイアミをモデルにしたヴァイスシティと、フロリダをモデルにした架空の州レオニダだ。第2弾公開後にはあわせて多数のスクリーンショットも公開され、観光地然としたレオニダ・キーズ、自然豊かなマウント・カラガ国立公園、安宿やストリップクラブが並ぶポート・ゲルホーン、バイカーギャングの根城があるアンブロシアの田舎・工業地帯、湿地のグラスリバーズなど、地域ごとの個性が示された。
-
-ファンの間では、駐車場のワニ、強盗をライブ配信するNPC、「VC-86」とオリジナル版（1986年のヴァイスシティ）を示唆するナンバープレートなど、細部の小ネタも盛んに考察された。なお現時点で公開されているのは、いずれも映像作品としてのトレーラーやエンジン映像であり、実際のプレイ画面（ローgameplay）はまだ公式には披露されていない点には注意が必要だ。
+Afterward, on August 31, 29 screenshots were added to the official GTA6 site (see "[29 Screenshots Added to the GTA6 Official Site](/en/news/56)").
 
 ---
 
-## 第3弾トレーラーは「6月25日」公開が有力視されている
+## Comparing the Three
 
-ここからが、いま最も注目を集めている話題だ。
+Lined up, the three videos each had a clear role. Trailer 1 showed the world and the two protagonists, Trailer 2 the story and the cast around them, and An Extended Look how you will actually play. Rockstar moved from cinematic footage toward gameplay just as fans had expected — but it did so not with a "Trailer 3" but with a long-form video on Netflix, far longer than a trailer. No video named "Trailer 3" was ever released; An Extended Look took that role.
 
-Rockstarは、GTA6のプレオーダーを2026年6月25日に開始すると公式に発表した。これに合わせて、コミュニティでは第3弾トレーラーが同日に公開されるのではないか、という見方が急速に広がっている。
-
-根拠はいくつかある。まず、前回の第2弾トレーラーの公開が2025年5月6日であり、すでに400日以上が経過している。プレオーダーという大きな節目を、1年以上前のトレーラーだけで迎えるのは考えにくい、という指摘だ。実際、過去のRockstarのマーケティングを振り返ると、レッド・デッド・リデンプション2では3本のシネマティックトレーラーを経たのち、発売の2か月ほど前にゲームプレイトレーラーを投入する流れだった。第1弾が世界観の提示、第2弾が物語の導入、という役割分担はGTA6でも同じであり、第3弾は本格的な物語トレーラーになるのではないか、と見られている。
-
-ただし、現時点でRockstarは第3弾トレーラーの公開日を正式には発表していない。「6月25日公開」はあくまで状況証拠からの推測であり、プレオーダーだけが先行して始まり、トレーラーは別日になる可能性も残る。期待が過熱しているテーマだけに、この線引きは押さえておきたい。
+The next milestone is the November 19, 2026 launch.
 
 ---
 
-## 第3弾に何を期待できるか
+## For Anyone Watching Now
 
-過去2本の役割分担を踏まえると、第3弾トレーラーでは次のような要素が期待されている。
-
-- ジェイソンとルシアを軸にした、より踏み込んだ物語（メインプロット）の提示
-- これまで断片的だった強盗（ハイスト）の仕組みなど、ゲームプレイ寄りの映像
-- プレオーダーの各エディションや価格の発表（標準版に加え、コレクターズエディションの噂もある）
-
-GTA6は2026年11月19日に、PS5とXbox Series X|S向けに発売予定だ。PC版は正式発表されておらず、シリーズの慣例からすると後発になる公算が大きい。発売まで半年を切ったいま、第3弾トレーラーは「発売へのカウントダウンの号砲」として、シリーズ屈指の注目を集めることになりそうだ。
+Trailer 1 and Trailer 2 are on Rockstar Games' official YouTube channel. An Extended Look was released on Netflix (netflix.com/VI) and, per the announcement, on the official YouTube channel and GTA6 site. Note that An Extended Look includes story scenes; if you want to go into launch day knowing nothing, be careful.
 
 ---
 
-## まとめ
+> **Note:** Release dates, premiere schedules, and statements are based on official announcements from Rockstar Games and Netflix and on Rockstar's statement. The Trailer 3 timing predictions reflect community observation and reporting at the time; neither came true. Descriptions of An Extended Look's contents are based on GTA6 FEED's viewing notes. This article is a full rewrite of "A Complete Rundown of the GTA6 Trailers" (published June 18, 2026), merging in "When Will GTA6's Trailer 3 Arrive?" (July 5) and the official-announcement article on the Netflix premiere of An Extended Look (August 7).`,
+    fullContent: `# GTA6の公式映像まとめ——Trailer 1・Trailer 2・An Extended Look、外れた「トレーラー3」予想まで全記録
 
-- GTA6のトレーラーは現時点で2本。第1弾が2023年12月、第2弾が2025年5月6日に公開された。
-- 第2弾では、主人公ジェイソンとルシアの関係、レオニダ州を舞台にした陰謀、個性的な9人のキャラクター、地域ごとに異なる世界観が示された。
-- プレオーダーは2026年6月25日開始が公式発表済み。これに合わせて第3弾トレーラーが公開されるとの観測が強いが、公開日はRockstar未発表。
-- 第3弾は本格的な物語トレーラーになると期待されており、発売（2026年11月19日）に向けたマーケティングの本格始動を告げる一本になりそうだ。
-
-長い沈黙が続いたGTA6のマーケティングが、いよいよ動き出した。6月25日に何が起きるのか——その答えは、もうすぐ明らかになる。
+『Grand Theft Auto VI（GTA6）』は、2023年12月の第1弾トレーラーから2026年8月の「An Extended Look」まで、発売前に3本の大きな公式映像を公開してきた。その間には「第3弾トレーラーはいつ来るのか」という予想が何度も立っては外れ、最終的にRockstarは「トレーラー」ではなく約26分の長尺映像という形で次の一手を打った。本記事では、これまでに公開された公式映像と、その合間にあった出来事を時系列で記録する。発売日は2026年11月19日（PS5・Xbox Series X|S）。
 
 ---
 
-*※本記事のうち、第3弾トレーラーの公開時期、プレオーダーの各エディションや価格、第3弾の内容に関する記述は、状況証拠やコミュニティの観測に基づく推測を含みます。Rockstar Gamesによる正式発表ではありません。トレーラー1・2の公開日と内容、プレオーダー開始日（2026年6月25日）、本編発売日（2026年11月19日／PS5・Xbox Series X|S）は、公式発表に基づく確定情報です。*
+## まず一覧で：GTA6の公式映像は3本
 
-なお、第3弾トレーラーがいつ来るのかについての最新の時期予想は「[GTA6のトレーラー3はいつ来るのか](/news/33)」で継続的に整理している。`,
+- 2023年12月　Trailer 1（第1弾トレーラー）
+- 2025年5月6日　Trailer 2（第2弾トレーラー）
+- 2026年8月27日（日本時間28日）　Grand Theft Auto VI: An Extended Look（Netflix先行・約26分）
+
+このほか2026年6月24〜25日には予約開始とあわせて60枚を超えるスクリーンショットが、8月末には公式サイトに29枚のスクリーンショットが追加された。ただ、動く映像として公開されたのは上の3本がすべてだ。
+
+---
+
+## Trailer 1（2023年12月）——Vice Cityへの帰還と、ふたりの主人公
+
+第1弾トレーラーは2023年12月、Rockstarの25周年に合わせて公開された。マイアミをモデルにしたVice Cityへの回帰と、ルシアとジェイソンというふたりの主人公の存在を世界に示し、公開後の最初の24時間で、音楽以外のYouTube動画として歴史的な再生数を記録した。全編に流れていたのはTom Pettyの「Love Is A Long Road」で、のちにRockstar NorthのRob Nelson氏は、この曲が開発チームにとっての「ミッションステートメント」のような存在だったと語っている（詳しくは「[『Love Is A Long Road』の本当の意味](/news/66)」）。
+
+---
+
+## Trailer 2（2025年5月6日）——物語の輪郭と9人の登場人物
+
+第2弾トレーラーは2025年5月6日、発売延期の発表から数日後に予告なく公開された。約3分間の新規映像で、物語の輪郭と主人公ふたりの関係性が大きく掘り下げられている。
+
+物語の中心にいるのは、ジェイソン・デュバルとルシア・カミノスだ。トレーラーは、刑務所から出所してきたルシアをジェイソンが迎えに行く場面から動き出し、そこから先はふたりが強盗・銃撃・逃走を繰り返す、ネオンに染まったVice Cityの混沌が一気に展開する。ルシアはシリーズのメインライン（ナンバリング作品）の単独ストーリーで中心に据えられる初の本格的な女性主人公とされ、父から幼い頃に戦い方を仕込まれ、家族を守るための行動の果てにレオニダ州の刑務所に収監されたという背景が公式に明かされた。一方のジェイソンは、軍隊での再起に失敗し、麻薬の運び屋として裏社会に戻ってきた人物として描かれる。Rockstarはこのふたりの関係を「ボニーとクライド」になぞらえる犯罪×恋愛の物語として打ち出しており、GTA5が3人の主人公で風刺・悲劇・混沌を描き分けたのに対し、GTA6は運命を共有するふたりに焦点を絞っている。
+
+公式のあらすじによれば、ふたりは「簡単なはずだった仕事」の失敗をきっかけに、レオニダ州全体に広がる陰謀に巻き込まれていく。第2弾の公開に合わせて、Rockstarは主人公2人を含む9人のキャラクター情報も公開した。ヴァイスシティの伝説的人物ブービー・アイク、音楽業界での成功を狙うドレクァン・プリースト、SNSと地元の名声をまとう音楽デュオのリアル・ダイメズ、プロのバンク強盗ラウル・バウティスタ、レオニダ・キーズの密輸業者ブライアン・ヘダーなど、背景の異なる人物が並ぶ。同時に公開されたスクリーンショットでは、観光地然としたレオニダ・キーズ、自然豊かなマウント・カラガ国立公園、安宿やストリップクラブが並ぶポート・ゲルホーン、田舎と工業地帯のアンブロシア、湿地のグラスリバーズと、地域ごとの個性も示された。ファンの間では、駐車場のワニ、強盗をライブ配信するNPC、オリジナル版（1986年のヴァイスシティ）を示唆する「VC-86」のナンバープレートといった細部も盛んに考察されたが、この時点で公開されていたのはいずれも演出映像やエンジン映像で、実際のプレイ画面はまだ公式には披露されていなかった。
+
+---
+
+## 「第3弾トレーラー」の予想は、2回とも外れた
+
+Trailer 2から1年以上が過ぎた2026年6月、Rockstarが予約開始日を6月25日と発表すると、「第3弾トレーラーは予約開始と同じ日に来る」という見方が一気に広がった。本記事も当初は、この「6月25日説」を扱う記事として公開していた。根拠とされたのは、Trailer 2の公開から400日以上が経っていたこと、そしてレッド・デッド・リデンプション2では3本のシネマティックトレーラーのあと、発売の2か月ほど前にゲームプレイトレーラーを投入した前例があることだった。
+
+実際には、6月24〜25日に価格・エディション・予約開始と60枚を超える新スクリーンショットが一斉に公開されたものの、映像は伴わなかった（エディションの内容は「[GTA6のエディションと予約特典まとめ](/news/19)」で整理している）。
+
+次に有力視されたのが「7月中旬、FIFA World Cup決勝（7月19日）の前後」だ。Take-TwoのZelnick CEOがマーケティングを「夏に」、ソーシャルメディア中心の戦略で始めると述べていたことから、世界の注目が最も集まる決勝前後にぶつけてくるという読みで、決勝翌週の7月21日や、決算発表前後の7月28日・8月4日も候補に挙がっていた。しかしこの予想も外れ、7月中に映像は出なかった。GTA Onlineの大型アップデート「The Kortz Center Heist」が7月14日に配信されたのは、ちょうどこの時期にあたる（「[The Kortz Center Heistガイド](/news/36)」）。
+
+振り返れば、日付の予想が当たらなかったのは「予告なく動く」Rockstarらしさでもあった。そして次の映像は、ファンが待っていた「トレーラー3」とは違う形で届くことになる。
+
+---
+
+## An Extended Look（2026年8月27日）——Netflix先行、約26分の長尺映像
+
+### 発表（8月6日）
+
+Rockstarは2026年8月6日、「Grand Theft Auto VI: An Extended Look」を8月27日にNetflixで独占先行公開すると発表した。Netflixとこの種の提携を結ぶのはシリーズ初となる。公開はまずNetflix（netflix.com/VI）で米東部時間8月27日午後3時（日本時間28日午前4時）に始まり、その6時間後（日本時間28日午前10時）に公式YouTubeチャンネルとGTA6公式サイトでも配信されるというスケジュールだった。Netflixでノンフィクションシリーズを統括するブランドン・リーグ氏は、GTA6をめぐる期待は前例のないものだとしたうえで、物語の次章を会員に先行して届けられることを歓迎するとコメントしている。ファンの間では「第3弾トレーラー」と受け止められたが、Rockstar自身はこれを「トレーラー」とは呼ばなかった。Netflixと組んだ理由については「[GTA6新映像はなぜNetflix先行公開なのか？](/news/40)」で考察している。
+
+### 公開前日の声明（8月26日）
+
+公開直前の1週間には、GTA6のゲームプレイ映像が流出する騒動が起きていた（経緯は「[GTA6はなぜ狙われたのか](/news/42)」）。Rockstarは8月26日、流出を「チームにとって胸が張り裂けるような出来事だった」とする異例の声明を発表し、GTA6を「nearly there!（もうほぼ完成）」と表現したうえで、翌日に「Extended Look」を公開することをあらためて明言した。あわせて「もう少しだけ待って、11月19日に自分自身でゲームを体験してほしい」とも呼びかけている（「[RockstarがGTA6リークに異例の声明](/news/45)」）。
+
+### 公開（日本時間8月28日）
+
+公開されたAn Extended Lookは約26分。最後には、全編がPS5で撮影された映像であることを示すテロップが入った。物語を一本の線で追うのではなく、ブービーのお使いから警察の踏み込み、銃撃戦へとつながる場面、ふたりの家、テレビCM、ドライブ、ブライアン夫妻とのレストラン、ラウルの逃走の手助け、強盗、護衛の任務、人質に紛れるルシアといったエピソードを、生活の断片でつなぎながら並べていくダイジェスト形式だった。ゲームプレイの画面もここで初めて本格的に示され、左下のミニマップや星6つまでの手配度、武器によって形の変わるレティクル、車に乗り込むときの「SLIM JIM／SMASH WINDOW」、さらには「手をつなぐ」といったボタンプロンプトまで確認できる。割れたガラスの表現にエンジニアが3年をかけたという話も映像の中で紹介された。GTA6 FEEDの視聴記録は「[『GTA VI: An Extended Look』を見た](/news/48)」に、映像だけでは分からないRockstar North先行プレビューの情報は「[Extended Lookだけでは分からないGTA6新情報まとめ](/news/50)」にまとめている。
+
+その後、8月31日には公式サイトのギャラリーに29枚のスクリーンショットが追加された（「[GTA6公式サイトにスクリーンショット29枚追加](/news/56)」）。
+
+---
+
+## 3本を並べて見えること
+
+3本を並べると、それぞれの役割ははっきりしている。Trailer 1は世界とふたりの主人公を、Trailer 2は物語と周囲の人物を、An Extended Lookは実際にどう遊ぶのかを見せた。シネマティック中心からゲームプレイへという流れはファンの予想どおりだったが、Rockstarはそれを「トレーラー3」ではなく、Netflixで先行公開するトレーラーの枠を大きく超えた長さの映像で実現した。結果として「Trailer 3」という名前の映像は公開されず、An Extended Lookがその役割を担った形になる。
+
+次の節目は、2026年11月19日の発売だ。
+
+---
+
+## これから映像を見る人へ
+
+Trailer 1とTrailer 2はRockstar Gamesの公式YouTubeチャンネルで見られる。An Extended LookはNetflix（netflix.com/VI）で公開され、告知どおり公式YouTubeチャンネルとGTA6公式サイトでも配信された。なお、An Extended Lookには物語の場面が含まれるため、何も知らない状態で発売日を迎えたい人は注意してほしい。
+
+---
+
+> **注記：** 公開日・配信スケジュール・発言は、Rockstar GamesおよびNetflixの公式発表、Rockstarの声明にもとづく。「第3弾トレーラー」の時期予想は当時のコミュニティの観測・報道によるもので、いずれも実現しなかった。An Extended Lookの内容に関する記述はGTA6 FEEDの視聴記録にもとづく。本記事は2026年6月18日公開の「GTA6のトレーラーを総ざらい」を全面的に書き直し、「GTA6のトレーラー3はいつ来るのか」（7月5日公開）と、An Extended LookのNetflix先行公開を伝えた公式発表記事（8月7日公開）の内容を統合したものである。`,
   },
   {
     id: 2,

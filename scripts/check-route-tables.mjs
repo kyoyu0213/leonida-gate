@@ -250,6 +250,48 @@ if (notInSitemap.length) {
     }
   }
 
+  // 301統合（REDIRECTED_NEWS_IDS）と vercel.json の /news/<id> → /news/<id> 301 の整合（日英とも）。
+  //   - 統合したのに 301 が無い … 統合元 URL が空シェルのまま生き残る
+  //   - 301 はあるのに配列に無い … 一覧・関連記事に出たまま、クリックすると別記事へ飛ぶ
+  //   - 転送先がさらに統合・非表示 … 301 → 301／302 のリダイレクトチェーン
+  //   - 301 と noindex の二重登録 … 意図の重複（片方を外し忘れる）
+  const redirectedIds = newsIds.redirected.map(String);
+  const merge301 = { ja: new Map(), en: new Map() };
+  for (const r of vercel.redirects ?? []) {
+    const m = String(r.source).match(/^(\/en)?\/news\/(\d+)$/);
+    if (!m) continue;
+    merge301[m[1] ? 'en' : 'ja'].set(m[2], { dest: String(r.destination), status: r.statusCode });
+  }
+  for (const id of redirectedIds) {
+    for (const lang of ['ja', 'en']) {
+      const prefix = lang === 'en' ? '/en' : '';
+      const e = merge301[lang].get(id);
+      if (!e) {
+        errors.push(`id${id} は REDIRECTED_NEWS_IDS にあるが、vercel.json に ${prefix}/news/${id} の 301 が無い。`);
+        continue;
+      }
+      if (e.status !== 301) errors.push(`${prefix}/news/${id} の統合リダイレクトが ${e.status}（恒久統合なので 301）。`);
+      const to = e.dest.match(new RegExp(`^${prefix}/news/(\\d+)$`));
+      if (!to) {
+        errors.push(`${prefix}/news/${id} の転送先 ${e.dest} が同じ言語の /news/<id> ではない。`);
+      } else if (redirectedIds.includes(to[1]) || hiddenIds.map(String).includes(to[1])) {
+        errors.push(`${prefix}/news/${id} → ${e.dest} の転送先がさらに統合・非表示になっている（リダイレクトチェーン）。`);
+      }
+    }
+  }
+  for (const [lang, map] of Object.entries(merge301)) {
+    for (const id of map.keys()) {
+      if (!redirectedIds.includes(id)) {
+        errors.push(`vercel.json の ${lang === 'en' ? '/en' : ''}/news/${id} 301 に対応する REDIRECTED_NEWS_IDS が無い。`);
+      }
+    }
+  }
+  for (const id of newsIds.noindex.map(String)) {
+    if (redirectedIds.includes(id)) {
+      errors.push(`id${id} が REDIRECTED_NEWS_IDS と NOINDEX_NEWS_IDS の両方にある（301 統合したなら NOINDEX から外す）。`);
+    }
+  }
+
   if (hiddenIds.length) {
     warnings.push(
       `[一時非表示] news 記事 ${hiddenIds.length} 件を配信から外している（id ${hiddenIds.join(', ')}）。` +
