@@ -1,83 +1,60 @@
 // ============================================================================
-//  GTA6まとめWiki の共通部品（確度ラベルのバッジ・本文テキスト・状態注記・パンくず・インフォボックス）。
+//  GTA6まとめWiki の共通部品（本文テキスト・冒頭の注記・パンくず・インフォボックス）。
 //  スタイルは pages/gtaWiki.css（.gta-wiki 配下にスコープ）。
 // ============================================================================
-import { Fragment, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ChevronRight, type LucideIcon } from 'lucide-react';
-import { WIKI_LABELS, WIKI_LABEL_ORDER, splitLabels, type LabelPart } from '@/data/wiki/labels';
-import type { WikiInfobox as WikiInfoboxData, WikiLabel } from '@/data/wiki/types';
+import { splitLabels } from '@/data/wiki/labels';
+import type { WikiInfobox as WikiInfoboxData } from '@/data/wiki/types';
 
-/** 確度ラベル1つ（pill）。text に補足（例：「公式映像」）があればそのまま出す。 */
-export function WikiBadge({ kind, text }: { kind: WikiLabel; text?: string }) {
-  const meta = WIKI_LABELS[kind];
-  return (
-    <span className={`wiki-badge wiki-badge--${kind}`} title={`${meta.name}：${meta.desc}`}>
-      {text ?? meta.name}
-    </span>
-  );
+// ----------------------------------------------------------------------------
+//  確度ラベル（【公式】【取材】【証言】【考察】）は表示しない（㉛）。
+//  データ（data/wiki/*.ts）には【…】を残してあるので、表示時に取り除く
+//  （バッジを復活させるなら、ここで splitLabels のラベル部分を描き直せばよい）。
+//
+//  ラベルの大半は文末・文頭に添えた注記なので丸ごと消す。ただし「位置づけは【公式】。」
+//  「数値は【取材】か【考察】にとどまります」のように、ラベルが文の一部（名詞）になって
+//  いる箇所は、消すと文が壊れるので括弧を外した語（公式・取材・考察…）として残す。
+//  文の一部かどうかは直前・直後の1文字で判定する：
+//    直前が「は」「＝」／直後が助詞「で・の・を・に・か・と」
+// ----------------------------------------------------------------------------
+const NOUN_BEFORE = /[は＝]$/;
+const NOUN_AFTER = /^[でのをにかと]/;
+
+/** 本文から確度ラベルを取り除いたプレーンな文字列（空白・括弧まわりも整える）。 */
+export function plainText(text: string): string {
+  const chunks = splitLabels(text);
+  let out = '';
+  chunks.forEach((c, i) => {
+    if (c.type === 'text') {
+      out += c.text;
+      return;
+    }
+    const next = chunks[i + 1];
+    const nextText = next?.type === 'text' ? next.text : '';
+    if (NOUN_BEFORE.test(out) || NOUN_AFTER.test(nextText)) {
+      out += c.parts.map((p) => p.text).join('／');
+    }
+  });
+  return out
+    .replace(/[ 　]{2,}/g, ' ')
+    .replace(/[ 　]+([。、，．）」』／,.)])/g, '$1')
+    .replace(/([（「『(])[ 　]+/g, '$1')
+    .replace(/（）|\(\)/g, '')
+    .trim();
 }
 
-function BadgeGroup({ parts, lead = false }: { parts: LabelPart[]; lead?: boolean }) {
-  return (
-    <span className={lead ? 'wiki-badges wiki-badges--lead' : 'wiki-badges'}>
-      {parts.map((p, i) => (
-        <Fragment key={i}>
-          {i > 0 && <span className="wiki-badge-sep">/</span>}
-          <WikiBadge kind={p.kind} text={p.text} />
-        </Fragment>
-      ))}
-    </span>
-  );
-}
-
-/** 本文テキスト。文中の【公式】等をバッジに置き換えて描画する。
- *  行頭のバッジだけ左余白を詰める（CSS の :first-child は前にある文字を数えないので、ここで印を付ける）。 */
+/** 本文テキスト（確度ラベルを取り除いて描く）。 */
 export function WikiText({ text }: { text: string }) {
-  return (
-    <>
-      {splitLabels(text).map((c, i) =>
-        c.type === 'text' ? (
-          <Fragment key={i}>{c.text}</Fragment>
-        ) : (
-          <BadgeGroup key={i} parts={c.parts} lead={i === 0} />
-        ),
-      )}
-    </>
-  );
+  return <>{plainText(text)}</>;
 }
 
-/** 確度ラベルの凡例。 */
-export function WikiLegend() {
-  return (
-    <ul className="wiki-legend">
-      {WIKI_LABEL_ORDER.map((k) => (
-        <li key={k}>
-          <WikiBadge kind={k} />
-          <span>{WIKI_LABELS[k].desc}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-/** 全ページ共通の「この情報について」注記（固定文）。 */
+/** 全ページ共通の冒頭注記（一文）。 */
 export function WikiNotice() {
   return (
-    <aside className="wiki-notice" aria-label="この情報について">
-      <p className="wiki-notice__title">この情報について（2026年9月時点）</p>
-      <p>
-        GTA6は 2026年11月19日発売予定で、まだ発売されていません。本ページは公式発表・トレーラー・各メディアの先行取材・招待クリエイターの証言・考察をもとにした暫定情報で、発売後に大きく更新されます。
-      </p>
-      <p>
-        なお
-        <strong>
-          2026年8月の先行公開（Extended Look）と各メディア／クリエイターの取材はすべて「ハンズオフ（開発者がプレイし、招待者は視聴のみ）」
-        </strong>
-        で、Rockstar社外でまだ誰も実プレイしていません。「取材」「証言」ラベルの情報は“映像で見えた観察”に基づく点にご留意ください。
-      </p>
-      <p className="wiki-notice__legend-title">確度ラベル</p>
-      <WikiLegend />
-    </aside>
+    <p className="wiki-notice">
+      ※本ページは公式発表・トレーラー・各メディアの先行取材・考察をもとにした非公式のまとめです。GTA6は2026年11月19日発売予定で、発売後に内容が変わる場合があります。
+    </p>
   );
 }
 

@@ -1,8 +1,7 @@
 /* GTA6まとめWiki（/gta6-wiki 配下）専用スタイル。
    ページのルート <main class="gta-wiki"> 配下にネストしてスコープし、サイト全体に漏らさない。
    背景・文字色は .vice-page（index.css）に乗る。
-   確度ラベルの4色（公式=エメラルド／取材=青／証言=紫／考察=灰）は、カテゴリのアクセント色
-   （data/wiki/categories.ts）と見分けられる色相にしてある。カテゴリ側に同系色を足さないこと。 */
+   確度ラベル（【公式】等）は表示しない（WikiParts.tsx の WikiText が表示時に取り除く）。 */
 
 .gta-wiki {
   --line: rgba(255, 255, 255, 0.09);
@@ -11,11 +10,6 @@
   /* 見出しの下線・表の罫線（本文をカードで囲まないぶん、区切り線は --line より明瞭に）。 */
   --rule: rgba(255, 255, 255, 0.16);
   --text: rgba(244, 238, 248, 0.86);
-
-  --official: #34d399;
-  --preview: #60a5fa;
-  --testimony: #a78bfa;
-  --analysis: #9ca3af;
 
   color: #f4eef8;
 
@@ -157,100 +151,14 @@
     text-decoration: underline;
   }
 
-  /* ---- 状態注記 ---- */
+  /* ---- 冒頭の一文注記（情報ソース＋発売後に変わる可能性）。目立たせない ---- */
   .wiki-notice {
-    margin: 22px 0 0;
-    padding: 18px 20px;
-    border-radius: 16px;
-    background: rgba(251, 191, 36, 0.06);
-    border: 1px solid rgba(251, 191, 36, 0.32);
-    font-size: 13.5px;
-    line-height: 1.9;
-    color: rgba(244, 238, 248, 0.8);
-  }
-  .wiki-notice p {
-    margin: 0 0 8px;
-  }
-  .wiki-notice strong {
-    color: #fde68a;
-    font-weight: 700;
-  }
-  .wiki-notice__title {
-    font-size: 14.5px;
-    font-weight: 900;
-    color: #fbbf24;
-  }
-  .wiki-notice .wiki-notice__legend-title {
-    margin-top: 12px;
+    margin: 18px 0 0;
+    padding: 8px 0 8px 12px;
+    border-left: 2px solid var(--rule);
     font-size: 12.5px;
-    font-weight: 800;
-    color: rgba(244, 238, 248, 0.9);
-  }
-
-  /* ---- 確度ラベル ---- */
-  .wiki-legend {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 6px 18px;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 640px) {
-    .wiki-legend {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .wiki-legend li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12.5px;
-    line-height: 1.6;
-  }
-  .wiki-badges {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    margin: 0 4px;
-    vertical-align: 1px;
-    white-space: nowrap;
-  }
-  /* 行頭のバッジ（WikiText が付ける --lead）だけ左余白を詰める。 */
-  .wiki-badges--lead {
-    margin-left: 0;
-  }
-  .wiki-badge-sep {
-    font-size: 11px;
-    opacity: 0.45;
-  }
-  .wiki-badge {
-    --c: var(--analysis);
-    display: inline-block;
-    flex: none;
-    padding: 1px 8px;
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    color: color-mix(in srgb, var(--c) 70%, #fff);
-    background: color-mix(in srgb, var(--c) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
-    vertical-align: 1px;
-  }
-  .wiki-badge--official {
-    --c: var(--official);
-  }
-  .wiki-badge--preview {
-    --c: var(--preview);
-  }
-  .wiki-badge--testimony {
-    --c: var(--testimony);
-  }
-  .wiki-badge--analysis {
-    --c: var(--analysis);
+    line-height: 1.8;
+    color: var(--muted);
   }
 
   /* ---- カードグリッド（index・関連カテゴリ） ---- */

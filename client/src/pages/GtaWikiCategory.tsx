@@ -3,7 +3,14 @@ import { ArrowRight, CalendarClock, ChevronLeft, Info } from 'lucide-react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import NotFound from '@/pages/NotFound';
-import { WikiBreadcrumb, WikiDisclaimer, WikiInfobox, WikiNotice, WikiText } from '@/components/wiki/WikiParts';
+import {
+  WikiBreadcrumb,
+  WikiDisclaimer,
+  WikiInfobox,
+  WikiNotice,
+  WikiText,
+  plainText,
+} from '@/components/wiki/WikiParts';
 import { wikiIcon } from '@/components/wiki/wikiIcons';
 import {
   WIKI_CATEGORIES,
@@ -21,7 +28,7 @@ import './gtaWiki.css';
 // ============================================================================
 //  GTA6まとめWiki のカテゴリページ（/gta6-wiki/<slug>）。日本語のみ。
 //  1コンポーネントで6カテゴリを描き分ける（NewsList・FieldNotesList と同じく URL から判定）。
-//  本文は data/wiki/<slug>.ts。【公式】等のラベルは WikiText がバッジにする。
+//  本文は data/wiki/<slug>.ts。データ中の【公式】等のラベルは WikiText が表示時に取り除く。
 //  ルートは App.tsx と entry-server.tsx の JA_ONLY_ROUTES に slug ごとに列挙している
 //  （:slug の動的ルートにするとプリレンダ対象から外れるため）。
 // ============================================================================
@@ -61,9 +68,12 @@ function Section({ s, index }: { s: WikiSection; index: number }) {
               {g.items.map((it, i) => (
                 <div key={i} className="wiki-dl__row">
                   <dt>{it.term}</dt>
-                  <dd>
-                    <WikiText text={it.text} />
-                  </dd>
+                  {/* 説明がラベルだけの項目（例：自転車【公式】）は、ラベルを外すと空になるので dd を出さない。 */}
+                  {plainText(it.text) && (
+                    <dd>
+                      <WikiText text={it.text} />
+                    </dd>
+                  )}
                 </div>
               ))}
             </dl>
