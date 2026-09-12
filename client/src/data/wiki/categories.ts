@@ -128,6 +128,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: '60万種以上のアニメーション、武器・服装への反応、盗み聞き・会話プロンプト、動物、技術基盤。',
     related: ['police', 'characters'],
   },
+  {
+    slug: 'music',
+    title: '楽曲・サウンドトラック',
+    shortTitle: '楽曲',
+    seoTitle: 'GTA6 楽曲・サウンドトラック｜トレーラー・Extended Lookの使用曲まとめ｜GTA6まとめWiki',
+    description:
+      'GTA6の公式トレーラーやExtended Lookで使われた楽曲の一覧。トレーラー1のTom Petty「Love Is a Long Road」など、公式映像で確認された曲をまとめています（ラジオ局・サントラは公式未発表）。',
+    order: 7,
+    accent: '#a78bfa',
+    summary: '公式トレーラー／Extended Lookの使用曲まとめ。',
+    related: ['characters', 'locations'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(

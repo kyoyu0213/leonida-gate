@@ -1,0 +1,110 @@
+import type { WikiPage } from './types';
+
+// ㉟ 公式映像（トレーラー1・2、An Extended Look）で使われた楽曲のまとめ。確度はラベル記号ではなく
+// 地の文の言い回しで示す（「確定情報」「公式サイトも使用を告知」「映像の音声から同定」
+// 「公式発表なし」「リーク由来・非公式」など）。
+export const MUSIC: WikiPage = {
+  slug: 'music',
+  updated: '2026-09-13',
+  intro:
+    'このページでは、Rockstarが公開したGTA6の公式映像で実際に使われた楽曲をまとめます。トレーラーで流れた曲はRockstar自身が選曲したものなので信頼度は高い一方、曲名・アーティスト名の多くはRockstarが一覧を公表したわけではなく、各メディアやファンが映像の音声から同定したものです。ゲーム内ラジオ局・収録アーティスト・正式なサウンドトラックは、2026年9月時点でまだ公式発表されていません。',
+  infobox: {
+    rows: [
+      { label: 'トレーラー1 主題歌', value: 'Love Is a Long Road ／ Tom Petty' },
+      { label: 'トレーラー2 主題歌', value: 'Hot Together ／ The Pointer Sisters' },
+      { label: 'Extended Look', value: 'ゲーム内で14曲を確認（各メディア同定）' },
+      { label: 'ラジオ局', value: '公式未発表（出回る局名はリーク由来）' },
+      { label: 'サウンドトラック', value: '公式未発表' },
+      { label: '注記', value: '曲名の多くは映像音声からの同定' },
+    ],
+  },
+  sections: [
+    {
+      heading: 'トレーラー1（2023年12月）',
+      lead: 'トレーラー1で全編に流れる楽曲は1曲で、これは確定情報です。',
+      items: [
+        {
+          term: 'Love Is a Long Road ／ Tom Petty（トム・ペティ）',
+          text: '1989年のアルバム『Full Moon Fever』収録。トム・ペティ公式サイトも使用を告知しており確度は最高。フロリダ出身のペティの曲を、フロリダをモデルにした州レオニダが舞台の第1弾に使った点、困難な関係を歌う歌詞が主人公たちの関係を暗示する点が繰り返し語られています。',
+        },
+      ],
+    },
+    {
+      heading: 'トレーラー2（2025年5月）',
+      lead: 'トレーラー2ではメインテーマ1曲に加え、運転シーンのカーラジオから複数曲が短く流れます。メイン曲以外はRockstarの公式リストではなく、各メディアが音声から同定したものです。',
+      table: {
+        head: ['曲名', 'アーティスト', '場面・備考'],
+        rows: [
+          ['Hot Together', 'The Pointer Sisters（1986年）', 'トレーラーの主軸（メインテーマ）'],
+          ['Thunder Island', 'Jay Ferguson（1977年）', '冒頭付近'],
+          ['Child Support', 'Zenglen（ハイチのコンパ・バンド）', 'カーラジオ'],
+          ['Everybody Have Fun Tonight', 'Wang Chung（1986年）', 'カーラジオ'],
+          ["Talkin' to Myself Again", 'Tammy Wynette（1987年）', 'カーラジオ（カントリー）'],
+        ],
+      },
+      note: 'メイン曲「Hot Together」はトレーラー2公開後に再生数が大きく伸びた目玉曲です。カーラジオの4曲は映像の音声から同定されたものです。',
+    },
+    {
+      heading: 'An Extended Look（2026年8月27日・Netflix公開）',
+      lead: '約26分のゲームプレイ映像では、ゲーム内のカーラジオや場面BGMとして多くの曲が確認されました。トレーラー用の編集曲ではなく、プレイ中に流れた曲を各メディア・ファンが聞き取って同定したもので、Rockstarが公式に曲目を公開したわけではありません。以下は複数メディアで一致して報じられている14曲です。',
+      table: {
+        head: ['曲名', 'アーティスト'],
+        rows: [
+          ['Pop Bottles', 'Birdman feat. Lil Wayne'],
+          ['Pound Town', 'Sexyy Red feat. Tay Keith'],
+          ['Skrilla', 'Kodak Black'],
+          ['Let Your Love Flow', 'The Bellamy Brothers'],
+          ['Love Bites', 'Def Leppard'],
+          ['People Are People', 'Depeche Mode'],
+          ["But I Think It's a Dream", 'Captain & Tennille'],
+          ['Cars and Girls', 'Prefab Sprout'],
+          ['Off the Grid', '!!!（Chk Chk Chk）feat. Meah Pace'],
+          ['Devil Woman', 'Cliff Richard'],
+          ['Se Me Nota (Agárrame)', 'Chimbala & Omega'],
+          ['Against All Odds (Take a Look at Me Now)', 'Phil Collins'],
+          ["Mine O' Mine", 'Aluna & Jayda G'],
+          ['Inner Light', 'Elderbrook with Bob Moses'],
+        ],
+      },
+      note: '曲順・時間はメディアが付けた目安で、数秒ずれる場合があります。',
+    },
+    {
+      heading: 'ラジオ局・収録アーティスト・サウンドトラック（未発表）',
+      lead: '2026年9月時点で、Rockstarはゲーム内ラジオ局の一覧・収録アーティスト・正式なサウンドトラックを公式発表していません。以下は看板・衣装からの推測や2026年のリーク映像を出所とするもので、公式情報ではなく発売までに変わる可能性があります。',
+      items: [
+        {
+          text: '出回っているラジオ局名（すべて非公式・リーク由来）：V-Rock、Back Country Radio、Stockyard FM、Symphony FM、CircoLoco Records Radio、Dirty South Classics、Emotion 98.3、Worldwide FM、Kaleidoscope FM など。※「V-Rock」は『Vice City』からの復活局とされ、トレーラー2のジェイソンのTシャツからも存在が推測されています。',
+        },
+        {
+          text: '関与を示唆したと報じられるアーティスト（未確認）：T-Pain、Ski Mask the Slump God など。Rockstarは確認していません。',
+        },
+      ],
+    },
+    {
+      heading: '注意点',
+      items: [
+        {
+          text: '「Thunder Island」はトレーラー2の曲です（トレーラー1の曲とする記載は誤り）。トレーラー1はTom Pettyの1曲のみです。',
+        },
+        {
+          text: "トレーラー2のAmmu-Nation CMで「I Love Rock 'n' Roll」が流れたという説がありますが、確定情報ではないため掲載していません。",
+        },
+        { text: '出所が不確かな「テーマ曲」情報が一部にありますが、裏付けが取れないため載せていません。' },
+        { text: 'トレーラーで使われた曲が、そのままゲーム本編に収録される保証はなく、差し替えの可能性があります。' },
+      ],
+    },
+  ],
+  sources: [
+    'Tom Petty 公式（トレーラー1使用告知）',
+    'NME（トレーラー1・2の曲）',
+    'GamesRadar（サウンドトラックまとめ）',
+    'PCGamesN（トレーラー別ソングリスト）',
+    'GTABase（確定曲・ラジオ局）',
+    'GTA BOOM（サントラ・トラッカー）',
+    'SVG（Extended Look 楽曲）',
+    'gta6bible（Extended Look 全曲）',
+    'GameRant（Extended Look 曲・時間）',
+    'Rockstar Newswire（An Extended Look 公式告知）',
+    'Kotaku（リーク由来の曲・ラジオ局／公式未発表の注意）',
+  ],
+};

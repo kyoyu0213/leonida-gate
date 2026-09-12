@@ -1,4 +1,14 @@
-import { Users, Map as MapIcon, Building2, Car, Siren, PersonStanding, BookOpen, type LucideIcon } from 'lucide-react';
+import {
+  Users,
+  Map as MapIcon,
+  Building2,
+  Car,
+  Siren,
+  PersonStanding,
+  Music,
+  BookOpen,
+  type LucideIcon,
+} from 'lucide-react';
 
 /** カテゴリ slug → アイコン（データ側に React を持ち込まないためここで対応づける）。 */
 export const WIKI_ICONS: Record<string, LucideIcon> = {
@@ -8,6 +18,7 @@ export const WIKI_ICONS: Record<string, LucideIcon> = {
   vehicles: Car,
   police: Siren,
   npc: PersonStanding,
+  music: Music,
 };
 
 export const wikiIcon = (slug: string): LucideIcon => WIKI_ICONS[slug] ?? BookOpen;

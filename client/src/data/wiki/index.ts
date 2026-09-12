@@ -6,7 +6,8 @@ import { LOCATIONS } from './locations';
 import { VEHICLES } from './vehicles';
 import { POLICE } from './police';
 import { NPC } from './npc';
+import { MUSIC } from './music';
 
 export const WIKI_PAGES: Record<string, WikiPage> = Object.fromEntries(
-  [CHARACTERS, MAP, LOCATIONS, VEHICLES, POLICE, NPC].map((p) => [p.slug, p]),
+  [CHARACTERS, MAP, LOCATIONS, VEHICLES, POLICE, NPC, MUSIC].map((p) => [p.slug, p]),
 );
