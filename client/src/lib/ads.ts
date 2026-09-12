@@ -42,6 +42,8 @@ export const AD_FREE_PREFIXES: string[] = [
   '/search',
   '/admin',
   '/404',
+  // --- 公開前・方針未定のコンテンツ ---
+  '/gta6-wiki', // GTA6まとめWiki。公開フラグ（data/wiki/release.ts）と無関係に当面は広告なし。公開後の方針は解禁時に判断する
   // --- 固定ページ（収益実態がなく、ポリシー/問い合わせ上に広告を置く意味がない） ---
   '/about',
   '/contact',

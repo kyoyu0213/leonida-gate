@@ -133,6 +133,22 @@ export interface WebPageNodeInput {
   lang: Lang;
 }
 
+/** 単独の ItemList（WebPage と並べて出す一覧。例：GTA6まとめWiki のカテゴリ）。
+ *  CollectionPage に内包させる一覧は collectionNode の mainEntity を使う。 */
+export function itemListNode(input: { itemUrls: string[]; itemNames?: string[] }): Record<string, unknown> {
+  const named = input.itemNames && input.itemNames.length === input.itemUrls.length;
+  return {
+    '@type': 'ItemList',
+    numberOfItems: input.itemUrls.length,
+    itemListElement: input.itemUrls.map((url, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url,
+      ...(named ? { name: input.itemNames![i] } : {}),
+    })),
+  };
+}
+
 /** 一般ページ（about / contact / terms / ツール）。 */
 export function webPageNode(input: WebPageNodeInput): Record<string, unknown> {
   const node: Record<string, unknown> = {

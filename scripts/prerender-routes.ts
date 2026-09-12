@@ -22,6 +22,7 @@ import {
   breadcrumbNode,
   collectionNode,
   webPageNode,
+  itemListNode,
   homeCrumb,
   injectLd,
   type CrumbInput,
@@ -31,6 +32,8 @@ import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '../client/src/data/field
 import { indexableNewsArticles } from '../client/src/data/news';
 import { buildBoardSeed, buildMapSeed } from './lib/board-seed.mjs';
 import { MAP_RELEASED } from '../client/src/data/maps/release';
+import { WIKI_RELEASED } from '../client/src/data/wiki/release';
+import { WIKI_BASE, WIKI_CATEGORIES, WIKI_CATEGORY_BY_SLUG, WIKI_NAME } from '../client/src/data/wiki/categories';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -189,6 +192,17 @@ function isUnreleasedMapPath(route: string): boolean {
   return ja === '/fivem-gtarp/tools/gta5-map' && !MAP_RELEASED.gta5;
 }
 
+/** GTA6まとめWiki 配下か（日本語のみのルート。/en 付きでも同じ判定になるようにしておく）。 */
+function isWikiPath(route: string): boolean {
+  const ja = route.startsWith('/en/') ? route.slice(3) : route;
+  return ja === WIKI_BASE || ja.startsWith(`${WIKI_BASE}/`);
+}
+
+/** 公開前の GTA6まとめWiki（client/src/data/wiki/release.ts が false）か。noindex に使う。 */
+function isUnreleasedWikiPath(route: string): boolean {
+  return isWikiPath(route) && !WIKI_RELEASED;
+}
+
 /** ハブ（/fivem-gtarp）が束ねる下位ページのURL一覧。ROUTE_PATHS から導出する（別表を作らない）。
  *  体験記の個別記事は各カテゴリ一覧（/field-notes/<cat>）の ItemList 側で列挙するため除く。 */
 function hubItemUrls(routePaths: string[], prefix: string): string[] {
@@ -331,6 +345,31 @@ function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
     ];
   }
 
+  // GTA6まとめWiki（日本語のみ）。各ページ WebPage＋BreadcrumbList。
+  // index のカテゴリ一覧（ItemList）は公開後だけ出す（公開前は noindex で、一覧として申告しない）。
+  if (isWikiPath(jaPath)) {
+    const wikiCrumb: CrumbInput = { name: WIKI_NAME, url: `${ORIGIN}${WIKI_BASE}` };
+    if (jaPath === WIKI_BASE) {
+      return [
+        webPageNode({ type: 'WebPage', url, name, description: desc, lang }),
+        ...(WIKI_RELEASED
+          ? [
+              itemListNode({
+                itemUrls: WIKI_CATEGORIES.map((c) => `${ORIGIN}${WIKI_BASE}/${c.slug}`),
+                itemNames: WIKI_CATEGORIES.map((c) => c.title),
+              }),
+            ]
+          : []),
+        breadcrumbNode([home, wikiCrumb]),
+      ];
+    }
+    const cat = WIKI_CATEGORY_BY_SLUG[jaPath.slice(WIKI_BASE.length + 1)];
+    return [
+      webPageNode({ type: 'WebPage', url, name, description: desc, lang }),
+      breadcrumbNode([home, wikiCrumb, { name: cat?.title ?? name, url }]),
+    ];
+  }
+
   // 掲示板・サーバー募集（中身は実行時にDBから引くため ItemList は付けない）
   if (jaPath === '/servers' || jaPath === '/board' || jaPath.startsWith('/board/')) {
     const crumbs =
@@ -355,6 +394,7 @@ function buildLdNodes(ctx: LdContext): Record<string, unknown>[] {
 let count = 0;
 let adFree = 0;
 let enNoindex = 0;
+let wikiNoindex = 0;
 const skipped: string[] = [];
 
 for (const route of mod.ROUTE_PATHS) {
@@ -392,6 +432,10 @@ for (const route of mod.ROUTE_PATHS) {
   } else if (isUnreleasedMapPath(route)) {
     // 種データがそろうまでの公開前プレビュー。sitemap・カードからも外している。
     html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
+  } else if (isUnreleasedWikiPath(route)) {
+    // 情報が蓄積するまでの公開前プレビュー。sitemap・ナビ・ホームからも外している。
+    html = html.replace('</head>', `    <meta name="robots" content="noindex" />\n  </head>`);
+    wikiNoindex++;
   }
   html = setMeta(html, 'description', desc);
   html = setMeta(html, 'og:type', seo?.type || 'website');
@@ -463,7 +507,8 @@ for (const route of mod.ROUTE_PATHS) {
 console.log(
   `[prerender-routes] ${count} ルートを生成: dist/public/<route>/index.html` +
     `（うち広告なし ${adFree} ルート / seed埋め込み ${seededPages} ルート` +
-    `${enNoindex ? ` / noindex(/en) ${enNoindex} ルート` : ''}）`,
+    `${enNoindex ? ` / noindex(/en) ${enNoindex} ルート` : ''}` +
+    `${wikiNoindex ? ` / noindex(公開前Wiki) ${wikiNoindex} ルート` : ''}）`,
 );
 if (skipped.length) console.log(`[prerender-routes] スキップ: ${skipped.join(', ')}`);
 if (missedReplacements.size) {

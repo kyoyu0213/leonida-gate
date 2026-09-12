@@ -13,6 +13,8 @@ import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import { useLocalHref } from '@/components/LocalLink';
 import { FooterLinks } from '@/components/SiteFooter';
+import { WIKI_RELEASED } from '@/data/wiki/release';
+import { WIKI_BASE, WIKI_CATEGORIES, WIKI_NAME, wikiPath } from '@/data/wiki/categories';
 
 // Discord ロゴ（lucide に無いため簡易インラインSVG）
 function DiscordIcon() {
@@ -640,6 +642,45 @@ export default function Home() {
                 );
               })}
             </div>
+
+            {/* ===================== GTA6まとめWiki（日本語のみ） =====================
+                公開フラグ（data/wiki/release.ts の WIKI_RELEASED）が立つまで出さない。 */}
+            {WIKI_RELEASED && (
+              <div
+                className="mt-8 rounded-2xl p-6 md:p-8"
+                style={{
+                  background: 'linear-gradient(135deg,#07131a 0%,#0d1f2a 55%,#15122c 100%)',
+                  border: '1px solid rgba(45,226,230,.35)',
+                  boxShadow: '0 0 30px rgba(45,226,230,.14)',
+                }}
+              >
+                <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase" style={{ color: '#2de2e6' }}>
+                  GTA6 WIKI
+                </span>
+                <h3 className="font-black text-xl md:text-2xl mt-3 mb-2 text-white">
+                  <a href={WIKI_BASE} className="hover:underline">
+                    {WIKI_NAME}
+                  </a>
+                </h3>
+                <p className="text-[14px] md:text-[15px] leading-relaxed m-0 max-w-[640px]" style={{ color: 'rgba(244,238,248,.82)' }}>
+                  {lang === 'ja'
+                    ? 'キャラクター・マップ・建物・車両・警察システム・NPCの判明情報を、公式／取材／証言／考察の確度ラベル付きで整理した非公式Wikiです。'
+                    : 'An unofficial Japanese-language wiki of confirmed GTA6 info — characters, map, locations, vehicles, police and NPCs — labeled by how reliable each item is.'}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {WIKI_CATEGORIES.map((c) => (
+                    <a
+                      key={c.slug}
+                      href={wikiPath(c.slug)}
+                      className="text-[13px] font-bold px-4 py-2 rounded-full transition-colors hover:bg-white/10"
+                      style={{ background: 'rgba(255,255,255,.04)', border: `1px solid ${c.accent}66`, color: c.accent }}
+                    >
+                      {c.shortTitle}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* ===================== Discord コミュニティ告知バナー ===================== */}
             <div

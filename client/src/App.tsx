@@ -73,6 +73,9 @@ import CrewNameTool from "./pages/CrewNameTool";
 import RpScenarioTool from "./pages/RpScenarioTool";
 // 地図ツールもページ本体は事前import（地図キャンバスだけが MapTool 内で lazy）。
 import MapTool from "./pages/MapTool";
+// GTA6まとめWiki（日本語のみ・公開前は data/wiki/release.ts の WIKI_RELEASED=false で隠している）。
+import GtaWikiIndex from "./pages/GtaWikiIndex";
+import GtaWikiCategory from "./pages/GtaWikiCategory";
 import NotFound from "./pages/NotFound";
 
 // 管理画面のみ遅延読み込み（noindex・クローラー非対象）。
@@ -126,6 +129,15 @@ function Router() {
       <Route path="/fivem-gtarp/tools/crew-name-generator" component={CrewNameTool} />
       <Route path="/fivem-gtarp/tools/rp-scenario" component={RpScenarioTool} />
       <Route path="/fivem-gtarp/tools/gta5-map" component={MapTool} />
+      {/* GTA6まとめWiki（日本語のみ。/en 版は作らない）。カテゴリは slug ごとに列挙する
+          （:slug にするとプリレンダ対象から外れ、check-route-tables も通らない）。 */}
+      <Route path="/gta6-wiki" component={GtaWikiIndex} />
+      <Route path="/gta6-wiki/characters" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/map" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/locations" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/vehicles" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/police" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/npc" component={GtaWikiCategory} />
 
       {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
           記事・fivem-gtarp・tools・contact・terms は hreflang/sitemap で正式な英語版として扱う。

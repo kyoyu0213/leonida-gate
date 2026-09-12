@@ -11,6 +11,8 @@
 // ============================================================================
 import { useT } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
+import { WIKI_RELEASED } from '@/data/wiki/release';
+import { WIKI_BASE, WIKI_NAME } from '@/data/wiki/categories';
 
 /** 固定ページへのリンク3本（区切り付き）＋画像の出典表記。独自レイアウトのフッターから使う。
  *  出典表記はリンク行の下に置く。ホーム・記事ページは SiteFooter ではなく FooterLinks を
@@ -33,6 +35,15 @@ export function FooterLinks() {
       <a href={L('/privacy')} className={cls}>
         {t('footer.privacy')}
       </a>
+      {/* GTA6まとめWiki（日本語のみ）。公開フラグ（data/wiki/release.ts）が立つまで出さない。 */}
+      {WIKI_RELEASED && (
+        <>
+          {' / '}
+          <a href={WIKI_BASE} className={cls}>
+            {WIKI_NAME}
+          </a>
+        </>
+      )}
       <span className="block mt-2 text-[11px] leading-relaxed opacity-70">{t('footer.credit')}</span>
     </>
   );

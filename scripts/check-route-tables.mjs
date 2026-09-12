@@ -30,9 +30,25 @@ import { dirname, resolve } from 'node:path';
 import { STATIC_ROUTES, isLocalizedStaticPath } from './lib/static-routes.mjs';
 import { readNewsIdLists } from './lib/news-visibility.mjs';
 import { EN_SITE_ENABLED } from './lib/en-indexing.mjs';
+import { isMapReleased } from './lib/map-release.mjs';
+import { isWikiReleased, isWikiPath, wikiPaths } from './lib/wiki-release.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
+
+// --- 公開フラグで sitemap 掲載が切り替わるルート ------------------------------
+// 「プリレンダは常に生成・公開前は noindex で sitemap 外」という扱いのルート。
+// 公開前は検査D（プリレンダ済みだが sitemap に無い）の対象外にし、下の検査Hで
+// 「公開前なら sitemap に無い／公開後なら全部ある」ことを逆に強制する。
+//   - GTA5 マップツール … client/src/data/maps/release.ts（MAP_RELEASED.gta5）
+//   - GTA6まとめWiki    … client/src/data/wiki/release.ts（WIKI_RELEASED）。日本語のみ
+const WIKI_RELEASED = isWikiReleased();
+const WIKI_PATHS = wikiPaths();
+const GATED_ROUTES = [
+  { label: 'GTA5マップ', paths: ['/fivem-gtarp/tools/gta5-map'], released: isMapReleased('gta5') },
+  { label: 'GTA6まとめWiki', paths: WIKI_PATHS, released: WIKI_RELEASED },
+];
+const unreleasedGated = new Set(GATED_ROUTES.filter((g) => !g.released).flatMap((g) => g.paths));
 
 // --- 表以外の経路でプリレンダされるルート ------------------------------------
 // '/' は prerender-home.ts が dist/public/index.html と /en/index.html に焼く
@@ -173,12 +189,69 @@ if (onlyInEntry.length) {
 //  検査D（warn）：プリレンダされているのに sitemap に載っていないルート
 // ============================================================================
 const staticPaths = new Set(STATIC_ROUTES.map((r) => r.path));
-const notInSitemap = [...prerenderedJa].filter((p) => !staticPaths.has(p));
+// 公開前の gated ルート（マップ・Wiki）は「sitemap に無い」のが正しい状態なので除く（検査Hで別途検証）。
+const notInSitemap = [...prerenderedJa].filter((p) => !staticPaths.has(p) && !unreleasedGated.has(p));
 if (notInSitemap.length) {
   warnings.push(
     `プリレンダされているが sitemap に無いルート: ${notInSitemap.join(', ')}` +
       ' — 意図的なら無視して問題ありません。',
   );
+}
+
+// ============================================================================
+//  検査H（fail）：公開フラグで切り替わるルート（マップ・GTA6まとめWiki）の整合
+// ----------------------------------------------------------------------------
+//  公開前：プリレンダは生成する（空シェルにしない）が sitemap には載せない。
+//  公開後：sitemap に全URLが載る。片方だけ載る・公開前なのに載る、を止める。
+//  Wiki はさらに日本語のみ（/en を出さない・hreflang の表に入れない）であることと、
+//  カテゴリの正（client/src/data/wiki/categories.ts の slug）と
+//  entry-server.tsx の JA_ONLY_ROUTES・App.tsx の <Route> が一致していることを確かめる。
+// ============================================================================
+for (const g of GATED_ROUTES) {
+  const missingPrerender = g.paths.filter((p) => !prerenderedJa.has(p));
+  if (missingPrerender.length) {
+    errors.push(
+      `${g.label} のルートがプリレンダされない: ${missingPrerender.join(', ')}\n` +
+        '    → 公開前でも本文入りの静的HTMLを生成する方針です（空シェル禁止）。entry-server.tsx の表に追加してください。',
+    );
+  }
+  const inSitemap = g.paths.filter((p) => staticPaths.has(p));
+  if (!g.released && inSitemap.length) {
+    errors.push(
+      `${g.label} は公開前なのに sitemap に載っている: ${inSitemap.join(', ')}\n` +
+        '    → 公開前のページは noindex なので、sitemap に載せると矛盾します（static-routes.mjs を確認）。',
+    );
+  }
+  if (g.released && inSitemap.length !== g.paths.length) {
+    errors.push(
+      `${g.label} は公開済みなのに sitemap に無いURLがある: ${g.paths.filter((p) => !staticPaths.has(p)).join(', ')}`,
+    );
+  }
+}
+{
+  const localizedWiki = [...localizedSet].filter(isWikiPath);
+  if (localizedWiki.length) {
+    errors.push(
+      `GTA6まとめWiki が entry-server.tsx の LOCALIZED_ROUTES にある: ${localizedWiki.join(', ')}\n` +
+        '    → Wiki は日本語のみです。JA_ONLY_ROUTES へ移してください（/en 版を生成しない）。',
+    );
+  }
+  const wikiInRoutesTs = LOCALIZED_STATIC_PATHS.filter(isWikiPath);
+  const wikiLocalizedSitemap = WIKI_PATHS.filter((p) => isLocalizedStaticPath(p));
+  if (wikiInRoutesTs.length || wikiLocalizedSitemap.length) {
+    errors.push(
+      `GTA6まとめWiki が日英対として扱われている: ${[...new Set([...wikiInRoutesTs, ...wikiLocalizedSitemap])].join(', ')}\n` +
+        '    → routes.ts の LOCALIZED_STATIC_PATHS／static-routes.mjs の isLocalizedStaticPath から外してください。',
+    );
+  }
+  const wikiSet = new Set(WIKI_PATHS);
+  const strayPrerender = [...prerenderedJa].filter((p) => isWikiPath(p) && !wikiSet.has(p));
+  if (strayPrerender.length) {
+    errors.push(
+      `entry-server.tsx に data/wiki/categories.ts に無い Wiki ルートがある: ${strayPrerender.join(', ')}\n` +
+        '    → カテゴリを足すなら categories.ts にも追加する（sitemap・index のカードはそこから作る）。',
+    );
+  }
 }
 
 // ============================================================================
@@ -374,6 +447,22 @@ if (!appRoutes.length) {
   );
 }
 
+// 検査Hの続き：Wiki のカテゴリ（categories.ts）がすべて App.tsx にあり、/en 版のルートが無いこと。
+{
+  const appSet = new Set(appRoutes);
+  const missingApp = WIKI_PATHS.filter((p) => !appSet.has(p));
+  if (missingApp.length) {
+    errors.push(
+      `GTA6まとめWiki のルートが App.tsx に無い: ${missingApp.join(', ')}\n` +
+        '    → プリレンダHTMLは配信されても、クライアント起動後に NotFound へ差し替わります。',
+    );
+  }
+  const enWiki = appRoutes.filter((r) => r.startsWith('/en/') && isWikiPath(r.slice(3)));
+  if (enWiki.length) {
+    errors.push(`GTA6まとめWiki は日本語のみなのに App.tsx に /en ルートがある: ${enWiki.join(', ')}`);
+  }
+}
+
 const vercelCfg = JSON.parse(readFileSync(resolve(__dirname, '../vercel.json'), 'utf8'));
 const rewriteSources = (vercelCfg.rewrites ?? []).map((r) => r.source);
 
@@ -510,5 +599,6 @@ if (errors.length) {
 console.log(
   `[check-routes] OK — sitemap固定ページ ${STATIC_ROUTES.length}件 / ` +
     `プリレンダ ${prerenderedJa.size}件（うち日英対 ${localizedSet.size}件）、` +
+    `公開前で sitemap 外 ${unreleasedGated.size}件（${GATED_ROUTES.filter((g) => !g.released).map((g) => `${g.label} ${g.paths.length}`).join('・') || 'なし'}）、` +
     `未解決の差分 ${warnings.length}件（WARN）。`,
 );

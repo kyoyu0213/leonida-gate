@@ -10,6 +10,7 @@
 // ============================================================================
 
 import { isMapReleased } from './map-release.mjs';
+import { isWikiReleased, wikiPaths, WIKI_BASE } from './wiki-release.mjs';
 
 /** 固定ページ（手動メンテ）。path は日本語側の論理パス。 */
 export const STATIC_ROUTES = [
@@ -52,6 +53,15 @@ export const STATIC_ROUTES = [
   // 地図ツールは種データがそろって公開するまで sitemap に載せない（client/src/data/maps/release.ts）。
   ...(isMapReleased('gta5')
     ? [{ path: '/fivem-gtarp/tools/gta5-map', priority: '0.6', changefreq: 'weekly' }]
+    : []),
+  // GTA6まとめWiki は情報が蓄積して公開するまで sitemap に載せない（client/src/data/wiki/release.ts）。
+  // 日本語のみ（/en は出さない＝下の isLocalizedStaticPath にマッチさせない）。
+  ...(isWikiReleased()
+    ? wikiPaths().map((path) =>
+        path === WIKI_BASE
+          ? { path, priority: '0.7', changefreq: 'weekly' }
+          : { path, priority: '0.6', changefreq: 'weekly' },
+      )
     : []),
   { path: '/about', priority: '0.5', changefreq: 'yearly' },
   { path: '/contact', priority: '0.4', changefreq: 'yearly' },

@@ -4,12 +4,23 @@ import { Search, Menu, X } from 'lucide-react';
 import LangToggle from '@/components/LangToggle';
 import { isRecruitPath, isThreadBoardPath } from '@/lib/boards';
 import { useT, useLang, pathForLang, stripLangPrefix } from '@/lib/i18n';
+import { WIKI_RELEASED } from '@/data/wiki/release';
+import { WIKI_BASE, WIKI_NAME } from '@/data/wiki/categories';
+
+interface NavItem {
+  key: string;
+  /** 辞書を通さない固定ラベル（日本語のみのページ用）。無ければ t(key)。 */
+  label?: string;
+  href: string;
+  localized: boolean;
+  match: (l: string) => boolean;
+}
 
 // href は日本語側の論理パス。localized:true の項目だけ、英語ページでは /en 版へ向ける。
 // localized:false（掲示板・募集板）は英語版が存在しないため、英語ページでも ja へ送る。
 // ここが ja 固定だったせいで、英語ページ51本のナビが全部 ja を指し、
 // /en 配下がリンクグラフ上 orphan になっていた（2026-08-06 の監査で判明）。
-const NAV = [
+const NAV: NavItem[] = [
   { key: 'nav.home', href: '/', localized: true, match: (l: string) => l === '/' },
   // GTA6本編のニュース。GTARP専用一覧（/news/gtarp）は別項目なので active 判定から外す。
   {
@@ -24,6 +35,18 @@ const NAV = [
     localized: true,
     match: (l: string) => l.startsWith('/news/gtarp'),
   },
+  // GTA6まとめWiki（日本語のみ）。公開フラグ（data/wiki/release.ts）が立つまで出さない。
+  ...(WIKI_RELEASED
+    ? [
+        {
+          key: 'nav.wiki',
+          label: WIKI_NAME,
+          href: WIKI_BASE,
+          localized: false,
+          match: (l: string) => l === WIKI_BASE || l.startsWith(`${WIKI_BASE}/`),
+        },
+      ]
+    : []),
   { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
   { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
   {
@@ -51,8 +74,8 @@ export default function Header() {
   // active 判定は言語プレフィックスを外した論理パスで行う（/en/fivem-gtarp も一致させる）。
   const logicalPath = stripLangPrefix(location);
   /** ナビ項目の実リンク先。localized な項目のみ現在の言語へ寄せる。 */
-  const navHref = (item: (typeof NAV)[number]) =>
-    item.localized ? pathForLang(item.href, lang) : item.href;
+  const navHref = (item: NavItem) => (item.localized ? pathForLang(item.href, lang) : item.href);
+  const navLabel = (item: NavItem) => item.label ?? t(item.key);
 
   const onSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,7 +124,7 @@ export default function Header() {
                     : undefined
                 }
               >
-                {t(item.key)}
+                {navLabel(item)}
               </a>
             );
           })}
@@ -177,7 +200,7 @@ export default function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="text-[15px] font-bold text-[#cfc6e0] hover:text-white transition-colors"
               >
-                {t(item.key)}
+                {navLabel(item)}
               </a>
             ))}
           </div>

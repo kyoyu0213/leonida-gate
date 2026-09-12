@@ -1,0 +1,507 @@
+/* GTA6まとめWiki（/gta6-wiki 配下）専用スタイル。
+   ページのルート <main class="gta-wiki"> 配下にネストしてスコープし、サイト全体に漏らさない。
+   背景・文字色は .vice-page（index.css）に乗る。
+   確度ラベルの4色（公式=エメラルド／取材=青／証言=紫／考察=灰）は、カテゴリのアクセント色
+   （data/wiki/categories.ts）と見分けられる色相にしてある。カテゴリ側に同系色を足さないこと。 */
+
+.gta-wiki {
+  --line: rgba(255, 255, 255, 0.09);
+  --panel: rgba(255, 255, 255, 0.04);
+  --muted: rgba(244, 238, 248, 0.62);
+
+  --official: #34d399;
+  --preview: #60a5fa;
+  --testimony: #a78bfa;
+  --analysis: #9ca3af;
+
+  color: #f4eef8;
+
+  /* ---- パンくず ---- */
+  .wiki-crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .wiki-crumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .wiki-crumbs a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .wiki-crumbs a:hover {
+    color: #fff;
+  }
+  .wiki-crumbs [aria-current='page'] {
+    color: #fff;
+    font-weight: 700;
+  }
+  .wiki-crumbs__sep {
+    opacity: 0.5;
+  }
+
+  /* ---- 見出し ---- */
+  .wiki-eyebrow {
+    display: block;
+    margin-top: 22px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: #ff2d95;
+  }
+  .wiki-h1 {
+    margin: 8px 0 0;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 44px);
+    line-height: 1.2;
+  }
+  .wiki-h1--cat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .wiki-h1__icon {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .wiki-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .wiki-lead {
+    margin: 14px 0 0;
+    max-width: 780px;
+    font-size: 15px;
+    line-height: 1.95;
+    color: rgba(244, 238, 248, 0.8);
+  }
+  .wiki-h2 {
+    margin: 0 0 14px;
+    font-size: clamp(18px, 3.4vw, 22px);
+    font-weight: 900;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wiki-h2::before {
+    content: '';
+    flex: none;
+    width: 4px;
+    height: 20px;
+    border-radius: 3px;
+    background: linear-gradient(#ff8a3d, #ff2d95);
+    box-shadow: 0 0 10px rgba(255, 45, 149, 0.5);
+  }
+  .wiki-h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(244, 238, 248, 0.85);
+  }
+
+  /* ---- 冒頭の位置づけ（相互リンク付き） ---- */
+  .wiki-intro {
+    display: flex;
+    gap: 10px;
+    margin: 18px 0 0;
+    max-width: 820px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(244, 238, 248, 0.82);
+  }
+  .wiki-intro__icon {
+    flex: none;
+    margin-top: 6px;
+    color: #2de2e6;
+  }
+  .wiki-intro__link {
+    font-weight: 800;
+    color: #2de2e6;
+    white-space: nowrap;
+  }
+  .wiki-intro__link:hover {
+    text-decoration: underline;
+  }
+
+  /* ---- 状態注記 ---- */
+  .wiki-notice {
+    margin: 22px 0 0;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.32);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: rgba(244, 238, 248, 0.8);
+  }
+  .wiki-notice p {
+    margin: 0 0 8px;
+  }
+  .wiki-notice strong {
+    color: #fde68a;
+    font-weight: 700;
+  }
+  .wiki-notice__title {
+    font-size: 14.5px;
+    font-weight: 900;
+    color: #fbbf24;
+  }
+  .wiki-notice .wiki-notice__legend-title {
+    margin-top: 12px;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: rgba(244, 238, 248, 0.9);
+  }
+
+  /* ---- 確度ラベル ---- */
+  .wiki-legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .wiki-legend {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .wiki-legend li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .wiki-badges {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0 4px;
+    vertical-align: 1px;
+    white-space: nowrap;
+  }
+  .wiki-item__text > .wiki-badges:first-child,
+  .wiki-section__lead > .wiki-badges:first-child {
+    margin-left: 0;
+  }
+  .wiki-badge-sep {
+    font-size: 11px;
+    opacity: 0.45;
+  }
+  .wiki-badge {
+    --c: var(--analysis);
+    display: inline-block;
+    flex: none;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: color-mix(in srgb, var(--c) 70%, #fff);
+    background: color-mix(in srgb, var(--c) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+    vertical-align: 1px;
+  }
+  .wiki-badge--official {
+    --c: var(--official);
+  }
+  .wiki-badge--preview {
+    --c: var(--preview);
+  }
+  .wiki-badge--testimony {
+    --c: var(--testimony);
+  }
+  .wiki-badge--analysis {
+    --c: var(--analysis);
+  }
+
+  /* ---- カードグリッド（index・関連カテゴリ） ---- */
+  .wiki-cards {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .wiki-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 1024px) {
+    .wiki-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .wiki-cards--related {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  & > .wiki-h2 {
+    margin-top: 40px;
+  }
+  .wiki-card {
+    --accent: #ff2d95;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .wiki-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  }
+  .wiki-card__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .wiki-card__icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  .wiki-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .wiki-card__summary {
+    display: block;
+    flex: 1;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+  .wiki-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  /* ---- カテゴリページの2カラム ---- */
+  .wiki-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  @media (min-width: 1024px) {
+    .wiki-layout {
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+    .wiki-side {
+      position: sticky;
+      top: 90px;
+    }
+  }
+  .wiki-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .wiki-toc,
+  .wiki-catnav {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+  }
+  .wiki-side__title {
+    margin: 0 0 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .wiki-toc ol,
+  .wiki-catnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .wiki-toc a,
+  .wiki-catnav a {
+    color: rgba(244, 238, 248, 0.78);
+    text-decoration: none;
+  }
+  .wiki-toc a:hover,
+  .wiki-catnav a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .wiki-catnav [aria-current='page'] {
+    color: #ff2d95;
+    font-weight: 800;
+  }
+  /* スマホは目次だけ（カテゴリは本文末の関連カテゴリと index で辿れる）。 */
+  .wiki-catnav {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .wiki-catnav {
+      display: block;
+    }
+  }
+
+  /* ---- 本文 ---- */
+  .wiki-section {
+    scroll-margin-top: 90px;
+    margin-bottom: 40px;
+  }
+  .wiki-section__lead {
+    margin: 0 0 14px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(244, 238, 248, 0.78);
+  }
+  .wiki-section__note {
+    margin: 12px 0 0;
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .wiki-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .wiki-item {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: rgba(244, 238, 248, 0.86);
+    overflow-wrap: anywhere;
+  }
+  .wiki-item__term {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  /* 表（GTA5 との比較など）。狭い画面では表だけ横スクロール。 */
+  .wiki-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+  }
+  .wiki-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+  .wiki-table th,
+  .wiki-table td {
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--line);
+  }
+  .wiki-table thead th {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .wiki-table tbody th {
+    font-weight: 800;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .wiki-table tbody tr:last-child th,
+  .wiki-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .wiki-sources {
+    margin: 8px 0 36px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .wiki-sources p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--muted);
+  }
+  .wiki-related {
+    margin-bottom: 28px;
+  }
+  .wiki-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(244, 238, 248, 0.7);
+    text-decoration: none;
+  }
+  .wiki-back:hover {
+    color: #fff;
+  }
+  .wiki-disclaimer {
+    margin: 28px 0 0;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: rgba(244, 238, 248, 0.42);
+  }
+}

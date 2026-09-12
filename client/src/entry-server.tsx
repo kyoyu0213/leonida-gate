@@ -38,6 +38,8 @@ import CharaMakerTool from '@/pages/CharaMakerTool';
 import CrewNameTool from '@/pages/CrewNameTool';
 import RpScenarioTool from '@/pages/RpScenarioTool';
 import MapTool from '@/pages/MapTool';
+import GtaWikiIndex from '@/pages/GtaWikiIndex';
+import GtaWikiCategory from '@/pages/GtaWikiCategory';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import Terms from '@/pages/Terms';
@@ -100,7 +102,7 @@ const LOCALIZED_ROUTES: Record<string, ComponentType> = {
   '/news/gtarp': NewsList,
 };
 
-// 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集）。/en 版は作らない。
+// 日本語のみのプリレンダ対象ルート（掲示板・サーバー募集・GTA6まとめWiki）。/en 版は作らない。
 // これまで共通 index.html シェル（canonical=ホーム／既定title／空 #root）のまま配信され、
 // Google にホームの重複として正規化されていた。各ルートを本文＋自己参照 canonical で生成する。
 const JA_ONLY_ROUTES: Record<string, ComponentType> = {
@@ -115,6 +117,16 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   '/board/crews': CrewsBoard,
   '/recruit': RecruitIndex,
   '/servers': ServerBoard,
+  // GTA6まとめWiki。公開前（data/wiki/release.ts の WIKI_RELEASED=false）もプリレンダは生成し、
+  // prerender-routes が noindex を入れる・sitemap からは外す（マップツールと同じ扱い）。
+  // カテゴリは data/wiki/categories.ts の slug と一致させる（check-route-tables が検証）。
+  '/gta6-wiki': GtaWikiIndex,
+  '/gta6-wiki/characters': GtaWikiCategory,
+  '/gta6-wiki/map': GtaWikiCategory,
+  '/gta6-wiki/locations': GtaWikiCategory,
+  '/gta6-wiki/vehicles': GtaWikiCategory,
+  '/gta6-wiki/police': GtaWikiCategory,
+  '/gta6-wiki/npc': GtaWikiCategory,
 };
 
 // render() が参照する全ルート表（日本語キー）。
