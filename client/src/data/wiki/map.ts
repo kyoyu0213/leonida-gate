@@ -4,6 +4,15 @@ export const MAP: WikiPage = {
   slug: 'map',
   updated: '2026-09-13',
   intro: 'このページはレオニダ州を地域単位で概観します。各地域の具体的な建物・店舗・ランドマークは「建物・ロケーション」にまとめています。',
+  infobox: {
+    rows: [
+      { label: '舞台', value: 'レオニダ州（フロリダがモデル）【公式】' },
+      { label: '中心都市', value: 'バイスシティ（マイアミ）【公式】' },
+      { label: '地域数', value: '6地域【公式】' },
+      { label: '規模', value: 'GTA史上最大・具体数値は非公表【公式】／GTA5比 約2倍【取材】' },
+      { label: '特徴', value: '都市・湿地・島嶼・山岳／水中探索【公式】' },
+    ],
+  },
   sections: [
     {
       heading: '舞台の州「レオニダ（Leonida）」',

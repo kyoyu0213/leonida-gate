@@ -1,9 +1,16 @@
-import { ArrowRight, CalendarClock } from 'lucide-react';
+import { ArrowRight, CalendarClock, Gamepad2 } from 'lucide-react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
-import { WikiBreadcrumb, WikiDisclaimer, WikiNotice, WikiText } from '@/components/wiki/WikiParts';
+import { WikiBreadcrumb, WikiDisclaimer, WikiInfobox, WikiNotice, WikiText } from '@/components/wiki/WikiParts';
 import { wikiIcon } from '@/components/wiki/wikiIcons';
-import { WIKI_CATEGORIES, WIKI_INDEX_SEO, WIKI_NAME, WIKI_UPDATED, wikiPath } from '@/data/wiki/categories';
+import {
+  WIKI_CATEGORIES,
+  WIKI_INDEX_INFOBOX,
+  WIKI_INDEX_SEO,
+  WIKI_NAME,
+  WIKI_UPDATED,
+  wikiPath,
+} from '@/data/wiki/categories';
 import { useSeo } from '@/hooks/useSeo';
 import './gtaWiki.css';
 
@@ -27,15 +34,21 @@ export default function GtaWikiIndex() {
       <main className="gta-wiki max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <WikiBreadcrumb items={[{ name: 'ホーム', href: '/' }, { name: WIKI_NAME }]} />
 
-        <span className="wiki-eyebrow">GTA6 WIKI</span>
-        <h1 className="wiki-h1">{WIKI_NAME}</h1>
-        <p className="wiki-updated">
-          <CalendarClock size={14} aria-hidden="true" />
-          最終更新：{WIKI_UPDATED}
-        </p>
-        <p className="wiki-lead">
-          <WikiText text={LEAD} />
-        </p>
+        {/* PC はリード文の右に「GTA6 概要」ボックス、スマホはリード文の下にフル幅で積む。 */}
+        <div className="wiki-hero">
+          <div className="wiki-hero__text">
+            <span className="wiki-eyebrow">GTA6 WIKI</span>
+            <h1 className="wiki-h1">{WIKI_NAME}</h1>
+            <p className="wiki-updated">
+              <CalendarClock size={14} aria-hidden="true" />
+              最終更新：{WIKI_UPDATED}
+            </p>
+            <p className="wiki-lead">
+              <WikiText text={LEAD} />
+            </p>
+          </div>
+          <WikiInfobox data={WIKI_INDEX_INFOBOX} title="GTA6 概要" icon={Gamepad2} accent="#ff2d95" />
+        </div>
 
         <WikiNotice />
 

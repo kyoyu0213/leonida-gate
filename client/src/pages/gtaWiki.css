@@ -8,6 +8,9 @@
   --line: rgba(255, 255, 255, 0.09);
   --panel: rgba(255, 255, 255, 0.04);
   --muted: rgba(244, 238, 248, 0.62);
+  /* 見出しの下線・表の罫線（本文をカードで囲まないぶん、区切り線は --line より明瞭に）。 */
+  --rule: rgba(255, 255, 255, 0.16);
+  --text: rgba(244, 238, 248, 0.86);
 
   --official: #34d399;
   --preview: #60a5fa;
@@ -95,26 +98,36 @@
     line-height: 1.95;
     color: rgba(244, 238, 248, 0.8);
   }
+  /* ゲームWiki風の見出し：下線＋節番号。display:flex の要素は float（インフォボックス）を
+     避けて幅が縮むので、下線がインフォボックスの下に潜り込まない。 */
   .wiki-h2 {
     margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
     font-size: clamp(18px, 3.4vw, 22px);
     font-weight: 900;
     line-height: 1.4;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
   }
-  .wiki-h2::before {
-    content: '';
+  /* 節番号は本文の節（.wiki-section）だけ。カウンタは .wiki-layout でリセットし、
+     左の目次の番号（GtaWikiCategory.tsx で i+1 を出力）と一致させる。 */
+  .wiki-section {
+    counter-increment: wiki-sec;
+  }
+  .wiki-section > .wiki-h2::before {
+    content: counter(wiki-sec);
     flex: none;
-    width: 4px;
-    height: 20px;
-    border-radius: 3px;
-    background: linear-gradient(#ff8a3d, #ff2d95);
-    box-shadow: 0 0 10px rgba(255, 45, 149, 0.5);
+    min-width: 1.1em;
+    font-variant-numeric: tabular-nums;
+    color: #ff2d95;
+    opacity: 0.85;
   }
   .wiki-h3 {
     margin: 0 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
     font-size: 14px;
     font-weight: 800;
     color: rgba(244, 238, 248, 0.85);
@@ -203,8 +216,8 @@
     vertical-align: 1px;
     white-space: nowrap;
   }
-  .wiki-item__text > .wiki-badges:first-child,
-  .wiki-section__lead > .wiki-badges:first-child {
+  /* 行頭のバッジ（WikiText が付ける --lead）だけ左余白を詰める。 */
+  .wiki-badges--lead {
     margin-left: 0;
   }
   .wiki-badge-sep {
@@ -322,27 +335,52 @@
   }
 
   /* ---- カテゴリページの2カラム ---- */
+  /* スマホ（〜1023px）：1カラム。.wiki-body を display:contents にして中身を直接並べ、
+     order で「インフォボックス → 目次 → 本文」の順にする（インフォボックスを DOM に二重に
+     出さずに、PC では本文の先頭で float・スマホでは目次より上のフル幅ブロックにするため）。 */
   .wiki-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
+    counter-reset: wiki-sec;
+    display: flex;
+    flex-direction: column;
     margin-top: 32px;
   }
-  @media (min-width: 1024px) {
-    .wiki-layout {
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 36px;
-      align-items: start;
-    }
-    .wiki-side {
-      position: sticky;
-      top: 90px;
-    }
+  .wiki-body {
+    display: contents;
   }
   .wiki-side {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 32px;
+  }
+  .wiki-infobox--float {
+    order: -1;
+    margin-bottom: 24px;
+  }
+  .wiki-back {
+    align-self: flex-start;
+  }
+  @media (min-width: 1024px) {
+    .wiki-layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+    .wiki-body {
+      display: block;
+    }
+    .wiki-side {
+      position: sticky;
+      top: 90px;
+      margin-bottom: 0;
+    }
+    /* 本文右上に回り込ませる（ゲームWikiのインフォボックス）。 */
+    .wiki-infobox--float {
+      float: right;
+      width: 300px;
+      margin: 4px 0 20px 28px;
+    }
   }
   .wiki-toc,
   .wiki-catnav {
@@ -374,6 +412,18 @@
     color: rgba(244, 238, 248, 0.78);
     text-decoration: none;
   }
+  .wiki-toc a {
+    display: flex;
+    gap: 8px;
+  }
+  .wiki-toc__num {
+    flex: none;
+    min-width: 1.1em;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    color: #ff2d95;
+    opacity: 0.85;
+  }
   .wiki-toc a:hover,
   .wiki-catnav a:hover {
     color: #fff;
@@ -396,7 +446,7 @@
   /* ---- 本文 ---- */
   .wiki-section {
     scroll-margin-top: 90px;
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
   .wiki-section__lead {
     margin: 0 0 14px;
@@ -410,37 +460,48 @@
     line-height: 1.85;
     color: var(--muted);
   }
-  .wiki-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .wiki-item {
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: var(--panel);
-    border: 1px solid var(--line);
+  /* 用語なしの項目：通常の箇条書き。 */
+  .wiki-list {
+    list-style: disc;
+    margin: 0 0 12px;
+    padding-left: 1.4em;
     font-size: 14.5px;
-    line-height: 1.95;
-    color: rgba(244, 238, 248, 0.86);
+    line-height: 1.9;
+    color: var(--text);
     overflow-wrap: anywhere;
   }
-  .wiki-item__term {
-    display: block;
-    margin-bottom: 2px;
+  .wiki-list li {
+    margin: 0 0 6px;
+  }
+  .wiki-list li::marker {
+    color: rgba(244, 238, 248, 0.45);
+  }
+  /* 用語ありの項目：定義リスト（見出し語を太字・説明を字下げ）。 */
+  .wiki-dl {
+    margin: 0 0 12px;
+  }
+  .wiki-dl__row {
+    margin: 0 0 12px;
+  }
+  .wiki-dl dt {
     font-size: 15px;
     font-weight: 900;
+    line-height: 1.6;
     color: #fff;
+  }
+  .wiki-dl dd {
+    margin: 2px 0 0 1em;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: var(--text);
+    overflow-wrap: anywhere;
   }
 
   /* 表（GTA5 との比較など）。狭い画面では表だけ横スクロール。 */
   .wiki-table-wrap {
     overflow-x: auto;
-    border-radius: 12px;
-    border: 1px solid var(--line);
+    border-radius: 10px;
+    border: 1px solid var(--rule);
   }
   .wiki-table {
     width: 100%;
@@ -454,13 +515,21 @@
     padding: 10px 12px;
     text-align: left;
     vertical-align: top;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--rule);
+  }
+  .wiki-table th + th,
+  .wiki-table th + td,
+  .wiki-table td + td {
+    border-left: 1px solid var(--rule);
   }
   .wiki-table thead th {
     font-size: 12px;
     font-weight: 800;
-    color: var(--muted);
-    background: rgba(255, 255, 255, 0.05);
+    color: rgba(244, 238, 248, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .wiki-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.025);
   }
   .wiki-table tbody th {
     font-weight: 800;
@@ -473,9 +542,8 @@
   }
 
   .wiki-sources {
+    clear: both;
     margin: 8px 0 36px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
   }
   .wiki-sources p {
     margin: 0;
@@ -503,5 +571,70 @@
     font-size: 11.5px;
     line-height: 1.7;
     color: rgba(244, 238, 248, 0.42);
+  }
+
+  /* ---- インフォボックス（要点ボックス）。本文はカードで囲まないが、ここは囲む ---- */
+  .wiki-infobox {
+    --accent: #ff2d95;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+    background: rgba(255, 255, 255, 0.035);
+    overflow: hidden;
+    font-size: 13px;
+  }
+  .wiki-infobox__head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 15px;
+    font-weight: 900;
+    color: #fff;
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+  .wiki-infobox__icon {
+    display: inline-flex;
+    color: var(--accent);
+  }
+  .wiki-infobox__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .wiki-infobox__table th,
+  .wiki-infobox__table td {
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid var(--line);
+    line-height: 1.7;
+  }
+  .wiki-infobox__table th {
+    width: 34%;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--muted);
+  }
+  .wiki-infobox__table td {
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+
+  /* ---- index のヒーロー（リード文＋「GTA6 概要」ボックス） ---- */
+  .wiki-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  @media (min-width: 1024px) {
+    .wiki-hero {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 32px;
+      align-items: start;
+    }
+    .wiki-hero > .wiki-infobox {
+      margin-top: 22px;
+    }
   }
 }

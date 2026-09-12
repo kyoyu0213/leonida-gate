@@ -1,11 +1,11 @@
 // ============================================================================
-//  GTA6まとめWiki の共通部品（確度ラベルのバッジ・本文テキスト・状態注記・パンくず）。
+//  GTA6まとめWiki の共通部品（確度ラベルのバッジ・本文テキスト・状態注記・パンくず・インフォボックス）。
 //  スタイルは pages/gtaWiki.css（.gta-wiki 配下にスコープ）。
 // ============================================================================
 import { Fragment, type ReactNode } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, type LucideIcon } from 'lucide-react';
 import { WIKI_LABELS, WIKI_LABEL_ORDER, splitLabels, type LabelPart } from '@/data/wiki/labels';
-import type { WikiLabel } from '@/data/wiki/types';
+import type { WikiInfobox as WikiInfoboxData, WikiLabel } from '@/data/wiki/types';
 
 /** 確度ラベル1つ（pill）。text に補足（例：「公式映像」）があればそのまま出す。 */
 export function WikiBadge({ kind, text }: { kind: WikiLabel; text?: string }) {
@@ -17,9 +17,9 @@ export function WikiBadge({ kind, text }: { kind: WikiLabel; text?: string }) {
   );
 }
 
-function BadgeGroup({ parts }: { parts: LabelPart[] }) {
+function BadgeGroup({ parts, lead = false }: { parts: LabelPart[]; lead?: boolean }) {
   return (
-    <span className="wiki-badges">
+    <span className={lead ? 'wiki-badges wiki-badges--lead' : 'wiki-badges'}>
       {parts.map((p, i) => (
         <Fragment key={i}>
           {i > 0 && <span className="wiki-badge-sep">/</span>}
@@ -30,12 +30,17 @@ function BadgeGroup({ parts }: { parts: LabelPart[] }) {
   );
 }
 
-/** 本文テキスト。文中の【公式】等をバッジに置き換えて描画する。 */
+/** 本文テキスト。文中の【公式】等をバッジに置き換えて描画する。
+ *  行頭のバッジだけ左余白を詰める（CSS の :first-child は前にある文字を数えないので、ここで印を付ける）。 */
 export function WikiText({ text }: { text: string }) {
   return (
     <>
       {splitLabels(text).map((c, i) =>
-        c.type === 'text' ? <Fragment key={i}>{c.text}</Fragment> : <BadgeGroup key={i} parts={c.parts} />,
+        c.type === 'text' ? (
+          <Fragment key={i}>{c.text}</Fragment>
+        ) : (
+          <BadgeGroup key={i} parts={c.parts} lead={i === 0} />
+        ),
       )}
     </>
   );
@@ -94,6 +99,54 @@ export function WikiBreadcrumb({ items }: { items: Crumb[] }) {
         ))}
       </ol>
     </nav>
+  );
+}
+
+/**
+ * 要点ボックス（ゲームWikiのインフォボックス）。アイコン＋文字だけで組む
+ * （Rockstar の公式アート等は著作権上使えないため画像は入れない）。
+ * 配置（PC は本文右上に float・スマホはフル幅ブロック）は gtaWiki.css 側で決める。
+ */
+export function WikiInfobox({
+  data,
+  title,
+  icon: Icon,
+  accent,
+  className = '',
+}: {
+  data: WikiInfoboxData;
+  /** data.title が無いときの見出し（カテゴリ名）。 */
+  title: string;
+  icon: LucideIcon;
+  accent: string;
+  className?: string;
+}) {
+  const heading = data.title ?? title;
+  return (
+    <aside
+      className={`wiki-infobox ${className}`.trim()}
+      style={{ ['--accent' as string]: accent }}
+      aria-label={`${heading}の要点`}
+    >
+      <p className="wiki-infobox__head">
+        <span className="wiki-infobox__icon">
+          <Icon size={18} aria-hidden="true" />
+        </span>
+        {heading}
+      </p>
+      <table className="wiki-infobox__table">
+        <tbody>
+          {data.rows.map((r) => (
+            <tr key={r.label}>
+              <th scope="row">{r.label}</th>
+              <td>
+                <WikiText text={r.value} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </aside>
   );
 }
 

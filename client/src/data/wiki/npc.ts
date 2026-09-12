@@ -4,6 +4,15 @@ export const NPC: WikiPage = {
   slug: 'npc',
   updated: '2026-09-13',
   intro: 'この分野は意外と情報が濃いです。開発者インタビュー（Rob Nelson 氏／Aaron Garbut 氏／ファミ通など）で具体的な数字や制作体制が語られ、8月のハンズオフ試遊でも挙動の実例が多数報告されました。ただしエンジン内部の仕様や動物AIの詳細は薄いままです。',
+  infobox: {
+    rows: [
+      { label: 'アニメーション', value: '60万種以上【公式】（GTA5＝5.5万）' },
+      { label: '制作体制', value: 'NPC専任チーム新設（LA）【公式】' },
+      { label: 'エンジン', value: 'RAGE系【公式】（「RAGE 9」等の世代番号は非公式【考察】）' },
+      { label: '挙動', value: '身長・体格差／武器への段階反応／盗み聞き【公式】【取材】' },
+      { label: '動物', value: 'ワニ・フラミンゴ等【公式】' },
+    ],
+  },
   sections: [
     {
       heading: 'NPC・歩行者のAI／挙動',

@@ -4,6 +4,15 @@ export const VEHICLES: WikiPage = {
   slug: 'vehicles',
   updated: '2026-09-13',
   intro: 'GTA6の車両は架空メーカー名（パロディ）で登場します。現実の元ネタ車種はRockstarが公表していないため、すべて【考察】として扱います。また「トレーラーに映った」ことと「車名が確定した」ことを区別しています。',
+  infobox: {
+    rows: [
+      { label: '確認台数', value: '約272台（ファン集計・2026年9月時点）【取材】【考察】' },
+      { label: '内訳', value: '新規90台超＋過去作から復帰【取材】' },
+      { label: 'メーカー', value: '架空（パロディ）【公式】' },
+      { label: 'カスタム', value: 'Rideout Customs【公式】（改造内容は未公開【考察】）' },
+      { label: '参考', value: 'GTA5は発売時252台' },
+    ],
+  },
   sections: [
     {
       heading: '総数について',

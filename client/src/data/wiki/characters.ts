@@ -3,6 +3,15 @@ import type { WikiPage } from './types';
 export const CHARACTERS: WikiPage = {
   slug: 'characters',
   updated: '2026-09-13',
+  infobox: {
+    rows: [
+      { label: '主人公', value: 'ルシア・カミノス／ジェイソン・デュヴァル【公式】' },
+      { label: '主人公形式', value: 'シリーズ初のデュアル主人公【公式】' },
+      { label: '舞台', value: 'レオニダ州 バイスシティ【公式】' },
+      { label: '声優', value: '未発表【公式】' },
+      { label: '初出', value: 'トレーラー1（2023）／トレーラー2（2025）' },
+    ],
+  },
   sections: [
     {
       heading: '舞台の前提',

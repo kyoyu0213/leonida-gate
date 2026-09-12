@@ -3,7 +3,7 @@ import { ArrowRight, CalendarClock, ChevronLeft, Info } from 'lucide-react';
 import Header from '@/components/Header';
 import SiteFooter from '@/components/SiteFooter';
 import NotFound from '@/pages/NotFound';
-import { WikiBreadcrumb, WikiDisclaimer, WikiNotice, WikiText } from '@/components/wiki/WikiParts';
+import { WikiBreadcrumb, WikiDisclaimer, WikiInfobox, WikiNotice, WikiText } from '@/components/wiki/WikiParts';
 import { wikiIcon } from '@/components/wiki/wikiIcons';
 import {
   WIKI_CATEGORIES,
@@ -13,7 +13,7 @@ import {
   type WikiCategory,
 } from '@/data/wiki/categories';
 import { WIKI_PAGES } from '@/data/wiki';
-import type { WikiPage, WikiSection } from '@/data/wiki/types';
+import type { WikiItem, WikiPage, WikiSection } from '@/data/wiki/types';
 import { useSeo } from '@/hooks/useSeo';
 import { stripLangPrefix } from '@/lib/i18n';
 import './gtaWiki.css';
@@ -31,6 +31,20 @@ const sectionId = (i: number) => `sec-${i + 1}`;
 /** 本文冒頭から直接飛ばす相互リンク（マップ ⇄ 建物・ロケーション）。 */
 const CROSS_LINKS: Record<string, string> = { map: 'locations', locations: 'map' };
 
+/** 項目を「用語なし（箇条書き）」「用語あり（定義リスト）」の連続ごとにまとめる。
+ *  1節の中で両方が混ざる（例：グラスリバーズ）ので、並び順を保ったまま塊にする。 */
+function groupItems(items: WikiItem[]): { term: boolean; items: WikiItem[] }[] {
+  const groups: { term: boolean; items: WikiItem[] }[] = [];
+  for (const it of items) {
+    const term = Boolean(it.term);
+    const last = groups[groups.length - 1];
+    if (last && last.term === term) last.items.push(it);
+    else groups.push({ term, items: [it] });
+  }
+  return groups;
+}
+
+/** 本文の節。見出しの節番号は CSS カウンタ（gtaWiki.css）で振り、目次の番号と一致させる。 */
 function Section({ s, index }: { s: WikiSection; index: number }) {
   return (
     <section id={sectionId(index)} className="wiki-section">
@@ -40,18 +54,29 @@ function Section({ s, index }: { s: WikiSection; index: number }) {
           <WikiText text={s.lead} />
         </p>
       )}
-      {s.items && (
-        <ul className="wiki-items">
-          {s.items.map((it, i) => (
-            <li key={i} className={it.term ? 'wiki-item wiki-item--term' : 'wiki-item'}>
-              {it.term && <span className="wiki-item__term">{it.term}</span>}
-              <span className="wiki-item__text">
-                <WikiText text={it.text} />
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
+      {s.items &&
+        groupItems(s.items).map((g, gi) =>
+          g.term ? (
+            <dl key={gi} className="wiki-dl">
+              {g.items.map((it, i) => (
+                <div key={i} className="wiki-dl__row">
+                  <dt>{it.term}</dt>
+                  <dd>
+                    <WikiText text={it.text} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <ul key={gi} className="wiki-list">
+              {g.items.map((it, i) => (
+                <li key={i}>
+                  <WikiText text={it.text} />
+                </li>
+              ))}
+            </ul>
+          ),
+        )}
       {s.table && (
         <div className="wiki-table-wrap">
           <table className="wiki-table">
@@ -160,14 +185,18 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
         <WikiNotice />
 
         <div className="wiki-layout">
-          {/* PC は左に目次＋カテゴリの2カラム、スマホは本文の上に目次だけの1カラム。 */}
+          {/* PC は左に目次＋カテゴリ／右に本文（インフォボックスは本文の右上に float）の2カラム。
+              スマホは1カラムで「インフォボックス → 目次 → 本文」の順に積む（並べ替えは CSS の order）。 */}
           <aside className="wiki-side">
             <nav className="wiki-toc" aria-label="目次">
               <p className="wiki-side__title">目次</p>
               <ol>
                 {page.sections.map((s, i) => (
                   <li key={i}>
-                    <a href={`#${sectionId(i)}`}>{s.heading}</a>
+                    <a href={`#${sectionId(i)}`}>
+                      <span className="wiki-toc__num">{i + 1}</span>
+                      <span>{s.heading}</span>
+                    </a>
                   </li>
                 ))}
               </ol>
@@ -189,6 +218,15 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
           </aside>
 
           <div className="wiki-body">
+            {page.infobox && (
+              <WikiInfobox
+                data={page.infobox}
+                title={cat.title}
+                icon={Icon}
+                accent={cat.accent}
+                className="wiki-infobox--float"
+              />
+            )}
             {page.sections.map((s, i) => (
               <Section key={i} s={s} index={i} />
             ))}

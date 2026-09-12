@@ -32,12 +32,21 @@ export interface WikiSection {
   note?: string;
 }
 
+/** 本文右上の要点ボックス（ゲームWikiのインフォボックス）。画像は入れない。 */
+export interface WikiInfobox {
+  /** 省略時はカテゴリ名。 */
+  title?: string;
+  /** value は【公式】等を含んでよい（WikiText で描画）。 */
+  rows: { label: string; value: string }[];
+}
+
 export interface WikiPage {
   slug: string;
   /** 最終更新日（YYYY-MM-DD）。 */
   updated: string;
   /** ページ冒頭の位置づけ（例：地域単位の概観。建物は別ページ）。 */
   intro?: string;
+  infobox?: WikiInfobox;
   sections: WikiSection[];
   /** 出典（媒体名）。 */
   sources: string[];

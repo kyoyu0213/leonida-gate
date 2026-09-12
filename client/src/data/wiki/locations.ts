@@ -4,6 +4,14 @@ export const LOCATIONS: WikiPage = {
   slug: 'locations',
   updated: '2026-09-13',
   intro: 'このページは地域→スポットの順に整理しています。各地域の地理的な概観は「マップ」を参照してください。',
+  infobox: {
+    rows: [
+      { label: '対象', value: 'レオニダ州の名前付きスポット' },
+      { label: '地域', value: 'Vice City／Keys／Grassrivers／Port Gellhorn／Ambrosia／Mount Kalaga【公式】' },
+      { label: 'ランドマーク例', value: 'VC国際空港・Sahara Arena・Starlet Motel【公式】' },
+      { label: '注記', value: '噂の地区・呼称は【考察】' },
+    ],
+  },
   sections: [
     {
       heading: 'このページの読み方',

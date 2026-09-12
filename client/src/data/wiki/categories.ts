@@ -9,6 +9,7 @@
 //    ルートを増やしたら App.tsx と entry-server.tsx の JA_ONLY_ROUTES にも足す
 //    （3者の一致は scripts/check-route-tables.mjs が prebuild で検証する）。
 // ============================================================================
+import type { WikiInfobox } from './types';
 
 export interface WikiCategory {
   slug: string;
@@ -39,6 +40,19 @@ export const WIKI_INDEX_SEO = {
   title: 'GTA6まとめWiki｜キャラクター・マップ・車両・警察・NPCの判明情報まとめ',
   description:
     'GTA6（2026年11月19日発売予定）の判明情報を体系化した非公式ファンWiki。キャラクター・マップ・建物・車両・警察システム・NPCを、情報の確度【公式】【取材】【証言】【考察】で区別して掲載しています。',
+};
+
+/** トップ（/gta6-wiki）の「GTA6 概要」ボックス。value の【】は WikiText でバッジになる。 */
+export const WIKI_INDEX_INFOBOX: WikiInfobox = {
+  title: 'GTA6 概要',
+  rows: [
+    { label: 'タイトル', value: 'Grand Theft Auto VI' },
+    { label: '発売日', value: '2026年11月19日（予定）【公式】' },
+    { label: '対応機種', value: 'PS5／Xbox Series X|S【公式】' },
+    { label: '開発', value: 'Rockstar Games【公式】' },
+    { label: '舞台', value: 'レオニダ州（フロリダがモデル）【公式】' },
+    { label: '主人公', value: 'ルシア＆ジェイソン（デュアル主人公）【公式】' },
+  ],
 };
 
 export const WIKI_CATEGORIES: WikiCategory[] = [

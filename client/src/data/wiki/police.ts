@@ -4,6 +4,15 @@ export const POLICE: WikiPage = {
   slug: 'police',
   updated: '2026-09-13',
   intro: 'この分野は思ったより情報が濃いです。2026年8月の Extended Look と、Rockstar North 共同スタジオ長 Rob Nelson 氏の説明で、手配システムの基本設計が判明しました。ただし数値仕様・6スターの中身・特殊部隊など未確定の部分も残ります。取材はすべてハンズオフ（実プレイでの検証ではない）である点に注意してください。',
+  infobox: {
+    rows: [
+      { label: '手配上限', value: '6スター【公式】' },
+      { label: '手配方式', value: '目撃／アラーム＝証拠ベース【公式】' },
+      { label: '追跡対象', value: '服・顔・車・武器・2人の同行【公式】【取材】' },
+      { label: '主な機関', value: 'VCPD／VDPD／Leonard County Sheriff【公式】' },
+      { label: '注記', value: '数値仕様・6スターの中身は未確定【考察】' },
+    ],
+  },
   sections: [
     {
       heading: '手配（Wanted）システム',
