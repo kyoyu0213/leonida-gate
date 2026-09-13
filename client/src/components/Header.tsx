@@ -53,17 +53,12 @@ const NAV: NavItem[] = [
     label: 'GTARPまとめWiki',
     href: '/fivem-gtarp',
     localized: true,
-    // 体験記は別項目で扱うため、ハブ側の active 判定からは field-notes 配下を除外。
-    match: (l: string) => l.startsWith('/fivem-gtarp') && !l.startsWith('/fivem-gtarp/field-notes'),
+    // 体験記（/fivem-gtarp/field-notes/...）はヘッダーの常設項目から外し（㊿）、ハブ配下のコンテンツとして
+    // この項目をアクティブにする。体験記へはハブ（最新カード＋一覧リンク）とトップから辿れる。
+    match: (l: string) => l.startsWith('/fivem-gtarp'),
   },
   { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
   { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
-  {
-    key: 'nav.fieldnotes',
-    href: '/fivem-gtarp/field-notes/dev-diary',
-    localized: true,
-    match: (l: string) => l.startsWith('/fivem-gtarp/field-notes'),
-  },
   { key: 'nav.contact', href: '/contact', localized: true, match: (l: string) => l.startsWith('/contact') },
 ];
 
