@@ -73,6 +73,12 @@ export const REAL_LOCATIONS: WikiPage = {
         {
           term: 'ベネチアン・コーズウェイの料金所 ← Venetian Causeway（1926年開通）',
           text: 'スペイン風の赤瓦屋根とアーチ状ゲート、跳ね橋を含む構成の再現がコミュニティで広く指摘されています。',
+          image: {
+            src: '/images/news/gta6-extended-look-impressions/venetian-causeway-toll-plaza.webp',
+            alt: '赤瓦屋根とアーチ状のゲートが並ぶゲーム内の料金所',
+            caption: 'Extended Look の映像より（実在施設との対応はコミュニティの照合）',
+            credit: 'Rockstar Games（An Extended Look 映像より）',
+          },
         },
       ],
     },
