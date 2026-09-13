@@ -140,6 +140,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: '公式トレーラー／Extended Lookの使用曲まとめ。',
     related: ['characters', 'locations'],
   },
+  {
+    slug: 'real-locations',
+    title: '実在モデル・ロケーション',
+    shortTitle: '実在モデル',
+    seoTitle: 'GTA6 実在モデル・ロケーション｜映像の建物をマイアミと照合｜GTA6まとめWiki',
+    description:
+      'GTA6の映像に映る建物・施設が、現実のマイアミ/フロリダのどこと照合されているかのまとめ。個々のモデルはコミュニティによる特定で、Rockstar公式が認めた個別モデルはありません。',
+    order: 8,
+    accent: '#60a5fa',
+    summary: '映像の建物を現実のマイアミと照合。コミュニティ特定のモデル地まとめ。',
+    related: ['locations', 'map'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(

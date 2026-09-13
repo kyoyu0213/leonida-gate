@@ -139,6 +139,7 @@ function Router() {
       <Route path="/gta6-wiki/police" component={GtaWikiCategory} />
       <Route path="/gta6-wiki/npc" component={GtaWikiCategory} />
       <Route path="/gta6-wiki/music" component={GtaWikiCategory} />
+      <Route path="/gta6-wiki/real-locations" component={GtaWikiCategory} />
 
       {/* 英語版（/en/）。日本語ルートと同じコンポーネントを使い、言語は useLang が URL から判定する。
           記事・fivem-gtarp・tools・contact・terms は hreflang/sitemap で正式な英語版として扱う。

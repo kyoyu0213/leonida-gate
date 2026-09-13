@@ -6,6 +6,7 @@ import {
   Siren,
   PersonStanding,
   Music,
+  MapPin,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react';
@@ -19,6 +20,7 @@ export const WIKI_ICONS: Record<string, LucideIcon> = {
   police: Siren,
   npc: PersonStanding,
   music: Music,
+  'real-locations': MapPin,
 };
 
 export const wikiIcon = (slug: string): LucideIcon => WIKI_ICONS[slug] ?? BookOpen;
