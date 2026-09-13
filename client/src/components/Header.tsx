@@ -47,15 +47,17 @@ const NAV: NavItem[] = [
         },
       ]
     : []),
-  { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
-  { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
+  // GTARPまとめWiki（/fivem-gtarp ハブ）。Wikiの右隣に置く。ラベルは固定（i18n 非依存）。
   {
     key: 'nav.fivemgtarp',
+    label: 'GTARPまとめWiki',
     href: '/fivem-gtarp',
     localized: true,
     // 体験記は別項目で扱うため、ハブ側の active 判定からは field-notes 配下を除外。
     match: (l: string) => l.startsWith('/fivem-gtarp') && !l.startsWith('/fivem-gtarp/field-notes'),
   },
+  { key: 'nav.servers', href: '/recruit', localized: false, match: isRecruitPath },
+  { key: 'nav.board', href: '/board', localized: false, match: isThreadBoardPath },
   {
     key: 'nav.fieldnotes',
     href: '/fivem-gtarp/field-notes/dev-diary',
@@ -94,7 +96,9 @@ export default function Header() {
         WebkitBackdropFilter: 'blur(20px) saturate(1.3)',
       }}
     >
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-6">
+      {/* ナビが9項目（GTA6まとめWiki／GTARPまとめWiki）になり、固定幅の検索欄がデスクトップの全幅で
+          はみ出していたため、ナビの余白を詰め、検索欄は空き幅に合わせて縮むようにしている（㊾）。 */}
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-3.5">
         {/* Logo */}
         <a href={pathForLang('/', lang)} className="flex items-center flex-none cursor-pointer">
           <img
@@ -106,14 +110,14 @@ export default function Header() {
         </a>
 
         {/* Desktop nav（それぞれを四角いボタンにして区切りを付ける） */}
-        <nav className="hidden md:flex items-center gap-1.5 flex-none">
+        <nav className="hidden md:flex items-center gap-[3px] flex-none">
           {NAV.map((item) => {
             const active = item.match(logicalPath);
             return (
               <a
                 key={item.href}
                 href={navHref(item)}
-                className={`px-3.5 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-all ${
+                className={`px-2.5 py-1.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-all ${
                   active
                     ? 'text-white'
                     : 'text-[#cfc6e0] bg-white/[0.05] hover:bg-white/[0.12] hover:text-white'
@@ -141,11 +145,11 @@ export default function Header() {
         {/* Search（ログイン・新規投稿ボタンを廃止し、その位置に配置） */}
         <form
           onSubmit={onSearch}
-          className="hidden sm:flex items-center gap-2 rounded-full px-3.5 py-2 min-w-0 flex-none"
+          // 幅は固定せず、空き幅に合わせて縮む（最大320px）。固定幅だとナビが長いときにヘッダーからはみ出す。
+          className="hidden sm:flex flex-auto items-center gap-2 rounded-full px-3.5 py-2 min-w-0 max-w-[320px]"
           style={{
             background: 'rgba(255,255,255,.05)',
             border: '1px solid rgba(255,255,255,.1)',
-            width: 'clamp(180px,24vw,320px)',
           }}
         >
           <Search size={15} className="flex-none opacity-60" />
