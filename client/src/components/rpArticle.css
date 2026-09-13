@@ -56,6 +56,29 @@
 .rp-wiki .article-body p:has(> em:only-child) em{ color:#7a5b00; }
 .rp-wiki .article-body del{ color:#6b7075; text-decoration-color:#b91c1c; }
 
+/* 56 解説記事の2カラム（左：目次／右：本文）。light（.rp-wiki）専用 */
+.rp-wiki-wrap{ max-width:1080px; margin:0 auto; }
+.rp-toc{ background:#f8f9fa; border:1px solid #a2a9b1; border-radius:4px; }
+.rp-toc__h{ margin:0; padding:8px 12px; font-size:11.5px; font-weight:700; letter-spacing:.08em;
+  color:#54595d; background:#eaecf0; border-bottom:1px solid #e6e8eb; }
+.rp-toc ol{ list-style:none; margin:0; padding:8px 12px; display:flex; flex-direction:column; gap:7px;
+  font-size:13px; counter-reset:rptoc; }
+.rp-toc li{ display:flex; gap:8px; counter-increment:rptoc; }
+.rp-toc li::before{ content:counter(rptoc); flex:none; min-width:1.1em; color:#9aa0a6; font-variant-numeric:tabular-nums; }
+.rp-toc a{ color:#2a55b7; text-decoration:none; line-height:1.5; }
+.rp-toc a:hover{ text-decoration:underline; }
+/* 見出しアンカーが固定ヘッダーに潜らない */
+.rp-wiki .article-body [data-streamdown="heading-2"]{ scroll-margin-top:80px; }
+/* スマホ：目次は本文の上にブロック表示（左右に余白） */
+.rp-toc{ margin:12px 16px 0; }
+@media (min-width:1000px){
+  .rp-wiki-wrap{ display:grid; grid-template-columns:220px minmax(0,1fr); gap:34px; align-items:start; padding:0 24px; }
+  .rp-wiki-wrap .article-container{ max-width:none; margin:0; padding:44px 0 96px; }
+  .rp-toc{ position:sticky; top:90px; margin:44px 0 0; }
+  /* 見出しが多い記事（用語辞典・FAQ など）で目次が画面より長くなっても、下端が切れずに目次内でスクロールできる */
+  .rp-toc ol{ max-height:calc(100vh - 150px); overflow-y:auto; }
+}
+
 /* 各記事が children で置く「関連リンク」ボタンの多くは bg-black / bg-cyan-600 系のダーク。
    個別記事を編集せずに白地向けへ寄せる（よく使われるパターンを上書き）。 */
 .rp-wiki .article-container a[class*="bg-black"]{ background:#fff !important; color:#1e2022 !important;

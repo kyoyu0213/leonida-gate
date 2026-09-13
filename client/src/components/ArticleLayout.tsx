@@ -43,6 +43,16 @@ const articleRehypePlugins = Object.entries(defaultRehypePlugins).map(([key, plu
  * localizedHref() が「英語版が実在するパスか」を判定するので、
  * 画像（/images/...）や英語版の無いページ（/servers・/board/...）はそのまま残る。
  */
+/** `## 見出し` の行から目次用の文字列を作る（リンク・強調などの Markdown 記号を落とす）。 */
+function headingText(line: string): string {
+  return line
+    .replace(/^##\s+/, '')
+    .replace(/\s+#+\s*$/, '') // 閉じ ATX の #
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // [text](url) → text
+    .replace(/[*_`]/g, '')
+    .trim();
+}
+
 function localizeMarkdownLinks(md: string, lang: Lang): string {
   if (lang === 'ja') return md;
   return md.replace(/\]\((\/[^)\s]*)\)/g, (m, path) => `](${localizedHref(path, lang)})`);
@@ -125,6 +135,18 @@ export default function ArticleLayout({
   const effTitle = isEn && titleEn ? titleEn : title;
   const effBody = localizeMarkdownLinks(isEn && bodyEn ? bodyEn : body, lang);
 
+  // 左目次（56・白Wiki風のときだけ）：本文の `## 見出し`（h2）を出現順に拾う。
+  // id は下の h2 描画側の連番（sec-1, sec-2, …）と対応するので、数と順序を必ず揃えること。
+  // コードブロック内の `## ` は見出しとして描画されないため、フェンスの中は数えない。
+  const toc: { id: string; text: string }[] = [];
+  if (light) {
+    let inFence = false;
+    for (const l of effBody.split('\n')) {
+      if (/^\s*(```|~~~)/.test(l)) inFence = !inFence;
+      else if (!inFence && /^##\s+/.test(l)) toc.push({ id: `sec-${toc.length + 1}`, text: headingText(l) });
+    }
+  }
+
   // 本文（Markdown）の画像に読み込み属性を付ける。
   // これまで components を渡していなかったため属性が一切付かず、体験記・解説記事は
   // 本文画像が全部 eager だった（訪問記は1ページ20枚・37MB を一斉に読み込んでいた）。
@@ -134,12 +156,22 @@ export default function ArticleLayout({
   // fetchPriority="high" を付け、2枚目以降を lazy にする。
   // カウンタはレンダーごとに作り直すので、ページを跨いで持ち越さない。
   const imgIndex = { n: 0 };
+  // h2 の連番（目次のアンカー）。@youtube で本文が複数の Streamdown に割れても通し番号になるよう、
+  // map の外（レンダーごと）に1つだけ持つ。Streamdown はブロックを content 比較で memo するので、
+  // 本文が変わらない再レンダーでは h2 自体が描き直されず、DOM の id はそのまま残る。
+  const hIndex = { n: 0 };
   const bodyComponents = {
     // 本文Markdownの `# 見出し` は h2 で描画する（ページの h1 は記事タイトル1つに保つ）。
     // スタイルは data-streamdown="heading-1" の属性セレクタで当たっているため、
     // 属性を保ったままタグだけ変えれば見た目は変わらない。
     h1: ({ children }: { children?: ReactNode }) => (
       <h2 data-streamdown="heading-1">{children}</h2>
+    ),
+    // `## 見出し` に目次用の id を振る。クラスは Streamdown 既定の h2 と同じ（体験記などダーク側の太さを保つ）。
+    h2: ({ children }: { children?: ReactNode }) => (
+      <h2 id={`sec-${++hIndex.n}`} className="mt-6 mb-2 font-semibold text-2xl" data-streamdown="heading-2">
+        {children}
+      </h2>
     ),
     img: ({ src, alt }: { src?: string; alt?: string }) => {
       const isFirst = imgIndex.n++ === 0;
@@ -164,166 +196,189 @@ export default function ArticleLayout({
   });
   const [summaryOpen, setSummaryOpen] = useState(false);
 
+  // 白Wiki風で見出しがあるときだけ「左：目次／右：本文」の2カラムにする。ダーク（体験記など）や
+  // 見出しの無い記事は従来どおり <article> を直に置く。目次は <a href="#sec-n"> なのでプリレンダHTMLにも残る。
+  const withToc = (articleEl: ReactNode) =>
+    light && toc.length > 0 ? (
+      <div className="rp-wiki-wrap">
+        <aside className="rp-toc" aria-label={isEn ? 'Contents' : '目次'}>
+          <p className="rp-toc__h">{isEn ? 'Contents' : '目次'}</p>
+          <ol>
+            {toc.map((it) => (
+              <li key={it.id}>
+                <a href={`#${it.id}`}>{it.text}</a>
+              </li>
+            ))}
+          </ol>
+        </aside>
+        {articleEl}
+      </div>
+    ) : (
+      articleEl
+    );
+
   return (
     <div className={light ? 'min-h-screen pt-16 wiki-shell rp-wiki' : 'min-h-screen bg-background text-foreground pt-16'}>
       <Header />
 
-      <article className="article-container">
-        <div>
-          {/* Header：カテゴリ／タイトル／メタ情報を1枚の“帯”にまとめる（記事詳細と共通の見た目） */}
-          <header className="article-band">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="text-2xl">{icon}</span>
-              <span
-                className={
-                  light
-                    ? 'px-3 py-1 rounded text-xs font-mono border border-[#c8ccd1] bg-[#eef1f4] text-[#2a55b7]'
-                    : 'px-3 py-1 rounded text-xs font-mono border border-cyan-500/50 bg-cyan-500/10 text-cyan-300'
-                }
-              >
-                {badge}
-              </span>
-            </div>
-
-            {/* タイトルの背面にだけ敷く帯（記事詳細ページと共通） */}
-            <div className="article-title-band">
-              <h1 className="article-title font-bold">
-                {effTitle}
-              </h1>
-            </div>
-
-            <div className="article-meta text-gray-400 font-mono text-sm">
-              <div className="flex items-center gap-2">
-                <Calendar size={14} />
-                {date}
-              </div>
-              <div className="flex items-center gap-2">
-                <Tag size={14} />
-                {effSource}
-              </div>
-            </div>
-          </header>
-
-          {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
-          {effSummary && effSummary.length > 0 && (
-            <div className="mb-8">
-              <button
-                onClick={() =>
-                  document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
-              >
-                <Sparkles size={16} /> {t('sum.button')}
-                <ChevronDown size={16} />
-              </button>
-            </div>
-          )}
-
-          {/* Body：本文中に「@youtube:動画ID」だけの行があれば、その位置に動画を埋め込む。
-              それ以外は通常どおり Markdown として表示する（マーカーが無ければ従来と同じ）。 */}
-          <div className="article-body mb-8">
-            {splitBodyByYoutube(effBody).map((part, i) =>
-              part.type === 'youtube' ? (
-                <div key={i} className="article-video my-8">
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${part.id}`}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              ) : (
-                <Streamdown
-                  key={i}
-                  parseIncompleteMarkdown={false}
-                  rehypePlugins={articleRehypePlugins}
-                  components={bodyComponents}
+      {withToc(
+        <article className="article-container">
+          <div>
+            {/* Header：カテゴリ／タイトル／メタ情報を1枚の“帯”にまとめる（記事詳細と共通の見た目） */}
+            <header className="article-band">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-2xl">{icon}</span>
+                <span
+                  className={
+                    light
+                      ? 'px-3 py-1 rounded text-xs font-mono border border-[#c8ccd1] bg-[#eef1f4] text-[#2a55b7]'
+                      : 'px-3 py-1 rounded text-xs font-mono border border-cyan-500/50 bg-cyan-500/10 text-cyan-300'
+                  }
                 >
-                  {part.text}
-                </Streamdown>
-              ),
-            )}
-          </div>
+                  {badge}
+                </span>
+              </div>
 
-          {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール）。
-              まとめ本文は常に DOM へ出し、開閉は hidden 属性だけで切り替える。
-              {summaryOpen && …} の条件レンダリングにすると、閉じている初期状態＝
-              プリレンダ時にまとめが DOM に存在せず、全記事でクローラーに読まれない
-              （JS実行後にしか現れない）ため。表示上の挙動は hidden の display:none で同じ。 */}
-          {effSummary && effSummary.length > 0 && (
-            <div id="ai-summary" className="mb-10 scroll-mt-24">
+              {/* タイトルの背面にだけ敷く帯（記事詳細ページと共通） */}
+              <div className="article-title-band">
+                <h1 className="article-title font-bold">
+                  {effTitle}
+                </h1>
+              </div>
+
+              <div className="article-meta text-gray-400 font-mono text-sm">
+                <div className="flex items-center gap-2">
+                  <Calendar size={14} />
+                  {date}
+                </div>
+                <div className="flex items-center gap-2">
+                  <Tag size={14} />
+                  {effSource}
+                </div>
+              </div>
+            </header>
+
+            {/* トップのボタン：押すと記事末尾の「3行まとめ」までスクロール */}
+            {effSummary && effSummary.length > 0 && (
+              <div className="mb-8">
+                <button
+                  onClick={() =>
+                    document.getElementById('ai-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
+                >
+                  <Sparkles size={16} /> {t('sum.button')}
+                  <ChevronDown size={16} />
+                </button>
+              </div>
+            )}
+
+            {/* Body：本文中に「@youtube:動画ID」だけの行があれば、その位置に動画を埋め込む。
+                それ以外は通常どおり Markdown として表示する（マーカーが無ければ従来と同じ）。 */}
+            <div className="article-body mb-8">
+              {splitBodyByYoutube(effBody).map((part, i) =>
+                part.type === 'youtube' ? (
+                  <div key={i} className="article-video my-8">
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${part.id}`}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <Streamdown
+                    key={i}
+                    parseIncompleteMarkdown={false}
+                    rehypePlugins={articleRehypePlugins}
+                    components={bodyComponents}
+                  >
+                    {part.text}
+                  </Streamdown>
+                ),
+              )}
+            </div>
+
+            {/* 記事末尾の「AIによる3行まとめ」：押すと3行が開く（トップのボタンからここへスクロール）。
+                まとめ本文は常に DOM へ出し、開閉は hidden 属性だけで切り替える。
+                {summaryOpen && …} の条件レンダリングにすると、閉じている初期状態＝
+                プリレンダ時にまとめが DOM に存在せず、全記事でクローラーに読まれない
+                （JS実行後にしか現れない）ため。表示上の挙動は hidden の display:none で同じ。 */}
+            {effSummary && effSummary.length > 0 && (
+              <div id="ai-summary" className="mb-10 scroll-mt-24">
+                <button
+                  onClick={() => setSummaryOpen((o) => !o)}
+                  aria-expanded={summaryOpen}
+                  aria-controls="ai-summary-body"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
+                >
+                  {summaryOpen ? t('sum.close') : t('sum.open')}
+                  {summaryOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </button>
+                <div
+                  id="ai-summary-body"
+                  hidden={!summaryOpen}
+                  className={`mt-3 rounded-2xl border p-5 ${
+                    light ? 'border-[#c8ccd1] bg-[#f8f9fa]' : 'border-[#22d3ee]/30 bg-[#22d3ee]/[0.06]'
+                  }`}
+                >
+                  <ul className="m-0 list-none p-0 space-y-2.5">
+                    {effSummary.map((line, i) => (
+                      <li
+                        key={i}
+                        className={`flex gap-2.5 text-[14px] leading-relaxed ${light ? 'text-[#1e2022]' : 'text-white/85'}`}
+                      >
+                        <span className={`font-bold flex-none ${light ? 'text-[#2a55b7]' : 'text-[#22d3ee]'}`}>{i + 1}.</span>
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={`text-[11px] mt-3 mb-0 ${light ? 'text-[#6b7075]' : 'text-white/35'}`}>{t('sum.note')}</p>
+                </div>
+              </div>
+            )}
+
+            <div className={light ? 'border-t border-[#e6e8eb] my-10' : 'border-t border-cyan-500/30 my-10'} />
+
+            {/* シェア：リンクをコピー／Xでシェア（掲示板以外の解説記事に表示） */}
+            <div className="flex flex-wrap gap-3 mb-10">
               <button
-                onClick={() => setSummaryOpen((o) => !o)}
-                aria-expanded={summaryOpen}
-                aria-controls="ai-summary-body"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold bg-white text-black border border-black/10 hover:bg-white/90 transition-colors"
-              >
-                {summaryOpen ? t('sum.close') : t('sum.open')}
-                {summaryOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-              </button>
-              <div
-                id="ai-summary-body"
-                hidden={!summaryOpen}
-                className={`mt-3 rounded-2xl border p-5 ${
-                  light ? 'border-[#c8ccd1] bg-[#f8f9fa]' : 'border-[#22d3ee]/30 bg-[#22d3ee]/[0.06]'
+                onClick={() => {
+                  navigator.clipboard?.writeText(window.location.href);
+                  toast.success(t('nd.copied'));
+                }}
+                className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors ${
+                  light ? 'bg-[#2a55b7] hover:bg-[#1f4499] text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white'
                 }`}
               >
-                <ul className="m-0 list-none p-0 space-y-2.5">
-                  {effSummary.map((line, i) => (
-                    <li
-                      key={i}
-                      className={`flex gap-2.5 text-[14px] leading-relaxed ${light ? 'text-[#1e2022]' : 'text-white/85'}`}
-                    >
-                      <span className={`font-bold flex-none ${light ? 'text-[#2a55b7]' : 'text-[#22d3ee]'}`}>{i + 1}.</span>
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className={`text-[11px] mt-3 mb-0 ${light ? 'text-[#6b7075]' : 'text-white/35'}`}>{t('sum.note')}</p>
-              </div>
+                <Link2 size={14} />
+                {t('nd.copyLink')}
+              </button>
+              <button
+                onClick={() => {
+                  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                    `${effTitle} | GTA6 FEED`,
+                  )}&url=${encodeURIComponent(window.location.href)}`;
+                  window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
+                }}
+                className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors border ${
+                  light
+                    ? 'bg-white hover:bg-[#f2f4f7] text-[#1e2022] border-[#c8ccd1]'
+                    : 'bg-black hover:bg-zinc-800 text-white border-white/20'
+                }`}
+              >
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                {t('nd.shareX')}
+              </button>
             </div>
-          )}
 
-          <div className={light ? 'border-t border-[#e6e8eb] my-10' : 'border-t border-cyan-500/30 my-10'} />
-
-          {/* シェア：リンクをコピー／Xでシェア（掲示板以外の解説記事に表示） */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            <button
-              onClick={() => {
-                navigator.clipboard?.writeText(window.location.href);
-                toast.success(t('nd.copied'));
-              }}
-              className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors ${
-                light ? 'bg-[#2a55b7] hover:bg-[#1f4499] text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white'
-              }`}
-            >
-              <Link2 size={14} />
-              {t('nd.copyLink')}
-            </button>
-            <button
-              onClick={() => {
-                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                  `${effTitle} | GTA6 FEED`,
-                )}&url=${encodeURIComponent(window.location.href)}`;
-                window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
-              }}
-              className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors border ${
-                light
-                  ? 'bg-white hover:bg-[#f2f4f7] text-[#1e2022] border-[#c8ccd1]'
-                  : 'bg-black hover:bg-zinc-800 text-white border-white/20'
-              }`}
-            >
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-              {t('nd.shareX')}
-            </button>
+            {children}
           </div>
-
-          {children}
-        </div>
-      </article>
+        </article>,
+      )}
 
       <footer
         className={`py-8 px-4 text-center font-mono text-sm border-t ${

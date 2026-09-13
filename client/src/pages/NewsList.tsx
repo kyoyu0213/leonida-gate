@@ -16,6 +16,8 @@ import { useMergedNews, useNewsCommentCounts } from '@/hooks/useNews';
 import { useT, useLang, pathForLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
 import SiteFooter from '@/components/SiteFooter';
+import { WIKI_RELEASED } from '@/data/wiki/release';
+import { WIKI_BASE } from '@/data/wiki/categories';
 
 /**
  * ニュース一覧ページ。1つのコンポーネントで2本のルートを受け持つ：
@@ -101,19 +103,44 @@ export default function NewsList() {
                 : `Official news, analysis, and leaks on GTA6. ${listed.length} articles published.`}
           </p>
 
-          {/* もう一方の一覧への導線 */}
-          <a
-            href={otherPath}
-            className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full text-[13px] font-bold transition-colors hover:bg-white/10"
-            style={{
-              background: 'rgba(255,255,255,.05)',
-              border: `1px solid ${otherColor}66`,
-              color: otherColor,
-            }}
-          >
-            <span className="w-[7px] h-[7px] rounded-full" style={{ background: otherColor }} />
-            {otherLabel}
-          </a>
+          {/* もう一方の一覧への導線＋対応するまとめWikiの入口（トップの「すべて見る」横と同じ並び・56） */}
+          <div className="flex flex-wrap gap-3 mt-4">
+            <a
+              href={otherPath}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-bold transition-colors hover:bg-white/10"
+              style={{
+                background: 'rgba(255,255,255,.05)',
+                border: `1px solid ${otherColor}66`,
+                color: otherColor,
+              }}
+            >
+              <span className="w-[7px] h-[7px] rounded-full" style={{ background: otherColor }} />
+              {otherLabel}
+            </a>
+            {onlyGtarp ? (
+              // RPまとめWiki（/fivem-gtarp ハブ）は常時公開なのでゲートなし。
+              <a
+                href={pathForLang('/fivem-gtarp', lang)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-bold transition-colors hover:bg-white/10"
+                style={{ background: 'rgba(255,255,255,.05)', border: '1px solid #22d3ee66', color: '#22d3ee' }}
+              >
+                <span className="w-[7px] h-[7px] rounded-full" style={{ background: '#22d3ee' }} />
+                {lang === 'ja' ? 'RPまとめWiki →' : 'GTA RP Wiki →'}
+              </a>
+            ) : (
+              // GTA6まとめWiki（日本語のみ）。公開フラグ（data/wiki/release.ts）が立つまで出さない。
+              WIKI_RELEASED && (
+                <a
+                  href={WIKI_BASE}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-bold transition-colors hover:bg-white/10"
+                  style={{ background: 'rgba(255,255,255,.05)', border: '1px solid #2de2e666', color: '#2de2e6' }}
+                >
+                  <span className="w-[7px] h-[7px] rounded-full" style={{ background: '#2de2e6' }} />
+                  {lang === 'ja' ? 'GTA6まとめWiki →' : 'GTA6 Wiki →'}
+                </a>
+              )
+            )}
+          </div>
         </div>
 
         {/* GTARP専用ページのタグ絞り込み（公式発表／SURGE Town／コラム） */}
