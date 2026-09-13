@@ -167,7 +167,8 @@ export default function FivemGtarp() {
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         {/* Hero */}
         <span className="fhub__eyebrow">FiveM / GTARP</span>
-        <h1 className="fhub__h1">{t('fg.heading')}</h1>
+        {/* H1 は固定文字列（i18n 非依存。英語版は公開停止中）。ヘッダーの表記は「RPまとめWiki」。 */}
+        <h1 className="fhub__h1">GTARPまとめWiki</h1>
         <p className="fhub__lead">{t('fg.lead')}</p>
 
         {/* 目的から探す（意図ベースの入口）。各ボタンは該当グループの見出しへ飛ぶアンカー。 */}

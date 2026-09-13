@@ -47,10 +47,11 @@ const NAV: NavItem[] = [
         },
       ]
     : []),
-  // GTARPまとめWiki（/fivem-gtarp ハブ）。Wikiの右隣に置く。ラベルは固定（i18n 非依存）。
+  // RPまとめWiki（/fivem-gtarp ハブ。ページの H1 は「GTARPまとめWiki」）。「RPニュース」と表記を揃える。
+  // Wikiの右隣に置く。ラベルは固定（i18n 非依存）。
   {
     key: 'nav.fivemgtarp',
-    label: 'GTARPまとめWiki',
+    label: 'RPまとめWiki',
     href: '/fivem-gtarp',
     localized: true,
     // 体験記（/fivem-gtarp/field-notes/...）はヘッダーの常設項目から外し（㊿）、ハブ配下のコンテンツとして
