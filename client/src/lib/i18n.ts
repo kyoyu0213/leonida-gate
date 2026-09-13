@@ -46,10 +46,10 @@ type Dict = Record<string, string>;
 const JA: Dict = {
   'nav.home': 'ホーム',
   'nav.news': 'GTA6最新情報',
-  'nav.gtarpnews': 'GTARP最新情報',
+  'nav.gtarpnews': 'RPニュース',
   'nav.servers': '募集板',
   'nav.board': '掲示板',
-  'nav.fivemgtarp': 'FiveM/GTARP',
+  'nav.fivemgtarp': 'GTARP',
   'nav.fieldnotes': '体験記',
   'nav.contact': 'お問い合わせ',
   // スマホ下部タブバー（短縮ラベル）

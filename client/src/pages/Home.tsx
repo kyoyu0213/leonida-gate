@@ -497,7 +497,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* ===================== GTARP最新情報（GTARP カテゴリだけを横2枚） ===================== */}
+            {/* ===================== RPニュース（GTARP カテゴリだけを横2枚） ===================== */}
             {gtarpNews.length > 0 && (
               <>
                 <h2 className="font-black text-xl md:text-[28px] m-0 mt-10 mb-4 flex items-center gap-2.5">
@@ -510,7 +510,7 @@ export default function Home() {
                       boxShadow: '0 0 12px rgba(52,211,153,.55)',
                     }}
                   />
-                  {lang === 'ja' ? 'GTARP最新情報' : 'GTA RP News'}
+                  {lang === 'ja' ? 'RPニュース' : 'GTA RP News'}
                 </h2>
 
                 {/* 最新ニュース欄と同じ枠（スマホでは先頭1件のみ） */}
