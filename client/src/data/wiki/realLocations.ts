@@ -43,6 +43,12 @@ export const REAL_LOCATIONS: WikiPage = {
         {
           term: '島の銀行 ← Bank of America（1108 Kane Concourse, ベイ・ハーバー・アイランズ）',
           text: '同住所に実在の支店があり、運河に囲まれた立地。ゲーム内対応の裏取りは限られ、有力候補の段階です。',
+          image: {
+            src: '/images/news/gta6-extended-look-impressions/hobbs-milford-bank.webp',
+            alt: 'ゲーム内の銀行「Hobbs Milford」の外観',
+            caption: 'Extended Look の映像より（実在施設との対応はコミュニティの照合）',
+            credit: 'Rockstar Games（An Extended Look 映像より）',
+          },
         },
         {
           term: '島の警察署 ← Indian Creek Village 公安局（Public Safety Department／9080 Bay Drive）',
@@ -69,6 +75,12 @@ export const REAL_LOCATIONS: WikiPage = {
         {
           term: 'ジェイソン／ルシアのアパート ← Belmar Condominium（419 NE 19th St, エッジウォーター地区）',
           text: '2022年頃まではストリートビューに残っていましたが、その後取り壊されて現存しません。マッピング系コミュニティが過去のストリートビュー画像から位置を割り出し、複数メディアも報道しました。現存しないため過去画像とゲーム映像を並べて比較でき、今回の照合の中でも特に「研究感」のあるスポットです。',
+          image: {
+            src: '/images/news/gta6-extended-look-impressions/jason-lucia-apartment-balcony.webp',
+            alt: 'アパートのバルコニーに立つジェイソンとルシア',
+            caption: 'Extended Look の映像より（実在施設との対応はコミュニティの照合）',
+            credit: 'Rockstar Games（An Extended Look 映像より）',
+          },
         },
         {
           term: 'ベネチアン・コーズウェイの料金所 ← Venetian Causeway（1926年開通）',
