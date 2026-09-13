@@ -1,0 +1,65 @@
+/* 53 /fivem-gtarp の解説記事だけを白のWikipedia風に。.rp-wiki スコープで
+   グローバルの .article-* / [data-streamdown] を上書き（体験記・ニュースには付かないので不変）。 */
+.rp-wiki.wiki-shell{ background:#f6f7f9; color:#1e2022; }
+.rp-wiki .article-container{ max-width:840px; }
+
+/* フッターは記事レイアウト自前の白地用（text-[#54595d]）。.wiki-shell > footer の暗色裏打ちと
+   明るい文字色（Wiki の SiteFooter 用）が後から勝ってしまうので、ここでは外す。ヘッダーの裏打ちはそのまま使う。 */
+.rp-wiki.wiki-shell > footer{ color:#54595d; }
+.rp-wiki.wiki-shell > footer::before{ display:none; }
+.rp-wiki.wiki-shell > footer a:hover{ color:#1e2022; }
+
+/* タイトル帯：ネオン帯→Wikipedia風の下線見出し */
+.rp-wiki .article-title-band{ background:transparent; border-radius:0; padding:0 0 6px; margin:0 0 14px;
+  border-bottom:1px solid #a2a9b1; }
+.rp-wiki .article-title-band::before{ display:none; }
+.rp-wiki .article-title{ color:#15181a;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,serif; }
+.rp-wiki .article-meta{ color:#54595d; }
+
+/* 本文 */
+.rp-wiki .article-body{ color:#1e2022; font-size:16px; line-height:1.85;
+  /* Streamdown のインラインコード（bg-muted）とコードブロックの枠（border）はテーマ変数の暗色を使うため、
+     白地では暗い地に暗い文字になる。本文の中だけ変数を白地向けに差し替える（@theme inline なので子孫で効く）。 */
+  --muted:#eef1f4; --muted-foreground:#54595d; --border:#c8ccd1; }
+.rp-wiki .article-body [data-streamdown="inline-code"]{ color:#15181a; }
+.rp-wiki .article-body [data-streamdown="heading-2"]{ margin-top:38px; margin-bottom:14px; padding:0 0 5px;
+  border-left:0; border-bottom:1px solid #a2a9b1; font-size:23px; color:#15181a; text-shadow:none;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,serif; }
+.rp-wiki .article-body [data-streamdown="heading-3"]{ margin-top:26px; margin-bottom:10px; font-size:18px;
+  color:#15181a; text-shadow:none;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",YuMincho,Georgia,serif; }
+/* 箇条書き：ネオン枠ボックス→素の箇条書き */
+.rp-wiki .article-body [data-streamdown="unordered-list"],
+.rp-wiki .article-body [data-streamdown="ordered-list"]{ margin:16px 0; padding:0 0 0 1.5em;
+  border:0; background:none; border-radius:0; }
+.rp-wiki .article-body [data-streamdown="list-item"]::marker{ color:#9aa0a6; }
+.rp-wiki .article-body [data-streamdown="strong"],
+.rp-wiki .article-body strong{ color:#15181a; }
+.rp-wiki .article-body [data-streamdown="link"],
+.rp-wiki .article-body a{ color:#2a55b7; text-underline-offset:2px; }
+.rp-wiki .article-body [data-streamdown="link"]:hover,
+.rp-wiki .article-body a:hover{ color:#1b3a8a; }
+/* テーブル */
+.rp-wiki .article-body table{ border:1px solid #a2a9b1; border-radius:0; }
+.rp-wiki .article-body th,.rp-wiki .article-body td{ border:1px solid #c8ccd1; }
+.rp-wiki .article-body th{ background:#eaecf0; color:#15181a; }
+.rp-wiki .article-body tbody tr:nth-child(even) td{ background:#f8f9fa; }
+/* 画像：ネオン枠→細いグレー枠 */
+.rp-wiki .article-body img{ border:1px solid #c8ccd1; box-shadow:none; border-radius:6px; }
+/* 動画埋め込み（配信者サーバーの歴史で使用）：ネオン枠・光彩→画像と同じグレー細枠 */
+.rp-wiki .article-video{ border:1px solid #c8ccd1; box-shadow:none; border-radius:6px; }
+/* 区切り線・引用・注意ボックス・打ち消し */
+.rp-wiki .article-body [data-streamdown="horizontal-rule"]{ background:#e6e8eb; }
+.rp-wiki .article-body [data-streamdown="blockquote"]{ border-left:4px solid #a2a9b1; background:#f8f9fa; color:#3a3d41; }
+.rp-wiki .article-body p:has(> em:only-child){ background:#fff7ed; border:1px solid #f3d3a0; color:#7a5b00; }
+.rp-wiki .article-body p:has(> em:only-child) em{ color:#7a5b00; }
+.rp-wiki .article-body del{ color:#6b7075; text-decoration-color:#b91c1c; }
+
+/* 各記事が children で置く「関連リンク」ボタンの多くは bg-black / bg-cyan-600 系のダーク。
+   個別記事を編集せずに白地向けへ寄せる（よく使われるパターンを上書き）。 */
+.rp-wiki .article-container a[class*="bg-black"]{ background:#fff !important; color:#1e2022 !important;
+  border:1px solid #c8ccd1 !important; }
+.rp-wiki .article-container a[class*="bg-black"]:hover{ background:#f2f4f7 !important; }
+.rp-wiki .article-container a[class*="bg-cyan-600"],
+.rp-wiki .article-container a[class*="bg-[#fb923c]"]{ background:#2a55b7 !important; color:#fff !important; }

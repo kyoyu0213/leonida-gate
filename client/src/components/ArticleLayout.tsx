@@ -1,12 +1,17 @@
 import { useState, type ReactNode } from 'react';
+import { useLocation } from 'wouter';
 import { Calendar, Tag, Sparkles, ChevronDown, ChevronUp, Link2 } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
 import { useSeo, SITE_ORIGIN } from '@/hooks/useSeo';
-import { useT, useLang, type Lang } from '@/lib/i18n';
+import { useT, useLang, stripLangPrefix, type Lang } from '@/lib/i18n';
 import { localizedHref } from '@/components/LocalLink';
 import { FooterLinks } from '@/components/SiteFooter';
+// 白Wiki風モード（53）：地とヘッダー／フッターの暗色裏打ちは Wiki と共用の .wiki-shell（gtaWiki.css）、
+// 記事部分の上書きは .rp-wiki 配下（rpArticle.css）。
+import '@/pages/gtaWiki.css';
+import './rpArticle.css';
 
 // NewsDetail と同じく、自サイトのオリジンを渡して相対パス画像/リンクを許可する。
 // SSR（プリレンダ）では window が無く origin を取れないため、本番オリジンを既定にする。
@@ -108,6 +113,14 @@ export default function ArticleLayout({
   const t = useT();
   const lang = useLang();
   const isEn = lang === 'en';
+  // /fivem-gtarp/<slug> の解説記事だけ白のWikipedia風（ハブと揃える）。同じレイアウトを使う
+  // 体験記（field-notes）とツールは対象外でダークのまま。スタイルは .rp-wiki が付いたときだけ当たる。
+  const [loc] = useLocation();
+  const p = stripLangPrefix(loc);
+  const light =
+    p.startsWith('/fivem-gtarp/') &&
+    !p.startsWith('/fivem-gtarp/field-notes') &&
+    !p.startsWith('/fivem-gtarp/tools');
   // EN表示時は英語版を使い、無ければ日本語にフォールバック。
   const effTitle = isEn && titleEn ? titleEn : title;
   const effBody = localizeMarkdownLinks(isEn && bodyEn ? bodyEn : body, lang);
@@ -152,7 +165,7 @@ export default function ArticleLayout({
   const [summaryOpen, setSummaryOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-16">
+    <div className={light ? 'min-h-screen pt-16 wiki-shell rp-wiki' : 'min-h-screen bg-background text-foreground pt-16'}>
       <Header />
 
       <article className="article-container">
@@ -161,7 +174,13 @@ export default function ArticleLayout({
           <header className="article-band">
             <div className="flex items-center gap-3 mb-5">
               <span className="text-2xl">{icon}</span>
-              <span className="px-3 py-1 rounded text-xs font-mono border border-cyan-500/50 bg-cyan-500/10 text-cyan-300">
+              <span
+                className={
+                  light
+                    ? 'px-3 py-1 rounded text-xs font-mono border border-[#c8ccd1] bg-[#eef1f4] text-[#2a55b7]'
+                    : 'px-3 py-1 rounded text-xs font-mono border border-cyan-500/50 bg-cyan-500/10 text-cyan-300'
+                }
+              >
                 {badge}
               </span>
             </div>
@@ -246,22 +265,27 @@ export default function ArticleLayout({
               <div
                 id="ai-summary-body"
                 hidden={!summaryOpen}
-                className="mt-3 rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/[0.06] p-5"
+                className={`mt-3 rounded-2xl border p-5 ${
+                  light ? 'border-[#c8ccd1] bg-[#f8f9fa]' : 'border-[#22d3ee]/30 bg-[#22d3ee]/[0.06]'
+                }`}
               >
                 <ul className="m-0 list-none p-0 space-y-2.5">
                   {effSummary.map((line, i) => (
-                    <li key={i} className="flex gap-2.5 text-[14px] text-white/85 leading-relaxed">
-                      <span className="text-[#22d3ee] font-bold flex-none">{i + 1}.</span>
+                    <li
+                      key={i}
+                      className={`flex gap-2.5 text-[14px] leading-relaxed ${light ? 'text-[#1e2022]' : 'text-white/85'}`}
+                    >
+                      <span className={`font-bold flex-none ${light ? 'text-[#2a55b7]' : 'text-[#22d3ee]'}`}>{i + 1}.</span>
                       <span>{line}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="text-[11px] text-white/35 mt-3 mb-0">{t('sum.note')}</p>
+                <p className={`text-[11px] mt-3 mb-0 ${light ? 'text-[#6b7075]' : 'text-white/35'}`}>{t('sum.note')}</p>
               </div>
             </div>
           )}
 
-          <div className="border-t border-cyan-500/30 my-10" />
+          <div className={light ? 'border-t border-[#e6e8eb] my-10' : 'border-t border-cyan-500/30 my-10'} />
 
           {/* シェア：リンクをコピー／Xでシェア（掲示板以外の解説記事に表示） */}
           <div className="flex flex-wrap gap-3 mb-10">
@@ -270,7 +294,9 @@ export default function ArticleLayout({
                 navigator.clipboard?.writeText(window.location.href);
                 toast.success(t('nd.copied'));
               }}
-              className="inline-flex items-center gap-2 px-4 h-10 bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-sm rounded transition-colors"
+              className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors ${
+                light ? 'bg-[#2a55b7] hover:bg-[#1f4499] text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white'
+              }`}
             >
               <Link2 size={14} />
               {t('nd.copyLink')}
@@ -282,7 +308,11 @@ export default function ArticleLayout({
                 )}&url=${encodeURIComponent(window.location.href)}`;
                 window.open(url, '_blank', 'noopener,noreferrer,width=600,height=500');
               }}
-              className="inline-flex items-center gap-2 px-4 h-10 bg-black hover:bg-zinc-800 text-white font-mono text-sm rounded transition-colors border border-white/20"
+              className={`inline-flex items-center gap-2 px-4 h-10 font-mono text-sm rounded transition-colors border ${
+                light
+                  ? 'bg-white hover:bg-[#f2f4f7] text-[#1e2022] border-[#c8ccd1]'
+                  : 'bg-black hover:bg-zinc-800 text-white border-white/20'
+              }`}
             >
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -295,7 +325,11 @@ export default function ArticleLayout({
         </div>
       </article>
 
-      <footer className="border-t border-cyan-500/30 py-8 px-4 text-center text-gray-500 font-mono text-sm">
+      <footer
+        className={`py-8 px-4 text-center font-mono text-sm border-t ${
+          light ? 'border-[#e6e8eb] text-[#54595d]' : 'border-cyan-500/30 text-gray-500'
+        }`}
+      >
         <p className="mb-2">
           <FooterLinks />
         </p>
