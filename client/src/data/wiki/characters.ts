@@ -31,14 +31,44 @@ export const CHARACTERS: WikiPage = {
         {
           term: 'ルシア・カミノス（Lucia Caminos）',
           text: '【公式】シリーズ初の女性プレイアブル主人公。レオニダ矯正施設から出所したばかりで、家族を支えようとして収監された過去を持ちます。【取材】格闘はキックボクシング/MMA系。【取材】出所後も足首の監視装置を着けており、物語上重要とされます。',
+          image: {
+            src: '/images/news/gta6-official-screenshots-29/lucia-caminos-07.webp',
+            alt: 'ルシア・カミノス',
+          },
         },
         {
           term: 'ジェイソン・デュヴァル（Jason Duval）',
           text: '【公式】ルシアの恋愛・犯罪のパートナー。犯罪に囲まれて育ち、陸軍を経て、除隊後はレオニダ・キーズで地元の麻薬の運び屋の下で働いています。ブライアン・ヘダーの物件に居候し、その見返りに取り立て仕事を手伝う立場です。【取材】相棒犬のバディ（Buddy）を連れています。',
+          image: {
+            src: '/images/news/gta6-official/jason-duval-01.webp',
+            alt: 'ジェイソン・デュヴァル',
+          },
         },
         {
           term: '二人の関係',
           text: '【公式】二人は「最初から不利なカードを握らされている」逃亡者カップル。【取材】プレイヤーの選択で二人の関係を育てても、遠ざけてもよいとされます。【取材/考察】メディアは「現代版ボニー＆クライド」と評しています。',
+          image: {
+            src: '/images/news/gta6-official/jason-and-lucia-key-art-01.webp',
+            alt: 'ジェイソンとルシア（キーアート）',
+          },
+        },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-official-screenshots-29/jason-and-lucia-01.webp',
+          alt: 'ジェイソンとルシア（公式スクリーンショット）',
+        },
+        {
+          src: '/images/news/gta6-official-screenshots-29/jason-and-lucia-02.webp',
+          alt: 'ジェイソンとルシア（公式スクリーンショット）',
+        },
+        {
+          src: '/images/news/gta6-official-screenshots-29/jason-and-lucia-03.webp',
+          alt: 'ジェイソンとルシア（公式スクリーンショット）',
+        },
+        {
+          src: '/images/news/gta6-official-screenshots-29/jason-and-lucia-04.webp',
+          alt: 'ジェイソンとルシア（公式スクリーンショット）',
         },
       ],
     },
@@ -68,10 +98,18 @@ export const CHARACTERS: WikiPage = {
         {
           term: 'カル・ハンプトン（Cal Hampton）',
           text: '【公式】ジェイソンの友人。臆病でパラノイア気味、沿岸警備隊の無線を盗聴する情報屋タイプ。【考察】GTA5のレスター的な役回りと評されます。',
+          image: {
+            src: '/images/news/gta6-official/cal-hampton-02.webp',
+            alt: 'カル・ハンプトン',
+          },
         },
         {
           term: 'ブライアン・ヘダー（Brian Heder）',
           text: '【公式】ジェイソンの家主。キーズでボートヤードを営む、半引退のドラッグ・スマグラー。',
+          image: {
+            src: '/images/news/gta6-official/brian-heder-04.webp',
+            alt: 'ブライアン・ヘダー',
+          },
         },
         {
           term: 'ロリ・ヘダー（Lori Heder）',
@@ -80,18 +118,34 @@ export const CHARACTERS: WikiPage = {
         {
           term: 'ブービー・アイク（Boobie Ike）',
           text: '【公式】バイスシティの実業家。不動産・ストリップクラブ・レコーディングスタジオにまたがる帝国を築いた人物で、名言は「クラブの金がスタジオを賄い、ドラッグの金がすべてを賄う」。',
+          image: {
+            src: '/images/news/gta6-official/boobie-ike-art.webp',
+            alt: 'ブービー・アイク',
+          },
         },
         {
           term: "ドレ'クアン・プリースト（Dre'Quan Priest）",
           text: '【公式】レーベル Only Raw Records を運営。元ストリートから音楽業界へ転身しました。',
+          image: {
+            src: '/images/news/gta6-official/drequan-priest-art.webp',
+            alt: 'ドレ\'クアン・プリースト',
+          },
         },
         {
           term: 'リアル・ダイメズ（Real Dimez）',
           text: '【公式】女性2人組のラップデュオ（ベイ＝ラックス／ロキシー）。地元ラッパー DWNPLY とのコラボでヒットし、Only Raw Records に所属しています。',
+          image: {
+            src: '/images/news/gta6-official/real-dimez-art.webp',
+            alt: 'リアル・ダイメズ',
+          },
         },
         {
           term: 'ラウル・バウティスタ（Raul Bautista）',
           text: '【公式】ベテランの銀行強盗。強盗クルーのまとめ役で、次第に無謀さを増していきます。【考察】ジェイソンとルシアを強盗に引き込む勧誘役と見られています。',
+          image: {
+            src: '/images/news/gta6-official/raul-bautista-art.webp',
+            alt: 'ラウル・バウティスタ',
+          },
         },
       ],
       note: '※ラウルの綴りは公式が "Bautista"。媒体によって "Batista" の表記ゆれがあります。',

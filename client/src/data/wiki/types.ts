@@ -11,11 +11,24 @@
 /** 確度ラベル。公式 / 取材 / 証言 / 考察。 */
 export type WikiLabel = 'official' | 'preview' | 'testimony' | 'analysis';
 
+/** Wiki用の画像（Rockstar のプレス素材・公式映像のスクリーンショット）。src は /images/... のルート相対。
+ *  AI生成のイメージ画像やファン制作の図は載せない（出典を「Rockstar Games」と表示するため）。 */
+export interface WikiImage {
+  src: string;
+  alt: string;
+  /** サムネイル下・拡大時に出す短い説明（任意）。 */
+  caption?: string;
+  /** 出典（既定：Rockstar Games（プレス素材））。 */
+  credit?: string;
+}
+
 export interface WikiItem {
   /** 項目名（人名・地域名など）。あれば太字で先頭に出す。 */
   term?: string;
   /** 本文。【公式】等のラベルを文中に含めてよい。 */
   text: string;
+  /** 項目に対応する1枚（例：ジェイソンの項目→ジェイソン）。本文の右に小さく出す。 */
+  image?: WikiImage;
 }
 
 export interface WikiTable {
@@ -29,6 +42,8 @@ export interface WikiSection {
   lead?: string;
   items?: WikiItem[];
   table?: WikiTable;
+  /** 節のギャラリー（例：地域ごとの複数枚）。項目の後に折り返して並べる。 */
+  images?: WikiImage[];
   /** 節末の補足（※…）。 */
   note?: string;
 }

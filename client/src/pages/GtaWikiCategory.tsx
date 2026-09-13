@@ -12,6 +12,7 @@ import {
   plainText,
 } from '@/components/wiki/WikiParts';
 import { wikiIcon } from '@/components/wiki/wikiIcons';
+import { WikiGallery, WikiThumb } from '@/components/wiki/WikiImage';
 import {
   WIKI_CATEGORIES,
   WIKI_CATEGORY_BY_SLUG,
@@ -66,11 +67,13 @@ function Section({ s, index }: { s: WikiSection; index: number }) {
           g.term ? (
             <dl key={gi} className="wiki-dl">
               {g.items.map((it, i) => (
-                <div key={i} className="wiki-dl__row">
+                <div key={i} className={it.image ? 'wiki-dl__row wiki-dl__row--img' : 'wiki-dl__row'}>
                   <dt>{it.term}</dt>
-                  {/* 説明がラベルだけの項目（例：自転車【公式】）は、ラベルを外すと空になるので dd を出さない。 */}
-                  {plainText(it.text) && (
+                  {/* 説明がラベルだけの項目（例：自転車【公式】）は、ラベルを外すと空になるので dd を出さない。
+                      ただし画像がある項目は、画像を載せるために dd を出す。 */}
+                  {(plainText(it.text) || it.image) && (
                     <dd>
+                      {it.image && <WikiThumb image={it.image} variant="inline" />}
                       <WikiText text={it.text} />
                     </dd>
                   )}
@@ -81,12 +84,21 @@ function Section({ s, index }: { s: WikiSection; index: number }) {
             <ul key={gi} className="wiki-list">
               {g.items.map((it, i) => (
                 <li key={i}>
-                  <WikiText text={it.text} />
+                  {it.image ? (
+                    // 画像の float を行内に収める器（li 自体に overflow を付けると行頭の点が消えるため）。
+                    <div className="wiki-list__body">
+                      <WikiThumb image={it.image} variant="inline" />
+                      <WikiText text={it.text} />
+                    </div>
+                  ) : (
+                    <WikiText text={it.text} />
+                  )}
                 </li>
               ))}
             </ul>
           ),
         )}
+      {s.images && s.images.length > 0 && <WikiGallery images={s.images} />}
       {s.table && (
         <div className="wiki-table-wrap">
           <table className="wiki-table">
@@ -262,7 +274,9 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
               {WIKI_NAME} のトップへ戻る
             </a>
 
-            <WikiDisclaimer />
+            <WikiDisclaimer>
+              ページ内の画像はRockstar Gamesの公式素材（プレス素材・公式映像のスクリーンショット）です（© Rockstar Games / Take-Two Interactive）。
+            </WikiDisclaimer>
           </div>
         </div>
       </main>
