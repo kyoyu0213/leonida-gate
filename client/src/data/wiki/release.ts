@@ -14,4 +14,4 @@
 //  ※ scripts/lib/wiki-release.mjs が正規表現でこの行を読む。
 //    書式（`export const WIKI_RELEASED = true|false as const;`）を変えないこと。
 // ============================================================================
-export const WIKI_RELEASED = false as const;
+export const WIKI_RELEASED = true as const;
