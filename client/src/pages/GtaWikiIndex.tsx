@@ -28,7 +28,7 @@ export default function GtaWikiIndex() {
   useSeo(WIKI_INDEX_SEO.title, WIKI_INDEX_SEO.description);
 
   return (
-    <div className="vice-page vice-noise">
+    <div className="wiki-shell">
       <Header />
 
       <main className="gta-wiki max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
@@ -47,7 +47,7 @@ export default function GtaWikiIndex() {
               <WikiText text={LEAD} />
             </p>
           </div>
-          <WikiInfobox data={WIKI_INDEX_INFOBOX} title="GTA6 概要" icon={Gamepad2} accent="#ff2d95" />
+          <WikiInfobox data={WIKI_INDEX_INFOBOX} title="GTA6 概要" icon={Gamepad2} accent="#c01766" />
         </div>
 
         <WikiNotice />

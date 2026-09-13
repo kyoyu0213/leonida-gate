@@ -64,7 +64,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の主人公ルシア・カミノスとジェイソン・デュヴァル、公式バイオが公開された主要キャラクター、トレーラーや取材で判明した登場人物を整理。声優は未発表です。',
     order: 1,
-    accent: '#ff2d95',
+    accent: '#c01766',
     summary: 'シリーズ初のデュアル主人公ルシアとジェイソン、公式バイオのある主要人物、トレーラー・取材で判明した登場人物。',
     related: ['map', 'locations'],
   },
@@ -76,7 +76,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の舞台レオニダ州の地理を地域単位で整理。公式確定の6大地域（バイスシティ・グラスリバーズ・レオニダキーズほか）、郡区分の扱い、マップの規模、地形・天候を解説。',
     order: 2,
-    accent: '#2de2e6',
+    accent: '#0e7490',
     summary: 'レオニダ州の公式6大地域、郡区分の扱い、マップ規模の公式・取材・考察の区別、地形と天候。',
     related: ['locations', 'vehicles'],
   },
@@ -88,7 +88,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6のトレーラー・公式素材で確認された建物・店舗・ランドマークを地域別に整理。名称が確認されたものと、噂・ファン呼称のものを区別しています。セーフハウスや拠点もまとめて掲載。',
     order: 3,
-    accent: '#ff8a3d',
+    accent: '#c2410c',
     summary: 'バイスシティ・キーズ・グラスリバーズなど地域別のスポット、店舗、ランドマーク、セーフハウス。',
     related: ['map', 'characters'],
   },
@@ -100,7 +100,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の公式素材で確認された車両を種類別に整理。乗用車・バイク・ボート・航空機・公共交通・緊急車両、カスタムショップの状況まで。現実の元ネタ車種はRockstar非公表のため考察として扱います。',
     order: 4,
-    accent: '#fbbf24',
+    accent: '#b45309',
     summary: '車名が確定した乗用車・バイク・ボート・航空機、集計台数の幅、Rideout Customs の現状。',
     related: ['police', 'map'],
   },
@@ -112,7 +112,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の手配（Wanted）システムを整理。最大6スターへの回帰、目撃・アラームで初めて通報される仕組み、服装・顔・車・武器で追跡される識別ベースの設計、警察組織とGTA5からの変更点。',
     order: 5,
-    accent: '#f87171',
+    accent: '#b91c1c',
     summary: '最大6スター、目撃・証拠ベースの通報、変装や乗り換えでの逃走、警察組織、GTA5からの変更点。',
     related: ['npc', 'vehicles'],
   },
@@ -124,7 +124,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6のNPC（歩行者）について、開発者インタビューと先行取材で判明したことを整理。60万種以上のアニメーション、武器や服装への段階的な反応、盗み聞き、会話プロンプト、動物、GTA5からの進化。',
     order: 6,
-    accent: '#a3e635',
+    accent: '#4d7c0f',
     summary: '60万種以上のアニメーション、武器・服装への反応、盗み聞き・会話プロンプト、動物、技術基盤。',
     related: ['police', 'characters'],
   },
@@ -136,7 +136,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の公式トレーラーやExtended Lookで使われた楽曲の一覧。トレーラー1のTom Petty「Love Is a Long Road」など、公式映像で確認された曲をまとめています（ラジオ局・サントラは公式未発表）。',
     order: 7,
-    accent: '#a78bfa',
+    accent: '#6d28d9',
     summary: '公式トレーラー／Extended Lookの使用曲まとめ。',
     related: ['characters', 'locations'],
   },
@@ -148,7 +148,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の映像に映る建物・施設が、現実のマイアミ/フロリダのどこと照合されているかのまとめ。個々のモデルはコミュニティによる特定で、Rockstar公式が認めた個別モデルはありません。',
     order: 8,
-    accent: '#60a5fa',
+    accent: '#1d4ed8',
     summary: '映像の建物を現実のマイアミと照合。コミュニティ特定のモデル地まとめ。',
     related: ['locations', 'map'],
   },
@@ -160,7 +160,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の戦闘システムまとめ。大型武器を隠し持てない新仕様、武器を見せることへのNPCの反応、銃撃戦の挙動、スロー能力「フォーカス」などを、発売前情報の確度を分けて解説します。',
     order: 9,
-    accent: '#ff5a36',
+    accent: '#c0392b',
     summary: '長銃の携行が丸見えに。フォーカス等、変わる戦闘を整理。',
     related: ['police', 'vehicles'],
   },
@@ -172,7 +172,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の主人公の身体が生活で変化する仕組み（食事・運動・睡眠・逃亡）、体力・スタミナ・フィットネスのステータス、ジムと食事、ダッシュ操作の変更、スマホの物理化などのUIを、発売前情報の確度を分けて整理します。',
     order: 10,
-    accent: '#34d399',
+    accent: '#047857',
     summary: '生活で変わる身体、ジムと食事、L3ダッシュ、物理スマホUIを整理。',
     related: ['characters', 'police'],
   },
@@ -184,7 +184,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の広大なマップを移動する手段（バス・タクシーのファストトラベル）、飲食店やコンビニでのインタラクション、銀行・現金・ATMの経済、プレイ時間の目安、生活感のある世界の作り込みを、発売前情報の確度を分けて整理します。',
     order: 11,
-    accent: '#14b8a6',
+    accent: '#0f766e',
     summary: 'ファストトラベル、飲食店、銀行・現金、プレイ時間まで。広い世界の生活を整理。',
     related: ['map', 'vehicles'],
   },
@@ -196,7 +196,7 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     description:
       'GTA6の開発史を時系列で整理。2015年の初期構想、2018年のRDR2完成とスタッフ合流、2020年の本格化、2022年の映像流出、2023年のTrailer 1、発売延期、2026年のExtended Lookと11月19日発売まで。',
     order: 12,
-    accent: '#6366f1',
+    accent: '#4338ca',
     summary: '2015年の着手からExtended Lookまで、GTA6開発の長い道のりを年表で整理。',
     related: ['music', 'characters'],
   },
