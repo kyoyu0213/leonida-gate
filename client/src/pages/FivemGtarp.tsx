@@ -1,24 +1,27 @@
-import { useState } from 'react';
 import { MAP_RELEASED } from '@/data/maps/release';
 import Header from '@/components/Header';
 import { Server, Users, GitCompare, MessageSquare, Compass, Download, History, BookOpen, HelpCircle, Terminal, Tv, Megaphone, Eye, Footprints, Wrench, ArrowRight, ImageDown, EyeOff, UserRoundPlus, Clapperboard, Map as MapIcon, NotebookPen, MapPinned, Newspaper } from 'lucide-react';
 import { fieldNotes, FIELD_NOTE_CATEGORY_CONFIG } from '@/data/fieldNotes';
-import { getArticleById, isNoindexNewsId, formatArticleDate, CATEGORY_CONFIG } from '@/data/news';
+import { getArticleById, isNoindexNewsId, formatArticleDate } from '@/data/news';
 import { useSeo } from '@/hooks/useSeo';
 import { useT, useLang } from '@/lib/i18n';
 import { useLocalHref } from '@/components/LocalLink';
 import SiteFooter from '@/components/SiteFooter';
+// 地（.wiki-shell）は GTA6まとめWiki と共用。ハブ固有の部品は fivemHub.css（.fhub 配下）。
+import './gtaWiki.css';
+import './fivemHub.css';
 
 interface Card {
   titleKey: string;
   descKey: string;
   href: string;
   icon: typeof Server;
-  accent: string; // ネオン色
+  accent: string; // 旧ネオン色（㊼以降は表示に使わない。カードはグループ色で統一）
 }
 
 interface CardGroup {
   labelKey: string;
+  /** グループ色（白地向けの落ち着いた色。カードの左帯・アイコン・見出しの四角・目次に使う）。 */
   accent: string;
   cards: Card[];
 }
@@ -27,7 +30,7 @@ interface CardGroup {
 const GROUPS: CardGroup[] = [
   {
     labelKey: 'fg.group.basics',
-    accent: '#22d3ee',
+    accent: '#0e7490',
     cards: [
       { titleKey: 'fg.card.fivem.title', descKey: 'fg.card.fivem.desc', href: '/fivem-gtarp/what-is-fivem', icon: Server, accent: '#22d3ee' },
       { titleKey: 'fg.card.gtarp.title', descKey: 'fg.card.gtarp.desc', href: '/fivem-gtarp/what-is-gtarp', icon: Users, accent: '#a78bfa' },
@@ -36,7 +39,7 @@ const GROUPS: CardGroup[] = [
   },
   {
     labelKey: 'fg.group.play',
-    accent: '#34d399',
+    accent: '#047857',
     cards: [
       { titleKey: 'fg.card.install.title', descKey: 'fg.card.install.desc', href: '/fivem-gtarp/how-to-install', icon: Download, accent: '#38bdf8' },
       { titleKey: 'fg.card.guide.title', descKey: 'fg.card.guide.desc', href: '/fivem-gtarp/server-guide', icon: Compass, accent: '#3de0a0' },
@@ -50,7 +53,7 @@ const GROUPS: CardGroup[] = [
   },
   {
     labelKey: 'fg.group.watch',
-    accent: '#f472b6',
+    accent: '#6d28d9',
     cards: [
       { titleKey: 'fg.card.observer.title', descKey: 'fg.card.observer.desc', href: '/fivem-gtarp/observer-guide', icon: Eye, accent: '#e879f9' },
       { titleKey: 'fg.card.streamerHistory.title', descKey: 'fg.card.streamerHistory.desc', href: '/fivem-gtarp/streamer-server-history', icon: Tv, accent: '#f472b6' },
@@ -59,7 +62,7 @@ const GROUPS: CardGroup[] = [
   },
   {
     labelKey: 'fg.group.more',
-    accent: '#c084fc',
+    accent: '#be185d',
     cards: [
       { titleKey: 'fg.card.glossary.title', descKey: 'fg.card.glossary.desc', href: '/fivem-gtarp/glossary', icon: BookOpen, accent: '#c084fc' },
       { titleKey: 'fg.card.history.title', descKey: 'fg.card.history.desc', href: '/fivem-gtarp/history', icon: History, accent: '#f0b429' },
@@ -67,7 +70,7 @@ const GROUPS: CardGroup[] = [
   },
   {
     labelKey: 'fg.group.dev',
-    accent: '#60a5fa',
+    accent: '#1d4ed8',
     cards: [
       { titleKey: 'fg.card.serverSetup.title', descKey: 'fg.card.serverSetup.desc', href: '/fivem-gtarp/server-setup', icon: Wrench, accent: '#60a5fa' },
       { titleKey: 'fg.card.serverPromo.title', descKey: 'fg.card.serverPromo.desc', href: '/servers', icon: Megaphone, accent: '#38bdf8' },
@@ -76,7 +79,7 @@ const GROUPS: CardGroup[] = [
   },
   {
     labelKey: 'fg.group.tools',
-    accent: '#ff2d95',
+    accent: '#b45309',
     cards: [
       { titleKey: 'fg.card.imageResize.title', descKey: 'fg.card.imageResize.desc', href: '/fivem-gtarp/tools/image-resize', icon: ImageDown, accent: '#2de2e6' },
       { titleKey: 'fg.card.imageMask.title', descKey: 'fg.card.imageMask.desc', href: '/fivem-gtarp/tools/image-mask', icon: EyeOff, accent: '#ff2d95' },
@@ -100,7 +103,7 @@ const GROUPS: CardGroup[] = [
     // カードは render 側で「各カテゴリの最新1本」だけをデータ駆動で描画し、記事が増えても伸びない。
     // ここの cards は一覧への導線として保持（実描画では最新記事＋一覧リンクを出す）。
     labelKey: 'fg.group.fieldnotes',
-    accent: '#fb923c',
+    accent: '#c2410c',
     cards: [
       { titleKey: 'fg.card.devDiary.title', descKey: 'fg.card.devDiary.desc', href: '/fivem-gtarp/field-notes/dev-diary', icon: NotebookPen, accent: '#fb923c' },
       { titleKey: 'fg.card.visitNote.title', descKey: 'fg.card.visitNote.desc', href: '/fivem-gtarp/field-notes/visit-note', icon: MapPinned, accent: '#38bdf8' },
@@ -109,33 +112,36 @@ const GROUPS: CardGroup[] = [
 ];
 
 // ページ最下部に出す「GTA RP関連のニュース」で拾う記事ID（新しい順に手で並べる）。
-//  - ハブのカード群（GROUPS）とは別枠で、タブ絞り込みの影響を受けずに常時表示する。
+//  - ハブのカード群（GROUPS）とは別枠で、本文の最後に常時表示する（目次からも飛べる）。
 //  - 非表示記事（HIDDEN_NEWS_IDS）は getArticleById が undefined を返すので自動で落ちる。
 //    noindex 記事（NOINDEX_NEWS_IDS）も内部リンクで推さないよう明示的に除外する。
 //  - ここに id を足すだけで増える。タイトル・説明・日付は news.ts から引くので二重管理にならない。
 const GTARP_NEWS_IDS = [58, 57, 55, 41, 18] as const;
 
-// カテゴリ絞り込みチップ。'all' + 各グループ。チップのラベルは短縮版（fg.tab.*）。
-const TABS = [
-  { id: 'all', tabKey: 'fg.tab.all', color: '#ff2d95' },
-  ...GROUPS.map((g) => ({
-    id: g.labelKey,
-    tabKey: g.labelKey.replace('fg.group.', 'fg.tab.'),
-    color: g.accent,
-  })),
+// ㊼ 絞り込みチップはやめ、全グループを常に表示して左の目次（アンカー）で移動する形にした。
+// 生HTMLに全カードの <a> が常に残る（プリレンダ規約。以前の selected='all' 初期値と同じ結果）。
+/** グループ見出しのアンカー id（例：fg.group.basics → g-basics）。目次・目的ボタンから飛ぶ。 */
+const groupId = (labelKey: string) => `g-${labelKey.replace('fg.group.', '')}`;
+const NEWS_ID = 'g-news';
+/** 最下部「GTA RP関連のニュース」の色（白地向け）。 */
+const NEWS_COLOR = '#be185d';
+
+/** 目的から探す：各ボタンは該当グループの見出しへスクロールする（アンカーなので JS 不要）。 */
+const INTENTS = [
+  { label: 'FiveMを始めたい', group: 'fg.group.basics' },
+  { label: '遊び方を知りたい', group: 'fg.group.play' },
+  { label: '配信を楽しむ', group: 'fg.group.watch' },
+  { label: 'サーバーを作る', group: 'fg.group.dev' },
 ];
+const GROUP_COLOR: Record<string, string> = Object.fromEntries(GROUPS.map((g) => [g.labelKey, g.accent]));
 
 export default function FivemGtarp() {
   const L = useLocalHref();
   const t = useT();
   const lang = useLang();
   useSeo(t('fg.seo.title'), t('fg.seo.desc'), { localized: true });
-  // 絞り込みの初期値は必ず 'all'。プリレンダされる生HTMLはこの状態なので、
-  // ハブから各解説記事への <a> が1本残らずDOMに出る（NewsList.tsx 冒頭の規約と同じ）。
-  // 初期状態で一部を隠すUIにするときは、DOMから外さず hidden / display で切り替えること。
-  const [selected, setSelected] = useState<string>('all');
-
-  const visibleGroups = selected === 'all' ? GROUPS : GROUPS.filter((g) => g.labelKey === selected);
+  // 全グループを常に描画する（絞り込みは廃止）。ハブから各解説記事への <a> が1本残らず生HTMLに出る
+  // （NewsList.tsx 冒頭の規約と同じ）。今後一部を隠すUIにするときも、DOMから外さず hidden / display で切り替えること。
 
   // 体験記は各カテゴリの最新1本だけを出す（開発日記1＋訪問記1＝計2枚）。
   // 記事が増えても枚数が固定されるので、ハブページが伸び続けない。
@@ -155,254 +161,175 @@ export default function FivemGtarp() {
     .filter((a) => !isNoindexNewsId(a.id));
 
   return (
-    <div className="vice-page vice-noise">
+    <div className="wiki-shell fhub">
       <Header />
 
       <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         {/* Hero */}
-        <span className="text-xs font-extrabold tracking-[0.25em] text-[#22d3ee] uppercase">
-          FiveM / GTARP
-        </span>
-        <h1 className="font-black text-3xl md:text-[44px] leading-tight mt-2">{t('fg.heading')}</h1>
-        <p className="text-white/60 text-sm md:text-[15px] mt-3 leading-relaxed max-w-[720px]">
-          {t('fg.lead')}
-        </p>
+        <span className="fhub__eyebrow">FiveM / GTARP</span>
+        <h1 className="fhub__h1">{t('fg.heading')}</h1>
+        <p className="fhub__lead">{t('fg.lead')}</p>
 
-        {/* 目的から探す（意図ベースの大きな入口）。白枠パネルで独立させて目立たせる。 */}
-        <div className="mt-8 rounded-2xl border border-white/60 bg-white/[0.04] p-4 sm:p-5">
-          <div className="flex items-center gap-2 mb-3">
-            <Compass size={16} className="text-[#22d3ee]" />
-            <span className="text-[13px] font-extrabold tracking-wide text-white/85">目的から探す</span>
-            <span className="text-[12px] text-white/40">やりたいことを選ぶ</span>
-          </div>
-          <div className="grid gap-3 grid-cols-2 lg:grid-cols-4">
-            {[
-              { label: 'FiveMを始めたい', group: 'fg.group.basics', color: '#22d3ee' },
-              { label: '遊び方を知りたい', group: 'fg.group.play', color: '#3de0a0' },
-              { label: '配信を楽しむ', group: 'fg.group.watch', color: '#a78bfa' },
-              { label: 'サーバーを作る', group: 'fg.group.dev', color: '#ff8a3d' },
-            ].map((b) => (
-              <button
+        {/* 目的から探す（意図ベースの入口）。各ボタンは該当グループの見出しへ飛ぶアンカー。 */}
+        <div className="fhub-intent">
+          <p className="fhub-intent__h">
+            <Compass size={15} aria-hidden="true" />
+            目的から探す
+            <small>やりたいことを選ぶ</small>
+          </p>
+          <div className="fhub-intent__grid">
+            {INTENTS.map((b) => (
+              <a
                 key={b.group}
-                onClick={() => setSelected(b.group)}
-                className="flex items-center gap-2 px-3.5 py-3.5 rounded-2xl text-[13px] sm:text-[13.5px] font-extrabold text-white transition-all hover:-translate-y-0.5"
-                style={{ background: `${b.color}18`, border: `1px solid ${b.color}55`, boxShadow: `0 0 20px ${b.color}22` }}
+                href={`#${groupId(b.group)}`}
+                className="fhub-intent__b"
+                style={{ ['--ca' as string]: GROUP_COLOR[b.group] }}
               >
-                <span className="w-2 h-2 rounded-full flex-none" style={{ background: b.color, boxShadow: `0 0 8px ${b.color}` }} />
-                <span className="text-left leading-tight whitespace-nowrap">{b.label}</span>
-              </button>
+                <span className="dot" aria-hidden="true" />
+                <span>{b.label}</span>
+              </a>
             ))}
           </div>
         </div>
 
-        {/* カテゴリ絞り込みチップ（newsの一覧と同じ操作感）。カードが増えたため用途で絞れるように。 */}
-        <div className="flex gap-2 overflow-x-auto pb-1.5 mt-8">
-          {TABS.map((tab) => {
-            const active = selected === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setSelected(tab.id)}
-                className="flex-none flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-bold whitespace-nowrap transition-colors"
-                style={{
-                  border: `1px solid ${active ? tab.color : 'rgba(255,255,255,.14)'}`,
-                  background: active ? `${tab.color}22` : 'rgba(255,255,255,.05)',
-                  color: active ? tab.color : 'rgba(255,255,255,.7)',
-                }}
-              >
-                <span className="w-[7px] h-[7px] rounded-full" style={{ background: tab.color }} />
-                {t(tab.tabKey)}
-              </button>
-            );
-          })}
-        </div>
+        <div className="fhub-layout">
+          {/* 左：目次（PC は sticky。スマホは本文の上） */}
+          <aside className="fhub-side">
+            <nav className="fhub-toc" aria-label="目次">
+              <p className="fhub-toc__h">目次</p>
+              <ol>
+                {GROUPS.map((g) => (
+                  <li key={g.labelKey}>
+                    <a href={`#${groupId(g.labelKey)}`}>
+                      <span className="d" style={{ background: g.accent }} aria-hidden="true" />
+                      {t(g.labelKey)}
+                    </a>
+                  </li>
+                ))}
+                {gtarpNews.length > 0 && (
+                  <li>
+                    <a href={`#${NEWS_ID}`}>
+                      <span className="d" style={{ background: NEWS_COLOR }} aria-hidden="true" />
+                      {t('fg.news.title')}
+                    </a>
+                  </li>
+                )}
+              </ol>
+            </nav>
+          </aside>
 
-        {/* Cards：用途ごとにグループ化し、デスクトップは3列で並べてスクロールを抑える */}
-        <div className="mt-7 flex flex-col gap-9">
-          {visibleGroups.map((g) => (
-            <section key={g.labelKey}>
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="h-4 w-1 rounded-full"
-                  style={{ background: g.accent, boxShadow: `0 0 10px ${g.accent}88` }}
-                />
-                <h2
-                  className="text-[12px] font-extrabold tracking-[0.18em] uppercase m-0"
-                  style={{ color: g.accent }}
-                >
+          {/* 右：本文。全グループを常に描画する（生HTMLに全カードの <a> を残す）。 */}
+          <div className="fhub-body">
+            {GROUPS.map((g) => (
+              <section key={g.labelKey} className="fhub-section">
+                <h2 id={groupId(g.labelKey)} className="fhub-h2">
+                  <span className="d" style={{ background: g.accent }} aria-hidden="true" />
                   {t(g.labelKey)}
                 </h2>
-                <span className="flex-1 h-px bg-white/10" />
-              </div>
 
-              {g.labelKey === 'fg.group.fieldnotes' ? (
-                <>
-                  {/* 各カテゴリの最新1本へ言語対応で直リンク（1ホップ）。枚数固定なので伸びない。 */}
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {latestNotes.map((note) => {
-                      const cat = FIELD_NOTE_CATEGORY_CONFIG[note.category];
-                      return (
-                        <a
-                          key={note.slug}
-                          href={`${langPrefix}/fivem-gtarp/field-notes/${note.category}/${note.slug}`}
-                          className="group relative flex flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 transition-all hover:-translate-y-0.5"
-                          onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${cat.color}99`)}
-                          onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
-                        >
-                          <div className="flex items-center gap-3 mb-2.5">
-                            <span
-                              className="w-10 h-10 flex-none rounded-xl flex items-center justify-center text-xl"
-                              style={{
-                                background: `${cat.color}1f`,
-                                border: `1px solid ${cat.color}55`,
-                                boxShadow: `0 0 18px ${cat.color}33`,
-                              }}
-                            >
+                {g.labelKey === 'fg.group.fieldnotes' ? (
+                  <>
+                    {/* 各カテゴリの最新1本へ言語対応で直リンク（1ホップ）。枚数固定なので伸びない。 */}
+                    <div className="fhub-cards">
+                      {latestNotes.map((note) => {
+                        const cat = FIELD_NOTE_CATEGORY_CONFIG[note.category];
+                        return (
+                          <a
+                            key={note.slug}
+                            href={`${langPrefix}/fivem-gtarp/field-notes/${note.category}/${note.slug}`}
+                            className="fhub-card"
+                            style={{ ['--ca' as string]: g.accent }}
+                          >
+                            <span className="fhub-card__ic" aria-hidden="true">
                               {note.icon}
                             </span>
-                            <span
-                              className="text-[10.5px] font-black rounded-md px-2 py-0.5"
-                              style={{ background: cat.color, color: '#0a0612' }}
-                            >
-                              {lang === 'en' ? cat.en : cat.ja}
-                            </span>
-                          </div>
-                          <h3 className="text-[14.5px] font-extrabold text-white m-0 mb-1.5 leading-snug line-clamp-2">
-                            {lang === 'en' ? note.titleEn : note.title}
-                          </h3>
-                          <p className="text-[13px] text-white/60 leading-relaxed flex-1 m-0 line-clamp-2">
-                            {lang === 'en' ? note.excerptEn : note.excerpt}
-                          </p>
-                          <span
-                            className="mt-3 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
-                            style={{ color: cat.color }}
-                          >
-                            {t('fg.learnMore')}
-                            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                            <div className="fhub-card__b">
+                              <h3 className="fhub-card__t">{lang === 'en' ? note.titleEn : note.title}</h3>
+                              <span className="fhub-card__d">
+                                {lang === 'en' ? cat.en : cat.ja}｜{lang === 'en' ? note.excerptEn : note.excerpt}
+                              </span>
+                            </div>
+                            <ArrowRight size={15} className="fhub-card__a" aria-hidden="true" />
+                          </a>
+                        );
+                      })}
+                    </div>
+                    {/* 一覧ページへの導線も併存（sitemap収録・被リンク経路として維持） */}
+                    <div className="fhub-more">
+                      <a href={`${langPrefix}/fivem-gtarp/field-notes/dev-diary`}>
+                        {lang === 'en' ? 'All dev diaries' : '開発日記の一覧'} →
+                      </a>
+                      <a href={`${langPrefix}/fivem-gtarp/field-notes/visit-note`}>
+                        {lang === 'en' ? 'All visit notes' : '訪問記の一覧'} →
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <div className="fhub-cards">
+                    {g.cards.map((c) => {
+                      const Icon = c.icon;
+                      return (
+                        <a
+                          key={c.href}
+                          href={L(c.href)}
+                          className="fhub-card"
+                          style={{ ['--ca' as string]: g.accent }}
+                        >
+                          <span className="fhub-card__ic" aria-hidden="true">
+                            <Icon size={17} />
                           </span>
+                          <div className="fhub-card__b">
+                            <h3 className="fhub-card__t">{t(c.titleKey)}</h3>
+                            <span className="fhub-card__d">{t(c.descKey)}</span>
+                          </div>
+                          <ArrowRight size={15} className="fhub-card__a" aria-hidden="true" />
                         </a>
                       );
                     })}
                   </div>
-                  {/* 一覧ページへの導線も併存（sitemap収録・被リンク経路として維持） */}
-                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[12.5px] font-bold">
-                    <a
-                      href={`${langPrefix}/fivem-gtarp/field-notes/dev-diary`}
-                      className="inline-flex items-center gap-1 text-[#fb923c] hover:underline"
-                    >
-                      {lang === 'en' ? 'All dev diaries' : '開発日記の一覧'} →
-                    </a>
-                    <a
-                      href={`${langPrefix}/fivem-gtarp/field-notes/visit-note`}
-                      className="inline-flex items-center gap-1 text-[#38bdf8] hover:underline"
-                    >
-                      {lang === 'en' ? 'All visit notes' : '訪問記の一覧'} →
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <div className="grid gap-2.5 sm:grid-cols-2">
-                  {g.cards.map((c) => {
-                    const Icon = c.icon;
-                    return (
-                      <a
-                        key={c.href}
-                        href={L(c.href)}
-                        className="group flex items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 transition-all hover:-translate-y-0.5"
-                        onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${c.accent}99`)}
-                        onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
-                      >
-                        <span
-                          className="w-9 h-9 flex-none rounded-lg flex items-center justify-center"
-                          style={{ background: `${c.accent}1f`, border: `1px solid ${c.accent}55`, color: c.accent }}
-                        >
-                          <Icon size={17} />
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <h3 className="text-[13.5px] font-extrabold text-white m-0 leading-tight">{t(c.titleKey)}</h3>
-                          <p className="text-[11.5px] text-white/50 leading-snug m-0 mt-0.5 line-clamp-1">{t(c.descKey)}</p>
-                        </div>
-                        <ArrowRight
-                          size={15}
-                          className="flex-none transition-transform group-hover:translate-x-1"
-                          style={{ color: c.accent }}
-                        />
-                      </a>
-                    );
-                  })}
-                </div>
-              )}
-            </section>
-          ))}
-        </div>
+                )}
+              </section>
+            ))}
 
-        {/* GTA RP関連のニュース：カード群のタブ絞り込みとは独立させ、常に最下部へ出す。
-            条件レンダリングにするとプリレンダ時にDOMから消えるため、絞り込みの外に置くこと。 */}
-        {gtarpNews.length > 0 && (
-          <section className="mt-12">
-            <div className="flex items-center gap-3 mb-4">
-              <span
-                className="h-4 w-1 rounded-full"
-                style={{ background: '#ff2d95', boxShadow: '0 0 10px #ff2d9588' }}
-              />
-              <h2
-                className="text-[12px] font-extrabold tracking-[0.18em] uppercase m-0"
-                style={{ color: '#ff2d95' }}
-              >
-                {t('fg.news.title')}
-              </h2>
-              <span className="flex-1 h-px bg-white/10" />
-            </div>
-            <p className="text-white/55 text-[13px] leading-relaxed m-0 mb-4 max-w-[720px]">
-              {t('fg.news.lead')}
-            </p>
+            {/* GTA RP関連のニュース：常に最下部へ出す（条件はデータの有無だけ。表示切り替えでは消さない）。 */}
+            {gtarpNews.length > 0 && (
+              <section className="fhub-section">
+                <h2 id={NEWS_ID} className="fhub-h2">
+                  <span className="d" style={{ background: NEWS_COLOR }} aria-hidden="true" />
+                  {t('fg.news.title')}
+                </h2>
+                <p className="fhub-section__lead">{t('fg.news.lead')}</p>
 
-            <div className="grid gap-2.5 sm:grid-cols-2">
-              {gtarpNews.map((a) => {
-                const color = CATEGORY_CONFIG[a.category].vice;
-                return (
-                  <a
-                    key={a.id}
-                    href={`${langPrefix}/news/${a.id}`}
-                    className="group flex items-start gap-3 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 transition-all hover:-translate-y-0.5"
-                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = `${color}99`)}
-                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,.08)')}
-                  >
-                    <span
-                      className="w-9 h-9 flex-none rounded-lg flex items-center justify-center text-lg"
-                      style={{ background: `${color}1f`, border: `1px solid ${color}55` }}
+                <div className="fhub-cards">
+                  {gtarpNews.map((a) => (
+                    <a
+                      key={a.id}
+                      href={`${langPrefix}/news/${a.id}`}
+                      className="fhub-card"
+                      style={{ ['--ca' as string]: NEWS_COLOR }}
                     >
-                      {a.icon}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-[13.5px] font-extrabold text-white m-0 leading-snug line-clamp-2">
-                        {(lang === 'en' && a.titleEn) || a.title}
-                      </h3>
-                      <span className="block text-[11px] text-white/40 font-mono mt-1">
-                        {formatArticleDate(a, lang)}
+                      <span className="fhub-card__ic" aria-hidden="true">
+                        {a.icon}
                       </span>
-                    </div>
-                    <ArrowRight
-                      size={15}
-                      className="flex-none mt-1 transition-transform group-hover:translate-x-1"
-                      style={{ color }}
-                    />
-                  </a>
-                );
-              })}
-            </div>
+                      <div className="fhub-card__b">
+                        <h3 className="fhub-card__t">{(lang === 'en' && a.titleEn) || a.title}</h3>
+                        <span className="fhub-card__d">{formatArticleDate(a, lang)}</span>
+                      </div>
+                      <ArrowRight size={15} className="fhub-card__a" aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
 
-            <div className="mt-4 text-[12.5px] font-bold">
-              <a
-                href={`${langPrefix}/news/gtarp`}
-                className="inline-flex items-center gap-1.5 text-[#ff2d95] hover:underline"
-              >
-                <Newspaper size={14} />
-                {t('fg.news.all')} →
-              </a>
-            </div>
-          </section>
-        )}
+                <div className="fhub-more">
+                  <a href={`${langPrefix}/news/gtarp`}>
+                    <Newspaper size={14} aria-hidden="true" />
+                    {t('fg.news.all')} →
+                  </a>
+                </div>
+              </section>
+            )}
+          </div>
+        </div>
       </main>
 
       <SiteFooter width={1100} />
