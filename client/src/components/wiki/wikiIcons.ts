@@ -10,6 +10,7 @@ import {
   Crosshair,
   Activity,
   Bus,
+  History,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react';
@@ -27,6 +28,7 @@ export const WIKI_ICONS: Record<string, LucideIcon> = {
   combat: Crosshair,
   status: Activity,
   'living-world': Bus,
+  development: History,
 };
 
 export const wikiIcon = (slug: string): LucideIcon => WIKI_ICONS[slug] ?? BookOpen;

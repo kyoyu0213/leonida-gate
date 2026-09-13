@@ -188,6 +188,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: 'ファストトラベル、飲食店、銀行・現金、プレイ時間まで。広い世界の生活を整理。',
     related: ['map', 'vehicles'],
   },
+  {
+    slug: 'development',
+    title: '開発の歩み',
+    shortTitle: '開発の歩み',
+    seoTitle: 'GTA6 開発の歩み｜2015年着手からExtended Lookまでの開発史・延期年表｜GTA6まとめWiki',
+    description:
+      'GTA6の開発史を時系列で整理。2015年の初期構想、2018年のRDR2完成とスタッフ合流、2020年の本格化、2022年の映像流出、2023年のTrailer 1、発売延期、2026年のExtended Lookと11月19日発売まで。',
+    order: 12,
+    accent: '#6366f1',
+    summary: '2015年の着手からExtended Lookまで、GTA6開発の長い道のりを年表で整理。',
+    related: ['music', 'characters'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(
