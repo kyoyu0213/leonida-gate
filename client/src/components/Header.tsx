@@ -92,9 +92,10 @@ export default function Header() {
         WebkitBackdropFilter: 'blur(20px) saturate(1.3)',
       }}
     >
-      {/* ナビが9項目（GTA6まとめWiki／GTARPまとめWiki）になり、固定幅の検索欄がデスクトップの全幅で
-          はみ出していたため、ナビの余白を詰め、検索欄は空き幅に合わせて縮むようにしている（㊾）。 */}
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 md:gap-3.5">
+      {/* 横並びのデスクトップナビは 1024px（lg）以上だけ。768〜1023px のタブレット幅では8項目＋ロゴ＋検索が
+          1行に収まらず右へはみ出していたため、この帯もハンバーガーに切り替える（52）。
+          ナビの余白を詰め、検索欄を空き幅に合わせて縮むようにしているのは ㊾ の調整。 */}
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-[30px] h-[66px] flex items-center gap-3 lg:gap-3.5">
         {/* Logo */}
         <a href={pathForLang('/', lang)} className="flex items-center flex-none cursor-pointer">
           <img
@@ -106,7 +107,7 @@ export default function Header() {
         </a>
 
         {/* Desktop nav（それぞれを四角いボタンにして区切りを付ける） */}
-        <nav className="hidden md:flex items-center gap-[3px] flex-none">
+        <nav className="hidden lg:flex items-center gap-[3px] flex-none">
           {NAV.map((item) => {
             const active = item.match(logicalPath);
             return (
@@ -134,7 +135,7 @@ export default function Header() {
         <div className="flex-1 min-w-[8px]" />
 
         {/* 言語切替（PCの右上） */}
-        <div className="hidden md:block flex-none">
+        <div className="hidden lg:block flex-none">
           <LangToggle />
         </div>
 
@@ -158,23 +159,23 @@ export default function Header() {
         </form>
 
         {/* 言語切替（スマホはハンバーガーの左に常時表示） */}
-        <div className="md:hidden flex-none">
+        <div className="lg:hidden flex-none">
           <LangToggle />
         </div>
 
         {/* Mobile menu toggle */}
-        <button className="md:hidden text-white flex-none" onClick={() => setMenuOpen((v) => !v)}>
+        <button className="lg:hidden text-white flex-none" onClick={() => setMenuOpen((v) => !v)}>
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile nav
           ここは {menuOpen && …} で DOM から出し入れしてよい唯一の例外：同じ NAV のリンクを
-          上の Desktop nav が常時DOMに出しており（CSSの hidden md:flex で見た目だけ切替）、
+          上の Desktop nav が常時DOMに出しており（CSSの hidden lg:flex で見た目だけ切替）、
           プリレンダHTMLからナビのリンクが消えることはないため。
           新しいリンクをモバイル側だけに足さないこと（生HTMLから漏れる）。 */}
       {menuOpen && (
-        <nav className="md:hidden border-t border-white/10" style={{ background: 'rgba(11,7,20,.96)' }}>
+        <nav className="lg:hidden border-t border-white/10" style={{ background: 'rgba(11,7,20,.96)' }}>
           <div className="max-w-[1320px] mx-auto px-4 py-4 flex flex-col gap-4">
             {/* モバイル用の検索 */}
             <form
