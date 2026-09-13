@@ -14,7 +14,7 @@ import { useSeo } from '@/hooks/useSeo';
 import { useLocalHref } from '@/components/LocalLink';
 import { FooterLinks } from '@/components/SiteFooter';
 import { WIKI_RELEASED } from '@/data/wiki/release';
-import { WIKI_BASE, WIKI_CATEGORIES, WIKI_NAME, wikiPath } from '@/data/wiki/categories';
+import { WIKI_BASE } from '@/data/wiki/categories';
 
 // Discord ロゴ（lucide に無いため簡易インラインSVG）
 function DiscordIcon() {
@@ -486,7 +486,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-7">
+            {/* 「すべて見る」の隣に、対応するまとめWikiの入口を並べる（独立のWikiブロックは廃止・54） */}
+            <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href={L('/news')}
                 className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/15 text-[#f4eef8] text-sm font-bold px-6 py-3 rounded-full hover:bg-white/10 transition-colors"
@@ -495,6 +496,16 @@ export default function Home() {
                   ? `すべての記事を見る（全${mainNews.length}件）→`
                   : `View all articles (${mainNews.length}) →`}
               </a>
+              {/* GTA6まとめWiki（日本語のみ）。公開フラグ（data/wiki/release.ts の WIKI_RELEASED）が立つまで出さない。 */}
+              {WIKI_RELEASED && (
+                <a
+                  href={WIKI_BASE}
+                  className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full transition-colors hover:bg-white/10"
+                  style={{ background: 'rgba(255,255,255,.04)', border: '1px solid #2de2e666', color: '#2de2e6' }}
+                >
+                  {lang === 'ja' ? 'GTA6まとめWiki →' : 'GTA6 Wiki →'}
+                </a>
+              )}
             </div>
 
             {/* ===================== RPニュース（GTARP カテゴリだけを横2枚） ===================== */}
@@ -522,7 +533,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-7">
+                <div className="mt-7 flex flex-wrap gap-3">
                   <a
                     href={L('/news/gtarp')}
                     className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full transition-colors hover:bg-white/10"
@@ -535,6 +546,14 @@ export default function Home() {
                     {lang === 'ja'
                       ? `GTARPの記事をすべて見る（全${allNews.filter((n) => n.category === 'gtarp').length}件）→`
                       : `View all GTA RP articles (${allNews.filter((n) => n.category === 'gtarp').length}) →`}
+                  </a>
+                  {/* RPまとめWiki（/fivem-gtarp ハブ）は常時公開なのでゲートなし。 */}
+                  <a
+                    href={L('/fivem-gtarp')}
+                    className="inline-flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full transition-colors hover:bg-white/10"
+                    style={{ background: 'rgba(255,255,255,.04)', border: '1px solid #22d3ee66', color: '#22d3ee' }}
+                  >
+                    {lang === 'ja' ? 'RPまとめWiki →' : 'GTA RP Wiki →'}
                   </a>
                 </div>
               </>
@@ -585,12 +604,10 @@ export default function Home() {
                     </div>
                     <div className="p-5 flex flex-col gap-2.5 flex-1">
                       <span className="text-black/45 text-[11.5px] font-semibold vice-num">{note.date}</span>
-                      <h3 className="text-[15px] font-extrabold text-[#15091c] leading-[1.5] m-0 line-clamp-3">
+                      {/* 説明文（excerpt）は出さずタイトルのみ（2行でクランプ）にして、ニュースカードの高さに寄せる（55） */}
+                      <h3 className="text-[15px] font-extrabold text-[#15091c] leading-[1.5] m-0 line-clamp-2">
                         {lang === 'en' ? note.titleEn : note.title}
                       </h3>
-                      <p className="text-[13px] text-black/55 leading-relaxed flex-1 m-0 line-clamp-3">
-                        {lang === 'en' ? note.excerptEn : note.excerpt}
-                      </p>
                       <span
                         className="mt-1 inline-flex items-center gap-1.5 text-[12.5px] font-bold"
                         style={{ color: cat.color }}
@@ -642,45 +659,6 @@ export default function Home() {
                 );
               })}
             </div>
-
-            {/* ===================== GTA6まとめWiki（日本語のみ） =====================
-                公開フラグ（data/wiki/release.ts の WIKI_RELEASED）が立つまで出さない。 */}
-            {WIKI_RELEASED && (
-              <div
-                className="mt-8 rounded-2xl p-6 md:p-8"
-                style={{
-                  background: 'linear-gradient(135deg,#07131a 0%,#0d1f2a 55%,#15122c 100%)',
-                  border: '1px solid rgba(45,226,230,.35)',
-                  boxShadow: '0 0 30px rgba(45,226,230,.14)',
-                }}
-              >
-                <span className="text-[11px] font-extrabold tracking-[0.25em] uppercase" style={{ color: '#2de2e6' }}>
-                  GTA6 WIKI
-                </span>
-                <h3 className="font-black text-xl md:text-2xl mt-3 mb-2 text-white">
-                  <a href={WIKI_BASE} className="hover:underline">
-                    {WIKI_NAME}
-                  </a>
-                </h3>
-                <p className="text-[14px] md:text-[15px] leading-relaxed m-0 max-w-[640px]" style={{ color: 'rgba(244,238,248,.82)' }}>
-                  {lang === 'ja'
-                    ? 'キャラクター・マップ・建物・車両・警察システム・NPCの判明情報を、公式／取材／証言／考察の確度ラベル付きで整理した非公式Wikiです。'
-                    : 'An unofficial Japanese-language wiki of confirmed GTA6 info — characters, map, locations, vehicles, police and NPCs — labeled by how reliable each item is.'}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {WIKI_CATEGORIES.map((c) => (
-                    <a
-                      key={c.slug}
-                      href={wikiPath(c.slug)}
-                      className="text-[13px] font-bold px-4 py-2 rounded-full transition-colors hover:bg-white/10"
-                      style={{ background: 'rgba(255,255,255,.04)', border: `1px solid ${c.accent}66`, color: c.accent }}
-                    >
-                      {c.shortTitle}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* ===================== Discord コミュニティ告知バナー ===================== */}
             <div
