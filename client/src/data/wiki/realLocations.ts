@@ -55,6 +55,12 @@ export const REAL_LOCATIONS: WikiPage = {
         {
           term: 'プライベートジェット施設 ← Signature Aviation（5700 NW 36th St、マイアミ国際空港の北側）',
           text: 'ゲーム内 Vice City International Airport（＝マイアミ国際空港）の格納庫と対応づけられており、住所も正確で有力です。',
+          image: {
+            src: '/images/news/gta6-extended-look-impressions/window-light-airport.webp',
+            alt: '空港ラウンジから見える駐機中の小型ジェット',
+            caption: 'Extended Look の映像より（実在施設との対応はコミュニティの照合）',
+            credit: 'Rockstar Games（An Extended Look 映像より）',
+          },
         },
         {
           term: '海沿いの段差状の建物 ← 1500 Ocean Drive（マイアミビーチ）',

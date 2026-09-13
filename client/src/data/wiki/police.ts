@@ -52,6 +52,14 @@ export const POLICE: WikiPage = {
           text: '犯罪は通報されたが、犯人の人相・特徴がまだ特定されていない状態。特徴が割れていないため、ルシアがこの状態でパトカーの横を挑発しながら通り過ぎても反応されない、という場面が取材で紹介されています。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/hud-wanted-icons.webp',
+          alt: '手配のアイコン表示',
+          caption: '表示は映像からの観察',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
+        },
+      ],
       note: '星の色・状態は映像で確認できますが、各状態の正式な呼称や細かな判定は発売後に確定します。',
     },
     {

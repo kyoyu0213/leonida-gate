@@ -222,6 +222,14 @@ export const VEHICLES: WikiPage = {
           text: '道路幅が現実的になり交通量も増え、運転の難度が全体に上がるという趣旨の説明があります。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/bridge-drive-daylight.webp',
+          alt: '橋を渡るオープンカー',
+          caption: 'Extended Look の映像より',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
+        },
+      ],
       note: '「マッスルカーとスーパーカーで挙動が違い、悪路ではスーパーカーが有利とは限らない」といった具体例や、ハンドリング検証で知られるBroughy1322氏がこの先行取材に関わったという話は、現時点で公式・主要メディアでは確認できていません。方向性としては妥当ですが、具体の断定は避けています。',
     },
     {

@@ -31,6 +31,14 @@ export const STATUS: WikiPage = {
           text: 'Dazed誌はこの仕組みを、習慣が主人公自身の顔と身体に少しずつ刻まれていくものとして紹介しています。ジムで鍛えれば筋肉がつき、食べ過ぎれば体重が増え、眠らずに逃げ続ければ顔に疲れが出る、という方向性はExtended Lookの映像でも示されています。かつて『GTA San Andreas』にあった体格変化を、さらに発展させたものと受け止められています。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/gym-bench-press.webp',
+          alt: 'ジムのベンチプレス',
+          caption: 'Extended Look の映像より',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
+        },
+      ],
     },
     {
       heading: '体力・スタミナ・フィットネスと、ジム・食事',
@@ -105,6 +113,14 @@ export const STATUS: WikiPage = {
         },
         {
           text: 'UI全体としても、画面の端に情報を並べるだけでなく、世界の中に情報を溶け込ませる方向が強くなっています。警察が主人公のどの情報（顔・服装・車）を把握しているかをUIから読み取り、それに合わせて逃げる、という遊びも語られていますが、これは手配・警察の話題なので詳しくは警察ページで扱っています。',
+        },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/lucia-phone-message.webp',
+          alt: 'スマホのメッセージ画面',
+          caption: 'Extended Look の映像より',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
         },
       ],
     },

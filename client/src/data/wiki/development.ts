@@ -80,6 +80,12 @@ export const DEVELOPMENT: WikiPage = {
           text: '2026年8月下旬（Netflixで8月27日に先行公開）には、より長尺の映像「An Extended Look」が公開され、ゲームプレイやキャラクター像がまとまった形で示されました。2015年から積み上げられてきた世界が、ようやく一本のゲームとして具体的に見え始めた段階と言えます。現時点（2026年9月）でGTA6は未発売で、発売予定日は2026年11月19日です。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/jason-and-lucia-key-art-02.webp',
+          alt: 'ジェイソンとルシア（キーアート）',
+        },
+      ],
     },
     {
       heading: '長い開発サイクルという論点',

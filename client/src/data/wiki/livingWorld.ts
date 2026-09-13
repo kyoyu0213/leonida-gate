@@ -33,6 +33,12 @@ export const LIVING_WORLD: WikiPage = {
           text: 'もう一つが、スマートフォンの配車アプリ「Ryde Me（RydeMe）」です。UberやLyftのような配車サービスを下敷きにしたゲーム内アプリで、タクシーを呼んで目的地まで移動できるとされます。ただし、乗車の全行程を眺めるのか目的地までスキップできるのか、といった具体的な流れはまだ公開されていません。「見る／スキップ」の選択が伝えられているのはバスについてで、タクシーで同じ選択ができると確認されているわけではない点に注意してください。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/vice-city-05.webp',
+          alt: 'バイスシティ',
+        },
+      ],
       note: '電車も移動手段として登場しますが、電車で移動時間をスキップできるかは現時点でははっきりしていません。',
     },
     {
@@ -46,6 +52,14 @@ export const LIVING_WORLD: WikiPage = {
         },
         {
           text: '食べ物やドリンクには体力の回復やステータスを一時的に強化する効果もありますが、そのステータス面の詳細はステータスページで扱っています。',
+        },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/prairie-sandwich-ad.webp',
+          alt: 'ゲーム内の飲食店の広告',
+          caption: 'Extended Look の映像より',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
         },
       ],
     },

@@ -32,26 +32,50 @@ export const MAP: WikiPage = {
         {
           term: 'バイスシティ（Vice City）',
           text: '【公式】最大の都市中心部。マイアミがモデル。ビーチ、アールデコのホテル群、ナイトライフ、高層ビル、運河、港湾。',
+          image: {
+            src: '/images/news/gta6-official/vice-city-01.webp',
+            alt: 'バイスシティ',
+          },
         },
         {
           term: 'グラスリバーズ（Grassrivers）',
           text: '【公式】エバーグレーズ風の広大な湿地。沼、マングローブ、水路、エアボート、ワニ。',
+          image: {
+            src: '/images/news/gta6-official/grassrivers-02.webp',
+            alt: 'グラスリバーズ',
+          },
         },
         {
           term: 'レオニダ・キーズ（Leonida Keys）',
           text: '【公式】フロリダ・キーズ風の熱帯諸島。島々は橋で結ばれ、ボート・水上バイク・水中探索の舞台になります。',
+          image: {
+            src: '/images/news/gta6-official/leonida-keys-01.webp',
+            alt: 'レオニダ・キーズ',
+          },
         },
         {
           term: 'ポート・ゲルホーン（Port Gellhorn）',
           text: '【公式】寂れた湾岸の工業港町。安モーテル、廃れたアトラクション、労働者街。【考察】モデルはパナマシティと見られています。',
+          image: {
+            src: '/images/news/gta6-official/port-gellhorn-01.webp',
+            alt: 'ポート・ゲルホーン',
+          },
         },
         {
           term: 'アンブロシア（Ambrosia）',
           text: '【公式】内陸の工業・農業地帯。製糖工場、畑、貨物インフラ、バイカー文化。',
+          image: {
+            src: '/images/news/gta6-official/ambrosia-01.webp',
+            alt: 'アンブロシア',
+          },
         },
         {
           term: 'マウント・カラガ国立公園（Mount Kalaga National Park）',
           text: '【公式】北部の森林原生地。川・丘陵・トレイルが広がり、狩猟・釣り・オフロードの舞台になります。',
+          image: {
+            src: '/images/news/gta6-official/mount-kalaga-01.webp',
+            alt: 'マウント・カラガ国立公園',
+          },
         },
       ],
     },

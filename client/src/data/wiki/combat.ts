@@ -63,6 +63,14 @@ export const COMBAT: WikiPage = {
           text: '狙いのつけ方について、従来型のロックオン式オートエイムは標準では働かず、わずかな補正を伴うより自由な照準になっている、と先行プレビューで報告されています。相手を殺さず制圧するための制圧射撃や、脚を撃って無力化する非致死の選択肢についても、取材と映像から伝えられています。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/office-shootout.webp',
+          alt: 'オフィスでの銃撃戦',
+          caption: 'Extended Look の映像より',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
+        },
+      ],
     },
     {
       heading: 'カバー（遮蔽）システム',
@@ -97,6 +105,14 @@ export const COMBAT: WikiPage = {
         },
         {
           text: 'スロー中には敵の身体に赤や黄のマーカーが表示される、と報じられています。ただしその意味づけは映像からの解釈で、媒体によって説明が分かれています。有力な解釈は「赤＝致命部位（当てれば致命傷）、黄＝無力化にとどまる非致死の部位」という、狙い方（殺すか制圧にとどめるか）を示す色分けだというものです。一方で、これを命中後のヒットマーカー（命中・無力化・キルの区別）とする情報源もあります。いずれにせよRockstarが明確に説明したものではなく、映像を見たコミュニティ・媒体による解釈である点に注意が必要です。',
+        },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-extended-look-impressions/hud-aim-reticle.webp',
+          alt: '戦闘中のHUD（照準）',
+          caption: 'HUDは映像からの観察',
+          credit: 'Rockstar Games（An Extended Look 映像より）',
         },
       ],
     },

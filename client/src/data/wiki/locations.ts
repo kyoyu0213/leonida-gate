@@ -47,6 +47,20 @@ export const LOCATIONS: WikiPage = {
           text: '【公式】Rideout Customs（カスタム）/ Sara\'s Unisex Salon / PTT YOUNGIN$（闇物資）/ Jack of Hearts（ストリップクラブ）/ Sinfrontera National Bank（強盗シーン）/ Only Raw Records / Ammu-Nation / Sandeep Plaza / Effluvia（ルーフトップバー）/ Zeke\'s Gadgets / Lombank / Diamond Dawgs（宝飾）/ Ocean View Hotel / Hoodwinks Liquor Bar ほか。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/vice-city-02.webp',
+          alt: 'バイスシティの街並み',
+        },
+        {
+          src: '/images/news/gta6-official/vice-city-03.webp',
+          alt: 'バイスシティの街並み',
+        },
+        {
+          src: '/images/news/gta6-official/vice-city-04.webp',
+          alt: 'バイスシティの街並み',
+        },
+      ],
     },
     {
       heading: 'レオニダ・キーズ（フロリダ・キーズがモデル）',
@@ -61,12 +75,28 @@ export const LOCATIONS: WikiPage = {
           text: 'Key Lento / Airward Key 等は要検証【考察】。Watson Bay は【公式】。',
         },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/leonida-keys-02.webp',
+          alt: 'レオニダ・キーズ',
+        },
+        {
+          src: '/images/news/gta6-official/leonida-keys-03.webp',
+          alt: 'レオニダ・キーズ',
+        },
+      ],
     },
     {
       heading: 'グラスリバーズ（湿地）',
       items: [
         { text: '【公式】ソーグラス湿原・マングローブ・エアボート・ワニ・ヘリによる追跡。' },
         { term: 'Paradise Garage', text: '【公式】Watson Bay 近辺のガレージ（Ultimate Edition の特典）。' },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-official/grassrivers-04.webp',
+          alt: 'グラスリバーズの湿地',
+        },
       ],
     },
     {
@@ -76,6 +106,12 @@ export const LOCATIONS: WikiPage = {
         { term: 'Delights Cabaret', text: '【公式】キャバレー。' },
         { term: '港湾', text: '【公式】貨物ターミナル・倉庫街・埠頭のクレーン。' },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/port-gellhorn-05.webp',
+          alt: 'ポート・ゲルホーン',
+        },
+      ],
     },
     {
       heading: 'アンブロシア（内陸・田園）',
@@ -84,12 +120,24 @@ export const LOCATIONS: WikiPage = {
         { term: 'Lake Leonida', text: '【考察】内陸の湖。名称はリーク・解析由来で、Rockstarの公式素材では確認されていません（「マップ」ページと同じ扱い）。' },
         { term: '沿道の施設', text: '保安官事務所・ハイウェイ沿いのダイナー等【公式/考察】。' },
       ],
+      images: [
+        {
+          src: '/images/news/gta6-official/ambrosia-02.webp',
+          alt: 'アンブロシア',
+        },
+      ],
     },
     {
       heading: 'マウント・カラガ国立公園（森林高地）',
       items: [
         { text: '【公式】山岳森林・渓谷・狩猟トレイル。' },
         { term: 'Leonida Penitentiary', text: '【公式】刑務所（トレーラー2）。' },
+      ],
+      images: [
+        {
+          src: '/images/news/gta6-official/mount-kalaga-04.webp',
+          alt: 'マウント・カラガ国立公園',
+        },
       ],
     },
     {
