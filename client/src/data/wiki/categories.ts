@@ -176,6 +176,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: '生活で変わる身体、ジムと食事、L3ダッシュ、物理スマホUIを整理。',
     related: ['characters', 'police'],
   },
+  {
+    slug: 'living-world',
+    title: '移動・経済・生活',
+    shortTitle: '移動・生活',
+    seoTitle: 'GTA6 移動・経済・生活｜ファストトラベル・飲食店・銀行・プレイ時間まとめ｜GTA6まとめWiki',
+    description:
+      'GTA6の広大なマップを移動する手段（バス・タクシーのファストトラベル）、飲食店やコンビニでのインタラクション、銀行・現金・ATMの経済、プレイ時間の目安、生活感のある世界の作り込みを、発売前情報の確度を分けて整理します。',
+    order: 11,
+    accent: '#14b8a6',
+    summary: 'ファストトラベル、飲食店、銀行・現金、プレイ時間まで。広い世界の生活を整理。',
+    related: ['map', 'vehicles'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(

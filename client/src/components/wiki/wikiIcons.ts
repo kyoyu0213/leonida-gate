@@ -9,6 +9,7 @@ import {
   MapPin,
   Crosshair,
   Activity,
+  Bus,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react';
@@ -25,6 +26,7 @@ export const WIKI_ICONS: Record<string, LucideIcon> = {
   'real-locations': MapPin,
   combat: Crosshair,
   status: Activity,
+  'living-world': Bus,
 };
 
 export const wikiIcon = (slug: string): LucideIcon => WIKI_ICONS[slug] ?? BookOpen;
