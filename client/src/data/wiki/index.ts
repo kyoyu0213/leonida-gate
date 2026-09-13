@@ -9,7 +9,8 @@ import { NPC } from './npc';
 import { MUSIC } from './music';
 import { REAL_LOCATIONS } from './realLocations';
 import { COMBAT } from './combat';
+import { STATUS } from './status';
 
 export const WIKI_PAGES: Record<string, WikiPage> = Object.fromEntries(
-  [CHARACTERS, MAP, LOCATIONS, VEHICLES, POLICE, NPC, MUSIC, REAL_LOCATIONS, COMBAT].map((p) => [p.slug, p]),
+  [CHARACTERS, MAP, LOCATIONS, VEHICLES, POLICE, NPC, MUSIC, REAL_LOCATIONS, COMBAT, STATUS].map((p) => [p.slug, p]),
 );

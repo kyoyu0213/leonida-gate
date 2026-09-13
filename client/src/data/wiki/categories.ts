@@ -164,6 +164,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: '長銃の携行が丸見えに。フォーカス等、変わる戦闘を整理。',
     related: ['police', 'vehicles'],
   },
+  {
+    slug: 'status',
+    title: 'ステータス・操作・UI',
+    shortTitle: 'ステータス・UI',
+    seoTitle: 'GTA6 ステータス・操作・UI｜身体変化・ジム・食事・L3ダッシュ・スマホUIまとめ｜GTA6まとめWiki',
+    description:
+      'GTA6の主人公の身体が生活で変化する仕組み（食事・運動・睡眠・逃亡）、体力・スタミナ・フィットネスのステータス、ジムと食事、ダッシュ操作の変更、スマホの物理化などのUIを、発売前情報の確度を分けて整理します。',
+    order: 10,
+    accent: '#34d399',
+    summary: '生活で変わる身体、ジムと食事、L3ダッシュ、物理スマホUIを整理。',
+    related: ['characters', 'police'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(
