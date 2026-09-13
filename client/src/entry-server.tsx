@@ -129,6 +129,7 @@ const JA_ONLY_ROUTES: Record<string, ComponentType> = {
   '/gta6-wiki/npc': GtaWikiCategory,
   '/gta6-wiki/music': GtaWikiCategory,
   '/gta6-wiki/real-locations': GtaWikiCategory,
+  '/gta6-wiki/combat': GtaWikiCategory,
 };
 
 // render() が参照する全ルート表（日本語キー）。

@@ -152,6 +152,18 @@ export const WIKI_CATEGORIES: WikiCategory[] = [
     summary: '映像の建物を現実のマイアミと照合。コミュニティ特定のモデル地まとめ。',
     related: ['locations', 'map'],
   },
+  {
+    slug: 'combat',
+    title: '戦闘システム',
+    shortTitle: '戦闘',
+    seoTitle: 'GTA6 戦闘システム｜武器の携行・NPCの反応・銃撃戦・フォーカスまとめ｜GTA6まとめWiki',
+    description:
+      'GTA6の戦闘システムまとめ。大型武器を隠し持てない新仕様、武器を見せることへのNPCの反応、銃撃戦の挙動、スロー能力「フォーカス」などを、発売前情報の確度を分けて解説します。',
+    order: 9,
+    accent: '#ff5a36',
+    summary: '長銃の携行が丸見えに。フォーカス等、変わる戦闘を整理。',
+    related: ['police', 'vehicles'],
+  },
 ].sort((a, b) => a.order - b.order);
 
 export const WIKI_CATEGORY_BY_SLUG: Record<string, WikiCategory> = Object.fromEntries(

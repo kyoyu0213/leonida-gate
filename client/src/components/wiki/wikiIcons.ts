@@ -7,6 +7,7 @@ import {
   PersonStanding,
   Music,
   MapPin,
+  Crosshair,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react';
@@ -21,6 +22,7 @@ export const WIKI_ICONS: Record<string, LucideIcon> = {
   npc: PersonStanding,
   music: Music,
   'real-locations': MapPin,
+  combat: Crosshair,
 };
 
 export const wikiIcon = (slug: string): LucideIcon => WIKI_ICONS[slug] ?? BookOpen;
