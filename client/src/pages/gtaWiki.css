@@ -314,8 +314,7 @@
       margin: 4px 0 20px 28px;
     }
   }
-  .wiki-toc,
-  .wiki-catnav {
+  .wiki-toc {
     padding: 14px 16px;
     border-radius: 14px;
     background: var(--panel);
@@ -328,8 +327,7 @@
     letter-spacing: 0.14em;
     color: var(--muted);
   }
-  .wiki-toc ol,
-  .wiki-catnav ul {
+  .wiki-toc ol {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -339,8 +337,7 @@
     font-size: 13px;
     line-height: 1.55;
   }
-  .wiki-toc a,
-  .wiki-catnav a {
+  .wiki-toc a {
     color: rgba(244, 238, 248, 0.78);
     text-decoration: none;
   }
@@ -356,23 +353,9 @@
     color: #ff2d95;
     opacity: 0.85;
   }
-  .wiki-toc a:hover,
-  .wiki-catnav a:hover {
+  .wiki-toc a:hover {
     color: #fff;
     text-decoration: underline;
-  }
-  .wiki-catnav [aria-current='page'] {
-    color: #ff2d95;
-    font-weight: 800;
-  }
-  /* スマホは目次だけ（カテゴリは本文末の関連カテゴリと index で辿れる）。 */
-  .wiki-catnav {
-    display: none;
-  }
-  @media (min-width: 1024px) {
-    .wiki-catnav {
-      display: block;
-    }
   }
 
   /* ---- 本文 ---- */
@@ -812,29 +795,23 @@
     color: var(--text);
   }
 
-  .wiki-toc,
-  .wiki-catnav {
+  .wiki-toc {
     background: var(--panel);
     border-color: var(--rule);
+    border-radius: 6px;
   }
   .wiki-side__title {
     color: var(--muted);
   }
-  .wiki-toc a,
-  .wiki-catnav a {
+  .wiki-toc a {
     color: var(--link);
   }
   .wiki-toc__num {
     color: var(--muted);
   }
-  .wiki-toc a:hover,
-  .wiki-catnav a:hover {
+  .wiki-toc a:hover {
     color: var(--text);
     text-decoration: underline;
-  }
-  .wiki-catnav [aria-current='page'] {
-    color: var(--text);
-    font-weight: 800;
   }
 
   .wiki-card {
@@ -987,4 +964,214 @@
     }
   }
   /* ライトボックスは .gta-wiki の外（ポータル）に描くので、このテーマの影響を受けず暗い背景＋白文字のまま。 */
+}
+
+/* ===== 57 グループ分けの左サイドバー（index・全カテゴリページ共通）＋ index のヒーロー画像 =====
+   サイドバーは <details class="wiki-sidebar">。スマホは「カテゴリ」で開閉、PC（1024px〜）は summary を隠して
+   常時展開（下の ::details-content）。閉じていてもリンクは DOM にあるのでプリレンダに出る。 */
+.gta-wiki {
+  .wiki-sidebar {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .wiki-sidebar > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .wiki-sidebar > summary::-webkit-details-marker {
+    display: none;
+  }
+  .wiki-sidebar > summary::after {
+    content: '▾';
+    color: var(--muted);
+    transition: transform 0.15s;
+  }
+  .wiki-sidebar[open] > summary {
+    border-bottom: 1px solid var(--line);
+  }
+  .wiki-sidebar[open] > summary::after {
+    transform: rotate(180deg);
+  }
+  .wiki-sidebar__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 8px 12px;
+  }
+
+  /* Wiki内検索（見出し・項目名・本文から最大8件） */
+  .wiki-sidebar__search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 2px;
+    padding: 5px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: #fff;
+    color: var(--muted);
+  }
+  .wiki-sidebar__search:focus-within {
+    border-color: var(--link);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--link) 18%, transparent);
+  }
+  .wiki-sidebar__search input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--text);
+    font-size: 12.5px;
+  }
+  .wiki-sidebar__results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .wiki-sidebar__results a {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: var(--link);
+    text-decoration: none;
+    line-height: 1.45;
+  }
+  .wiki-sidebar__results a:hover {
+    background: #eaf3ff;
+  }
+  .wiki-sidebar__results small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .wiki-sidebar__empty {
+    margin: 0;
+    padding: 0 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* トップへのリンク＋グループ見出し＋カテゴリ */
+  .wiki-sidebar__top,
+  .wiki-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    border-left: 3px solid transparent;
+    border-radius: 0 3px 3px 0;
+    color: var(--link);
+    text-decoration: none;
+    line-height: 1.45;
+  }
+  .wiki-sidebar__top {
+    font-weight: 700;
+  }
+  .wiki-sidebar__top:hover,
+  .wiki-sidebar__link:hover {
+    text-decoration: underline;
+  }
+  .wiki-sidebar__top[aria-current='page'],
+  .wiki-sidebar__link[aria-current='page'] {
+    background: #eaf3ff;
+    border-left-color: var(--catcolor, var(--link));
+    color: #15181a;
+    font-weight: 700;
+  }
+  .wiki-sidebar__grp {
+    margin-top: 10px;
+  }
+  .wiki-sidebar__grp-h {
+    margin: 0 0 4px;
+    padding: 0 8px 4px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .wiki-sidebar__grp ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .wiki-sidebar__dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--catcolor);
+  }
+
+  /* index の2カラム（カテゴリページの .wiki-layout と同じ幅・同じ切り替え幅） */
+  .wiki-index-layout > .wiki-side {
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1024px) {
+    .wiki-index-layout {
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 36px;
+      align-items: start;
+    }
+    .wiki-index-layout > .wiki-side {
+      margin-bottom: 0;
+    }
+    .wiki-sidebar > summary {
+      display: none;
+    }
+    /* 左カラム（目次＋メニュー）が画面より長いときは、カラムの中だけでスクロールさせる */
+    .wiki-side {
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+  }
+
+  /* index のヒーロー画像（キーアートは 16:9 のまま。16:7 に切るとロゴと「VI」が欠けるため） */
+  .wiki-hero-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin: 16px 0 22px;
+    border: 1px solid var(--thumb-border);
+    border-radius: 10px;
+    background: #eef0f2;
+  }
+  .wiki-index-main .wiki-hero > .wiki-infobox {
+    margin-top: 0;
+  }
+  /* 見出しの上余白（.gta-wiki 直下の .wiki-h2 と同じ）。メインを1段包んだぶんをここで補う */
+  .wiki-index-main > .wiki-h2 {
+    margin-top: 40px;
+  }
+  .wiki-start a {
+    color: var(--link);
+    font-weight: 700;
+  }
+}
+/* PC は閉じた <details> の中身も見せる（::details-content 未対応のブラウザは WikiSidebar が open を立てる）。
+   未対応ブラウザでセレクタごと無効になっても他の規則を巻き込まないよう、単独の規則にしている。 */
+@media (min-width: 1024px) {
+  .gta-wiki .wiki-sidebar::details-content {
+    content-visibility: visible;
+  }
 }

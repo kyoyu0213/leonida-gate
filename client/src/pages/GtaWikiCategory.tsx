@@ -13,8 +13,8 @@ import {
 } from '@/components/wiki/WikiParts';
 import { wikiIcon } from '@/components/wiki/wikiIcons';
 import { WikiGallery, WikiThumb } from '@/components/wiki/WikiImage';
+import WikiSidebar from '@/components/wiki/WikiSidebar';
 import {
-  WIKI_CATEGORIES,
   WIKI_CATEGORY_BY_SLUG,
   WIKI_NAME,
   wikiPath,
@@ -207,8 +207,8 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
         <WikiNotice />
 
         <div className="wiki-layout">
-          {/* PC は左に目次＋カテゴリ／右に本文（インフォボックスは本文の右上に float）の2カラム。
-              スマホは1カラムで「インフォボックス → 目次 → 本文」の順に積む（並べ替えは CSS の order）。 */}
+          {/* PC は左に「このページの目次＋カテゴリメニュー」／右に本文（インフォボックスは本文の右上に float）の2カラム。
+              スマホは1カラムで「インフォボックス → 目次 → カテゴリ（開閉） → 本文」の順に積む（並べ替えは CSS の order）。 */}
           <aside className="wiki-side">
             <nav className="wiki-toc" aria-label="目次">
               <p className="wiki-side__title">目次</p>
@@ -223,20 +223,8 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
                 ))}
               </ol>
             </nav>
-            <nav className="wiki-catnav" aria-label="カテゴリ">
-              <p className="wiki-side__title">カテゴリ</p>
-              <ul>
-                {WIKI_CATEGORIES.map((c) => (
-                  <li key={c.slug}>
-                    {c.slug === cat.slug ? (
-                      <span aria-current="page">{c.shortTitle}</span>
-                    ) : (
-                      <a href={wikiPath(c.slug)}>{c.shortTitle}</a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            {/* 全ページ共通のグループ分けカテゴリメニュー（現在地をハイライト）。 */}
+            <WikiSidebar currentSlug={cat.slug} />
           </aside>
 
           <div className="wiki-body">
