@@ -49,10 +49,6 @@ export const REAL_LOCATIONS: WikiPage = {
           text: '住所は実在（正式には「警察署」でなく「公安局」）。対応はコミュニティの指摘で、有力候補の段階です。',
         },
         {
-          term: '屋上パーティー会場 ← 1111 Lincoln Road（マイアミビーチ）',
-          text: 'ヘルツォーク＆ド・ムーロン設計の有名な立体駐車場。建物の登場はコミュニティが特定していますが、「屋上パーティー会場」との結び付けは指摘の一つです。（近くの壁画との一致を挙げる声もありますが、Rockstarは多数の実在アーティストにオリジナルの壁画を描かせたと報じられており、特定作家の既存作品の再現とは限りません）',
-        },
-        {
           term: '水辺の島の街並み ← ベイ・ハーバー・アイランズ一帯',
           text: '運河・道路配置、低層コンドミニアム群の一致が広く指摘されています。ただし「Bay Harbor Club」など特定の1棟までの断定は候補の域です。',
         },
@@ -113,7 +109,7 @@ export const REAL_LOCATIONS: WikiPage = {
     'Hoodline（Belmar Condominium 取り壊し）',
     'Kotaku（Belmar アパート特定）',
     'Michael Graves Architecture（1500 Ocean Drive）',
-    'Wikipedia（1111 Lincoln Road／Venetian Causeway／Bay Harbor Islands）',
+    'Wikipedia（Venetian Causeway／Bay Harbor Islands）',
     'Shacknews（壁画は実在アーティストのオリジナル）',
   ],
 };
