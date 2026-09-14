@@ -854,7 +854,7 @@ export default function Home() {
             />
             <span className="vice-display vice-grad text-lg">GTA6&nbsp;FEED</span>
             <a
-              href="https://x.com/GTA6FEEDo"
+              href="https://x.com/GTA6FEED_com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GTA6 FEED 公式X（旧Twitter）"
