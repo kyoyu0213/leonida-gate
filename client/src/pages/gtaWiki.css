@@ -322,7 +322,7 @@
   }
   .wiki-side__title {
     margin: 0 0 8px;
-    font-size: 11.5px;
+    font-size: 12.5px;
     font-weight: 800;
     letter-spacing: 0.14em;
     color: var(--muted);
@@ -333,9 +333,9 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    font-size: 13px;
-    line-height: 1.55;
+    gap: 8px;
+    font-size: 15px;
+    line-height: 1.7;
   }
   .wiki-toc a {
     color: rgba(244, 238, 248, 0.78);
@@ -344,6 +344,7 @@
   .wiki-toc a {
     display: flex;
     gap: 8px;
+    padding: 2px 0;
   }
   .wiki-toc__num {
     flex: none;
@@ -974,7 +975,7 @@
     background: #fff;
     border: 1px solid var(--rule);
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .wiki-sidebar > summary {
     display: flex;
@@ -1069,14 +1070,15 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 5px 8px;
+    padding: 7px 8px;
     border-left: 3px solid transparent;
     border-radius: 0 3px 3px 0;
     color: var(--link);
     text-decoration: none;
-    line-height: 1.45;
+    line-height: 1.7;
   }
   .wiki-sidebar__top {
+    font-size: 15px;
     font-weight: 700;
   }
   .wiki-sidebar__top:hover,
@@ -1098,7 +1100,7 @@
     padding: 0 8px 4px;
     border-bottom: 1px solid var(--line);
     color: var(--muted);
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.08em;
   }
@@ -1112,8 +1114,8 @@
   }
   .wiki-sidebar__dot {
     flex: none;
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
     border-radius: 2px;
     background: var(--catcolor);
   }
