@@ -170,7 +170,7 @@ function CategoryView({ cat, page }: { cat: WikiCategory; page: WikiPage }) {
     <div className="wiki-shell">
       <Header />
 
-      <main className="gta-wiki max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
+      <main className="gta-wiki max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         <WikiBreadcrumb
           items={[{ name: 'ホーム', href: '/' }, { name: WIKI_NAME, href: wikiPath() }, { name: cat.title }]}
         />

@@ -164,7 +164,7 @@ export default function FivemGtarp() {
     <div className="wiki-shell fhub">
       <Header />
 
-      <main className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
+      <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-[100px] pb-20 relative z-10">
         {/* Hero */}
         <span className="fhub__eyebrow">FiveM / GTARP</span>
         {/* H1 は固定文字列（i18n 非依存。英語版は公開停止中）。ヘッダーの表記は「RPまとめWiki」。 */}
