@@ -283,6 +283,123 @@ export const getGtarpTag = (a: { gtarpTag?: GtarpTag }): GtarpTag => a.gtarpTag 
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 85,
+    title: 'GTA6初のキャスト確認――Stephen Rootが出演を認める、Brian Heder役なのか？',
+    displayTitle:
+      'GTA6初のキャスト確認\nStephen Rootが出演を認める、Brian Heder役なのか？',
+    description:
+      '『Office Space』『King of the Hill』で知られる俳優Stephen Rootが、Associated Pressのインタビューで『Grand Theft Auto VI』への出演を認めた。Rockstarが正式なキャストを発表していないなか、出演者本人が参加を明言したのは大きな動き。ファンの間で指摘されてきた「Brian Heder役」説は本当なのか、確認済みの情報と推測を分けて整理する。',
+    icon: '🎙️',
+    image: '/images/news/gta6-official/brian-heder-01.webp',
+    category: 'topic',
+    date: '2026-09-15',
+    publishedAt: '2026-09-15 18:00',
+    source: 'Associated Press（BAFTA TV Tea PartyでのStephen Root氏インタビュー）／Rockstar Games公式サイト',
+    sourceUrl: 'https://www.rockstargames.com/VI/only-in-leonida/brian',
+    relatedArticles: [83, 50, 56],
+    aiSummary: [
+      '俳優Stephen RootがBAFTA TV Tea PartyでAssociated Pressの取材に応じ、GTA6への出演を「Yeah, you’re gonna see me in there」と認めた。Rockstarは正式なキャスト一覧を発表しておらず、出演者本人が参加を明言したのは初めての大きな動きになる。',
+      'ファンの間では、その特徴的な声からJasonと深く関わるドラッグランナーBrian Hederを演じていると指摘されてきた。Root氏も声で気付かれたという趣旨を語っているが、インタビューでキャラクター名は明言しておらず、Stephen Root＝Brian Hederは極めて有力ながら未確定の扱いになる。',
+      'Rockstar公式サイトによれば、BrianはLeonida Keysで密輸の黄金時代から活動してきたベテランで、Jasonを自分の物件に家賃なしで住まわせる代わりに取り立てを手伝わせている。JasonとLuciaの演者は依然として正式発表がない。',
+    ],
+    fullContent: `# GTA6初のキャスト確認――Stephen Rootが出演を認める、Brian Heder役なのか？
+
+GTA6のキャストをめぐって、これまで続いてきた“推測”の一つがついに本人の口から動きました。
+
+俳優の**Stephen Root**（スティーヴン・ルート）が、Associated Pressのインタビューで『Grand Theft Auto VI』への出演を認めました。Rockstar GamesはいまだGTA6の正式なキャスト一覧を発表しておらず、JasonやLuciaを演じる人物についても公式発表はありません。その中で、出演俳優本人が公の場でGTA6への参加を明言したのは大きな動きです。
+
+そしてファンが気になっているのが、Root氏が演じているとみられる人物です。以前から声を聞いたファンの間では、Jasonと深く関わるドラッグランナーBrian Heder（ブライアン・ヘダー）ではないかと指摘されていました。
+
+## Stephen Root本人が「GTA6に出る」と認める
+
+Stephen Root氏はBAFTA TV Tea PartyでAssociated PressからGTA6への出演について尋ねられ、「**Yeah, you’re gonna see me in there**（ああ、ゲームの中で私を見ることになるよ）」と回答しました。さらに、自身の特徴的な声を『King of the Hill』などで知る人が多く、GTA6の映像にキャラクターが登場した段階で秘密が明らかになってしまった、という趣旨の説明もしています。
+
+Root氏はGTA6への参加についても喜びを語っており、「参加できて本当にうれしい」としたうえで、作品について「見るだけでも素晴らしい」と評価しています。
+
+これまでGTA6ではJason、Luciaをはじめ、多くのキャラクターについて「この俳優ではないか」という特定や推測が続いてきました。しかし今回はファンによる声の比較だけではありません。Stephen Root本人が「自分はGTA6に出演している」と認めました。ここがこれまでのキャスト情報との大きな違いです。
+
+## では、Stephen RootはBrian Heder役なのか？
+
+可能性は非常に高いとみられています。
+
+GTA6の映像でBrian Hederが公開されて以降、その特徴的な声から「Stephen Rootではないか」とファンの間で指摘されていました。今回Root氏自身も、自分のキャラクターが以前のGTA6の映像に登場しており、声で気付かれてしまったという趣旨の説明をしています。
+
+ただし、ここは確認済み情報を分けておく必要があります。Associated PressのインタビューでRoot氏が明確に認めたのは、**「GTA6に出演している」こと**です。インタビュー内では、自身のキャラクター名を「Brian Heder」と明言していません。Rockstarも現時点でStephen Root＝Brian Hederという正式なキャスト表を公開していません。
+
+そのため現状を整理すると、次の扱いが最も正確です。
+
+- Stephen RootのGTA6出演 → 本人確認済み
+- Stephen Root＝Brian Heder → 極めて有力だが、Rockstarによる正式なキャスト発表はまだない
+
+海外メディアではすでにBrian Heder役として報じているところも多く、今回の本人発言によって長く続いていた予想がほぼ答え合わせされた形になっています。
+
+## Brian Hederとは何者なのか？
+
+Brian Hederは単なる背景キャラクターではありません。
+
+![夜の水辺のバーで、バンダナを巻いたタンクトップ姿のブライアン・ヘダーが手すりにもたれている公式スクリーンショット](/images/news/gta6-official/brian-heder-02.webp)
+
+Rockstar公式サイトでは、Leonida Keysで密輸の“黄金時代”から活動してきたベテランのドラッグランナーとして紹介されています。現在も3人目の妻Loriとボートヤードを拠点に商品を動かしていますが、長く裏社会を生きてきただけに、危険な仕事は他人に任せる立場になっています。
+
+そして重要なのが、主人公Jasonとの関係です。Brianは自身が所有する物件の一つにJasonを家賃なしで住まわせています。もちろん完全な善意ではなく、その代わりJasonはBrianのために地元での取り立てなどを手伝っています。つまりBrianは、JasonがLeonidaで犯罪の世界へ関わっていくうえでかなり近い位置にいる人物です。
+
+GTAシリーズでは、主人公へ仕事を持ち込む人物との関係が物語を大きく動かすことがあります。BrianがGTA6全体でどこまで重要な役割を担うのかはまだ分かりませんが、少なくともJasonの序盤の生活と犯罪活動に深く関係する人物であることは公式設定から確認できます。登場人物の公式設定は、GTA6まとめWikiの[キャラクター](/gta6-wiki/characters)でも整理しています。
+
+→ [Rockstar Games「Brian Heder」公式紹介](https://www.rockstargames.com/VI/only-in-leonida/brian)
+
+## Stephen Rootってどんな俳優？
+
+Stephen Rootは映画、テレビ、アニメ、声優まで幅広く活動してきたベテラン俳優です。代表作の一つが映画『Office Space』のMilton Waddams。さらにアニメ『King of the Hill』ではBill DauteriveやBuck Stricklandなどを演じています。
+
+今回本人が「声で気付かれた」と話したのも、この長い声優キャリアがあるからでしょう。海外の視聴者にとってはBrianの声を聞いた瞬間に「あの声では？」となるほど特徴のある俳優だったわけです。
+
+ほかにも『Barry』『No Country for Old Men』『Justified』『The Man in the High Castle』など多数の作品に出演してきました。GTA6に経験豊富な俳優が参加していることが本人の発言によって初めて表に出た点でも興味深いニュースです。
+
+## ではJasonとLuciaを演じているのは誰？
+
+ここが次の大きな謎です。
+
+![車内でシートの背に腕をかけて座るジェイソン・デュバルの公式スクリーンショット。窓の外にはヤシの木と夕方の日差しが見える](/images/news/gta6-official/jason-duval-02.webp)
+
+GTA6ではJasonとLuciaの姿や人物像、二人を中心としたストーリーについてはすでにかなり多くの情報が公開されています。Rockstar公式サイトでも、簡単な仕事の失敗をきっかけに二人がLeonida州全体に広がる犯罪の陰謀へ巻き込まれていくことが明かされています。
+
+ところが、二人を演じている俳優についてRockstarは正式発表していません。
+
+![薄暗い室内で、指先の出たグローブを着けて険しい表情を見せるルシア・カミノスの公式スクリーンショット](/images/news/gta6-official/lucia-caminos-01.webp)
+
+Lucia役については以前から特定の俳優名がファンの間で有力候補として挙げられ、Jasonについても複数の名前が推測されてきました。しかしStephen Root氏とは違い、本人またはRockstarによる正式確認がない以上、現段階では確定情報として扱うことはできません。
+
+Stephen Root氏の発言が注目されているのは、この状況の中で実際の出演者側から確認が出たからです。
+
+## Rockstarはなぜキャストを発表しないのか
+
+GTA6についてRockstarは、キャラクターそのものはかなり積極的に公開しています。JasonとLuciaだけでなく、Brian Heder、Cal Hampton、Boobie Ike、Dre'Quan Priest、Real Dimez、Raul Bautistaなど、多数の人物が公式サイトですでに紹介されています。
+
+![ボートの舳先にあぐらをかいて座り、瓶を片手に話すカル・ハンプトンの公式アートワーク。背景には橋と淡い色の空が広がる](/images/news/gta6-official/cal-hampton-art.webp)
+
+それでも俳優名はほとんど表に出ていません。今回のStephen Root氏の発言を見る限り、少なくとも一部の出演者については、映像公開後もキャスト情報が正式発表されない状態が続いていたことになります。
+
+Root氏自身が「声で秘密が明らかになってしまった」という趣旨の話をしているのも面白いところです。Rockstarが発表する前に、ファンの耳がキャストを見抜いていた。そして今回、本人がその推測に事実上の答えを出した形です。
+
+## GTA6のキャスト情報は、ここから動き始めるのか
+
+GTA6は2026年11月19日の発売を予定しており、発売まで残された時間も少なくなってきました。それでもJasonとLuciaを含む正式なキャスト一覧はまだ公開されていません。
+
+今回Stephen Root氏が出演を認めたことで、今後ほかの出演者もインタビューなどでGTA6について話し始める可能性があります。あるいはRockstar自身が発売前のプロモーションでキャストを正式に紹介するかもしれません。
+
+現時点で確実に言えることは一つです。長くファンの間で続いてきた「**Brian Hederの声、Stephen Rootじゃない？**」という推測に対して、少なくともStephen Root本人がGTA6出演を認めました。
+
+GTA6のキャストをめぐる長い“答え合わせ”が、いよいよ始まったのかもしれません。
+
+## 出典
+
+→ [Rockstar Games「Brian Heder」（Grand Theft Auto VI 公式サイト）](https://www.rockstargames.com/VI/only-in-leonida/brian)
+
+---
+
+> **注記：** 本記事は、Associated PressがBAFTA TV Tea Partyで行ったStephen Root氏へのインタビューの報道と、Rockstar GamesのGrand Theft Auto VI公式サイトの掲載内容をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Stephen Root氏および所属事務所とは一切関係がありません。発言の日本語部分は編集部訳・要約を含みます。Stephen Root氏がBrian Hederを演じているかどうかについては、本人・Rockstarともに正式な発表はなく、本記事では有力な見方として扱っています。Lucia・Jasonの演者についても、ファンの間で挙がっている候補名は確定情報ではないため本記事では記載していません。掲載画像はRockstar Gamesが公開した公式スクリーンショット・アートワークです。`,
+  },
+  {
     id: 84,
     title: '今日のSURGE Town｜9月14日 DAY11まとめ　叶、ばぁうらも参加、大型犯罪は“総力戦”へ',
     displayTitle:
