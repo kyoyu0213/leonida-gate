@@ -774,6 +774,16 @@
   margin: 0 auto !important;
 }
 
+/* widgets.js はラッパーの幅を測れなかったとき iframe を最小幅(250px)で作り、
+   外側の div の中で左寄せのまま残す。Instagram 側と幅・中央位置がズレて見えるため、
+   生成された iframe を幅いっぱい（上限550px）へ広げて中央に置く。 */
+.article-body .article-tweet iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 550px !important;
+  margin: 0 auto !important;
+}
+
 /* 本文中に置いたYouTube埋め込み：<p> の中に入るので span を block 化して枠を作る
    （見た目は記事上部の .article-video と同じ） */
 .article-body .article-inline-youtube {
@@ -787,10 +797,18 @@
   display: block;
   width: 100%;
   margin: 32px auto 28px;
+  /* embed.js は処理中に position:absolute の iframe を挿す。ここを包含ブロックにしておかないと
+     その iframe の 100% が画面幅基準になり、スマホで横スクロールが出る */
+  position: relative;
 }
 
-.article-body .article-instagram .instagram-media {
+.article-body .article-instagram .instagram-media,
+.article-body .article-instagram iframe {
+  width: 100% !important;
+  min-width: 0 !important;
   margin: 0 auto !important;
+  /* embed.js が付ける枠線ぶんで画面幅を超えないように border-box で数える */
+  box-sizing: border-box !important;
   max-width: 540px !important;
 }
 

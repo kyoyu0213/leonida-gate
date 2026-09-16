@@ -283,6 +283,161 @@ export const getGtarpTag = (a: { gtarpTag?: GtarpTag }): GtarpTag => a.gtarpTag 
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 88,
+    title: '何が始まった？ Travis Scott、Futureらが一斉にGTA6画像を投稿――ラジオ／サウンドトラック発表の前触れか',
+    displayTitle:
+      '何が始まった？ Travis Scott、Futureらが一斉にGTA6画像を投稿\nラジオ／サウンドトラック発表の前触れか',
+    description:
+      '9月15日、Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Keith Richards、PinkPantheressらがほぼ同時にGTA6を思わせるビジュアルを投稿。「LEONIDA」のナンバープレートも写り、Travis ScottはRockstarをタグ付けして「PHASE 1」「See y’all soon」と書いた。ラジオ局やサウンドトラックの発表が近いのか、確認できることと推測を分けて整理する。',
+    icon: '🎵',
+    image: '/images/news/gta6-official/real-dimez-04.webp',
+    category: 'topic',
+    date: '2026-09-16',
+    publishedAt: '2026-09-16 17:00',
+    source: '各アーティストの公式X・Instagram投稿（2026年9月15日）／Rockstar Games公式サイト',
+    sourceUrl: 'https://x.com/trvisXX/status/2099905804165890411',
+    relatedArticles: [85, 66, 83],
+    aiSummary: [
+      '2026年9月15日、Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richards、PinkPantheress、CA7RIEL & Paco AmorosoらがGTA6を強く連想させるビジュアルをX・Instagramへ一斉投稿した。Future・Metro Boomin・Yung Leanの画像には「LEONIDA」のナンバープレートが写っている。',
+      'Travis Scottはポールに絡む紫のハイヒールを描いたビジュアルとともにRockstar Gamesをタグ付けし、「PHASE 1」「See y’all soon @rockstargames」「J… O. H…..」と投稿。海外ではGTA6のストリップクラブJack of Heartsを指すのではないかという考察も出ている。',
+      'ヒップホップだけでなくカントリー、ラテン、ロック、ポップまでジャンルが広いことから、単独のラジオ局ではなくGTA6の音楽全体の解禁が近いという見方もある。ただしRockstarは9月16日時点で収録曲・ラジオ局・参加アーティストを正式発表していない。',
+    ],
+    fullContent: `# 何が始まった？ Travis Scott、Futureらが一斉にGTA6画像を投稿――ラジオ／サウンドトラック発表の前触れか
+
+GTA6の発売を約2か月後に控えた9月15日、音楽方面で突然、大きな動きが始まりました。
+
+Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richards、CA7RIEL & Paco Amorosoなど、ジャンルも活動地域も異なる著名アーティストたちが、ほぼ同じタイミングで、**『Grand Theft Auto VI』を強く連想させるビジュアルをSNSへ投稿**したのです。PinkPantheressなど、さらに別のアーティストによる投稿も確認されています。
+
+一人だけなら「GTA6が好きなのでは？」で終わる話です。しかし今回は違います。ヒップホップ、カントリー、ラテン、ロックなど、まったく異なるジャンルのアーティストが同じ日に動き、しかも投稿された画像にはGTA6の舞台である「**Leonida**」を示すナンバープレートまで登場しています。
+
+海外ではすでに「GTA6のサウンドトラックやラジオ局に関する発表が近いのではないか」という見方が広がっています。
+
+ただし、最初に重要な点を整理しておきます。Rockstar Gamesは現時点で、今回名前が挙がっているアーティストのGTA6収録曲や担当ラジオ局を正式発表していません。つまり、何らかのGTA6関連企画が動いていることを強く示す材料は出ていますが、「Travis Scottの曲がGTA6に収録決定」「Keith RichardsがラジオDJを担当」といったところまでは確認されていません。
+
+では、9月15日に一体何が起きたのでしょうか。
+
+## Travis Scott、Future、Metro Boomin……世界的アーティストが同じ日に動く
+
+今回確認されている主な名前だけでも、かなり豪華です。Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richards、PinkPantheress、そしてアルゼンチンのデュオCA7RIEL & Paco Amoroso。さらに報道によって確認されている範囲には、Fred again..など別の名前も挙がっています。
+
+そして重要なのは、単に全員が「GTA6楽しみ」と投稿したわけではないことです。
+
+Future、Metro Boomin、Yung Leanが共有した画像では、スポーツカーの後部に「**LEONIDA**」と記されたナンバープレートが確認できます。Leonidaはもちろん、Vice Cityを含むGTA6の舞台となる架空の州です。
+
+![](https://www.instagram.com/p/DdUC6hqtkEI/)
+
+![](https://www.instagram.com/p/DdUFwQ5jGDb/)
+
+![](https://www.instagram.com/p/DdUD_I0NbBB/)
+
+Morgan Wallenはプールを描いた画像、Keith Richardsはカラフルなイグアナを中心としたGTA6風アートを投稿。CA7RIEL & Paco Amorosoからはヨットを描いたビジュアルが出ています。
+
+![](https://x.com/MorganWallen/status/2099880521727635464)
+
+![](https://www.instagram.com/p/DdUAvfrOTvp/)
+
+![](https://x.com/officialKeef/status/2099891055814734185)
+
+![](https://www.instagram.com/p/DdUFptdRWBp/)
+
+![](https://x.com/ca7rielypaco/status/2099884073799872812)
+
+![](https://www.instagram.com/p/DdUChWhs0t6/)
+
+![](https://x.com/pantheresshq/status/2099893130233258022)
+
+同じ日には、ほかにも同じ雰囲気のビジュアルがInstagramへ投稿されています。
+
+![](https://www.instagram.com/p/DdT73c5ubnj/)
+
+![](https://www.instagram.com/p/DdUFuFeuzOl/)
+
+投稿時期とビジュアルの統一感を考えれば、少なくとも偶然それぞれがGTA6風の画像を作って投稿した、と考えるのは難しい状況です。
+
+## なかでもTravis Scottの投稿はかなり意味深
+
+今回の中でも特に踏み込んでいるのがTravis Scottです。
+
+![夜のクラブ「Jack of Hearts」の前で、スマホを手にした人物が立っている公式スクリーンショット。ネオンの看板と停まった車が見える](/images/news/gta6-official/boobie-ike-02.webp)
+
+Travis Scottが公開したのは、ポールに絡む紫色のハイヒールを描いたGTA6風のビジュアル。そして投稿文にはRockstar Gamesのアカウントを直接タグ付けしながら、「PHASE 1」、そして「See y’all soon @rockstargames」といった言葉を添えています。さらに「J… O. H…..」という意味深な文字列も残しました。
+
+![](https://x.com/trvisXX/status/2099905804165890411)
+
+この「J… O. H…..」について海外では、GTA6に登場するストリップクラブJack of Heartsを示しているのではないかという考察も出ています。これは現段階では解釈の一つですが、ポールとハイヒールというビジュアルとの組み合わせを考えると、注目されるのも分かります。
+
+さらにTravis Scottは、その後XでもGTA6を意識させる「VI」を含む投稿を行ったと報じられています。少なくともTravis Scottについては、単なるファンアートの紹介よりも一歩踏み込んだGTA6との関係を示唆しているように見えます。それでも、具体的に何を担当するのかはまだ発表されていません。
+
+## 面白いのは「参加人数」よりジャンルの広さ
+
+今回の一斉投稿でもう一つ注目したいのが、アーティストの顔ぶれです。
+
+Travis Scott、Future、Metro Boominなら、ヒップホップ／トラップ系のラジオ局を想像するのは難しくありません。ところが、そこにMorgan Wallenが入ります。Morgan Wallenはアメリカのカントリー界を代表するアーティストの一人です。
+
+さらにプエルトリコ出身のRauw Alejandro、スウェーデンのYung Lean、PinkPantheress、そしてThe Rolling StonesのギタリストであるKeith Richardsまで名前が並びます。
+
+![ネオンに照らされたクラブのフロアで、ステージ前に立つドレクアン・プリーストの公式スクリーンショット](/images/news/gta6-official/drequan-priest-03.webp)
+
+ヒップホップだけではありません。カントリー、ラテン、ロック、ポップ／エレクトロニック方面まで一気に広がっている。ここが今回の動きを考えるうえで非常に重要です。
+
+## もし音楽関連なら「一つのラジオ局」だけではなさそう
+
+GTAシリーズにとってラジオは単なるBGMではありません。車に乗って街を走りながら局を切り替え、音楽、DJのトーク、CM、ニュースなどを聞く。そのラジオ自体が、その街の文化や時代を表現する重要なゲームシステムになっています。
+
+![派手な色のジャケットを着た二人組が、車内でカメラのほうを見ている公式スクリーンショット](/images/news/gta6-official/real-dimez-03.webp)
+
+GTA Vでも、Frank Ocean、Flying Lotus、The Alchemist、ROSALÍA、Arcaなど、実在アーティストがラジオ局の選曲やホストとして深く関わってきました。
+
+だから今回のジャンルの広さは気になります。仮に今回投稿したアーティストたちが実際にGTA6の音楽に関係しているのであれば、一つの新ラジオ局を予告しているというより、複数のラジオ局を含む「GTA6の音楽全体」の情報解禁が近づいている可能性も考えられます。
+
+もちろん、これはまだ推測です。各アーティストが「楽曲提供者」なのか、「ラジオ局のホスト」なのか、ゲーム内イベントなど別の形で関わるのか、それすら分かっていません。しかし、これだけジャンルの異なる人物が同じタイミングでGTA6関連のビジュアルを投稿したという事実は、かなり興味深いものです。
+
+## GTA6ではすでに「音楽」がかなり重要な存在になっている
+
+振り返ると、GTA6のプロモーションでは最初から音楽が強い役割を担ってきました。
+
+![ネオンの光の中、クラブのフロアで踊る人たちに囲まれたルシア・カミノスの公式スクリーンショット](/images/news/gta6-official/lucia-caminos-06.webp)
+
+Trailer 1ではTom Pettyの「Love Is A Long Road」が使用されました。そして最近、Rockstar North共同スタジオヘッドのRob Nelsonは、この曲について単なるトレーラー用BGMではなく、開発チームにとってGTA6がどこへ向かうのかを示す「**mission statement**」のような存在だったと語っています（この曲が選ばれた背景は[「Love Is A Long Road」の本当の意味](/news/66)で詳しく紹介しています）。
+
+『An Extended Look』でも多数の楽曲が使用され、Rockstarは映像だけではなく、音楽によってLeonidaの雰囲気やキャラクター、文化を伝えてきました。つまりGTA6において音楽は、発売前のプロモーション段階から作品の世界観を作る重要な要素になっています。その流れの中で、発売を目前に世界的アーティストが一斉に動き始めたわけです。
+
+## Rockstarはまだ何も発表していない
+
+一方で、ここは冷静に見ておく必要があります。
+
+9月16日時点でRockstar Gamesから、今回の一斉投稿についてラジオ局一覧やサウンドトラック、参加アーティストを説明する正式な発表は出ていません。海外ではすでに「GTA6のラジオアーティストが判明」と断定的に報じる記事もありますが、現段階ではそこまで言い切る材料はありません。
+
+確認できるのは、次の2点です。
+
+- 複数の著名アーティストが9月15日にGTA6関連とみられるビジュアルを一斉に公開したこと
+- その中にはLeonidaのナンバープレートなど、GTA6との直接的なつながりを示す要素が存在すること
+
+「GTA6に楽曲が収録される」「ラジオ局を担当する」といった具体的な役割については、Rockstarの発表を待つ必要があります。
+
+## それでも、偶然とは考えにくい
+
+ただ、今回の動きを単なるファンの盛り上がりとして片付けるのも難しいでしょう。
+
+一人ではありません。Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richards、PinkPantheress、CA7RIEL & Paco Amorosoなど、世界各地の著名アーティストがほぼ同時に動いています。しかもTravis ScottはRockstar Gamesを直接タグ付けし、「See y’all soon」とまで書いています。
+
+何かが始まっている。そこまでは、かなり強く言えそうです。
+
+問題は、それが「GTA6のサウンドトラック発表」なのか、「ラジオ局発表」なのか、それともさらに別の音楽企画なのか。Rockstarがまだ答えを出していないからこそ、今回の一斉投稿は面白いものになっています。
+
+GTA6発売まで残り約2か月。キャラクター、ゲームシステム、オンラインと並んで長く全貌が伏せられてきた「**GTA6の音楽**」が、いよいよ動き始めたのかもしれません。
+
+## 出典
+
+→ [Grand Theft Auto VI 公式サイト（Rockstar Games）](https://www.rockstargames.com/VI)
+
+本文中の投稿は、各アーティストの公式X・Instagramアカウントの投稿を埋め込みで引用しています。
+
+---
+
+> **注記：** 本記事は、2026年9月15日に各アーティストの公式X・Instagramアカウントへ投稿された内容と、それを扱った海外メディアの報道をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／各アーティストおよび所属レーベルとは一切関係がありません。各アーティストの投稿画像は転載せず、公式アカウントの投稿をそのまま埋め込む形で引用しています。GTA6のサウンドトラック・ラジオ局・参加アーティストについてRockstarからの正式発表はなく、収録曲やラジオ局の担当に関する記述はいずれも現時点の推測です。掲載画像はRockstar Gamesが公開した公式スクリーンショットで、今回の投稿や実在のアーティストとは関係ありません。新しい公式情報が出次第、内容を更新します。`,
+  },
+  {
     id: 87,
     title: '9月15日・SURGE Town DAY12まとめ',
     description:

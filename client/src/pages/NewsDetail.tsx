@@ -77,7 +77,7 @@ function TweetEmbed({ url }: { url: string }) {
 
   return (
     <span className="article-tweet" ref={ref as never}>
-      <blockquote className="twitter-tweet" data-dnt="true" data-theme="dark">
+      <blockquote className="twitter-tweet" data-dnt="true" data-theme="dark" data-width="550" data-align="center">
         <a href={url}>{url}</a>
       </blockquote>
     </span>
