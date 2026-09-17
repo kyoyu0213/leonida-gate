@@ -17,6 +17,7 @@ import {
   type VoteKind,
 } from '@/lib/board';
 import { useT, useLang } from '@/lib/i18n';
+import { useKeyboardInset } from '@/hooks/useKeyboardInset';
 
 const COOLDOWN_KEY = 'board_last_post';
 const REPORTED_KEY = 'board_reported_posts';
@@ -58,6 +59,8 @@ interface ThreadRepliesProps {
 export default function ThreadReplies({ threadId, startNumber = 1 }: ThreadRepliesProps) {
   const tr = useT();
   const lang = useLang();
+  // スマホでキーボードが出たときに返信ボックスがその裏に隠れないよう、被った分だけ持ち上げる
+  const keyboardInset = useKeyboardInset();
 
   const [posts, setPosts] = useState<BoardPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -326,7 +329,10 @@ export default function ThreadReplies({ threadId, startNumber = 1 }: ThreadRepli
       {/* sticky reply box */}
       <div
         className="fixed bottom-0 left-0 right-0 z-[60]"
-        style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)' }}
+        style={{
+          background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)',
+          transform: keyboardInset ? `translateY(-${keyboardInset}px)` : undefined,
+        }}
       >
         <div
           className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3"
@@ -358,31 +364,43 @@ export default function ThreadReplies({ threadId, startNumber = 1 }: ThreadRepli
                   onChange={(e) => setHp(e.target.value)}
                   style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
                 />
-                <div className="flex gap-2.5 items-end">
+                {/* スマホは「名前」「本文＋送信」の2段に割る。1段だと本文欄が狭すぎて、
+                    キーボードのオートフィルバーやペーストメニューに覆われてしまう。
+                    sm 以上は sm:contents で元の1段に戻す。
+                    文字サイズがモバイルだけ 16px なのは iOS の自動ズーム回避（index.css 末尾の注記参照）。 */}
+                <div className="flex flex-col gap-2 sm:flex-row sm:gap-2.5 sm:items-end">
                   <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={DEFAULT_NAME}
                     maxLength={30}
-                    className="flex-none w-[90px] sm:w-[120px] bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    className="w-full sm:w-[120px] sm:flex-none bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[16px] sm:text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
                   />
-                  <textarea
-                    ref={replyRef}
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
-                    placeholder={tr('brd.replyPlaceholder')}
-                    rows={1}
-                    maxLength={MAX_BODY}
-                    className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"
-                  />
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="flex-none text-white text-sm font-extrabold px-4 py-2.5 rounded-xl disabled:opacity-60"
-                    style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
-                  >
-                    {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-                  </button>
+                  <div className="flex items-end gap-2.5 sm:contents">
+                    <textarea
+                      ref={replyRef}
+                      value={body}
+                      onChange={(e) => setBody(e.target.value)}
+                      placeholder={tr('brd.replyPlaceholder')}
+                      rows={1}
+                      maxLength={MAX_BODY}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"
+                    />
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="flex-none text-white text-sm font-extrabold px-4 py-2.5 rounded-xl disabled:opacity-60"
+                      style={{ background: 'linear-gradient(95deg,#ff8a3d,#ff2d95 60%,#c44be0)' }}
+                    >
+                      {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                    </button>
+                  </div>
                 </div>
               </form>
             </>

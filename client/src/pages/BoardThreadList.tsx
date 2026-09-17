@@ -276,7 +276,7 @@ export default function BoardThreadList() {
                 value={boardQuery}
                 onChange={(e) => setBoardQuery(e.target.value)}
                 placeholder={tr('brd.searchPlaceholder')}
-                className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/35"
+                className="bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-[13px] w-full min-w-0 placeholder:text-white/35"
               />
             </form>
           </div>

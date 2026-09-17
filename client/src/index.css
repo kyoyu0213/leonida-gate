@@ -943,3 +943,25 @@
     padding: 16px 18px 16px 36px;
   }
 }
+
+/* iOS Safari の「入力欄フォーカス時の自動ズーム」対策。
+
+   iOS は font-size が 16px 未満の input / textarea / select にフォーカスすると
+   ページごと勝手に拡大する。拡大されると横にはみ出して入力欄の左端が画面外へ消え、
+   さらに OS のオートフィルバー（鍵・カード・住所アイコン）やペーストメニューが
+   狭くなった入力欄に被さって、事実上入力できなくなる。
+   スマホ幅のタッチ端末では実効フォントサイズの下限を 16px に固定し、
+   自動ズームそのものを起こさせない。
+
+   このブロックは意図的に @layer の外に置いてある。Tailwind v4 は utilities を
+   カスケードレイヤーに入れるため、レイヤー外のこの指定は .text-sm 等より強い。
+   つまり「スマホでは入力欄は必ず 16px 以上」がサイト全体で保証される。
+   各コンポーネント側の `text-[16px] sm:text-[13px]` のような指定は、
+   PC 側の見た目を元のまま保つためのもの。 */
+@media (max-width: 639px) and (pointer: coarse) {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']),
+  textarea,
+  select {
+    font-size: max(16px, 1em);
+  }
+}

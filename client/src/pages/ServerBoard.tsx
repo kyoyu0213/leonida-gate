@@ -305,7 +305,7 @@ export default function ServerBoard() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={tr('srv.searchPlaceholder')}
-              className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
+              className="bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-[13px] w-full min-w-0 placeholder:text-white/40"
             />
           </div>
         </div>

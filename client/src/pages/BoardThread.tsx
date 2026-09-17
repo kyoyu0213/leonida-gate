@@ -26,6 +26,7 @@ import { getBoard, boardColor as boardColorFor } from '@/lib/boards';
 import { getBoardImageSetting, uploadImages, listApprovedImages } from '@/lib/images';
 import { useT, useLang } from '@/lib/i18n';
 import { useSeo } from '@/hooks/useSeo';
+import { useKeyboardInset } from '@/hooks/useKeyboardInset';
 import SiteFooter from '@/components/SiteFooter';
 
 const COOLDOWN_KEY = 'board_last_post';
@@ -91,6 +92,8 @@ export default function BoardThread() {
   const [matchEn, paramsEn] = useRoute('/en/thread/:id');
   const match = matchJa || matchEn;
   const threadId = paramsJa?.id ?? paramsEn?.id;
+  // スマホでキーボードが出たときに返信ボックスがその裏に隠れないよう、被った分だけ持ち上げる
+  const keyboardInset = useKeyboardInset();
 
   const [thread, setThread] = useState<ThreadType | null>(null);
   const [posts, setPosts] = useState<BoardPost[]>([]);
@@ -658,7 +661,10 @@ export default function BoardThread() {
       {!loading && !notFound && (
         <div
           className="fixed bottom-0 left-0 right-0 z-50"
-          style={{ background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)' }}
+          style={{
+            background: 'linear-gradient(180deg,rgba(8,6,15,0),rgba(8,6,15,.97) 28%)',
+            transform: keyboardInset ? `translateY(-${keyboardInset}px)` : undefined,
+          }}
         >
           <div
             className="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-[30px] pt-4 pb-3"
@@ -710,7 +716,11 @@ export default function BoardThread() {
                     ))}
                   </div>
                 )}
-                <div className="flex gap-2.5 items-end">
+                {/* スマホは「画像＋名前」「本文＋送信」の2段に割る。1段だと本文欄が
+                    140px ほどしか残らず、キーボードのオートフィルバーやペーストメニューに
+                    覆われて何も見えなくなるため。sm 以上は sm:contents で元の1段に戻す。 */}
+                <div className="flex flex-col gap-2 sm:flex-row sm:gap-2.5 sm:items-end">
+                <div className="flex items-center gap-2.5 sm:contents">
                 {imagesEnabled && (
                   <label className="flex-none cursor-pointer text-white/55 hover:text-[#a78bfa] transition-colors self-center" title={lang === 'en' ? 'Add images (jpg/png/webp, up to 3)' : '画像を追加（jpg/png/webp・最大3枚）'}>
                     <ImagePlus size={20} />
@@ -727,13 +737,21 @@ export default function BoardThread() {
                     />
                   </label>
                 )}
+                {/* 文字サイズがモバイルだけ 16px なのは iOS の自動ズーム回避（index.css 末尾の注記参照）。
+                    autoComplete 系を切っているのは、OS のオートフィル候補バーが入力欄に被るのを減らすため。 */}
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={DEFAULT_NAME}
                   maxLength={30}
-                  className="flex-none w-[90px] sm:w-[120px] bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="none"
+                  spellCheck={false}
+                  className="flex-1 min-w-0 sm:flex-none sm:w-[120px] bg-white/[0.05] border border-white/10 rounded-lg px-2.5 py-2 text-[#f4eef8] text-[16px] sm:text-[12px] outline-none focus:border-[#a78bfa]/60 placeholder:text-white/35"
                 />
+                </div>
+                <div className="flex items-end gap-2.5 sm:contents">
                 <textarea
                   ref={replyRef}
                   value={body}
@@ -741,7 +759,9 @@ export default function BoardThread() {
                   placeholder={tr('brd.replyPlaceholder')}
                   rows={1}
                   maxLength={MAX_BODY}
-                  className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  className="flex-1 min-w-0 bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-sm leading-relaxed resize-none py-2 placeholder:text-white/35"
                 />
                 <button
                   type="submit"
@@ -751,6 +771,7 @@ export default function BoardThread() {
                 >
                   {submitting ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
                 </button>
+                </div>
                 </div>
               </form>
               </>

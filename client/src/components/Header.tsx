@@ -154,7 +154,7 @@ export default function Header() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t('header.search')}
-            className="bg-transparent border-none outline-none text-[#f4eef8] text-[13px] w-full min-w-0 placeholder:text-white/40"
+            className="bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-[13px] w-full min-w-0 placeholder:text-white/40"
           />
         </form>
 
@@ -191,7 +191,7 @@ export default function Header() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t('header.search')}
-                className="bg-transparent border-none outline-none text-[#f4eef8] text-[14px] w-full min-w-0 placeholder:text-white/40"
+                className="bg-transparent border-none outline-none text-[#f4eef8] text-[16px] sm:text-[14px] w-full min-w-0 placeholder:text-white/40"
               />
             </form>
             {NAV.map((item) => (
