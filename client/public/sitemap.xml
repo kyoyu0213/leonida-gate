@@ -266,6 +266,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://gta6-feed.com/news/89</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://gta6-feed.com/news/88</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
