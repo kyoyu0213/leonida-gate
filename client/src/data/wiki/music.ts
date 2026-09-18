@@ -5,20 +5,49 @@ import type { WikiPage } from './types';
 // 「公式発表なし」「リーク由来・非公式」など）。
 export const MUSIC: WikiPage = {
   slug: 'music',
-  updated: '2026-09-13',
+  updated: '2026-09-18',
   intro:
-    'このページでは、Rockstarが公開したGTA6の公式映像で実際に使われた楽曲をまとめます。トレーラーで流れた曲はRockstar自身が選曲したものなので信頼度は高い一方、曲名・アーティスト名の多くはRockstarが一覧を公表したわけではなく、各メディアやファンが映像の音声から同定したものです。ゲーム内ラジオ局・収録アーティスト・正式なサウンドトラックは、2026年9月時点でまだ公式発表されていません。',
+    'このページでは、Rockstarが公開したGTA6の公式映像で実際に使われた楽曲をまとめます。トレーラーで流れた曲はRockstar自身が選曲したものなので信頼度は高い一方、曲名・アーティスト名の多くはRockstarが一覧を公表したわけではなく、各メディアやファンが映像の音声から同定したものです。2026年9月、Rockstarは公式サウンドトラックアルバム『Grand Theft Auto VI: The Album』を発表しました（下記）。一方で、ゲーム内ラジオ局の構成や全収録曲の詳細は、まだ公式に発表されていません。',
   infobox: {
     rows: [
       { label: 'トレーラー1 主題歌', value: 'Love Is a Long Road ／ Tom Petty' },
       { label: 'トレーラー2 主題歌', value: 'Hot Together ／ The Pointer Sisters' },
       { label: 'Extended Look', value: 'ゲーム内で14曲を確認（各メディア同定）' },
       { label: 'ラジオ局', value: '公式未発表（出回る局名はリーク由来）' },
-      { label: 'サウンドトラック', value: '公式未発表' },
+      {
+        label: 'サウンドトラック',
+        value: '公式アルバム『GTA VI: The Album』発表（全34曲・2026/11/19／先行6曲配信中）',
+      },
       { label: '注記', value: '曲名の多くは映像音声からの同定' },
     ],
   },
   sections: [
+    {
+      heading: '公式サウンドトラック『Grand Theft Auto VI: The Album』',
+      lead: '2026年9月17日、RockstarとAtlantic Recordsが共同で、GTA6の公式サウンドトラックアルバムを正式発表しました。トレーラーの使用曲（下記）とは別に、ゲームのために作られたオリジナルのアルバムです。',
+      items: [
+        {
+          text: '既存曲の寄せ集めではなく、バイスシティとレオニダ（Leonida）の世界観を表現するために作られた全34曲のオリジナル楽曲で構成されます。リリース日はゲーム本体と同じ2026年11月19日で、発表と同日に各ストリーミングでの事前保存とCD・レコードの予約が始まりました。発表直前の9月15日ごろに複数アーティストがGTA6を思わせるビジュアルを一斉投稿しており、これがアルバムのティザーだったことが後に判明しました。',
+        },
+        { text: '発表と同時に、34曲のうち最初の6曲が各ストリーミングで先行配信されました。' },
+        { text: 'Yung Lean「That’s It」(feat. Future & Metro Boomin)' },
+        { text: 'Travis Scott「RHYNO」' },
+        { text: 'CA7RIEL & Paco Amoroso, PinkPantheress, Fred again.., Étienne de Crécy「Sexy Magic」' },
+        { text: 'Morgan Wallen「Last Thing You Need」' },
+        { text: 'Rauw Alejandro「Macacoa 2000」' },
+        { text: 'Keith Richards「Bright Lights, Big City」' },
+        {
+          text: '参加アーティストはヒップホップ、カントリー、ラテン、エレクトロニック、ロックにまたがる顔ぶれです。特にTravis Scott「RHYNO」は、Daft PunkのGuy-Manuel de Homem-Christoがプロデュースを手がけたと複数の音楽メディアが報じています（Rockstar公式ページでの明記は本稿では確認できていません）。',
+        },
+        {
+          text: '物理版も展開されます。米国公式ストアでは3種類（2026年9月時点の米国公式ストア価格）：CD＝19.98ドル、通常盤レコード＝49.98ドル（透明マゼンタ＋青スプラッターの2枚組）、限定盤レコード＝124.98ドル（青い液体を封入した透明マゼンタ2枚組＋限定アート）。公式ストアは米国外からの注文も受け付けており、FAQでは国際配送で到着まで最大8週間かかる場合があると案内されています。Best Buy・Walmart・Amazon・Target・Blood Records・独立系レコード店など複数の販売店でも、異なるカラー盤やアートの限定盤が予定されています。',
+        },
+        {
+          text: '公開されたのは6曲のみで、残る28曲の曲目・アーティストは本稿執筆時点（2026年9月）で未公開です。『The Album』はゲームのために作られたオリジナル・アルバムであり、ゲーム内ラジオ局の全プレイリストとは別物である点に注意してください。',
+        },
+      ],
+      note: '価格・発送条件は変わる可能性があります。ゲーム内ラジオ局や全収録曲の詳細は今後の発表待ちです。',
+    },
     {
       heading: 'トレーラー1（2023年12月）',
       lead: 'トレーラー1で全編に流れる楽曲は1曲で、これは確定情報です。',
@@ -87,8 +116,8 @@ export const MUSIC: WikiPage = {
       note: '曲順・時間はメディアが付けた目安で、数秒ずれる場合があります。',
     },
     {
-      heading: 'ラジオ局・収録アーティスト・サウンドトラック（未発表）',
-      lead: '2026年9月時点で、Rockstarはゲーム内ラジオ局の一覧・収録アーティスト・正式なサウンドトラックを公式発表していません。以下は看板・衣装からの推測や2026年のリーク映像を出所とするもので、公式情報ではなく発売までに変わる可能性があります。',
+      heading: 'ラジオ局・ゲーム内使用曲（未発表）',
+      lead: '正式なサウンドトラックは『GTA VI: The Album』として発表済みですが（上記セクション参照）、ゲーム内ラジオ局の一覧・収録アーティスト・ゲーム中に実際に流れる曲目は、2026年9月時点でRockstarから公式発表されていません。以下は看板・衣装からの推測や2026年のリーク映像を出所とするもので、公式情報ではなく発売までに変わる可能性があります。',
       items: [
         {
           text: '出回っているラジオ局名（すべて非公式・リーク由来）：V-Rock、Back Country Radio、Stockyard FM、Symphony FM、CircoLoco Records Radio、Dirty South Classics、Emotion 98.3、Worldwide FM、Kaleidoscope FM など。※「V-Rock」は『Vice City』からの復活局とされ、トレーラー2のジェイソンのTシャツからも存在が推測されています。',
@@ -126,5 +155,12 @@ export const MUSIC: WikiPage = {
     'Kotaku（リーク由来の曲・ラジオ局／公式未発表の注意）',
     'GamesRadar（Nelson "mission statement" 発言）',
     'American Songwriter（Mike Campbell／バイク着想）',
+    'Rockstar Newswire（Grand Theft Auto VI: The Album 発表）',
+    'Rockstar Games 公式音楽ページ（曲名・feat. 表記）',
+    'gtavi-thealbum.com 公式ストア（物理版3種・価格・国際配送FAQ）',
+    'Consequence（先行6曲・残り28曲未公開）',
+    'Complex（アルバム参加アーティスト）',
+    'IBTimes（RHYNO＝Guy-Manuel de Homem-Christo プロデュース報道）',
+    'Insider Gaming（物理版3種・価格）',
   ],
 };
