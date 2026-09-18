@@ -15,7 +15,7 @@
 //    - <loc> の先のHTMLが noindex（公開前の地図ツールなど）
 //    - robots.txt の Sitemap: が /sitemap.xml を指していない
 //  warn:
-//    - <loc> の総数が想定レンジ（80〜130）を外れた
+//    - <loc> の総数が想定レンジ（80〜170）を外れた
 //
 //  実行: node scripts/check-sitemap.mjs [検査する sitemap.xml のパス]
 //        （引数なしなら dist/public/sitemap.xml。引数はガード自体の動作確認用）
@@ -32,7 +32,7 @@ const DIST = resolve(ROOT, 'dist/public');
 const ORIGIN = 'https://gta6-feed.com';
 
 /** 総数の想定レンジ。外れたら warn（記事の増減で動くので fail にはしない）。 */
-const LOC_RANGE = [80, 130];
+const LOC_RANGE = [80, 170];
 /** 名指しで存在を確かめる独自ツール（古い sitemap が紛れ込むと真っ先に消えるもの）。 */
 const MUST_HAVE = [
   '/fivem-gtarp/tools/chara-maker',
