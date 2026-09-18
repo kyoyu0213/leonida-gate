@@ -283,6 +283,150 @@ export const getGtarpTag = (a: { gtarpTag?: GtarpTag }): GtarpTag => a.gtarpTag 
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 91,
+    title:
+      'GTA6公式アルバム発表！全34曲が新曲、Travis Scottら6曲解禁――日本からCD・限定レコードを買う方法も',
+    displayTitle:
+      'GTA6公式アルバム発表！全34曲が新曲、Travis Scottら6曲解禁\n日本からCD・限定レコードを買う方法も',
+    description:
+      'Rockstar GamesがAtlantic Recordsとの共同プロジェクト『Grand Theft Auto VI: The Album』を正式発表。全34曲がGTA6のために書き下ろされたオリジナルトラックで、リリースはゲーム本編と同じ11月19日。Travis Scott「RHYNO」などの最初の6曲が解禁され、CD・通常レコード・限定レコードの予約も始まった。日本から物理版を買う方法と注意点もまとめる。',
+    icon: '🎵',
+    image: '/images/news/gta6-official/boobie-ike-03.webp',
+    category: 'release',
+    date: '2026-09-18',
+    publishedAt: '2026-09-18 18:00',
+    source:
+      'Rockstar Games Newswire「Announcing Grand Theft Auto VI: The Album, Coming November 19」／Grand Theft Auto VI: The Album 公式ストア',
+    sourceUrl:
+      'https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19',
+    relatedArticles: [88, 64, 59],
+    aiSummary: [
+      'Rockstar Gamesは9月17日、Atlantic Recordsとの共同プロジェクトとなる公式サウンドトラックアルバム『Grand Theft Auto VI: The Album』を正式発表した。収録される34曲はすべてGTA6の世界のために用意されたオリジナルトラックで、リリース日はPS5 / Xbox Series X|S版GTA6と同じ2026年11月19日。',
+      '発表と同時にTravis Scott「RHYNO」、Yung Lean「That’s It (feat. Future & Metro Boomin)」など最初の6曲が主要ストリーミングサービスで解禁された。9月15日にTravis Scott、Future、Metro Boomin、Morgan Wallen、Keith Richardsらが一斉に公開した謎のビジュアルは、このアルバムのティザーだったことになる。',
+      '物理版はCD（$19.98）、Vinyl（$49.98）、青い液体を封入したLimited-Edition Vinyl（$124.98）の3種類が公式ストアで予約受付中。国際注文に対応しており日本からも購入できるが、公式ストアのFAQでは米国外への配送に最大8週間かかる場合があると案内されており、発売日に受け取れるとは限らない。',
+    ],
+    fullContent: `# GTA6公式アルバム発表！全34曲が新曲、Travis Scottら6曲解禁――日本からCD・限定レコードを買う方法も
+
+9月15日、Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richardsらが一斉に公開した「GTA6」を思わせる謎のビジュアル。あの投稿が何を意味していたのか、ついに答えが明らかになりました。
+
+Rockstar Gamesは9月17日、Atlantic Recordsとの共同プロジェクトとなる公式サウンドトラックアルバム『**Grand Theft Auto VI: The Album**』を正式発表しました。
+
+しかも既存曲を集めただけのサウンドトラックではありません。全34曲がGTA6の世界のために用意されたオリジナルトラック。さらに発表と同時にTravis Scottらによる最初の6曲が解禁され、CD、通常レコード、限定レコードの予約もスタートしています。日本から物理版を購入することも可能です。
+
+## 🎵 「GTA VI: The Album」正式発表、ゲームと同じ11月19日リリース
+
+Rockstarによると、『Grand Theft Auto VI: The Album』には34曲のオリジナルトラックを収録。バイスシティとレオナイダのエネルギーを音楽で表現するアルバムとして制作され、ジャンルをまたいだ多数のアーティストが参加します。
+
+リリース日は2026年11月19日。これはPS5 / Xbox Series X|S版『Grand Theft Auto VI』の発売日と同じです。つまりGTA6では、ゲーム本編と同時にその世界観を構成する音楽作品そのものが一つのアルバムとして世に出ることになります。
+
+## 🌴 あの「アーティスト一斉投稿」はアルバムのティザーだった
+
+今回の発表によって、9月15日に起きた謎の一斉投稿もつながりました。
+
+![ステージのピンクのライトを浴びてパフォーマンスする出演者たちを捉えたGTA6の公式スクリーンショット](/images/news/gta6-official/drequan-priest-01.webp)
+
+Travis Scott、Future、Metro Boomin、Morgan Wallen、Yung Lean、Rauw Alejandro、Keith Richardsらが、GTA6を連想させる独自のビジュアルをほぼ同時に公開。当時はRockstarから説明がなく、GTA6のラジオ局、サウンドトラック、あるいは別の音楽企画なのかも分かっていませんでした（[何が始まった？ Travis Scott、Futureらが一斉にGTA6画像を投稿](/news/88)）。
+
+そして今回発表されたのが『Grand Theft Auto VI: The Album』。あの一斉投稿は、このアルバムへ向けたティザーだったことになります。
+
+さらに面白いのが、FutureとMetro Boominをめぐる部分です。一斉投稿の段階では両者のビジュアルにつながりがあるようにも見えましたが、今回公開された楽曲を見ると、実際にYung Lean feat. Future & Metro Boominという形で同じ楽曲に参加していました。バラバラに見えていたティザーが、正式発表によって一つにつながった形です。
+
+## 🎧 34曲のうち最初の6曲はもう聴ける
+
+そしてRockstarは、11月まで待たずにアルバム収録曲の一部を解禁しました。現在公開されているのは以下の6曲です。
+
+- Yung Lean「That’s It (feat. Future & Metro Boomin)」
+- Travis Scott「RHYNO」
+- CA7RIEL & Paco Amoroso、PinkPantheress、Fred again..、Étienne de Crécy「Sexy Magic」
+- Morgan Wallen「Last Thing You Need」
+- Rauw Alejandro「Macacoa 2000」
+- Keith Richards「Bright Lights, Big City」
+
+![ピンクと紫のネオンに照らされたナイトクラブのラウンジを捉えたGTA6の公式スクリーンショット](/images/news/gta6-official/boobie-ike-04.webp)
+
+各曲は主要音楽ストリーミングサービスですでに配信されています。
+
+34曲のうち、今回公開されたのはまだ6曲。残り28曲については現時点ですべてが明らかになったわけではありません。今後のGTA6発売までのプロモーションの中で、残りの参加アーティストや楽曲が段階的に明かされるのかにも注目です。
+
+## 🤖 Travis Scott「RHYNO」はDaft PunkのGuy-Manuelがプロデュース
+
+6曲の中でも特に目を引くのが、Travis Scottの新曲「**RHYNO**」です。
+
+![金のチェーンを着けた男がスマートフォンを手に夜のバイスシティで身構えるGTA6の公式スクリーンショット](/images/news/gta6-official/vice-city-12.webp)
+
+この楽曲をプロデュースしているのは、Daft Punkのメンバーとして知られるGuy-Manuel de Homem-Christo。Rockstarの公式楽曲ページにも、Travis Scott「RHYNO」のプロデューサーとしてGuy-Manuelの名前が記載されています。
+
+Travis Scottの参加だけでも大きな話題ですが、そこにDaft PunkのGuy-Manuelまで関わっていることになります。今回のアルバムが単なるゲーム付属のサウンドトラックではなく、かなり大規模な音楽プロジェクトとして動いていることが分かります。
+
+## 💿 CD・レコードも発売。物理版は3種類
+
+そして『GTA VI: The Album』はストリーミング配信だけではありません。公式ストアではすでに物理版の予約受付が始まっています。
+
+![オフィスのソファに座り、札束を手にするブービー・アイクを捉えたGTA6の公式スクリーンショット](/images/news/gta6-official/boobie-ike-01.webp)
+
+現在用意されている基本ラインナップはCD、通常Vinyl、Limited-Edition Vinylの3種類です。米国向け公式ストアの価格は以下の通りです。
+
+| エディション | 価格・内容 |
+| --- | --- |
+| CD | $19.98／CD＋ブックレット |
+| Vinyl | $49.98／透明マゼンタ＋ブルースプラッターの2枚組 |
+| Limited-Edition Vinyl | $124.98／青い液体を封入した透明マゼンタ2枚組＋限定アート・パッケージ |
+
+特に強烈なのが124.98ドルのLimited-Edition Vinyl。一般的なカラーレコードではなく、透明なマゼンタカラーのレコード内部に青い液体を封入した特殊仕様となっています。
+
+GTA6本編では現時点で、いわゆる巨大なコレクターズエディションは発表されていません。一方、音楽側ではすでにかなりコレクター向けの商品展開が始まっているわけです。
+
+## 🛒 GTA6公式アルバムは日本から買える？
+
+ここが日本のユーザーには一番気になるところでしょう。現時点では、日本から購入することも可能です。
+
+公式アルバムストアではCDとレコードの予約が開始されており、公式ストアのサポートページでも米国外への**International Orders**（国際注文）について案内されています。日本からの発送に対応していることは国内メディアでも確認されています。
+
+購入する場合は、RockstarのGTA6音楽ページから物理版の予約ページへ進むのが分かりやすいです。
+
+→ [Rockstar Games「Grand Theft Auto VI: The Album」](https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19)
+
+またはアルバム公式ストアから直接購入できます。
+
+→ [Grand Theft Auto VI: The Album 公式ストア](https://www.gtavi-thealbum.com/)
+
+商品を選択し、配送先として日本の住所を入力して注文する形になります。ただし、商品価格だけを見て購入を決めない方がいいでしょう。海外発送になるため、最終的な送料などはチェックアウト画面で必ず確認してください。
+
+## 📦 日本への到着には時間がかかる可能性あり
+
+もう一つ重要な注意点があります。公式ストアのFAQでは、米国外への国際注文について、米国での発売から到着まで最大8週間かかる場合があると案内されています。
+
+そのため、11月19日にゲームとアルバムがリリースされても、日本で物理版を同じタイミングに受け取れるとは限りません。物理版については公式ストア上で11月20日発送予定と案内されている地域もあり、国内報道でも同日発送予定とされています。
+
+「発売日に音楽を聴きたい」という人はストリーミング、「限定盤をコレクションしたい」という人は物理版、と考えた方がよさそうです。
+
+## 🏪 公式ストア以外にも多数の限定盤
+
+さらにRockstarの発表では、公式ストアだけでなく複数の販売店で物理版が展開されます。Blood Records、Best Buy、Walmart、Amazon、Barnes & Noble、Target、Urban Outfitters、独立系レコードショップなどで、異なるカラーやアートワークを採用したバリエーションが予定されています。つまり今回のアルバム、かなり本格的なコレクター向け展開です。
+
+ただし、各店舗の限定盤については販売地域や日本への発送条件が異なる可能性があります。そのため日本から確実に予約したい場合は、現時点ではまず公式ストアで配送先と送料を確認する方法が分かりやすいでしょう。
+
+日本のAmazonなどで国内流通版・輸入盤の取り扱いが始まる可能性もありますが、9月18日時点でAmazon.co.jp上の確実な商品ページは今回の確認では見つけられませんでした。今後国内ショップで予約が始まれば、送料や配送期間を考えるとそちらの方が購入しやすくなる可能性があります。
+
+## 🌅 GTA6はゲームだけでなく「音楽」も発売前から動き始めた
+
+今回の発表で分かったのは、単に「GTA6のサントラが出る」ということだけではありません。
+
+9月15日に世界的アーティストが一斉にティザーを公開し、その2日後にRockstarが34曲のオリジナルアルバムを正式発表。そして同時に6曲を解禁し、CD・通常レコード・限定レコードまで予約を開始しました。
+
+ゲーム発売日は11月19日。それまで残された楽曲やアーティストがどのように明らかになっていくのか。そして今回の34曲が実際のバイスシティやレオナイダでどのように使われるのか。GTA6の発売に向けて、ゲーム本編とは別の「音楽」の展開も本格的に始まったと言えそうです。
+
+## 出典
+
+→ [Rockstar Games Newswire「Announcing Grand Theft Auto VI: The Album, Coming November 19」](https://www.rockstargames.com/newswire/article/7599a881942544/announcing-grand-theft-auto-vi-the-album-coming-november-19)
+
+→ [Grand Theft Auto VI: The Album 公式ストア](https://www.gtavi-thealbum.com/)
+
+---
+
+> **注記：** 本記事は、Rockstar Games Newswireの発表と『Grand Theft Auto VI: The Album』公式ストアの掲載内容をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Atlantic Recordsおよび参加アーティストとは一切関係がありません。価格はいずれも米国向け公式ストアの表示額で、日本からの購入時は送料・関税・為替レートによって最終的な支払額が変わります。配送期間・発送予定日・各販売店の限定盤の取り扱いは変更される場合があるため、購入前に必ず公式ストアの表示をご確認ください。掲載画像はRockstar Gamesが公開した公式スクリーンショットです。`,
+  },
+  {
     id: 90,
     title: 'GTA6 PC版に新たな動き？ Take-Two CEO「PCはますます重要になっている」',
     displayTitle:
