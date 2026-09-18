@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useRoute } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare, AlertTriangle } from 'lucide-react';
+import { Calendar, Share2, ExternalLink, Sparkles, ChevronDown, ChevronUp, MessageSquare, AlertTriangle, ZoomIn, X } from 'lucide-react';
 import Header from '@/components/Header';
 import NewsComments from '@/components/NewsComments';
 import { Streamdown, defaultRehypePlugins } from 'streamdown';
@@ -157,9 +158,83 @@ function ArticleMedia({ src, alt }: { src?: string; alt?: string }) {
       </span>
     );
   }
+  return <ArticleImage src={src} alt={alt} />;
+}
+
+/**
+ * 本文中の画像。タップ／クリックで全画面のライトボックスを開く。
+ *
+ * 勢力図のような文字入りの図版は、記事の本文幅（最大860px）に収めると
+ * 文字が小さくて読めない。拡大は2段階にしてあり、
+ *   1回目（ライトボックスを開く）… 画面いっぱいに収まるサイズ
+ *   2回目（画像をもう一度押す）  … 原寸。はみ出した分はスクロールで送る
+ * スマホでは画面幅より画像のほうが広いので、この原寸モードが実質の拡大鏡になる。
+ *
+ * マークダウンの画像は <p> の中に来るので、ブロック要素は使えない（span と button だけ）。
+ * オーバーレイは <main> が z-10 のスタッキングコンテキストを作るため body へポータルする。
+ * Wiki側の WikiThumb と役割は同じだが、あちらは <figure> を使うぶん本文には置けない。
+ */
+function ArticleImage({ src, alt }: { src: string; alt?: string }) {
+  const [open, setOpen] = useState(false);
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  const close = () => {
+    setOpen(false);
+    setZoomed(false);
+  };
+
   return (
     <span className="group relative my-4 inline-block" data-streamdown="image-wrapper">
-      <img alt={alt} className="max-w-full rounded-lg" data-streamdown="image" src={src} loading="lazy" decoding="async" />
+      <button
+        type="button"
+        data-zoom
+        className="article-img-btn"
+        onClick={() => setOpen(true)}
+        aria-label={alt ? `${alt} を拡大表示` : '画像を拡大表示'}
+      >
+        <img alt={alt} className="max-w-full rounded-lg" data-streamdown="image" src={src} loading="lazy" decoding="async" />
+        <span className="article-img-zoom" aria-hidden="true">
+          <ZoomIn size={14} />
+        </span>
+      </button>
+      {open &&
+        createPortal(
+          <div
+            className={`article-lightbox${zoomed ? ' is-zoomed' : ''}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label={alt || '拡大画像'}
+            onClick={close}
+          >
+            <button type="button" className="article-lightbox__close" aria-label="閉じる" onClick={close}>
+              <X size={22} aria-hidden="true" />
+            </button>
+            <img
+              src={src}
+              alt={alt}
+              onClick={(e) => {
+                e.stopPropagation();
+                setZoomed((v) => !v);
+              }}
+            />
+            <span className="article-lightbox__hint">{zoomed ? '画像をタップで縮小' : '画像をタップで原寸表示'}</span>
+          </div>,
+          document.body,
+        )}
     </span>
   );
 }

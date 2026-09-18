@@ -732,10 +732,125 @@
   box-shadow: 0 0 24px rgba(0, 245, 255, 0.12);
 }
 
-/* Streamdown標準の画像ホバー時オーバーレイ／ダウンロードボタンは記事では非表示に */
+/* Streamdown標準の画像ホバー時オーバーレイ／ダウンロードボタンは記事では非表示に。
+   [data-zoom] はこちらで足した拡大ボタン（.article-img-btn）なので除外する。 */
 .article-body [data-streamdown="image-wrapper"] > div,
-.article-body [data-streamdown="image-wrapper"] > button {
+.article-body [data-streamdown="image-wrapper"] > button:not([data-zoom]) {
   display: none;
+}
+
+/* 本文画像の拡大ボタン。画像そのものをボタンにして、押すとライトボックスが開く。
+   マークダウンの画像は <p> の中に来るため、ここは span と button だけで組む。 */
+.article-body .article-img-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  position: relative;
+  line-height: 0;
+}
+
+.article-body .article-img-zoom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  color: #f4eef8;
+  background: rgba(8, 6, 15, 0.72);
+  border: 1px solid rgba(0, 245, 255, 0.35);
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.article-body .article-img-btn:hover .article-img-zoom,
+.article-body .article-img-btn:focus-visible .article-img-zoom {
+  opacity: 1;
+}
+
+/* 拡大表示のオーバーレイ。<main> が z-10 のスタッキングコンテキストを作るので
+   body へポータルして描画している（gtaWiki.css の .wiki-lightbox と同じ理由）。 */
+.article-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(4, 3, 9, 0.9);
+  cursor: zoom-out;
+  overflow: auto;
+  overscroll-behavior: contain;
+  animation: article-lightbox-fade 0.12s ease-out;
+}
+
+@keyframes article-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.article-lightbox img {
+  max-width: 100%;
+  max-height: calc(100vh - 88px);
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  cursor: zoom-in;
+}
+
+/* 原寸表示。画面より広い図版は、はみ出した分をスクロールで送って読む。
+   勢力図のような文字入りの図版はスマホだとこれが実質の拡大鏡になる。 */
+.article-lightbox.is-zoomed {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.article-lightbox.is-zoomed img {
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  cursor: zoom-out;
+}
+
+.article-lightbox__close {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: #f4eef8;
+  background: rgba(8, 6, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.article-lightbox__hint {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: rgba(244, 238, 248, 0.75);
+  background: rgba(8, 6, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 /* 本文中に埋め込む動画（.mp4等）：画像と同じ角丸・ネオン枠・中央寄せで揃える */
