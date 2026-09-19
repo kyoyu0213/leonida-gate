@@ -283,6 +283,119 @@ export const getGtarpTag = (a: { gtarpTag?: GtarpTag }): GtarpTag => a.gtarpTag 
 // ----------------------------------------------------------------------------
 export const newsArticles: NewsArticle[] = [
   {
+    id: 94,
+    title:
+      '「それ言って大丈夫？」Twitch CEOがGTA6マルチプレイヤーを「来年」と発言――Rockstarとは“かなり話している”',
+    displayTitle:
+      '「それ言って大丈夫？」Twitch CEOがGTA6マルチプレイヤーを「来年」と発言\nRockstarとは“かなり話している”',
+    description:
+      'TwitchのCEO Dan Clancy氏がBloombergのインタビューで、GTA6のマルチプレイヤーについて「来年、彼らがローンチするとき」と発言した。現在が2026年なので2027年を指すことになる。同氏はTwitchがRockstarと「彼らの計画」について長く話してきたとも語っており、単なる予想として片付けにくい。ただしRockstarからの正式発表はなく、確認できる事実と推測を分けて整理する。',
+    icon: '📺',
+    image: '/images/news/gta6-official/jason-and-lucia-02.webp',
+    category: 'topic',
+    date: '2026-09-19',
+    publishedAt: '2026-09-19 20:00',
+    source:
+      'Video Games Chronicle／PC Gamer（いずれもBloombergのDan Clancy氏インタビューを報じたもの）／Take-Two Interactive 公式発表／Rockstar Games Newswire',
+    sourceUrl:
+      'https://www.videogameschronicle.com/news/twitch-ceo-says-grand-theft-auto-6s-multiplayer-mode-will-launch-next-year/',
+    relatedArticles: [79, 90, 82],
+    aiSummary: [
+      'TwitchのCEO Dan Clancy氏がBloombergのインタビューで、GTA6発売後の展開について「GTA6で大きな伸びが起こり、その後、来年彼らがマルチプレイヤーをローンチするときには、さらに大きな伸びが起こるでしょう」という趣旨の発言をした。GTA6の発売は2026年11月19日なので、「来年」は2027年を指すことになる。',
+      '同じインタビューでClancy氏は「We spent a lot of time talking with Rockstar about their plans」とも語り、TwitchがRockstarと計画について長時間話してきたこと、Rockstarがクリエイターをどう活用できるかについても協力していることを説明している。PC Gamerは、正式発表の権限を持つとは考えにくい一方で推測のようには聞こえないと指摘した。',
+      'ただしRockstarはGTA6のマルチプレイヤーについて2027年開始と発表しておらず、現在も公式にはJasonとLuciaを中心としたシングルプレイヤー体験として案内している。正式名称・開始時期・料金・GTA Onlineからの移行・FiveMとの関係もすべて未発表で、「Twitch CEOが2027年と言った」ことと「2027年に決まった」ことは分けて扱う必要がある。',
+    ],
+    fullContent: `# 「それ言って大丈夫？」Twitch CEOがGTA6マルチプレイヤーを「来年」と発言――Rockstarとは“かなり話している”
+
+GTA6のオンラインについて、これまでRockstar Gamesはほとんど何も明らかにしていません。正式名称もサービス開始日も、そもそも現在の『GTA Online』からどのような形で次世代へ移行するのかも未発表です。
+
+そんな状況で、かなり気になる発言が飛び出しました。発言したのはRockstarではなく、TwitchのCEO、Dan Clancy氏です。
+
+BloombergのインタビューでGTA6について語ったClancy氏は、GTA6本編発売後の展開について「**来年、彼らがマルチプレイヤーをローンチするとき**」という趣旨の発言をしています。現在は2026年なので、文字どおり受け取れば**GTA6のマルチプレイヤーは2027年に登場することになります**。
+
+ただし、Rockstarからそのような正式発表は出ていません。ではなぜTwitchのCEOが、ここまで具体的な時期に触れたのでしょうか。
+
+## 🌐 Twitch CEO「来年マルチプレイヤーをローンチするとき」
+
+今回の発言が出たのは、GTA6がTwitchの視聴者数にどの程度の影響を与えるのかという話題です。
+
+Clancy氏はGTA6発売によってTwitch全体の視聴が大きく伸びると予想し、さらにその後について、「**GTA6で大きな伸びが起こり、その後、来年彼らがマルチプレイヤーをローンチするときには、さらに大きな伸びが起こるでしょう**」という趣旨の発言をしています。
+
+GTA6は2026年11月19日発売予定なので、「next year」が指しているのは2027年です。これだけなら、Clancy氏が単純に「GTA6なら当然オンラインも来るだろう」と予想している可能性もあります。しかし今回の発言には、もう一つ非常に気になる部分があります。
+
+## 👀 TwitchはRockstarと「計画についてかなり話している」
+
+Clancy氏は同じインタビューで、TwitchとRockstarの関係についても言及しています。VGCが報じた発言によると、「**We spent a lot of time talking with Rockstar about their plans**」と説明しており、TwitchはRockstarと「彼らの計画」についてかなりの時間をかけて話してきたというのです。さらに、RockstarがTwitchのクリエイターをどのように活用できるかについても協力しているとしています。
+
+ここが、今回の発言を単なるファンの予想として片付けにくい理由です。Twitchは世界最大級のゲーム配信プラットフォームであり、そのCEOがRockstarとの協議について話したうえで、「**来年、彼らがマルチプレイヤーをローンチするとき**」と発言しています。当然、「それはRockstarから聞いている話なのでは？」と考えたくなるところです。
+
+## 🤔 それ……言って大丈夫だった？
+
+海外メディアも、この点には反応しています。PC Gamerは、Clancy氏がRockstarから正式発表する権限を与えられているとは考えにくい一方で、今回の発言があまり推測のようには聞こえない点を指摘しています。PolygonやVGCなど複数の海外メディアも、「Twitch CEOがGTA6マルチプレイヤーは2027年と発言した」と相次いで報じています。
+
+もしClancy氏がRockstarとの協議の中で知ったロードマップを念頭に置いて話していたのであれば、かなり踏み込んだ情報を口にしたことになります。ただし、本人は「Rockstarから聞いた情報だ」とは明言していません。この点は切り分けて考える必要があります。
+
+## ⚠️ 「GTA6 Onlineが2027年に決定」ではない
+
+現時点で確認できる事実は、Twitch CEOが「来年マルチプレイヤーをローンチするとき」と発言したこと、TwitchがRockstarとその計画について長時間話していること、そしてクリエイターとの連携についても協議していることです。
+
+現在が2026年なので「来年」は2027年を意味します。しかし、RockstarはGTA6のマルチプレイヤーについて2027年開始とは発表していません。つまり、現時点では「**Twitch CEOが2027年と言った**」のは事実ですが、「**GTA6 Onlineが2027年に開始する**」と確定したわけではありません。この二つを混同しないことが重要です。
+
+## 🎮 Rockstarは今も「シングルプレイヤー」を前面に出している
+
+興味深いのは、RockstarとTake-Twoが現在正式に案内しているGTA6が、あくまでJasonとLuciaを中心としたシングルプレイヤー体験であることです。
+
+![薄暗い建物の中で、銃を手にしたジェイソンとルシアが並んで様子をうかがう公式スクリーンショット](/images/news/gta6-official/jason-and-lucia-12.webp)
+
+Take-Twoは予約開始時の公式発表でもGTA6を「single-player experience」と説明しており、発売日は2026年11月19日、対応プラットフォームはPS5とXbox Series X|Sです。Rockstar公式サポートでも、現在予約できるプラットフォームとしてこの2機種のみが掲載されています。
+
+9月17日のTake-Two株主総会でも、CEOのStrauss Zelnick氏はGTA Onlineについて質問された際、GTA6は「single-player experience」であることを改めて説明したと報じられています。同じ株主総会でのPCに関する発言は[GTA6 PC版に新たな動き？ Take-Two CEO「PCはますます重要になっている」](/news/90)でまとめています。
+
+ここまで発売が迫っているにもかかわらず、GTA6のオンラインについてRockstar自身は依然として沈黙を続けています。だからこそ、今回のTwitch CEOによる具体的な「来年」という言葉が目立ちます。
+
+## 🕐 GTA Vでもオンラインは本編より後だった
+
+シリーズの前例を見ると、オンラインが本編と同時に始まらないこと自体は珍しくありません。『Grand Theft Auto V』は2013年9月17日に発売され、『GTA Online』は約2週間後となる10月1日にサービスを開始しました。
+
+![パトカーに追われながら、バイクの後ろからルシアが拳銃を構える公式スクリーンショット](/images/news/gta6-official/jason-and-lucia-09.webp)
+
+ただし今回のClancy氏の発言どおり2027年になるのであれば、GTA6では本編とオンラインの間隔がGTA Vより長くなる可能性があります。もっとも、Clancy氏は「2027年」の具体的な時期までは話していません。2027年初頭なのか、春なのか、それともさらに後なのかは不明です。
+
+なお、GTA6のオンラインについては、Rockstarの裁判資料に「online 32 player format」という記述が見つかったという話もありました。こちらも正式発表ではありませんが、[GTA6 Onlineは32人？](/news/79)で確認できる範囲を整理しています。
+
+## 📺 TwitchにとってGTA6 Onlineは巨大コンテンツになる
+
+Twitch CEO本人がこの話をしている背景も重要です。GTA Online、とりわけFiveMを利用したGTA RPは、現在のTwitchにとって大きな配信ジャンルの一つになっています。
+
+![泥まみれの参加者たちがカメラに向かってポーズを取る、大勢が集まったイベントの公式スクリーンショット](/images/news/gta6-official/ambrosia-06.webp)
+
+Rockstar自身も9月、NoPixel Vを公式に紹介し、GTA RPコミュニティが新しい遊び方や視聴の仕方を切り拓いてきたことを評価しています。NoPixel VはRockstar Games Launcherから起動する仕組みになり、RockstarとRPコミュニティとの距離は以前より明らかに縮まっています（[NoPixel Vの公開初日](/news/71)）。
+
+だからこそ、TwitchがGTA6についてRockstarと話していること自体は不思議ではありません。GTA6本編の発売、その後のマルチプレイヤー、さらにその先にあるRPやクリエイターコミュニティまで、RockstarとTwitchがどこまで先を見据えて話しているのかは今回の発言だけでは分かりませんが、FiveMやGTA RPを追っている人にとっても非常に気になる動きです。
+
+## 🌴 正式発表ではない。それでも無視できない発言
+
+今回もPC版の話と同じで、Rockstarによる正式発表ではありません。しかし「公式じゃないから無視」で終わらせるには、発言者の立場と内容がかなり強いものです。
+
+![夕暮れの街を背に、ジェイソンとルシアが抱き合う公式スクリーンショット](/images/news/gta6-official/jason-and-lucia-13.webp)
+
+Rockstarとその計画について話し合っているというTwitch CEOが、「**来年、彼らがマルチプレイヤーをローンチするとき**」と語った。これは少なくとも記録しておく価値があります。
+
+一方、現時点でRockstarからGTA6 Onlineの正式名称、開始時期、料金体系、現在のGTA Onlineからの移行、キャラクター引き継ぎ、FiveMとの関係などは何も正式発表されていません。
+
+Clancy氏の「来年」という言葉は、Rockstarから聞いたロードマップに基づくものだったのか、それとも本人の認識だったのか。そして今回の発言を受けてRockstarが何らかの反応を見せるのか。GTA6のオンラインについてほとんど情報がない現在だからこそ、今後の動きに注目したい発言です。
+
+## 出典
+
+→ [Twitch CEO says Grand Theft Auto 6's multiplayer mode will launch next year（Video Games Chronicle）](https://www.videogameschronicle.com/news/twitch-ceo-says-grand-theft-auto-6s-multiplayer-mode-will-launch-next-year/)
+
+→ [Twitch CEO says GTA 6 multiplayer will launch in 2027（PC Gamer）](https://www.pcgamer.com/games/grand-theft-auto/twitch-ceo-says-gta-6-multiplayer-will-launch-in-2027/)
+
+---
+
+> **注記：** 本記事は、Dan Clancy氏のBloombergインタビューを報じたVideo Games Chronicle・PC Gamerの記事、Take-Two Interactiveの公式発表、およびRockstar Games Newswireの掲載内容をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Twitchとは一切関係がありません。発言の日本語部分は編集部訳・要約を含みます。GTA6のマルチプレイヤーは本記事の公開時点でRockstar Gamesから正式発表されておらず、開始時期・名称・料金・GTA Onlineからの移行についても未発表です。「2027年」はClancy氏の発言にもとづくもので、Rockstarが確定させた情報ではありません。掲載画像はRockstar Gamesが公開した公式スクリーンショットです。`,
+  },
+  {
     id: 93,
     title:
       'SURGE Town 9月18日まとめ｜ゆふなが「ギョング」加入、赤髪のとも×甘葛すもあの師弟物語も終盤へ',
