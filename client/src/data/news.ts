@@ -296,7 +296,7 @@ export const newsArticles: NewsArticle[] = [
     date: '2026-09-19',
     publishedAt: '2026-09-19 20:00',
     source:
-      'Video Games Chronicle／PC Gamer（いずれもBloombergのDan Clancy氏インタビューを報じたもの）／Take-Two Interactive 公式発表／Rockstar Games Newswire',
+      'Video Games Chronicle／PC Gamer／Kotaku（いずれもBloombergのDan Clancy氏インタビューを報じたもの）／Take-Two Interactive 公式発表／Rockstar Games Newswire',
     sourceUrl:
       'https://www.videogameschronicle.com/news/twitch-ceo-says-grand-theft-auto-6s-multiplayer-mode-will-launch-next-year/',
     relatedArticles: [79, 90, 82],
@@ -331,7 +331,7 @@ Clancy氏は同じインタビューで、TwitchとRockstarの関係について
 
 ## 🤔 それ……言って大丈夫だった？
 
-海外メディアも、この点には反応しています。PC Gamerは、Clancy氏がRockstarから正式発表する権限を与えられているとは考えにくい一方で、今回の発言があまり推測のようには聞こえない点を指摘しています。PolygonやVGCなど複数の海外メディアも、「Twitch CEOがGTA6マルチプレイヤーは2027年と発言した」と相次いで報じています。
+海外メディアも、この点には反応しています。PC Gamerは、Clancy氏がRockstarから正式発表する権限を与えられているとは考えにくい一方で、今回の発言があまり推測のようには聞こえない点を指摘しています。KotakuやVGCなど複数の海外メディアも、「Twitch CEOがGTA6マルチプレイヤーは2027年と発言した」と相次いで報じています。
 
 もしClancy氏がRockstarとの協議の中で知ったロードマップを念頭に置いて話していたのであれば、かなり踏み込んだ情報を口にしたことになります。ただし、本人は「Rockstarから聞いた情報だ」とは明言していません。この点は切り分けて考える必要があります。
 
@@ -391,9 +391,11 @@ Clancy氏の「来年」という言葉は、Rockstarから聞いたロードマ
 
 → [Twitch CEO says GTA 6 multiplayer will launch in 2027（PC Gamer）](https://www.pcgamer.com/games/grand-theft-auto/twitch-ceo-says-gta-6-multiplayer-will-launch-in-2027/)
 
+→ [Twitch CEO Expects GTA 6 Will Lead To A Huge Influx Of Viewers And Anticipates Multiplayer Mode Is Coming Next Year（Kotaku）](https://kotaku.com/twitch-ceo-expects-gta-6-will-lead-to-a-huge-influx-of-viewers-and-anticipates-multiplayer-mode-is-coming-next-year-2000735285)
+
 ---
 
-> **注記：** 本記事は、Dan Clancy氏のBloombergインタビューを報じたVideo Games Chronicle・PC Gamerの記事、Take-Two Interactiveの公式発表、およびRockstar Games Newswireの掲載内容をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Twitchとは一切関係がありません。発言の日本語部分は編集部訳・要約を含みます。GTA6のマルチプレイヤーは本記事の公開時点でRockstar Gamesから正式発表されておらず、開始時期・名称・料金・GTA Onlineからの移行についても未発表です。「2027年」はClancy氏の発言にもとづくもので、Rockstarが確定させた情報ではありません。掲載画像はRockstar Gamesが公開した公式スクリーンショットです。`,
+> **注記：** 本記事は、Dan Clancy氏のBloombergインタビューを報じたVideo Games Chronicle・PC Gamer・Kotakuの記事、Take-Two Interactiveの公式発表、およびRockstar Games Newswireの掲載内容をもとにGTA6 FEEDが整理したものであり、Rockstar Games／Take-Two Interactive／Twitchとは一切関係がありません。発言の日本語部分は編集部訳・要約を含みます。GTA6のマルチプレイヤーは本記事の公開時点でRockstar Gamesから正式発表されておらず、開始時期・名称・料金・GTA Onlineからの移行についても未発表です。「2027年」はClancy氏の発言にもとづくもので、Rockstarが確定させた情報ではありません。掲載画像はRockstar Gamesが公開した公式スクリーンショットです。`,
   },
   {
     id: 93,
